@@ -5,6 +5,8 @@
 
 Interactive public learning platform for machine learning interview preparation across ML fundamentals, deep learning, generative AI, ML system design, MLOps, and behavioral storytelling.
 
+Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.vercel.app)
+
 ## What is included
 
 - 30, 60, and 90 day interview roadmaps
@@ -49,6 +51,10 @@ lib/          Data models, content loaders, auth/session helpers
 ## Deployment
 
 This app is designed to run on Vercel.
+
+Current production deployment:
+
+- [https://ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.vercel.app)
 
 1. Import the GitHub repository into Vercel.
 2. Keep the default Next.js build settings.

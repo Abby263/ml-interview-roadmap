@@ -16,7 +16,17 @@ export default function AboutPage() {
             The project is now developed as a public GitHub repository with an
             explicit CI/CD path: automated lint and build checks on pushes and
             pull requests, release automation for version tags, and Vercel
-            deployment workflow scaffolding for production delivery.
+            deployment workflow scaffolding for production delivery. The live
+            app is available at{" "}
+            <a
+              className="font-semibold text-foreground underline decoration-border underline-offset-4 transition hover:text-accent"
+              href="https://ml-interview-roadmap.vercel.app"
+              rel="noreferrer"
+              target="_blank"
+            >
+              ml-interview-roadmap.vercel.app
+            </a>
+            .
           </p>
         </div>
 
@@ -83,7 +93,16 @@ export default function AboutPage() {
           <p className="mt-3 text-sm leading-7 text-muted">
             GitHub Actions validates the app on push and pull request. Release
             tags create GitHub Releases, and the repo includes a Vercel deploy
-            workflow that can be connected to production secrets.
+            workflow tied to the live production deployment at{" "}
+            <a
+              className="font-semibold text-foreground underline decoration-border underline-offset-4 transition hover:text-accent"
+              href="https://ml-interview-roadmap.vercel.app"
+              rel="noreferrer"
+              target="_blank"
+            >
+              ml-interview-roadmap.vercel.app
+            </a>
+            .
           </p>
         </article>
 
