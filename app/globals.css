@@ -16,7 +16,7 @@
   --primary: #155eef;
   --accent: #0f9f95;
   --highlight: #f59e0b;
-  --muted: #5a6779;
+  --muted: #4f5c6e;
   --ink: #08172d;
 }
 
@@ -29,7 +29,7 @@ html[data-theme="dark"] {
   --primary: #7ab8ff;
   --accent: #41c7bc;
   --highlight: #f7bf5d;
-  --muted: #9bb0c3;
+  --muted: #a9bccd;
   --ink: #f6fbff;
 }
 
@@ -115,7 +115,7 @@ html[data-theme="dark"] {
   }
 
   .eyebrow {
-    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.24em] text-primary;
+    @apply font-mono text-[0.78rem] font-medium uppercase tracking-[0.22em] text-primary;
   }
 
   .section-title {
@@ -123,19 +123,23 @@ html[data-theme="dark"] {
   }
 
   .section-copy {
-    @apply mt-4 max-w-2xl text-[1.02rem] leading-8 text-muted;
+    @apply mt-4 max-w-2xl text-[1.06rem] leading-[1.75] text-muted md:text-[1.12rem];
   }
 
   .hero-title {
-    @apply max-w-4xl font-display text-[3.3rem] font-extrabold leading-[0.94] text-foreground md:text-[4.5rem] lg:text-[5.35rem];
+    @apply max-w-4xl font-display text-[2.6rem] font-extrabold leading-[0.98] text-foreground sm:text-[3.3rem] md:text-[4.2rem] lg:text-[4.8rem];
   }
 
   .hero-copy {
-    @apply max-w-3xl text-[1.06rem] leading-8 text-muted md:text-[1.18rem];
+    @apply max-w-3xl text-[1.08rem] leading-[1.75] text-muted md:text-[1.2rem];
   }
 
   .button-primary {
     @apply inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:-translate-y-0.5;
+  }
+
+  .button-primary-accent {
+    @apply inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white shadow-panel transition hover:-translate-y-0.5 hover:opacity-95;
   }
 
   .button-secondary {
@@ -155,15 +159,33 @@ html[data-theme="dark"] {
   }
 
   .data-chip {
-    @apply inline-flex items-center rounded-full border border-line bg-surface-strong px-3 py-1.5 font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-muted;
+    @apply inline-flex items-center rounded-full border border-line bg-surface-strong px-3 py-1.5 font-mono text-[0.76rem] font-medium uppercase tracking-[0.16em] text-muted;
   }
 
   .panel-label {
-    @apply font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] text-muted;
+    @apply font-mono text-[0.76rem] font-medium uppercase tracking-[0.2em] text-muted;
+  }
+
+  .step-number {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary font-mono text-sm font-semibold text-primary;
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+  }
+
+  .nav-group-label {
+    @apply font-mono text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted;
+  }
+
+  .lede {
+    @apply text-[1.12rem] leading-[1.8] text-foreground md:text-[1.24rem];
+  }
+
+  .kicker {
+    @apply font-mono text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent;
   }
 
   .article-prose {
-    @apply max-w-none text-[1.02rem] leading-8 text-muted;
+    @apply max-w-none text-[1.08rem] leading-[1.8] text-foreground;
   }
 
   .article-prose h2 {
@@ -175,7 +197,7 @@ html[data-theme="dark"] {
   }
 
   .article-prose p {
-    @apply mt-5 leading-8 text-muted;
+    @apply mt-5 leading-[1.8] text-foreground;
   }
 
   .article-prose ul {
@@ -183,7 +205,11 @@ html[data-theme="dark"] {
   }
 
   .article-prose li {
-    @apply text-muted;
+    @apply text-foreground;
+  }
+
+  .article-prose strong {
+    @apply font-semibold text-foreground;
   }
 
   .article-prose a {
