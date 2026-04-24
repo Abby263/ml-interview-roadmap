@@ -1,5 +1,8 @@
 # ML Interview Roadmap
 
+[![CI](https://github.com/Abby263/ml-interview-roadmap/actions/workflows/ci.yml/badge.svg)](https://github.com/Abby263/ml-interview-roadmap/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Abby263/ml-interview-roadmap)](https://github.com/Abby263/ml-interview-roadmap/releases)
+
 Interactive public learning platform for machine learning interview preparation across ML fundamentals, deep learning, generative AI, ML system design, MLOps, and behavioral storytelling.
 
 ## What is included
@@ -79,3 +82,9 @@ git push origin v0.1.0
 
 - `package.json` includes repository metadata for GitHub.
 - Dependabot is configured for npm and GitHub Actions updates.
+
+## Repository posture
+
+- Public GitHub repository for transparent product and content iteration
+- CI/CD workflow scaffolding for GitHub Actions and Vercel
+- Versioned releases via GitHub Releases
