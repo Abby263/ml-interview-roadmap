@@ -1,0 +1,43 @@
+---
+title: Design a Netflix-style Recommendation System
+description: Create a personalized home feed with retrieval, ranking, freshness, and diversity constraints.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a personalized home feed that recommends videos with strong watch time, diversity, and freshness while keeping latency low.
+concepts:
+  - Candidate generation
+  - Ranking
+  - Embeddings
+  - Exploration vs exploitation
+  - Online feedback loops
+evaluationLens:
+  - Watch time
+  - Retention
+  - Freshness
+  - Diversity
+  - Latency
+---
+
+## Product framing
+
+A good answer starts by clarifying what the home feed is optimizing. Watch time, session starts, long-term retention, and creator diversity can all push the system in different directions.
+
+## Multi-stage ranking
+
+Recommendation interviews are usually strongest when you separate the system into:
+
+1. candidate generation
+2. ranking
+3. re-ranking or policy layer
+
+This gives you room to discuss latency and model complexity at different stages instead of pretending one model does everything.
+
+## Monitoring
+
+Mention both model metrics and product metrics:
+
+- watch time
+- completion rate
+- repeated impressions
+- creator diversity
+- serving latency

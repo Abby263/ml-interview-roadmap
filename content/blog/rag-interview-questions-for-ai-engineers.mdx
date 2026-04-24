@@ -1,0 +1,38 @@
+---
+title: Top RAG Interview Questions for AI Engineers
+description: The questions most likely to appear in GenAI interview loops, with the signals interviewers look for.
+publishedAt: 2026-04-24
+readTime: 6 min read
+tags:
+  - RAG
+  - AI Engineer
+  - Generative AI
+---
+
+## The real goal of RAG questions
+
+RAG questions are not just about retrieval mechanics. Interviewers use them to test whether you can design a grounded, measurable, and cost-aware AI product.
+
+The strongest answers usually separate three layers:
+
+- retrieval quality
+- generation quality
+- system operations
+
+## Questions that come up repeatedly
+
+### How do you choose chunk size?
+
+Discuss document structure, answer granularity, embedding recall, and context budget. A weak answer says it depends and stops there. A stronger answer explains the trade-off between fragmenting context and diluting relevance.
+
+### When do you add reranking?
+
+Good answers explain that reranking helps when the first-pass retriever has acceptable recall but weak precision. It is usually a better next step than changing everything at once.
+
+### How do you evaluate a RAG system?
+
+Separate retrieval metrics from answer metrics. Then include faithfulness, citation accuracy, latency, and cost. If the workflow matters, add human review or task-completion metrics.
+
+### When should you fine-tune instead of using RAG?
+
+RAG and fine-tuning solve different problems. RAG is primarily about fresh or private knowledge. Fine-tuning is more about behavior, style, or repeated task adaptation.

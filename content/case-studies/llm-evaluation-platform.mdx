@@ -1,0 +1,34 @@
+---
+title: Design an LLM Evaluation Platform
+description: Build a platform that runs offline evals, prompt regressions, and release gates for multiple LLM-powered products.
+track: Generative AI
+difficulty: Advanced
+prompt: Build a platform that runs offline evals, prompt regressions, and release gates for multiple LLM-powered products.
+concepts:
+  - Golden datasets
+  - Prompt versioning
+  - Rubrics
+  - Human review
+  - Regression dashboards
+evaluationLens:
+  - Pass rate
+  - Regression detection
+  - Evaluator agreement
+  - Cost
+---
+
+## Core objective
+
+This system exists to stop silent regressions. That means it must track prompts, models, retrieval settings, and rubric outputs together, not as isolated artifacts.
+
+## Main workflow
+
+1. define evaluation suites by product or task
+2. store prompt and model versions
+3. run batch evaluations on a scheduled or release-triggered basis
+4. score results with deterministic checks and rubric-based judges
+5. surface regressions and block releases when thresholds fail
+
+## Human review
+
+Automated scoring helps scale. Human review is still important for safety-sensitive or subjective tasks. Mention sampling strategies instead of saying every run gets fully reviewed.

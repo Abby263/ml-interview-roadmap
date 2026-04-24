@@ -1,0 +1,215 @@
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f3f6fb;
+  --foreground: #0f172a;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: #ffffff;
+  --line: #d2dde8;
+  --primary: #155eef;
+  --accent: #0f9f95;
+  --highlight: #f59e0b;
+  --muted: #5a6779;
+  --ink: #08172d;
+}
+
+html[data-theme="dark"] {
+  --background: #08111b;
+  --foreground: #f3f7fc;
+  --surface: rgba(10, 20, 33, 0.84);
+  --surface-strong: rgba(13, 24, 38, 0.96);
+  --line: rgba(120, 149, 183, 0.22);
+  --primary: #7ab8ff;
+  --accent: #41c7bc;
+  --highlight: #f7bf5d;
+  --muted: #9bb0c3;
+  --ink: #f6fbff;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    font-feature-settings: "ss01" 1, "ss02" 1, "cv02" 1, "cv03" 1;
+    letter-spacing: -0.01em;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(circle at top left, rgba(18, 179, 168, 0.18), transparent 28%),
+      radial-gradient(circle at top right, rgba(21, 94, 239, 0.14), transparent 26%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.68), transparent 40%);
+    pointer-events: none;
+  }
+
+  html[data-theme="dark"] body::before {
+    background:
+      radial-gradient(circle at top left, rgba(51, 212, 199, 0.16), transparent 26%),
+      radial-gradient(circle at top right, rgba(122, 184, 255, 0.18), transparent 24%),
+      linear-gradient(180deg, rgba(5, 12, 22, 0.35), transparent 42%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(21, 94, 239, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(21, 94, 239, 0.04) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+    pointer-events: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-foreground;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a,
+  button,
+  input,
+  select {
+    @apply outline-none;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 22%, transparent);
+    color: var(--foreground);
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-card {
+    @apply border border-line bg-surface shadow-panel backdrop-blur-xl;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.72rem] font-medium uppercase tracking-[0.24em] text-primary;
+  }
+
+  .section-title {
+    @apply mt-3 max-w-3xl font-display text-3xl font-extrabold md:text-4xl;
+  }
+
+  .section-copy {
+    @apply mt-4 max-w-2xl text-[1.02rem] leading-8 text-muted;
+  }
+
+  .hero-title {
+    @apply max-w-4xl font-display text-[3.3rem] font-extrabold leading-[0.94] text-foreground md:text-[4.5rem] lg:text-[5.35rem];
+  }
+
+  .hero-copy {
+    @apply max-w-3xl text-[1.06rem] leading-8 text-muted md:text-[1.18rem];
+  }
+
+  .button-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:-translate-y-0.5;
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-foreground transition hover:-translate-y-0.5 hover:border-primary;
+  }
+
+  .field-shell {
+    @apply w-full rounded-[1.1rem] border border-line bg-surface-strong px-4 py-3 text-sm text-foreground placeholder:text-muted;
+  }
+
+  .metric-slab {
+    @apply rounded-[1.25rem] border border-line bg-surface px-5 py-4 shadow-panel;
+  }
+
+  .hero-panel {
+    @apply rounded-[2rem] border border-line bg-surface shadow-roadmap backdrop-blur-xl;
+  }
+
+  .data-chip {
+    @apply inline-flex items-center rounded-full border border-line bg-surface-strong px-3 py-1.5 font-mono text-[0.72rem] font-medium uppercase tracking-[0.18em] text-muted;
+  }
+
+  .panel-label {
+    @apply font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] text-muted;
+  }
+
+  .article-prose {
+    @apply max-w-none text-[1.02rem] leading-8 text-muted;
+  }
+
+  .article-prose h2 {
+    @apply mt-14 text-3xl font-extrabold text-foreground;
+  }
+
+  .article-prose h3 {
+    @apply mt-10 text-2xl font-bold text-foreground;
+  }
+
+  .article-prose p {
+    @apply mt-5 leading-8 text-muted;
+  }
+
+  .article-prose ul {
+    @apply mt-5 space-y-2 pl-5;
+  }
+
+  .article-prose li {
+    @apply text-muted;
+  }
+
+  .article-prose a {
+    @apply text-primary underline decoration-current underline-offset-4 transition;
+  }
+
+  .surface-muted {
+    background: color-mix(in srgb, var(--background) 75%, var(--surface-strong) 25%);
+  }
+
+  .line-muted {
+    background: color-mix(in srgb, var(--line) 72%, transparent);
+  }
+
+  .tone-primary {
+    background: color-mix(in srgb, var(--primary) 14%, transparent);
+    color: var(--primary);
+  }
+
+  .tone-accent {
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    color: var(--accent);
+  }
+
+  .tone-highlight {
+    background: color-mix(in srgb, var(--highlight) 18%, transparent);
+    color: var(--highlight);
+  }
+}

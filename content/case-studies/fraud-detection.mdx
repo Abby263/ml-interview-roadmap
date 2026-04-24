@@ -1,0 +1,44 @@
+---
+title: Design a Real-Time Fraud Detection System
+description: Detect payment fraud in real time with tight latency constraints, high class imbalance, and expensive false positives.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a payment fraud detection system that scores transactions in real time under tight latency and review-cost constraints.
+concepts:
+  - Imbalanced classification
+  - Feature freshness
+  - Online inference
+  - Threshold tuning
+  - Human review flows
+evaluationLens:
+  - Fraud recall
+  - False positive rate
+  - Latency
+  - Analyst workload
+---
+
+## Clarify the decision point
+
+The first question is what the model influences. Does it block the payment, send the case to manual review, or just assign a risk score?
+
+That single choice changes the cost of false positives and therefore the right operating threshold.
+
+## Features and freshness
+
+Fraud systems live or die on feature freshness. Mention recent card activity, merchant or device history, velocity features, and graph or account-linkage signals.
+
+If the latency budget is tight, separate features into:
+
+- synchronous online features
+- cached or precomputed aggregates
+- slower enrichment paths used for review or secondary models
+
+## Monitoring
+
+Production monitoring should include:
+
+- system latency
+- score distribution shifts
+- approval and decline rates
+- downstream confirmed fraud labels
+- reviewer queue growth

@@ -1,0 +1,46 @@
+---
+title: Design an Enterprise RAG Chatbot
+description: Build an internal knowledge assistant that retrieves trusted documents, cites sources, and respects security boundaries.
+track: Generative AI
+difficulty: Advanced
+prompt: Design an internal knowledge assistant that retrieves trusted documents, cites sources, and respects security boundaries.
+concepts:
+  - Chunking
+  - Hybrid retrieval
+  - Reranking
+  - Security filtering
+  - Citation UX
+evaluationLens:
+  - Faithfulness
+  - Answer relevance
+  - Citation accuracy
+  - Latency
+  - Cost
+---
+
+## Requirements to clarify
+
+Start by asking what the assistant is allowed to answer, which documents it can access, and how risky bad answers are. In an enterprise setting, access control is part of the product, not an implementation detail.
+
+## High-level architecture
+
+Use a staged pipeline:
+
+1. document ingestion and parsing
+2. chunking and metadata enrichment
+3. embedding plus hybrid retrieval index
+4. reranking layer
+5. generation with citations
+6. logging and evaluation
+
+Hybrid retrieval is usually worth mentioning because enterprise queries often mix keywords, acronyms, exact product names, and semantic intent.
+
+## Evaluation
+
+Evaluate retrieval and generation separately. Then add operational checks:
+
+- groundedness or faithfulness
+- citation correctness
+- permission leakage rate
+- latency by query class
+- cost per resolved query
