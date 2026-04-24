@@ -9,9 +9,13 @@ export default function RoadmapsPage() {
     ["90-day", "60-day", "30-day"].includes(roadmap.slug)
   );
   const roleRoadmaps = roadmaps.filter((roadmap) =>
-    ["data-scientist", "ml-engineer", "ai-engineer", "senior-mle"].includes(
-      roadmap.slug
-    )
+    [
+      "data-scientist",
+      "ml-engineer",
+      "ai-engineer",
+      "senior-mle",
+      "ml-architect",
+    ].includes(roadmap.slug)
   );
 
   return (

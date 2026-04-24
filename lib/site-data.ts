@@ -17,7 +17,8 @@ export type RoadmapSlug =
   | "data-scientist"
   | "ml-engineer"
   | "ai-engineer"
-  | "senior-mle";
+  | "senior-mle"
+  | "ml-architect";
 
 export type QuestionCategory =
   | "Coding"
@@ -123,16 +124,21 @@ export const siteTagline =
   "A structured roadmap to prepare for ML, deep learning, GenAI, and ML system design interviews in 30, 60, or 90 days.";
 
 export const navigationLinks = [
-  { href: "/", label: "Home" },
-  { href: "/roadmaps", label: "Roadmaps" },
-  { href: "/learn", label: "Learn" },
-  { href: "/questions", label: "Question Bank" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/resources", label: "Resources" },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
+  { href: "/", label: "Home", group: "Overview" },
+  { href: "/start-here", label: "Start Here", group: "Overview" },
+  { href: "/roadmaps", label: "Roadmaps", group: "Plan" },
+  { href: "/learn", label: "Learn", group: "Plan" },
+  { href: "/questions", label: "Question Bank", group: "Practice" },
+  { href: "/case-studies", label: "Case Studies", group: "Practice" },
+  { href: "/dashboard", label: "Dashboard", group: "Track" },
+  { href: "/resources", label: "Resources", group: "Reference" },
+  { href: "/blog", label: "Blog", group: "Reference" },
+  { href: "/about", label: "About", group: "Reference" },
 ] as const;
+
+export const navGroupOrder = ["Overview", "Plan", "Practice", "Track", "Reference"] as const;
+
+export type NavGroup = (typeof navGroupOrder)[number];
 
 export const pillars: Pillar[] = [
   {
@@ -1089,6 +1095,51 @@ export const roadmaps: Roadmap[] = [
     ],
   },
   {
+    slug: "ml-architect",
+    title: "ML Architect Roadmap",
+    headline: "Lead with systems thinking: platform design, reliability, cost, governance, and cross-team influence.",
+    durationLabel: "Architect track",
+    description:
+      "For candidates interviewing for ML Architect, Principal ML Engineer, or Staff-level roles where the loop tests architecture judgment, trade-off reasoning, platform thinking, and stakeholder alignment.",
+    audience: ["ML Architects", "Principal/Staff MLEs", "Platform leads moving into ML"],
+    targetRoles: ["ML Architect", "Principal ML Engineer", "Staff AI Engineer"],
+    dailyCommitment: "60 to 120 minutes per day",
+    phases: [
+      {
+        title: "Platform Frameworks",
+        label: "Block 1",
+        focus: "Master the design interview scaffolding — requirements, metrics, data, serving, monitoring — then apply it under ambiguity.",
+        topics: ["Design framework", "Requirement clarification", "Success metrics", "Capacity planning"],
+      },
+      {
+        title: "Trade-off Fluency",
+        label: "Block 2",
+        focus: "Rehearse the architect-level trade-offs: build vs buy, batch vs streaming, fine-tune vs RAG, centralize vs federate.",
+        topics: ["Latency/cost/quality", "Freshness vs reliability", "Centralization", "Multi-tenant isolation"],
+      },
+      {
+        title: "Production & Governance",
+        label: "Block 3",
+        focus: "Feature stores, model registry, CI/CD, observability, incident response, and compliance boundaries.",
+        topics: ["Feature platforms", "Serving paths", "Monitoring", "Privacy", "Governance"],
+      },
+      {
+        title: "Influence & Communication",
+        label: "Block 4",
+        focus: "Architecture review decks, RFC narratives, cross-org trade-off storytelling, and leadership behavioral depth.",
+        topics: ["RFC patterns", "Postmortems", "Stakeholder alignment", "Roadmap storytelling"],
+      },
+    ],
+    focusMix: [
+      { label: "ML System Design", weight: 32 },
+      { label: "MLOps / Reliability", weight: 20 },
+      { label: "Generative AI", weight: 14 },
+      { label: "Traditional ML", weight: 8 },
+      { label: "Coding + SQL", weight: 6 },
+      { label: "Behavioral / Leadership", weight: 20 },
+    ],
+  },
+  {
     slug: "senior-mle",
     title: "Senior MLE Roadmap",
     headline: "Prioritize architecture, trade-offs, reliability, leadership, and case-study fluency.",
@@ -1449,6 +1500,116 @@ export const questions: Question[] = [
     ],
     relatedTopics: ["project-storytelling", "behavioral-ownership"],
   },
+  {
+    id: "architect-capacity-planning",
+    question: "Walk me through how you would size infrastructure for a ranking system expected to serve 10k queries per second with a 100ms p99 latency budget.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Start with request shape, feature fetch, and model inference budgets",
+      "Separate retrieval, feature lookup, and model scoring latency components",
+      "Plan for headroom, cache hit rates, and degraded modes under load",
+    ],
+    expectedSignals: [
+      "Breaks the latency budget into named components",
+      "Plans cache strategy and feature TTLs explicitly",
+      "Names a graceful fallback when the primary path overloads",
+    ],
+    commonMistakes: [
+      "Quoting throughput without latency decomposition",
+      "Ignoring feature fetch and network hops",
+      "No fallback plan when the model tier saturates",
+    ],
+    relatedTopics: ["online-serving-tradeoffs", "system-design-framework"],
+  },
+  {
+    id: "architect-build-vs-buy",
+    question: "A VP asks whether to build or buy a vector database for a new RAG product. How do you structure the recommendation?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Frame differentiation vs. undifferentiated heavy lifting",
+      "Compare integration cost, vendor risk, scale trajectory, and team bandwidth",
+      "Propose a reversible path: start with a managed service, revisit at a defined usage threshold",
+    ],
+    expectedSignals: [
+      "Ties the decision to strategy, not engineering preference",
+      "Quantifies the decision with cost and scale triggers",
+      "Proposes a reversible plan with milestones",
+    ],
+    commonMistakes: [
+      "Defaulting to build out of engineering pride",
+      "Ignoring the team's current ops capacity",
+      "Picking a vendor without a revisit trigger",
+    ],
+    relatedTopics: ["rag-architecture", "system-design-framework"],
+  },
+  {
+    id: "architect-cost-optimization",
+    question: "An LLM feature is blowing its infrastructure budget. Walk me through how you would reduce cost without destroying user experience.",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Instrument cost per request, per feature, and per user segment",
+      "Apply a small-first cascade, route easy traffic to cheap models",
+      "Tune context size, caching, batching, and retrieval before cutting quality",
+    ],
+    expectedSignals: [
+      "Measures cost before cutting",
+      "Separates structural savings from quality cuts",
+      "Adds guardrails so cost optimization cannot silently hurt users",
+    ],
+    commonMistakes: [
+      "Lowering quality uniformly across users",
+      "Skipping caching and batching",
+      "No rollback when the cheaper path degrades evals",
+    ],
+    relatedTopics: ["llm-evaluation", "rag-architecture"],
+  },
+  {
+    id: "architect-multi-tenant-isolation",
+    question: "Your ML platform must serve three product teams with shared models but separate data boundaries. How do you design isolation?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Separate compute isolation from data isolation from policy isolation",
+      "Use per-tenant feature namespaces, credentials, and audit trails",
+      "Choose between hard boundaries (separate stacks) and soft ones (policy + key scoping) based on risk",
+    ],
+    expectedSignals: [
+      "Names three isolation layers: compute, data, policy",
+      "Discusses cost-vs-risk for hard vs soft isolation",
+      "Calls out audit, access, and key management explicitly",
+    ],
+    commonMistakes: [
+      "Collapsing isolation into a single VPC answer",
+      "Ignoring audit and compliance paths",
+      "Skipping per-tenant rate limits and key scoping",
+    ],
+    relatedTopics: ["system-design-framework", "feature-stores"],
+  },
+  {
+    id: "architect-migration-plan",
+    question: "Describe how you would migrate a legacy XGBoost service to a new feature store and serving platform with zero downtime.",
+    category: "MLOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Shadow the new path with the old one serving live traffic",
+      "Compare feature parity, predictions, and latency before any cutover",
+      "Roll over by percent traffic with a clearly defined rollback trigger",
+    ],
+    expectedSignals: [
+      "Keeps the old system live during validation",
+      "Defines parity checks concretely",
+      "Has a documented rollback threshold, not a vibe",
+    ],
+    commonMistakes: [
+      "Cutting over without traffic ramping",
+      "Skipping feature parity checks",
+      "No rollback plan or owner",
+    ],
+    relatedTopics: ["model-registry-cicd", "monitoring-drift"],
+  },
 ];
 
 export const caseStudies: CaseStudy[] = [
@@ -1747,6 +1908,234 @@ export function getPillarHref(slug: PillarSlug) {
   return shortcutMap[slug] ?? `/learn/${slug}`;
 }
 
+export interface StudyStep {
+  step: number;
+  title: string;
+  goal: string;
+  actions: string[];
+  output: string;
+  timeHint: string;
+}
+
+export const studyMethodSteps: StudyStep[] = [
+  {
+    step: 1,
+    title: "Orient",
+    goal: "Pick a realistic timeline and a role target so your mix is not random.",
+    actions: [
+      "Choose a 30, 60, or 90-day roadmap based on your interview date",
+      "Select a role track (MLE, AI Engineer, Senior MLE, ML Architect)",
+      "Log your current strengths and the two or three pillars that scare you most",
+    ],
+    output: "A one-page plan with daily time, timeline, and weighted pillar mix.",
+    timeHint: "1 to 2 hours once",
+  },
+  {
+    step: 2,
+    title: "Learn",
+    goal: "Go deep on the pillars where your interview signal is weakest.",
+    actions: [
+      "Work through topic cards in the recommended order",
+      "Summarize each topic in your own words, not copied notes",
+      "Drop concepts you already know instead of rereading them",
+    ],
+    output: "Topic-by-topic notes, each no longer than one screen.",
+    timeHint: "60 to 90 minutes per topic",
+  },
+  {
+    step: 3,
+    title: "Practice",
+    goal: "Convert knowledge into interview answers with the right signals.",
+    actions: [
+      "Answer questions from the question bank out loud, timed",
+      "Walk through a case study every week, writing the framework on paper first",
+      "Compare your answer against the expected signals and close the gap",
+    ],
+    output: "A list of the prompts you can answer cold and the ones you still fumble.",
+    timeHint: "30 to 60 minutes per session",
+  },
+  {
+    step: 4,
+    title: "Mock & Review",
+    goal: "Simulate real loops, then repair weak areas instead of rereading strong ones.",
+    actions: [
+      "Run mock interviews with a peer or AI at least once a week",
+      "Record yourself explaining a system design end to end",
+      "Update your readiness score and rebalance study time toward lagging pillars",
+    ],
+    output: "Shorter gap list, sharper stories, more confident delivery.",
+    timeHint: "Weekly, 60 to 90 minutes",
+  },
+];
+
+export interface ArchitectCompetency {
+  id: string;
+  title: string;
+  prompt: string;
+  signals: string[];
+  preparationCue: string;
+}
+
+export const architectCompetencies: ArchitectCompetency[] = [
+  {
+    id: "problem-framing",
+    title: "Problem framing under ambiguity",
+    prompt: "Can you turn a vague business goal into an ML problem with measurable success criteria?",
+    signals: [
+      "Identifies the decision the model supports, not just the label",
+      "Proposes leading and lagging metrics that tie to revenue or risk",
+      "Makes assumptions explicit and checks them with the interviewer",
+    ],
+    preparationCue: "Practice writing a one-page problem brief before drawing any boxes.",
+  },
+  {
+    id: "architecture-tradeoffs",
+    title: "Architecture trade-offs at scale",
+    prompt: "Can you defend serving, training, and feature pipeline decisions against latency, cost, and reliability constraints?",
+    signals: [
+      "Picks batch, online, or streaming based on freshness budgets",
+      "Chooses serving tier per request class (realtime vs near-real-time)",
+      "Shows where the system degrades gracefully under load",
+    ],
+    preparationCue: "Keep a running matrix of trade-offs: latency × cost × freshness × quality.",
+  },
+  {
+    id: "data-platform",
+    title: "Data and feature platform judgment",
+    prompt: "Can you design feature generation, storage, and retrieval so training and serving stay in sync?",
+    signals: [
+      "Talks about point-in-time correctness and feature TTLs",
+      "Separates raw events, feature logic, and model inputs cleanly",
+      "Knows when a feature store is helpful and when it is overhead",
+    ],
+    preparationCue: "Rehearse feature pipeline diagrams end-to-end with failure modes.",
+  },
+  {
+    id: "reliability-governance",
+    title: "Reliability, governance, and cost",
+    prompt: "Can you make your system safe, observable, and affordable over months, not just at launch?",
+    signals: [
+      "Defines SLOs, rollback plans, and retraining triggers",
+      "Adds privacy, access control, and auditability into the design",
+      "Budgets inference cost per request and per user",
+    ],
+    preparationCue: "Always close a design with ops, compliance, and a cost estimate.",
+  },
+  {
+    id: "genai-production",
+    title: "GenAI architecture in production",
+    prompt: "Can you design an LLM feature that is grounded, measurable, and cost-aware, not just a prompt?",
+    signals: [
+      "Separates retrieval, generation, evaluation, and guardrails",
+      "Defines faithfulness, relevance, and safety metrics explicitly",
+      "Shows routing, fallbacks, and cost tiers across model options",
+    ],
+    preparationCue: "Every GenAI design should show RAG, evals, guardrails, and rollout gates.",
+  },
+  {
+    id: "influence-communication",
+    title: "Influence and stakeholder communication",
+    prompt: "Can you get platform, product, and leadership aligned on a proposal under ambiguity?",
+    signals: [
+      "Frames decisions as RFCs with options and trade-offs, not mandates",
+      "Anticipates pushback from security, compliance, and infra",
+      "Tells the story with metrics, risk, and a clear decision ask",
+    ],
+    preparationCue: "Rehearse a three-minute architecture narrative for a non-ML audience.",
+  },
+];
+
+export interface TradeoffFramework {
+  title: string;
+  whenItAppears: string;
+  axes: string[];
+  defaultStance: string;
+}
+
+export const tradeoffFrameworks: TradeoffFramework[] = [
+  {
+    title: "Batch vs. real-time inference",
+    whenItAppears: "Recommendations, fraud, ranking, personalization",
+    axes: ["Freshness budget", "Latency SLO", "Infra cost", "Label delay"],
+    defaultStance: "Default to batch precomputation for heavy features, use real-time only where freshness changes the decision.",
+  },
+  {
+    title: "Fine-tune vs. RAG vs. prompt",
+    whenItAppears: "Enterprise LLM features, support agents, document Q&A",
+    axes: ["Data freshness", "Domain shift", "Latency", "Cost", "Control"],
+    defaultStance: "Start with prompt + RAG, fine-tune only when retrieval plus prompting plateaus on evals.",
+  },
+  {
+    title: "Centralized platform vs. team-owned stack",
+    whenItAppears: "Feature stores, model registry, evaluation, serving platforms",
+    axes: ["Time to value", "Consistency", "Team autonomy", "Ops burden"],
+    defaultStance: "Centralize when multiple teams duplicate the same pain, federate until that pain is real.",
+  },
+  {
+    title: "Build vs. buy",
+    whenItAppears: "Vector stores, evaluation tooling, observability, orchestration",
+    axes: ["Strategic differentiation", "Integration cost", "Vendor risk", "Pace"],
+    defaultStance: "Buy anything that is not a differentiator and has a credible vendor; build what encodes your unfair advantage.",
+  },
+  {
+    title: "Accuracy vs. cost vs. latency",
+    whenItAppears: "LLM routing, model cascades, ranking stages, real-time ML",
+    axes: ["Quality gain", "Cost per call", "Tail latency", "Failure impact"],
+    defaultStance: "Use a small-first cascade: cheap model handles most traffic, escalate only on uncertainty or high stakes.",
+  },
+  {
+    title: "Retrain cadence vs. monitoring",
+    whenItAppears: "Drift-sensitive models, fraud, ranking, content recommendations",
+    axes: ["Label latency", "Drift speed", "Ops cost", "Business impact"],
+    defaultStance: "Monitor first, retrain on a trigger — schedule-based retraining is a symptom of weak monitoring.",
+  },
+];
+
+export interface HowToUseStep {
+  phase: string;
+  title: string;
+  description: string;
+  cta: { label: string; href: string };
+}
+
+export const howToUseSteps: HowToUseStep[] = [
+  {
+    phase: "1 · Plan",
+    title: "Start with a roadmap, not a reading list",
+    description:
+      "Pick the timeline that matches your interview date, then layer a role track. The roadmap tells you what to study and in what order.",
+    cta: { label: "Open the start-here guide", href: "/start-here" },
+  },
+  {
+    phase: "2 · Learn",
+    title: "Go deep by pillar, skimming what you know",
+    description:
+      "Topic cards include objectives, questions, and a recommended day. Skip what you already own and spend the savings on weak pillars.",
+    cta: { label: "Browse pillars and topics", href: "/learn" },
+  },
+  {
+    phase: "3 · Practice",
+    title: "Turn knowledge into signals",
+    description:
+      "Answer question-bank prompts out loud. Work case studies on paper first. Grade yourself against the expected signals, not vibes.",
+    cta: { label: "Open the question bank", href: "/questions" },
+  },
+  {
+    phase: "4 · Mock & Review",
+    title: "Rebalance toward the gaps, not the comforts",
+    description:
+      "Run a weekly mock, update your readiness score, and move study time to whatever is lagging. Progress comes from gap repair.",
+    cta: { label: "Work through a case study", href: "/case-studies" },
+  },
+];
+
+export const homeHeroStats = [
+  { label: "Content pillars", value: "8" },
+  { label: "Topic cards", value: "40+" },
+  { label: "Case studies", value: "8" },
+  { label: "Practice questions", value: "12+" },
+];
+
 export function getRoadmapHref(slug: RoadmapSlug) {
   const shortcutMap: Record<RoadmapSlug, string> = {
     "90-day": "/90-day-roadmap",
@@ -1756,6 +2145,7 @@ export function getRoadmapHref(slug: RoadmapSlug) {
     "ml-engineer": "/roadmaps#ml-engineer",
     "ai-engineer": "/roadmaps#ai-engineer",
     "senior-mle": "/roadmaps#senior-mle",
+    "ml-architect": "/roadmaps#ml-architect",
   };
 
   return shortcutMap[slug];
