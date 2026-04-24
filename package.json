@@ -1,7 +1,27 @@
 {
   "name": "ml-interview-roadmap",
   "version": "0.1.0",
+  "description": "Interactive roadmap and learning platform for ML, GenAI, and ML system design interview preparation.",
   "private": true,
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Abby263/ml-interview-roadmap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abby263/ml-interview-roadmap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abby263/ml-interview-roadmap/issues"
+  },
+  "keywords": [
+    "machine-learning",
+    "interview-prep",
+    "genai",
+    "nextjs",
+    "roadmap"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
