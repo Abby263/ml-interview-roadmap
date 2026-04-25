@@ -2136,6 +2136,139 @@ export const homeHeroStats = [
   { label: "Practice questions", value: "12+" },
 ];
 
+export interface DayPlan {
+  day: number;
+  title: string;
+  pillar: PillarSlug;
+  focus: string;
+  studyItems: string[];
+  topicId?: string;
+  caseStudySlug?: string;
+  questionIds?: string[];
+}
+
+export const dailyPlan: DayPlan[] = [
+  // Week 1 — Coding & SQL foundations (Days 1-7)
+  { day: 1, title: "Python interview patterns", pillar: "foundations", focus: "Sharpen the Python idioms that show up in coding rounds.", studyItems: ["Iterators, generators, comprehensions", "Typing, dataclasses, exceptions", "When OOP helps and hurts in interview answers"], topicId: "python-interview-patterns" },
+  { day: 2, title: "Data structures for ML coding", pillar: "foundations", focus: "Refresh the data structures that recur in ML coding prompts.", studyItems: ["Arrays, hash maps, heaps, deques", "When to reach for a tree vs. a dict", "Time / space trade-offs you can defend out loud"] },
+  { day: 3, title: "Algorithm patterns crash course", pillar: "foundations", focus: "Pattern-match common ML coding prompts to known templates.", studyItems: ["Sliding window, two pointers, BFS / DFS", "Sorting + counting tricks for top-K", "When to write tests vs. talk through edge cases"] },
+  { day: 4, title: "SQL fundamentals", pillar: "foundations", focus: "Get fast on joins, aggregations, and CTEs before window functions.", studyItems: ["Joins, GROUP BY, HAVING", "CTEs and subquery readability", "Avoiding double-counting in event data"] },
+  { day: 5, title: "SQL window functions", pillar: "foundations", focus: "Solve ranking, retention, and cohort prompts with windows.", studyItems: ["ROW_NUMBER, RANK, LAG / LEAD", "Cohort and funnel analysis", "Rolling aggregates without duplicates"], topicId: "sql-window-functions", questionIds: ["window-functions"] },
+  { day: 6, title: "ML coding from scratch", pillar: "foundations", focus: "Implement classic ML algorithms without framework abstractions.", studyItems: ["Linear and logistic regression by hand", "k-means with init sensitivity", "What simplifications are interview-acceptable"], topicId: "ml-from-scratch" },
+  { day: 7, title: "Coding mock + review", pillar: "foundations", focus: "Run one timed coding mock and capture your gap list.", studyItems: ["45-minute timed coding mock", "Review communication patterns, not just correctness", "Add weak areas to next week's plan"] },
+
+  // Week 2 — Math & Stats (Days 8-14)
+  { day: 8, title: "Probability toolkit", pillar: "math-stats", focus: "Refresh the probability you'll be asked to reason from cold.", studyItems: ["Conditional probability, Bayes intuition", "Binomial / Poisson / Gaussian when each fits", "Common probability traps in interviews"], topicId: "probability-toolkit" },
+  { day: 9, title: "Distributions in ML", pillar: "math-stats", focus: "Connect distributions to model assumptions and metric choice.", studyItems: ["When normality assumptions break", "Heavy tails and how they bite", "Bootstrapping for non-parametric stats"] },
+  { day: 10, title: "Bayesian thinking for interviews", pillar: "math-stats", focus: "Use Bayes to reason about screening, ranking, and uncertainty.", studyItems: ["Priors, likelihoods, posteriors in plain language", "Why high recall ≠ high precision", "Posterior intervals vs. confidence intervals"] },
+  { day: 11, title: "Hypothesis testing & A/B basics", pillar: "math-stats", focus: "Frame experiments rigorously without drowning in formulas.", studyItems: ["Null vs. alternative, p-values, power", "Multiple testing, sequential decisions", "What goes wrong when you peek"] },
+  { day: 12, title: "Confidence intervals", pillar: "math-stats", focus: "Explain CIs precisely without slipping into Bayesian language.", studyItems: ["Frequentist interpretation done right", "Bootstrap CIs in practice", "How CIs interact with experiment design"], questionIds: ["confidence-interval"] },
+  { day: 13, title: "Optimization basics", pillar: "math-stats", focus: "Build the optimization vocabulary models actually use.", studyItems: ["Gradient descent intuition", "Convex vs. non-convex landscapes", "Common loss functions and why they exist"] },
+  { day: 14, title: "Stats mock + review", pillar: "math-stats", focus: "Practice five rapid-fire stats prompts and rate the gaps.", studyItems: ["30-minute stats Q&A mock", "Audit any answer that drifted into vibes", "Promote weak topics into next week"] },
+
+  // Week 3 — Traditional ML I (Days 15-21)
+  { day: 15, title: "Metrics & calibration", pillar: "math-stats", focus: "Pick metrics that match the business decision the model supports.", studyItems: ["Precision, recall, F1, ROC, PR, NDCG", "Calibration curves and when they matter", "Threshold tuning vs. real model improvement"], topicId: "metrics-and-calibration" },
+  { day: 16, title: "Linear & logistic regression deep dive", pillar: "traditional-ml", focus: "Defend regression as a baseline you understand cold.", studyItems: ["Loss formulation and optimization", "Regularization (L1, L2, elastic net)", "Interpreting coefficients honestly"] },
+  { day: 17, title: "Cross-validation strategy", pillar: "traditional-ml", focus: "Choose CV that reflects production data leakage risks.", studyItems: ["k-fold vs. stratified vs. time-based", "Group splits for user / session leakage", "Why nested CV exists"] },
+  { day: 18, title: "Bias-variance trade-off", pillar: "traditional-ml", focus: "Diagnose under- vs. over-fitting from real validation curves.", studyItems: ["Symptoms of high bias vs. high variance", "Remedies that actually work in each case", "When data quantity beats model choice"], questionIds: ["bias-variance"] },
+  { day: 19, title: "Decision trees", pillar: "traditional-ml", focus: "Reason about splits, depth, and what trees inherently capture.", studyItems: ["Information gain, gini, variance reduction", "Pruning and depth control", "Where trees beat linear models — and where they don't"] },
+  { day: 20, title: "Random forest & boosting", pillar: "traditional-ml", focus: "Contrast bagging vs. boosting and pick a defensible default.", studyItems: ["Why bagging reduces variance", "How boosting reduces bias", "When XGBoost / LightGBM / CatBoost fit"], topicId: "tree-ensembles" },
+  { day: 21, title: "Hyperparameter tuning patterns", pillar: "traditional-ml", focus: "Tune efficiently without overfitting to the validation set.", studyItems: ["Grid vs. random vs. Bayesian search", "Budget-aware tuning order", "Avoiding leakage during tuning"] },
+
+  // Week 4 — Traditional ML II (Days 22-28)
+  { day: 22, title: "Imbalanced classification", pillar: "traditional-ml", focus: "Handle rare-positive problems without breaking calibration.", studyItems: ["Class weights vs. resampling", "Threshold-moving for downstream cost", "Why accuracy is the wrong metric"] },
+  { day: 23, title: "Clustering & anomaly detection", pillar: "traditional-ml", focus: "Reason about unsupervised work when labels are weak or delayed.", studyItems: ["k-means vs. hierarchical vs. DBSCAN", "PCA as compression / visualization", "Anomaly metrics with sparse positives"], topicId: "anomaly-detection" },
+  { day: 24, title: "Feature engineering & leakage", pillar: "traditional-ml", focus: "Spot leakage and align offline features with serving.", studyItems: ["Target leakage, temporal leakage, contamination", "Encoding and missing-value strategies", "Train-serve parity checks"], topicId: "feature-engineering-leakage" },
+  { day: 25, title: "Model selection & ensembling", pillar: "traditional-ml", focus: "Pick a model defensibly — and stack only when it earns its keep.", studyItems: ["When ensembling helps and when it just adds latency", "Champion / challenger setup", "Honest baselines first"] },
+  { day: 26, title: "Recommender intuitions", pillar: "traditional-ml", focus: "Build intuition for collaborative vs. content-based recsys.", studyItems: ["Matrix factorization basics", "Cold-start strategies", "Why two-tower models are popular"] },
+  { day: 27, title: "Time-series basics", pillar: "traditional-ml", focus: "Frame forecasting and time-aware modeling cleanly.", studyItems: ["Stationarity, seasonality, decomposition", "Train / test splits that respect time", "Baseline methods before fancy ones"] },
+  { day: 28, title: "Traditional ML mock", pillar: "traditional-ml", focus: "Run a 45-minute traditional-ML round and grade yourself.", studyItems: ["Pick three weak prompts from days 15-27", "Answer out loud, timed", "Update gap list before week 5"] },
+
+  // Week 5 — Deep Learning I (Days 29-35)
+  { day: 29, title: "Neural network fundamentals", pillar: "deep-learning", focus: "Get comfortable explaining what an NN is and isn't.", studyItems: ["Forward pass, loss, backward pass", "Universal approximation in plain language", "When deeper helps and when it just costs more"] },
+  { day: 30, title: "Backpropagation & optimization", pillar: "deep-learning", focus: "Walk through gradient flow and optimizer trade-offs.", studyItems: ["Chain rule across layers", "SGD vs. Adam vs. Lion intuitively", "Vanishing / exploding gradients"], topicId: "backprop-and-optimization", questionIds: ["backprop"] },
+  { day: 31, title: "Regularization in deep nets", pillar: "deep-learning", focus: "Combine dropout, weight decay, and augmentation deliberately.", studyItems: ["Dropout, weight decay, label smoothing", "Data augmentation strategies", "Early stopping vs. lr schedules"] },
+  { day: 32, title: "Normalization & init", pillar: "deep-learning", focus: "Reason about batch / layer / group norm and weight init.", studyItems: ["Why normalization stabilizes training", "Init schemes and why they matter", "Norm choice by architecture and batch size"] },
+  { day: 33, title: "CNN design patterns", pillar: "deep-learning", focus: "Convolutional blocks, receptive fields, residual connections.", studyItems: ["Kernel size, stride, padding, pooling", "Why ResNet residuals work", "Latency / memory constraints"], topicId: "cnn-design-patterns" },
+  { day: 34, title: "RNN, LSTM, GRU", pillar: "deep-learning", focus: "Cover sequence basics before transformers replace them.", studyItems: ["Where RNNs shine vs. fall over", "Gated cells and gradient flow", "Why attention won — and what was lost"] },
+  { day: 35, title: "Deep learning mock", pillar: "deep-learning", focus: "Time a deep-learning Q&A round and triage gaps.", studyItems: ["30-minute mixed DL prompts", "Score yourself on intuition vs. recitation", "Promote weak areas into transformer week"] },
+
+  // Week 6 — Transformers & GenAI foundations (Days 36-42)
+  { day: 36, title: "Transformers from first principles", pillar: "deep-learning", focus: "Self-attention, positional encoding, multi-head intuition.", studyItems: ["Why attention scales differently than RNNs", "Encoder vs. decoder vs. encoder-decoder", "Quadratic cost and modern mitigations"], topicId: "transformers-first-principles", questionIds: ["self-attention"] },
+  { day: 37, title: "Tokenization & embeddings", pillar: "generative-ai", focus: "Understand BPE, embeddings, and the gotchas they introduce.", studyItems: ["Why BPE / SentencePiece exist", "Embeddings vs. tokens vs. characters", "Multilingual edge cases"] },
+  { day: 38, title: "LLM basics", pillar: "generative-ai", focus: "Pretraining, instruction tuning, RLHF in interview-safe form.", studyItems: ["What pretraining actually optimizes", "Why RLHF / DPO followed", "Where models still hallucinate and why"], topicId: "llm-basics", questionIds: ["temperature-top-p"] },
+  { day: 39, title: "Prompt engineering", pillar: "generative-ai", focus: "System prompts, few-shot, structured output patterns.", studyItems: ["When few-shot helps and when it confuses", "Structured output via schema or function-calling", "Robustness checks for prompts"] },
+  { day: 40, title: "RAG architecture", pillar: "generative-ai", focus: "End-to-end RAG: chunking, retrieval, generation, citations.", studyItems: ["Chunk size and overlap trade-offs", "Hybrid (dense + sparse) retrieval", "Citation UX and refusal modes"], topicId: "rag-architecture" },
+  { day: 41, title: "Vector stores & ANN", pillar: "generative-ai", focus: "How ANN indexes work and the trade-offs they bake in.", studyItems: ["HNSW vs. IVF vs. flat", "Update cost and memory profile", "When BM25 still wins"] },
+  { day: 42, title: "Reranking", pillar: "generative-ai", focus: "Cross-encoder rerankers, when they earn their latency.", studyItems: ["Bi-encoder vs. cross-encoder trade-offs", "Reranker prompts vs. dedicated models", "Cost / latency / quality balance"] },
+
+  // Week 7 — GenAI evaluation & ops (Days 43-49)
+  { day: 43, title: "LLM evaluation", pillar: "generative-ai", focus: "Score LLM outputs without overfitting to the eval suite.", studyItems: ["Faithfulness, relevance, citation accuracy", "LLM-as-judge calibration", "Goodhart-proof evaluation design"], topicId: "llm-evaluation", questionIds: ["rag-eval"] },
+  { day: 44, title: "Fine-tuning vs. RAG vs. prompt", pillar: "generative-ai", focus: "Defend the choice with data freshness, control, cost.", studyItems: ["When prompt + RAG plateaus", "PEFT (LoRA) and when it actually helps", "Continuous evaluation across the cascade"] },
+  { day: 45, title: "Agents & tool use", pillar: "generative-ai", focus: "When multi-step / multi-agent justifies the complexity.", studyItems: ["Planner / executor split", "Tool schemas and permissions", "Failure modes: loops, hallucinated tools"], topicId: "agents-and-guardrails", questionIds: ["agent-architecture"] },
+  { day: 46, title: "Guardrails & safety", pillar: "generative-ai", focus: "Layer input, schema, policy, and output filters.", studyItems: ["Input filters (jailbreak, PII)", "Pre-execution policy checks", "Output validation against retrieval"] },
+  { day: 47, title: "LLMOps & cost optimization", pillar: "generative-ai", focus: "Routing, caching, cascades, batching to control spend.", studyItems: ["Small-first cascade routing", "Prompt and response caching", "Cost dashboards and per-feature budgets"], questionIds: ["architect-cost-optimization"] },
+  { day: 48, title: "GenAI failure modes", pillar: "generative-ai", focus: "Hallucination, prompt injection, drift, evaluator skew.", studyItems: ["Detection signals you can monitor", "Mitigations vs. residual risk", "When to refuse and let the user retry"] },
+  { day: 49, title: "GenAI mock", pillar: "generative-ai", focus: "Run one full GenAI design round end to end.", studyItems: ["Pick one architecture prompt, time yourself", "Cover RAG, evals, guardrails, cost", "Capture what wasn't second-nature"] },
+
+  // Week 8 — System Design framework (Days 50-56)
+  { day: 50, title: "System design framework", pillar: "ml-system-design", focus: "Adopt a reusable scaffold for every ML design prompt.", studyItems: ["Clarify decision, metrics, constraints", "Data → model → serving → monitoring", "Trade-off close every time"], topicId: "system-design-framework" },
+  { day: 51, title: "Requirements & metrics", pillar: "ml-system-design", focus: "Translate vague business asks into measurable targets.", studyItems: ["Leading vs. lagging metrics", "Guardrail metrics that prevent regressions", "Communicating uncertainty up front"] },
+  { day: 52, title: "Data pipelines", pillar: "ml-system-design", focus: "Batch, streaming, and the freshness conversation.", studyItems: ["Batch vs. streaming defaults", "Schema evolution and backfill", "Idempotency and replay"] },
+  { day: 53, title: "Feature stores", pillar: "ml-system-design", focus: "When a feature store earns its complexity — and when it doesn't.", studyItems: ["Online / offline parity", "Point-in-time correctness", "Feature ownership and discoverability"], topicId: "feature-stores", questionIds: ["feature-store-purpose"] },
+  { day: 54, title: "Training pipelines", pillar: "ml-system-design", focus: "Reliable, reproducible training from data to model artifact.", studyItems: ["Pipeline orchestration and lineage", "Distributed training when you actually need it", "Retraining triggers vs. schedules"] },
+  { day: 55, title: "Online serving trade-offs", pillar: "ml-system-design", focus: "Serving paths, batching, caching, autoscaling.", studyItems: ["Realtime, near-real-time, batch-precomputed", "Tail latency control", "Graceful degradation paths"], topicId: "online-serving-tradeoffs", questionIds: ["architect-capacity-planning"] },
+  { day: 56, title: "Monitoring & drift", pillar: "ml-system-design", focus: "Separate infra, data, and model monitoring with playbooks.", studyItems: ["Drift detection and triggers", "Delayed labels and proxy metrics", "Alerts that map to actions"], topicId: "monitoring-drift", questionIds: ["monitoring-production"] },
+
+  // Week 9 — Case studies (Days 57-65)
+  { day: 57, title: "Case: Video recommendation", pillar: "ml-system-design", focus: "Multi-stage retrieval, ranking, re-ranking, freshness, diversity.", studyItems: ["Stage budgets and latency split", "Watch time vs. retention trade-off", "Exploration and diversity in re-ranking"], caseStudySlug: "video-recommendation", questionIds: ["recommendation-design"] },
+  { day: 58, title: "Case: Search ranking", pillar: "ml-system-design", focus: "Query understanding, hybrid retrieval, learning to rank.", studyItems: ["Three-stage architecture under tight budgets", "Implicit vs. explicit labels", "Cold-start for new listings"], caseStudySlug: "search-ranking" },
+  { day: 59, title: "Case: Fraud detection", pillar: "ml-system-design", focus: "Real-time scoring, imbalanced labels, threshold tuning.", studyItems: ["Synchronous vs. cached features", "Threshold per segment", "Reviewer queue capacity"], caseStudySlug: "fraud-detection" },
+  { day: 60, title: "Case: Ad click prediction", pillar: "ml-system-design", focus: "Auction integration, calibration, delayed labels.", studyItems: ["pCTR × bid auction math", "Calibration that holds in production", "Position bias mitigation"], caseStudySlug: "ad-click-prediction" },
+  { day: 61, title: "Case: Enterprise RAG", pillar: "generative-ai", focus: "Permissioned retrieval, citations, evaluation.", studyItems: ["ACL enforcement at retrieval time", "Hybrid retrieval and reranking", "Refusal modes for ungrounded answers"], caseStudySlug: "enterprise-rag-chatbot" },
+  { day: 62, title: "Case: LLM evaluation platform", pillar: "generative-ai", focus: "Suites, runs, gates, regression detection.", studyItems: ["Versioned prompts, models, retrieval", "Regression detection with significance", "Multi-tenant cost budgets"], caseStudySlug: "llm-evaluation-platform" },
+  { day: 63, title: "Case: Customer support agent", pillar: "generative-ai", focus: "Tool use, layered guardrails, escalation.", studyItems: ["Action allowlist with risk tiers", "Planner / executor split", "Tiered rollout strategy"], caseStudySlug: "customer-support-agent" },
+  { day: 64, title: "Case: Document intelligence", pillar: "generative-ai", focus: "OCR, extraction, calibrated confidence, human review.", studyItems: ["Layered confidence scoring", "Reviewer tooling matters", "Build vs. buy decisions"], caseStudySlug: "document-intelligence" },
+  { day: 65, title: "Architect trade-off rehearsal", pillar: "ml-system-design", focus: "Drill the six trade-offs you'll be asked to defend.", studyItems: ["Batch vs. real-time", "Fine-tune vs. RAG", "Build vs. buy, centralize vs. federate"], questionIds: ["architect-build-vs-buy", "architect-multi-tenant-isolation"] },
+
+  // Week 10 — MLOps (Days 66-72)
+  { day: 66, title: "Experiment tracking", pillar: "mlops", focus: "Make experiments comparable and reproducible by default.", studyItems: ["Run metadata you must always log", "Versioning data + code + config together", "When to graduate from notebooks"] },
+  { day: 67, title: "Model registry & CI/CD", pillar: "mlops", focus: "Promote models with the same discipline as code.", studyItems: ["Registry as the source of truth", "Tests that gate promotion", "Rollback as a first-class path"], topicId: "model-registry-cicd" },
+  { day: 68, title: "Deployment strategies", pillar: "mlops", focus: "Shadow, canary, progressive rollouts that protect users.", studyItems: ["Shadow vs. canary vs. blue-green", "Auto-rollback triggers", "Multi-region deployment"] },
+  { day: 69, title: "Observability for ML", pillar: "mlops", focus: "Logs, metrics, traces — and the model-specific overlay.", studyItems: ["System metrics vs. model metrics", "Trace propagation through inference", "Building dashboards reviewers actually use"] },
+  { day: 70, title: "Incident response & rollback", pillar: "mlops", focus: "Run a model incident the way SRE runs a service incident.", studyItems: ["Postmortem template that finds root cause", "Rollback playbook per model", "Capturing fix-forward vs. revert decisions"] },
+  { day: 71, title: "Cost & capacity planning", pillar: "mlops", focus: "Forecast and control ML infrastructure spend.", studyItems: ["Per-request cost decomposition", "GPU utilization and autoscaling", "When caching beats more capacity"], questionIds: ["architect-capacity-planning"] },
+  { day: 72, title: "Migration planning", pillar: "mlops", focus: "Move services without downtime — or with planned downtime.", studyItems: ["Shadow + parity validation", "Traffic ramping with rollback triggers", "Communication and stakeholder alignment"], questionIds: ["architect-migration-plan"] },
+
+  // Week 11 — Governance, behavioral I (Days 73-79)
+  { day: 73, title: "Privacy & compliance", pillar: "mlops", focus: "Bake privacy and audit into the design, not after.", studyItems: ["Data minimization and retention", "Audit logs for inference", "Region and residency constraints"] },
+  { day: 74, title: "Multi-tenant ML systems", pillar: "ml-system-design", focus: "Compute, data, and policy isolation — and where each fits.", studyItems: ["Per-tenant namespaces and quotas", "Policy isolation vs. hard isolation", "Cost attribution across tenants"], questionIds: ["architect-multi-tenant-isolation"] },
+  { day: 75, title: "Architect competencies review", pillar: "ml-system-design", focus: "Self-score against the six architect competencies.", studyItems: ["Problem framing & metrics", "Architecture trade-offs at scale", "Influence and communication"] },
+  { day: 76, title: "Resume & project storytelling", pillar: "behavioral-storytelling", focus: "Rewrite project bullets for measurable impact.", studyItems: ["STAR / SBI framing per bullet", "Quantify outcomes honestly", "Lead with the decision you owned"], topicId: "project-storytelling" },
+  { day: 77, title: "Behavioral ownership stories", pillar: "behavioral-storytelling", focus: "Have three ownership stories ready in different shapes.", studyItems: ["Ambiguity, conflict, failure narratives", "Show learning without minimizing impact", "Three-minute and ninety-second versions"], topicId: "behavioral-ownership", questionIds: ["story-failure"] },
+  { day: 78, title: "Leadership & influence stories", pillar: "behavioral-storytelling", focus: "Demonstrate cross-team influence without inflating titles.", studyItems: ["Decision narrative with options & trade-offs", "Stakeholder alignment under pressure", "What you changed about how the team works"] },
+  { day: 79, title: "Company-specific prep", pillar: "behavioral-storytelling", focus: "Tailor stories to the rubric of your target companies.", studyItems: ["Read recent posts, RFCs, blog content", "Map their values to your stories", "Prepare two questions per interviewer"] },
+
+  // Week 12 — Mocks (Days 80-86)
+  { day: 80, title: "Coding mock", pillar: "foundations", focus: "Time a 45-minute coding round, focus on communication.", studyItems: ["Pick one weak pattern from days 1-7", "Explain trade-offs continuously", "Capture follow-up gaps"] },
+  { day: 81, title: "ML fundamentals mock", pillar: "traditional-ml", focus: "Run a rapid-fire ML Q&A round.", studyItems: ["Eight prompts in 45 minutes", "Score yourself against expected signals", "List two prompts to repractice"] },
+  { day: 82, title: "Deep learning mock", pillar: "deep-learning", focus: "DL theory + applied prompts under time pressure.", studyItems: ["Backprop + transformer prompt", "Defend an architecture trade-off", "Identify weak intuition spots"] },
+  { day: 83, title: "ML system design mock", pillar: "ml-system-design", focus: "60-minute system design round, scored honestly.", studyItems: ["Pick a fresh case study prompt", "Use the framework start to finish", "Trade-off close, not just architecture"] },
+  { day: 84, title: "GenAI / RAG mock", pillar: "generative-ai", focus: "Architecture round with evals and guardrails included.", studyItems: ["Pick an enterprise GenAI prompt", "Cover RAG, evals, cost, safety", "Defend one trade-off hardest"] },
+  { day: 85, title: "Behavioral mock", pillar: "behavioral-storytelling", focus: "Run six behavioral prompts back-to-back.", studyItems: ["Rotate STAR / SBI shapes", "Watch for over-explaining", "Tighten any story that ran past 4 minutes"] },
+  { day: 86, title: "Cross-pillar weak-area repair", pillar: "foundations", focus: "Spend the full session on the gap list, nothing else.", studyItems: ["Pick three weakest prompts", "Re-answer cold, then revisit notes", "Confirm they leave the gap list"] },
+
+  // Week 13 — Final polish (Days 87-90)
+  { day: 87, title: "End-to-end design rehearsal", pillar: "ml-system-design", focus: "One unfamiliar design prompt, performed cleanly.", studyItems: ["Use a prompt you haven't drilled", "Frame, design, trade off in 60 minutes", "Have a peer score against signals"] },
+  { day: 88, title: "Story rehearsal & timing", pillar: "behavioral-storytelling", focus: "Time every story, kill filler, sharpen openers.", studyItems: ["Trim each story to 2-4 minutes", "Lead with the decision, not setup", "Drill three opener variations"] },
+  { day: 89, title: "Logistics, sleep, recovery", pillar: "behavioral-storytelling", focus: "Set up the week-of-interview the way athletes taper.", studyItems: ["Calendar holds for sleep + meals", "Light review only, no new content", "One mental rehearsal of the worst case"] },
+  { day: 90, title: "Final review & ship it", pillar: "behavioral-storytelling", focus: "Confirm the gap list is empty enough — and walk in.", studyItems: ["Re-read the architect competencies", "Read the trade-off playbook once", "Trust the prep, focus on listening"] },
+];
+
+export function getDayPlan(day: number) {
+  return dailyPlan.find((entry) => entry.day === day);
+}
+
 export function getRoadmapHref(slug: RoadmapSlug) {
   const shortcutMap: Record<RoadmapSlug, string> = {
     "90-day": "/90-day-roadmap",

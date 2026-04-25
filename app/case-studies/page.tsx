@@ -1,32 +1,27 @@
 import Link from "next/link";
 
 import SaveCaseStudyButton from "@/components/SaveCaseStudyButton";
-import SectionHeading from "@/components/SectionHeading";
 import { listCaseStudyEntries } from "@/lib/content";
 
 export default async function CaseStudiesPage() {
   const caseStudies = await listCaseStudyEntries();
 
   return (
-    <div className="space-y-16">
-      <section className="space-y-6">
-        <p className="eyebrow">Case Studies</p>
-        <h1 className="hero-title">
-          Architecture prompts for the highest-value ML and GenAI interview loops.
-        </h1>
-        <p className="hero-copy">
-          This library is built around system-design style prompts that force
-          clear metrics, sensible decomposition, and production-aware trade-off
-          reasoning.
+    <div className="space-y-10">
+      <header className="space-y-3">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          Case studies · {caseStudies.length}
         </p>
-      </section>
+        <h1 className="font-display text-3xl font-extrabold text-foreground md:text-4xl">
+          ML &amp; GenAI system design prompts
+        </h1>
+        <p className="max-w-2xl text-base leading-7 text-muted">
+          Each case has a prompt, concepts it tests, and the evaluation lens
+          interviewers use. Click to open the full walkthrough.
+        </p>
+      </header>
 
-      <section className="space-y-8">
-        <SectionHeading
-          eyebrow="Library"
-          title="ML system design and GenAI system design in one place"
-          description="Each case includes the core prompt, the concepts it tests, and the evaluation lenses that usually shape follow-up questions."
-        />
+      <section className="space-y-6">
         <div className="grid gap-5 xl:grid-cols-2">
           {caseStudies.map((study) => (
             <article
