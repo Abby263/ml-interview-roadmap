@@ -1,7 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import { clerkEnabled } from "@/lib/feature-flags";
 import { siteName, siteTagline } from "@/lib/site-data";
 
 import "./globals.css";
@@ -26,11 +28,7 @@ export const metadata: Metadata = {
   description: siteTagline,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+function Shell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <body>
@@ -42,5 +40,23 @@ export default function RootLayout({
         </div>
       </body>
     </html>
+  );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  // Wrap with ClerkProvider only when keys are configured. ClerkProvider
+  // itself is safe to render in either case, but skipping it when there's
+  // no key avoids a noisy console warning during local dev without auth.
+  if (!clerkEnabled) {
+    return <Shell>{children}</Shell>;
+  }
+  return (
+    <ClerkProvider>
+      <Shell>{children}</Shell>
+    </ClerkProvider>
   );
 }

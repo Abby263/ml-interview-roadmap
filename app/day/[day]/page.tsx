@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import DayChecklist from "@/components/DayChecklist";
 import {
   caseStudies,
   dailyPlan,
@@ -80,17 +81,76 @@ export default async function DayPage({
         </p>
       </header>
 
-      <section className="section-card rounded-[28px] p-6 md:p-8">
-        <p className="panel-label">Today&apos;s checklist</p>
-        <ul className="mt-5 space-y-3 text-[1rem] leading-7 text-foreground">
-          {plan.studyItems.map((item) => (
-            <li key={item} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <DayChecklist plan={plan} />
+
+      {plan.interviewQuestions.length > 0 ? (
+        <section className="section-card rounded-[28px] p-6 md:p-8">
+          <p className="panel-label">Interview questions to be ready for</p>
+          <ul className="mt-5 space-y-3">
+            {plan.interviewQuestions.map((q) => (
+              <li
+                key={q}
+                className="flex gap-3 text-[0.98rem] leading-7 text-foreground"
+              >
+                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                <span>{q}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {linkedQuestions.length > 0 ? (
+        <section className="section-card rounded-[28px] p-6 md:p-8">
+          <p className="panel-label">Related question-bank prompts</p>
+          <ul className="mt-4 space-y-4">
+            {linkedQuestions.map((q) => (
+              <li key={q.id}>
+                <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                  {q.category}
+                </span>
+                <p className="mt-1 text-[0.98rem] leading-7 text-foreground">
+                  {q.question}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/questions"
+            className="mt-5 inline-flex text-sm font-semibold text-primary hover:underline"
+          >
+            Open the full question bank →
+          </Link>
+        </section>
+      ) : null}
+
+      {plan.references.length > 0 ? (
+        <section className="section-card rounded-[28px] p-6 md:p-8">
+          <p className="panel-label">References &amp; further reading</p>
+          <ul className="mt-4 space-y-3">
+            {plan.references.map((r) => (
+              <li
+                key={r.href}
+                className="flex flex-wrap items-baseline gap-x-3 gap-y-1"
+              >
+                <a
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[0.98rem] font-semibold text-primary hover:underline"
+                >
+                  {r.label} ↗
+                </a>
+                {r.source ? (
+                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted">
+                    {r.source}
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {topic ? (
         <section className="section-card rounded-[28px] p-6 md:p-8">
@@ -115,28 +175,6 @@ export default async function DayPage({
               {caseStudy.title} →
             </h2>
             <p className="mt-2 text-sm leading-7 text-muted">{caseStudy.prompt}</p>
-          </Link>
-        </section>
-      ) : null}
-
-      {linkedQuestions.length > 0 ? (
-        <section className="section-card rounded-[28px] p-6 md:p-8">
-          <p className="panel-label">Practice prompts</p>
-          <ul className="mt-4 space-y-3">
-            {linkedQuestions.map((q) => (
-              <li key={q.id} className="text-[0.98rem] leading-7 text-foreground">
-                <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  {q.category}
-                </span>
-                <p className="mt-1">{q.question}</p>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/questions"
-            className="mt-5 inline-flex text-sm font-semibold text-primary hover:underline"
-          >
-            Open the full question bank →
           </Link>
         </section>
       ) : null}

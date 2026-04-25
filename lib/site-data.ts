@@ -2138,141 +2138,2347 @@ export const homeHeroStats = [
   { label: "Practice questions", value: "12+" },
 ];
 
+export interface DayItem {
+  /** Stable id used for per-day check tracking (must be unique within a day). */
+  id: string;
+  label: string;
+  /** Optional external link (LeetCode, blog, paper, docs). */
+  href?: string;
+  /** Optional small badge — e.g. "Easy", "LeetCode", "30 min". */
+  meta?: string;
+}
+
+export interface DayTrack {
+  /** Track label like "DSA practice", "ML fundamentals", "Reading". */
+  label: string;
+  items: DayItem[];
+}
+
+export interface DayReference {
+  label: string;
+  href: string;
+  source?: string;
+}
+
 export interface DayPlan {
   day: number;
   title: string;
   pillar: PillarSlug;
   focus: string;
-  studyItems: string[];
+  tracks: DayTrack[];
+  /** Concept-oriented interview questions tied to this day's content. */
+  interviewQuestions: string[];
+  /** External reading: blogs, papers, docs. */
+  references: DayReference[];
   topicId?: string;
   caseStudySlug?: string;
   questionIds?: string[];
 }
 
-// Distribution inspired by Yuan Meng's "Prepare in a Hurry" guide
-// (https://www.yuan-meng.com/posts/mle_interviews_2.0/), expanded across
-// 90 days because DSA, ML fundamentals, and design depth simply don't fit
-// in the 1-week version.
+/**
+ * NeetCode 150 catalog by category, in roadmap order.
+ * Each entry is a LeetCode problem slug — the title is derived from the slug
+ * and the URL is `https://leetcode.com/problems/${slug}/`.
+ *
+ * If you complete the full 150, work the additional NeetCode 250 problems
+ * directly from https://neetcode.io/roadmap.
+ */
+export const NEETCODE_150: Record<string, string[]> = {
+  "Arrays & Hashing": [
+    "contains-duplicate",
+    "valid-anagram",
+    "two-sum",
+    "group-anagrams",
+    "top-k-frequent-elements",
+    "encode-and-decode-strings",
+    "product-of-array-except-self",
+    "valid-sudoku",
+    "longest-consecutive-sequence",
+  ],
+  "Two Pointers": [
+    "valid-palindrome",
+    "two-sum-ii-input-array-is-sorted",
+    "3sum",
+    "container-with-most-water",
+    "trapping-rain-water",
+  ],
+  "Sliding Window": [
+    "best-time-to-buy-and-sell-stock",
+    "longest-substring-without-repeating-characters",
+    "longest-repeating-character-replacement",
+    "permutation-in-string",
+    "minimum-window-substring",
+    "sliding-window-maximum",
+  ],
+  "Stack": [
+    "valid-parentheses",
+    "min-stack",
+    "evaluate-reverse-polish-notation",
+    "generate-parentheses",
+    "daily-temperatures",
+    "car-fleet",
+    "largest-rectangle-in-histogram",
+  ],
+  "Binary Search": [
+    "binary-search",
+    "search-a-2d-matrix",
+    "koko-eating-bananas",
+    "find-minimum-in-rotated-sorted-array",
+    "search-in-rotated-sorted-array",
+    "time-based-key-value-store",
+    "median-of-two-sorted-arrays",
+  ],
+  "Linked List": [
+    "reverse-linked-list",
+    "merge-two-sorted-lists",
+    "reorder-list",
+    "remove-nth-node-from-end-of-list",
+    "copy-list-with-random-pointer",
+    "add-two-numbers",
+    "linked-list-cycle",
+    "find-the-duplicate-number",
+    "lru-cache",
+    "merge-k-sorted-lists",
+    "reverse-nodes-in-k-group",
+  ],
+  "Trees": [
+    "invert-binary-tree",
+    "maximum-depth-of-binary-tree",
+    "diameter-of-binary-tree",
+    "balanced-binary-tree",
+    "same-tree",
+    "subtree-of-another-tree",
+    "lowest-common-ancestor-of-a-binary-search-tree",
+    "binary-tree-level-order-traversal",
+    "binary-tree-right-side-view",
+    "count-good-nodes-in-binary-tree",
+    "validate-binary-search-tree",
+    "kth-smallest-element-in-a-bst",
+    "construct-binary-tree-from-preorder-and-inorder-traversal",
+    "binary-tree-maximum-path-sum",
+    "serialize-and-deserialize-binary-tree",
+  ],
+  "Tries": [
+    "implement-trie-prefix-tree",
+    "design-add-and-search-words-data-structure",
+    "word-search-ii",
+  ],
+  "Heap / Priority Queue": [
+    "kth-largest-element-in-a-stream",
+    "last-stone-weight",
+    "k-closest-points-to-origin",
+    "kth-largest-element-in-an-array",
+    "task-scheduler",
+    "design-twitter",
+    "find-median-from-data-stream",
+  ],
+  "Backtracking": [
+    "subsets",
+    "combination-sum",
+    "permutations",
+    "subsets-ii",
+    "combination-sum-ii",
+    "word-search",
+    "palindrome-partitioning",
+    "letter-combinations-of-a-phone-number",
+    "n-queens",
+  ],
+  "Graphs": [
+    "number-of-islands",
+    "clone-graph",
+    "max-area-of-island",
+    "pacific-atlantic-water-flow",
+    "surrounded-regions",
+    "rotting-oranges",
+    "walls-and-gates",
+    "course-schedule",
+    "course-schedule-ii",
+    "redundant-connection",
+    "number-of-connected-components-in-an-undirected-graph",
+    "graph-valid-tree",
+    "word-ladder",
+  ],
+  "Advanced Graphs": [
+    "reconstruct-itinerary",
+    "min-cost-to-connect-all-points",
+    "network-delay-time",
+    "swim-in-rising-water",
+    "alien-dictionary",
+    "cheapest-flights-within-k-stops",
+  ],
+  "1-D Dynamic Programming": [
+    "climbing-stairs",
+    "min-cost-climbing-stairs",
+    "house-robber",
+    "house-robber-ii",
+    "longest-palindromic-substring",
+    "palindromic-substrings",
+    "decode-ways",
+    "coin-change",
+    "maximum-product-subarray",
+    "word-break",
+    "longest-increasing-subsequence",
+    "partition-equal-subset-sum",
+  ],
+  "2-D Dynamic Programming": [
+    "unique-paths",
+    "longest-common-subsequence",
+    "best-time-to-buy-and-sell-stock-with-cooldown",
+    "coin-change-ii",
+    "target-sum",
+    "interleaving-string",
+    "longest-increasing-path-in-a-matrix",
+    "distinct-subsequences",
+    "edit-distance",
+    "burst-balloons",
+    "regular-expression-matching",
+  ],
+  "Greedy": [
+    "maximum-subarray",
+    "jump-game",
+    "jump-game-ii",
+    "gas-station",
+    "hand-of-straights",
+    "merge-triplets-to-form-target-triplet",
+    "partition-labels",
+    "valid-parenthesis-string",
+  ],
+  "Intervals": [
+    "insert-interval",
+    "merge-intervals",
+    "non-overlapping-intervals",
+    "meeting-rooms",
+    "meeting-rooms-ii",
+    "minimum-interval-to-include-each-query",
+  ],
+  "Math & Geometry": [
+    "rotate-image",
+    "spiral-matrix",
+    "set-matrix-zeroes",
+    "happy-number",
+    "plus-one",
+    "powx-n",
+    "multiply-strings",
+    "detect-squares",
+  ],
+  "Bit Manipulation": [
+    "single-number",
+    "number-of-1-bits",
+    "counting-bits",
+    "reverse-bits",
+    "missing-number",
+    "sum-of-two-integers",
+    "reverse-integer",
+  ],
+};
+
+/** Convert a problem slug into a display label (e.g. "two-sum" → "Two Sum"). */
+function titleizeSlug(slug: string) {
+  return slug
+    .split("-")
+    .map((part) => {
+      if (/^\d/.test(part)) return part;
+      if (part.length <= 2) return part.toUpperCase(); // ii, iii, iv
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    })
+    .join(" ");
+}
+
+/** Pull `count` problems from `category` starting at `start` (0-indexed). */
+export function nc(category: string, start: number, count: number): DayItem[] {
+  const list = NEETCODE_150[category];
+  if (!list) return [];
+  return list.slice(start, start + count).map((slug) => ({
+    id: `lc-${slug}`,
+    label: titleizeSlug(slug),
+    href: `https://leetcode.com/problems/${slug}/`,
+    meta: category,
+  }));
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// 120-day study plan
+// Each day is intentionally MIXED: a DSA track, a concept track, and reading.
+// Inspired by Yuan Meng's "Prepare in a Hurry" guide
+// (https://www.yuan-meng.com/posts/mle_interviews_2.0/), expanded so the work
+// is realistic — DSA, ML fundamentals, design depth, MLOps, and behavioral
+// don't fit in 1 week.
+// ────────────────────────────────────────────────────────────────────────────
+
+const REF_NEETCODE_VIDEOS: DayReference = { label: "NeetCode YouTube playlists by category", href: "https://www.youtube.com/c/NeetCode/playlists", source: "NeetCode" };
+const REF_LC_PATTERNS: DayReference = { label: "14 patterns to ace any coding interview", href: "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed", source: "HackerNoon" };
+const REF_UDL_BOOK: DayReference = { label: "Understanding Deep Learning (Simon Prince) — free PDF", href: "https://udlbook.github.io/udlbook/", source: "UDL Book" };
+const REF_CHIP_HUYEN_DESIGN: DayReference = { label: "ML Systems Design — interview book", href: "https://huyenchip.com/machine-learning-systems-design/toc.html", source: "Chip Huyen" };
+const REF_YUAN_MENG_HURRY: DayReference = { label: "Prepare in a Hurry (MLE 2.0)", href: "https://www.yuan-meng.com/posts/mle_interviews_2.0/", source: "Yuan Meng" };
+const REF_GOOGLE_ML_CRASH: DayReference = { label: "Google Machine Learning Crash Course", href: "https://developers.google.com/machine-learning/crash-course", source: "Google" };
+const REF_FSDL: DayReference = { label: "Full Stack Deep Learning", href: "https://fullstackdeeplearning.com/", source: "Full Stack Deep Learning" };
+const REF_HF_LLM: DayReference = { label: "Hugging Face LLM course", href: "https://huggingface.co/learn/llm-course", source: "Hugging Face" };
+const REF_OAI_DOCS: DayReference = { label: "OpenAI platform docs", href: "https://platform.openai.com/docs", source: "OpenAI" };
+const REF_LANGCHAIN_RAG: DayReference = { label: "RAG concepts", href: "https://python.langchain.com/docs/concepts/rag/", source: "LangChain" };
+
 export const dailyPlan: DayPlan[] = [
-  // Week 1 — LeetCode foundations: arrays, hashing, two pointers, sliding window (Days 1-7)
-  { day: 1, title: "LC setup + Arrays & Hashing (part 1)", pillar: "foundations", focus: "Get your LeetCode workflow going and crank through the easiest NeetCode pattern.", studyItems: ["Set up LeetCode account, pick a target company, install NeetCode tracker", "Solve 6-8 NeetCode arrays-and-hashing problems (Two Sum, Valid Anagram, Group Anagrams, Top K Frequent)", "After each problem write a one-line note: which pattern, what tripped you up"], topicId: "python-interview-patterns" },
-  { day: 2, title: "Arrays & Hashing (part 2) + Two Pointers", pillar: "foundations", focus: "Finish the NeetCode arrays bucket and start two-pointers.", studyItems: ["Finish remaining NeetCode arrays-and-hashing problems", "Solve 4-5 two-pointer problems (Valid Palindrome, 3Sum, Container With Most Water)", "Practice explaining the in-place vs extra-space trade-off out loud"] },
-  { day: 3, title: "Sliding Window", pillar: "foundations", focus: "Drill the sliding-window template until it's automatic.", studyItems: ["Solve all 6 NeetCode sliding-window problems (Best Time to Buy/Sell Stock, Longest Substring Without Repeating, Min Window Substring)", "Write the generic sliding-window template from memory", "Note the two failure modes: wrong shrink condition, wrong window state"] },
-  { day: 4, title: "Stack problems", pillar: "foundations", focus: "Reach for a stack the moment you see balanced / monotonic patterns.", studyItems: ["Solve all 7 NeetCode stack problems (Valid Parentheses, Min Stack, Daily Temperatures, Largest Rectangle in Histogram)", "Internalize the monotonic-stack template", "Stack vs recursion: when each is the cleaner answer"] },
-  { day: 5, title: "Binary Search", pillar: "foundations", focus: "Master the rotated-array and search-on-answer variants.", studyItems: ["Solve all 7 NeetCode binary-search problems (Search Rotated Sorted Array, Find Min in Rotated Sorted Array, Median of Two Sorted Arrays)", "Write the half-open and closed-interval templates and pick one to standardize on", "Practice 'binary search on the answer space' on Koko Eating Bananas"] },
-  { day: 6, title: "Linked Lists", pillar: "foundations", focus: "Slow/fast pointer, in-place reversal, merge-K patterns.", studyItems: ["Solve 8-10 NeetCode linked-list problems (Reverse Linked List, Merge Two Sorted Lists, Reorder List, LRU Cache)", "Code the iterative reversal and the recursive reversal — explain both", "LRU Cache: do the full implementation including dict + doubly-linked list"] },
-  { day: 7, title: "Catch-up + weak-area drill", pillar: "foundations", focus: "Re-attempt the 3 problems that took you longest this week, cold.", studyItems: ["Pick 3 problems from days 1-6 that needed hints — re-solve from scratch", "Time yourself: target 25 minutes per medium", "Update your gap list — patterns to revisit before the loop"] },
+  // ───── PHASE 1: Coding & ML basics in parallel (Days 1-50) ─────
+  // DSA via NeetCode 150 (≈ 5/day → ~30 days) + ML fundamentals woven in.
 
-  // Week 2 — Trees, tries, heaps, backtracking (Days 8-14)
-  { day: 8, title: "Trees: DFS fundamentals", pillar: "foundations", focus: "Recursive tree DFS until the templates are muscle memory.", studyItems: ["Solve 8 NeetCode tree problems (Invert Binary Tree, Max Depth, Same Tree, Subtree, Lowest Common Ancestor)", "Write inorder/preorder/postorder iteratively at least once", "Practice converting any 'process every node' problem to a single DFS skeleton"] },
-  { day: 9, title: "Trees: BFS + level-order", pillar: "foundations", focus: "BFS, level-order traversal, right-side view.", studyItems: ["Solve Binary Tree Level Order, Right Side View, Zig-zag Traversal", "Decide when DFS vs BFS is the cleaner answer", "Note: when level info matters, default to BFS"] },
-  { day: 10, title: "Trees: BST + validation", pillar: "foundations", focus: "BST invariants, validation, kth element.", studyItems: ["Solve Validate BST, Kth Smallest in BST, Construct Binary Tree from Preorder + Inorder", "Practice the in-order BST traversal pattern", "Word out loud why a 'check left subtree max < node' single-level check is wrong"] },
-  { day: 11, title: "Tries", pillar: "foundations", focus: "Implement a trie cleanly under interview pressure.", studyItems: ["Implement Trie (Prefix Tree) from scratch", "Solve Design Add and Search Words, Word Search II", "Articulate when a trie beats a hash set (prefix queries, autocomplete)"] },
-  { day: 12, title: "Heap / Priority Queue", pillar: "foundations", focus: "Top-K, merge-K, scheduling-style problems.", studyItems: ["Solve Kth Largest Element in Stream, Last Stone Weight, K Closest Points to Origin, Merge K Sorted Lists, Find Median From Data Stream", "Internalize when to use a min-heap vs max-heap (and the negate trick in Python)", "Compare heap vs sort runtime trade-offs out loud"] },
-  { day: 13, title: "Backtracking", pillar: "foundations", focus: "Subsets, permutations, combination-sum, n-queens.", studyItems: ["Solve 6-8 backtracking problems (Subsets, Combination Sum, Permutations, Word Search, N-Queens)", "Write the generic backtracking template; identify state, choice, undo", "Acknowledge the exponential cost — never claim better complexity"] },
-  { day: 14, title: "Mock + reflection", pillar: "foundations", focus: "One full timed mock, then a brutally honest review.", studyItems: ["Pick a fresh medium you haven't seen — solve it in 30 minutes, talking out loud the whole time", "Review the recording or your notes: where did you stall, where did you over-explain", "Promote 1-2 weak patterns into next week's catch-up day"] },
+  // Week 1 — Arrays & Hashing + ML refresher
+  {
+    day: 1, title: "Arrays & Hashing — set up your loop", pillar: "foundations",
+    focus: "Solve the easiest NeetCode pattern fast and re-anchor your ML vocabulary.",
+    tracks: [
+      { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 0, 4) },
+      { label: "ML refresher", items: [
+        { id: "ml-bias-variance", label: "Read: bias-variance trade-off (then explain it cold)", href: "https://scott.fortmann-roe.com/docs/BiasVariance.html", meta: "Concept" },
+        { id: "topic-bias-variance", label: "Topic card: Bias-Variance question", href: "/questions" },
+      ]},
+      { label: "Setup", items: [
+        { id: "setup-leetcode", label: "Create LeetCode account; pick 1-2 target companies", href: "https://leetcode.com/", meta: "5 min" },
+        { id: "setup-neetcode", label: "Bookmark NeetCode roadmap", href: "https://neetcode.io/roadmap", meta: "1 min" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Define bias and variance — what does each look like in a learning curve?",
+      "Why does adding more training data only help one of the two?",
+      "When is regularization the wrong remedy?",
+    ],
+    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY],
+    questionIds: ["bias-variance"],
+  },
 
-  // Week 3 — Graphs, DP, greedy (Days 15-21)
-  { day: 15, title: "Graphs: DFS + BFS", pillar: "foundations", focus: "Grid traversal, connected components, flood fill.", studyItems: ["Solve Number of Islands, Clone Graph, Pacific Atlantic Water Flow, Course Schedule", "Write the visited-set boilerplate and stop forgetting it", "Identify when adjacency list vs grid is implicit"] },
-  { day: 16, title: "Graphs: topo sort, Dijkstra, union-find", pillar: "foundations", focus: "The graph patterns that actually appear in interviews.", studyItems: ["Solve Course Schedule II (topological sort), Network Delay Time (Dijkstra)", "Implement union-find from scratch + Number of Connected Components", "When each algorithm fits — articulate it cold"] },
-  { day: 17, title: "1-D Dynamic Programming", pillar: "foundations", focus: "House Robber, Climbing Stairs, Longest Increasing Subsequence.", studyItems: ["Solve 6-8 NeetCode 1D DP problems", "For each, derive the recurrence on paper before coding", "Memoization first, then bottom-up — show both in the answer"] },
-  { day: 18, title: "2-D Dynamic Programming", pillar: "foundations", focus: "Edit distance, longest common subsequence, unique paths.", studyItems: ["Solve 5-6 NeetCode 2D DP problems (LCS, Edit Distance, Unique Paths, Coin Change II)", "Sketch the DP table by hand for a tiny example before coding", "Identify the standard 2D-DP shapes (string vs grid)"] },
-  { day: 19, title: "Greedy", pillar: "foundations", focus: "Jump Game, Gas Station, Hand of Straights, classic greedy proofs.", studyItems: ["Solve 6 NeetCode greedy problems", "For each, articulate why the greedy choice is safe", "Spot the trap: greedy that looks right but isn't (always sanity-check with a tiny counter-example)"] },
-  { day: 20, title: "Intervals + bit manipulation", pillar: "foundations", focus: "Insert / merge intervals, meeting-room patterns, classic bit tricks.", studyItems: ["Solve all 6 NeetCode interval problems + Number of 1 Bits / Counting Bits / Reverse Bits", "Memorize the interval-overlap one-liner", "For bit manipulation, write the tricks down once and refer back"] },
-  { day: 21, title: "Coding mock + company-tag start", pillar: "foundations", focus: "One timed mock, then start your first target company's tag.", studyItems: ["45-minute timed mock on a fresh medium", "Pick your top-priority company, open its top-30 LeetCode tag, solve 3", "Note the company's flavor (Meta = fast classic mediums, Google = Hard graph/DP, OpenAI = OOP-heavy)"] },
-
-  // Week 4 — Company tags + OOP + concurrency (Days 22-28)
-  { day: 22, title: "Company tag (target #1) — day 1", pillar: "foundations", focus: "5-7 problems from your highest-priority company tag.", studyItems: ["Solve 5-7 problems from your top company's LC tag", "After each, write the 'pattern + trick' in 1 line", "Stop trying to memorize — the goal is rapid pattern recognition"] },
-  { day: 23, title: "Company tag (target #1) — day 2", pillar: "foundations", focus: "Continue the tag, prioritize problems with multiple thumbs-down.", studyItems: ["5-7 more from the same tag, focusing on Medium / Hard you haven't seen", "Identify any pattern that recurs in this company's questions", "If a Hard takes >40 min, look at the editorial and re-solve later"] },
-  { day: 24, title: "Company tag (target #2)", pillar: "foundations", focus: "Switch to second-priority company tag.", studyItems: ["5-7 problems from a second company's tag", "Compare: how does its style differ from target #1?", "Note any patterns common to both — those are your highest-leverage drills"] },
-  { day: 25, title: "OOP fundamentals", pillar: "foundations", focus: "Classes, inheritance, polymorphism, encapsulation — at interview depth.", studyItems: ["Refresh classes, inheritance, polymorphism, abstract classes, interfaces in your language", "Read one short post on SOLID principles", "Be able to explain Liskov Substitution and Single Responsibility in 30 seconds each"] },
-  { day: 26, title: "OOP design patterns", pillar: "foundations", focus: "The patterns that actually come up: Singleton, Factory, Observer, Strategy.", studyItems: ["Implement Singleton, Factory, Observer, Strategy in your language", "For each, write down one real ML/infra use case", "Skip patterns you can't motivate with a use case — interviewers can tell"] },
-  { day: 27, title: "Concurrency basics", pillar: "foundations", focus: "Threads, locks, async, the producer-consumer pattern.", studyItems: ["Read one focused post on Python GIL, threading vs asyncio vs multiprocessing", "Solve 1-2 simple concurrency problems (Producer/Consumer, Bounded Buffer)", "Be ready to discuss why concurrency matters in ML serving"] },
-  { day: 28, title: "OOP design problem practice", pillar: "foundations", focus: "Walk through 2 OOP design problems end to end (especially for OpenAI-style loops).", studyItems: ["Design Parking Lot — classes, methods, edge cases, scale-up question", "Design Tic-Tac-Toe or Vending Machine", "Practice talking through requirements, classes, then implementing core methods"] },
-
-  // Week 5 — ML coding + ML fundamentals I (Days 29-35)
-  { day: 29, title: "PyTorch refresher", pillar: "deep-learning", focus: "Tensors, autograd, nn.Module, training loop — be fluent again.", studyItems: ["Refresh tensors, autograd, nn.Module, DataLoader", "Write a 30-line MLP training loop from scratch", "Common gotchas: device placement, .item() vs .detach(), zero_grad()"] },
-  { day: 30, title: "NumPy + ML coding setup", pillar: "foundations", focus: "Vectorized NumPy and the implementation style interviewers expect.", studyItems: ["Refresh broadcasting, vectorization, common ndarray ops", "Pick your ML coding approach: from scratch / sklearn-mimic / framework-style", "Write one simple gradient-descent loop in pure NumPy"] },
-  { day: 31, title: "ML coding: linear & logistic regression from scratch", pillar: "foundations", focus: "Implement both with gradient descent, no sklearn.", studyItems: ["Code linear regression with MSE loss + GD update — fit on toy data", "Code logistic regression with binary cross-entropy", "Be ready to extend to L2 regularization in 5 minutes if asked"], topicId: "ml-from-scratch" },
-  { day: 32, title: "ML coding: k-means + decision tree split", pillar: "foundations", focus: "Two more classic from-scratch implementations.", studyItems: ["Implement k-means with random init + Lloyd's algorithm", "Implement information-gain split for a single decision-tree node", "Mention initialization sensitivity (k-means++) without going down the rabbit hole"] },
-  { day: 33, title: "AI-assisted coding round practice", pillar: "foundations", focus: "Practice the new AI-pair-programming style round.", studyItems: ["Pick a medium-hard problem you haven't seen", "Solve it with AI assistance (Cursor, Copilot, or chat) — narrate your decisions", "Reflect: where did you over-trust the AI, where did you correctly override it"] },
-  { day: 34, title: "SQL fundamentals", pillar: "foundations", focus: "Joins, aggregations, CTEs — fast.", studyItems: ["Solve 6-8 SQL LeetCode problems (Joins, GROUP BY, HAVING, CTEs)", "Practice avoiding double-counting in event-style data", "If your loop has SQL, do company-tag SQL too"] },
-  { day: 35, title: "SQL window functions", pillar: "foundations", focus: "ROW_NUMBER, LAG/LEAD, partition-by — for cohort and funnel prompts.", studyItems: ["Solve all SQL window-function LeetCode problems", "Practice the cohort-retention pattern (build cohort, join activity, define denominator)", "Avoid double-counting events vs users"], topicId: "sql-window-functions", questionIds: ["window-functions"] },
-
-  // Week 6 — ML fundamentals II (Days 36-42)
-  { day: 36, title: "Bias-variance + regularization", pillar: "traditional-ml", focus: "Diagnose under- vs over-fitting from real validation curves.", studyItems: ["Read UDL chapter on bias-variance, then close the book and explain it", "Symptoms of high bias vs high variance, with the standard remedies", "Why regularization helps and when it can't"], questionIds: ["bias-variance"] },
-  { day: 37, title: "Loss functions", pillar: "traditional-ml", focus: "MSE vs MAE vs Huber; cross-entropy vs hinge; pairwise vs listwise.", studyItems: ["Walk through the gradients of MSE and cross-entropy", "When to pick MAE / Huber over MSE", "Pairwise / listwise losses for ranking"] },
-  { day: 38, title: "Classification metrics + calibration", pillar: "math-stats", focus: "Pick metrics that match the business decision.", studyItems: ["Precision, recall, F1, ROC-AUC, PR-AUC — when each fits", "Calibration (reliability diagrams, ECE) and threshold tuning", "Why accuracy is the wrong metric for imbalance"], topicId: "metrics-and-calibration" },
-  { day: 39, title: "Regression + ranking metrics", pillar: "math-stats", focus: "RMSE, MAE, R², NDCG, MRR, MAP.", studyItems: ["When to use absolute vs squared error", "NDCG and MRR by hand on a tiny example", "Articulate why ranking ≠ classification at the metric level"] },
-  { day: 40, title: "Trees + ensembles", pillar: "traditional-ml", focus: "Random Forest vs GBDT (XGBoost / LightGBM) — defend the choice.", studyItems: ["Read the GBDT chapter or paper summary; understand why it usually beats RF", "When tree-based vs linear models win on tabular data", "Pitfalls: overfitting on small data, miscalibrated probabilities"], topicId: "tree-ensembles" },
-  { day: 41, title: "Linear models + regularization", pillar: "traditional-ml", focus: "Logistic regression, L1 vs L2, elastic net.", studyItems: ["Derive logistic regression loss + gradient", "L1 vs L2 — sparsity vs shrinkage", "When linear models still beat trees (tiny data, very high dim, sparse)"] },
-  { day: 42, title: "Clustering + dim reduction", pillar: "traditional-ml", focus: "k-means / DBSCAN / hierarchical, PCA / t-SNE / UMAP intuition.", studyItems: ["Compare k-means, hierarchical, DBSCAN — which assumptions each makes", "PCA as compression / denoising / visualization, not just a formula", "When t-SNE / UMAP are the right call"], topicId: "anomaly-detection" },
-
-  // Week 7 — Deep learning + transformers (Days 43-49)
-  { day: 43, title: "Neural network basics", pillar: "deep-learning", focus: "Forward pass, loss, backprop — explain it cleanly.", studyItems: ["Walk through forward + backward pass on a 2-layer net by hand", "Activation functions: ReLU, GELU, sigmoid, softmax — when each", "Universal approximation in plain language"], topicId: "backprop-and-optimization", questionIds: ["backprop"] },
-  { day: 44, title: "Optimizers + learning rate schedules", pillar: "deep-learning", focus: "SGD, momentum, Adam, warmup + cosine decay.", studyItems: ["SGD vs Adam — when each generalizes better", "Learning-rate warmup and why it stabilizes early training", "Practical learning-rate finder workflow"] },
-  { day: 45, title: "Regularization in deep nets", pillar: "deep-learning", focus: "Dropout, weight decay, label smoothing, augmentation.", studyItems: ["Why dropout works as an ensemble approximation", "Weight decay vs L2 in modern optimizers (subtle but interview-worthy)", "Data augmentation as cheap regularization"] },
-  { day: 46, title: "CNN design patterns", pillar: "deep-learning", focus: "Convolutions, receptive fields, ResNet, why depth helps.", studyItems: ["Kernel size, stride, padding — what each controls", "Why residual connections fix degradation in deep nets", "Latency / memory trade-offs for real deployments"], topicId: "cnn-design-patterns" },
-  { day: 47, title: "RNNs / LSTMs / GRUs", pillar: "deep-learning", focus: "Sequence modeling before transformers replaced it.", studyItems: ["Vanilla RNN vanishing-gradient problem", "Why gating in LSTM/GRU helps gradient flow", "Where RNNs still beat transformers (small data, streaming low-latency)"] },
-  { day: 48, title: "Transformers from first principles", pillar: "deep-learning", focus: "Self-attention, multi-head, positional encoding.", studyItems: ["Walk through attention(Q, K, V) end to end", "Why multi-head attention helps", "Quadratic cost in sequence length and modern mitigations"], topicId: "transformers-first-principles", questionIds: ["self-attention"] },
-  { day: 49, title: "DL fundamentals mock", pillar: "deep-learning", focus: "Run a rapid-fire DL Q&A round.", studyItems: ["8 mixed prompts in 45 minutes — backprop, optimizer choice, transformer attention", "Score yourself on intuition vs formula recitation", "Promote weak topics into next week"] },
-
-  // Week 8 — GenAI + LLMs (Days 50-56)
-  { day: 50, title: "LLM basics", pillar: "generative-ai", focus: "Pretraining, instruction tuning, RLHF / DPO.", studyItems: ["What pretraining objective actually optimizes (next-token, masked LM)", "Why instruction tuning + RLHF / DPO followed", "Where LLMs still hallucinate and the structural reason"], topicId: "llm-basics", questionIds: ["temperature-top-p"] },
-  { day: 51, title: "Tokenization + embeddings", pillar: "generative-ai", focus: "BPE / SentencePiece, embedding spaces, multilingual edge cases.", studyItems: ["Why BPE exists — handle OOV without char-level cost", "How embeddings are learned and what they encode", "Multilingual tokenization: where naive BPE fails"] },
-  { day: 52, title: "Prompt engineering patterns", pillar: "generative-ai", focus: "Few-shot, chain-of-thought, structured output, function calling.", studyItems: ["When few-shot helps vs hurts", "Chain-of-thought vs single-shot — measured cost vs quality", "Structured output via JSON schema or function-calling APIs"] },
-  { day: 53, title: "RAG architecture", pillar: "generative-ai", focus: "End-to-end RAG: chunking, retrieval, generation, citations.", studyItems: ["Chunk size + overlap trade-offs", "Hybrid (dense + sparse) retrieval and why it usually wins", "Citation UX and refusal modes when retrieval is weak"], topicId: "rag-architecture" },
-  { day: 54, title: "Vector stores + ANN", pillar: "generative-ai", focus: "HNSW vs IVF vs flat — and when BM25 still wins.", studyItems: ["How HNSW works at a high level + memory cost", "When BM25 / lexical still beats dense", "Update cost: re-embedding when models change"] },
-  { day: 55, title: "Reranking + LLM evaluation", pillar: "generative-ai", focus: "Cross-encoder rerankers + faithfulness / relevance / citation eval.", studyItems: ["Bi-encoder vs cross-encoder rerankers — cost vs quality", "Faithfulness, answer relevance, citation accuracy as separate metrics", "LLM-as-judge calibration against human ratings"], topicId: "llm-evaluation", questionIds: ["rag-eval"] },
-  { day: 56, title: "Fine-tuning + agents + guardrails", pillar: "generative-ai", focus: "Defend fine-tune vs RAG vs prompt; agents only when justified.", studyItems: ["When prompt + RAG plateaus — only then fine-tune (LoRA / PEFT)", "When multi-agent or tool-use is worth the latency / debug cost", "Layered guardrails: input filter, schema check, policy check, output filter"], topicId: "agents-and-guardrails", questionIds: ["agent-architecture"] },
-
-  // Week 9 — ML model design + 3 case studies (Days 57-63)
-  { day: 57, title: "ML system design framework", pillar: "ml-system-design", focus: "Adopt a reusable scaffold for every design prompt.", studyItems: ["Clarify decision, success metrics, constraints, scale", "Data → feature → model → serving → monitoring", "Always close with a trade-off you would defend hardest"], topicId: "system-design-framework" },
-  { day: 58, title: "RecSys deep dive: collab, content, two-tower", pillar: "ml-system-design", focus: "Read a couple of classic recsys papers + summary posts.", studyItems: ["Matrix factorization (and its modern two-tower descendants)", "Content-based vs collaborative — when each cold-starts", "Why two-tower dominates retrieval in modern recsys"] },
-  { day: 59, title: "Multi-stage ranking", pillar: "ml-system-design", focus: "Retrieval → first-pass ranker → heavy ranker → re-ranking policy.", studyItems: ["Per-stage latency budgeting", "Cheap features vs expensive features by stage", "Re-ranking for diversity, freshness, business policy"] },
-  { day: 60, title: "Case: short-video recommendations", pillar: "ml-system-design", focus: "Walk the case end to end on paper, talking out loud.", studyItems: ["Clarify: watch time vs retention vs creator diversity", "Multi-stage architecture with explicit budgets", "Cold-start, exploration, and feedback-loop mitigation"], caseStudySlug: "video-recommendation", questionIds: ["recommendation-design"] },
-  { day: 61, title: "Case: ads conversion modeling (CTR)", pillar: "ml-system-design", focus: "CTR prediction inside an auction — calibration is the architect's word.", studyItems: ["Auction integration: bid × pCTR with quality adjustment", "Calibration that survives in production", "Delayed labels, position bias, exploration slots"], caseStudySlug: "ad-click-prediction" },
-  { day: 62, title: "Case: enterprise RAG chatbot", pillar: "generative-ai", focus: "Permissioned retrieval + citations + faithfulness.", studyItems: ["ACL enforcement at retrieval time, never after generation", "Hybrid retrieval and reranking", "Refusal modes for ungrounded answers"], caseStudySlug: "enterprise-rag-chatbot" },
-  { day: 63, title: "Case: search ranking", pillar: "ml-system-design", focus: "Three-stage architecture under tight latency.", studyItems: ["Query understanding → candidate retrieval → ranking → policy", "Implicit vs explicit labels and bias correction", "Cold-start exploration for new inventory"], caseStudySlug: "search-ranking" },
-
-  // Week 10 — More cases + ML infra design (Days 64-70)
-  { day: 64, title: "Case: fraud detection", pillar: "ml-system-design", focus: "Real-time scoring with imbalanced labels and tight latency.", studyItems: ["Synchronous online vs cached features", "Per-segment thresholds and dynamic adjustment", "Reviewer queue capacity and graceful degradation"], caseStudySlug: "fraud-detection" },
-  { day: 65, title: "Case: AI customer support agent", pillar: "generative-ai", focus: "Tool use + layered guardrails + escalation tiers.", studyItems: ["Action allowlist with risk tiers", "Planner / executor split for auditability", "Tiered rollout: shadow → read-only → tier-1 actions → tier-2"], caseStudySlug: "customer-support-agent" },
-  { day: 66, title: "Case: LLM evaluation platform", pillar: "generative-ai", focus: "Suites, runs, gates, regression detection across teams.", studyItems: ["Versioned prompts, models, retrieval configs", "Regression detection with significance, not just delta", "Multi-tenant cost budgets and shared LLM-judge calibration"], caseStudySlug: "llm-evaluation-platform" },
-  { day: 67, title: "ML infra: training pipelines", pillar: "ml-system-design", focus: "Reliable, reproducible training from data to artifact.", studyItems: ["Pipeline orchestration (Airflow / Prefect / Dagster) at a high level", "Distributed training when you actually need it (DDP, FSDP)", "Retraining triggers vs schedules"] },
-  { day: 68, title: "ML infra: feature stores", pillar: "ml-system-design", focus: "Online / offline parity, point-in-time correctness, governance.", studyItems: ["Why feature stores exist — and when they're overkill", "Point-in-time correctness for backfills", "Feature ownership, freshness, discoverability"], topicId: "feature-stores", questionIds: ["feature-store-purpose"] },
-  { day: 69, title: "ML infra: serving + capacity", pillar: "ml-system-design", focus: "Realtime / near-real-time / batch — and how to size each.", studyItems: ["Per-stage latency budget for a 100ms p99", "Batching, caching, autoscaling levers", "Graceful degradation paths under load"], topicId: "online-serving-tradeoffs", questionIds: ["architect-capacity-planning"] },
-  { day: 70, title: "ML infra: registry + CI/CD + deployment", pillar: "mlops", focus: "Promote models like code: shadow, canary, auto-rollback.", studyItems: ["Registry as source of truth + tests that gate promotion", "Shadow → canary → progressive rollout", "Auto-rollback triggers tied to SLOs, not vibes"], topicId: "model-registry-cicd" },
-
-  // Week 11 — Production / governance / cost (Days 71-77)
-  { day: 71, title: "Monitoring + drift", pillar: "mlops", focus: "Separate infra, data, and model monitoring with playbooks.", studyItems: ["KS / PSI for distribution drift", "Delayed labels and proxy signals", "Alerts that map to actions, not just dashboards"], topicId: "monitoring-drift", questionIds: ["monitoring-production"] },
-  { day: 72, title: "Cost optimization at scale", pillar: "mlops", focus: "Per-request cost decomposition + small-first cascades.", studyItems: ["Cost per request, per feature, per user segment", "Small-first model cascade routing", "When caching beats more capacity"], questionIds: ["architect-cost-optimization"] },
-  { day: 73, title: "LLMOps specifics", pillar: "generative-ai", focus: "Prompt versioning, model routing, regression gating.", studyItems: ["Prompt + model + retrieval as versioned artifacts together", "Routing by uncertainty / cost / risk", "Release-time regression gates against an eval suite"] },
-  { day: 74, title: "Multi-tenant ML systems", pillar: "ml-system-design", focus: "Compute / data / policy isolation — pick per risk tier.", studyItems: ["Per-tenant namespaces, quotas, audit", "Hard vs soft isolation per risk level", "Cost attribution across tenants"], questionIds: ["architect-multi-tenant-isolation"] },
-  { day: 75, title: "Privacy + compliance + audit", pillar: "mlops", focus: "Bake privacy in, not after.", studyItems: ["Data minimization and retention windows", "Audit logs for inference and training", "Region / residency constraints in design"] },
-  { day: 76, title: "Build vs buy + migration", pillar: "ml-system-design", focus: "Vector stores, feature platforms, eval tooling — when each.", studyItems: ["Differentiation vs undifferentiated heavy lifting", "Reversible decisions with explicit revisit triggers", "Zero-downtime migration: shadow + parity + ramp"], questionIds: ["architect-build-vs-buy", "architect-migration-plan"] },
-  { day: 77, title: "ML infra design mock", pillar: "ml-system-design", focus: "60-minute infra-flavored design round.", studyItems: ["Pick a serving + monitoring + retraining prompt", "Defend latency budgets, scaling, fallback paths", "Trade-off close: which axis you'd protect hardest"] },
-
-  // Week 12 — Behavioral + storytelling (Days 78-84)
-  { day: 78, title: "Resume rewrite", pillar: "behavioral-storytelling", focus: "Quantify outcomes; lead with the decision you owned.", studyItems: ["Rewrite each bullet as 'I decided X under Y constraints; result was Z'", "Cut anything you can't defend in 60 seconds", "Verify metrics you cite — interviewers will ask"] },
-  { day: 79, title: "Career story (your 'why ML' narrative)", pillar: "behavioral-storytelling", focus: "Three-minute version that lands the arc.", studyItems: ["Write the 3-minute version: what got you in, the pivots, what you want next", "Practice with a mentor or peer; ask for the part that felt slow", "Tighten until it lands in under 4 minutes"] },
-  { day: 80, title: "Most complex project deep dive", pillar: "behavioral-storytelling", focus: "Your A-team story — be ready for follow-ups two layers deep.", studyItems: ["Write a one-page brief: problem, decision, alternatives, outcome, what you'd change", "Anticipate three follow-ups (technical, organizational, hindsight)", "Practice the 90-second version and the 5-minute version"], topicId: "project-storytelling" },
-  { day: 81, title: "Ownership / failure story", pillar: "behavioral-storytelling", focus: "Show learning without minimizing the impact.", studyItems: ["Write one failure story in STAR format", "Make sure the corrective action you took is concrete (process / metric / system)", "End with what you'd do earlier next time, not a bow"], topicId: "behavioral-ownership", questionIds: ["story-failure"] },
-  { day: 82, title: "Conflict / disagreement story", pillar: "behavioral-storytelling", focus: "Demonstrate disagreement without making the other side look bad.", studyItems: ["Pick a real disagreement (technical or cross-functional)", "Frame as 'we wanted different things, here's how we aligned'", "Show the data or principle you used to break the tie"] },
-  { day: 83, title: "Leadership / influence story", pillar: "behavioral-storytelling", focus: "Cross-team alignment without inflating your title.", studyItems: ["Pick a moment you influenced a decision outside your reporting line", "Show the framing / RFC / data you used", "What changed about how the team works after"] },
-  { day: 84, title: "Company-specific behavioral prep", pillar: "behavioral-storytelling", focus: "Map your stories to each target company's value rubric.", studyItems: ["Read recent posts / blog / RFCs from your top companies", "Map your existing stories to their stated values", "Prepare 2 questions per round per interviewer"] },
-
-  // Week 13 — Mocks + final polish (Days 85-90)
-  { day: 85, title: "Coding mock — Meta-style", pillar: "foundations", focus: "Fast classic mediums; you must finish without stalling.", studyItems: ["Pick 2 fresh mediums; solve each in under 22 minutes", "Verbalize trade-offs continuously", "Score yourself on speed + clarity, not just correctness"] },
-  { day: 86, title: "Coding mock — Google-style", pillar: "foundations", focus: "Hard LC: graph or DP, with elegant simplification.", studyItems: ["Pick a Hard from your weak pattern (graph, DP, or string)", "Spend 5 minutes designing before coding", "If you stall, talk through alternatives — Google interviews reward reasoning"] },
-  { day: 87, title: "Coding mock — OOP / OpenAI-style", pillar: "foundations", focus: "Object-modeling design problem under interview pressure.", studyItems: ["Pick an OOP design problem (Cache, Queue, Rate Limiter)", "Walk requirements → classes → methods → extension question", "Be ready for a non-standard behavior round and a project presentation slot"] },
-  { day: 88, title: "ML model design mock", pillar: "ml-system-design", focus: "60-minute full case from cold-start to monitoring.", studyItems: ["Pick a fresh case study you haven't drilled this round", "Use the framework start to finish", "Trade-off close: name the one trade-off you'd defend hardest"] },
-  { day: 89, title: "ML infra design mock + behavioral mock", pillar: "ml-system-design", focus: "One infra design + one behavioral round in the same sitting.", studyItems: ["60-min infra-flavored design (serving, monitoring, retraining)", "30-min behavioral with 5-6 prompts back to back", "Capture residual gaps for tomorrow's review"] },
-  { day: 90, title: "Light review + sleep + walk in", pillar: "behavioral-storytelling", focus: "Don't add new content. Trust the prep.", studyItems: ["Re-read your one-page project brief and your career story", "Skim the trade-off playbook once", "Sleep, eat, hydrate — performance compounds physically"] },
+  {
+    day: 2, title: "Arrays & Hashing (cont.) + Loss functions", pillar: "foundations",
+    focus: "Finish the arrays bucket and connect losses to metrics.",
+    tracks: [
+      { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 4, 5) },
+      { label: "ML fundamentals · Loss functions", items: [
+        { id: "ml-loss-mse-mae", label: "MSE vs MAE vs Huber — when each", href: "https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23/", meta: "Read" },
+        { id: "ml-loss-cross-entropy", label: "Binary & categorical cross-entropy (derive the gradient)", href: "https://gombru.github.io/2018/05/23/cross_entropy_loss/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is cross-entropy preferred over MSE for classification?",
+      "When would you choose MAE or Huber over MSE?",
+      "What does a class-weighted loss change about gradient updates?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH, REF_UDL_BOOK],
+  },
+  {
+    day: 3, title: "Two Pointers + Linear regression", pillar: "foundations",
+    focus: "Two-pointer template + the linear baseline you must defend.",
+    tracks: [
+      { label: "DSA · Two Pointers", items: nc("Two Pointers", 0, 3) },
+      { label: "ML fundamentals · Linear regression", items: [
+        { id: "ml-linreg-derivation", label: "Derive normal equation + GD update", href: "https://web.stanford.edu/~jurafsky/slp3/5.pdf", meta: "Read" },
+        { id: "ml-linreg-assumptions", label: "Five assumptions (and which ones fail loudly)", href: "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does linear regression break? Walk through 3 failure modes.",
+      "Why is L2 a Bayesian prior on coefficients?",
+      "What does heteroscedasticity do to OLS estimates?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+  },
+  {
+    day: 4, title: "Two Pointers (cont.) + Logistic regression", pillar: "foundations",
+    focus: "Finish two-pointers + logistic regression with regularization.",
+    tracks: [
+      { label: "DSA · Two Pointers", items: nc("Two Pointers", 3, 2) },
+      { label: "ML fundamentals · Logistic regression", items: [
+        { id: "ml-logreg", label: "Derive logistic loss + gradient by hand", href: "https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf", meta: "Read" },
+        { id: "ml-l1-vs-l2", label: "L1 vs L2 — sparsity vs shrinkage intuition", href: "https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does L1 produce sparse weights and L2 doesn't?",
+      "What does multicollinearity do to logistic regression coefficients?",
+      "Walk me through how you would calibrate a logistic-regression model.",
+    ],
+    references: [REF_UDL_BOOK, REF_GOOGLE_ML_CRASH],
+  },
+  {
+    day: 5, title: "Sliding Window + Cross-validation", pillar: "foundations",
+    focus: "Sliding-window template + a CV strategy that mirrors production leakage.",
+    tracks: [
+      { label: "DSA · Sliding Window", items: nc("Sliding Window", 0, 3) },
+      { label: "ML fundamentals · Cross-validation", items: [
+        { id: "ml-cv-strategies", label: "k-fold vs stratified vs time-based vs group", href: "https://scikit-learn.org/stable/modules/cross_validation.html", meta: "Docs" },
+        { id: "ml-cv-leakage", label: "Why nested CV exists", href: "https://machinelearningmastery.com/nested-cross-validation-for-machine-learning-with-python/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does k-fold leak signal? Give a concrete example.",
+      "Why is time-based split mandatory for forecasting?",
+      "What's the difference between group k-fold and stratified k-fold?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+  },
+  {
+    day: 6, title: "Sliding Window (cont.) + Classification metrics", pillar: "foundations",
+    focus: "Finish sliding-window + pick metrics that match the business decision.",
+    tracks: [
+      { label: "DSA · Sliding Window", items: nc("Sliding Window", 3, 3) },
+      { label: "ML fundamentals · Classification metrics", items: [
+        { id: "ml-metrics-pr-roc", label: "Precision, recall, F1, ROC-AUC, PR-AUC", href: "https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall", meta: "Read" },
+        { id: "ml-calibration", label: "Calibration curves & ECE", href: "https://scikit-learn.org/stable/modules/calibration.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is ROC-AUC misleading on imbalanced data?",
+      "When would you pick PR-AUC over ROC-AUC?",
+      "What does it mean for a classifier's probabilities to be calibrated?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH, REF_UDL_BOOK],
+    topicId: "metrics-and-calibration",
+  },
+  {
+    day: 7, title: "Catch-up + ranking metrics", pillar: "foundations",
+    focus: "Re-attempt the 3 hardest problems of the week + cover ranking metrics.",
+    tracks: [
+      { label: "DSA review", items: [
+        { id: "review-week-1-1", label: "Re-solve your slowest problem from days 1-6, cold", meta: "30 min" },
+        { id: "review-week-1-2", label: "Re-solve the second-slowest", meta: "30 min" },
+        { id: "review-week-1-3", label: "Re-solve a third (any pattern)", meta: "30 min" },
+      ]},
+      { label: "ML fundamentals · Ranking & regression metrics", items: [
+        { id: "ml-ndcg-mrr", label: "NDCG, MRR, MAP — by hand on a tiny example", href: "https://en.wikipedia.org/wiki/Discounted_cumulative_gain", meta: "Read" },
+        { id: "ml-rmse-mae", label: "RMSE vs MAE vs R² — when each", href: "https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is NDCG more useful than precision@K for ranking?",
+      "When does R² lie? Give a counter-example.",
+      "How do you sanity-check that your validation metric tracks the production one?",
+    ],
+    references: [REF_NEETCODE_VIDEOS],
+  },
+  {
+    day: 8, title: "Stack + Trees & ensembles", pillar: "foundations",
+    focus: "Stack patterns + the tabular default (GBDT).",
+    tracks: [
+      { label: "DSA · Stack", items: nc("Stack", 0, 4) },
+      { label: "ML fundamentals · Trees & ensembles", items: [
+        { id: "ml-gbdt", label: "Read: XGBoost paper (skim sections 1-3)", href: "https://arxiv.org/abs/1603.02754", meta: "Paper" },
+        { id: "ml-rf-vs-gbdt", label: "Random Forest vs GBDT — defend a default", href: "https://towardsdatascience.com/random-forest-vs-xgboost-comparing-tree-based-algorithms-with-codes-c8a4d18d3e74/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does GBDT usually beat Random Forest on tabular data?",
+      "When does a single decision tree still beat XGBoost?",
+      "What's the difference between bagging and boosting in one sentence each?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+    topicId: "tree-ensembles",
+  },
+  {
+    day: 9, title: "Stack (cont.) + Hyperparameter tuning", pillar: "foundations",
+    focus: "Finish stack + tune efficiently without overfitting CV.",
+    tracks: [
+      { label: "DSA · Stack", items: nc("Stack", 4, 3) },
+      { label: "ML fundamentals · Hyperparameter tuning", items: [
+        { id: "ml-tuning-strategies", label: "Grid vs random vs Bayesian search", href: "https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/", meta: "Read" },
+        { id: "ml-tuning-budget", label: "Hyperband / successive halving — why they work", href: "https://research.google/pubs/google-vizier-a-service-for-black-box-optimization/", meta: "Paper" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is random search often better than grid search?",
+      "How do you avoid leaking validation signal during tuning?",
+      "When is nested CV worth its compute cost?",
+    ],
+    references: [],
+  },
+  {
+    day: 10, title: "Binary Search + Imbalanced classification", pillar: "foundations",
+    focus: "Master binary search variants + handle rare positives without breaking calibration.",
+    tracks: [
+      { label: "DSA · Binary Search", items: nc("Binary Search", 0, 4) },
+      { label: "ML fundamentals · Imbalanced classification", items: [
+        { id: "ml-imbalance", label: "Class weights vs SMOTE vs threshold-moving", href: "https://machinelearningmastery.com/what-is-imbalanced-classification/", meta: "Read" },
+        { id: "ml-imbalance-calibration", label: "Why resampling breaks calibration", href: "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What breaks if you SMOTE before splitting train/test?",
+      "Why does class weighting preserve calibration but resampling does not?",
+      "How do you tune the decision threshold for an imbalanced classifier?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+  },
+  {
+    day: 11, title: "Binary Search (cont.) + Clustering & PCA", pillar: "foundations",
+    focus: "Finish binary search + unsupervised toolkit.",
+    tracks: [
+      { label: "DSA · Binary Search", items: nc("Binary Search", 4, 3) },
+      { label: "ML fundamentals · Unsupervised", items: [
+        { id: "ml-kmeans", label: "k-means vs hierarchical vs DBSCAN — assumptions each makes", href: "https://scikit-learn.org/stable/modules/clustering.html", meta: "Docs" },
+        { id: "ml-pca", label: "PCA as compression / denoising / visualization", href: "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does k-means silently fail? (Hint: shape of clusters.)",
+      "What does PCA throw away — and why does that matter for downstream models?",
+      "How do you choose K for k-means without ground truth?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+    topicId: "anomaly-detection",
+  },
+  {
+    day: 12, title: "Linked List + Feature engineering", pillar: "foundations",
+    focus: "LL templates + spot leakage in features.",
+    tracks: [
+      { label: "DSA · Linked List", items: nc("Linked List", 0, 4) },
+      { label: "ML fundamentals · Feature engineering", items: [
+        { id: "ml-leakage", label: "Target / temporal / contamination leakage", href: "https://machinelearningmastery.com/data-leakage-machine-learning/", meta: "Read" },
+        { id: "ml-encoding", label: "Encoding choices — one-hot, target, embedding", href: "https://contrib.scikit-learn.org/category_encoders/", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through 3 ways you'd detect target leakage in a churn model.",
+      "When is target encoding dangerous?",
+      "How do you align offline feature logic with serving?",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN],
+    topicId: "feature-engineering-leakage",
+  },
+  {
+    day: 13, title: "Linked List (cont.) + Calibration deep dive", pillar: "foundations",
+    focus: "Finish LL patterns + Platt / isotonic calibration.",
+    tracks: [
+      { label: "DSA · Linked List", items: nc("Linked List", 4, 4) },
+      { label: "ML fundamentals · Calibration", items: [
+        { id: "ml-platt-isotonic", label: "Platt vs isotonic vs temperature scaling", href: "https://scikit-learn.org/stable/modules/calibration.html#calibration", meta: "Docs" },
+        { id: "ml-cal-monitoring", label: "Why calibration drifts faster than rank", href: "https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When would you choose isotonic regression over Platt scaling?",
+      "Why does an auction system need calibrated probabilities, not just rankings?",
+      "What's the simplest production check that catches calibration drift?",
+    ],
+    references: [],
+  },
+  {
+    day: 14, title: "Linked List finish + Probability toolkit", pillar: "math-stats",
+    focus: "Wrap LL patterns (LRU, merge-K) + refresh probability you'll be asked cold.",
+    tracks: [
+      { label: "DSA · Linked List", items: nc("Linked List", 8, 3) },
+      { label: "Math & Stats · Probability", items: [
+        { id: "math-bayes", label: "Bayes intuition: detection / diagnosis / ranking examples", href: "https://seeing-theory.brown.edu/bayesian-inference/index.html", meta: "Interactive" },
+        { id: "math-distributions", label: "Binomial / Poisson / Gaussian — when each", href: "https://www.probabilitycourse.com/chapter3/3_2_3_pmf_examples.php", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why can a model with strong recall still have weak positive predictive value?",
+      "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
+      "When is the Poisson approximation to the Binomial a useful interview move?",
+    ],
+    references: [],
+    topicId: "probability-toolkit",
+  },
+  {
+    day: 15, title: "Trees DFS + Hypothesis testing", pillar: "foundations",
+    focus: "Tree DFS templates + experiment math you actually need.",
+    tracks: [
+      { label: "DSA · Trees", items: nc("Trees", 0, 5) },
+      { label: "Math & Stats · A/B basics", items: [
+        { id: "math-pvalue", label: "Null, alternative, p-value, power — fast refresher", href: "https://www.evanmiller.org/how-not-to-run-an-ab-test.html", meta: "Read" },
+        { id: "math-multitest", label: "Multiple-testing correction (Bonferroni / FDR)", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What goes wrong if you 'peek' at A/B test results before the planned end?",
+      "Define statistical power in one sentence.",
+      "When is FDR correction more appropriate than Bonferroni?",
+    ],
+    references: [],
+  },
+  {
+    day: 16, title: "Trees BFS + Confidence intervals", pillar: "foundations",
+    focus: "Level-order patterns + frequentist CI without sliding into Bayesian language.",
+    tracks: [
+      { label: "DSA · Trees", items: nc("Trees", 5, 4) },
+      { label: "Math & Stats · CIs", items: [
+        { id: "math-ci-frequentist", label: "Frequentist interpretation done right", href: "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings", meta: "Read" },
+        { id: "math-bootstrap", label: "Bootstrap CIs — when they save you", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
+      "Why does the bootstrap work when classical CIs don't?",
+      "How does sample size affect the width of a CI quadratically?",
+    ],
+    references: [],
+    questionIds: ["confidence-interval"],
+  },
+  {
+    day: 17, title: "Trees BST + Optimization basics", pillar: "foundations",
+    focus: "BST validation + the optimization vocabulary models use.",
+    tracks: [
+      { label: "DSA · Trees", items: nc("Trees", 9, 3) },
+      { label: "Math & Stats · Optimization", items: [
+        { id: "math-gd", label: "Gradient descent intuition (convex vs non-convex)", href: "https://www.deeplearningbook.org/contents/optimization.html", meta: "Read" },
+        { id: "math-convexity", label: "Why convexity matters for guarantees", href: "https://web.stanford.edu/~boyd/cvxbook/", meta: "Reference" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What does it mean that a loss is convex — and which losses are?",
+      "Why does logistic regression have a global optimum but neural nets do not?",
+      "When does momentum help and when does it hurt?",
+    ],
+    references: [REF_UDL_BOOK],
+  },
+  {
+    day: 18, title: "Trees hard + ML coding from scratch (linear)", pillar: "foundations",
+    focus: "Trickier tree problems + implement linear regression from scratch.",
+    tracks: [
+      { label: "DSA · Trees", items: nc("Trees", 12, 3) },
+      { label: "ML coding · From scratch", items: [
+        { id: "ml-code-linreg", label: "Implement linear regression with GD (NumPy only)", meta: "Code" },
+        { id: "ml-code-test", label: "Fit on toy data; plot loss curve; reason about convergence", meta: "Code" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through your gradient update for linear regression.",
+      "How would you extend this to L2 regularization in 5 minutes?",
+      "Why might GD diverge — and how would you detect it?",
+    ],
+    references: [],
+    topicId: "ml-from-scratch",
+  },
+  {
+    day: 19, title: "Tries + ML coding (logistic)", pillar: "foundations",
+    focus: "Trie implementation + logistic regression from scratch.",
+    tracks: [
+      { label: "DSA · Tries", items: nc("Tries", 0, 3) },
+      { label: "ML coding · From scratch", items: [
+        { id: "ml-code-logreg", label: "Implement logistic regression with binary cross-entropy", meta: "Code" },
+        { id: "ml-code-bce-grad", label: "Derive the gradient on paper before coding", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is the trie a better fit for autocomplete than a hash set?",
+      "What's the failure mode of softmax + cross-entropy with class imbalance?",
+      "How would you implement weighted logistic regression?",
+    ],
+    references: [],
+  },
+  {
+    day: 20, title: "Heap / Priority Queue + ML coding (k-means)", pillar: "foundations",
+    focus: "Top-K patterns + k-means from scratch.",
+    tracks: [
+      { label: "DSA · Heap", items: nc("Heap / Priority Queue", 0, 4) },
+      { label: "ML coding · From scratch", items: [
+        { id: "ml-code-kmeans", label: "Implement Lloyd's algorithm + random init", meta: "Code" },
+        { id: "ml-code-kmeans-init", label: "Add k-means++ init and explain why", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why is min-heap the right choice for 'top K largest'?",
+      "When does k-means fail catastrophically?",
+      "What's the time complexity of Lloyd's iteration?",
+    ],
+    references: [],
+  },
+  {
+    day: 21, title: "Heap finish + Decision tree split", pillar: "foundations",
+    focus: "Median stream + implement information-gain split for one node.",
+    tracks: [
+      { label: "DSA · Heap", items: nc("Heap / Priority Queue", 4, 3) },
+      { label: "ML coding · From scratch", items: [
+        { id: "ml-code-dt-split", label: "Compute information gain / gini for one split", meta: "Code" },
+        { id: "ml-code-dt-explain", label: "Explain why GBDT prefers gini in practice", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through 'find median from data stream' with two heaps.",
+      "Information gain vs gini — when does the choice actually matter?",
+      "Why don't decision trees need feature scaling?",
+    ],
+    references: [],
+  },
+  {
+    day: 22, title: "Backtracking + SQL fundamentals", pillar: "foundations",
+    focus: "Backtracking template + joins, GROUP BY, CTEs.",
+    tracks: [
+      { label: "DSA · Backtracking", items: nc("Backtracking", 0, 4) },
+      { label: "SQL · Fundamentals", items: [
+        { id: "sql-joins", label: "Joins, GROUP BY, HAVING — solve 3 LC SQL Easy", href: "https://leetcode.com/problemset/database/", meta: "Practice" },
+        { id: "sql-ctes", label: "CTEs and recursive CTEs", href: "https://learnsql.com/blog/sql-recursive-cte/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Generic backtracking template: state, choice, undo — what does each look like?",
+      "When does INNER vs LEFT join silently change your answer?",
+      "Why are recursive CTEs the right tool for graph traversal in SQL?",
+    ],
+    references: [REF_LC_PATTERNS],
+  },
+  {
+    day: 23, title: "Backtracking (cont.) + SQL window functions", pillar: "foundations",
+    focus: "Word search / palindrome partitioning + windows for cohort queries.",
+    tracks: [
+      { label: "DSA · Backtracking", items: nc("Backtracking", 4, 3) },
+      { label: "SQL · Windows", items: [
+        { id: "sql-windows", label: "ROW_NUMBER, RANK, LAG/LEAD — solve 3 LC SQL Medium", href: "https://leetcode.com/problemset/database/?topicSlugs=window-function", meta: "Practice" },
+        { id: "sql-cohort", label: "Cohort retention pattern", href: "https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/cohort-analysis", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Compute day-7 retention by signup cohort. How do you avoid double-counting?",
+      "When is LAG cleaner than a self-join?",
+      "What's the difference between PARTITION BY and GROUP BY?",
+    ],
+    references: [],
+    topicId: "sql-window-functions",
+    questionIds: ["window-functions"],
+  },
+  {
+    day: 24, title: "Backtracking finish + NN basics", pillar: "deep-learning",
+    focus: "N-Queens / Letter Combinations + forward + backward pass on a 2-layer net.",
+    tracks: [
+      { label: "DSA · Backtracking", items: nc("Backtracking", 7, 2) },
+      { label: "Deep learning · NN basics", items: [
+        { id: "dl-forward-back", label: "Walk through forward + backward pass on paper", href: "https://cs231n.github.io/optimization-2/", meta: "Read" },
+        { id: "dl-activations", label: "Activation functions: ReLU, GELU, sigmoid, softmax", href: "https://en.wikipedia.org/wiki/Activation_function", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Explain backprop as if to an engineer who's used PyTorch but never derived gradients.",
+      "Why does ReLU help vs sigmoid?",
+      "What's the role of softmax in the cross-entropy gradient?",
+    ],
+    references: [REF_UDL_BOOK],
+    topicId: "backprop-and-optimization",
+    questionIds: ["backprop"],
+  },
+  {
+    day: 25, title: "Graphs DFS/BFS + Optimizers", pillar: "foundations",
+    focus: "Grid DFS/BFS + SGD vs Adam + LR schedules.",
+    tracks: [
+      { label: "DSA · Graphs", items: nc("Graphs", 0, 4) },
+      { label: "Deep learning · Optimizers", items: [
+        { id: "dl-adam", label: "Adam vs SGD with momentum — when each generalizes better", href: "https://ruder.io/optimizing-gradient-descent/", meta: "Read" },
+        { id: "dl-lr-warmup", label: "LR warmup + cosine decay — why it stabilizes early training", href: "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does Adam generalize worse than SGD with momentum?",
+      "What does LR warmup actually fix?",
+      "Walk me through how you'd find a good LR for a new model.",
+    ],
+    references: [REF_UDL_BOOK],
+  },
+  {
+    day: 26, title: "Graphs (cont.) + Regularization in DL", pillar: "foundations",
+    focus: "Course Schedule / Connected Components + dropout / weight decay.",
+    tracks: [
+      { label: "DSA · Graphs", items: nc("Graphs", 4, 4) },
+      { label: "Deep learning · Regularization", items: [
+        { id: "dl-dropout", label: "Dropout as ensemble approximation", href: "https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf", meta: "Paper" },
+        { id: "dl-weight-decay", label: "Weight decay vs L2 in modern optimizers (AdamW)", href: "https://arxiv.org/abs/1711.05101", meta: "Paper" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does dropout work? Give the ensemble interpretation.",
+      "What's the subtle difference between L2 and weight decay in Adam?",
+      "When is label smoothing the right call?",
+    ],
+    references: [REF_UDL_BOOK],
+  },
+  {
+    day: 27, title: "Graphs finish + Normalization", pillar: "foundations",
+    focus: "Word Ladder / Topo sort + batch / layer / group norm.",
+    tracks: [
+      { label: "DSA · Graphs", items: nc("Graphs", 8, 5) },
+      { label: "Deep learning · Normalization", items: [
+        { id: "dl-batchnorm", label: "Why batch norm stabilizes training", href: "https://arxiv.org/abs/1502.03167", meta: "Paper" },
+        { id: "dl-layernorm", label: "Layer norm — why transformers prefer it", href: "https://arxiv.org/abs/1607.06450", meta: "Paper" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does batch norm help? And what's the modern critique?",
+      "Why do transformers use layer norm and not batch norm?",
+      "What goes wrong with batch norm at very small batch sizes?",
+    ],
+    references: [REF_UDL_BOOK],
+  },
+  {
+    day: 28, title: "Advanced Graphs + CNNs", pillar: "foundations",
+    focus: "Dijkstra / Network Delay + CNN intuition (kernels, receptive fields).",
+    tracks: [
+      { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 0, 3) },
+      { label: "Deep learning · CNNs", items: [
+        { id: "dl-cnn-basics", label: "Kernels, stride, padding, pooling", href: "https://cs231n.github.io/convolutional-networks/", meta: "Read" },
+        { id: "dl-resnet", label: "Why residual connections fix degradation", href: "https://arxiv.org/abs/1512.03385", meta: "Paper" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
+      "Why do residual connections help train deep nets?",
+      "When does a CNN beat a transformer for vision today?",
+    ],
+    references: [REF_UDL_BOOK],
+    topicId: "cnn-design-patterns",
+  },
+  {
+    day: 29, title: "Advanced Graphs (cont.) + RNN / LSTM", pillar: "foundations",
+    focus: "Cheapest Flights + sequential modeling pre-transformers.",
+    tracks: [
+      { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 3, 3) },
+      { label: "Deep learning · Sequence", items: [
+        { id: "dl-rnn-vanish", label: "Vanilla RNN vanishing-gradient problem", href: "https://colah.github.io/posts/2015-08-Understanding-LSTMs/", meta: "Read (canonical)" },
+        { id: "dl-lstm", label: "LSTM gating — why it helps gradient flow", href: "https://distill.pub/2019/memorization-in-rnns/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What does the cell state in an LSTM actually store?",
+      "Where does a transformer still lose to an LSTM?",
+      "Why don't RNNs parallelize over the time dimension?",
+    ],
+    references: [],
+  },
+  {
+    day: 30, title: "1-D DP + Transformers from first principles", pillar: "deep-learning",
+    focus: "Climbing Stairs / House Robber + self-attention math.",
+    tracks: [
+      { label: "DSA · 1-D DP", items: nc("1-D Dynamic Programming", 0, 4) },
+      { label: "Deep learning · Transformers", items: [
+        { id: "dl-attention", label: "The Annotated Transformer", href: "http://nlp.seas.harvard.edu/2018/04/03/attention.html", meta: "Read (canonical)" },
+        { id: "dl-self-attention", label: "Walk through attention(Q, K, V) end to end", href: "https://jalammar.github.io/illustrated-transformer/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why do transformers scale better than RNNs for long sequences?",
+      "What's the cost of self-attention in sequence length, and what mitigations exist?",
+      "Why does multi-head attention help vs one big head?",
+    ],
+    references: [REF_UDL_BOOK],
+    topicId: "transformers-first-principles",
+    questionIds: ["self-attention"],
+  },
+  {
+    day: 31, title: "1-D DP (cont.) + LLM basics", pillar: "deep-learning",
+    focus: "Coin Change / Word Break + pretraining → instruction tuning → RLHF.",
+    tracks: [
+      { label: "DSA · 1-D DP", items: nc("1-D Dynamic Programming", 4, 4) },
+      { label: "GenAI · LLM basics", items: [
+        { id: "llm-pretraining", label: "What pretraining actually optimizes", href: "https://huggingface.co/learn/llm-course/chapter1/4", meta: "Read" },
+        { id: "llm-rlhf", label: "RLHF / DPO at a high level", href: "https://huyenchip.com/2023/05/02/rlhf.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the difference between pretraining, instruction tuning, and RLHF?",
+      "Why do LLMs hallucinate? Give a structural explanation.",
+      "Temperature vs top-p — what does each control?",
+    ],
+    references: [REF_HF_LLM],
+    topicId: "llm-basics",
+    questionIds: ["temperature-top-p"],
+  },
+  {
+    day: 32, title: "1-D DP finish + Tokenization & embeddings", pillar: "generative-ai",
+    focus: "LIS / Partition Equal Subset + BPE intuition + embedding space.",
+    tracks: [
+      { label: "DSA · 1-D DP", items: nc("1-D Dynamic Programming", 8, 4) },
+      { label: "GenAI · Tokenization", items: [
+        { id: "llm-bpe", label: "Byte-pair encoding (BPE)", href: "https://huggingface.co/learn/llm-course/chapter6/5", meta: "Read" },
+        { id: "llm-embeddings", label: "What embeddings encode", href: "https://jalammar.github.io/illustrated-word2vec/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does BPE exist instead of word-level or char-level tokenization?",
+      "What multilingual edge cases break naive BPE?",
+      "How does an embedding model differ from an LLM?",
+    ],
+    references: [REF_HF_LLM],
+  },
+  {
+    day: 33, title: "2-D DP + Prompt engineering", pillar: "generative-ai",
+    focus: "Unique Paths / LCS + few-shot + CoT + structured output.",
+    tracks: [
+      { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 0, 4) },
+      { label: "GenAI · Prompting", items: [
+        { id: "llm-fewshot", label: "Few-shot vs zero-shot — when each helps", href: "https://www.promptingguide.ai/techniques/fewshot", meta: "Read" },
+        { id: "llm-cot", label: "Chain-of-thought (CoT) prompting", href: "https://arxiv.org/abs/2201.11903", meta: "Paper" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does CoT prompting hurt vs help?",
+      "How would you enforce structured JSON output reliably?",
+      "What's the difference between system prompt and user prompt?",
+    ],
+    references: [REF_OAI_DOCS],
+  },
+  {
+    day: 34, title: "2-D DP (cont.) + RAG architecture", pillar: "generative-ai",
+    focus: "Edit Distance / Coin Change II + end-to-end RAG.",
+    tracks: [
+      { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 4, 4) },
+      { label: "GenAI · RAG", items: [
+        { id: "rag-pipeline", label: "Chunking → retrieval → reranking → generation → citations", href: "https://python.langchain.com/docs/concepts/rag/", meta: "Read" },
+        { id: "rag-hybrid", label: "Why hybrid (dense + sparse) usually wins", href: "https://www.pinecone.io/learn/hybrid-search-intro/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through chunking trade-offs (size + overlap).",
+      "Why does pure dense retrieval miss product names and error codes?",
+      "How would you handle citations when the retrieved chunk doesn't actually support the claim?",
+    ],
+    references: [REF_LANGCHAIN_RAG],
+    topicId: "rag-architecture",
+  },
+  {
+    day: 35, title: "2-D DP finish + Vector stores", pillar: "generative-ai",
+    focus: "Distinct Subsequences / Regex Match + HNSW / IVF.",
+    tracks: [
+      { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 8, 3) },
+      { label: "GenAI · Vector stores", items: [
+        { id: "rag-ann", label: "HNSW vs IVF vs flat — trade-offs", href: "https://www.pinecone.io/learn/series/faiss/hnsw/", meta: "Read" },
+        { id: "rag-bm25", label: "When BM25 still wins", href: "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How does HNSW work at a high level — what's the trade-off vs flat search?",
+      "When is BM25 better than dense retrieval today?",
+      "What's the operational cost of re-embedding when the model changes?",
+    ],
+    references: [],
+  },
+  {
+    day: 36, title: "Greedy + Reranking", pillar: "generative-ai",
+    focus: "Maximum Subarray / Jump Game + cross-encoder rerankers.",
+    tracks: [
+      { label: "DSA · Greedy", items: nc("Greedy", 0, 4) },
+      { label: "GenAI · Reranking", items: [
+        { id: "rag-rerank", label: "Bi-encoder vs cross-encoder rerankers", href: "https://www.sbert.net/examples/applications/cross-encoder/README.html", meta: "Read" },
+        { id: "rag-rerank-llm", label: "LLM-based rerankers — when worth the cost", href: "https://www.pinecone.io/learn/series/rag/rerankers/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Cross-encoder vs bi-encoder reranking: cost-vs-quality breakdown.",
+      "When does a reranker actually move the needle?",
+      "What's the operational cost of an LLM-judge reranker at scale?",
+    ],
+    references: [],
+  },
+  {
+    day: 37, title: "Greedy (cont.) + LLM evaluation", pillar: "generative-ai",
+    focus: "Gas Station / Hand of Straights + faithfulness, calibration, LLM-as-judge.",
+    tracks: [
+      { label: "DSA · Greedy", items: nc("Greedy", 4, 4) },
+      { label: "GenAI · Evaluation", items: [
+        { id: "llm-eval-faithfulness", label: "Faithfulness vs answer relevance vs citation accuracy (Ragas)", href: "https://docs.ragas.io/en/stable/concepts/metrics/index.html", meta: "Docs" },
+        { id: "llm-eval-judge", label: "LLM-as-judge calibration against humans", href: "https://huyenchip.com/2024/07/25/genai-platform.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through evaluating a RAG system end-to-end.",
+      "What goes wrong if you only measure BLEU or ROUGE?",
+      "How do you calibrate an LLM-judge against human ratings?",
+    ],
+    references: [],
+    topicId: "llm-evaluation",
+    questionIds: ["rag-eval"],
+  },
+  {
+    day: 38, title: "Intervals + Fine-tuning vs RAG vs prompt", pillar: "generative-ai",
+    focus: "Insert / Merge intervals + the fine-tune-only-when-prompt+RAG-plateaus rule.",
+    tracks: [
+      { label: "DSA · Intervals", items: nc("Intervals", 0, 4) },
+      { label: "GenAI · Fine-tuning", items: [
+        { id: "llm-lora", label: "LoRA / PEFT — what changes are made", href: "https://huggingface.co/docs/peft/index", meta: "Docs" },
+        { id: "llm-ft-vs-rag", label: "When fine-tuning beats RAG (and when it doesn't)", href: "https://huyenchip.com/2023/04/11/llm-engineering.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When would you fine-tune instead of doing prompt + RAG?",
+      "What does LoRA actually update — and why is the update so small?",
+      "How do you evaluate whether a fine-tune succeeded?",
+    ],
+    references: [],
+  },
+  {
+    day: 39, title: "Intervals finish + Agents", pillar: "generative-ai",
+    focus: "Meeting Rooms / Min-interval + planner / executor split.",
+    tracks: [
+      { label: "DSA · Intervals", items: nc("Intervals", 4, 2) },
+      { label: "GenAI · Agents", items: [
+        { id: "llm-agents", label: "Anthropic: Building effective agents", href: "https://www.anthropic.com/engineering/building-effective-agents", meta: "Read (canonical)" },
+        { id: "llm-tool-use", label: "Tool-use schemas + permissions", href: "https://platform.openai.com/docs/guides/function-calling", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When is a multi-agent architecture justified?",
+      "What's the planner / executor split, and why?",
+      "How do you stop an agent from looping on a failing tool?",
+    ],
+    references: [REF_OAI_DOCS],
+    topicId: "agents-and-guardrails",
+    questionIds: ["agent-architecture"],
+  },
+  {
+    day: 40, title: "Math & Geometry + Guardrails", pillar: "generative-ai",
+    focus: "Rotate Image / Spiral Matrix + layered guardrails (input → schema → policy → output).",
+    tracks: [
+      { label: "DSA · Math & Geometry", items: nc("Math & Geometry", 0, 4) },
+      { label: "GenAI · Safety", items: [
+        { id: "llm-jailbreak", label: "Prompt injection & jailbreaks (OWASP LLM Top 10)", href: "https://owasp.org/www-project-top-10-for-large-language-model-applications/", meta: "Reference" },
+        { id: "llm-guardrails", label: "Layered guardrail patterns (NeMo Guardrails)", href: "https://github.com/NVIDIA/NeMo-Guardrails", meta: "Reference" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through 4 guardrail layers — what each catches.",
+      "How do you red-team a customer-facing agent?",
+      "What's the right escalation behavior for an unsure LLM in a support context?",
+    ],
+    references: [],
+  },
+  {
+    day: 41, title: "Math (cont.) + System design framework", pillar: "ml-system-design",
+    focus: "Happy Number / Plus One + the reusable design scaffold.",
+    tracks: [
+      { label: "DSA · Math & Geometry", items: nc("Math & Geometry", 4, 4) },
+      { label: "ML system design · Framework", items: [
+        { id: "sd-framework", label: "Read: Chip Huyen — ML systems design TOC", href: "https://huyenchip.com/machine-learning-systems-design/toc.html", meta: "Read" },
+        { id: "sd-scaffold", label: "Memorize the scaffold: clarify → metrics → data → model → serving → monitoring → trade-off close", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through your design framework on a fresh prompt.",
+      "What goes wrong if you skip the metrics step?",
+      "How do you decide between batch vs realtime inference?",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN, REF_FSDL],
+    topicId: "system-design-framework",
+  },
+  {
+    day: 42, title: "Bit Manipulation + Data pipelines", pillar: "ml-system-design",
+    focus: "Single Number / 1-bits + batch vs streaming + idempotency.",
+    tracks: [
+      { label: "DSA · Bit Manipulation", items: nc("Bit Manipulation", 0, 4) },
+      { label: "ML system design · Data", items: [
+        { id: "sd-streaming", label: "When streaming beats batch", href: "https://www.confluent.io/learn/data-streaming/", meta: "Read" },
+        { id: "sd-schema-evol", label: "Schema evolution & backfill discipline", href: "https://docs.databricks.com/en/delta/update-schema.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When is streaming the right choice — and when is it just complexity?",
+      "Walk me through point-in-time correctness for a backfill.",
+      "How do you make a data pipeline idempotent?",
+    ],
+    references: [],
+  },
+  {
+    day: 43, title: "Bit (cont.) + Feature stores", pillar: "ml-system-design",
+    focus: "Counting Bits / XOR + online/offline parity, feature TTLs.",
+    tracks: [
+      { label: "DSA · Bit Manipulation", items: nc("Bit Manipulation", 4, 3) },
+      { label: "ML system design · Feature stores", items: [
+        { id: "sd-feast", label: "Feast / Tecton overview — what a feature store actually does", href: "https://docs.feast.dev/", meta: "Docs" },
+        { id: "sd-pit-correct", label: "Point-in-time correctness — the canonical bug", href: "https://www.tecton.ai/blog/time-travel-in-ml/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does a feature store earn its complexity vs become overhead?",
+      "Walk me through point-in-time correctness for a fraud model backfill.",
+      "How do you ensure offline / online parity over months?",
+    ],
+    references: [],
+    topicId: "feature-stores",
+    questionIds: ["feature-store-purpose"],
+  },
+  {
+    day: 44, title: "Reading + Online serving", pillar: "ml-system-design",
+    focus: "No new DSA today — read deeply + design serving for a 100ms p99 budget.",
+    tracks: [
+      { label: "Read · ML serving", items: [
+        { id: "sd-tritan", label: "Triton / KServe / Ray Serve — what each is for", href: "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html", meta: "Docs" },
+        { id: "sd-batching", label: "Dynamic batching for inference", href: "https://www.databricks.com/blog/dynamic-batching-llm-inference", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "sd-design-100ms", label: "Sketch a serving path for a ranking model under 100ms p99", meta: "Whiteboard" },
+        { id: "sd-fallback", label: "Add a graceful-degradation fallback", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Decompose a 100ms latency budget across feature fetch, model inference, and post-processing.",
+      "When does dynamic batching hurt latency more than it helps throughput?",
+      "What's a graceful-degradation strategy when the model tier saturates?",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN, REF_FSDL],
+    topicId: "online-serving-tradeoffs",
+    questionIds: ["architect-capacity-planning"],
+  },
+  {
+    day: 45, title: "Monitoring & drift", pillar: "mlops",
+    focus: "Separate infra / data / model monitoring; alerts that map to actions.",
+    tracks: [
+      { label: "Read · Monitoring", items: [
+        { id: "mlops-evidently", label: "Evidently AI — monitoring metrics catalog", href: "https://docs.evidentlyai.com/reference/all-metrics", meta: "Docs" },
+        { id: "mlops-drift", label: "KS / PSI for drift detection", href: "https://towardsdatascience.com/population-stability-index-psi-and-characteristic-stability-index-csi-for-machine-learning-2c1f15823e94/", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-design-monitor", label: "Design a monitoring stack for a fraud model with delayed labels", meta: "Whiteboard" },
+        { id: "mlops-playbook", label: "Write a playbook for one alert type", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Separate infra monitoring, data monitoring, and model monitoring — what's in each?",
+      "Walk me through monitoring a fraud model with 30-day label lag.",
+      "What's an example of an alert that doesn't map to an action — and how do you fix it?",
+    ],
+    references: [],
+    topicId: "monitoring-drift",
+    questionIds: ["monitoring-production"],
+  },
+  {
+    day: 46, title: "Case: Short-video recommendations (part 1)", pillar: "ml-system-design",
+    focus: "Read Yuan Meng's example doc + write your own framing on paper.",
+    tracks: [
+      { label: "Read · Recsys foundations", items: [
+        { id: "case-yt-twotower", label: "YouTube two-tower paper (Sampling-bias-corrected)", href: "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/", meta: "Paper" },
+        { id: "case-tiktok-mono", label: "Eugene Yan: System design for recommendations", href: "https://eugeneyan.com/writing/system-design-for-discovery/", meta: "Read" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-vid-clarify", label: "Clarification step: watch time vs retention vs creator diversity", meta: "Whiteboard" },
+        { id: "case-vid-stage-budgets", label: "Sketch the 3-stage architecture with latency budgets", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What product metric would you optimize for — watch time, retention, both?",
+      "How do you handle cold-start for new creators?",
+      "What's the role of an exploration budget in a feed?",
+    ],
+    references: [REF_YUAN_MENG_HURRY, REF_CHIP_HUYEN_DESIGN],
+    caseStudySlug: "video-recommendation",
+    questionIds: ["recommendation-design"],
+  },
+  {
+    day: 47, title: "Case: Short-video recommendations (part 2)", pillar: "ml-system-design",
+    focus: "Walk the case end-to-end out loud against the framework.",
+    tracks: [
+      { label: "Practice · Out loud", items: [
+        { id: "case-vid-mock", label: "Time yourself: 50-min mock on the prompt", meta: "Mock" },
+        { id: "case-vid-feedback", label: "Compare to the case page; note 3 gaps", href: "/case-studies/video-recommendation", meta: "Compare" },
+      ]},
+      { label: "Read · Re-ranking & feedback loops", items: [
+        { id: "case-vid-rerank", label: "Diversity in re-ranking (Eugene Yan)", href: "https://eugeneyan.com/writing/serendipity-and-accuracy-in-recommender-systems/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the one trade-off you'd defend hardest in this design?",
+      "How does your design degrade if the catalog 10x's overnight?",
+      "What feedback-loop pathology would you watch for after launch?",
+    ],
+    references: [],
+    caseStudySlug: "video-recommendation",
+  },
+  {
+    day: 48, title: "Case: Ads conversion (CTR) — part 1", pillar: "ml-system-design",
+    focus: "Frame the auction; calibration is the architect's word.",
+    tracks: [
+      { label: "Read · Ads ML", items: [
+        { id: "case-ads-criteo", label: "Criteo paper on display advertising (skim)", href: "https://arxiv.org/abs/1410.0696", meta: "Paper" },
+        { id: "case-ads-cal", label: "Why pCTR must be calibrated for an auction", href: "https://eugeneyan.com/writing/uncertainty-in-recommender-systems/", meta: "Read" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-ads-clarify", label: "Auction integration: bid × pCTR with quality adjustment", meta: "Whiteboard" },
+        { id: "case-ads-features", label: "Feature plan: user / ad / context / cross", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why does a ranking-only model break in an auction?",
+      "Walk me through how you'd detect calibration drift.",
+      "How do you handle delayed conversion labels?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+    caseStudySlug: "ad-click-prediction",
+  },
+  {
+    day: 49, title: "Case: Ads conversion (CTR) — part 2", pillar: "ml-system-design",
+    focus: "End-to-end mock + position bias + exploration slots.",
+    tracks: [
+      { label: "Practice · Out loud", items: [
+        { id: "case-ads-mock", label: "Time a 50-min mock on this prompt", meta: "Mock" },
+        { id: "case-ads-rollout", label: "Rollout plan: shadow → 1% → 5% → 25% with auto-rollback", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you mitigate position bias at training time?",
+      "What's a sane exploration budget for a new advertiser?",
+      "How would you split A/B traffic so you don't fool yourself with selection bias?",
+    ],
+    references: [],
+    caseStudySlug: "ad-click-prediction",
+  },
+  {
+    day: 50, title: "Catch-up · half DSA review, half ML review", pillar: "foundations",
+    focus: "Re-attempt 3 hardest LC problems + revisit the 3 weakest ML topics.",
+    tracks: [
+      { label: "DSA review", items: [
+        { id: "review-50-1", label: "Re-solve a previously stuck problem (any pattern)", meta: "30 min" },
+        { id: "review-50-2", label: "Re-solve another", meta: "30 min" },
+        { id: "review-50-3", label: "Re-solve a third", meta: "30 min" },
+      ]},
+      { label: "ML review", items: [
+        { id: "review-50-ml-1", label: "Pick 3 ML topics where you stalled — re-explain each cold", meta: "Concept" },
+        { id: "review-50-ml-2", label: "Update your gap list", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What pattern is still slowest for you, and why?",
+      "Which ML topic do you avoid in mocks? Confront it now.",
+    ],
+    references: [],
+  },
+  {
+    day: 51, title: "Case: Search ranking (part 1)", pillar: "ml-system-design",
+    focus: "Three-stage architecture: query understanding → retrieval → ranking.",
+    tracks: [
+      { label: "Read · Search ML", items: [
+        { id: "case-search-yan", label: "Eugene Yan — search ranking architecture", href: "https://eugeneyan.com/writing/search-query-matching/", meta: "Read" },
+        { id: "case-search-airbnb", label: "Airbnb listing embeddings paper", href: "https://www.kdd.org/kdd2018/accepted-papers/view/real-time-personalization-using-embeddings-for-search-ranking-at-airbnb", meta: "Paper" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-search-stages", label: "Sketch query understanding + retrieval + ranking with budgets", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you handle query understanding for ambiguous queries?",
+      "When does learning-to-rank beat a simple linear scoring function?",
+      "How would you cold-start search for a new geographic market?",
+    ],
+    references: [],
+    caseStudySlug: "search-ranking",
+  },
+  {
+    day: 52, title: "Case: Search ranking (part 2)", pillar: "ml-system-design",
+    focus: "End-to-end mock + cold-start + selection bias.",
+    tracks: [
+      { label: "Practice · Out loud", items: [
+        { id: "case-search-mock", label: "Time a 50-min mock", meta: "Mock" },
+        { id: "case-search-eval", label: "Write your offline + online eval plan", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What does NDCG@10 buy you that CTR doesn't?",
+      "How do you debias clicks for offline training?",
+      "What's an exposure-fairness metric, and when do you need one?",
+    ],
+    references: [],
+    caseStudySlug: "search-ranking",
+  },
+  {
+    day: 53, title: "Case: Fraud detection (part 1)", pillar: "ml-system-design",
+    focus: "Real-time scoring with imbalanced labels + reviewer queue capacity.",
+    tracks: [
+      { label: "Read · Fraud ML", items: [
+        { id: "case-fraud-stripe", label: "Stripe Radar overview", href: "https://stripe.com/radar", meta: "Read" },
+        { id: "case-fraud-graph", label: "Graph features for fraud", href: "https://www.tigergraph.com/solutions/fraud-detection/", meta: "Read" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-fraud-arch", label: "Sketch sync features + cached aggregates + slower enrichment", meta: "Whiteboard" },
+        { id: "case-fraud-threshold", label: "Per-segment threshold logic", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you handle the cost imbalance between false positives and false negatives?",
+      "When would you separate the model from the rules engine vs combine them?",
+      "How do you bootstrap labels for a brand-new fraud type?",
+    ],
+    references: [],
+    caseStudySlug: "fraud-detection",
+  },
+  {
+    day: 54, title: "Case: Fraud detection (part 2)", pillar: "ml-system-design",
+    focus: "End-to-end mock + delayed labels + reviewer SLA.",
+    tracks: [
+      { label: "Practice · Out loud", items: [
+        { id: "case-fraud-mock", label: "Time a 50-min mock", meta: "Mock" },
+        { id: "case-fraud-monitor", label: "Monitoring: score distribution, queue length, fraud-recall@FPR", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you keep the reviewer queue from blowing up after a model swap?",
+      "What's the corrective action when fraud-recall@FPR drops 2pp?",
+      "Survivorship bias in fraud labels — how do you mitigate?",
+    ],
+    references: [],
+    caseStudySlug: "fraud-detection",
+  },
+  {
+    day: 55, title: "Case: Enterprise RAG chatbot", pillar: "generative-ai",
+    focus: "Permissioned retrieval + citations + faithfulness.",
+    tracks: [
+      { label: "Read · Enterprise RAG", items: [
+        { id: "case-rag-langchain", label: "LangChain RAG cookbook", href: "https://python.langchain.com/docs/tutorials/rag/", meta: "Tutorial" },
+        { id: "case-rag-acl", label: "Permissioned retrieval patterns", href: "https://arxiv.org/abs/2305.13631", meta: "Paper" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-rag-arch", label: "Sketch ingest → ACL chunks → hybrid retrieval → rerank → cite", meta: "Whiteboard" },
+        { id: "case-rag-mock", label: "Time a 50-min mock", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Where do you enforce ACLs — at retrieval time or after generation? Why?",
+      "How do you test for permission leakage?",
+      "What's the right refusal behavior when retrieval is weak?",
+    ],
+    references: [REF_LANGCHAIN_RAG],
+    caseStudySlug: "enterprise-rag-chatbot",
+  },
+  {
+    day: 56, title: "Case: AI customer-support agent", pillar: "generative-ai",
+    focus: "Tool use + layered guardrails + tiered rollout.",
+    tracks: [
+      { label: "Read · Production agents", items: [
+        { id: "case-agent-anthropic", label: "Anthropic: building effective agents", href: "https://www.anthropic.com/engineering/building-effective-agents", meta: "Read" },
+        { id: "case-agent-klarna", label: "Klarna's customer-service AI assistant — public reports", href: "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/", meta: "Read" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-agent-arch", label: "Sketch action allowlist + planner/executor split", meta: "Whiteboard" },
+        { id: "case-agent-tiered", label: "Tiered rollout: shadow → read-only → tier-1 → tier-2", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's an example of an irreversible action that needs hard human-in-the-loop?",
+      "How do you keep the agent from looping on a failing tool?",
+      "What's your red-team plan for a customer-facing agent?",
+    ],
+    references: [REF_OAI_DOCS],
+    caseStudySlug: "customer-support-agent",
+  },
+  {
+    day: 57, title: "Case: LLM evaluation platform", pillar: "generative-ai",
+    focus: "Suites, runs, gates, regression detection across teams.",
+    tracks: [
+      { label: "Read · LLM eval platforms", items: [
+        { id: "case-eval-genai", label: "Chip Huyen — building a GenAI platform", href: "https://huyenchip.com/2024/07/25/genai-platform.html", meta: "Read" },
+        { id: "case-eval-ragas", label: "Ragas metrics catalog", href: "https://docs.ragas.io/", meta: "Docs" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-eval-arch", label: "Suite / run / gate object model + scoring layer", meta: "Whiteboard" },
+        { id: "case-eval-mock", label: "Time a 50-min mock", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you prevent teams from over-fitting to the eval suite (Goodhart)?",
+      "What's the failure mode of an LLM-judge calibrated only against itself?",
+      "How do you make releases gate-block on regressions without slowing iteration?",
+    ],
+    references: [],
+    caseStudySlug: "llm-evaluation-platform",
+  },
+  {
+    day: 58, title: "Case: Document intelligence", pillar: "generative-ai",
+    focus: "OCR + extraction + calibrated confidence + reviewer queue.",
+    tracks: [
+      { label: "Read · Document AI", items: [
+        { id: "case-doc-textract", label: "AWS Textract overview", href: "https://aws.amazon.com/textract/", meta: "Docs" },
+        { id: "case-doc-layoutlm", label: "LayoutLM family — what it does", href: "https://huggingface.co/docs/transformers/model_doc/layoutlmv3", meta: "Docs" },
+      ]},
+      { label: "Design · On paper", items: [
+        { id: "case-doc-arch", label: "Sketch ingest → OCR → layout → extract → validate → confidence → route", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you compute a calibrated per-field confidence?",
+      "When do you build vs buy for OCR?",
+      "What's the right routing rule between auto-accept and manual review?",
+    ],
+    references: [],
+    caseStudySlug: "document-intelligence",
+  },
+  {
+    day: 59, title: "Cross-case design rehearsal", pillar: "ml-system-design",
+    focus: "Pick one case you haven't drilled. Time a 60-min mock cold.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "case-cross-pick", label: "Pick a fresh case study", href: "/case-studies", meta: "Pick" },
+        { id: "case-cross-mock", label: "60-min mock with a peer or solo", meta: "Mock" },
+        { id: "case-cross-score", label: "Self-score against the framework", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What did you skip under time pressure?",
+      "Where did you wave hands?",
+      "What's the one trade-off you'd defend hardest if pushed?",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN],
+  },
+  {
+    day: 60, title: "Architect trade-off playbook drill", pillar: "ml-system-design",
+    focus: "Memorize the 6 architect trade-offs you'll be asked to defend.",
+    tracks: [
+      { label: "Read & rehearse", items: [
+        { id: "tradeoff-batch-realtime", label: "Batch vs real-time inference", meta: "Concept" },
+        { id: "tradeoff-ft-rag-prompt", label: "Fine-tune vs RAG vs prompt", meta: "Concept" },
+        { id: "tradeoff-build-buy", label: "Build vs buy", meta: "Concept" },
+        { id: "tradeoff-central-fed", label: "Centralized platform vs team-owned", meta: "Concept" },
+        { id: "tradeoff-acc-cost-lat", label: "Accuracy vs cost vs latency cascade", meta: "Concept" },
+        { id: "tradeoff-retrain-monitor", label: "Retrain cadence vs monitoring", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When do you default to streaming vs batch?",
+      "When does fine-tuning beat RAG?",
+      "How do you make a build-vs-buy decision reversible?",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN],
+    questionIds: ["architect-build-vs-buy", "architect-multi-tenant-isolation"],
+  },
+  {
+    day: 61, title: "Training pipelines", pillar: "mlops",
+    focus: "Reliable, reproducible training from data to artifact.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-airflow", label: "Pipeline orchestration: Airflow / Prefect / Dagster", href: "https://www.dagster.io/blog/dagster-airflow-prefect", meta: "Read" },
+        { id: "mlops-distributed", label: "Distributed training (DDP, FSDP, ZeRO)", href: "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html", meta: "Tutorial" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-trigger", label: "Write retraining triggers (drift, time, label volume)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When do you actually need DDP / FSDP vs single-node?",
+      "What's a sane retraining trigger that isn't just calendar-based?",
+      "How do you ensure pipeline lineage end-to-end?",
+    ],
+    references: [REF_FSDL],
+  },
+  {
+    day: 62, title: "Model registry + CI/CD", pillar: "mlops",
+    focus: "Promote models like code: tests gate promotion, rollback is first-class.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-mlflow", label: "MLflow Model Registry — what it stores", href: "https://mlflow.org/docs/latest/model-registry.html", meta: "Docs" },
+        { id: "mlops-cicd", label: "CI/CD for ML — what's different from app CI", href: "https://martinfowler.com/articles/cd4ml.html", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-gate", label: "Define promotion gates (offline metric, fairness, calibration)", meta: "Whiteboard" },
+        { id: "mlops-rollback", label: "Define rollback playbook", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What gates the promotion from dev → staging → prod?",
+      "How do you make rollback deterministic?",
+      "Why is auto-promote dangerous?",
+    ],
+    references: [],
+    topicId: "model-registry-cicd",
+  },
+  {
+    day: 63, title: "Deployment strategies", pillar: "mlops",
+    focus: "Shadow → canary → progressive rollout that protects users.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-shadow", label: "Shadow mode vs canary vs blue-green", href: "https://martinfowler.com/bliki/CanaryRelease.html", meta: "Read" },
+        { id: "mlops-multi-region", label: "Multi-region ML deployment patterns", href: "https://aws.amazon.com/blogs/machine-learning/", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-rollout-trigger", label: "Auto-rollback triggers (SLO breach, regression on guardrail)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the difference between shadow mode and canary?",
+      "When does blue-green not work for ML?",
+      "How do you handle model state during a region failover?",
+    ],
+    references: [],
+  },
+  {
+    day: 64, title: "Observability for ML", pillar: "mlops",
+    focus: "Logs, metrics, traces — and the model-specific overlay.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-otel", label: "OpenTelemetry overview", href: "https://opentelemetry.io/docs/concepts/", meta: "Docs" },
+        { id: "mlops-prom-grafana", label: "Prometheus + Grafana for ML serving", href: "https://prometheus.io/docs/practices/instrumentation/", meta: "Docs" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-trace", label: "Trace propagation through inference (request → features → model → response)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the model-specific overlay on top of standard observability?",
+      "How do you correlate a slow request to a specific model version?",
+      "Walk me through a dashboard you'd actually use in an incident.",
+    ],
+    references: [],
+  },
+  {
+    day: 65, title: "Incident response & rollback", pillar: "mlops",
+    focus: "Run a model incident the way SRE runs a service incident.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-postmortem", label: "Google SRE: blameless postmortems", href: "https://sre.google/sre-book/postmortem-culture/", meta: "Read" },
+        { id: "mlops-incident-ml", label: "ML-specific incident patterns", href: "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-pm-template", label: "Write a 1-page postmortem template for an ML incident", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the difference between a fix-forward and a rollback decision?",
+      "Walk me through your first 10 minutes of a model regression incident.",
+      "How do you make sure a postmortem actually changes behavior?",
+    ],
+    references: [],
+  },
+  {
+    day: 66, title: "Cost & capacity planning", pillar: "mlops",
+    focus: "Per-request cost decomposition + small-first cascade routing.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-llm-cost", label: "Reducing LLM cost: caching, routing, batching", href: "https://blog.langchain.dev/reducing-the-cost-of-llm-applications/", meta: "Read" },
+        { id: "mlops-gpu-util", label: "GPU utilization + batch sizing", href: "https://www.databricks.com/blog/optimize-gpu-utilization-llm-inference", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through cost decomposition for a single LLM request.",
+      "When does a small-first cascade beat a single large model?",
+      "How do you make a cost dashboard actionable for product teams?",
+    ],
+    references: [],
+    questionIds: ["architect-cost-optimization"],
+  },
+  {
+    day: 67, title: "LLMOps specifics", pillar: "generative-ai",
+    focus: "Prompt versioning, model routing, regression gating.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "llmops-versioning", label: "Versioning prompts + models + retrieval together", href: "https://huyenchip.com/2024/07/25/genai-platform.html", meta: "Read" },
+        { id: "llmops-routing", label: "Model routing by uncertainty / cost / risk", href: "https://eugeneyan.com/writing/llm-patterns/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why version prompt + model + retrieval as one artifact?",
+      "How do you decide a request goes to GPT-4o vs a smaller model?",
+      "What's a release-time regression gate look like for an LLM feature?",
+    ],
+    references: [REF_OAI_DOCS],
+  },
+  {
+    day: 68, title: "Multi-tenant ML systems", pillar: "ml-system-design",
+    focus: "Compute / data / policy isolation by risk tier.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mt-isolation", label: "Multi-tenant SaaS isolation patterns", href: "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/", meta: "Read" },
+        { id: "mt-cost-attr", label: "Cost attribution across tenants", href: "https://www.kubecost.com/blog/multi-tenancy/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Compute / data / policy isolation — when does each level apply?",
+      "How do you do per-tenant quotas without starving small tenants?",
+      "What's the simplest audit log that catches cross-tenant leakage?",
+    ],
+    references: [],
+    questionIds: ["architect-multi-tenant-isolation"],
+  },
+  {
+    day: 69, title: "Privacy + compliance", pillar: "mlops",
+    focus: "Bake privacy in, not after.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "priv-min", label: "Data minimization & retention windows (GDPR)", href: "https://gdpr.eu/data-minimization/", meta: "Read" },
+        { id: "priv-dp", label: "Differential privacy in ML — quick intro", href: "https://github.com/google/differential-privacy", meta: "Reference" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you minimize PII flow through an ML pipeline?",
+      "When is differential privacy worth the accuracy cost?",
+      "What goes into an audit log for inference?",
+    ],
+    references: [],
+  },
+  {
+    day: 70, title: "Build vs buy + migration planning", pillar: "ml-system-design",
+    focus: "Vector stores, feature platforms, eval tooling — when each.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "bvb-framework", label: "Build vs buy framework", href: "https://martinfowler.com/articles/build-or-buy.html", meta: "Read" },
+        { id: "mig-zero-down", label: "Zero-downtime migration patterns (Stripe)", href: "https://stripe.com/blog/online-migrations", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Frame a build-vs-buy answer as a reversible decision with explicit triggers.",
+      "Walk me through a zero-downtime migration with shadow + parity + ramp.",
+      "What's the rollback trigger you'd commit to for the migration?",
+    ],
+    references: [],
+    questionIds: ["architect-build-vs-buy", "architect-migration-plan"],
+  },
+  {
+    day: 71, title: "ML infra design mock", pillar: "ml-system-design",
+    focus: "60-minute infra-flavored design round.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "infra-mock-pick", label: "Pick a serving + monitoring + retraining prompt", meta: "Pick" },
+        { id: "infra-mock-run", label: "60-min mock", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Defend latency budgets, scaling, fallback paths.",
+      "Trade-off close: which axis would you protect hardest?",
+      "What's your incident playbook for this system?",
+    ],
+    references: [],
+  },
+  {
+    day: 72, title: "OOP fundamentals + design patterns", pillar: "foundations",
+    focus: "Classes, inheritance, polymorphism + Singleton / Factory / Observer / Strategy.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "oop-solid", label: "SOLID principles — short reference", href: "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design", meta: "Read" },
+        { id: "oop-patterns", label: "Refactoring.guru — design patterns catalog", href: "https://refactoring.guru/design-patterns", meta: "Reference" },
+      ]},
+      { label: "Practice", items: [
+        { id: "oop-impl-singleton", label: "Implement Singleton + Factory in your language", meta: "Code" },
+        { id: "oop-impl-observer", label: "Implement Observer + Strategy", meta: "Code" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Explain Liskov Substitution and Single Responsibility in 30 seconds each.",
+      "When does Factory beat direct construction?",
+      "Where would Observer fit in an ML system?",
+    ],
+    references: [],
+  },
+  {
+    day: 73, title: "Concurrency basics", pillar: "foundations",
+    focus: "Threads, locks, async — what each is for.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "conc-gil", label: "Python GIL: threading vs asyncio vs multiprocessing", href: "https://realpython.com/python-gil/", meta: "Read" },
+        { id: "conc-pat", label: "Producer / consumer pattern", href: "https://en.wikipedia.org/wiki/Producer-consumer_problem", meta: "Read" },
+      ]},
+      { label: "Practice", items: [
+        { id: "conc-impl-pc", label: "Implement bounded producer/consumer with a queue + lock", meta: "Code" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does asyncio beat threading in Python? When does it lose?",
+      "Why is GIL not a problem for ML training but is one for ML serving?",
+      "Walk through a deadlock scenario you'd avoid.",
+    ],
+    references: [],
+  },
+  {
+    day: 74, title: "OOP design problems", pillar: "foundations",
+    focus: "Walk an OOP design problem end to end (Parking Lot, Cache, Rate Limiter).",
+    tracks: [
+      { label: "Practice · Out loud", items: [
+        { id: "oop-parking", label: "Design Parking Lot — classes, methods, edge cases, scale-up", meta: "Whiteboard" },
+        { id: "oop-cache", label: "Design Cache (LRU + TTL)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through requirements → classes → methods for a parking lot.",
+      "How would you extend your cache to be thread-safe?",
+      "What's the right way to handle concurrent updates to the LRU?",
+    ],
+    references: [],
+  },
+  {
+    day: 75, title: "AI-assisted coding round practice", pillar: "foundations",
+    focus: "Practice the new AI-pair-programming round style.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "ai-pair-pick", label: "Pick a medium-hard problem you haven't seen", meta: "Pick" },
+        { id: "ai-pair-do", label: "Solve with AI assistance (Cursor / Copilot / chat); narrate your decisions", meta: "Code" },
+        { id: "ai-pair-reflect", label: "Reflect: where did you over-trust the AI? Where did you correctly override?", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When did the AI suggestion match what you'd have written?",
+      "Where did you override it and why?",
+      "How would you describe your AI workflow to an interviewer in 60 seconds?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+  },
+  {
+    day: 76, title: "Company-tag drilling — target #1", pillar: "foundations",
+    focus: "5-7 problems from your highest-priority company tag.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "tag1-1", label: "Solve 5-7 from your top company's LC tag", href: "https://leetcode.com/problemset/", meta: "Practice" },
+        { id: "tag1-notes", label: "After each, write the 'pattern + trick' in 1 line", meta: "Notes" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What pattern recurs in this company's questions?",
+      "What tricks come up that don't come up elsewhere?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+  },
+  {
+    day: 77, title: "Company-tag drilling — target #2", pillar: "foundations",
+    focus: "Switch to second company; compare styles.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "tag2-1", label: "Solve 5-7 from a second company's tag", href: "https://leetcode.com/problemset/", meta: "Practice" },
+        { id: "tag2-compare", label: "Compare: how does this company's style differ?", meta: "Notes" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What patterns are common to both companies — drill those first.",
+      "Which tag was harder, and why?",
+    ],
+    references: [],
+  },
+  {
+    day: 78, title: "ML model design mock", pillar: "ml-system-design",
+    focus: "60-min full case from cold-start to monitoring.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "model-mock-pick", label: "Pick a fresh case study", href: "/case-studies", meta: "Pick" },
+        { id: "model-mock-run", label: "60-min mock", meta: "Mock" },
+        { id: "model-mock-score", label: "Trade-off close: name the one trade-off you'd defend hardest", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the one trade-off you'd defend hardest?",
+      "Where did you wave hands?",
+      "What's your residual risk monitoring plan?",
+    ],
+    references: [],
+  },
+  {
+    day: 79, title: "Catch-up + DSA hard practice", pillar: "foundations",
+    focus: "Tackle 2 LC Hards from your weakest category.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "hard-1", label: "Pick 1 Hard from your weakest pattern; spend up to 60 min", meta: "Mock" },
+        { id: "hard-2", label: "Pick another Hard from a different weak pattern", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What stalled you?",
+      "What's the simplification you'd verbalize next time?",
+    ],
+    references: [],
+  },
+  {
+    day: 80, title: "Behavioral · Resume rewrite", pillar: "behavioral-storytelling",
+    focus: "Quantify outcomes; lead with the decision you owned.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-resume", label: "Rewrite each bullet as 'I decided X under Y constraints; result was Z'", meta: "Doc" },
+        { id: "beh-resume-cut", label: "Cut anything you can't defend in 60 seconds", meta: "Doc" },
+        { id: "beh-resume-verify", label: "Verify every metric you cite — interviewers will ask", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the decision behind each top-line bullet?",
+      "Which bullet would you remove if asked to cut to 5?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+  },
+  {
+    day: 81, title: "Behavioral · Career story", pillar: "behavioral-storytelling",
+    focus: "3-minute version that lands the arc.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-career-3m", label: "Write the 3-minute version: what got you in, the pivots, what you want next", meta: "Doc" },
+        { id: "beh-career-mock", label: "Practice with a peer; ask for the part that felt slow", meta: "Mock" },
+        { id: "beh-career-trim", label: "Tighten until it lands in under 4 minutes", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why ML, why now, why this team?",
+      "Tell me about your most recent decision to switch focus.",
+    ],
+    references: [],
+  },
+  {
+    day: 82, title: "Behavioral · Most complex project deep dive", pillar: "behavioral-storytelling",
+    focus: "Be ready for follow-ups two layers deep.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-proj-brief", label: "Write a one-page brief: problem, decision, alternatives, outcome, what you'd change", meta: "Doc" },
+        { id: "beh-proj-followups", label: "Anticipate 3 follow-ups: technical, organizational, hindsight", meta: "Doc" },
+        { id: "beh-proj-time", label: "Practice the 90-second + the 5-minute versions", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What was the riskiest decision you made in this project?",
+      "What would you change if you ran it again?",
+      "How did you measure success — and was that the right metric?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+    topicId: "project-storytelling",
+  },
+  {
+    day: 83, title: "Behavioral · Ownership / failure story", pillar: "behavioral-storytelling",
+    focus: "Show learning without minimizing impact.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-fail-star", label: "Write one failure story in STAR format", meta: "Doc" },
+        { id: "beh-fail-action", label: "Make sure the corrective action is concrete (process / metric / system)", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Tell me about a project where your model failed after deployment.",
+      "What process changed because of this?",
+      "What would you do earlier next time?",
+    ],
+    references: [],
+    topicId: "behavioral-ownership",
+    questionIds: ["story-failure"],
+  },
+  {
+    day: 84, title: "Behavioral · Conflict / disagreement story", pillar: "behavioral-storytelling",
+    focus: "Demonstrate disagreement without making the other side look bad.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-conflict", label: "Pick a real disagreement (technical or cross-functional)", meta: "Doc" },
+        { id: "beh-conflict-frame", label: "Frame as 'we wanted different things, here's how we aligned'", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Tell me about a time you disagreed with your manager.",
+      "How do you decide when to escalate vs let it go?",
+    ],
+    references: [],
+  },
+  {
+    day: 85, title: "Behavioral · Leadership / influence story", pillar: "behavioral-storytelling",
+    focus: "Cross-team alignment without inflating your title.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "beh-lead", label: "Pick a moment you influenced a decision outside your reporting line", meta: "Doc" },
+        { id: "beh-lead-rfc", label: "Show the framing / RFC / data you used", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through a time you influenced a decision outside your team.",
+      "What's an RFC you've written that changed direction?",
+    ],
+    references: [],
+  },
+  {
+    day: 86, title: "Behavioral · Company-specific prep", pillar: "behavioral-storytelling",
+    focus: "Tailor stories to each target company's value rubric.",
+    tracks: [
+      { label: "Research", items: [
+        { id: "beh-company-read", label: "Read recent posts / blog / RFCs from your top companies", meta: "Read" },
+        { id: "beh-company-map", label: "Map your existing stories to their stated values", meta: "Doc" },
+        { id: "beh-company-q", label: "Prepare 2 questions per round per interviewer", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why this company, specifically?",
+      "What's your strongest value-match story for this company?",
+    ],
+    references: [],
+  },
+  {
+    day: 87, title: "Coding mock — Meta style", pillar: "foundations",
+    focus: "Fast classic mediums; you must finish without stalling.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-meta-1", label: "Solve 2 fresh mediums in under 22 minutes each", meta: "Timed" },
+        { id: "mock-meta-talk", label: "Verbalize trade-offs continuously", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why this approach over alternatives?",
+      "What's your test plan?",
+      "How would you scale this if input is 10x?",
+    ],
+    references: [],
+  },
+  {
+    day: 88, title: "Coding mock — Google style", pillar: "foundations",
+    focus: "Hard LC: graph or DP, with elegant simplification.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-google-1", label: "Pick a Hard from your weak pattern", meta: "Pick" },
+        { id: "mock-google-design", label: "Spend 5 minutes designing before coding", meta: "Concept" },
+        { id: "mock-google-iterate", label: "If you stall, talk through alternatives — Google rewards reasoning", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through your design before any code.",
+      "What invariant does your solution preserve?",
+      "What's a slower-but-clearer alternative?",
+    ],
+    references: [],
+  },
+  {
+    day: 89, title: "Coding mock — OpenAI / OOP style", pillar: "foundations",
+    focus: "Object-modeling design problem under interview pressure.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-oai-pick", label: "Pick an OOP design problem (Cache, Queue, Rate Limiter)", meta: "Pick" },
+        { id: "mock-oai-walk", label: "Walk requirements → classes → methods → extension question", meta: "Whiteboard" },
+        { id: "mock-oai-prep", label: "Be ready for a non-standard behavior round + project presentation", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What classes would you need? What's the interface for each?",
+      "How would you extend this to be distributed?",
+      "What test cases would you write first?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+  },
+  {
+    day: 90, title: "ML model design mock — full case", pillar: "ml-system-design",
+    focus: "60-min full case round, scored honestly.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-model-pick", label: "Pick a fresh case study you haven't drilled in this round", href: "/case-studies", meta: "Pick" },
+        { id: "mock-model-run", label: "Use the framework start to finish in 60 min", meta: "Mock" },
+        { id: "mock-model-score", label: "Trade-off close: name the one trade-off you'd defend hardest", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's your one-sentence framing of the problem?",
+      "What's the metric you'd put on the team's wall?",
+      "What would you cut from this design if you only had 4 weeks to ship?",
+    ],
+    references: [],
+  },
+  {
+    day: 91, title: "ML infra design mock — full case", pillar: "ml-system-design",
+    focus: "60-min infra-flavored design (serving + monitoring + retraining).",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-infra-prompt", label: "Use a prompt focused on serving / scale / cost", meta: "Pick" },
+        { id: "mock-infra-run", label: "60-min mock with a peer or solo", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Defend latency budgets, scaling, fallback paths.",
+      "What's your incident playbook for this system?",
+    ],
+    references: [REF_YUAN_MENG_HURRY],
+  },
+  {
+    day: 92, title: "GenAI / RAG design mock", pillar: "generative-ai",
+    focus: "Architecture round with evals + guardrails included.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-genai-pick", label: "Pick an enterprise GenAI prompt", meta: "Pick" },
+        { id: "mock-genai-run", label: "60-min mock", meta: "Mock" },
+        { id: "mock-genai-cover", label: "Cover RAG, evals, cost, safety — end to end", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's your faithfulness eval design?",
+      "How do you cap cost per request?",
+      "What's the rollback trigger?",
+    ],
+    references: [REF_LANGCHAIN_RAG],
+  },
+  {
+    day: 93, title: "Behavioral mock — 6 prompts back to back", pillar: "behavioral-storytelling",
+    focus: "Behavioral stamina + opener variations.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-beh-6", label: "Run 6 behavioral prompts in 45 min, recorded", meta: "Mock" },
+        { id: "mock-beh-review", label: "Watch back; trim filler; sharpen openers", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Tell me about a time you owned an ambiguous problem.",
+      "Tell me about a time you disagreed with data.",
+      "Tell me about a project that didn't ship.",
+    ],
+    references: [],
+  },
+  {
+    day: 94, title: "Cross-pillar weak-area repair (round 1)", pillar: "foundations",
+    focus: "Spend the full session on the gap list, nothing else.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "gap-pick", label: "Pick 3 weakest prompts from your gap list", meta: "Pick" },
+        { id: "gap-redo", label: "Re-answer cold, then revisit notes", meta: "Mock" },
+        { id: "gap-confirm", label: "Confirm they leave the gap list", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What pattern is still slowest for you?",
+      "Which ML topic do you avoid in mocks?",
+    ],
+    references: [],
+  },
+  {
+    day: 95, title: "End-to-end design rehearsal", pillar: "ml-system-design",
+    focus: "One unfamiliar design prompt, performed cleanly.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "rehearse-pick", label: "Use a prompt you haven't drilled", meta: "Pick" },
+        { id: "rehearse-run", label: "Frame, design, trade off in 60 minutes", meta: "Mock" },
+        { id: "rehearse-peer", label: "Have a peer score against signals", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's your trade-off close?",
+      "Where did you wave hands?",
+      "What's your residual risk plan?",
+    ],
+    references: [],
+  },
+  {
+    day: 96, title: "Story rehearsal & timing", pillar: "behavioral-storytelling",
+    focus: "Time every story, kill filler, sharpen openers.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "story-trim", label: "Trim each story to 2-4 minutes", meta: "Doc" },
+        { id: "story-decision", label: "Lead with the decision, not setup", meta: "Concept" },
+        { id: "story-openers", label: "Drill 3 opener variations per story", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through your shortest story.",
+      "What's the strongest version of your failure story?",
+    ],
+    references: [],
+  },
+  {
+    day: 97, title: "Coding mock — fresh medium under 25 min", pillar: "foundations",
+    focus: "Speed, not novelty.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "mock-fast-1", label: "Solve a fresh medium in under 25 minutes", meta: "Timed" },
+        { id: "mock-fast-2", label: "Repeat with a different pattern", meta: "Timed" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What slowed you down?",
+      "Which step were you over-thinking?",
+    ],
+    references: [],
+  },
+  {
+    day: 98, title: "Cross-pillar weak-area repair (round 2)", pillar: "foundations",
+    focus: "Tighten the gap list one more pass.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "gap2-1", label: "Re-attempt 2 weakest concept prompts cold", meta: "Mock" },
+        { id: "gap2-2", label: "Re-attempt 2 weakest LC patterns", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's left on the gap list?",
+      "What's the cheapest move that closes it?",
+    ],
+    references: [],
+  },
+  {
+    day: 99, title: "Read deeply: 1 paper + 1 case", pillar: "ml-system-design",
+    focus: "Build context for follow-up questions you might get.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "deep-paper", label: "Pick 1 paper relevant to your target team's work; skim", meta: "Read" },
+        { id: "deep-case", label: "Re-read 1 case study and write 5 follow-up questions you'd expect", href: "/case-studies", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What does this paper get right?",
+      "What's a critique you could voice?",
+    ],
+    references: [],
+  },
+  {
+    day: 100, title: "Mock sprint — DSA Hard + ML design", pillar: "foundations",
+    focus: "60 min DSA Hard then 60 min ML design back to back.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "sprint-hard", label: "DSA Hard, 60 min", meta: "Timed" },
+        { id: "sprint-design", label: "ML design, 60 min", meta: "Mock" },
+        { id: "sprint-review", label: "Capture residual gaps for tomorrow", meta: "Review" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Where did fatigue cost you?",
+      "Did the design quality drop after the coding round?",
+    ],
+    references: [],
+  },
+  {
+    day: 101, title: "Mock sprint — GenAI design + behavioral", pillar: "generative-ai",
+    focus: "60 min GenAI design then 30 min behavioral.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "sprint-genai", label: "GenAI design, 60 min", meta: "Mock" },
+        { id: "sprint-beh", label: "Behavioral, 30 min, 5 prompts", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Did the behavioral feel rote after the design round?",
+      "Where can you tighten?",
+    ],
+    references: [],
+  },
+  {
+    day: 102, title: "Cost / latency / quality cascade — mini design", pillar: "ml-system-design",
+    focus: "Drill the cascade trade-off until it's automatic.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "cascade-pick", label: "Pick a system where cascading would help; sketch it", meta: "Whiteboard" },
+        { id: "cascade-num", label: "Estimate cost / quality across 3 tiers", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does a cascade hurt instead of help?",
+      "How do you keep the cascade from drifting silently?",
+    ],
+    references: [],
+    questionIds: ["architect-cost-optimization"],
+  },
+  {
+    day: 103, title: "Read & rehearse: monitoring playbooks", pillar: "mlops",
+    focus: "Make 'what would you alert on' an automatic answer.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "monit-yan", label: "Practical guide to maintaining ML (Eugene Yan)", href: "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/", meta: "Read" },
+      ]},
+      { label: "Practice", items: [
+        { id: "monit-write", label: "Write a 1-page monitoring playbook for one of your case studies", meta: "Doc" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the alert that maps directly to a known action?",
+      "How do you avoid alert fatigue?",
+    ],
+    references: [],
+  },
+  {
+    day: 104, title: "Project deep dive practice — recorded", pillar: "behavioral-storytelling",
+    focus: "Record yourself, watch back, kill filler.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "rec-proj", label: "Record the 5-minute project deep dive", meta: "Mock" },
+        { id: "rec-review", label: "Watch back; mark every filler word", meta: "Review" },
+        { id: "rec-redo", label: "Re-record without the filler", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the riskiest decision you made?",
+      "What would you change?",
+    ],
+    references: [],
+  },
+  {
+    day: 105, title: "Mid-funnel rest day (light review)", pillar: "behavioral-storytelling",
+    focus: "Don't add new content. Recovery compounds.",
+    tracks: [
+      { label: "Light review", items: [
+        { id: "rest-resume", label: "Skim your resume and 1-page project brief", meta: "Read" },
+        { id: "rest-walk", label: "Do something physical — walk, run, gym", meta: "Recovery" },
+        { id: "rest-sleep", label: "Sleep 8+ hours tonight", meta: "Recovery" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 106, title: "Cross-loop simulation: morning coding + afternoon design", pillar: "foundations",
+    focus: "Simulate a real onsite cadence.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "sim-am", label: "AM: 2 coding rounds (45 min each)", meta: "Timed" },
+        { id: "sim-pm", label: "PM: 1 model design + 1 infra design (60 min each)", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Where did stamina fail?",
+      "What would you eat / drink to fix it?",
+    ],
+    references: [],
+  },
+  {
+    day: 107, title: "Cross-loop simulation: behavioral + GenAI", pillar: "generative-ai",
+    focus: "Simulate the second half of an onsite.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "sim2-beh", label: "AM: 1 behavioral round (45 min, 5 prompts)", meta: "Mock" },
+        { id: "sim2-genai", label: "PM: 1 GenAI design + 1 trade-off discussion", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What story did you over-explain?",
+      "Where did the GenAI design feel formulaic?",
+    ],
+    references: [],
+  },
+  {
+    day: 108, title: "Final weak-area repair", pillar: "foundations",
+    focus: "Last pass on the gap list.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "final-gap-1", label: "Pick the single weakest item; spend 60 min", meta: "Mock" },
+        { id: "final-gap-2", label: "Pick the second weakest; spend 30 min", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Is the gap list short enough to walk in?",
+    ],
+    references: [],
+  },
+  {
+    day: 109, title: "Story polishing — final pass", pillar: "behavioral-storytelling",
+    focus: "Land every story without notes.",
+    tracks: [
+      { label: "Practice", items: [
+        { id: "polish-3", label: "Run through 3 stories cold; time each", meta: "Mock" },
+        { id: "polish-followup", label: "Practice the 3 most likely follow-ups for each", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Which story still needs work?",
+    ],
+    references: [],
+  },
+  {
+    day: 110, title: "Final design rehearsal — fresh prompt", pillar: "ml-system-design",
+    focus: "One last cold design.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "final-design-pick", label: "Pick a prompt you haven't seen this whole round", meta: "Pick" },
+        { id: "final-design-run", label: "60-min mock", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Was the framework muscle memory or did you have to think about it?",
+      "Where would a senior interviewer push you next?",
+    ],
+    references: [],
+  },
+  {
+    day: 111, title: "Taper: light review only", pillar: "behavioral-storytelling",
+    focus: "No new material. Skim what's already strong.",
+    tracks: [
+      { label: "Light review", items: [
+        { id: "taper-resume", label: "Re-read resume + 1-page project brief", meta: "Read" },
+        { id: "taper-tradeoffs", label: "Skim the trade-off playbook once", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 112, title: "Taper: 1 light coding mock + walk", pillar: "foundations",
+    focus: "Stay sharp without burning out.",
+    tracks: [
+      { label: "Light", items: [
+        { id: "taper-mock", label: "1 medium LC, 25 min, no Hard", meta: "Timed" },
+        { id: "taper-walk", label: "Walk 30 min — let it absorb", meta: "Recovery" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 113, title: "Taper: 1 design rehearsal — favorite case", pillar: "ml-system-design",
+    focus: "Run a familiar case to stay in flow.",
+    tracks: [
+      { label: "Light", items: [
+        { id: "taper-fav", label: "Pick a case you know well; run it cleanly in 45 min", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 114, title: "Taper: behavioral skim + sleep", pillar: "behavioral-storytelling",
+    focus: "Read your stories once. Sleep early.",
+    tracks: [
+      { label: "Light", items: [
+        { id: "taper-beh-read", label: "Read each story once. No re-recording.", meta: "Read" },
+        { id: "taper-sleep", label: "Sleep 8+ hours", meta: "Recovery" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 115, title: "Logistics + setup", pillar: "behavioral-storytelling",
+    focus: "Set up the week-of-interview the way athletes taper.",
+    tracks: [
+      { label: "Logistics", items: [
+        { id: "log-cal", label: "Calendar holds for sleep + meals + walks", meta: "Setup" },
+        { id: "log-tools", label: "Verify hardware: webcam, mic, charger, IDE setup", meta: "Setup" },
+        { id: "log-mental", label: "One mental rehearsal of the worst case", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 116, title: "Light: 5 quick LC easy + skim resume", pillar: "foundations",
+    focus: "Warm up without strain.",
+    tracks: [
+      { label: "Light", items: [
+        { id: "warm-easy", label: "5 LC Easy, no time pressure", meta: "Practice" },
+        { id: "warm-resume", label: "Skim resume. Memorize bullet decisions.", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 117, title: "Light: 1 short design + behavioral skim", pillar: "ml-system-design",
+    focus: "Stay loose.",
+    tracks: [
+      { label: "Light", items: [
+        { id: "light-design-30", label: "30-min design rehearsal — your strongest case", meta: "Mock" },
+        { id: "light-beh-skim", label: "Read each story silently", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 118, title: "Off day — full rest", pillar: "behavioral-storytelling",
+    focus: "No prep. Full reset.",
+    tracks: [
+      { label: "Off", items: [
+        { id: "off-fun", label: "Do something fun — not interview-related", meta: "Recovery" },
+        { id: "off-sleep", label: "Sleep 8+ hours", meta: "Recovery" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 119, title: "Final glance: framework + trade-offs + 1 story", pillar: "ml-system-design",
+    focus: "5-minute scan of the framework + 5-minute scan of trade-offs + 1 story.",
+    tracks: [
+      { label: "5-min reads", items: [
+        { id: "scan-frame", label: "Scan the design framework once", meta: "Read" },
+        { id: "scan-trade", label: "Scan the 6 trade-offs once", meta: "Read" },
+        { id: "scan-story", label: "Run through your strongest story silently", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
+  {
+    day: 120, title: "Walk in — trust the prep", pillar: "behavioral-storytelling",
+    focus: "Don't add new content. Listen, breathe, perform.",
+    tracks: [
+      { label: "Day-of", items: [
+        { id: "go-water", label: "Hydrate, eat something, do not over-caffeinate", meta: "Day-of" },
+        { id: "go-listen", label: "Listen first; clarify before designing", meta: "Concept" },
+        { id: "go-trust", label: "Trust the prep — the gap list is short enough", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [],
+    references: [],
+  },
 ];
 
 export function getDayPlan(day: number) {
   return dailyPlan.find((entry) => entry.day === day);
+}
+
+export function dayItemCount(plan: DayPlan) {
+  return plan.tracks.reduce((sum, t) => sum + t.items.length, 0);
+}
+
+export function dayItemIds(plan: DayPlan) {
+  return plan.tracks.flatMap((t) => t.items.map((i) => i.id));
 }
 
 export function getRoadmapHref(slug: RoadmapSlug) {

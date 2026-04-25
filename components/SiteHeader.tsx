@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import AuthButtons from "@/components/AuthButtons";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV = [
@@ -38,6 +39,7 @@ export default function SiteHeader() {
             ))}
           </nav>
           <ThemeToggle />
+          <AuthButtons />
         </div>
 
         <nav
