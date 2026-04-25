@@ -126,7 +126,7 @@ export default function Home() {
         ))}
       </div>
 
-      <footer className="border-t border-line pt-8 text-sm leading-7 text-muted">
+      <footer className="space-y-3 border-t border-line pt-8 text-sm leading-7 text-muted">
         <p>
           Want a shorter timeline? See the{" "}
           <Link href="/30-day-crash-plan" className="text-primary hover:underline">
@@ -136,19 +136,27 @@ export default function Home() {
           <Link href="/60-day-roadmap" className="text-primary hover:underline">
             60-day roadmap
           </Link>
-          . Browsing by topic? Open{" "}
-          <Link href="/learn" className="text-primary hover:underline">
-            Learn
-          </Link>
-          ,{" "}
+          . Browsing by topic? Open the{" "}
           <Link href="/questions" className="text-primary hover:underline">
             Question Bank
-          </Link>
-          , or{" "}
+          </Link>{" "}
+          or{" "}
           <Link href="/case-studies" className="text-primary hover:underline">
             Case Studies
           </Link>
           .
+        </p>
+        <p className="text-xs">
+          Daily plan inspired by{" "}
+          <a
+            href="https://www.yuan-meng.com/posts/mle_interviews_2.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Yuan Meng&apos;s &ldquo;Prepare in a Hurry&rdquo;
+          </a>{" "}
+          guide, expanded across 90 days.
         </p>
       </footer>
     </div>
