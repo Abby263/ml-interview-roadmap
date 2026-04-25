@@ -3,7 +3,7 @@ title: Design an Enterprise RAG Chatbot
 description: Build an internal knowledge assistant that retrieves trusted documents, cites sources, and respects security boundaries.
 track: Generative AI
 difficulty: Advanced
-prompt: Design an internal knowledge assistant that retrieves trusted documents, cites sources, and respects security boundaries.
+prompt: Design an internal enterprise knowledge assistant that retrieves trusted documents, cites sources accurately, respects per-user access controls, and meets a 3-second p95 latency budget.
 concepts:
   - Chunking
   - Hybrid retrieval
@@ -18,29 +18,84 @@ evaluationLens:
   - Cost
 ---
 
-## Requirements to clarify
+## Pin down the contract
 
-Start by asking what the assistant is allowed to answer, which documents it can access, and how risky bad answers are. In an enterprise setting, access control is part of the product, not an implementation detail.
+Enterprise RAG is not "chatbot over docs." Clarify:
+
+- **Scope**: which document corpora (HR policies, engineering wikis, customer contracts, sales decks)? Each has different freshness, sensitivity, and ownership.
+- **Access control**: which user can see which document? Access is part of the product, not an implementation detail. Permission leakage is the headline failure.
+- **Acceptable error mode**: is "I don't know" preferred over a guess? In enterprise, almost always yes.
+- **Cost & latency budget**: per-query cost ceiling, p95 latency, max prompt token size.
+
+State explicitly: the assistant must answer **only from retrieved documents the user has permission to read**, and must cite every claim back to a source.
 
 ## High-level architecture
 
-Use a staged pipeline:
+A defensible pipeline has six layers:
 
-1. document ingestion and parsing
-2. chunking and metadata enrichment
-3. embedding plus hybrid retrieval index
-4. reranking layer
-5. generation with citations
-6. logging and evaluation
+1. **Document ingestion** — connectors per source system, content extraction (PDF, DOCX, Slack, Confluence), normalization, chunking.
+2. **Indexing** — embedding generation, sparse (BM25) and dense (ANN) indexes, metadata tags (owner, sensitivity, recency), per-document ACL snapshot.
+3. **Retrieval** — hybrid search (dense + sparse), filter by user's ACL at query time, return top-K candidates with metadata.
+4. **Reranking** — a cross-encoder or LLM-based reranker compresses K candidates into the top 5-10 most relevant.
+5. **Generation** — prompt with system instructions ("answer only from the context below; cite each claim"), retrieved chunks, user query.
+6. **Logging & evaluation** — store query, retrieved chunks, generated answer, citations, user feedback for offline eval and prompt iteration.
 
-Hybrid retrieval is usually worth mentioning because enterprise queries often mix keywords, acronyms, exact product names, and semantic intent.
+The architect signal is naming **where access control is enforced** — at retrieval time, not after generation. Filtering after generation leaks information into the LLM's context.
+
+## Chunking and embedding choices
+
+Chunk size matters more than people admit:
+
+- Too small (200 tokens) → context fragments, misses cross-paragraph reasoning.
+- Too large (2000 tokens) → noisy retrieval, expensive prompts, dilutes the relevant section.
+- Sweet spot for most corpora: 500-800 tokens with a 10-15% overlap, plus a parent-document reference for "expand context if needed."
+
+Consider hierarchical chunking — child chunks for retrieval recall, parent sections for generation. And split on semantic boundaries (headings, sections), not just character counts.
+
+## Hybrid retrieval — and why
+
+Pure dense retrieval misses exact-match queries (product names, error codes, ticket IDs). Pure BM25 misses paraphrases. Always combine:
+
+- Dense: top-K by embedding similarity.
+- Sparse: top-K by BM25.
+- Merge: reciprocal rank fusion or a learned reranker over the union.
+
+Mention re-embedding strategy: when a document changes, re-embed only the affected chunks. Bulk re-embedding the whole corpus on every model swap is the operational gotcha that catches teams late.
+
+## Citations and grounding
+
+Every claim must trace back. Practical approaches:
+
+- **Inline citations** — model emits `[source: doc-id, chunk-id]` after each claim. Validate at parse time.
+- **Span-level highlighting** — UI shows the exact text passage that supports the claim.
+- **Refuse on ungrounded** — if confidence in a citation is low, the model says "I couldn't find this in the available docs."
 
 ## Evaluation
 
-Evaluate retrieval and generation separately. Then add operational checks:
+Evaluate retrieval and generation **separately**:
 
-- groundedness or faithfulness
-- citation correctness
-- permission leakage rate
-- latency by query class
-- cost per resolved query
+- **Retrieval**: recall@K on a labeled (query, relevant-doc) set, MRR, NDCG.
+- **Generation**: faithfulness (claims grounded in retrieved chunks), answer relevance, citation accuracy, refusal correctness.
+- **Operational**: permission leakage rate (must be near zero), latency by query class (factual / synthesis / search), cost per resolved query.
+
+Use an LLM-as-judge for scaled scoring, but check evaluator agreement against human raters on a sampled subset.
+
+## Failure modes worth naming
+
+- **Permission leakage** — chunk from a restricted doc reaches a user who shouldn't see it. Caused by stale ACL snapshot or post-hoc filtering. Test with red-team queries.
+- **Stale answers** — embedding index lags the source of truth. Solve with event-driven re-indexing, not nightly batch.
+- **Hallucinated citations** — model makes up source IDs. Validate citations exist in the retrieved set; reject if not.
+- **Cost runaway** — long context windows compound. Cap retrieved tokens, use a smaller model for synthesis when retrieval is highly confident.
+- **Cross-tenant contamination** in multi-tenant deployments — fix with per-tenant indexes or hard ACL filters at retrieval.
+
+## Rollout strategy
+
+1. **Internal pilot** — small team, narrow corpus, heavy logging, weekly eval review.
+2. **Read-only Q&A** — broaden corpus, no actions, refuse-rate goal under 20%.
+3. **Citation-first UX** — every answer comes with at least one verifiable citation.
+4. **Department rollout** — opt-in by team, dashboard for that team's accuracy / refusal / latency.
+5. **Org-wide** — only after permission-leakage rate stays at zero across the pilot.
+
+## What the architect signal looks like
+
+Close with the operational view: which two metrics you would put on the team's wall (faithfulness rate and permission-leakage rate), and the one trade-off you would defend hardest under pressure (typically refusal-rate-vs-coverage, with the rationale that an assistant that refuses honestly is more valuable than one that confidently hallucinates).

@@ -1,0 +1,89 @@
+---
+title: Design a Document Intelligence Pipeline
+description: Extract structured information from messy enterprise documents and route low-confidence outputs for review.
+track: Generative AI
+difficulty: Intermediate
+prompt: Design a system that ingests heterogeneous enterprise documents (PDFs, scans, spreadsheets, emails) and produces structured fields with confidence scores, routing low-confidence outputs to human review.
+concepts:
+  - OCR
+  - Extraction
+  - Validation
+  - Confidence scoring
+  - Human-in-the-loop
+evaluationLens:
+  - Field accuracy
+  - Coverage
+  - Manual review rate
+  - Turnaround time
+---
+
+## Frame the SLAs first
+
+"Document intelligence" is a category, not a product. Pin down the contract before drawing pipelines:
+
+- **Document mix**: invoices, contracts, claims forms, IDs, tax forms? Each has its own layout assumptions and ground-truth difficulty.
+- **Volume and latency**: 10K/day batch overnight vs. 10/sec real-time changes the entire architecture.
+- **Schema**: what fields, what types, what required-vs-optional, what allowed values?
+- **Acceptance criteria**: per-field accuracy threshold, end-to-end coverage, max manual review rate.
+
+The senior move is asking: "what does the downstream system do with the output, and what's the cost of a wrong field vs. a missed field?" That defines the precision-vs-recall trade-off.
+
+## Pipeline architecture
+
+Most defensible answers split the pipeline into layered stages with explicit confidence at each:
+
+1. **Ingestion** — file type detection, virus scan, deduplication, page splitting.
+2. **OCR / parsing** — printed text via OCR (Tesseract, Azure Document Intelligence, AWS Textract, or a vision-language model), structured text extracted natively from PDFs and DOCX, table detection on scans.
+3. **Layout understanding** — block segmentation, reading order, table structure, key-value pair detection. LayoutLM-style models or VLMs work well here.
+4. **Field extraction** — schema-driven extraction, often via an LLM with the schema and document context. Output strict JSON.
+5. **Validation** — type checks (date format, amount > 0), business rules (line-item total matches header), cross-field consistency, dictionary lookup for known entities.
+6. **Confidence scoring** — combine model logprobs, validation results, and any redundancy across pages into a per-field score.
+7. **Routing** — high-confidence fields auto-accept, low-confidence fields go to a human review queue with the document and the model's hypothesis pre-filled.
+8. **Feedback loop** — human corrections become training labels for the next model version.
+
+## Confidence is the architect's word
+
+Every interviewer will probe how you compute confidence. The honest answer is: **no single signal is sufficient**.
+
+- Model logprobs are noisy and overconfident on unfamiliar layouts.
+- Validation pass/fail is binary and misses semantic errors.
+- Cross-document agreement (when the same field appears multiple times) is a strong signal but not always available.
+
+Combine them into a **calibrated score**. Train a small calibration model on the human-reviewed labels: "given these signals, what's the probability the field is correct?" Update it as the document mix shifts.
+
+## Human-in-the-loop design
+
+The reviewer tooling is half the system. Specify it:
+
+- **Pre-fill** the proposed value, highlight the source region in the document, show the alternatives the model considered.
+- **Keyboard-first UX** — reviewers process documents fast, mouse-driven UIs lose minutes per doc.
+- **Adjudication** — for very low confidence or disputed fields, send to a senior reviewer.
+- **Sampling for QA** — randomly send a small fraction of "auto-accept" decisions to review for ongoing accuracy measurement, not just bug reports.
+
+The architect signal: route based on cost-of-error, not just confidence threshold. A wrong customer name is cheaper to fix later than a wrong invoice amount.
+
+## Evaluation
+
+- **Offline**: per-field precision, recall, F1 on a held-out gold set; per-document end-to-end accuracy; calibration plot for confidence scores.
+- **Online**: manual review rate, reviewer agreement with the auto-accepted fields (sampled), turnaround time, cost per document.
+- **Drift**: monitor the distribution of confidence scores and field-level accuracy on new layouts. New document templates are the silent killer — auto-quarantine documents that look very different from training.
+
+## Failure modes the loop will probe
+
+- **OCR errors compound** — a single character flip ruins downstream parsing. Add field-level redundancy (read the total from header and from line items, flag if they disagree).
+- **Schema drift** — the source system adds a new field. Build the extractor to gracefully handle unknown fields and surface them for schema review.
+- **Privacy** — documents contain PII. Encrypt at rest, redact in logs, restrict access by document type and user role.
+- **Hallucination** — LLMs invent plausible-looking field values. Counter with strict JSON schema, citation-back-to-source-region, and rejection if the value isn't grounded in the document.
+- **Cost** — vision-language models are expensive at scale. Use a cheap OCR-first path and only escalate to VLM for layouts the cheap path can't handle.
+
+## Build vs. buy
+
+This is one of the most common probes in this case. The honest answer:
+
+- **Buy** for OCR and basic layout (Textract, Document AI, Azure DI) — well-commoditized, faster than building.
+- **Build** the schema, extraction prompts / models, validation rules, confidence calibration, and reviewer UX — this is the differentiation.
+- **Revisit** the boundary at clear thresholds: monthly cost > $X, accuracy ceiling on the vendor, or a strategic dependency you don't want.
+
+## What the architect signal looks like
+
+Close with the operational view: what does week-one look like (heavy human review, narrow document subset, fast feedback loop), and what does month-six look like (auto-accept rate above 80%, calibrated confidence, schema-versioned extractors, reviewers focused on edge cases)?

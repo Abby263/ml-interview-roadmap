@@ -1,0 +1,79 @@
+---
+title: Design a Search Ranking System
+description: Build search ranking for a marketplace and balance query understanding, retrieval quality, relevance, and latency.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a search ranking system for a marketplace where users type free-form queries and the engine must return the most relevant listings under a 200ms p99 latency budget.
+concepts:
+  - Candidate retrieval
+  - Ranking features
+  - Learning to rank
+  - Query understanding
+  - Online metrics
+evaluationLens:
+  - NDCG
+  - CTR
+  - Latency
+  - Query coverage
+---
+
+## Clarify the product first
+
+Marketplace search is not a single problem — clarify the surface and the goal before drawing any boxes.
+
+- **Surface**: results page, autocomplete, related queries, or all three?
+- **Inventory**: how many active listings, how often do they change, are they geographically scoped?
+- **Goal metric**: NDCG against human judgments, CTR, conversion, gross merchandise value (GMV), or a weighted blend?
+- **Constraints**: p99 latency budget, ad load if any, freshness requirements, cold-start for new sellers.
+
+A strong opener names the decision the model supports (where the user clicks) and the business outcome that decision drives (transaction, repeat visit), not just "relevance."
+
+## Three-stage architecture
+
+Most strong answers split search ranking into stages with explicit latency budgets:
+
+1. **Query understanding (10-20ms)** — tokenization, language detection, spell correction, intent classification, query expansion, entity tagging.
+2. **Candidate retrieval (50-80ms)** — inverted index for lexical match, ANN over embeddings for semantic match, then a hybrid merge. Cap each branch (e.g., top 1000 per side, deduped to top 1000 overall).
+3. **Ranking (80-100ms)** — a fast first-pass ranker (logistic regression or shallow GBDT on cheap features) trims to ~100, then a heavier ranker (deep model or large GBDT with rich features) produces the final ordering.
+
+Adding a fourth **re-ranking / business policy** stage (~10ms) for diversity, freshness, ads, and exposure fairness is the senior touch — it lets you respond to product asks without retraining the core model.
+
+## Features that actually move the needle
+
+Group features by how cheap they are to compute:
+
+- **Document features** (precomputed): listing quality score, seller reputation, price percentile, recency, photo count, embedding.
+- **Query features** (computed once per request): embedding, intent tag, length, language, query frequency.
+- **Query × Document features** (computed for top-K): BM25, embedding similarity, click-through history at the (query, listing) pair, geographic distance, price-vs-budget.
+- **Personalization features** (per user, optional): past purchases, dwell-time signals, seller preferences. Be honest about cold-start.
+
+Mention training-serving consistency: feature logic must produce identical values at training and serving time, otherwise online wins evaporate.
+
+## Training data and labels
+
+Real ranking labels are messy. Walk through the trade-offs:
+
+- **Implicit signals** (clicks, dwell, conversion) are abundant but biased toward what the system already shows — propose inverse propensity weighting or counterfactual evaluation.
+- **Human relevance judgments** are unbiased but expensive — reserve for evaluation, not training.
+- **Pairwise / listwise labels** beat pointwise for ranking — mention LambdaMART or a listwise NN loss.
+
+Cold-start for new listings is real. Bootstrap with content-based features and an exploration budget (e.g., 5% of impressions to inventory under N views).
+
+## Evaluation lens
+
+Senior interviewers want both offline and online evaluation:
+
+- **Offline**: NDCG@10 on a held-out judged set, AUC on click data, slice analysis by query class (head, torso, tail), recall@K on the retrieval stage.
+- **Online**: A/B test on CTR, conversion, abandoned searches, time-to-click. Pre-register the success metric so you do not p-hack after launch.
+- **Guardrails**: latency p50/p99, query coverage (queries returning zero results), exposure fairness across sellers.
+
+## Failure modes the loop will probe
+
+- **Popularity bias**: rich-get-richer loops where new sellers can't break in. Counter with exploration and exposure regularization.
+- **Train-serve skew**: features computed in batch differ from online. Catch with shadow traffic comparing offline and online feature values.
+- **Latency tail**: a single slow shard kills p99. Use timeouts per stage with a graceful fallback to the cached lexical result.
+- **Drift**: query distribution shifts after marketing campaigns or product launches. Monitor query-class mix and retrigger training when it shifts beyond a threshold.
+
+## What the architect signal looks like
+
+Strong candidates close with a one-paragraph trade-off summary: which stage they would invest in first given two engineers and three months, why, and what they would explicitly defer (e.g., personalization until logged-in conversion data has enough volume per user).
