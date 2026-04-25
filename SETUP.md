@@ -20,8 +20,14 @@ a dozen other providers — pick what you want in the Clerk dashboard.
 
 1. Go to <https://clerk.com>, sign up, **create a new application**.
 2. In the Clerk dashboard, under **User & Authentication → Email,
-   Phone, Username**, enable **Email address + Password** and any other
-   methods you want.
+   Phone, Username**:
+   - **Enable** *Email address* + *Password* (or just *Email address*
+     if you want passwordless / magic-link sign-up).
+   - **Disable** *Phone number* — otherwise Clerk requires SMS / OTP
+     verification on sign-up. Toggling phone OFF is the single switch
+     that makes the flow email-only with no phone prompt.
+   - Under **Verification**, leave *Email verification code* on; turn
+     *Phone verification code* off.
 3. Under **User & Authentication → Social Connections**, enable
    **Google** (Clerk handles the OAuth dance — no Google Cloud
    Console needed for the basic setup).

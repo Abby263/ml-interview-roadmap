@@ -2408,6 +2408,26 @@ const REF_FSDL: DayReference = { label: "Full Stack Deep Learning", href: "https
 const REF_HF_LLM: DayReference = { label: "Hugging Face LLM course", href: "https://huggingface.co/learn/llm-course", source: "Hugging Face" };
 const REF_OAI_DOCS: DayReference = { label: "OpenAI platform docs", href: "https://platform.openai.com/docs", source: "OpenAI" };
 const REF_LANGCHAIN_RAG: DayReference = { label: "RAG concepts", href: "https://python.langchain.com/docs/concepts/rag/", source: "LangChain" };
+// Canonical learning + interview-prep resources requested by the user.
+const REF_ANDREW_NG_ML: DayReference = { label: "Andrew Ng — Machine Learning Specialization (Coursera)", href: "https://www.coursera.org/specializations/machine-learning-introduction", source: "Coursera" };
+const REF_STATQUEST: DayReference = { label: "StatQuest — Statistics & ML playlists", href: "https://www.youtube.com/@statquest/playlists", source: "YouTube" };
+const REF_3B1B_LINALG: DayReference = { label: "3Blue1Brown — Essence of Linear Algebra", href: "https://www.3blue1brown.com/topics/linear-algebra", source: "3Blue1Brown" };
+const REF_3B1B_CALCULUS: DayReference = { label: "3Blue1Brown — Essence of Calculus", href: "https://www.3blue1brown.com/topics/calculus", source: "3Blue1Brown" };
+const REF_GILBERT_STRANG: DayReference = { label: "Gilbert Strang — Linear Algebra (MIT 18.06)", href: "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/", source: "MIT OCW" };
+const REF_DLAI_SPEC: DayReference = { label: "DeepLearning.AI Deep Learning Specialization", href: "https://www.deeplearning.ai/courses/deep-learning-specialization/", source: "DeepLearning.AI" };
+const REF_FAST_AI: DayReference = { label: "fast.ai — Practical Deep Learning for Coders", href: "https://course.fast.ai/", source: "fast.ai" };
+const REF_DLAI_GENAI: DayReference = { label: "DeepLearning.AI — short courses on GenAI / LLMs", href: "https://www.deeplearning.ai/short-courses/", source: "DeepLearning.AI" };
+const REF_HUYEN_INT_BOOK: DayReference = { label: "Chip Huyen — ML Interviews Book (free)", href: "https://huyenchip.com/ml-interviews-book/", source: "Chip Huyen" };
+const REF_KHANGICH_REPO: DayReference = { label: "Khangich — Machine Learning Interview repo", href: "https://github.com/khangich/machine-learning-interview", source: "GitHub" };
+const REF_ALIREZADIR_REPO: DayReference = { label: "alirezadir — Machine Learning Interviews", href: "https://github.com/alirezadir/Machine-Learning-Interviews", source: "GitHub" };
+const REF_PATRICK_HALINA: DayReference = { label: "Patrick Halina — ML Systems Design Interview Guide", href: "http://patrickhalina.com/posts/ml-systems-design-interview-guide/", source: "Patrick Halina" };
+const REF_D2L: DayReference = { label: "Dive into Deep Learning (d2l.ai) — interactive book", href: "https://d2l.ai/", source: "d2l.ai" };
+const REF_ILLUSTRATED_TRANSFORMER: DayReference = { label: "Illustrated Transformer (Jay Alammar)", href: "https://jalammar.github.io/illustrated-transformer/", source: "Jay Alammar" };
+const REF_PAPERS_WITH_CODE: DayReference = { label: "Papers with Code — SOTA leaderboards", href: "https://paperswithcode.com/sota", source: "Papers with Code" };
+const REF_GOOGLE_AI_BLOG: DayReference = { label: "Google AI Blog", href: "https://blog.google/technology/ai/", source: "Google" };
+const REF_DATASCIENCE_JAY: DayReference = { label: "DataScienceJay — interview walkthroughs", href: "https://www.youtube.com/c/DataScienceJay/videos", source: "YouTube" };
+const REF_HF_SPACES: DayReference = { label: "Hugging Face Spaces — deploy demos for free", href: "https://huggingface.co/spaces", source: "Hugging Face" };
+const REF_STREAMLIT: DayReference = { label: "Streamlit — quick ML-app deployment", href: "https://docs.streamlit.io/", source: "Streamlit" };
 
 export const dailyPlan: DayPlan[] = [
   // ───── PHASE 1: Coding & ML basics in parallel (Days 1-50) ─────
@@ -2415,43 +2435,53 @@ export const dailyPlan: DayPlan[] = [
 
   // ───── PHASE 1A: Statistics + Arrays/Two Pointers/Sliding Window (Days 1-7) ─────
   {
-    day: 1, title: "Arrays & Hashing + Probability toolkit", pillar: "math-stats",
-    focus: "Solve the easiest NeetCode pattern + refresh probability you'll be asked cold.",
+    day: 1, title: "Arrays & Hashing + Probability + Linear algebra refresh", pillar: "math-stats",
+    focus: "Open the loop: easiest NeetCode pattern, probability fundamentals, vectors / matrices warm-up.",
     tracks: [
       { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 0, 4) },
-      { label: "Stats · Probability foundations", items: [
+      { label: "Math · Probability foundations", items: [
         { id: "stats-bayes", label: "Bayes intuition: detection / diagnosis / ranking examples", href: "https://seeing-theory.brown.edu/bayesian-inference/index.html", meta: "Interactive" },
         { id: "stats-cond-prob", label: "Conditional probability traps in interviews", href: "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies", meta: "Read" },
+      ]},
+      { label: "Math · Linear algebra warm-up", items: [
+        { id: "linalg-vectors", label: "Vectors, matrices, dot product, transpose", href: "https://www.3blue1brown.com/lessons/vectors", meta: "Watch" },
+        { id: "linalg-norms", label: "Norms + cosine similarity (used everywhere in ML)", href: "https://machinelearningmastery.com/vector-norms-machine-learning/", meta: "Read" },
       ]},
       { label: "Setup", items: [
         { id: "setup-leetcode", label: "Create LeetCode account; pick 1-2 target companies", href: "https://leetcode.com/", meta: "5 min" },
         { id: "setup-neetcode", label: "Bookmark NeetCode roadmap", href: "https://neetcode.io/roadmap", meta: "1 min" },
+        { id: "setup-andrew-ng", label: "Enroll in Andrew Ng's ML Specialization (skim Course 1 syllabus)", href: "https://www.coursera.org/specializations/machine-learning-introduction", meta: "Setup" },
       ]},
     ],
     interviewQuestions: [
       "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
       "Why can a model with strong recall still have weak positive predictive value?",
-      "What's the difference between P(A|B) and P(B|A)?",
+      "What is the dot product geometrically — and how does that relate to cosine similarity?",
     ],
-    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY],
+    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY, REF_ANDREW_NG_ML, REF_3B1B_LINALG, REF_STATQUEST],
     topicId: "probability-toolkit",
   },
   {
-    day: 2, title: "Arrays & Hashing (cont.) + Distributions in ML", pillar: "math-stats",
-    focus: "Finish the arrays bucket + connect distributions to model assumptions.",
+    day: 2, title: "Arrays & Hashing (cont.) + Distributions + Eigenvalues / SVD / PCA", pillar: "math-stats",
+    focus: "Finish arrays + connect distributions to assumptions + the linear-algebra trio interviewers test.",
     tracks: [
       { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 4, 5) },
-      { label: "Stats · Distributions", items: [
+      { label: "Math · Distributions", items: [
         { id: "stats-distributions", label: "Binomial / Poisson / Gaussian — when each fits", href: "https://www.probabilitycourse.com/chapter3/3_2_3_pmf_examples.php", meta: "Read" },
         { id: "stats-heavy-tail", label: "Heavy tails and how they bite (income, latency)", href: "https://en.wikipedia.org/wiki/Heavy-tailed_distribution", meta: "Read" },
       ]},
+      { label: "Math · Eigenvalues, SVD, PCA", items: [
+        { id: "linalg-eigen", label: "Eigenvectors / eigenvalues — the visual intuition", href: "https://www.3blue1brown.com/lessons/eigenvectors", meta: "Watch" },
+        { id: "linalg-svd", label: "SVD walkthrough (the algorithm behind embeddings + PCA)", href: "https://en.wikipedia.org/wiki/Singular_value_decomposition", meta: "Read" },
+        { id: "linalg-pca", label: "PCA as compression + denoising + visualization", href: "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/", meta: "Read" },
+      ]},
     ],
     interviewQuestions: [
+      "Explain how PCA works — what does it actually compute?",
+      "How are word embeddings related to SVD?",
       "When is the Poisson approximation to the Binomial a useful interview move?",
-      "What goes wrong if you assume Gaussian when the underlying is heavy-tailed?",
-      "How do you pick a distribution to model conversion rates?",
     ],
-    references: [REF_GOOGLE_ML_CRASH],
+    references: [REF_GOOGLE_ML_CRASH, REF_3B1B_LINALG, REF_GILBERT_STRANG],
   },
   {
     day: 3, title: "Two Pointers + Bayesian thinking", pillar: "math-stats",
@@ -2531,17 +2561,21 @@ export const dailyPlan: DayPlan[] = [
         { id: "review-week-1-2", label: "Re-solve the second-slowest", meta: "30 min" },
         { id: "review-week-1-3", label: "Re-solve a third (any pattern)", meta: "30 min" },
       ]},
-      { label: "Stats · Optimization", items: [
+      { label: "Math · Optimization + calculus", items: [
         { id: "stats-gd-intuition", label: "Gradient descent intuition (convex vs non-convex)", href: "https://www.deeplearningbook.org/contents/optimization.html", meta: "Read" },
         { id: "stats-convexity", label: "Why convexity matters for guarantees", href: "https://web.stanford.edu/~boyd/cvxbook/", meta: "Reference" },
+        { id: "math-derivatives", label: "Derivatives + chain rule (the only calculus you need)", href: "https://www.3blue1brown.com/lessons/derivatives", meta: "Watch" },
+        { id: "math-lagrange", label: "Lagrange multipliers — basics + when they matter", href: "https://en.wikipedia.org/wiki/Lagrange_multiplier", meta: "Read" },
+        { id: "math-loss-landscape", label: "Loss landscapes — why GD gets stuck", href: "https://losslandscape.com/", meta: "Visual" },
       ]},
     ],
     interviewQuestions: [
       "What does it mean that a loss is convex — and which losses are?",
       "Why does logistic regression have a global optimum but neural nets do not?",
-      "When does momentum help and when does it hurt?",
+      "Why does gradient descent sometimes get stuck — and what do you do about it?",
+      "Walk me through the chain rule using a 2-layer neural net.",
     ],
-    references: [REF_UDL_BOOK, REF_NEETCODE_VIDEOS],
+    references: [REF_UDL_BOOK, REF_3B1B_CALCULUS, REF_NEETCODE_VIDEOS],
   },
 
   // ───── PHASE 1B: Traditional ML basics (Days 8-14) ─────
@@ -2704,21 +2738,27 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 17, title: "Trees BST + Imbalanced classification", pillar: "traditional-ml",
-    focus: "BST validation + handle rare positives without breaking calibration.",
+    day: 17, title: "Trees BST + Imbalanced classification + SVM / KNN", pillar: "traditional-ml",
+    focus: "BST validation + handle rare positives without breaking calibration + the other classic models.",
     tracks: [
       { label: "DSA · Trees", items: nc("Trees", 9, 3) },
       { label: "Trad ML · Imbalanced classification", items: [
         { id: "ml-imbalance", label: "Class weights vs SMOTE vs threshold-moving", href: "https://machinelearningmastery.com/what-is-imbalanced-classification/", meta: "Read" },
         { id: "ml-imbalance-calibration", label: "Why resampling breaks calibration", href: "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html", meta: "Read" },
       ]},
+      { label: "Trad ML · SVM, KNN, Naive Bayes", items: [
+        { id: "ml-svm", label: "SVM intuition + kernel trick — when SVM still wins", href: "https://scikit-learn.org/stable/modules/svm.html", meta: "Docs" },
+        { id: "ml-knn", label: "KNN — when it's the right baseline (small data, low dim)", href: "https://scikit-learn.org/stable/modules/neighbors.html", meta: "Docs" },
+        { id: "ml-naive-bayes", label: "Naive Bayes — fast, calibrated, surprisingly strong on text", href: "https://scikit-learn.org/stable/modules/naive_bayes.html", meta: "Docs" },
+      ]},
     ],
     interviewQuestions: [
       "What breaks if you SMOTE before splitting train/test?",
-      "Why does class weighting preserve calibration but resampling does not?",
+      "When does SVM with an RBF kernel still beat a tree-based model?",
+      "Why does Naive Bayes work well on text despite the naive independence assumption?",
       "How do you tune the decision threshold for an imbalanced classifier?",
     ],
-    references: [REF_GOOGLE_ML_CRASH],
+    references: [REF_GOOGLE_ML_CRASH, REF_ANDREW_NG_ML, REF_STATQUEST],
   },
   {
     day: 18, title: "Trees hard + Clustering / PCA / anomaly detection", pillar: "traditional-ml",
@@ -2898,39 +2938,49 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_UDL_BOOK],
   },
   {
-    day: 28, title: "Advanced Graphs + CNNs", pillar: "foundations",
-    focus: "Dijkstra / Network Delay + CNN intuition (kernels, receptive fields).",
+    day: 28, title: "Advanced Graphs + CNNs + project: CIFAR-10 classifier", pillar: "foundations",
+    focus: "Dijkstra / Network Delay + CNN intuition + ship a small image classifier you can demo.",
     tracks: [
       { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 0, 3) },
       { label: "Deep learning · CNNs", items: [
         { id: "dl-cnn-basics", label: "Kernels, stride, padding, pooling", href: "https://cs231n.github.io/convolutional-networks/", meta: "Read" },
         { id: "dl-resnet", label: "Why residual connections fix degradation", href: "https://arxiv.org/abs/1512.03385", meta: "Paper" },
       ]},
+      { label: "Project · Image classifier", items: [
+        { id: "proj-cifar", label: "Train a small CNN on CIFAR-10 / Fashion-MNIST", href: "https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html", meta: "Build" },
+        { id: "proj-cifar-deploy", label: "Deploy as a Streamlit demo or Hugging Face Space", href: "https://huggingface.co/spaces", meta: "Deploy" },
+      ]},
     ],
     interviewQuestions: [
       "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
       "Why do residual connections help train deep nets?",
+      "Walk me through the training loop for your CIFAR classifier — where would it overfit?",
       "When does a CNN beat a transformer for vision today?",
     ],
-    references: [REF_UDL_BOOK],
+    references: [REF_UDL_BOOK, REF_DLAI_SPEC, REF_FAST_AI, REF_STREAMLIT, REF_HF_SPACES],
     topicId: "cnn-design-patterns",
   },
   {
-    day: 29, title: "Advanced Graphs (cont.) + RNN / LSTM", pillar: "foundations",
-    focus: "Cheapest Flights + sequential modeling pre-transformers.",
+    day: 29, title: "Advanced Graphs (cont.) + RNN / LSTM + project: sentiment analysis", pillar: "foundations",
+    focus: "Cheapest Flights + sequential modeling pre-transformers + ship a tiny NLP demo.",
     tracks: [
       { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 3, 3) },
       { label: "Deep learning · Sequence", items: [
         { id: "dl-rnn-vanish", label: "Vanilla RNN vanishing-gradient problem", href: "https://colah.github.io/posts/2015-08-Understanding-LSTMs/", meta: "Read (canonical)" },
         { id: "dl-lstm", label: "LSTM gating — why it helps gradient flow", href: "https://distill.pub/2019/memorization-in-rnns/", meta: "Read" },
       ]},
+      { label: "Project · Sentiment analysis", items: [
+        { id: "proj-sent-finetune", label: "Fine-tune DistilBERT on IMDb reviews (HF Trainer)", href: "https://huggingface.co/learn/llm-course/chapter3/3", meta: "Build" },
+        { id: "proj-sent-deploy", label: "Deploy as Streamlit / HF Space", href: "https://huggingface.co/spaces", meta: "Deploy" },
+      ]},
     ],
     interviewQuestions: [
       "What does the cell state in an LSTM actually store?",
+      "How would you handle out-of-vocabulary tokens in your sentiment classifier?",
       "Where does a transformer still lose to an LSTM?",
       "Why don't RNNs parallelize over the time dimension?",
     ],
-    references: [],
+    references: [REF_DLAI_SPEC, REF_FAST_AI, REF_HF_SPACES],
   },
   {
     day: 30, title: "1-D DP + Transformers from first principles", pillar: "deep-learning",
@@ -3005,21 +3055,27 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_OAI_DOCS],
   },
   {
-    day: 34, title: "2-D DP (cont.) + RAG architecture", pillar: "generative-ai",
-    focus: "Edit Distance / Coin Change II + end-to-end RAG.",
+    day: 34, title: "2-D DP (cont.) + RAG architecture + project: RAG chatbot", pillar: "generative-ai",
+    focus: "Edit Distance / Coin Change II + end-to-end RAG + ship a chatbot over your own docs.",
     tracks: [
       { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 4, 4) },
       { label: "GenAI · RAG", items: [
         { id: "rag-pipeline", label: "Chunking → retrieval → reranking → generation → citations", href: "https://python.langchain.com/docs/concepts/rag/", meta: "Read" },
         { id: "rag-hybrid", label: "Why hybrid (dense + sparse) usually wins", href: "https://www.pinecone.io/learn/hybrid-search-intro/", meta: "Read" },
       ]},
+      { label: "Project · Build a RAG chatbot", items: [
+        { id: "proj-rag-build", label: "Chatbot over a custom knowledge base (LangChain + OpenAI)", href: "https://python.langchain.com/docs/tutorials/rag/", meta: "Build" },
+        { id: "proj-rag-local", label: "Run the same chatbot fully locally with Ollama", href: "https://ollama.com/", meta: "Build" },
+        { id: "proj-rag-deploy", label: "Deploy it as a Streamlit / HF Space demo", href: "https://huggingface.co/spaces", meta: "Deploy" },
+      ]},
     ],
     interviewQuestions: [
       "Walk me through chunking trade-offs (size + overlap).",
       "Why does pure dense retrieval miss product names and error codes?",
+      "Walk me through the architecture of YOUR RAG chatbot — where would it fail under load?",
       "How would you handle citations when the retrieved chunk doesn't actually support the claim?",
     ],
-    references: [REF_LANGCHAIN_RAG],
+    references: [REF_LANGCHAIN_RAG, REF_DLAI_GENAI, REF_OAI_DOCS, REF_STREAMLIT],
     topicId: "rag-architecture",
   },
   {
@@ -3076,21 +3132,27 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["rag-eval"],
   },
   {
-    day: 38, title: "Intervals + Fine-tuning vs RAG vs prompt", pillar: "generative-ai",
-    focus: "Insert / Merge intervals + the fine-tune-only-when-prompt+RAG-plateaus rule.",
+    day: 38, title: "Intervals + Fine-tuning + project: resume analyzer", pillar: "generative-ai",
+    focus: "Insert / Merge intervals + fine-tune-only-when-prompt+RAG-plateaus + ship a resume analyzer.",
     tracks: [
       { label: "DSA · Intervals", items: nc("Intervals", 0, 4) },
       { label: "GenAI · Fine-tuning", items: [
         { id: "llm-lora", label: "LoRA / PEFT — what changes are made", href: "https://huggingface.co/docs/peft/index", meta: "Docs" },
         { id: "llm-ft-vs-rag", label: "When fine-tuning beats RAG (and when it doesn't)", href: "https://huyenchip.com/2023/04/11/llm-engineering.html", meta: "Read" },
       ]},
+      { label: "Project · Resume analyzer", items: [
+        { id: "proj-resume-extract", label: "Build resume → structured-output extractor (LLM + JSON schema)", href: "https://platform.openai.com/docs/guides/structured-outputs", meta: "Build" },
+        { id: "proj-resume-match", label: "Match resume to job description with embeddings (cosine sim)", href: "https://platform.openai.com/docs/guides/embeddings", meta: "Build" },
+        { id: "proj-resume-deploy", label: "Deploy as Streamlit demo", href: "https://docs.streamlit.io/", meta: "Deploy" },
+      ]},
     ],
     interviewQuestions: [
       "When would you fine-tune instead of doing prompt + RAG?",
       "What does LoRA actually update — and why is the update so small?",
+      "Walk me through how YOUR resume analyzer scores job fit — what could go wrong?",
       "How do you evaluate whether a fine-tune succeeded?",
     ],
-    references: [],
+    references: [REF_DLAI_GENAI, REF_OAI_DOCS],
   },
   {
     day: 39, title: "Intervals finish + Agents", pillar: "generative-ai",
@@ -3129,13 +3191,19 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 41, title: "Math (cont.) + System design framework", pillar: "ml-system-design",
-    focus: "Happy Number / Plus One + the reusable design scaffold.",
+    day: 41, title: "Math (cont.) + System design framework + interview-prep canon", pillar: "ml-system-design",
+    focus: "Happy Number / Plus One + the reusable design scaffold + the canonical interview repos.",
     tracks: [
       { label: "DSA · Math & Geometry", items: nc("Math & Geometry", 4, 4) },
       { label: "ML system design · Framework", items: [
         { id: "sd-framework", label: "Read: Chip Huyen — ML systems design TOC", href: "https://huyenchip.com/machine-learning-systems-design/toc.html", meta: "Read" },
+        { id: "sd-halina", label: "Patrick Halina — ML Systems Design Interview Guide", href: "http://patrickhalina.com/posts/ml-systems-design-interview-guide/", meta: "Read" },
         { id: "sd-scaffold", label: "Memorize the scaffold: clarify → metrics → data → model → serving → monitoring → trade-off close", meta: "Concept" },
+      ]},
+      { label: "Reference · Interview repos to bookmark", items: [
+        { id: "sd-khangich", label: "khangich/machine-learning-interview — full prep guide", href: "https://github.com/khangich/machine-learning-interview", meta: "Repo" },
+        { id: "sd-alirezadir", label: "alirezadir/Machine-Learning-Interviews — companion repo", href: "https://github.com/alirezadir/Machine-Learning-Interviews", meta: "Repo" },
+        { id: "sd-huyen-int", label: "Chip Huyen — ML Interviews Book (free)", href: "https://huyenchip.com/ml-interviews-book/", meta: "Book" },
       ]},
     ],
     interviewQuestions: [
@@ -3143,7 +3211,7 @@ export const dailyPlan: DayPlan[] = [
       "What goes wrong if you skip the metrics step?",
       "How do you decide between batch vs realtime inference?",
     ],
-    references: [REF_CHIP_HUYEN_DESIGN, REF_FSDL],
+    references: [REF_CHIP_HUYEN_DESIGN, REF_FSDL, REF_HUYEN_INT_BOOK, REF_KHANGICH_REPO, REF_ALIREZADIR_REPO, REF_PATRICK_HALINA, REF_DATASCIENCE_JAY],
     topicId: "system-design-framework",
   },
   {
@@ -4462,6 +4530,165 @@ export const dailyPlan: DayPlan[] = [
     ],
     interviewQuestions: [],
     references: [],
+  },
+
+  // ───── PHASE 5: Optional specialization days (121-126) ─────
+  // Pick the subdomains you'll be tested on. Even one in-depth day per
+  // domain dramatically raises the floor on a domain-specific round.
+  {
+    day: 121, title: "Specialization · Computer Vision (deep dive)", pillar: "deep-learning",
+    focus: "CV-specific architectures, augmentation, OD/segmentation, modern foundation models.",
+    tracks: [
+      { label: "Read · Architectures", items: [
+        { id: "cv-cnn-fams", label: "CNN families: ResNet → EfficientNet → ConvNeXt", href: "https://paperswithcode.com/area/computer-vision", meta: "Read" },
+        { id: "cv-vit", label: "Vision Transformer (ViT) paper", href: "https://arxiv.org/abs/2010.11929", meta: "Paper" },
+        { id: "cv-clip", label: "CLIP — image-text contrastive pretraining", href: "https://arxiv.org/abs/2103.00020", meta: "Paper" },
+      ]},
+      { label: "Read · Tasks", items: [
+        { id: "cv-od", label: "Object detection: YOLO / DETR / SAM", href: "https://lilianweng.github.io/posts/2017-12-31-object-recognition-part-3/", meta: "Read" },
+        { id: "cv-aug", label: "Image augmentation patterns (RandAugment, CutMix, MixUp)", href: "https://albumentations.ai/", meta: "Docs" },
+      ]},
+      { label: "Practice", items: [
+        { id: "cv-design", label: "Design a content-moderation system for user-uploaded images", meta: "Whiteboard" },
+        { id: "cv-finetune", label: "Fine-tune CLIP / ResNet on a small custom dataset", href: "https://huggingface.co/docs/transformers/training", meta: "Build" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When does a ViT beat a CNN, and when doesn't it?",
+      "How does CLIP enable zero-shot image classification?",
+      "Walk me through how you'd build an image moderation system end-to-end.",
+      "What augmentation strategy would you pick for a small medical-imaging dataset?",
+    ],
+    references: [REF_PAPERS_WITH_CODE, REF_FAST_AI, REF_D2L, REF_GOOGLE_AI_BLOG],
+  },
+  {
+    day: 122, title: "Specialization · NLP / NLU (deep dive)", pillar: "generative-ai",
+    focus: "Tokenization, encoder vs decoder vs encoder-decoder, NER, classification, summarization.",
+    tracks: [
+      { label: "Read · Architectures", items: [
+        { id: "nlp-bert", label: "BERT (encoder) — masked LM", href: "https://arxiv.org/abs/1810.04805", meta: "Paper" },
+        { id: "nlp-t5", label: "T5 (encoder-decoder) — text-to-text", href: "https://arxiv.org/abs/1910.10683", meta: "Paper" },
+        { id: "nlp-gpt", label: "GPT family (decoder) — autoregressive", href: "https://lilianweng.github.io/posts/2018-06-24-attention/", meta: "Read" },
+      ]},
+      { label: "Read · Tasks", items: [
+        { id: "nlp-ner", label: "Named entity recognition (NER) tagging schemes (BIO, BILOU)", href: "https://huggingface.co/docs/transformers/tasks/token_classification", meta: "Docs" },
+        { id: "nlp-summ", label: "Abstractive vs extractive summarization", href: "https://huggingface.co/docs/transformers/tasks/summarization", meta: "Docs" },
+      ]},
+      { label: "Practice", items: [
+        { id: "nlp-design", label: "Design a multilingual customer support classifier", meta: "Whiteboard" },
+        { id: "nlp-eval", label: "Pick an evaluation suite for your NLP system (BLEU / ROUGE / BERTScore / human)", href: "https://huggingface.co/docs/evaluate", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Encoder vs decoder vs encoder-decoder — when do you pick each?",
+      "How do transformers handle different modalities (text → image → audio)?",
+      "Walk me through how you'd evaluate a summarization system.",
+      "Why is tokenization the most common cause of multilingual NLP bugs?",
+    ],
+    references: [REF_HF_LLM, REF_ILLUSTRATED_TRANSFORMER, REF_PAPERS_WITH_CODE],
+  },
+  {
+    day: 123, title: "Specialization · Speech & Audio (deep dive)", pillar: "deep-learning",
+    focus: "ASR, TTS, audio embeddings, streaming inference.",
+    tracks: [
+      { label: "Read · Architectures", items: [
+        { id: "speech-whisper", label: "Whisper paper — ASR with weak supervision", href: "https://arxiv.org/abs/2212.04356", meta: "Paper" },
+        { id: "speech-wav2vec", label: "wav2vec 2.0 — self-supervised audio representations", href: "https://arxiv.org/abs/2006.11477", meta: "Paper" },
+        { id: "speech-tts", label: "Modern TTS: VITS / Tortoise / ElevenLabs overview", href: "https://github.com/jaywalnut310/vits", meta: "Repo" },
+      ]},
+      { label: "Read · Audio basics", items: [
+        { id: "speech-mel", label: "Mel spectrograms + MFCC features", href: "https://librosa.org/doc/latest/feature.html", meta: "Docs" },
+        { id: "speech-stream", label: "Streaming ASR — chunking + endpointing", href: "https://nvidia.github.io/NeMo/blogs/streaming.html", meta: "Read" },
+      ]},
+      { label: "Practice", items: [
+        { id: "speech-design", label: "Design a real-time meeting transcription + summarization system", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How does Whisper handle multiple languages without a language ID input?",
+      "What's the latency-vs-quality trade-off for streaming ASR vs full-utterance ASR?",
+      "Walk me through your end-to-end real-time transcription system.",
+      "When do you use mel spectrograms vs raw audio inputs?",
+    ],
+    references: [REF_PAPERS_WITH_CODE, REF_HF_LLM],
+  },
+  {
+    day: 124, title: "Specialization · Reinforcement Learning (deep dive)", pillar: "deep-learning",
+    focus: "MDP basics, value vs policy methods, exploration-exploitation, RLHF.",
+    tracks: [
+      { label: "Read · Foundations", items: [
+        { id: "rl-mdp", label: "MDPs, value functions, policy iteration", href: "http://incompleteideas.net/book/the-book-2nd.html", meta: "Book" },
+        { id: "rl-q-learning", label: "Q-learning + DQN intuition", href: "https://lilianweng.github.io/posts/2018-04-08-policy-gradient/", meta: "Read" },
+        { id: "rl-policy-grad", label: "Policy gradient (REINFORCE → PPO)", href: "https://spinningup.openai.com/en/latest/algorithms/ppo.html", meta: "Docs" },
+      ]},
+      { label: "Read · Modern", items: [
+        { id: "rl-rlhf", label: "RLHF as applied RL (PPO over LLM rewards)", href: "https://huyenchip.com/2023/05/02/rlhf.html", meta: "Read" },
+        { id: "rl-bandits", label: "Multi-armed bandits: contextual bandits in production", href: "https://eugeneyan.com/writing/bandits/", meta: "Read" },
+      ]},
+      { label: "Practice", items: [
+        { id: "rl-design", label: "Design a content-recommendation system using bandits", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When is a contextual bandit the right model vs a full RL setup?",
+      "Walk me through PPO at a high level — why is the clip ratio there?",
+      "How do you handle exploration in a recommender system without hurting metrics?",
+      "What's the practical difference between RLHF and DPO?",
+    ],
+    references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG],
+  },
+  {
+    day: 125, title: "Specialization · RecSys deep dive (Ranking / Predictions)", pillar: "ml-system-design",
+    focus: "Two-tower retrieval, multi-task ranking, position bias, key papers.",
+    tracks: [
+      { label: "Read · Canonical papers", items: [
+        { id: "rs-yt-mt", label: "YouTube multi-task ranking system (canonical)", href: "https://daiwk.github.io/assets/youtube-multitask.pdf", meta: "Paper" },
+        { id: "rs-pal", label: "PAL — position-bias aware learning for CTR", href: "https://dl.acm.org/doi/10.1145/3298689.3347033", meta: "Paper" },
+        { id: "rs-twotower", label: "Sampling-bias-corrected two-tower (Google)", href: "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/", meta: "Paper" },
+      ]},
+      { label: "Read · Patterns", items: [
+        { id: "rs-yan-discovery", label: "Eugene Yan — System design for discovery", href: "https://eugeneyan.com/writing/system-design-for-discovery/", meta: "Read" },
+        { id: "rs-cf-collab", label: "Two common collaborative-filtering techniques + trade-offs", href: "https://en.wikipedia.org/wiki/Collaborative_filtering", meta: "Read" },
+      ]},
+      { label: "Practice", items: [
+        { id: "rs-design", label: "Design a 3-stage recommender for short-form video", meta: "Whiteboard" },
+        { id: "rs-multitask", label: "Sketch a multi-task head (engagement + satisfaction + diversity)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Compare two collaborative-filtering techniques and their strengths / weaknesses.",
+      "How do you correct for position bias when training on click logs?",
+      "How would a multi-task head balance watch-time vs satisfaction signals?",
+      "Walk me through cold-start handling for a brand-new creator.",
+    ],
+    references: [REF_CHIP_HUYEN_DESIGN, REF_KHANGICH_REPO],
+  },
+  {
+    day: 126, title: "Specialization · Distributed ML / ML Infrastructure", pillar: "mlops",
+    focus: "DDP, FSDP / ZeRO, model + pipeline parallelism, gradient checkpointing, large-scale serving.",
+    tracks: [
+      { label: "Read · Training", items: [
+        { id: "dist-ddp", label: "DistributedDataParallel (DDP) — the default", href: "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html", meta: "Tutorial" },
+        { id: "dist-fsdp", label: "FSDP — what it shards and why", href: "https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html", meta: "Tutorial" },
+        { id: "dist-zero", label: "DeepSpeed ZeRO — the canonical staged sharding", href: "https://www.deepspeed.ai/training/", meta: "Docs" },
+        { id: "dist-checkpt", label: "Gradient checkpointing — trade compute for memory", href: "https://pytorch.org/docs/stable/checkpoint.html", meta: "Docs" },
+      ]},
+      { label: "Read · Serving", items: [
+        { id: "dist-vllm", label: "vLLM / TensorRT-LLM — high-throughput LLM serving", href: "https://docs.vllm.ai/", meta: "Docs" },
+        { id: "dist-quant", label: "Quantization at serving (INT8, FP8, GPTQ)", href: "https://huggingface.co/docs/transformers/quantization", meta: "Docs" },
+      ]},
+      { label: "Practice", items: [
+        { id: "dist-design", label: "Design infra to train a 70B-param LLM on 256 H100s", meta: "Whiteboard" },
+        { id: "dist-debug", label: "Debug a slow training run: comms vs compute vs IO", meta: "Concept" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When do you actually need FSDP / ZeRO vs single-node DDP?",
+      "Walk me through the memory layout under ZeRO-3.",
+      "Walk me through diagnosing a sudden 50% drop in training throughput.",
+      "What's the highest-leverage inference-time optimization for a Transformer?",
+    ],
+    references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG],
   },
 ];
 

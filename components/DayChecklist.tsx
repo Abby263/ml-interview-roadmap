@@ -141,10 +141,16 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                       ) : null}
                     </button>
                   ) : (
-                    <span
-                      aria-hidden="true"
-                      className="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md border-2 border-line bg-surface opacity-50"
-                    />
+                    // Signed out: clicking the checkbox opens the Clerk
+                    // sign-in modal so users don't have to scroll up first.
+                    <SignInButton mode="modal">
+                      <button
+                        type="button"
+                        aria-label="Sign in to track this item"
+                        title="Sign in to track this item"
+                        className="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md border-2 border-line bg-surface transition hover:border-primary"
+                      />
+                    </SignInButton>
                   )}
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">

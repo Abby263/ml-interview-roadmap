@@ -38,6 +38,7 @@ const WEEK_TITLES: Record<number, string> = {
   15: "Mocks: coding (Meta / Google / OpenAI) + ML design",
   16: "Cross-loop simulations + weak-area repair",
   17: "Final taper, light review, walk in",
+  18: "Specialization deep dives — pick the subdomains you'll be tested on",
 };
 
 function chunkWeeks(plan: DayPlan[]): Week[] {
@@ -265,7 +266,10 @@ export default function HomeRoadmap() {
                               {done}/{total}
                             </span>
                           ) : (
-                            <span className="font-mono text-[0.65rem] font-semibold text-muted">
+                            <span
+                              className="font-mono text-[0.65rem] font-semibold text-muted"
+                              title="Sign in to track items"
+                            >
                               {total} items
                             </span>
                           )}
