@@ -1,0 +1,93 @@
+---
+title: Design an AI Customer Support Agent
+description: Create a support agent that can answer, refund, escalate, and log actions safely with tool-use permissions.
+track: Generative AI
+difficulty: Advanced
+prompt: Design an LLM-based customer support agent that can answer questions, take limited actions (refunds, status updates), escalate when uncertain, and log every step for audit.
+concepts:
+  - Tool use
+  - Guardrails
+  - Escalation
+  - Memory
+  - Fallback handling
+evaluationLens:
+  - Resolution rate
+  - Unsafe action rate
+  - Escalation quality
+  - Latency
+---
+
+## Define the contract before the architecture
+
+Customer-support agents fail when the contract is fuzzy. Pin down:
+
+- **Scope of actions**: read-only Q&A, low-risk actions (status checks), reversible actions (subscription pause), or irreversible ones (refunds, account changes)?
+- **Hard limits**: refund cap per session, no PII modification, no policy override.
+- **Escalation path**: when the agent is unsure, when the user asks for a human, when policy requires a human (legal, billing disputes).
+- **Success metric**: resolution rate (closed without escalation) balanced by CSAT and unsafe-action rate. Optimizing only for resolution makes the agent reckless.
+
+A senior answer states this as an **action allowlist with risk tiers**, not "the agent can do support."
+
+## Architecture
+
+A defensible architecture has four layers:
+
+1. **Intent and routing**: a small classifier (or the LLM with a constrained prompt) decides whether the request is FAQ, account action, billing, or escalation.
+2. **Knowledge layer**: RAG over policy documents, product docs, and the user's own account state. Cite sources in every answer.
+3. **Action layer**: typed tool calls with explicit JSON schemas. Each tool has its own permission, rate limit, and audit log. Examples: `get_order_status`, `pause_subscription`, `issue_refund(amount, reason)`.
+4. **Safety layer**: pre-execution checks (does this action exceed the cap?), policy classifier on the proposed response, logging and trace export.
+
+Mention separating the **planner** (decides what to do) from the **executor** (calls the tool) — it's the only way to make the system auditable and reversible.
+
+## Memory and context
+
+Be explicit about three memory scopes:
+
+- **Turn memory**: the current message and a short rolling window. Keep this lean to control latency and cost.
+- **Session memory**: user's identity, current ticket, and what the agent has already tried. Wipe on session close.
+- **Long-term memory**: only what the company already stores — order history, past tickets, preferences. The agent reads from existing systems of record, not a parallel store.
+
+Avoid "the agent remembers everything forever." That's a privacy and reliability footgun.
+
+## Guardrails — the layered approach
+
+No single guardrail is enough. Stack them:
+
+- **Input filter**: jailbreak detection, PII scrubbing on incoming text (before logging).
+- **Tool-call schema validation**: reject malformed arguments before execution.
+- **Pre-execution policy check**: a rules engine plus a classifier vetoes high-risk calls (refund > $X, account closure, anything outside the allowlist).
+- **Output filter**: factuality check against retrieved docs, profanity / toxicity scrub, PII leakage check.
+- **Human-in-the-loop**: required for irreversible actions over a threshold and for any topic the router flags as legal / disputed.
+
+The architect signal is naming what each layer protects against and admitting where they overlap.
+
+## Evaluation
+
+Evaluate the agent on multiple axes — single-number scoring is a red flag:
+
+- **Offline**: golden dataset of (user message, expected outcome, expected actions). Score correctness, citation quality, action accuracy, and policy adherence.
+- **LLM-as-judge**: scale-friendly but check evaluator agreement against humans on a sample.
+- **Online**: resolution rate, escalation rate, CSAT, unsafe-action rate (per 1000 sessions), latency p95.
+- **Red team**: regular adversarial prompts (jailbreaks, social engineering, conflicting instructions). Track the catch rate over time.
+
+## Failure modes the loop will probe
+
+- **Hallucinated policies**: agent invents a refund rule. Counter with hard grounding to retrieved policy text and a "no policy found → escalate" fallback.
+- **Tool misuse**: model calls `issue_refund` when the user asked about shipping. Counter with the planner / executor split and pre-execution checks.
+- **Loop traps**: agent retries the same failing tool. Cap retries, exponential backoff, escalate on repeated failure.
+- **Context leakage**: cross-tenant data appears in answers. Counter with namespace-scoped retrieval and per-request access tokens.
+- **Cost runaway**: long conversations compound prompt cost. Summarize earlier turns into a structured state object.
+
+## Rollout strategy
+
+1. **Shadow mode** — agent generates a draft response, a human agent sends it. Measure overlap and policy adherence.
+2. **Read-only auto-respond** — agent handles FAQs only, escalates everything else.
+3. **Tier 1 actions** — enable low-risk tools (status, ETA, FAQ).
+4. **Tier 2 actions** — enable reversible actions with caps.
+5. **Tier 3 actions** — irreversible actions only with human confirmation and tight caps.
+
+Each tier has its own rollback trigger and its own dashboard.
+
+## What the architect signal looks like
+
+Closing strong: state which two or three failure modes you would invest in mitigating first, why, and which you would explicitly accept (with a monitoring plan) as residual risk for the next quarter.

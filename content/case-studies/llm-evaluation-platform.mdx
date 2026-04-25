@@ -3,7 +3,7 @@ title: Design an LLM Evaluation Platform
 description: Build a platform that runs offline evals, prompt regressions, and release gates for multiple LLM-powered products.
 track: Generative AI
 difficulty: Advanced
-prompt: Build a platform that runs offline evals, prompt regressions, and release gates for multiple LLM-powered products.
+prompt: Design an internal evaluation platform that gates LLM-powered features at release time, catches silent regressions across prompt and model changes, and serves multiple product teams with different requirements.
 concepts:
   - Golden datasets
   - Prompt versioning
@@ -17,18 +17,87 @@ evaluationLens:
   - Cost
 ---
 
-## Core objective
+## Why this exists
 
-This system exists to stop silent regressions. That means it must track prompts, models, retrieval settings, and rubric outputs together, not as isolated artifacts.
+This system stops silent regressions. State the failure mode it prevents:
 
-## Main workflow
+- A prompt change "to fix one issue" tanks unrelated tasks.
+- A model upgrade improves average quality but breaks safety-sensitive cases.
+- A retrieval change improves recall but degrades faithfulness.
 
-1. define evaluation suites by product or task
-2. store prompt and model versions
-3. run batch evaluations on a scheduled or release-triggered basis
-4. score results with deterministic checks and rubric-based judges
-5. surface regressions and block releases when thresholds fail
+Without a platform, every team rolls their own evals, no one trusts the numbers, and the release gate is "the PM said it looked fine."
 
-## Human review
+The platform's contract: every LLM-powered feature ships only after passing a versioned evaluation suite, and every regression is attributable to a specific change.
 
-Automated scoring helps scale. Human review is still important for safety-sensitive or subjective tasks. Mention sampling strategies instead of saying every run gets fully reviewed.
+## Core abstractions
+
+A defensible design names four primary objects and their relationships:
+
+1. **Suite** — a named collection of test cases scoped to a product (support agent, RAG chatbot, summarization).
+2. **Test case** — `(input, expected behavior, scoring rubric, tags)`. Behavior may be exact-match, semantic-match, or graded by rubric.
+3. **Run** — an execution of a suite against a `(model, prompt-version, retrieval-config)` triplet, with results stored.
+4. **Gate** — a policy attached to a release pipeline that compares a new run against a baseline and blocks promotion on regression.
+
+Mention versioning explicitly: prompts, models, retrieval configs, and rubrics are all immutable artifacts with content hashes. A run identifies them by hash, not by name.
+
+## Architecture
+
+1. **Suite registry** — UI + API for creating, editing, and tagging test cases. Backed by a database.
+2. **Run executor** — pulls test cases, calls the target LLM (or product surface), stores raw outputs. Parallelized and rate-limited per provider.
+3. **Scoring layer** — applies deterministic checks (regex, JSON schema, exact match) plus rubric-based judges (LLM-as-judge with calibrated prompts) plus retrieval-quality scores.
+4. **Human review queue** — sampled runs surface to reviewers for adjudication; reviewer scores feed back to calibrate the LLM-judge.
+5. **Comparison dashboard** — side-by-side diff of two runs, regression highlights, attribution back to the change that caused them.
+6. **Release-gate API** — CI calls this with the candidate's run ID; returns pass / fail and the regression details.
+
+## Scoring — the real complexity
+
+LLM evaluation is hard because correctness is fuzzy. Walk through the scoring stack:
+
+- **Deterministic checks**: schema validation, format compliance, banned phrases, citation presence. Fast and cheap; use these first.
+- **Reference-based**: BLEU / ROUGE / exact match against a gold answer. Useful only for narrow tasks.
+- **Rubric-based LLM-judge**: the most flexible. Score each output on dimensions (correctness, helpfulness, safety) using a graded rubric. Calibrate the judge against human ratings on a held-out set.
+- **Pairwise preference**: judge prefers A over B. Often more reliable than absolute scoring.
+- **Human-in-the-loop**: required for safety-sensitive tasks and for periodic calibration audits.
+
+The architect signal is admitting that LLM-judge agreement with humans is typically 70-85% — meaningful, but not a substitute for sampled human review.
+
+## Regression detection
+
+A regression is "the new run is statistically worse than baseline." Several flavors:
+
+- **Pass rate drop**: more cases failing the deterministic checks.
+- **Rubric score drop**: average rubric score is lower, with a confidence interval.
+- **Slice regression**: overall metrics fine, but a tagged subset (e.g., "billing questions") got worse — often the most important kind.
+- **Cost / latency regression**: not just quality. A prompt that doubles tokens for marginal quality is still a regression.
+
+Show comparison with significance testing (paired bootstrap or McNemar) — a 2% difference on 50 cases is noise.
+
+## Multi-tenant — why this is a platform
+
+Each product team has its own:
+
+- suite of test cases
+- prompt versions and models
+- gate thresholds
+- review queue for their reviewers
+
+Mention namespace isolation, per-team budgets, and a shared LLM-judge pool that all teams calibrate against the same human-rated calibration set.
+
+## Failure modes worth naming
+
+- **Goodhart's law**: teams over-fit to the eval suite. Counter by rotating a "hidden" subset of cases that aren't visible to the prompt authors.
+- **Stale gold**: golden answers become wrong as products evolve. Schedule periodic re-validation by humans, not just versioning.
+- **Judge drift**: when the judge model is updated, all historical scores become incomparable. Pin the judge model version per gate, upgrade explicitly.
+- **Cost explosion**: rubric-based scoring with a frontier model is expensive. Use a cheaper judge for first-pass and escalate only on borderline cases.
+- **Slow feedback loop**: a 4-hour eval suite kills iteration speed. Provide a fast "smoke" suite (~5 minutes) for PR-time feedback and the full suite for release gates.
+
+## Rollout
+
+1. **Pilot with one team** — usually the team with the most release pain. Build the full loop for their suite first.
+2. **Onboard 2-3 more teams** — each adds requirements that stress the platform. Resist temptation to special-case; generalize.
+3. **Mandatory gate** — leadership commits to "no LLM feature ships without an eval gate." This is a policy decision, not a tooling one.
+4. **Cost budgets** — per-team budgets on judge calls so a runaway suite doesn't blow up the platform's bill.
+
+## What the architect signal looks like
+
+Close with the meta point: the platform's job is to make the cost of *not* evaluating higher than the cost of evaluating. Name the one cultural shift you would defend (no LLM feature ships without a regression-gated eval), and the one technical investment that has compounding value (a calibrated LLM-judge with quarterly human re-validation).

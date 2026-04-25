@@ -3,7 +3,7 @@ title: Design a Real-Time Fraud Detection System
 description: Detect payment fraud in real time with tight latency constraints, high class imbalance, and expensive false positives.
 track: ML System Design
 difficulty: Advanced
-prompt: Design a payment fraud detection system that scores transactions in real time under tight latency and review-cost constraints.
+prompt: Design a payment fraud detection system that scores transactions in real time under tight latency and review-cost constraints, balancing fraud recall against legitimate-customer friction.
 concepts:
   - Imbalanced classification
   - Feature freshness
@@ -17,28 +17,69 @@ evaluationLens:
   - Analyst workload
 ---
 
-## Clarify the decision point
+## Clarify the decision the model supports
 
-The first question is what the model influences. Does it block the payment, send the case to manual review, or just assign a risk score?
+The first question is what the model influences. Does it block the payment, send the case to manual review, queue for step-up authentication, or just assign a risk score for downstream rules?
 
-That single choice changes the cost of false positives and therefore the right operating threshold.
+That single choice changes the cost matrix and therefore the right operating threshold. A block costs the merchant a transaction now; a missed fraud costs the chargeback later plus reputational damage. State the cost ratio explicitly — interviewers want a number, not a vibe.
+
+## Architecture under a tight budget
+
+A defensible serving path under a 100ms p99 budget looks like:
+
+1. **Request enrichment (10-20ms)** — fetch user, card, device, and merchant features from the online feature store.
+2. **Rules pre-filter (5ms)** — block obvious fraud (known stolen cards, blocklisted IPs) without invoking the model.
+3. **Model scoring (20-40ms)** — gradient-boosted tree or compact deep model. Serve from a low-latency inference service with warmed instances.
+4. **Decision policy (5-10ms)** — combine model score, business rules, and the customer's tier into one of: approve, step-up auth, manual review, decline.
+5. **Logging** — async write of features, score, decision, and request context for later label join.
+
+The architect signal is naming the **fallback path** when any stage breaches its budget — usually a conservative cached score or a lightweight rules-only decision, never a hard timeout that drops the transaction.
 
 ## Features and freshness
 
-Fraud systems live or die on feature freshness. Mention recent card activity, merchant or device history, velocity features, and graph or account-linkage signals.
+Fraud systems live or die on feature freshness. Group by latency tier:
 
-If the latency budget is tight, separate features into:
+- **Synchronous online** (computed at request): velocity (txns in last N minutes), device fingerprint match, geo distance from last txn.
+- **Cached aggregates** (refreshed every few minutes): 7-day spend pattern, merchant-category history, account age.
+- **Slower enrichment** (used in review or secondary models): graph features over shared devices / addresses / cards, third-party risk scores.
 
-- synchronous online features
-- cached or precomputed aggregates
-- slower enrichment paths used for review or secondary models
+Mention training-serving consistency. Velocity computed wrong at training time vs. serving time silently destroys online wins.
+
+## Imbalanced labels and delayed truth
+
+Two label problems show up:
+
+1. **Severe imbalance**: fraud is well under 1% of transactions. Use class-weighted loss or downsample negatives. Don't chase accuracy — use precision-recall AUC or recall at a fixed false-positive budget.
+2. **Delayed labels**: chargebacks arrive 30-90 days later. Train on a windowed snapshot, but evaluate on a more recent window using soft labels (bank disputes, customer reports) as proxies.
+
+Mention the **survivorship bias**: you only observe outcomes for transactions you approved. Counter with a small randomized review budget — a few percent of borderline transactions sent to manual review regardless of score, so you keep the data distribution honest.
+
+## Threshold tuning is the architect's word
+
+A single threshold is rarely the right answer:
+
+- **Per-segment thresholds**: high-trust customers get a lenient threshold, new accounts get a stricter one.
+- **Dynamic thresholds**: tighten during high-fraud events (data breach, weekend before Christmas), loosen during low-volume periods.
+- **Cost-aware thresholds**: derived from `bid × probability × cost-of-action`, not picked off an ROC curve.
 
 ## Monitoring
 
 Production monitoring should include:
 
-- system latency
-- score distribution shifts
-- approval and decline rates
-- downstream confirmed fraud labels
-- reviewer queue growth
+- system latency (p50, p95, p99) per stage
+- score distribution shifts (KS or PSI vs. baseline)
+- approval and decline rates by segment
+- downstream confirmed fraud labels with the expected lag
+- reviewer queue growth and SLA adherence
+- model-vs-rules disagreement rate (a sudden change suggests drift on one side)
+
+## Failure modes worth naming
+
+- **Concept drift**: fraud patterns shift fast. Retrain weekly or biweekly, not quarterly. Keep a "recent-model" champion and a "long-window" challenger.
+- **Adversarial drift**: fraudsters probe and adapt. Add anomaly detection alongside the supervised model to flag unusual patterns the labeled model has not seen.
+- **Reviewer capacity**: a model that floods the queue is worse than one that misses some fraud. Cap manual-review volume by adjusting the threshold automatically when queue length crosses an SLA.
+- **Cold start for new customers**: no history makes legitimate users look risky. Use a separate model or rules path for accounts under N days old.
+
+## What the architect signal looks like
+
+Close with the operational view: which two metrics you would put on the team's wall (e.g., fraud-recall at fixed FPR, and reviewer-queue latency), and the one trade-off you would defend hardest under pressure (typically the cost ratio behind your threshold choice, with a sensitivity analysis if revenue assumptions shift).

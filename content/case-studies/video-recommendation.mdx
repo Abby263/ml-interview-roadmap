@@ -3,7 +3,7 @@ title: Design a Netflix-style Recommendation System
 description: Create a personalized home feed with retrieval, ranking, freshness, and diversity constraints.
 track: ML System Design
 difficulty: Advanced
-prompt: Design a personalized home feed that recommends videos with strong watch time, diversity, and freshness while keeping latency low.
+prompt: Design a personalized video home feed that maximizes long-term engagement with strong watch time, diversity, and freshness while keeping serving latency under 300ms.
 concepts:
   - Candidate generation
   - Ranking
@@ -18,26 +18,65 @@ evaluationLens:
   - Latency
 ---
 
-## Product framing
+## Product framing first, model choice last
 
-A good answer starts by clarifying what the home feed is optimizing. Watch time, session starts, long-term retention, and creator diversity can all push the system in different directions.
+A strong opener clarifies the goal before naming any model. The home feed could optimize for:
 
-## Multi-stage ranking
+- session watch time
+- daily active users / long-term retention
+- creator diversity and ecosystem health
+- a blended objective that weights several of the above
 
-Recommendation interviews are usually strongest when you separate the system into:
+These pull in different directions. Optimizing watch time alone produces clickbait creep; optimizing retention alone creates a slow-feedback metric that's hard to A/B test. The senior move is naming a **proxy reward** that correlates with retention but moves quickly enough to train on (e.g., "completed views" weighted by content length).
 
-1. candidate generation
-2. ranking
-3. re-ranking or policy layer
+State the constraints explicitly: catalog size (millions of items), users (tens of millions), p99 latency budget (250-300ms end-to-end), and freshness requirement (newly uploaded content surfaces within hours, not days).
 
-This gives you room to discuss latency and model complexity at different stages instead of pretending one model does everything.
+## Multi-stage architecture
 
-## Monitoring
+Recommendation interviews are strongest when you separate concerns into stages with explicit budgets:
 
-Mention both model metrics and product metrics:
+1. **Candidate generation (50-80ms)** — narrow millions of items down to ~1000. Multiple sources merged: collaborative filtering (two-tower model), content-based (genre / embedding similarity), recency bucket, exploration / cold-start bucket.
+2. **Ranking (80-150ms)** — score the 1000 candidates with a heavier model (deep neural net over user, item, and context features). Output a per-item utility prediction.
+3. **Re-ranking and policy (20-40ms)** — apply diversity (no more than N from one creator), freshness (boost recent uploads), business rules (filter content the user has already finished, respect parental controls), and exploration injection.
+4. **Logging and feedback** — record impressions, dwell time, completion, explicit signals (like / save / skip) for next-cycle training.
 
-- watch time
-- completion rate
-- repeated impressions
-- creator diversity
-- serving latency
+The architect signal is naming the **latency budget per stage** and what graceful degradation looks like if any stage misses (cached candidates, last-good ranker, or a popularity fallback).
+
+## Features that move the needle
+
+Group features by stage and cost:
+
+- **User features**: short-term history (last N watches), long-term preferences (genre embeddings), demographic-where-allowed, device type, time-of-day, session position.
+- **Item features**: content embedding, creator, age, popularity decay, length, language, quality signals.
+- **Cross features**: user × creator history, user × genre history, user × language match.
+- **Context features**: app surface (home / search / next-up), preceding item, network conditions.
+
+Mention point-in-time correctness — every training row uses features as they would have been at the moment the impression was served, not after.
+
+## Training, labels, and bias
+
+Real engagement labels are biased toward what the system already shows. Walk through:
+
+- **Implicit signals** (clicks, watch time, completion) are abundant but feedback-loop biased. Use inverse propensity weighting or off-policy correction.
+- **Explicit signals** (likes, ratings, follows) are clean but sparse. Use as auxiliary heads in a multi-task model.
+- **Negative sampling**: random in-batch negatives plus hard negatives mined from items the user saw and skipped.
+- **Cold-start**: new items get an exploration budget (top of feed for a small fraction of impressions) so the system gathers signal before deciding they're bad.
+
+## Evaluation lens
+
+Senior interviewers want both offline and online:
+
+- **Offline**: NDCG / recall@K on a held-out interaction set, calibration of predicted vs. observed watch time, slice analysis by user cohort and content category.
+- **Online**: A/B test on watch time per session, daily-active-user trends, retention at 7 / 28 days, creator diversity, churn risk.
+- **Guardrails**: latency p50/p99, "stale feed" rate (no new items between sessions), filter-bubble metrics (concentration index of top-K creators per user).
+
+## Failure modes the loop will probe
+
+- **Filter bubbles**: model learns to show only what the user already engages with. Counter with diversity in re-ranking and an exploration injection (a few percent of slots reserved for items outside the user's recent profile).
+- **Popularity collapse**: rich-get-richer feedback loop where a few creators dominate. Counter with exposure regularization in the ranker or a creator-equity term in re-ranking.
+- **Latency tail under load**: spinning up new model replicas during peak. Pre-warm capacity, set per-stage timeouts, and have the cached "yesterday's feed" as a deterministic fallback.
+- **Drift**: tastes shift around launches, holidays, viral moments. Monitor feature distributions and trigger retraining on KS or PSI breaches, not just a calendar.
+
+## What the architect signal looks like
+
+Close with one clear trade-off: usually the watch-time-vs-retention tension. Name how you would split the team's six-month roadmap (e.g., 60% on the ranker, 25% on candidate generation, 15% on monitoring and diversity) and which one experiment would change your priorities if it failed.

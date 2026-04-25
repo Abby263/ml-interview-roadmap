@@ -1,0 +1,84 @@
+---
+title: Design Ad Click Prediction
+description: Predict click-through rate for ad ranking while handling sparse features, calibration, and revenue trade-offs.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a click-through-rate prediction system that ranks ads in a real-time auction with strict latency, calibrated probabilities, and clear revenue trade-offs.
+concepts:
+  - Calibration
+  - Feature stores
+  - Delayed labels
+  - Online serving
+  - Auction trade-offs
+evaluationLens:
+  - CTR lift
+  - Calibration
+  - Revenue
+  - Latency
+---
+
+## Frame the auction, not just the model
+
+CTR prediction is not standalone — it feeds an auction. A good answer states this up front:
+
+- The ranking score is typically `bid × pCTR` (with some quality adjustment), so a 10% calibration error directly distorts revenue.
+- Both sides of the marketplace matter: advertisers (ROI), publishers (yield), and users (relevance / not-being-spammed).
+- Latency is a hard SLA — usually under 100ms total for the request, which leaves the model 20-40ms.
+
+State the success metric explicitly: revenue per mille (RPM), advertiser conversion rate, or a blended objective with a relevance floor.
+
+## Architecture
+
+A reasonable serving path looks like:
+
+1. **Request enrichment (5-10ms)** — fetch user, page, and contextual features from the feature store.
+2. **Candidate retrieval (10-20ms)** — pull eligible ads from inventory based on targeting rules and budget pacing.
+3. **CTR scoring (20-40ms)** — score each candidate with the model, batched in one inference call.
+4. **Auction (5-10ms)** — combine pCTR with bid, apply quality and pacing modifiers, pick winner(s).
+5. **Logging** — write features, prediction, winning ad, and later the click outcome to the training pipeline.
+
+The architect signal is calling out the **logging path** explicitly. Without consistent feature snapshots at request time, training data will drift from serving and you will chase phantom regressions forever.
+
+## Features and sparsity
+
+CTR features are dominated by sparse, high-cardinality categoricals:
+
+- **User**: demographics (where allowed), past click history per category, time-of-day, device.
+- **Ad**: advertiser, creative ID, creative embedding, category, age in system.
+- **Context**: publisher, page type, slot position, query (if search ad), referrer.
+- **Cross features**: user × ad-category history, user × advertiser history.
+
+Mention how you handle high cardinality: hashing tricks, embedding tables, or factorization machines. Today most teams use a deep-and-wide style model or a transformer-style architecture over feature embeddings.
+
+## Calibration is the architect's word
+
+Tree models and large neural nets often produce well-ranked but **poorly calibrated** scores. For ranking only, that's fine. For an auction, it directly distorts the second-price math.
+
+- **Detection**: reliability diagrams, expected calibration error (ECE), bucketed mean predicted vs observed CTR.
+- **Correction**: Platt scaling, isotonic regression, or temperature scaling, fit on held-out recent data and refreshed often.
+- **Drift**: re-check calibration weekly — it degrades faster than rank quality.
+
+If you skip calibration in the answer, expect a follow-up.
+
+## Delayed and biased labels
+
+Two label problems show up:
+
+1. **Delayed labels**: a click can arrive seconds later, a conversion days later. Use a windowed labeler with a defined cutoff (e.g., a click within 30 minutes counts as positive). Discuss the bias the cutoff introduces.
+2. **Selection bias**: you only observe clicks on ads you actually showed. Counter with inverse propensity scoring, exploration slots (~5% of impressions to under-served candidates), or off-policy correction during training.
+
+## Cost, retraining, and rollout
+
+- **Training cadence**: daily or hourly for the calibration head, weekly or biweekly for the full model. Trigger by drift, not just calendar.
+- **Model registry**: every model is versioned with the feature snapshot it was trained on, so rollbacks are deterministic.
+- **Rollout**: shadow → 1% → 5% → 25% with auction-revenue and fairness guardrails at each gate. Auto-rollback if revenue drops more than X% with statistical significance.
+
+## Failure modes worth naming
+
+- **Position bias**: top-slot ads always look better. Either model position as a feature at training time (and zero it at serving) or use position-aware loss functions.
+- **Feedback loops**: model preferring familiar advertisers strangles new entrants. Add an exploration budget.
+- **Holiday / event drift**: Black Friday, elections, sports finals all break the model. Have a "high-volatility" mode with conservative pacing and a faster recalibration loop.
+
+## The architect's closing move
+
+End with the one trade-off you would defend hardest: the latency-vs-quality cascade (cheap model on most traffic, escalate to the heavy model only on uncertainty or high-bid traffic) and how it compounds savings without a proportional revenue hit.
