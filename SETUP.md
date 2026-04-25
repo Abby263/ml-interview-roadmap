@@ -34,6 +34,15 @@ a dozen other providers — pick what you want in the Clerk dashboard.
    CLERK_SECRET_KEY                  = sk_test_...      # or sk_live_...
    ```
 
+   Optional (these honour the routes we ship):
+
+   ```
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL       = /sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL       = /sign-up
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL = /          # (or /dashboard — we redirect it to /)
+   NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL = /
+   ```
+
    Set them for **Production** (and **Preview** if you want auth on
    preview deploys too).
 
@@ -78,20 +87,26 @@ Clerk user id, so progress syncs across devices.
      on day_progress (user_id);
    ```
 
-3. From **Project Settings → API**, copy:
+3. From **Project Settings → API** (or **API Keys** in newer dashboards), copy:
 
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
-   - **Project API keys → anon (public)** → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - **Project API keys → service_role (secret)** →
-     `SUPABASE_SERVICE_ROLE_KEY` ⚠ **server-only — never prefix with
-     `NEXT_PUBLIC_`**
+   - **Public key**
+       - newer naming: **publishable** → `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+       - legacy naming: **anon** → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+       - either name works; the code accepts both.
+   - **Secret key**
+       - newer naming: **secret** → `SUPABASE_SECRET_KEY`
+       - legacy naming: **service_role** → `SUPABASE_SERVICE_ROLE_KEY`
+       - ⚠ **server-only — never prefix with `NEXT_PUBLIC_`**.
+       - **This one is required for sync to work.** Without it the home
+         page shows "sign in to track progress" but writes go nowhere.
 
 4. In Vercel → Environment Variables, add:
 
    ```
-   NEXT_PUBLIC_SUPABASE_URL       = https://xxxxx.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY  = eyJhbGc...
-   SUPABASE_SERVICE_ROLE_KEY      = eyJhbGc...   (server-only)
+   NEXT_PUBLIC_SUPABASE_URL              = https://xxxxx.supabase.co
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY  = sb_publishable_...   # or NEXT_PUBLIC_SUPABASE_ANON_KEY
+   SUPABASE_SECRET_KEY                   = sb_secret_...        # or SUPABASE_SERVICE_ROLE_KEY (server-only)
    ```
 
 5. Redeploy:

@@ -124,18 +124,11 @@ export const siteTagline =
   "A structured roadmap to prepare for ML, deep learning, GenAI, and ML system design interviews in 30, 60, or 90 days.";
 
 export const navigationLinks = [
-  { href: "/", label: "Home", group: "Overview" },
-  { href: "/start-here", label: "Start Here", group: "Overview" },
-  { href: "/roadmaps", label: "Roadmaps", group: "Plan" },
-  { href: "/questions", label: "Question Bank", group: "Practice" },
-  { href: "/case-studies", label: "Case Studies", group: "Practice" },
-  { href: "/dashboard", label: "Dashboard", group: "Track" },
-  { href: "/resources", label: "Resources", group: "Reference" },
+  { href: "/", label: "Roadmap", group: "Overview" },
   { href: "/blog", label: "Blog", group: "Reference" },
-  { href: "/about", label: "About", group: "Reference" },
 ] as const;
 
-export const navGroupOrder = ["Overview", "Plan", "Practice", "Track", "Reference"] as const;
+export const navGroupOrder = ["Overview", "Reference"] as const;
 
 export type NavGroup = (typeof navGroupOrder)[number];
 
@@ -2420,15 +2413,15 @@ export const dailyPlan: DayPlan[] = [
   // ───── PHASE 1: Coding & ML basics in parallel (Days 1-50) ─────
   // DSA via NeetCode 150 (≈ 5/day → ~30 days) + ML fundamentals woven in.
 
-  // Week 1 — Arrays & Hashing + ML refresher
+  // ───── PHASE 1A: Statistics + Arrays/Two Pointers/Sliding Window (Days 1-7) ─────
   {
-    day: 1, title: "Arrays & Hashing — set up your loop", pillar: "foundations",
-    focus: "Solve the easiest NeetCode pattern fast and re-anchor your ML vocabulary.",
+    day: 1, title: "Arrays & Hashing + Probability toolkit", pillar: "math-stats",
+    focus: "Solve the easiest NeetCode pattern + refresh probability you'll be asked cold.",
     tracks: [
       { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 0, 4) },
-      { label: "ML refresher", items: [
-        { id: "ml-bias-variance", label: "Read: bias-variance trade-off (then explain it cold)", href: "https://scott.fortmann-roe.com/docs/BiasVariance.html", meta: "Concept" },
-        { id: "topic-bias-variance", label: "Topic card: Bias-Variance question", href: "/questions" },
+      { label: "Stats · Probability foundations", items: [
+        { id: "stats-bayes", label: "Bayes intuition: detection / diagnosis / ranking examples", href: "https://seeing-theory.brown.edu/bayesian-inference/index.html", meta: "Interactive" },
+        { id: "stats-cond-prob", label: "Conditional probability traps in interviews", href: "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies", meta: "Read" },
       ]},
       { label: "Setup", items: [
         { id: "setup-leetcode", label: "Create LeetCode account; pick 1-2 target companies", href: "https://leetcode.com/", meta: "5 min" },
@@ -2436,20 +2429,146 @@ export const dailyPlan: DayPlan[] = [
       ]},
     ],
     interviewQuestions: [
+      "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
+      "Why can a model with strong recall still have weak positive predictive value?",
+      "What's the difference between P(A|B) and P(B|A)?",
+    ],
+    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY],
+    topicId: "probability-toolkit",
+  },
+  {
+    day: 2, title: "Arrays & Hashing (cont.) + Distributions in ML", pillar: "math-stats",
+    focus: "Finish the arrays bucket + connect distributions to model assumptions.",
+    tracks: [
+      { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 4, 5) },
+      { label: "Stats · Distributions", items: [
+        { id: "stats-distributions", label: "Binomial / Poisson / Gaussian — when each fits", href: "https://www.probabilitycourse.com/chapter3/3_2_3_pmf_examples.php", meta: "Read" },
+        { id: "stats-heavy-tail", label: "Heavy tails and how they bite (income, latency)", href: "https://en.wikipedia.org/wiki/Heavy-tailed_distribution", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When is the Poisson approximation to the Binomial a useful interview move?",
+      "What goes wrong if you assume Gaussian when the underlying is heavy-tailed?",
+      "How do you pick a distribution to model conversion rates?",
+    ],
+    references: [REF_GOOGLE_ML_CRASH],
+  },
+  {
+    day: 3, title: "Two Pointers + Bayesian thinking", pillar: "math-stats",
+    focus: "Two-pointer template + Bayes for screening / ranking / uncertainty.",
+    tracks: [
+      { label: "DSA · Two Pointers", items: nc("Two Pointers", 0, 3) },
+      { label: "Stats · Bayesian thinking", items: [
+        { id: "stats-prior-likelihood", label: "Priors, likelihoods, posteriors in plain language", href: "https://seeing-theory.brown.edu/bayesian-inference/index.html", meta: "Interactive" },
+        { id: "stats-base-rate", label: "Base-rate fallacy — the most common interview trap", href: "https://en.wikipedia.org/wiki/Base_rate_fallacy", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through the cancer-test base-rate problem.",
+      "When does choosing a different prior change a hiring or screening decision?",
+      "Posterior intervals vs. confidence intervals — what's the difference?",
+    ],
+    references: [],
+  },
+  {
+    day: 4, title: "Two Pointers (cont.) + Hypothesis testing", pillar: "math-stats",
+    focus: "Finish two-pointers + frame experiments rigorously.",
+    tracks: [
+      { label: "DSA · Two Pointers", items: nc("Two Pointers", 3, 2) },
+      { label: "Stats · Hypothesis testing", items: [
+        { id: "stats-pvalue", label: "Null, alternative, p-value, power — fast refresher", href: "https://www.evanmiller.org/how-not-to-run-an-ab-test.html", meta: "Read" },
+        { id: "stats-multitest", label: "Multiple-testing correction (Bonferroni / FDR)", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What goes wrong if you peek at A/B results before the planned end?",
+      "Define statistical power in one sentence.",
+      "When is FDR correction more appropriate than Bonferroni?",
+    ],
+    references: [],
+  },
+  {
+    day: 5, title: "Sliding Window + Confidence intervals", pillar: "math-stats",
+    focus: "Sliding-window template + frequentist CI without sliding into Bayesian language.",
+    tracks: [
+      { label: "DSA · Sliding Window", items: nc("Sliding Window", 0, 3) },
+      { label: "Stats · CIs", items: [
+        { id: "stats-ci-frequentist", label: "Frequentist interpretation done right", href: "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings", meta: "Read" },
+        { id: "stats-bootstrap", label: "Bootstrap CIs — when they save you", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
+      "Why does the bootstrap work when classical CIs don't?",
+      "How does sample size affect the width of a CI quadratically?",
+    ],
+    references: [],
+    questionIds: ["confidence-interval"],
+  },
+  {
+    day: 6, title: "Sliding Window (cont.) + A/B testing math", pillar: "math-stats",
+    focus: "Finish sliding-window + sample sizing + multiple testing.",
+    tracks: [
+      { label: "DSA · Sliding Window", items: nc("Sliding Window", 3, 3) },
+      { label: "Stats · Experimentation", items: [
+        { id: "stats-ab-power", label: "Power analysis & sample size calculator", href: "https://www.evanmiller.org/ab-testing/sample-size.html", meta: "Tool" },
+        { id: "stats-ab-pitfalls", label: "Common A/B test pitfalls (peeking, novelty, network effects)", href: "https://www.evanmiller.org/how-not-to-run-an-ab-test.html", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you size an A/B test for a 1% effect on a 5% baseline conversion?",
+      "What's the novelty effect, and how do you mitigate it?",
+      "When does a sequential test beat a fixed-horizon test?",
+    ],
+    references: [],
+  },
+  {
+    day: 7, title: "Catch-up + Optimization basics", pillar: "math-stats",
+    focus: "Re-attempt the 3 hardest problems of the week + optimization vocabulary.",
+    tracks: [
+      { label: "DSA review", items: [
+        { id: "review-week-1-1", label: "Re-solve your slowest problem from days 1-6, cold", meta: "30 min" },
+        { id: "review-week-1-2", label: "Re-solve the second-slowest", meta: "30 min" },
+        { id: "review-week-1-3", label: "Re-solve a third (any pattern)", meta: "30 min" },
+      ]},
+      { label: "Stats · Optimization", items: [
+        { id: "stats-gd-intuition", label: "Gradient descent intuition (convex vs non-convex)", href: "https://www.deeplearningbook.org/contents/optimization.html", meta: "Read" },
+        { id: "stats-convexity", label: "Why convexity matters for guarantees", href: "https://web.stanford.edu/~boyd/cvxbook/", meta: "Reference" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What does it mean that a loss is convex — and which losses are?",
+      "Why does logistic regression have a global optimum but neural nets do not?",
+      "When does momentum help and when does it hurt?",
+    ],
+    references: [REF_UDL_BOOK, REF_NEETCODE_VIDEOS],
+  },
+
+  // ───── PHASE 1B: Traditional ML basics (Days 8-14) ─────
+  {
+    day: 8, title: "Stack + Bias-variance trade-off", pillar: "traditional-ml",
+    focus: "Stack patterns + the most-asked ML diagnostic.",
+    tracks: [
+      { label: "DSA · Stack", items: nc("Stack", 0, 4) },
+      { label: "Trad ML · Bias-variance", items: [
+        { id: "ml-bias-variance", label: "Read: bias-variance trade-off (then explain it cold)", href: "https://scott.fortmann-roe.com/docs/BiasVariance.html", meta: "Concept" },
+        { id: "ml-bv-curves", label: "Diagnose under- vs over-fitting from learning curves", href: "https://scikit-learn.org/stable/modules/learning_curve.html", meta: "Docs" },
+      ]},
+    ],
+    interviewQuestions: [
       "Define bias and variance — what does each look like in a learning curve?",
       "Why does adding more training data only help one of the two?",
       "When is regularization the wrong remedy?",
     ],
-    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY],
+    references: [REF_GOOGLE_ML_CRASH, REF_UDL_BOOK],
     questionIds: ["bias-variance"],
   },
-
   {
-    day: 2, title: "Arrays & Hashing (cont.) + Loss functions", pillar: "foundations",
-    focus: "Finish the arrays bucket and connect losses to metrics.",
+    day: 9, title: "Stack (cont.) + Loss functions", pillar: "traditional-ml",
+    focus: "Finish stack + connect losses to gradients + when each fits.",
     tracks: [
-      { label: "DSA · NeetCode Arrays & Hashing", items: nc("Arrays & Hashing", 4, 5) },
-      { label: "ML fundamentals · Loss functions", items: [
+      { label: "DSA · Stack", items: nc("Stack", 4, 3) },
+      { label: "Trad ML · Loss functions", items: [
         { id: "ml-loss-mse-mae", label: "MSE vs MAE vs Huber — when each", href: "https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23/", meta: "Read" },
         { id: "ml-loss-cross-entropy", label: "Binary & categorical cross-entropy (derive the gradient)", href: "https://gombru.github.io/2018/05/23/cross_entropy_loss/", meta: "Read" },
       ]},
@@ -2459,14 +2578,14 @@ export const dailyPlan: DayPlan[] = [
       "When would you choose MAE or Huber over MSE?",
       "What does a class-weighted loss change about gradient updates?",
     ],
-    references: [REF_GOOGLE_ML_CRASH, REF_UDL_BOOK],
+    references: [REF_GOOGLE_ML_CRASH],
   },
   {
-    day: 3, title: "Two Pointers + Linear regression", pillar: "foundations",
-    focus: "Two-pointer template + the linear baseline you must defend.",
+    day: 10, title: "Binary Search + Linear regression", pillar: "traditional-ml",
+    focus: "Master binary search variants + the linear baseline you must defend.",
     tracks: [
-      { label: "DSA · Two Pointers", items: nc("Two Pointers", 0, 3) },
-      { label: "ML fundamentals · Linear regression", items: [
+      { label: "DSA · Binary Search", items: nc("Binary Search", 0, 4) },
+      { label: "Trad ML · Linear regression", items: [
         { id: "ml-linreg-derivation", label: "Derive normal equation + GD update", href: "https://web.stanford.edu/~jurafsky/slp3/5.pdf", meta: "Read" },
         { id: "ml-linreg-assumptions", label: "Five assumptions (and which ones fail loudly)", href: "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/", meta: "Read" },
       ]},
@@ -2479,11 +2598,11 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_GOOGLE_ML_CRASH],
   },
   {
-    day: 4, title: "Two Pointers (cont.) + Logistic regression", pillar: "foundations",
-    focus: "Finish two-pointers + logistic regression with regularization.",
+    day: 11, title: "Binary Search (cont.) + Logistic regression + regularization", pillar: "traditional-ml",
+    focus: "Finish binary search + logistic regression + L1 vs L2.",
     tracks: [
-      { label: "DSA · Two Pointers", items: nc("Two Pointers", 3, 2) },
-      { label: "ML fundamentals · Logistic regression", items: [
+      { label: "DSA · Binary Search", items: nc("Binary Search", 4, 3) },
+      { label: "Trad ML · Logistic regression", items: [
         { id: "ml-logreg", label: "Derive logistic loss + gradient by hand", href: "https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf", meta: "Read" },
         { id: "ml-l1-vs-l2", label: "L1 vs L2 — sparsity vs shrinkage intuition", href: "https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c/", meta: "Read" },
       ]},
@@ -2496,11 +2615,11 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_UDL_BOOK, REF_GOOGLE_ML_CRASH],
   },
   {
-    day: 5, title: "Sliding Window + Cross-validation", pillar: "foundations",
-    focus: "Sliding-window template + a CV strategy that mirrors production leakage.",
+    day: 12, title: "Linked List + Cross-validation", pillar: "traditional-ml",
+    focus: "LL templates + a CV strategy that mirrors production leakage.",
     tracks: [
-      { label: "DSA · Sliding Window", items: nc("Sliding Window", 0, 3) },
-      { label: "ML fundamentals · Cross-validation", items: [
+      { label: "DSA · Linked List", items: nc("Linked List", 0, 4) },
+      { label: "Trad ML · Cross-validation", items: [
         { id: "ml-cv-strategies", label: "k-fold vs stratified vs time-based vs group", href: "https://scikit-learn.org/stable/modules/cross_validation.html", meta: "Docs" },
         { id: "ml-cv-leakage", label: "Why nested CV exists", href: "https://machinelearningmastery.com/nested-cross-validation-for-machine-learning-with-python/", meta: "Read" },
       ]},
@@ -2513,33 +2632,29 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_GOOGLE_ML_CRASH],
   },
   {
-    day: 6, title: "Sliding Window (cont.) + Classification metrics", pillar: "foundations",
-    focus: "Finish sliding-window + pick metrics that match the business decision.",
+    day: 13, title: "Linked List (cont.) + Classification metrics + calibration", pillar: "traditional-ml",
+    focus: "Pick metrics matching the business decision + calibration deep dive.",
     tracks: [
-      { label: "DSA · Sliding Window", items: nc("Sliding Window", 3, 3) },
-      { label: "ML fundamentals · Classification metrics", items: [
+      { label: "DSA · Linked List", items: nc("Linked List", 4, 4) },
+      { label: "Trad ML · Metrics + calibration", items: [
         { id: "ml-metrics-pr-roc", label: "Precision, recall, F1, ROC-AUC, PR-AUC", href: "https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall", meta: "Read" },
-        { id: "ml-calibration", label: "Calibration curves & ECE", href: "https://scikit-learn.org/stable/modules/calibration.html", meta: "Docs" },
+        { id: "ml-platt-isotonic", label: "Platt vs isotonic vs temperature scaling", href: "https://scikit-learn.org/stable/modules/calibration.html#calibration", meta: "Docs" },
       ]},
     ],
     interviewQuestions: [
       "Why is ROC-AUC misleading on imbalanced data?",
-      "When would you pick PR-AUC over ROC-AUC?",
-      "What does it mean for a classifier's probabilities to be calibrated?",
+      "When would you choose isotonic regression over Platt scaling?",
+      "Why does an auction system need calibrated probabilities, not just rankings?",
     ],
     references: [REF_GOOGLE_ML_CRASH, REF_UDL_BOOK],
     topicId: "metrics-and-calibration",
   },
   {
-    day: 7, title: "Catch-up + ranking metrics", pillar: "foundations",
-    focus: "Re-attempt the 3 hardest problems of the week + cover ranking metrics.",
+    day: 14, title: "Linked List finish + Ranking & regression metrics", pillar: "traditional-ml",
+    focus: "Wrap LL patterns (LRU, merge-K) + NDCG / MRR / RMSE.",
     tracks: [
-      { label: "DSA review", items: [
-        { id: "review-week-1-1", label: "Re-solve your slowest problem from days 1-6, cold", meta: "30 min" },
-        { id: "review-week-1-2", label: "Re-solve the second-slowest", meta: "30 min" },
-        { id: "review-week-1-3", label: "Re-solve a third (any pattern)", meta: "30 min" },
-      ]},
-      { label: "ML fundamentals · Ranking & regression metrics", items: [
+      { label: "DSA · Linked List", items: nc("Linked List", 8, 3) },
+      { label: "Trad ML · Ranking + regression metrics", items: [
         { id: "ml-ndcg-mrr", label: "NDCG, MRR, MAP — by hand on a tiny example", href: "https://en.wikipedia.org/wiki/Discounted_cumulative_gain", meta: "Read" },
         { id: "ml-rmse-mae", label: "RMSE vs MAE vs R² — when each", href: "https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics", meta: "Docs" },
       ]},
@@ -2549,15 +2664,17 @@ export const dailyPlan: DayPlan[] = [
       "When does R² lie? Give a counter-example.",
       "How do you sanity-check that your validation metric tracks the production one?",
     ],
-    references: [REF_NEETCODE_VIDEOS],
+    references: [],
   },
+
+  // ───── PHASE 1C: Traditional ML practical (Days 15-21) ─────
   {
-    day: 8, title: "Stack + Trees & ensembles", pillar: "foundations",
-    focus: "Stack patterns + the tabular default (GBDT).",
+    day: 15, title: "Trees DFS + Trees & ensembles (GBDT)", pillar: "traditional-ml",
+    focus: "Tree DFS templates + the tabular default (XGBoost / LightGBM).",
     tracks: [
-      { label: "DSA · Stack", items: nc("Stack", 0, 4) },
-      { label: "ML fundamentals · Trees & ensembles", items: [
-        { id: "ml-gbdt", label: "Read: XGBoost paper (skim sections 1-3)", href: "https://arxiv.org/abs/1603.02754", meta: "Paper" },
+      { label: "DSA · Trees", items: nc("Trees", 0, 5) },
+      { label: "Trad ML · Trees & ensembles", items: [
+        { id: "ml-gbdt-paper", label: "Read: XGBoost paper (skim sections 1-3)", href: "https://arxiv.org/abs/1603.02754", meta: "Paper" },
         { id: "ml-rf-vs-gbdt", label: "Random Forest vs GBDT — defend a default", href: "https://towardsdatascience.com/random-forest-vs-xgboost-comparing-tree-based-algorithms-with-codes-c8a4d18d3e74/", meta: "Read" },
       ]},
     ],
@@ -2570,11 +2687,11 @@ export const dailyPlan: DayPlan[] = [
     topicId: "tree-ensembles",
   },
   {
-    day: 9, title: "Stack (cont.) + Hyperparameter tuning", pillar: "foundations",
-    focus: "Finish stack + tune efficiently without overfitting CV.",
+    day: 16, title: "Trees BFS + Hyperparameter tuning", pillar: "traditional-ml",
+    focus: "Level-order patterns + tune efficiently without overfitting CV.",
     tracks: [
-      { label: "DSA · Stack", items: nc("Stack", 4, 3) },
-      { label: "ML fundamentals · Hyperparameter tuning", items: [
+      { label: "DSA · Trees", items: nc("Trees", 5, 4) },
+      { label: "Trad ML · Hyperparameter tuning", items: [
         { id: "ml-tuning-strategies", label: "Grid vs random vs Bayesian search", href: "https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/", meta: "Read" },
         { id: "ml-tuning-budget", label: "Hyperband / successive halving — why they work", href: "https://research.google/pubs/google-vizier-a-service-for-black-box-optimization/", meta: "Paper" },
       ]},
@@ -2587,11 +2704,11 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 10, title: "Binary Search + Imbalanced classification", pillar: "foundations",
-    focus: "Master binary search variants + handle rare positives without breaking calibration.",
+    day: 17, title: "Trees BST + Imbalanced classification", pillar: "traditional-ml",
+    focus: "BST validation + handle rare positives without breaking calibration.",
     tracks: [
-      { label: "DSA · Binary Search", items: nc("Binary Search", 0, 4) },
-      { label: "ML fundamentals · Imbalanced classification", items: [
+      { label: "DSA · Trees", items: nc("Trees", 9, 3) },
+      { label: "Trad ML · Imbalanced classification", items: [
         { id: "ml-imbalance", label: "Class weights vs SMOTE vs threshold-moving", href: "https://machinelearningmastery.com/what-is-imbalanced-classification/", meta: "Read" },
         { id: "ml-imbalance-calibration", label: "Why resampling breaks calibration", href: "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html", meta: "Read" },
       ]},
@@ -2604,11 +2721,11 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_GOOGLE_ML_CRASH],
   },
   {
-    day: 11, title: "Binary Search (cont.) + Clustering & PCA", pillar: "foundations",
-    focus: "Finish binary search + unsupervised toolkit.",
+    day: 18, title: "Trees hard + Clustering / PCA / anomaly detection", pillar: "traditional-ml",
+    focus: "Trickier tree problems + the unsupervised toolkit.",
     tracks: [
-      { label: "DSA · Binary Search", items: nc("Binary Search", 4, 3) },
-      { label: "ML fundamentals · Unsupervised", items: [
+      { label: "DSA · Trees", items: nc("Trees", 12, 3) },
+      { label: "Trad ML · Unsupervised", items: [
         { id: "ml-kmeans", label: "k-means vs hierarchical vs DBSCAN — assumptions each makes", href: "https://scikit-learn.org/stable/modules/clustering.html", meta: "Docs" },
         { id: "ml-pca", label: "PCA as compression / denoising / visualization", href: "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/", meta: "Read" },
       ]},
@@ -2622,11 +2739,11 @@ export const dailyPlan: DayPlan[] = [
     topicId: "anomaly-detection",
   },
   {
-    day: 12, title: "Linked List + Feature engineering", pillar: "foundations",
-    focus: "LL templates + spot leakage in features.",
+    day: 19, title: "Tries + Feature engineering & leakage", pillar: "traditional-ml",
+    focus: "Trie implementation + spot leakage in features.",
     tracks: [
-      { label: "DSA · Linked List", items: nc("Linked List", 0, 4) },
-      { label: "ML fundamentals · Feature engineering", items: [
+      { label: "DSA · Tries", items: nc("Tries", 0, 3) },
+      { label: "Trad ML · Feature engineering", items: [
         { id: "ml-leakage", label: "Target / temporal / contamination leakage", href: "https://machinelearningmastery.com/data-leakage-machine-learning/", meta: "Read" },
         { id: "ml-encoding", label: "Encoding choices — one-hot, target, embedding", href: "https://contrib.scikit-learn.org/category_encoders/", meta: "Docs" },
       ]},
@@ -2640,97 +2757,10 @@ export const dailyPlan: DayPlan[] = [
     topicId: "feature-engineering-leakage",
   },
   {
-    day: 13, title: "Linked List (cont.) + Calibration deep dive", pillar: "foundations",
-    focus: "Finish LL patterns + Platt / isotonic calibration.",
+    day: 20, title: "Heap + ML coding from scratch (linear)", pillar: "traditional-ml",
+    focus: "Top-K patterns + implement linear regression from scratch.",
     tracks: [
-      { label: "DSA · Linked List", items: nc("Linked List", 4, 4) },
-      { label: "ML fundamentals · Calibration", items: [
-        { id: "ml-platt-isotonic", label: "Platt vs isotonic vs temperature scaling", href: "https://scikit-learn.org/stable/modules/calibration.html#calibration", meta: "Docs" },
-        { id: "ml-cal-monitoring", label: "Why calibration drifts faster than rank", href: "https://machinelearningmastery.com/calibrated-classification-model-in-scikit-learn/", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "When would you choose isotonic regression over Platt scaling?",
-      "Why does an auction system need calibrated probabilities, not just rankings?",
-      "What's the simplest production check that catches calibration drift?",
-    ],
-    references: [],
-  },
-  {
-    day: 14, title: "Linked List finish + Probability toolkit", pillar: "math-stats",
-    focus: "Wrap LL patterns (LRU, merge-K) + refresh probability you'll be asked cold.",
-    tracks: [
-      { label: "DSA · Linked List", items: nc("Linked List", 8, 3) },
-      { label: "Math & Stats · Probability", items: [
-        { id: "math-bayes", label: "Bayes intuition: detection / diagnosis / ranking examples", href: "https://seeing-theory.brown.edu/bayesian-inference/index.html", meta: "Interactive" },
-        { id: "math-distributions", label: "Binomial / Poisson / Gaussian — when each", href: "https://www.probabilitycourse.com/chapter3/3_2_3_pmf_examples.php", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Why can a model with strong recall still have weak positive predictive value?",
-      "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
-      "When is the Poisson approximation to the Binomial a useful interview move?",
-    ],
-    references: [],
-    topicId: "probability-toolkit",
-  },
-  {
-    day: 15, title: "Trees DFS + Hypothesis testing", pillar: "foundations",
-    focus: "Tree DFS templates + experiment math you actually need.",
-    tracks: [
-      { label: "DSA · Trees", items: nc("Trees", 0, 5) },
-      { label: "Math & Stats · A/B basics", items: [
-        { id: "math-pvalue", label: "Null, alternative, p-value, power — fast refresher", href: "https://www.evanmiller.org/how-not-to-run-an-ab-test.html", meta: "Read" },
-        { id: "math-multitest", label: "Multiple-testing correction (Bonferroni / FDR)", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html", meta: "Docs" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What goes wrong if you 'peek' at A/B test results before the planned end?",
-      "Define statistical power in one sentence.",
-      "When is FDR correction more appropriate than Bonferroni?",
-    ],
-    references: [],
-  },
-  {
-    day: 16, title: "Trees BFS + Confidence intervals", pillar: "foundations",
-    focus: "Level-order patterns + frequentist CI without sliding into Bayesian language.",
-    tracks: [
-      { label: "DSA · Trees", items: nc("Trees", 5, 4) },
-      { label: "Math & Stats · CIs", items: [
-        { id: "math-ci-frequentist", label: "Frequentist interpretation done right", href: "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings", meta: "Read" },
-        { id: "math-bootstrap", label: "Bootstrap CIs — when they save you", href: "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html", meta: "Docs" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
-      "Why does the bootstrap work when classical CIs don't?",
-      "How does sample size affect the width of a CI quadratically?",
-    ],
-    references: [],
-    questionIds: ["confidence-interval"],
-  },
-  {
-    day: 17, title: "Trees BST + Optimization basics", pillar: "foundations",
-    focus: "BST validation + the optimization vocabulary models use.",
-    tracks: [
-      { label: "DSA · Trees", items: nc("Trees", 9, 3) },
-      { label: "Math & Stats · Optimization", items: [
-        { id: "math-gd", label: "Gradient descent intuition (convex vs non-convex)", href: "https://www.deeplearningbook.org/contents/optimization.html", meta: "Read" },
-        { id: "math-convexity", label: "Why convexity matters for guarantees", href: "https://web.stanford.edu/~boyd/cvxbook/", meta: "Reference" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What does it mean that a loss is convex — and which losses are?",
-      "Why does logistic regression have a global optimum but neural nets do not?",
-      "When does momentum help and when does it hurt?",
-    ],
-    references: [REF_UDL_BOOK],
-  },
-  {
-    day: 18, title: "Trees hard + ML coding from scratch (linear)", pillar: "foundations",
-    focus: "Trickier tree problems + implement linear regression from scratch.",
-    tracks: [
-      { label: "DSA · Trees", items: nc("Trees", 12, 3) },
+      { label: "DSA · Heap", items: nc("Heap / Priority Queue", 0, 4) },
       { label: "ML coding · From scratch", items: [
         { id: "ml-code-linreg", label: "Implement linear regression with GD (NumPy only)", meta: "Code" },
         { id: "ml-code-test", label: "Fit on toy data; plot loss curve; reason about convergence", meta: "Code" },
@@ -2745,53 +2775,19 @@ export const dailyPlan: DayPlan[] = [
     topicId: "ml-from-scratch",
   },
   {
-    day: 19, title: "Tries + ML coding (logistic)", pillar: "foundations",
-    focus: "Trie implementation + logistic regression from scratch.",
-    tracks: [
-      { label: "DSA · Tries", items: nc("Tries", 0, 3) },
-      { label: "ML coding · From scratch", items: [
-        { id: "ml-code-logreg", label: "Implement logistic regression with binary cross-entropy", meta: "Code" },
-        { id: "ml-code-bce-grad", label: "Derive the gradient on paper before coding", meta: "Concept" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Why is the trie a better fit for autocomplete than a hash set?",
-      "What's the failure mode of softmax + cross-entropy with class imbalance?",
-      "How would you implement weighted logistic regression?",
-    ],
-    references: [],
-  },
-  {
-    day: 20, title: "Heap / Priority Queue + ML coding (k-means)", pillar: "foundations",
-    focus: "Top-K patterns + k-means from scratch.",
-    tracks: [
-      { label: "DSA · Heap", items: nc("Heap / Priority Queue", 0, 4) },
-      { label: "ML coding · From scratch", items: [
-        { id: "ml-code-kmeans", label: "Implement Lloyd's algorithm + random init", meta: "Code" },
-        { id: "ml-code-kmeans-init", label: "Add k-means++ init and explain why", meta: "Concept" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Why is min-heap the right choice for 'top K largest'?",
-      "When does k-means fail catastrophically?",
-      "What's the time complexity of Lloyd's iteration?",
-    ],
-    references: [],
-  },
-  {
-    day: 21, title: "Heap finish + Decision tree split", pillar: "foundations",
-    focus: "Median stream + implement information-gain split for one node.",
+    day: 21, title: "Heap finish + ML coding (logistic + k-means)", pillar: "traditional-ml",
+    focus: "Median stream + logistic regression + k-means from scratch.",
     tracks: [
       { label: "DSA · Heap", items: nc("Heap / Priority Queue", 4, 3) },
       { label: "ML coding · From scratch", items: [
-        { id: "ml-code-dt-split", label: "Compute information gain / gini for one split", meta: "Code" },
-        { id: "ml-code-dt-explain", label: "Explain why GBDT prefers gini in practice", meta: "Concept" },
+        { id: "ml-code-logreg", label: "Implement logistic regression with binary cross-entropy", meta: "Code" },
+        { id: "ml-code-kmeans", label: "Implement k-means (Lloyd's) + k-means++ init", meta: "Code" },
       ]},
     ],
     interviewQuestions: [
       "Walk me through 'find median from data stream' with two heaps.",
-      "Information gain vs gini — when does the choice actually matter?",
-      "Why don't decision trees need feature scaling?",
+      "What's the failure mode of softmax + cross-entropy with class imbalance?",
+      "When does k-means fail catastrophically?",
     ],
     references: [],
   },

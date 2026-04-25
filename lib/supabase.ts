@@ -3,8 +3,16 @@ import { createClient } from "@supabase/supabase-js";
 import { supabaseEnabled } from "@/lib/feature-flags";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+// Supabase renamed `anon` → `publishable`; accept either.
+const anonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  "";
+// Server-only secret. Newer name is `secret`, legacy name is `service_role`.
+const serviceKey =
+  process.env.SUPABASE_SECRET_KEY ||
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  "";
 
 /**
  * Server-side Supabase client using the service role key. Use in server

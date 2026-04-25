@@ -1,31 +1,16 @@
 "use client";
 
+import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 
+import { publicFlags } from "@/lib/feature-flags";
 import {
   readAllProgress,
   setDayChecks,
   subscribeProgress,
 } from "@/lib/progress-store";
-import {
-  dailyPlan,
-  dayItemCount,
-  getPillarBySlug,
-  type DayPlan,
-  type PillarSlug,
-} from "@/lib/site-data";
-
-const PILLAR_BORDER: Record<PillarSlug, string> = {
-  foundations: "border-l-primary",
-  "math-stats": "border-l-accent",
-  "traditional-ml": "border-l-primary",
-  "deep-learning": "border-l-accent",
-  "generative-ai": "border-l-highlight",
-  "ml-system-design": "border-l-primary",
-  mlops: "border-l-accent",
-  "behavioral-storytelling": "border-l-highlight",
-};
+import { dailyPlan, dayItemCount, type DayPlan } from "@/lib/site-data";
 
 interface Week {
   number: number;
@@ -33,38 +18,56 @@ interface Week {
   days: DayPlan[];
 }
 
+// Explicit per-week titles. Derived from a content map of what each week
+// actually covers (DSA + ML/concept), not from any single day's pillar.
+const WEEK_TITLES: Record<number, string> = {
+  1: "Stats foundations + Arrays / Hashing / Two pointers",
+  2: "Stats finish + Trad ML basics + Sliding window / Stack",
+  3: "Trad ML deep dive + Binary search / Linked list",
+  4: "Trad ML practical + Trees / Tries / Heap",
+  5: "ML coding from scratch + Backtracking / SQL",
+  6: "Deep learning fundamentals + Graphs",
+  7: "Transformers + GenAI start + Dynamic programming",
+  8: "GenAI deep dive + Greedy / Intervals",
+  9: "ML system design framework + Math / Bit",
+  10: "ML model design cases (recsys, ads, search)",
+  11: "More cases (RAG, agents, eval) + ML infra",
+  12: "Production: deployment / monitoring / cost / governance",
+  13: "OOP, AI-coding round, company tags + design mocks",
+  14: "Behavioral arc — resume → stories → company prep",
+  15: "Mocks: coding (Meta / Google / OpenAI) + ML design",
+  16: "Cross-loop simulations + weak-area repair",
+  17: "Final taper, light review, walk in",
+};
+
 function chunkWeeks(plan: DayPlan[]): Week[] {
   const weeks: Week[] = [];
   for (let i = 0; i < plan.length; i += 7) {
     const days = plan.slice(i, i + 7);
     if (days.length === 0) break;
+    const number = Math.floor(i / 7) + 1;
     weeks.push({
-      number: Math.floor(i / 7) + 1,
-      title: weekTitle(days[0]?.pillar),
+      number,
+      title: WEEK_TITLES[number] ?? "",
       days,
     });
   }
   return weeks;
 }
 
-function weekTitle(firstPillar: PillarSlug | undefined) {
-  if (!firstPillar) return "";
-  const map: Record<PillarSlug, string> = {
-    foundations: "Coding & SQL foundations",
-    "math-stats": "Math & statistics",
-    "traditional-ml": "Traditional ML",
-    "deep-learning": "Deep learning & transformers",
-    "generative-ai": "Generative AI",
-    "ml-system-design": "ML system design",
-    mlops: "MLOps & production",
-    "behavioral-storytelling": "Behavioral & final polish",
-  };
-  return map[firstPillar];
-}
-
 const emptyProgress: Record<number, number> = {};
 
+function useAuthState(): { canTrack: boolean; isLoaded: boolean } {
+  if (!publicFlags.clerkEnabled) {
+    return { canTrack: true, isLoaded: true };
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { isSignedIn, isLoaded } = useUser();
+  return { canTrack: Boolean(isSignedIn), isLoaded };
+}
+
 export default function HomeRoadmap() {
+  const { canTrack, isLoaded } = useAuthState();
   const progress = useSyncExternalStore(
     subscribeProgress,
     readAllProgress,
@@ -75,6 +78,7 @@ export default function HomeRoadmap() {
   // Supabase is configured, pull their saved progress and merge it into
   // localStorage so the UI reflects cross-device state.
   useEffect(() => {
+    if (!canTrack) return;
     let cancelled = false;
     (async () => {
       try {
@@ -86,7 +90,6 @@ export default function HomeRoadmap() {
         for (const [dayKey, items] of Object.entries(serverProgress)) {
           const day = Number(dayKey);
           if (!Number.isFinite(day)) continue;
-          // Merge: prefer the union of local + server checks.
           const local = JSON.parse(
             window.localStorage.getItem(`ml-roadmap-progress:day:${day}`) ??
               "[]"
@@ -95,46 +98,78 @@ export default function HomeRoadmap() {
           setDayChecks(day, merged);
         }
       } catch {
-        // Ignore — local state already works.
+        // Local state already works.
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [canTrack]);
 
   const weeks = chunkWeeks(dailyPlan);
 
-  // Site-wide totals
+  // Site-wide totals — only shown to signed-in users.
   const totalItems = dailyPlan.reduce((s, d) => s + dayItemCount(d), 0);
-  const totalDone = Object.values(progress).reduce((s, n) => s + n, 0);
+  const totalDone = canTrack
+    ? Object.values(progress).reduce((s, n) => s + n, 0)
+    : 0;
   const totalPct =
     totalItems === 0 ? 0 : Math.round((totalDone / totalItems) * 100);
 
   return (
     <div className="space-y-12">
-      <section className="section-card rounded-[28px] p-5 md:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="panel-label">Overall progress</p>
-            <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
-              {totalDone} / {totalItems} items
-              <span className="ml-3 font-mono text-base font-semibold text-primary">
-                {totalPct}%
-              </span>
+      {canTrack ? (
+        <section className="section-card rounded-[28px] p-5 md:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="panel-label">Overall progress</p>
+              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                {totalDone} / {totalItems} items
+                <span className="ml-3 font-mono text-base font-semibold text-primary">
+                  {totalPct}%
+                </span>
+              </p>
+            </div>
+            <p className="text-sm text-muted">
+              Synced to your account.
             </p>
           </div>
-          <p className="text-sm text-muted">
-            Tracking saved in your browser. Sign in to sync across devices.
-          </p>
-        </div>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-line">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
-            style={{ width: `${totalPct}%` }}
-          />
-        </div>
-      </section>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-line">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
+              style={{ width: `${totalPct}%` }}
+            />
+          </div>
+        </section>
+      ) : publicFlags.clerkEnabled && isLoaded ? (
+        <section className="section-card flex flex-wrap items-center justify-between gap-3 rounded-[28px] p-5 md:p-6">
+          <div>
+            <p className="panel-label">Sign in to track your progress</p>
+            <p className="mt-1 text-sm leading-6 text-foreground">
+              Browse the full roadmap freely. Sign in to check off items
+              and have your progress sync across devices.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <SignInButton mode="modal">
+              <button
+                type="button"
+                className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-semibold text-foreground transition hover:border-primary"
+              >
+                Sign in
+              </button>
+            </SignInButton>
+            <SignUpButton mode="modal">
+              <button
+                type="button"
+                className="rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-white transition hover:opacity-95"
+              >
+                Sign up
+              </button>
+            </SignUpButton>
+          </div>
+        </section>
+      ) : null}
 
       <nav className="flex flex-wrap gap-2">
         {weeks.map((week) => (
@@ -154,10 +189,9 @@ export default function HomeRoadmap() {
             (s, d) => s + dayItemCount(d),
             0
           );
-          const weekDone = week.days.reduce(
-            (s, d) => s + (progress[d.day] ?? 0),
-            0
-          );
+          const weekDone = canTrack
+            ? week.days.reduce((s, d) => s + (progress[d.day] ?? 0), 0)
+            : 0;
           const weekPct =
             weekItems === 0 ? 0 : Math.round((weekDone / weekItems) * 100);
 
@@ -179,37 +213,40 @@ export default function HomeRoadmap() {
                     Days {week.days[0].day}–
                     {week.days[week.days.length - 1].day}
                   </span>
-                  <span className="font-mono font-semibold text-primary">
-                    {weekPct}%
-                  </span>
+                  {canTrack ? (
+                    <span className="font-mono font-semibold text-primary">
+                      {weekPct}%
+                    </span>
+                  ) : null}
                 </div>
               </div>
 
               <ol className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
                 {week.days.map((entry) => {
                   const total = dayItemCount(entry);
-                  const done = progress[entry.day] ?? 0;
+                  const done = canTrack ? progress[entry.day] ?? 0 : 0;
                   const pct =
                     total === 0 ? 0 : Math.round((done / total) * 100);
-                  const isDone = total > 0 && done >= total;
+                  const isDone = canTrack && total > 0 && done >= total;
 
-                  const pillar = getPillarBySlug(entry.pillar);
                   return (
                     <li key={entry.day}>
                       <Link
                         href={`/day/${entry.day}`}
-                        className={`group relative block overflow-hidden rounded-xl border border-line border-l-[3px] bg-surface px-4 py-3 transition hover:border-primary hover:bg-surface-strong ${PILLAR_BORDER[entry.pillar]}`}
+                        className="group relative block overflow-hidden rounded-xl border border-line border-l-[3px] border-l-primary bg-surface px-4 py-3 transition hover:border-primary hover:bg-surface-strong"
                       >
-                        {/* Progress fill in the background */}
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-y-0 left-0 transition-all"
-                          style={{
-                            width: `${pct}%`,
-                            background:
-                              "color-mix(in srgb, var(--primary) 12%, transparent)",
-                          }}
-                        />
+                        {/* Progress fill in the background (only when signed in) */}
+                        {canTrack ? (
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-y-0 left-0 transition-all"
+                            style={{
+                              width: `${pct}%`,
+                              background:
+                                "color-mix(in srgb, var(--primary) 12%, transparent)",
+                            }}
+                          />
+                        ) : null}
                         <div className="relative flex items-baseline gap-3">
                           <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted">
                             Day {String(entry.day).padStart(2, "0")}
@@ -223,14 +260,15 @@ export default function HomeRoadmap() {
                           >
                             {entry.title}
                           </span>
-                          <span className="font-mono text-[0.65rem] font-semibold text-primary">
-                            {done}/{total}
-                          </span>
-                          {pillar ? (
-                            <span className="hidden font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted sm:inline">
-                              {pillar.navTitle}
+                          {canTrack ? (
+                            <span className="font-mono text-[0.65rem] font-semibold text-primary">
+                              {done}/{total}
                             </span>
-                          ) : null}
+                          ) : (
+                            <span className="font-mono text-[0.65rem] font-semibold text-muted">
+                              {total} items
+                            </span>
+                          )}
                         </div>
                       </Link>
                     </li>

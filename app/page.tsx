@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import HomeRoadmap from "@/components/HomeRoadmap";
 
 export default function Home() {
@@ -23,25 +21,6 @@ export default function Home() {
       <HomeRoadmap />
 
       <footer className="space-y-3 border-t border-line pt-8 text-sm leading-7 text-muted">
-        <p>
-          Want a shorter timeline? See the{" "}
-          <Link href="/30-day-crash-plan" className="text-primary hover:underline">
-            30-day crash plan
-          </Link>{" "}
-          or{" "}
-          <Link href="/60-day-roadmap" className="text-primary hover:underline">
-            60-day roadmap
-          </Link>
-          . Browsing by topic? Open the{" "}
-          <Link href="/questions" className="text-primary hover:underline">
-            Question Bank
-          </Link>{" "}
-          or{" "}
-          <Link href="/case-studies" className="text-primary hover:underline">
-            Case Studies
-          </Link>
-          .
-        </p>
         <p className="text-xs">
           Daily plan inspired by{" "}
           <a
@@ -52,7 +31,17 @@ export default function Home() {
           >
             Yuan Meng&apos;s &ldquo;Prepare in a Hurry&rdquo;
           </a>{" "}
-          guide, expanded across 120 days.
+          guide, expanded across 120 days. NeetCode 150 problems link
+          directly to LeetCode; full roadmap at{" "}
+          <a
+            href="https://neetcode.io/roadmap"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            neetcode.io
+          </a>
+          .
         </p>
       </footer>
     </div>
