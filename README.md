@@ -3,19 +3,31 @@
 [![CI](https://github.com/Abby263/ml-interview-roadmap/actions/workflows/ci.yml/badge.svg)](https://github.com/Abby263/ml-interview-roadmap/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Abby263/ml-interview-roadmap)](https://github.com/Abby263/ml-interview-roadmap/releases)
 
-Interactive public learning platform for machine learning, AI engineering, GenAI, ML system design, MLOps, coding, and behavioral interview preparation.
+Interactive public learning platform for machine learning, AI engineering, GenAI, LLMOps, ML system design, MLOps, coding, and behavioral interview preparation.
 
 Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.vercel.app)
 
 ## What Is Included
 
-- A 126-day interview roadmap with day-by-day study tasks.
+- A 132-day interview roadmap with day-by-day study tasks ordered from statistics through ML system design.
 - Clickable daily pages with checklists, interview prompts, references, linked topics, and case studies.
 - A visual roadmap view at `/roadmap` with week-level flow and progress context.
-- Topic libraries for foundations, math and statistics, traditional ML, deep learning, GenAI, ML system design, MLOps, and behavioral prep.
-- A question bank and expanded ML/GenAI system design case-study library.
+- Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
+- A question bank and expanded ML/GenAI/LLMOps system design case-study library.
 - Optional Clerk auth for accounts and optional Supabase sync for cross-device progress.
 - Browser-local progress tracking when auth or Supabase are not configured.
+
+## Curriculum Order
+
+The main roadmap now follows the interview-prep order used across the UI:
+
+1. Statistics, probability, linear algebra, optimization, and evaluation math.
+2. Traditional machine learning, feature engineering, leakage prevention, SQL, and ML coding.
+3. Deep learning, CNNs, sequence models, attention, and transformers.
+4. MLOps: data validation, training orchestration, model registry, CI/CD, deployment, monitoring, and governance.
+5. Generative AI: LLM fundamentals, prompting, embeddings, vector search, RAG, fine-tuning, agents, and guardrails.
+6. LLMOps: prompt/model versioning, eval regression gates, tracing, routing, cost controls, safety, privacy, and red teaming.
+7. ML system design: requirements, metrics, feature stores, serving, monitoring, recommendation, search, ads, fraud, and RAG system cases.
 
 ## Stack
 

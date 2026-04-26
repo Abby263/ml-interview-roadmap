@@ -27,24 +27,32 @@ interface FlowRow {
 
 const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
   {
-    label: "Foundations",
+    label: "Statistics and math",
     rows: [
       { nodes: [
-        { id: "math", title: "Math foundations · Stats / Linalg", dayStart: 1, dayEnd: 7, tone: "accent" },
-      ]},
-      { nodes: [
-        { id: "trad-basics", title: "Traditional ML basics", dayStart: 8, dayEnd: 14, tone: "primary" },
-      ]},
-      { nodes: [
-        { id: "trad-practical", title: "Traditional ML practical", dayStart: 15, dayEnd: 21, tone: "primary" },
-      ]},
-      { nodes: [
-        { id: "ml-coding", title: "ML coding from scratch", dayStart: 18, dayEnd: 21, tone: "primary" },
+        { id: "stats-math", title: "Probability · inference · linalg · optimization", dayStart: 1, dayEnd: 7, tone: "accent" },
       ]},
     ],
   },
   {
-    label: "Deep learning + Transformers",
+    label: "Traditional machine learning",
+    rows: [
+      { nodes: [
+        { id: "trad-basics", title: "Bias-variance · losses · regression · calibration", dayStart: 8, dayEnd: 14, tone: "primary" },
+      ]},
+      { nodes: [
+        { id: "trad-models", title: "Trees · boosting · imbalance · SVM / KNN", dayStart: 15, dayEnd: 18, tone: "primary" },
+      ]},
+      { nodes: [
+        { id: "features-ml-coding", title: "Feature engineering · leakage · ML from scratch", dayStart: 19, dayEnd: 21, tone: "primary" },
+      ]},
+      { nodes: [
+        { id: "sql-support", title: "SQL analytics support", dayStart: 22, dayEnd: 23, tone: "muted" },
+      ]},
+    ],
+  },
+  {
+    label: "Deep learning",
     rows: [
       { nodes: [
         { id: "nn-basics", title: "Neural networks · backprop · optimizers", dayStart: 24, dayEnd: 27, tone: "accent" },
@@ -59,21 +67,55 @@ const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
     ],
   },
   {
+    label: "MLOps and production ML",
+    rows: [
+      { nodes: [
+        { id: "mlops-train", title: "Training pipelines · registry · CI/CD", dayStart: 31, dayEnd: 32, tone: "accent" },
+      ]},
+      { nodes: [
+        { id: "mlops-serving", title: "Deployment · observability · incidents", dayStart: 33, dayEnd: 35, tone: "accent" },
+      ]},
+      { nodes: [
+        { id: "mlops-cost", title: "Cost · capacity · multi-tenant systems", dayStart: 36, dayEnd: 37, tone: "accent" },
+        { id: "mlops-gov", title: "Privacy · governance · build-vs-buy", dayStart: 38, dayEnd: 39, tone: "accent" },
+      ]},
+      { nodes: [
+        { id: "mlops-mock", title: "ML infra design mock", dayStart: 40, dayEnd: 40, tone: "primary" },
+      ]},
+    ],
+  },
+  {
     label: "Generative AI",
     rows: [
       { nodes: [
-        { id: "llm-basics", title: "LLM basics · Tokenization", dayStart: 31, dayEnd: 32, tone: "highlight" },
+        { id: "llm-basics", title: "LLM basics · tokenization · embeddings", dayStart: 41, dayEnd: 42, tone: "highlight" },
       ]},
       { nodes: [
-        { id: "prompting", title: "Prompt engineering", dayStart: 33, dayEnd: 33, tone: "highlight" },
-        { id: "rag", title: "RAG architecture · chatbot project", dayStart: 34, dayEnd: 36, tone: "highlight" },
+        { id: "prompting", title: "Prompt engineering", dayStart: 43, dayEnd: 43, tone: "highlight" },
+        { id: "rag", title: "RAG architecture · vector stores · reranking", dayStart: 44, dayEnd: 46, tone: "highlight" },
       ]},
       { nodes: [
-        { id: "llm-eval", title: "LLM evaluation", dayStart: 37, dayEnd: 37, tone: "highlight" },
-        { id: "fine-tune", title: "Fine-tuning · resume-analyzer project", dayStart: 38, dayEnd: 38, tone: "highlight" },
+        { id: "llm-eval", title: "LLM evaluation", dayStart: 47, dayEnd: 47, tone: "highlight" },
+        { id: "fine-tune", title: "Fine-tuning · resume-analyzer project", dayStart: 48, dayEnd: 48, tone: "highlight" },
       ]},
       { nodes: [
-        { id: "agents", title: "Agents · guardrails", dayStart: 39, dayEnd: 40, tone: "highlight" },
+        { id: "agents", title: "Agents · guardrails", dayStart: 49, dayEnd: 50, tone: "highlight" },
+      ]},
+    ],
+  },
+  {
+    label: "LLMOps",
+    rows: [
+      { nodes: [
+        { id: "llmops-versioning", title: "Prompt/model release discipline", dayStart: 51, dayEnd: 52, tone: "accent" },
+      ]},
+      { nodes: [
+        { id: "llmops-evals", title: "Evaluation datasets · regression gates", dayStart: 53, dayEnd: 53, tone: "accent" },
+        { id: "llmops-tracing", title: "Tracing · incident response", dayStart: 54, dayEnd: 54, tone: "accent" },
+      ]},
+      { nodes: [
+        { id: "llmops-routing", title: "Cost · latency · caching · routing", dayStart: 55, dayEnd: 55, tone: "highlight" },
+        { id: "llmops-safety", title: "Safety · privacy · red teaming · adapters", dayStart: 56, dayEnd: 57, tone: "highlight" },
       ]},
     ],
   },
@@ -81,33 +123,15 @@ const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
     label: "ML system design",
     rows: [
       { nodes: [
-        { id: "sd-framework", title: "System design framework", dayStart: 41, dayEnd: 45, tone: "primary" },
+        { id: "sd-framework", title: "Framework · data · features · serving · monitoring", dayStart: 58, dayEnd: 62, tone: "primary" },
       ]},
       { nodes: [
-        { id: "case-recsys", title: "Recsys cases (video, ads)", dayStart: 46, dayEnd: 49, tone: "primary" },
-        { id: "case-search", title: "Search & fraud cases", dayStart: 51, dayEnd: 54, tone: "primary" },
+        { id: "case-recsys", title: "Recommendation + ads cases", dayStart: 63, dayEnd: 66, tone: "primary" },
+        { id: "case-search-fraud", title: "Search + fraud cases", dayStart: 68, dayEnd: 71, tone: "primary" },
       ]},
       { nodes: [
-        { id: "case-genai", title: "GenAI cases (RAG, agent, eval)", dayStart: 55, dayEnd: 58, tone: "highlight" },
-        { id: "case-tradeoff", title: "Architect trade-off playbook", dayStart: 59, dayEnd: 60, tone: "primary" },
-      ]},
-    ],
-  },
-  {
-    label: "ML infrastructure & production",
-    rows: [
-      { nodes: [
-        { id: "infra-train", title: "Training pipelines · registry · CI/CD", dayStart: 61, dayEnd: 62, tone: "accent" },
-      ]},
-      { nodes: [
-        { id: "infra-deploy", title: "Deployment · observability · incidents", dayStart: 63, dayEnd: 65, tone: "accent" },
-      ]},
-      { nodes: [
-        { id: "infra-cost", title: "Cost · LLMOps · multi-tenant", dayStart: 66, dayEnd: 68, tone: "accent" },
-        { id: "infra-gov", title: "Privacy · build-vs-buy · migration", dayStart: 69, dayEnd: 70, tone: "accent" },
-      ]},
-      { nodes: [
-        { id: "infra-mock", title: "Infra design mock", dayStart: 71, dayEnd: 71, tone: "primary" },
+        { id: "case-genai", title: "RAG, agent, eval, document cases", dayStart: 72, dayEnd: 75, tone: "highlight" },
+        { id: "case-tradeoff", title: "Cross-case design + trade-off playbook", dayStart: 76, dayEnd: 77, tone: "primary" },
       ]},
     ],
   },
@@ -115,14 +139,14 @@ const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
     label: "Coding round + behavioral",
     rows: [
       { nodes: [
-        { id: "oop", title: "OOP fundamentals · concurrency · OOP design", dayStart: 72, dayEnd: 74, tone: "muted" },
+        { id: "oop", title: "OOP fundamentals · concurrency · OOP design", dayStart: 78, dayEnd: 80, tone: "muted" },
       ]},
       { nodes: [
-        { id: "ai-coding", title: "AI-assisted coding round", dayStart: 75, dayEnd: 75, tone: "muted" },
-        { id: "company-tags", title: "Company tags + DSA hard", dayStart: 76, dayEnd: 79, tone: "muted" },
+        { id: "ai-coding", title: "AI-assisted coding round", dayStart: 81, dayEnd: 81, tone: "muted" },
+        { id: "company-tags", title: "Company tags + DSA hard", dayStart: 82, dayEnd: 85, tone: "muted" },
       ]},
       { nodes: [
-        { id: "behavioral", title: "Behavioral arc — resume → stories → company prep", dayStart: 80, dayEnd: 86, tone: "muted" },
+        { id: "behavioral", title: "Behavioral arc — resume → stories → company prep", dayStart: 86, dayEnd: 92, tone: "muted" },
       ]},
     ],
   },
@@ -130,14 +154,14 @@ const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
     label: "Mocks · Final taper",
     rows: [
       { nodes: [
-        { id: "mock-coding", title: "Coding mocks (Meta / Google / OpenAI styles)", dayStart: 87, dayEnd: 89, tone: "primary" },
+        { id: "mock-coding", title: "Coding mocks (Meta / Google / OpenAI styles)", dayStart: 93, dayEnd: 95, tone: "primary" },
       ]},
       { nodes: [
-        { id: "mock-design", title: "ML design + GenAI design mocks", dayStart: 90, dayEnd: 92, tone: "primary" },
+        { id: "mock-design", title: "ML design + GenAI design mocks", dayStart: 96, dayEnd: 98, tone: "primary" },
         { id: "mock-cross", title: "Cross-loop sims + repair", dayStart: 100, dayEnd: 110, tone: "primary" },
       ]},
       { nodes: [
-        { id: "taper", title: "Final taper · light review · walk in", dayStart: 111, dayEnd: 120, tone: "accent" },
+        { id: "taper", title: "Final taper · light review · walk in", dayStart: 111, dayEnd: 126, tone: "accent" },
       ]},
     ],
   },
@@ -145,14 +169,14 @@ const FLOW_GROUPS: { label: string; rows: FlowRow[] }[] = [
     label: "Optional · Specialization deep dives",
     rows: [
       { nodes: [
-        { id: "spec-cv", title: "Computer Vision", dayStart: 121, dayEnd: 121, tone: "accent" },
-        { id: "spec-nlp", title: "NLP / NLU", dayStart: 122, dayEnd: 122, tone: "accent" },
-        { id: "spec-speech", title: "Speech & Audio", dayStart: 123, dayEnd: 123, tone: "accent" },
+        { id: "spec-cv", title: "Computer Vision", dayStart: 127, dayEnd: 127, tone: "accent" },
+        { id: "spec-nlp", title: "NLP / NLU", dayStart: 128, dayEnd: 128, tone: "accent" },
+        { id: "spec-speech", title: "Speech & Audio", dayStart: 129, dayEnd: 129, tone: "accent" },
       ]},
       { nodes: [
-        { id: "spec-rl", title: "Reinforcement Learning", dayStart: 124, dayEnd: 124, tone: "highlight" },
-        { id: "spec-recsys", title: "RecSys deep dive", dayStart: 125, dayEnd: 125, tone: "highlight" },
-        { id: "spec-distrib", title: "Distributed ML / Infra", dayStart: 126, dayEnd: 126, tone: "highlight" },
+        { id: "spec-rl", title: "Reinforcement Learning", dayStart: 130, dayEnd: 130, tone: "highlight" },
+        { id: "spec-recsys", title: "RecSys deep dive", dayStart: 131, dayEnd: 131, tone: "highlight" },
+        { id: "spec-distrib", title: "Distributed ML / Infra", dayStart: 132, dayEnd: 132, tone: "highlight" },
       ]},
     ],
   },

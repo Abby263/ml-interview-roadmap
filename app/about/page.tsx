@@ -9,8 +9,8 @@ export default function AboutPage() {
           </h1>
           <p className="hero-copy">
             The mission is simple: give candidates a clear prep system for ML,
-            deep learning, GenAI, ML system design, and MLOps interviews without
-            forcing them into expensive or opaque platforms on day one.
+            deep learning, MLOps, GenAI, LLMOps, and ML system design interviews
+            without forcing them into expensive or opaque platforms on day one.
           </p>
           <p className="max-w-3xl text-base leading-8 text-muted">
             The project is now developed as a public GitHub repository with an
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <ul className="mt-5 space-y-3 text-sm leading-7 text-muted">
             <li>• Public homepage and roadmap navigation</li>
             <li>• 30, 60, and 90-day tracks</li>
-            <li>• Pillar pages and topic cards</li>
+            <li>• Ordered pillar pages and topic cards from statistics to ML system design</li>
             <li>• Question bank and case-study library</li>
             <li>• Curated resources and SEO-oriented blog scaffolding</li>
             <li>• Public GitHub repo with CI, release, and deployment workflow setup</li>

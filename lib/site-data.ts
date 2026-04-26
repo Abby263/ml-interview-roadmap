@@ -6,6 +6,7 @@ export type PillarSlug =
   | "traditional-ml"
   | "deep-learning"
   | "generative-ai"
+  | "llmops"
   | "ml-system-design"
   | "mlops"
   | "behavioral-storytelling";
@@ -121,7 +122,7 @@ export interface BlogPost {
 
 export const siteName = "ML Interview Roadmap";
 export const siteTagline =
-  "A structured roadmap to prepare for ML, deep learning, GenAI, and ML system design interviews in 30, 60, or 90 days.";
+  "A structured roadmap to prepare for statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, and ML system design interviews in 30, 60, or 90 days.";
 
 export const navigationLinks = [
   { href: "/", label: "Roadmap", group: "Overview" },
@@ -133,23 +134,6 @@ export const navGroupOrder = ["Overview", "Reference"] as const;
 export type NavGroup = (typeof navGroupOrder)[number];
 
 export const pillars: Pillar[] = [
-  {
-    slug: "foundations",
-    title: "Python, SQL, and Coding Foundations",
-    navTitle: "Foundations",
-    summary:
-      "Build the implementation speed and data fluency needed for coding, SQL, and ML-from-scratch rounds.",
-    interviewSignal:
-      "Can you translate an ML idea into clean code and reason under time pressure?",
-    modules: [
-      "Python for ML interviews",
-      "Core data structures",
-      "Algorithms and patterns",
-      "SQL analytics",
-      "ML coding from scratch",
-    ],
-    heroLabel: "Ship code under pressure",
-  },
   {
     slug: "math-stats",
     title: "Math, Statistics, and Probability",
@@ -202,6 +186,24 @@ export const pillars: Pillar[] = [
     heroLabel: "Reason about architectures",
   },
   {
+    slug: "mlops",
+    title: "MLOps and Production ML",
+    navTitle: "MLOps",
+    summary:
+      "Focus on repeatability, deployment, observability, governance, and the infrastructure decisions senior interviews often probe.",
+    interviewSignal:
+      "Can you operate ML reliably after the model is trained?",
+    modules: [
+      "Experiment tracking",
+      "Model registry",
+      "CI/CD for ML",
+      "Deployment",
+      "Observability",
+      "Governance",
+    ],
+    heroLabel: "Operate models at scale",
+  },
+  {
     slug: "generative-ai",
     title: "Generative AI and LLM Engineering",
     navTitle: "Generative AI",
@@ -215,9 +217,26 @@ export const pillars: Pillar[] = [
       "RAG",
       "Fine-tuning",
       "Evaluation and agents",
-      "LLMOps",
     ],
     heroLabel: "Build reliable GenAI products",
+  },
+  {
+    slug: "llmops",
+    title: "LLMOps and Reliable LLM Products",
+    navTitle: "LLMOps",
+    summary:
+      "Operationalize LLM applications with prompt and model versioning, eval gates, tracing, routing, safety, cost controls, and incident response.",
+    interviewSignal:
+      "Can you run an LLM system as a measurable product instead of a fragile demo?",
+    modules: [
+      "Prompt and model versioning",
+      "Evaluation datasets and regression gates",
+      "Tracing and observability",
+      "Cost, latency, caching, and routing",
+      "Safety, privacy, and red teaming",
+      "Fine-tuning operations",
+    ],
+    heroLabel: "Operate LLMs with discipline",
   },
   {
     slug: "ml-system-design",
@@ -239,22 +258,21 @@ export const pillars: Pillar[] = [
     heroLabel: "Design from problem to production",
   },
   {
-    slug: "mlops",
-    title: "MLOps and Production ML",
-    navTitle: "MLOps",
+    slug: "foundations",
+    title: "Python, SQL, and Coding Foundations",
+    navTitle: "Foundations",
     summary:
-      "Focus on repeatability, deployment, observability, governance, and the infrastructure decisions senior interviews often probe.",
+      "Build the implementation speed and data fluency needed for coding, SQL, and ML-from-scratch rounds.",
     interviewSignal:
-      "Can you operate ML reliably after the model is trained?",
+      "Can you translate an ML idea into clean code and reason under time pressure?",
     modules: [
-      "Experiment tracking",
-      "Model registry",
-      "CI/CD for ML",
-      "Deployment",
-      "Observability",
-      "Governance",
+      "Python for ML interviews",
+      "Core data structures",
+      "Algorithms and patterns",
+      "SQL analytics",
+      "ML coding from scratch",
     ],
-    heroLabel: "Operate models at scale",
+    heroLabel: "Ship code under pressure",
   },
   {
     slug: "behavioral-storytelling",
@@ -273,6 +291,7 @@ export const pillars: Pillar[] = [
     ],
     heroLabel: "Tell a credible story",
   },
+
 ];
 
 export const topics: Topic[] = [
@@ -294,7 +313,7 @@ export const topics: Topic[] = [
       "When would you use a generator instead of returning a list?",
       "How do you design a small but testable Python class for feature preprocessing?",
     ],
-    roadmapDay: 2,
+    roadmapDay: 78,
     roleTags: ["Beginner ML Candidate", "ML Engineer"],
     companyTags: ["Amazon", "Stripe", "OpenAI"],
   },
@@ -316,7 +335,7 @@ export const topics: Topic[] = [
       "How would you compute day-7 retention for a signup cohort?",
       "What mistakes create duplicate counts in funnel queries?",
     ],
-    roadmapDay: 5,
+    roadmapDay: 23,
     roleTags: ["Data Scientist", "ML Engineer"],
     companyTags: ["Meta", "DoorDash", "Uber"],
   },
@@ -338,7 +357,7 @@ export const topics: Topic[] = [
       "How would you implement k-means and reason about initialization sensitivity?",
       "What simplifications are acceptable when coding logistic regression in an interview?",
     ],
-    roadmapDay: 14,
+    roadmapDay: 20,
     roleTags: ["ML Engineer", "Applied Scientist"],
     companyTags: ["Apple", "Google", "LinkedIn"],
   },
@@ -360,7 +379,7 @@ export const topics: Topic[] = [
       "Why can a model with strong recall still have weak positive predictive value?",
       "How does class imbalance change your probabilistic interpretation?",
     ],
-    roadmapDay: 8,
+    roadmapDay: 1,
     roleTags: ["Data Scientist", "ML Engineer"],
     companyTags: ["Amazon", "Airbnb", "Wayfair"],
   },
@@ -382,7 +401,7 @@ export const topics: Topic[] = [
       "When would you optimize for recall over precision?",
       "How do you know if a classifier's predicted probabilities are trustworthy?",
     ],
-    roadmapDay: 15,
+    roadmapDay: 7,
     roleTags: ["Data Scientist", "AI Engineer"],
     companyTags: ["Google", "Uber", "Square"],
   },
@@ -404,7 +423,7 @@ export const topics: Topic[] = [
       "How would you detect leakage in a churn model?",
       "When should you avoid one-hot encoding?",
     ],
-    roadmapDay: 26,
+    roadmapDay: 19,
     roleTags: ["Data Scientist", "ML Engineer"],
     companyTags: ["Meta", "Netflix", "Doordash"],
   },
@@ -426,7 +445,7 @@ export const topics: Topic[] = [
       "Why does gradient boosting often outperform logistic regression on tabular data?",
       "What failure mode appears when trees overfit a sparse feature space?",
     ],
-    roadmapDay: 20,
+    roadmapDay: 15,
     roleTags: ["Data Scientist", "ML Engineer"],
     companyTags: ["Amazon", "Lyft", "Booking"],
   },
@@ -448,7 +467,7 @@ export const topics: Topic[] = [
       "How do you evaluate an anomaly detector with few labels?",
       "What does PCA throw away and why does that matter?",
     ],
-    roadmapDay: 23,
+    roadmapDay: 18,
     roleTags: ["Data Scientist", "Applied Scientist"],
     companyTags: ["Stripe", "Plaid", "PayPal"],
   },
@@ -470,7 +489,7 @@ export const topics: Topic[] = [
       "Why does Adam often converge faster but sometimes generalize worse?",
       "What role does normalization play in deep networks?",
     ],
-    roadmapDay: 33,
+    roadmapDay: 24,
     roleTags: ["ML Engineer", "Applied Scientist"],
     companyTags: ["NVIDIA", "Tesla", "Snap"],
   },
@@ -492,7 +511,7 @@ export const topics: Topic[] = [
       "How does stride change the receptive field and compute cost?",
       "Why was ResNet a turning point for deep vision models?",
     ],
-    roadmapDay: 38,
+    roadmapDay: 28,
     roleTags: ["ML Engineer", "Applied Scientist"],
     companyTags: ["Apple", "Meta", "Roblox"],
   },
@@ -514,7 +533,7 @@ export const topics: Topic[] = [
       "Why do transformers parallelize better than RNNs?",
       "What breaks when context windows grow without retrieval support?",
     ],
-    roadmapDay: 44,
+    roadmapDay: 30,
     roleTags: ["AI Engineer", "Applied Scientist"],
     companyTags: ["Anthropic", "OpenAI", "Google"],
   },
@@ -536,7 +555,7 @@ export const topics: Topic[] = [
       "What does temperature change in a decoding process?",
       "When do structured outputs matter more than free-form prompting?",
     ],
-    roadmapDay: 47,
+    roadmapDay: 41,
     roleTags: ["AI Engineer", "Backend Engineer"],
     companyTags: ["OpenAI", "Microsoft", "Notion"],
   },
@@ -558,7 +577,7 @@ export const topics: Topic[] = [
       "How do you choose chunk size for a RAG system?",
       "When do you add reranking rather than tuning the embedding model?",
     ],
-    roadmapDay: 56,
+    roadmapDay: 44,
     roleTags: ["AI Engineer", "Senior MLE"],
     companyTags: ["OpenAI", "Dropbox", "Atlassian"],
   },
@@ -580,7 +599,7 @@ export const topics: Topic[] = [
       "How would you evaluate a RAG assistant end to end?",
       "What signals tell you hallucination is becoming a production problem?",
     ],
-    roadmapDay: 59,
+    roadmapDay: 47,
     roleTags: ["AI Engineer", "Senior MLE"],
     companyTags: ["OpenAI", "Scale AI", "Perplexity"],
   },
@@ -602,7 +621,7 @@ export const topics: Topic[] = [
       "When should you avoid a multi-agent design?",
       "How do you stop an AI support agent from taking unsafe actions?",
     ],
-    roadmapDay: 60,
+    roadmapDay: 49,
     roleTags: ["AI Engineer", "Senior MLE"],
     companyTags: ["GitHub", "OpenAI", "Salesforce"],
   },
@@ -624,7 +643,7 @@ export const topics: Topic[] = [
       "How do you scope a recommendation system interview in the first five minutes?",
       "What metrics belong at the product level versus the model level?",
     ],
-    roadmapDay: 62,
+    roadmapDay: 58,
     roleTags: ["ML Engineer", "Senior MLE"],
     companyTags: ["Meta", "Uber", "Spotify"],
   },
@@ -646,7 +665,7 @@ export const topics: Topic[] = [
       "Why do teams adopt feature stores?",
       "What failure mode appears when offline features are not point-in-time correct?",
     ],
-    roadmapDay: 65,
+    roadmapDay: 60,
     roleTags: ["ML Engineer", "Senior MLE"],
     companyTags: ["Airbnb", "DoorDash", "Instacart"],
   },
@@ -668,7 +687,7 @@ export const topics: Topic[] = [
       "How do you design a low-latency fraud scoring service?",
       "When should you use a candidate generation and ranking split?",
     ],
-    roadmapDay: 69,
+    roadmapDay: 61,
     roleTags: ["ML Engineer", "Senior MLE"],
     companyTags: ["Uber", "Pinterest", "TikTok"],
   },
@@ -690,7 +709,7 @@ export const topics: Topic[] = [
       "What do you monitor first after launching a new ranking model?",
       "How do you know when drift requires retraining versus investigation?",
     ],
-    roadmapDay: 71,
+    roadmapDay: 34,
     roleTags: ["ML Engineer", "Senior MLE"],
     companyTags: ["Netflix", "Spotify", "Stripe"],
   },
@@ -712,9 +731,427 @@ export const topics: Topic[] = [
       "Why is model versioning more than storing weights?",
       "What should block a model from being promoted to production?",
     ],
-    roadmapDay: 66,
+    roadmapDay: 32,
     roleTags: ["ML Engineer", "Senior MLE"],
     companyTags: ["Datadog", "Shopify", "OpenAI"],
+  },
+  {
+    id: "statistical-inference-experimentation",
+    title: "Statistical Inference and Experimentation",
+    pillar: "math-stats",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 100,
+    prerequisites: ["probability-toolkit"],
+    summary:
+      "Cover confidence intervals, hypothesis testing, power analysis, A/B testing pitfalls, and multiple comparisons.",
+    learningObjectives: [
+      "Explain p-values, power, confidence intervals, and effect sizes without textbook hand-waving",
+      "Design trustworthy A/B tests with guardrail metrics and stopping rules",
+      "Identify peeking, selection bias, novelty effects, and multiple-testing risk",
+    ],
+    interviewQuestions: [
+      "How would you size an A/B test for a small lift on a rare event?",
+      "What is the difference between statistical significance and practical significance?",
+    ],
+    roadmapDay: 4,
+    roleTags: ["Data Scientist", "ML Engineer"],
+    companyTags: ["Meta", "Airbnb", "Uber"],
+  },
+  {
+    id: "linear-models-regularization",
+    title: "Linear Models and Regularization",
+    pillar: "traditional-ml",
+    difficulty: "Beginner",
+    estimatedTimeMinutes: 90,
+    prerequisites: ["statistical-inference-experimentation"],
+    summary:
+      "Prepare regression, logistic regression, loss functions, regularization, optimization, and coefficient interpretation.",
+    learningObjectives: [
+      "Derive the intuition behind MSE, log loss, L1, and L2 regularization",
+      "Explain coefficient interpretation, multicollinearity, and feature scaling",
+      "Connect thresholding and calibration to business decisions",
+    ],
+    interviewQuestions: [
+      "Why does L1 regularization produce sparse weights?",
+      "How do you interpret logistic regression coefficients?",
+    ],
+    roadmapDay: 10,
+    roleTags: ["Data Scientist", "ML Engineer"],
+    companyTags: ["Google", "Amazon", "Microsoft"],
+  },
+  {
+    id: "svm-knn-naive-bayes",
+    title: "SVM, KNN, Naive Bayes, and Classic Baselines",
+    pillar: "traditional-ml",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 80,
+    prerequisites: ["linear-models-regularization"],
+    summary:
+      "Know the classic algorithms interviewers still use to test assumptions, distance metrics, kernels, and baseline thinking.",
+    learningObjectives: [
+      "Compare margin-based, distance-based, and probabilistic classifiers",
+      "Explain kernel intuition and why scaling matters for SVM and KNN",
+      "Choose fast baselines for text, tabular, and sparse-feature problems",
+    ],
+    interviewQuestions: [
+      "When would Naive Bayes beat a more flexible model?",
+      "Why is KNN sensitive to feature scaling and high-dimensional data?",
+    ],
+    roadmapDay: 17,
+    roleTags: ["Data Scientist", "Applied Scientist"],
+    companyTags: ["Apple", "LinkedIn", "Amazon"],
+  },
+  {
+    id: "time-series-forecasting",
+    title: "Time Series Forecasting",
+    pillar: "traditional-ml",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 95,
+    prerequisites: ["metrics-and-calibration", "feature-engineering-leakage"],
+    summary:
+      "Add forecasting coverage for trend, seasonality, leakage, backtesting, hierarchical forecasts, and anomaly-aware evaluation.",
+    learningObjectives: [
+      "Explain stationarity, trend, seasonality, lag features, and rolling windows",
+      "Use time-based validation instead of random splits",
+      "Choose metrics like MAE, RMSE, MAPE, pinball loss, and service-level error",
+    ],
+    interviewQuestions: [
+      "Why is random cross-validation wrong for most forecasting problems?",
+      "How do you evaluate forecasts for intermittent demand?",
+    ],
+    roadmapDay: 19,
+    roleTags: ["Data Scientist", "ML Engineer"],
+    companyTags: ["Amazon", "Uber", "DoorDash"],
+  },
+  {
+    id: "causal-inference-uplift",
+    title: "Causal Inference, Uplift, and Experimentation",
+    pillar: "math-stats",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 100,
+    prerequisites: ["statistical-inference-experimentation"],
+    summary:
+      "Prepare for causal questions around confounding, treatment effects, uplift modeling, observational data, and experiment design.",
+    learningObjectives: [
+      "Separate prediction from causal effect estimation",
+      "Explain confounding, selection bias, matching, IVs, diff-in-diff, and uplift",
+      "Know when an experiment is required instead of offline modeling",
+    ],
+    interviewQuestions: [
+      "How would you estimate whether a notification caused higher retention?",
+      "What is the difference between propensity modeling and uplift modeling?",
+    ],
+    roadmapDay: 6,
+    roleTags: ["Data Scientist", "Applied Scientist", "Senior MLE"],
+    companyTags: ["Meta", "Netflix", "Airbnb"],
+  },
+  {
+    id: "interpretability-fairness",
+    title: "Interpretability, Fairness, and Responsible ML",
+    pillar: "traditional-ml",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 90,
+    prerequisites: ["tree-ensembles", "metrics-and-calibration"],
+    summary:
+      "Cover model explanations, fairness metrics, bias audits, and governance trade-offs for sensitive ML products.",
+    learningObjectives: [
+      "Compare global and local explanations such as permutation importance and SHAP",
+      "Discuss fairness metrics and why they can conflict",
+      "Frame responsible AI controls as product and operational requirements",
+    ],
+    interviewQuestions: [
+      "How would you explain a rejected loan prediction to a regulator?",
+      "Why can two fairness metrics be impossible to satisfy at once?",
+    ],
+    roadmapDay: 38,
+    roleTags: ["Data Scientist", "Senior MLE"],
+    companyTags: ["Google", "Microsoft", "Stripe"],
+  },
+  {
+    id: "data-validation-quality",
+    title: "Data Validation and Data Quality",
+    pillar: "mlops",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 85,
+    prerequisites: ["feature-engineering-leakage"],
+    summary:
+      "Add production data quality coverage for schemas, ranges, missingness, freshness, outliers, and contract testing.",
+    learningObjectives: [
+      "Write data checks that catch schema, distribution, and freshness failures",
+      "Separate hard failures from warn-only checks",
+      "Connect data contracts to training pipelines and serving paths",
+    ],
+    interviewQuestions: [
+      "What data checks would block a retraining job?",
+      "How do you detect a silent upstream instrumentation change?",
+    ],
+    roadmapDay: 31,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Netflix", "DoorDash", "Uber"],
+  },
+  {
+    id: "training-orchestration",
+    title: "Training Pipeline Orchestration",
+    pillar: "mlops",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 95,
+    prerequisites: ["data-validation-quality", "model-registry-cicd"],
+    summary:
+      "Cover scheduled and event-driven retraining, lineage, artifact storage, reproducibility, and failure recovery.",
+    learningObjectives: [
+      "Design batch, streaming, and triggered training pipelines",
+      "Track lineage across data, features, code, parameters, and model artifacts",
+      "Handle failed jobs, bad data, and rollback cleanly",
+    ],
+    interviewQuestions: [
+      "What should be reproducible about a training run?",
+      "When should retraining be scheduled versus event-driven?",
+    ],
+    roadmapDay: 31,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Airbnb", "Shopify", "Datadog"],
+  },
+  {
+    id: "model-serving-patterns",
+    title: "Model Serving Patterns",
+    pillar: "mlops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 100,
+    prerequisites: ["model-registry-cicd"],
+    summary:
+      "Compare batch, online, streaming, edge, shadow, canary, blue-green, and async serving patterns.",
+    learningObjectives: [
+      "Choose a serving pattern from latency, freshness, cost, and reliability constraints",
+      "Design fallbacks for model, feature, and dependency failures",
+      "Explain canary, shadow, and A/B model rollouts",
+    ],
+    interviewQuestions: [
+      "When should a model be served asynchronously?",
+      "How do you safely canary a new ranking model?",
+    ],
+    roadmapDay: 33,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Uber", "Pinterest", "TikTok"],
+  },
+  {
+    id: "llm-prompt-versioning",
+    title: "Prompt, Model, Tool, and Retrieval Versioning",
+    pillar: "llmops",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 80,
+    prerequisites: ["llm-basics", "rag-architecture"],
+    summary:
+      "Treat LLM behavior as a release artifact by versioning prompts, model snapshots, tool schemas, retrieval configs, and eval sets together.",
+    learningObjectives: [
+      "Define the release unit for an LLM product",
+      "Pin model versions and document upgrade criteria",
+      "Rollback prompt, retrieval, and tool changes coherently",
+    ],
+    interviewQuestions: [
+      "What exactly should be versioned in a production LLM app?",
+      "How do you roll back a bad prompt release?",
+    ],
+    roadmapDay: 51,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Microsoft", "Anthropic"],
+  },
+  {
+    id: "llm-eval-ops",
+    title: "LLM Evaluation Operations",
+    pillar: "llmops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 95,
+    prerequisites: ["llm-evaluation", "rag-architecture"],
+    summary:
+      "Build operational eval suites with golden datasets, adversarial tests, trace grading, human review, and online feedback loops.",
+    learningObjectives: [
+      "Create eval datasets that represent real and adversarial usage",
+      "Grade retrieval, tool use, reasoning traces, final answers, latency, and cost",
+      "Use eval gates for prompt, model, and retrieval releases",
+    ],
+    interviewQuestions: [
+      "How do you stop prompt changes from regressing existing customers?",
+      "What belongs in a trace-level evaluation?",
+    ],
+    roadmapDay: 53,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Perplexity", "Scale AI"],
+  },
+  {
+    id: "llm-observability-incidents",
+    title: "LLM Observability and Incidents",
+    pillar: "llmops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 90,
+    prerequisites: ["llm-eval-ops"],
+    summary:
+      "Instrument LLM calls, traces, retrieval, tool execution, refusal rates, hallucination reports, cost, and user outcomes.",
+    learningObjectives: [
+      "Design logs and traces that are useful without leaking sensitive content",
+      "Investigate hallucination, latency, tool, and cost incidents",
+      "Create rollback and escalation playbooks",
+    ],
+    interviewQuestions: [
+      "How do you debug a sudden rise in hallucination reports?",
+      "What should be in an LLM incident postmortem?",
+    ],
+    roadmapDay: 54,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Datadog", "Salesforce"],
+  },
+  {
+    id: "llm-routing-cost-latency",
+    title: "LLM Cost, Latency, Caching, and Routing",
+    pillar: "llmops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 95,
+    prerequisites: ["llm-eval-ops"],
+    summary:
+      "Optimize LLM systems with model cascades, semantic caching, context budgeting, batching, fallbacks, and quality guardrails.",
+    learningObjectives: [
+      "Measure cost per request, feature, tenant, and user segment",
+      "Route requests across model tiers without silent quality loss",
+      "Trade off exact cache, semantic cache, retrieval cache, batching, and context compression",
+    ],
+    interviewQuestions: [
+      "How would you cut LLM cost by 50% while protecting quality?",
+      "When is semantic caching risky?",
+    ],
+    roadmapDay: 55,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Microsoft", "Notion"],
+  },
+  {
+    id: "llm-safety-security-privacy",
+    title: "LLM Safety, Security, Privacy, and Red Teaming",
+    pillar: "llmops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 100,
+    prerequisites: ["agents-and-guardrails", "rag-architecture"],
+    summary:
+      "Prepare for prompt injection, jailbreaks, data exfiltration, PII handling, policy enforcement, human review, and auditability.",
+    learningObjectives: [
+      "Threat model RAG, tool-using agents, and external integrations",
+      "Design red-team tests and human escalation paths",
+      "Balance logs, privacy, retention, and audit requirements",
+    ],
+    interviewQuestions: [
+      "How do you defend a tool-using agent from prompt injection?",
+      "What should trigger human review in a high-risk LLM workflow?",
+    ],
+    roadmapDay: 56,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Anthropic", "Microsoft"],
+  },
+  {
+    id: "llm-finetuning-ops",
+    title: "Fine-Tuning Operations and Adapter Management",
+    pillar: "llmops",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 90,
+    prerequisites: ["llm-basics", "llm-eval-ops"],
+    summary:
+      "Cover fine-tune vs RAG decisions, dataset curation, LoRA adapters, evaluation, rollout, and model governance.",
+    learningObjectives: [
+      "Choose between prompt changes, RAG, supervised fine-tuning, and adapters",
+      "Evaluate fine-tunes for generalization, safety, and memorization",
+      "Manage adapter versioning, serving, and rollback",
+    ],
+    interviewQuestions: [
+      "When should you fine-tune instead of using RAG?",
+      "How do you evaluate whether a LoRA adapter is safe to promote?",
+    ],
+    roadmapDay: 57,
+    roleTags: ["AI Engineer", "Senior MLE"],
+    companyTags: ["OpenAI", "Hugging Face", "Meta"],
+  },
+  {
+    id: "requirements-metrics-scope",
+    title: "Requirements, Metrics, and Scope in ML System Design",
+    pillar: "ml-system-design",
+    difficulty: "Intermediate",
+    estimatedTimeMinutes: 90,
+    prerequisites: ["metrics-and-calibration", "model-serving-patterns"],
+    summary:
+      "Start ML system design interviews with product goals, users, constraints, labels, metrics, baselines, and failure modes.",
+    learningObjectives: [
+      "Clarify requirements before proposing models",
+      "Separate product, model, system, and guardrail metrics",
+      "Define assumptions and non-goals early",
+    ],
+    interviewQuestions: [
+      "What do you ask in the first five minutes of an ML system design prompt?",
+      "How do you choose product metrics versus model metrics?",
+    ],
+    roadmapDay: 58,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Meta", "Google", "Uber"],
+  },
+  {
+    id: "ranking-retrieval-recsys",
+    title: "Retrieval, Ranking, and Recommendation Systems",
+    pillar: "ml-system-design",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 120,
+    prerequisites: ["requirements-metrics-scope", "online-serving-tradeoffs"],
+    summary:
+      "Prepare multi-stage recommender and search designs with retrieval, ranking, reranking, diversity, freshness, and feedback loops.",
+    learningObjectives: [
+      "Design candidate generation, ranking, reranking, and exploration layers",
+      "Handle cold start, position bias, diversity, and delayed labels",
+      "Connect offline ranking metrics to online product outcomes",
+    ],
+    interviewQuestions: [
+      "How do you design a short-video recommender end to end?",
+      "How do you handle position bias in click logs?",
+    ],
+    roadmapDay: 63,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Netflix", "TikTok", "YouTube"],
+  },
+  {
+    id: "real-time-fraud-risk",
+    title: "Real-Time Fraud, Risk, and Abuse Systems",
+    pillar: "ml-system-design",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 110,
+    prerequisites: ["requirements-metrics-scope", "model-serving-patterns"],
+    summary:
+      "Cover low-latency risk scoring, graph features, rules plus ML, delayed labels, investigation queues, and adversarial adaptation.",
+    learningObjectives: [
+      "Design real-time feature generation and low-latency inference",
+      "Use rules, ML, graph signals, and human review together",
+      "Monitor adversarial drift and label delay",
+    ],
+    interviewQuestions: [
+      "How would you design real-time card fraud detection?",
+      "How do you evaluate a fraud model when labels arrive weeks later?",
+    ],
+    roadmapDay: 70,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Stripe", "PayPal", "Plaid"],
+  },
+  {
+    id: "search-ads-feed-design",
+    title: "Search, Ads, and Feed Ranking Design",
+    pillar: "ml-system-design",
+    difficulty: "Advanced",
+    estimatedTimeMinutes: 120,
+    prerequisites: ["ranking-retrieval-recsys"],
+    summary:
+      "Prepare for high-frequency ranking systems with query understanding, auctions, personalization, calibration, and latency budgets.",
+    learningObjectives: [
+      "Compare search, ads, and feed ranking architectures",
+      "Reason about retrieval, auction, relevance, calibration, and business constraints",
+      "Design feedback loops without amplifying bias or spam",
+    ],
+    interviewQuestions: [
+      "How does ads ranking differ from organic feed ranking?",
+      "What metrics would you use for search quality?",
+    ],
+    roadmapDay: 68,
+    roleTags: ["ML Engineer", "Senior MLE"],
+    companyTags: ["Google", "Meta", "Amazon"],
   },
   {
     id: "project-storytelling",
@@ -734,7 +1171,7 @@ export const topics: Topic[] = [
       "Tell me about a model that underperformed after launch.",
       "How would you explain your project to a skeptical engineering manager?",
     ],
-    roadmapDay: 88,
+    roadmapDay: 86,
     roleTags: ["Beginner ML Candidate", "Senior MLE"],
     companyTags: ["Google", "Meta", "OpenAI"],
   },
@@ -779,35 +1216,36 @@ export const roadmaps: Roadmap[] = [
     dailyCommitment: "90 to 150 minutes per day",
     phases: [
       {
-        title: "Foundations",
+        title: "Statistics and Problem Framing",
         startDay: 1,
-        endDay: 15,
-        focus: "Python, SQL, math refresh, and evaluation framing.",
+        endDay: 12,
+        focus: "Probability, inference, experimentation, linear algebra, optimization, and metric selection.",
         topics: [
-          "Python for interviews",
-          "SQL joins, CTEs, windows",
-          "Probability and statistics",
+          "Probability and distributions",
+          "Confidence intervals and hypothesis tests",
+          "A/B testing and power",
           "Linear algebra and optimization",
-          "Metrics and ML problem framing",
+          "Evaluation metrics and calibration",
         ],
       },
       {
         title: "Traditional ML",
-        startDay: 16,
-        endDay: 30,
-        focus: "Core ML algorithms, feature engineering, and case practice.",
+        startDay: 13,
+        endDay: 28,
+        focus: "Core supervised and unsupervised algorithms, feature engineering, baselines, and leakage prevention.",
         topics: [
           "Linear and logistic regression",
+          "SVM, KNN, Naive Bayes",
           "Trees, random forest, boosting",
-          "Clustering and anomaly detection",
+          "Clustering, PCA, anomaly detection",
           "Feature engineering and leakage",
-          "Case study review",
+          "Time series and interpretability",
         ],
       },
       {
         title: "Deep Learning",
-        startDay: 31,
-        endDay: 45,
+        startDay: 29,
+        endDay: 38,
         focus: "Neural networks, optimization, CNNs, and transformer foundations.",
         topics: [
           "Backpropagation",
@@ -818,34 +1256,60 @@ export const roadmaps: Roadmap[] = [
         ],
       },
       {
+        title: "MLOps and Production ML",
+        startDay: 39,
+        endDay: 50,
+        focus: "Data validation, training orchestration, registry, CI/CD, serving, monitoring, incidents, and governance.",
+        topics: [
+          "Data quality gates",
+          "Training pipelines",
+          "Model registry and CI/CD",
+          "Serving patterns",
+          "Monitoring, drift, incidents, and rollback",
+        ],
+      },
+      {
         title: "Generative AI",
-        startDay: 46,
-        endDay: 60,
+        startDay: 51,
+        endDay: 62,
         focus: "LLM basics, prompt design, embeddings, RAG, evaluation, and agents.",
         topics: [
           "LLM fundamentals",
           "Prompt engineering",
           "Embeddings and vector search",
           "RAG architecture",
-          "Evaluation, safety, cost",
+          "Fine-tuning, agents, and guardrails",
         ],
       },
       {
-        title: "ML System Design and MLOps",
-        startDay: 61,
-        endDay: 75,
-        focus: "Architecture, feature stores, serving, monitoring, and production trade-offs.",
+        title: "LLMOps",
+        startDay: 63,
+        endDay: 72,
+        focus: "Prompt and model versioning, eval gates, tracing, routing, cost, safety, and fine-tuning operations.",
         topics: [
-          "Interview framework",
-          "Feature store and training pipeline",
+          "Prompt and model release management",
+          "LLM evaluation operations",
+          "Observability and incident response",
+          "Cost, latency, caching, and routing",
+          "Safety, security, privacy, and red teaming",
+        ],
+      },
+      {
+        title: "ML System Design",
+        startDay: 73,
+        endDay: 86,
+        focus: "End-to-end architecture, feature stores, serving trade-offs, and canonical design cases.",
+        topics: [
+          "Requirements and metrics",
+          "Data pipelines and feature stores",
           "Online serving and caching",
-          "Monitoring and retraining",
-          "Recommendation, fraud, search, and RAG cases",
+          "Recommendation, search, ads, fraud, and RAG cases",
+          "Capacity planning and trade-offs",
         ],
       },
       {
         title: "Simulation and Storytelling",
-        startDay: 76,
+        startDay: 87,
         endDay: 90,
         focus: "Mock interviews, weak-area revision, project walkthroughs, and behavioral practice.",
         topics: [
@@ -858,12 +1322,14 @@ export const roadmaps: Roadmap[] = [
       },
     ],
     focusMix: [
-      { label: "Foundations", weight: 18 },
-      { label: "Traditional ML", weight: 18 },
-      { label: "Deep Learning", weight: 14 },
-      { label: "Generative AI", weight: 17 },
-      { label: "ML System Design", weight: 18 },
+      { label: "Math & Statistics", weight: 12 },
+      { label: "Traditional ML", weight: 16 },
+      { label: "Coding + SQL", weight: 10 },
+      { label: "Deep Learning", weight: 12 },
       { label: "MLOps", weight: 10 },
+      { label: "Generative AI", weight: 15 },
+      { label: "LLMOps", weight: 10 },
+      { label: "ML System Design", weight: 10 },
       { label: "Behavioral", weight: 5 },
     ],
   },
@@ -873,54 +1339,70 @@ export const roadmaps: Roadmap[] = [
     headline: "A compressed plan for candidates who already know the basics and need sharp prioritization.",
     durationLabel: "60 days",
     description:
-      "Best for candidates with hands-on ML exposure who need to rebalance toward weak areas, especially deep learning, GenAI, and system design.",
+      "Best for candidates with hands-on ML exposure who need to rebalance toward weak areas while preserving the full interview order from statistics through ML system design.",
     audience: ["Current ML practitioners", "Data scientists", "Software engineers pivoting into AI"],
     targetRoles: ["ML Engineer", "AI Engineer"],
     dailyCommitment: "2 to 3 hours per day",
     phases: [
       {
-        title: "Refresh",
+        title: "Statistics and Problem Framing",
         startDay: 1,
-        endDay: 10,
-        focus: "ML fundamentals, evaluation, and statistics.",
-        topics: ["Regression and trees", "Metrics", "Bias-variance", "Experimentation"],
+        endDay: 8,
+        focus: "Probability, inference, experimentation, linear algebra, optimization, and metric selection.",
+        topics: ["Distributions", "Hypothesis tests", "A/B testing", "Optimization", "Evaluation metrics"],
       },
       {
-        title: "Coding and SQL",
-        startDay: 11,
+        title: "Traditional ML and Coding",
+        startDay: 9,
         endDay: 20,
-        focus: "Sharpen implementation and analytical query speed.",
-        topics: ["Python patterns", "SQL windows", "ML from scratch", "Debugging trade-offs"],
+        focus: "Supervised and unsupervised learning with SQL, Python, and ML-from-scratch practice.",
+        topics: ["Regression", "Trees and boosting", "Clustering and PCA", "Feature engineering", "SQL windows", "ML coding"],
       },
       {
-        title: "DL and GenAI",
+        title: "Deep Learning",
         startDay: 21,
-        endDay: 35,
-        focus: "Deep learning, transformers, LLMs, and RAG.",
-        topics: ["Backpropagation", "Transformers", "Embeddings", "RAG and evals"],
+        endDay: 28,
+        focus: "Neural networks, optimization, CNNs, sequence models, attention, and transformers.",
+        topics: ["Backpropagation", "Optimizers", "Regularization", "CNNs", "Attention", "Transformers"],
       },
       {
-        title: "System Design and MLOps",
-        startDay: 36,
-        endDay: 50,
-        focus: "Production pipelines, serving, monitoring, and case studies.",
-        topics: ["Framework", "Feature stores", "Serving", "Monitoring", "Case walkthroughs"],
+        title: "MLOps and Production ML",
+        startDay: 29,
+        endDay: 38,
+        focus: "Data quality, training orchestration, model registry, CI/CD, serving, monitoring, and rollback.",
+        topics: ["Data validation", "Training pipelines", "Registry", "Deployment", "Monitoring", "Governance"],
       },
       {
-        title: "Final Loop Prep",
-        startDay: 51,
+        title: "Generative AI",
+        startDay: 39,
+        endDay: 47,
+        focus: "LLM fundamentals, prompt engineering, embeddings, RAG, fine-tuning, agents, and safety basics.",
+        topics: ["Tokens and decoding", "Prompting", "Embeddings", "RAG", "Fine-tuning", "Agents"],
+      },
+      {
+        title: "LLMOps",
+        startDay: 48,
+        endDay: 53,
+        focus: "Prompt/model versioning, eval gates, tracing, model routing, cost controls, privacy, and red teaming.",
+        topics: ["Prompt releases", "Regression evals", "Tracing", "Caching and routing", "Safety and privacy"],
+      },
+      {
+        title: "ML System Design and Final Loop Prep",
+        startDay: 54,
         endDay: 60,
-        focus: "Mocks, revision, storytelling, and targeted weak-area repair.",
-        topics: ["Mocks", "Resume", "Behavioral", "Target-company drills"],
+        focus: "End-to-end ML architecture cases, design mocks, storytelling, and targeted weak-area repair.",
+        topics: ["Recommendation", "Search ranking", "Fraud", "RAG systems", "Design mocks", "Resume and behavioral"],
       },
     ],
     focusMix: [
-      { label: "Traditional ML", weight: 16 },
-      { label: "Coding + SQL", weight: 18 },
-      { label: "Deep Learning", weight: 14 },
-      { label: "Generative AI", weight: 18 },
-      { label: "ML System Design", weight: 20 },
-      { label: "MLOps", weight: 9 },
+      { label: "Math & Statistics", weight: 10 },
+      { label: "Traditional ML", weight: 15 },
+      { label: "Coding + SQL", weight: 8 },
+      { label: "Deep Learning", weight: 12 },
+      { label: "MLOps", weight: 12 },
+      { label: "Generative AI", weight: 14 },
+      { label: "LLMOps", weight: 9 },
+      { label: "ML System Design", weight: 15 },
       { label: "Behavioral", weight: 5 },
     ],
   },
@@ -938,35 +1420,38 @@ export const roadmaps: Roadmap[] = [
       {
         title: "Week 1",
         label: "Days 1-7",
-        focus: "ML fundamentals, metrics, SQL, and Python review.",
-        topics: ["Metrics", "SQL", "Regression", "Trees", "Feature leakage"],
+        focus: "Statistics, ML problem framing, traditional ML, SQL, and Python review.",
+        topics: ["Metrics", "A/B testing", "Regression", "Trees", "Feature leakage", "SQL"],
       },
       {
         title: "Week 2",
         label: "Days 8-14",
-        focus: "Deep learning, transformers, GenAI, and RAG.",
-        topics: ["Backprop", "Transformers", "Prompting", "RAG", "Evaluation"],
+        focus: "Deep learning and MLOps essentials before moving into LLM-specific systems.",
+        topics: ["Backprop", "Transformers", "Training pipelines", "Deployment", "Monitoring"],
       },
       {
         title: "Week 3",
         label: "Days 15-21",
-        focus: "ML system design case studies and production trade-offs.",
-        topics: ["Recommendation", "Fraud", "Search ranking", "Serving", "Monitoring"],
+        focus: "Generative AI and LLMOps: RAG, evaluation, guardrails, tracing, routing, cost, and safety.",
+        topics: ["Prompting", "RAG", "LLM evaluation", "Agents", "Prompt versioning", "Cost controls"],
       },
       {
         title: "Week 4",
         label: "Days 22-30",
-        focus: "Mock interviews, project storytelling, and weak-area repair.",
-        topics: ["Theory mocks", "System design mocks", "Resume", "Behavioral"],
+        focus: "ML system design cases, mock interviews, project storytelling, and weak-area repair.",
+        topics: ["Recommendation", "Fraud", "Search ranking", "RAG systems", "System design mocks", "Behavioral"],
       },
     ],
     focusMix: [
-      { label: "Coding + SQL", weight: 18 },
-      { label: "Traditional ML", weight: 20 },
+      { label: "Math & Statistics", weight: 10 },
+      { label: "Traditional ML", weight: 18 },
+      { label: "Coding + SQL", weight: 10 },
       { label: "Deep Learning", weight: 12 },
-      { label: "Generative AI", weight: 18 },
-      { label: "ML System Design", weight: 20 },
-      { label: "Behavioral", weight: 12 },
+      { label: "MLOps", weight: 10 },
+      { label: "Generative AI", weight: 15 },
+      { label: "LLMOps", weight: 8 },
+      { label: "ML System Design", weight: 12 },
+      { label: "Behavioral", weight: 5 },
     ],
   },
   {
@@ -1082,7 +1567,8 @@ export const roadmaps: Roadmap[] = [
       { label: "Deep Learning", weight: 15 },
       { label: "Coding + SQL", weight: 10 },
       { label: "ML System Design", weight: 20 },
-      { label: "MLOps / LLMOps", weight: 15 },
+      { label: "MLOps", weight: 7 },
+      { label: "LLMOps", weight: 8 },
       { label: "Behavioral", weight: 10 },
     ],
   },
@@ -1124,7 +1610,8 @@ export const roadmaps: Roadmap[] = [
     ],
     focusMix: [
       { label: "ML System Design", weight: 32 },
-      { label: "MLOps / Reliability", weight: 20 },
+      { label: "MLOps / Reliability", weight: 15 },
+      { label: "LLMOps", weight: 5 },
       { label: "Generative AI", weight: 14 },
       { label: "Traditional ML", weight: 8 },
       { label: "Coding + SQL", weight: 6 },
@@ -1163,7 +1650,8 @@ export const roadmaps: Roadmap[] = [
     ],
     focusMix: [
       { label: "ML System Design", weight: 30 },
-      { label: "MLOps / Reliability", weight: 18 },
+      { label: "MLOps / Reliability", weight: 13 },
+      { label: "LLMOps", weight: 5 },
       { label: "Generative AI", weight: 15 },
       { label: "Traditional ML", weight: 10 },
       { label: "Coding + SQL", weight: 10 },
@@ -1175,11 +1663,12 @@ export const roadmaps: Roadmap[] = [
 export const readinessWeights = [
   { label: "Traditional ML", weight: 15 },
   { label: "Math & Statistics", weight: 10 },
-  { label: "Coding + SQL", weight: 15 },
+  { label: "Coding + SQL", weight: 10 },
   { label: "Deep Learning", weight: 10 },
-  { label: "Generative AI", weight: 15 },
-  { label: "ML System Design", weight: 20 },
   { label: "MLOps", weight: 10 },
+  { label: "Generative AI", weight: 15 },
+  { label: "LLMOps", weight: 10 },
+  { label: "ML System Design", weight: 15 },
   { label: "Behavioral", weight: 5 },
 ];
 
@@ -1188,9 +1677,10 @@ export const readinessPillarMap: Record<string, PillarSlug> = {
   "Math & Statistics": "math-stats",
   "Coding + SQL": "foundations",
   "Deep Learning": "deep-learning",
-  "Generative AI": "generative-ai",
-  "ML System Design": "ml-system-design",
   MLOps: "mlops",
+  "Generative AI": "generative-ai",
+  LLMOps: "llmops",
+  "ML System Design": "ml-system-design",
   Behavioral: "behavioral-storytelling",
 };
 
@@ -1602,6 +2092,226 @@ export const questions: Question[] = [
     ],
     relatedTopics: ["model-registry-cicd", "monitoring-drift"],
   },
+  {
+    id: "ab-test-design",
+    question: "Design an A/B test for a new ranking model and explain how you would choose success, guardrail, and stopping criteria.",
+    category: "Statistics",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Define unit of randomization, hypothesis, power, and minimum detectable effect",
+      "Separate primary metric from guardrails and diagnostic metrics",
+      "Discuss peeking, novelty effects, interference, and rollback criteria",
+    ],
+    expectedSignals: [
+      "Frames the experiment before discussing p-values",
+      "Mentions guardrails and stopping rules",
+      "Recognizes network effects and multiple comparisons",
+    ],
+    commonMistakes: [
+      "Only optimizing CTR with no guardrails",
+      "Ignoring sample size and power",
+      "Peeking until results look significant",
+    ],
+    relatedTopics: ["statistical-inference-experimentation", "causal-inference-uplift"],
+  },
+  {
+    id: "forecasting-validation",
+    question: "How would you validate a demand forecasting model for a marketplace with seasonality and sparse items?",
+    category: "ML Fundamentals",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Use time-based backtesting and avoid leakage from future windows",
+      "Segment evaluation by item volume, geography, and seasonality",
+      "Choose metrics that match inventory or staffing decisions",
+    ],
+    expectedSignals: [
+      "Avoids random cross-validation",
+      "Mentions hierarchy and sparse segments",
+      "Connects forecast error to business cost",
+    ],
+    commonMistakes: [
+      "Using random splits",
+      "Only reporting aggregate RMSE",
+      "Ignoring cold-start or intermittent demand",
+    ],
+    relatedTopics: ["time-series-forecasting"],
+  },
+  {
+    id: "causal-vs-predictive",
+    question: "A retention model says push notifications predict retention. How do you determine whether notifications cause retention?",
+    category: "Statistics",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Separate predictive correlation from causal effect",
+      "Look for randomized experiments first",
+      "If observational, discuss confounding, matching, IVs, diff-in-diff, and sensitivity analysis",
+    ],
+    expectedSignals: [
+      "Does not claim causality from model feature importance",
+      "Prioritizes randomization when feasible",
+      "Names assumptions behind observational methods",
+    ],
+    commonMistakes: [
+      "Using SHAP as causal evidence",
+      "Ignoring selection bias",
+      "Not defining the treatment and counterfactual",
+    ],
+    relatedTopics: ["causal-inference-uplift", "interpretability-fairness"],
+  },
+  {
+    id: "data-quality-gates",
+    question: "What data quality checks would you add before retraining a production model?",
+    category: "MLOps",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Check schema, types, ranges, missingness, freshness, volume, and label availability",
+      "Compare train data distributions against reference windows",
+      "Define blocking versus warning thresholds and ownership",
+    ],
+    expectedSignals: [
+      "Names concrete checks, not just dashboards",
+      "Separates blocking failures from warnings",
+      "Connects checks to retraining and rollback",
+    ],
+    commonMistakes: [
+      "Only checking row counts",
+      "No freshness or schema validation",
+      "No owner for broken upstream data",
+    ],
+    relatedTopics: ["data-validation-quality", "training-orchestration"],
+  },
+  {
+    id: "serving-pattern-selection",
+    question: "When would you choose batch scoring, online inference, streaming inference, or edge inference?",
+    category: "MLOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Start from latency, freshness, cost, privacy, and reliability constraints",
+      "Map examples to each serving pattern",
+      "Discuss fallback paths and operational complexity",
+    ],
+    expectedSignals: [
+      "Uses constraints to choose architecture",
+      "Discusses cost and failure modes",
+      "Knows batch can be the right answer",
+    ],
+    commonMistakes: [
+      "Defaulting to online inference for everything",
+      "Ignoring feature freshness",
+      "No degraded mode",
+    ],
+    relatedTopics: ["model-serving-patterns", "online-serving-tradeoffs"],
+  },
+  {
+    id: "llm-release-gates",
+    question: "What checks should block a prompt, model, retrieval, or tool change from being released?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Run regression evals for task quality, safety, faithfulness, tool use, latency, and cost",
+      "Compare behavior by segment and high-risk workflow",
+      "Require owner approval and rollback artifacts for risky changes",
+    ],
+    expectedSignals: [
+      "Treats the LLM app as a versioned system",
+      "Separates eval dimensions",
+      "Mentions rollback and ownership",
+    ],
+    commonMistakes: [
+      "Only testing happy-path prompts",
+      "Ignoring tool-call regressions",
+      "No cost or latency gate",
+    ],
+    relatedTopics: ["llm-prompt-versioning", "llm-eval-ops"],
+  },
+  {
+    id: "llm-observability-debug",
+    question: "A production assistant suddenly hallucinates more often. How do you debug it?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Check recent changes to prompts, model versions, retrieval, tools, traffic mix, and source documents",
+      "Inspect traces to separate retrieval failure from generation failure",
+      "Roll back or route traffic while creating a regression case",
+    ],
+    expectedSignals: [
+      "Uses traces and release history",
+      "Separates retrieval, generation, and tool failures",
+      "Adds the incident to future eval coverage",
+    ],
+    commonMistakes: [
+      "Only blaming the model",
+      "No trace-level evidence",
+      "No immediate mitigation path",
+    ],
+    relatedTopics: ["llm-observability-incidents", "llm-eval-ops"],
+  },
+  {
+    id: "prompt-injection-defense",
+    question: "How do you defend an enterprise RAG assistant against prompt injection and data exfiltration?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Apply retrieval-time authorization and document-level access control",
+      "Constrain tools, schemas, and side effects",
+      "Red-team malicious instructions and monitor exfiltration attempts",
+    ],
+    expectedSignals: [
+      "Does not rely on prompting alone",
+      "Separates data access from generation",
+      "Mentions red teaming and audit logs",
+    ],
+    commonMistakes: [
+      "Trusting retrieved text as instructions",
+      "No per-user authorization in retrieval",
+      "No tool permission model",
+    ],
+    relatedTopics: ["llm-safety-security-privacy", "rag-architecture"],
+  },
+  {
+    id: "fraud-system-design",
+    question: "Design a real-time fraud detection system with delayed labels and expensive false positives.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify latency, action types, false-positive cost, and review capacity",
+      "Combine rules, model scoring, graph features, thresholds, and human review",
+      "Monitor drift, adversarial behavior, and delayed-label performance",
+    ],
+    expectedSignals: [
+      "Handles class imbalance and delayed labels",
+      "Includes analyst workflow",
+      "Uses real-time feature and fallback thinking",
+    ],
+    commonMistakes: [
+      "Only proposing a classifier",
+      "Ignoring false positive cost",
+      "No feedback loop from investigations",
+    ],
+    relatedTopics: ["real-time-fraud-risk", "model-serving-patterns"],
+  },
+  {
+    id: "search-ads-ranking",
+    question: "How would you design a search or ads ranking system and evaluate whether it improved user experience?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Describe retrieval, ranking, calibration, and business constraints",
+      "Use offline ranking metrics plus online experiments",
+      "Discuss position bias, freshness, diversity, and latency",
+    ],
+    expectedSignals: [
+      "Knows ranking is multi-stage",
+      "Separates offline and online evaluation",
+      "Mentions bias and latency",
+    ],
+    commonMistakes: [
+      "Using only CTR",
+      "Ignoring auctions or business constraints for ads",
+      "No query or user segmentation",
+    ],
+    relatedTopics: ["search-ads-feed-design", "ranking-retrieval-recsys"],
+  },
 ];
 
 export const caseStudies: CaseStudy[] = [
@@ -1860,7 +2570,7 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const homeHighlights = [
-  "8 content pillars from coding foundations to LLMOps",
+  "9 content pillars ordered from statistics to ML system design",
   "Roadmaps for 30, 60, and 90-day preparation windows",
   "Role-based paths for Data Scientist, ML Engineer, AI Engineer, and Senior MLE",
   "Question bank, case studies, readiness scoring, and resource curation",
@@ -1879,7 +2589,13 @@ export function getTopicById(topicId: string) {
 }
 
 export function getTopicsByPillar(pillar: PillarSlug) {
-  return topics.filter((topic) => topic.pillar === pillar);
+  return topics
+    .filter((topic) => topic.pillar === pillar)
+    .sort((a, b) => {
+      const dayA = a.roadmapDay ?? Number.POSITIVE_INFINITY;
+      const dayB = b.roadmapDay ?? Number.POSITIVE_INFINITY;
+      return dayA === dayB ? a.title.localeCompare(b.title) : dayA - dayB;
+    });
 }
 
 export function getRelatedTopics(topicIds: string[]) {
@@ -1895,6 +2611,7 @@ export function getPillarHref(slug: PillarSlug) {
     "traditional-ml": "/traditional-ml",
     "deep-learning": "/deep-learning",
     "generative-ai": "/generative-ai",
+    llmops: "/llmops",
     "ml-system-design": "/ml-system-design",
     mlops: "/mlops",
     "behavioral-storytelling": "/behavioral",
@@ -2125,10 +2842,10 @@ export const howToUseSteps: HowToUseStep[] = [
 ];
 
 export const homeHeroStats = [
-  { label: "Content pillars", value: "8" },
+  { label: "Content pillars", value: "9" },
   { label: "Topic cards", value: "40+" },
   { label: "Case studies", value: "8" },
-  { label: "Practice questions", value: "12+" },
+  { label: "Practice questions", value: "20+" },
 ];
 
 export interface DayItem {
@@ -2407,6 +3124,7 @@ const REF_GOOGLE_ML_CRASH: DayReference = { label: "Google Machine Learning Cras
 const REF_FSDL: DayReference = { label: "Full Stack Deep Learning", href: "https://fullstackdeeplearning.com/", source: "Full Stack Deep Learning" };
 const REF_HF_LLM: DayReference = { label: "Hugging Face LLM course", href: "https://huggingface.co/learn/llm-course", source: "Hugging Face" };
 const REF_OAI_DOCS: DayReference = { label: "OpenAI platform docs", href: "https://platform.openai.com/docs", source: "OpenAI" };
+const REF_NIST_AI_RMF: DayReference = { label: "NIST AI Risk Management Framework", href: "https://www.nist.gov/itl/ai-risk-management-framework", source: "NIST" };
 const REF_LANGCHAIN_RAG: DayReference = { label: "RAG concepts", href: "https://python.langchain.com/docs/concepts/rag/", source: "LangChain" };
 // Canonical learning + interview-prep resources requested by the user.
 const REF_ANDREW_NG_ML: DayReference = { label: "Andrew Ng — Machine Learning Specialization (Coursera)", href: "https://www.coursera.org/specializations/machine-learning-introduction", source: "Coursera" };
@@ -2458,10 +3176,6 @@ const REF_KAGGLE_AI_ETHICS: DayReference = { label: "Kaggle — AI Ethics", href
 const REF_GIT: DayReference = { label: "Pro Git book", href: "https://git-scm.com/book/en/v2", source: "Pro Git" };
 
 export const dailyPlan: DayPlan[] = [
-  // ───── PHASE 1: Coding & ML basics in parallel (Days 1-50) ─────
-  // DSA via NeetCode 150 (≈ 5/day → ~30 days) + ML fundamentals woven in.
-
-  // ───── PHASE 1A: Statistics + Arrays/Two Pointers/Sliding Window (Days 1-7) ─────
   {
     day: 1, title: "Arrays & Hashing + Probability + Linear algebra refresh", pillar: "math-stats",
     focus: "Open the loop: easiest NeetCode pattern, probability fundamentals, vectors / matrices warm-up.",
@@ -2605,8 +3319,6 @@ export const dailyPlan: DayPlan[] = [
     ],
     references: [REF_UDL_BOOK, REF_3B1B_CALCULUS, REF_NEETCODE_VIDEOS],
   },
-
-  // ───── PHASE 1B: Traditional ML basics (Days 8-14) ─────
   {
     day: 8, title: "Stack + Bias-variance trade-off", pillar: "traditional-ml",
     focus: "Stack patterns + the most-asked ML diagnostic.",
@@ -2728,8 +3440,6 @@ export const dailyPlan: DayPlan[] = [
     ],
     references: [],
   },
-
-  // ───── PHASE 1C: Traditional ML practical (Days 15-21) ─────
   {
     day: 15, title: "Trees DFS + Trees & ensembles (GBDT)", pillar: "traditional-ml",
     focus: "Tree DFS templates + the tabular default (XGBoost / LightGBM).",
@@ -2915,7 +3625,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["backprop"],
   },
   {
-    day: 25, title: "Graphs DFS/BFS + Optimizers", pillar: "foundations",
+    day: 25, title: "Graphs DFS/BFS + Optimizers", pillar: "deep-learning",
     focus: "Grid DFS/BFS + SGD vs Adam + LR schedules.",
     tracks: [
       { label: "DSA · Graphs", items: nc("Graphs", 0, 4) },
@@ -2932,7 +3642,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_UDL_BOOK],
   },
   {
-    day: 26, title: "Graphs (cont.) + Regularization in DL", pillar: "foundations",
+    day: 26, title: "Graphs (cont.) + Regularization in DL", pillar: "deep-learning",
     focus: "Course Schedule / Connected Components + dropout / weight decay.",
     tracks: [
       { label: "DSA · Graphs", items: nc("Graphs", 4, 4) },
@@ -2949,7 +3659,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_UDL_BOOK],
   },
   {
-    day: 27, title: "Graphs finish + Normalization", pillar: "foundations",
+    day: 27, title: "Graphs finish + Normalization", pillar: "deep-learning",
     focus: "Word Ladder / Topo sort + batch / layer / group norm.",
     tracks: [
       { label: "DSA · Graphs", items: nc("Graphs", 8, 5) },
@@ -2966,7 +3676,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_UDL_BOOK],
   },
   {
-    day: 28, title: "Advanced Graphs + CNNs + project: CIFAR-10 classifier", pillar: "foundations",
+    day: 28, title: "Advanced Graphs + CNNs + project: CIFAR-10 classifier", pillar: "deep-learning",
     focus: "Dijkstra / Network Delay + CNN intuition + ship a small image classifier you can demo.",
     tracks: [
       { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 0, 3) },
@@ -2989,7 +3699,7 @@ export const dailyPlan: DayPlan[] = [
     topicId: "cnn-design-patterns",
   },
   {
-    day: 29, title: "Advanced Graphs (cont.) + RNN / LSTM + project: sentiment analysis", pillar: "foundations",
+    day: 29, title: "Advanced Graphs (cont.) + RNN / LSTM + project: sentiment analysis", pillar: "deep-learning",
     focus: "Cheapest Flights + sequential modeling pre-transformers + ship a tiny NLP demo.",
     tracks: [
       { label: "DSA · Advanced Graphs", items: nc("Advanced Graphs", 3, 3) },
@@ -3030,7 +3740,187 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["self-attention"],
   },
   {
-    day: 31, title: "1-D DP (cont.) + LLM basics", pillar: "deep-learning",
+    day: 31, title: "Training pipelines", pillar: "mlops",
+    focus: "Reliable, reproducible training from data to artifact.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-airflow", label: "Pipeline orchestration: Airflow / Prefect / Dagster", href: "https://www.dagster.io/blog/dagster-airflow-prefect", meta: "Read" },
+        { id: "mlops-distributed", label: "Distributed training (DDP, FSDP, ZeRO)", href: "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html", meta: "Tutorial" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-trigger", label: "Write retraining triggers (drift, time, label volume)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When do you actually need DDP / FSDP vs single-node?",
+      "What's a sane retraining trigger that isn't just calendar-based?",
+      "How do you ensure pipeline lineage end-to-end?",
+    ],
+    references: [REF_FSDL],
+  },
+  {
+    day: 32, title: "Model registry + CI/CD", pillar: "mlops",
+    focus: "Promote models like code: tests gate promotion, rollback is first-class.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-mlflow", label: "MLflow Model Registry — what it stores", href: "https://mlflow.org/docs/latest/model-registry.html", meta: "Docs" },
+        { id: "mlops-cicd", label: "CI/CD for ML — what's different from app CI", href: "https://martinfowler.com/articles/cd4ml.html", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-gate", label: "Define promotion gates (offline metric, fairness, calibration)", meta: "Whiteboard" },
+        { id: "mlops-rollback", label: "Define rollback playbook", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What gates the promotion from dev → staging → prod?",
+      "How do you make rollback deterministic?",
+      "Why is auto-promote dangerous?",
+    ],
+    references: [],
+    topicId: "model-registry-cicd",
+  },
+  {
+    day: 33, title: "Deployment strategies", pillar: "mlops",
+    focus: "Shadow → canary → progressive rollout that protects users.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-shadow", label: "Shadow mode vs canary vs blue-green", href: "https://martinfowler.com/bliki/CanaryRelease.html", meta: "Read" },
+        { id: "mlops-multi-region", label: "Multi-region ML deployment patterns", href: "https://aws.amazon.com/blogs/machine-learning/", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-rollout-trigger", label: "Auto-rollback triggers (SLO breach, regression on guardrail)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the difference between shadow mode and canary?",
+      "When does blue-green not work for ML?",
+      "How do you handle model state during a region failover?",
+    ],
+    references: [],
+  },
+  {
+    day: 34, title: "Observability for ML", pillar: "mlops",
+    focus: "Logs, metrics, traces — and the model-specific overlay.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-otel", label: "OpenTelemetry overview", href: "https://opentelemetry.io/docs/concepts/", meta: "Docs" },
+        { id: "mlops-prom-grafana", label: "Prometheus + Grafana for ML serving", href: "https://prometheus.io/docs/practices/instrumentation/", meta: "Docs" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-trace", label: "Trace propagation through inference (request → features → model → response)", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the model-specific overlay on top of standard observability?",
+      "How do you correlate a slow request to a specific model version?",
+      "Walk me through a dashboard you'd actually use in an incident.",
+    ],
+    references: [],
+  },
+  {
+    day: 35, title: "Incident response & rollback", pillar: "mlops",
+    focus: "Run a model incident the way SRE runs a service incident.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-postmortem", label: "Google SRE: blameless postmortems", href: "https://sre.google/sre-book/postmortem-culture/", meta: "Read" },
+        { id: "mlops-incident-ml", label: "ML-specific incident patterns", href: "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/", meta: "Read" },
+      ]},
+      { label: "Design exercise", items: [
+        { id: "mlops-pm-template", label: "Write a 1-page postmortem template for an ML incident", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What's the difference between a fix-forward and a rollback decision?",
+      "Walk me through your first 10 minutes of a model regression incident.",
+      "How do you make sure a postmortem actually changes behavior?",
+    ],
+    references: [],
+  },
+  {
+    day: 36, title: "Cost & capacity planning", pillar: "mlops",
+    focus: "Per-request cost decomposition + small-first cascade routing.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mlops-llm-cost", label: "Reducing LLM cost: caching, routing, batching", href: "https://blog.langchain.dev/reducing-the-cost-of-llm-applications/", meta: "Read" },
+        { id: "mlops-gpu-util", label: "GPU utilization + batch sizing", href: "https://www.databricks.com/blog/optimize-gpu-utilization-llm-inference", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Walk me through cost decomposition for a single LLM request.",
+      "When does a small-first cascade beat a single large model?",
+      "How do you make a cost dashboard actionable for product teams?",
+    ],
+    references: [],
+    questionIds: ["architect-cost-optimization"],
+  },
+  {
+    day: 37, title: "Multi-tenant ML systems", pillar: "mlops",
+    focus: "Compute / data / policy isolation by risk tier.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "mt-isolation", label: "Multi-tenant SaaS isolation patterns", href: "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/", meta: "Read" },
+        { id: "mt-cost-attr", label: "Cost attribution across tenants", href: "https://www.kubecost.com/blog/multi-tenancy/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Compute / data / policy isolation — when does each level apply?",
+      "How do you do per-tenant quotas without starving small tenants?",
+      "What's the simplest audit log that catches cross-tenant leakage?",
+    ],
+    references: [],
+    questionIds: ["architect-multi-tenant-isolation"],
+  },
+  {
+    day: 38, title: "Privacy + compliance", pillar: "mlops",
+    focus: "Bake privacy in, not after.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "priv-min", label: "Data minimization & retention windows (GDPR)", href: "https://gdpr.eu/data-minimization/", meta: "Read" },
+        { id: "priv-dp", label: "Differential privacy in ML — quick intro", href: "https://github.com/google/differential-privacy", meta: "Reference" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you minimize PII flow through an ML pipeline?",
+      "When is differential privacy worth the accuracy cost?",
+      "What goes into an audit log for inference?",
+    ],
+    references: [],
+  },
+  {
+    day: 39, title: "Build vs buy + migration planning", pillar: "mlops",
+    focus: "Vector stores, feature platforms, eval tooling — when each.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "bvb-framework", label: "Build vs buy framework", href: "https://martinfowler.com/articles/build-or-buy.html", meta: "Read" },
+        { id: "mig-zero-down", label: "Zero-downtime migration patterns (Stripe)", href: "https://stripe.com/blog/online-migrations", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Frame a build-vs-buy answer as a reversible decision with explicit triggers.",
+      "Walk me through a zero-downtime migration with shadow + parity + ramp.",
+      "What's the rollback trigger you'd commit to for the migration?",
+    ],
+    references: [],
+    questionIds: ["architect-build-vs-buy", "architect-migration-plan"],
+  },
+  {
+    day: 40, title: "ML infra design mock", pillar: "mlops",
+    focus: "60-minute infra-flavored design round.",
+    tracks: [
+      { label: "Mock", items: [
+        { id: "infra-mock-pick", label: "Pick a serving + monitoring + retraining prompt", meta: "Pick" },
+        { id: "infra-mock-run", label: "60-min mock", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Defend latency budgets, scaling, fallback paths.",
+      "Trade-off close: which axis would you protect hardest?",
+      "What's your incident playbook for this system?",
+    ],
+    references: [],
+  },
+  {
+    day: 41, title: "1-D DP (cont.) + LLM basics", pillar: "generative-ai",
     focus: "Coin Change / Word Break + pretraining → instruction tuning → RLHF.",
     tracks: [
       { label: "DSA · 1-D DP", items: nc("1-D Dynamic Programming", 4, 4) },
@@ -3049,7 +3939,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["temperature-top-p"],
   },
   {
-    day: 32, title: "1-D DP finish + Tokenization & embeddings", pillar: "generative-ai",
+    day: 42, title: "1-D DP finish + Tokenization & embeddings", pillar: "generative-ai",
     focus: "LIS / Partition Equal Subset + BPE intuition + embedding space.",
     tracks: [
       { label: "DSA · 1-D DP", items: nc("1-D Dynamic Programming", 8, 4) },
@@ -3066,7 +3956,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_HF_LLM],
   },
   {
-    day: 33, title: "2-D DP + Prompt engineering", pillar: "generative-ai",
+    day: 43, title: "2-D DP + Prompt engineering", pillar: "generative-ai",
     focus: "Unique Paths / LCS + few-shot + CoT + structured output.",
     tracks: [
       { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 0, 4) },
@@ -3083,7 +3973,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_OAI_DOCS, REF_ANTHROPIC_PROMPT, REF_ANTHROPIC_EVAL],
   },
   {
-    day: 34, title: "2-D DP (cont.) + RAG architecture + project: RAG chatbot", pillar: "generative-ai",
+    day: 44, title: "2-D DP (cont.) + RAG architecture + project: RAG chatbot", pillar: "generative-ai",
     focus: "Edit Distance / Coin Change II + end-to-end RAG + ship a chatbot over your own docs.",
     tracks: [
       { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 4, 4) },
@@ -3107,7 +3997,7 @@ export const dailyPlan: DayPlan[] = [
     topicId: "rag-architecture",
   },
   {
-    day: 35, title: "2-D DP finish + Vector stores", pillar: "generative-ai",
+    day: 45, title: "2-D DP finish + Vector stores", pillar: "generative-ai",
     focus: "Distinct Subsequences / Regex Match + HNSW / IVF.",
     tracks: [
       { label: "DSA · 2-D DP", items: nc("2-D Dynamic Programming", 8, 3) },
@@ -3125,7 +4015,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_PINECONE_VDB, REF_DLAI_AGENTIC_RAG, REF_MCP_DOCS],
   },
   {
-    day: 36, title: "Greedy + Reranking", pillar: "generative-ai",
+    day: 46, title: "Greedy + Reranking", pillar: "generative-ai",
     focus: "Maximum Subarray / Jump Game + cross-encoder rerankers.",
     tracks: [
       { label: "DSA · Greedy", items: nc("Greedy", 0, 4) },
@@ -3142,7 +4032,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 37, title: "Greedy (cont.) + LLM evaluation", pillar: "generative-ai",
+    day: 47, title: "Greedy (cont.) + LLM evaluation", pillar: "generative-ai",
     focus: "Gas Station / Hand of Straights + faithfulness, calibration, LLM-as-judge.",
     tracks: [
       { label: "DSA · Greedy", items: nc("Greedy", 4, 4) },
@@ -3161,7 +4051,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["rag-eval"],
   },
   {
-    day: 38, title: "Intervals + Fine-tuning + project: resume analyzer", pillar: "generative-ai",
+    day: 48, title: "Intervals + Fine-tuning + project: resume analyzer", pillar: "generative-ai",
     focus: "Insert / Merge intervals + fine-tune-only-when-prompt+RAG-plateaus + ship a resume analyzer.",
     tracks: [
       { label: "DSA · Intervals", items: nc("Intervals", 0, 4) },
@@ -3184,7 +4074,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_DLAI_GENAI, REF_OAI_DOCS, REF_HF_PEFT],
   },
   {
-    day: 39, title: "Intervals finish + Agents", pillar: "generative-ai",
+    day: 49, title: "Intervals finish + Agents", pillar: "generative-ai",
     focus: "Meeting Rooms / Min-interval + planner / executor split.",
     tracks: [
       { label: "DSA · Intervals", items: nc("Intervals", 4, 2) },
@@ -3203,7 +4093,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["agent-architecture"],
   },
   {
-    day: 40, title: "Math & Geometry + Guardrails", pillar: "generative-ai",
+    day: 50, title: "Math & Geometry + Guardrails", pillar: "generative-ai",
     focus: "Rotate Image / Spiral Matrix + layered guardrails (input → schema → policy → output).",
     tracks: [
       { label: "DSA · Math & Geometry", items: nc("Math & Geometry", 0, 4) },
@@ -3220,7 +4110,139 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 41, title: "Math (cont.) + System design framework + interview-prep canon", pillar: "ml-system-design",
+    day: 51, title: "LLMOps specifics", pillar: "llmops",
+    focus: "Prompt versioning, model routing, regression gating.",
+    tracks: [
+      { label: "Read", items: [
+        { id: "llmops-versioning", label: "Versioning prompts + models + retrieval together", href: "https://huyenchip.com/2024/07/25/genai-platform.html", meta: "Read" },
+        { id: "llmops-routing", label: "Model routing by uncertainty / cost / risk", href: "https://eugeneyan.com/writing/llm-patterns/", meta: "Read" },
+      ]},
+    ],
+    interviewQuestions: [
+      "Why version prompt + model + retrieval as one artifact?",
+      "How do you decide a request goes to GPT-4o vs a smaller model?",
+      "What's a release-time regression gate look like for an LLM feature?",
+    ],
+    references: [REF_OAI_DOCS, REF_ANTHROPIC_EVAL],
+    topicId: "llm-prompt-versioning",
+  },
+  {
+    day: 52, title: "LLMOps · Prompt and model versioning", pillar: "llmops",
+    focus: "Turn prompts, tools, retrieval configs, and model choices into versioned release artifacts.",
+    tracks: [
+      { label: "LLMOps · Release discipline", items: [
+        { id: "llmops-prompt-registry", label: "Create a prompt registry entry with owner, task, model, tools, schema, and eval set", meta: "Build" },
+        { id: "llmops-model-pinning", label: "Explain model pinning, upgrade windows, and rollback criteria", href: "https://platform.openai.com/docs/guides/prompt-engineering/strategies-to-improve-reliability", meta: "Docs" },
+        { id: "llmops-config-diff", label: "Draft a release note for changing retrieval, prompt, and model routing together", meta: "Practice" },
+      ]},
+      { label: "Interview", items: [
+        { id: "llmops-q-versioning", label: "Answer: what should be versioned in an LLM application besides code?", meta: "Mock" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What do you version in a production LLM system besides application code?",
+      "How do you safely upgrade a model used by a customer-facing assistant?",
+      "What belongs in a prompt release note?",
+    ],
+    references: [REF_OAI_DOCS, REF_ANTHROPIC_PROMPT],
+    topicId: "llm-prompt-versioning",
+  },
+  {
+    day: 53, title: "LLMOps · Evaluation datasets and regression gates", pillar: "llmops",
+    focus: "Build eval sets that catch regressions before prompt, retrieval, model, or tool changes hit users.",
+    tracks: [
+      { label: "LLMOps · Evals", items: [
+        { id: "llmops-golden-set", label: "Design a golden dataset with normal, edge, adversarial, and refusal cases", meta: "Design" },
+        { id: "llmops-trace-grading", label: "Study trace-level grading for agent workflows", href: "https://platform.openai.com/docs/guides/agent-evals", meta: "Docs" },
+        { id: "llmops-offline-online", label: "Separate offline evals from online feedback and escalation metrics", meta: "Concept" },
+      ]},
+      { label: "Practice", items: [
+        { id: "llmops-eval-rubric", label: "Write a rubric for faithfulness, instruction following, safety, latency, and cost", meta: "Build" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you build a regression test suite for a RAG or agent system?",
+      "What should be graded at the trace level rather than only final answer level?",
+      "How do you keep eval datasets from overfitting to your current prompt?",
+    ],
+    references: [REF_OAI_DOCS, REF_ANTHROPIC_EVAL],
+    topicId: "llm-eval-ops",
+  },
+  {
+    day: 54, title: "LLMOps · Observability, tracing, and incident response", pillar: "llmops",
+    focus: "Instrument prompts, retrieval, tools, model calls, costs, and user outcomes so failures are debuggable.",
+    tracks: [
+      { label: "LLMOps · Observability", items: [
+        { id: "llmops-traces", label: "Sketch the trace schema: prompt, context, retrieved docs, tool calls, model, latency, cost", meta: "Design" },
+        { id: "llmops-alerts", label: "Define alerts for hallucination spikes, tool failures, latency, cost, and refusal drift", meta: "Concept" },
+        { id: "llmops-postmortem", label: "Write an incident playbook for bad generated advice or unsafe tool execution", meta: "Practice" },
+      ]},
+    ],
+    interviewQuestions: [
+      "What do you log for an LLM request, and what should you avoid logging?",
+      "How do you debug a sudden hallucination spike?",
+      "How would you run an incident review for an unsafe agent action?",
+    ],
+    references: [REF_OAI_DOCS, REF_NIST_AI_RMF],
+    topicId: "llm-observability-incidents",
+  },
+  {
+    day: 55, title: "LLMOps · Cost, latency, caching, and model routing", pillar: "llmops",
+    focus: "Reduce inference cost with routing and caching while preserving measurable quality.",
+    tracks: [
+      { label: "LLMOps · Efficiency", items: [
+        { id: "llmops-routing", label: "Design small-to-large model routing with quality gates", meta: "Whiteboard" },
+        { id: "llmops-cache", label: "Compare semantic cache, exact cache, prompt cache, and retrieval cache", meta: "Concept" },
+        { id: "llmops-context-budget", label: "Trim context with retrieval filters, compression, reranking, and summaries", meta: "Practice" },
+      ]},
+    ],
+    interviewQuestions: [
+      "An LLM feature is over budget. What do you measure and change first?",
+      "When is semantic caching unsafe?",
+      "How do you route traffic across models without silently hurting answer quality?",
+    ],
+    references: [REF_OAI_DOCS, REF_MIT_ML_EFFICIENCY],
+    questionIds: ["architect-cost-optimization"],
+    topicId: "llm-routing-cost-latency",
+  },
+  {
+    day: 56, title: "LLMOps · Safety, privacy, security, and red teaming", pillar: "llmops",
+    focus: "Prepare for interviews that probe prompt injection, data leakage, jailbreaks, policy, and human escalation.",
+    tracks: [
+      { label: "LLMOps · Risk controls", items: [
+        { id: "llmops-prompt-injection", label: "Explain prompt injection and data exfiltration in tool/RAG systems", meta: "Concept" },
+        { id: "llmops-red-team", label: "Create a red-team checklist for jailbreaks, unsafe advice, PII leakage, and tool abuse", meta: "Build" },
+        { id: "llmops-human-loop", label: "Design human escalation for high-risk or low-confidence outputs", meta: "Whiteboard" },
+      ]},
+    ],
+    interviewQuestions: [
+      "How do you defend a RAG system against prompt injection?",
+      "What should trigger human review in an AI support agent?",
+      "How do privacy and audit requirements change your logging plan?",
+    ],
+    references: [REF_NIST_AI_RMF, REF_MCP_DOCS, REF_KAGGLE_AI_ETHICS],
+    topicId: "llm-safety-security-privacy",
+  },
+  {
+    day: 57, title: "LLMOps · Fine-tuning operations and adapter management", pillar: "llmops",
+    focus: "Operationalize LoRA, instruction tuning, dataset curation, model cards, and rollout decisions.",
+    tracks: [
+      { label: "LLMOps · Adaptation", items: [
+        { id: "llmops-ft-vs-rag", label: "Decide fine-tune vs RAG vs prompt change with a written decision tree", meta: "Practice" },
+        { id: "llmops-lora", label: "Review LoRA / PEFT adapter training and serving implications", href: "https://huggingface.co/learn/smol-course/en/unit1/3a", meta: "Docs" },
+        { id: "llmops-dataset-quality", label: "Define data quality checks for supervised fine-tuning datasets", meta: "Design" },
+      ]},
+    ],
+    interviewQuestions: [
+      "When should you fine-tune instead of using RAG?",
+      "What can go wrong operationally when managing many LoRA adapters?",
+      "How do you evaluate whether a fine-tune improved behavior or memorized examples?",
+    ],
+    references: [REF_HF_PEFT, REF_HF_LLM],
+    topicId: "llm-finetuning-ops",
+  },
+  {
+    day: 58, title: "Math (cont.) + System design framework + interview-prep canon", pillar: "ml-system-design",
     focus: "Happy Number / Plus One + the reusable design scaffold + the canonical interview repos.",
     tracks: [
       { label: "DSA · Math & Geometry", items: nc("Math & Geometry", 4, 4) },
@@ -3244,7 +4266,7 @@ export const dailyPlan: DayPlan[] = [
     topicId: "system-design-framework",
   },
   {
-    day: 42, title: "Bit Manipulation + Data pipelines", pillar: "ml-system-design",
+    day: 59, title: "Bit Manipulation + Data pipelines", pillar: "ml-system-design",
     focus: "Single Number / 1-bits + batch vs streaming + idempotency.",
     tracks: [
       { label: "DSA · Bit Manipulation", items: nc("Bit Manipulation", 0, 4) },
@@ -3261,7 +4283,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 43, title: "Bit (cont.) + Feature stores", pillar: "ml-system-design",
+    day: 60, title: "Bit (cont.) + Feature stores", pillar: "ml-system-design",
     focus: "Counting Bits / XOR + online/offline parity, feature TTLs.",
     tracks: [
       { label: "DSA · Bit Manipulation", items: nc("Bit Manipulation", 4, 3) },
@@ -3280,7 +4302,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["feature-store-purpose"],
   },
   {
-    day: 44, title: "Reading + Online serving", pillar: "ml-system-design",
+    day: 61, title: "Reading + Online serving", pillar: "ml-system-design",
     focus: "No new DSA today — read deeply + design serving for a 100ms p99 budget.",
     tracks: [
       { label: "Read · ML serving", items: [
@@ -3302,7 +4324,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["architect-capacity-planning"],
   },
   {
-    day: 45, title: "Monitoring & drift", pillar: "mlops",
+    day: 62, title: "Monitoring & drift", pillar: "ml-system-design",
     focus: "Separate infra / data / model monitoring; alerts that map to actions.",
     tracks: [
       { label: "Read · Monitoring", items: [
@@ -3324,7 +4346,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["monitoring-production"],
   },
   {
-    day: 46, title: "Case: Short-video recommendations (part 1)", pillar: "ml-system-design",
+    day: 63, title: "Case: Short-video recommendations (part 1)", pillar: "ml-system-design",
     focus: "Read Yuan Meng's example doc + write your own framing on paper.",
     tracks: [
       { label: "Read · Recsys foundations", items: [
@@ -3346,7 +4368,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["recommendation-design"],
   },
   {
-    day: 47, title: "Case: Short-video recommendations (part 2)", pillar: "ml-system-design",
+    day: 64, title: "Case: Short-video recommendations (part 2)", pillar: "ml-system-design",
     focus: "Walk the case end-to-end out loud against the framework.",
     tracks: [
       { label: "Practice · Out loud", items: [
@@ -3366,7 +4388,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "video-recommendation",
   },
   {
-    day: 48, title: "Case: Ads conversion (CTR) — part 1", pillar: "ml-system-design",
+    day: 65, title: "Case: Ads conversion (CTR) — part 1", pillar: "ml-system-design",
     focus: "Frame the auction; calibration is the architect's word.",
     tracks: [
       { label: "Read · Ads ML", items: [
@@ -3387,7 +4409,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "ad-click-prediction",
   },
   {
-    day: 49, title: "Case: Ads conversion (CTR) — part 2", pillar: "ml-system-design",
+    day: 66, title: "Case: Ads conversion (CTR) — part 2", pillar: "ml-system-design",
     focus: "End-to-end mock + position bias + exploration slots.",
     tracks: [
       { label: "Practice · Out loud", items: [
@@ -3404,7 +4426,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "ad-click-prediction",
   },
   {
-    day: 50, title: "Catch-up · half DSA review, half ML review", pillar: "foundations",
+    day: 67, title: "Catch-up · half DSA review, half ML review", pillar: "ml-system-design",
     focus: "Re-attempt 3 hardest LC problems + revisit the 3 weakest ML topics.",
     tracks: [
       { label: "DSA review", items: [
@@ -3424,7 +4446,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 51, title: "Case: Search ranking (part 1)", pillar: "ml-system-design",
+    day: 68, title: "Case: Search ranking (part 1)", pillar: "ml-system-design",
     focus: "Three-stage architecture: query understanding → retrieval → ranking.",
     tracks: [
       { label: "Read · Search ML", items: [
@@ -3444,7 +4466,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "search-ranking",
   },
   {
-    day: 52, title: "Case: Search ranking (part 2)", pillar: "ml-system-design",
+    day: 69, title: "Case: Search ranking (part 2)", pillar: "ml-system-design",
     focus: "End-to-end mock + cold-start + selection bias.",
     tracks: [
       { label: "Practice · Out loud", items: [
@@ -3461,7 +4483,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "search-ranking",
   },
   {
-    day: 53, title: "Case: Fraud detection (part 1)", pillar: "ml-system-design",
+    day: 70, title: "Case: Fraud detection (part 1)", pillar: "ml-system-design",
     focus: "Real-time scoring with imbalanced labels + reviewer queue capacity.",
     tracks: [
       { label: "Read · Fraud ML", items: [
@@ -3482,7 +4504,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "fraud-detection",
   },
   {
-    day: 54, title: "Case: Fraud detection (part 2)", pillar: "ml-system-design",
+    day: 71, title: "Case: Fraud detection (part 2)", pillar: "ml-system-design",
     focus: "End-to-end mock + delayed labels + reviewer SLA.",
     tracks: [
       { label: "Practice · Out loud", items: [
@@ -3499,7 +4521,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "fraud-detection",
   },
   {
-    day: 55, title: "Case: Enterprise RAG chatbot", pillar: "generative-ai",
+    day: 72, title: "Case: Enterprise RAG chatbot", pillar: "ml-system-design",
     focus: "Permissioned retrieval + citations + faithfulness.",
     tracks: [
       { label: "Read · Enterprise RAG", items: [
@@ -3520,7 +4542,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "enterprise-rag-chatbot",
   },
   {
-    day: 56, title: "Case: AI customer-support agent", pillar: "generative-ai",
+    day: 73, title: "Case: AI customer-support agent", pillar: "ml-system-design",
     focus: "Tool use + layered guardrails + tiered rollout.",
     tracks: [
       { label: "Read · Production agents", items: [
@@ -3541,7 +4563,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "customer-support-agent",
   },
   {
-    day: 57, title: "Case: LLM evaluation platform", pillar: "generative-ai",
+    day: 74, title: "Case: LLM evaluation platform", pillar: "ml-system-design",
     focus: "Suites, runs, gates, regression detection across teams.",
     tracks: [
       { label: "Read · LLM eval platforms", items: [
@@ -3562,7 +4584,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "llm-evaluation-platform",
   },
   {
-    day: 58, title: "Case: Document intelligence", pillar: "generative-ai",
+    day: 75, title: "Case: Document intelligence", pillar: "ml-system-design",
     focus: "OCR + extraction + calibrated confidence + reviewer queue.",
     tracks: [
       { label: "Read · Document AI", items: [
@@ -3582,7 +4604,7 @@ export const dailyPlan: DayPlan[] = [
     caseStudySlug: "document-intelligence",
   },
   {
-    day: 59, title: "Cross-case design rehearsal", pillar: "ml-system-design",
+    day: 76, title: "Cross-case design rehearsal", pillar: "ml-system-design",
     focus: "Pick one case you haven't drilled. Time a 60-min mock cold.",
     tracks: [
       { label: "Mock", items: [
@@ -3599,7 +4621,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_CHIP_HUYEN_DESIGN],
   },
   {
-    day: 60, title: "Architect trade-off playbook drill", pillar: "ml-system-design",
+    day: 77, title: "Architect trade-off playbook drill", pillar: "ml-system-design",
     focus: "Memorize the 6 architect trade-offs you'll be asked to defend.",
     tracks: [
       { label: "Read & rehearse", items: [
@@ -3620,203 +4642,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["architect-build-vs-buy", "architect-multi-tenant-isolation"],
   },
   {
-    day: 61, title: "Training pipelines", pillar: "mlops",
-    focus: "Reliable, reproducible training from data to artifact.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-airflow", label: "Pipeline orchestration: Airflow / Prefect / Dagster", href: "https://www.dagster.io/blog/dagster-airflow-prefect", meta: "Read" },
-        { id: "mlops-distributed", label: "Distributed training (DDP, FSDP, ZeRO)", href: "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html", meta: "Tutorial" },
-      ]},
-      { label: "Design exercise", items: [
-        { id: "mlops-trigger", label: "Write retraining triggers (drift, time, label volume)", meta: "Whiteboard" },
-      ]},
-    ],
-    interviewQuestions: [
-      "When do you actually need DDP / FSDP vs single-node?",
-      "What's a sane retraining trigger that isn't just calendar-based?",
-      "How do you ensure pipeline lineage end-to-end?",
-    ],
-    references: [REF_FSDL],
-  },
-  {
-    day: 62, title: "Model registry + CI/CD", pillar: "mlops",
-    focus: "Promote models like code: tests gate promotion, rollback is first-class.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-mlflow", label: "MLflow Model Registry — what it stores", href: "https://mlflow.org/docs/latest/model-registry.html", meta: "Docs" },
-        { id: "mlops-cicd", label: "CI/CD for ML — what's different from app CI", href: "https://martinfowler.com/articles/cd4ml.html", meta: "Read" },
-      ]},
-      { label: "Design exercise", items: [
-        { id: "mlops-gate", label: "Define promotion gates (offline metric, fairness, calibration)", meta: "Whiteboard" },
-        { id: "mlops-rollback", label: "Define rollback playbook", meta: "Whiteboard" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What gates the promotion from dev → staging → prod?",
-      "How do you make rollback deterministic?",
-      "Why is auto-promote dangerous?",
-    ],
-    references: [],
-    topicId: "model-registry-cicd",
-  },
-  {
-    day: 63, title: "Deployment strategies", pillar: "mlops",
-    focus: "Shadow → canary → progressive rollout that protects users.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-shadow", label: "Shadow mode vs canary vs blue-green", href: "https://martinfowler.com/bliki/CanaryRelease.html", meta: "Read" },
-        { id: "mlops-multi-region", label: "Multi-region ML deployment patterns", href: "https://aws.amazon.com/blogs/machine-learning/", meta: "Read" },
-      ]},
-      { label: "Design exercise", items: [
-        { id: "mlops-rollout-trigger", label: "Auto-rollback triggers (SLO breach, regression on guardrail)", meta: "Whiteboard" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What's the difference between shadow mode and canary?",
-      "When does blue-green not work for ML?",
-      "How do you handle model state during a region failover?",
-    ],
-    references: [],
-  },
-  {
-    day: 64, title: "Observability for ML", pillar: "mlops",
-    focus: "Logs, metrics, traces — and the model-specific overlay.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-otel", label: "OpenTelemetry overview", href: "https://opentelemetry.io/docs/concepts/", meta: "Docs" },
-        { id: "mlops-prom-grafana", label: "Prometheus + Grafana for ML serving", href: "https://prometheus.io/docs/practices/instrumentation/", meta: "Docs" },
-      ]},
-      { label: "Design exercise", items: [
-        { id: "mlops-trace", label: "Trace propagation through inference (request → features → model → response)", meta: "Whiteboard" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What's the model-specific overlay on top of standard observability?",
-      "How do you correlate a slow request to a specific model version?",
-      "Walk me through a dashboard you'd actually use in an incident.",
-    ],
-    references: [],
-  },
-  {
-    day: 65, title: "Incident response & rollback", pillar: "mlops",
-    focus: "Run a model incident the way SRE runs a service incident.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-postmortem", label: "Google SRE: blameless postmortems", href: "https://sre.google/sre-book/postmortem-culture/", meta: "Read" },
-        { id: "mlops-incident-ml", label: "ML-specific incident patterns", href: "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/", meta: "Read" },
-      ]},
-      { label: "Design exercise", items: [
-        { id: "mlops-pm-template", label: "Write a 1-page postmortem template for an ML incident", meta: "Whiteboard" },
-      ]},
-    ],
-    interviewQuestions: [
-      "What's the difference between a fix-forward and a rollback decision?",
-      "Walk me through your first 10 minutes of a model regression incident.",
-      "How do you make sure a postmortem actually changes behavior?",
-    ],
-    references: [],
-  },
-  {
-    day: 66, title: "Cost & capacity planning", pillar: "mlops",
-    focus: "Per-request cost decomposition + small-first cascade routing.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mlops-llm-cost", label: "Reducing LLM cost: caching, routing, batching", href: "https://blog.langchain.dev/reducing-the-cost-of-llm-applications/", meta: "Read" },
-        { id: "mlops-gpu-util", label: "GPU utilization + batch sizing", href: "https://www.databricks.com/blog/optimize-gpu-utilization-llm-inference", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Walk me through cost decomposition for a single LLM request.",
-      "When does a small-first cascade beat a single large model?",
-      "How do you make a cost dashboard actionable for product teams?",
-    ],
-    references: [],
-    questionIds: ["architect-cost-optimization"],
-  },
-  {
-    day: 67, title: "LLMOps specifics", pillar: "generative-ai",
-    focus: "Prompt versioning, model routing, regression gating.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "llmops-versioning", label: "Versioning prompts + models + retrieval together", href: "https://huyenchip.com/2024/07/25/genai-platform.html", meta: "Read" },
-        { id: "llmops-routing", label: "Model routing by uncertainty / cost / risk", href: "https://eugeneyan.com/writing/llm-patterns/", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Why version prompt + model + retrieval as one artifact?",
-      "How do you decide a request goes to GPT-4o vs a smaller model?",
-      "What's a release-time regression gate look like for an LLM feature?",
-    ],
-    references: [REF_OAI_DOCS],
-  },
-  {
-    day: 68, title: "Multi-tenant ML systems", pillar: "ml-system-design",
-    focus: "Compute / data / policy isolation by risk tier.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "mt-isolation", label: "Multi-tenant SaaS isolation patterns", href: "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/", meta: "Read" },
-        { id: "mt-cost-attr", label: "Cost attribution across tenants", href: "https://www.kubecost.com/blog/multi-tenancy/", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Compute / data / policy isolation — when does each level apply?",
-      "How do you do per-tenant quotas without starving small tenants?",
-      "What's the simplest audit log that catches cross-tenant leakage?",
-    ],
-    references: [],
-    questionIds: ["architect-multi-tenant-isolation"],
-  },
-  {
-    day: 69, title: "Privacy + compliance", pillar: "mlops",
-    focus: "Bake privacy in, not after.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "priv-min", label: "Data minimization & retention windows (GDPR)", href: "https://gdpr.eu/data-minimization/", meta: "Read" },
-        { id: "priv-dp", label: "Differential privacy in ML — quick intro", href: "https://github.com/google/differential-privacy", meta: "Reference" },
-      ]},
-    ],
-    interviewQuestions: [
-      "How do you minimize PII flow through an ML pipeline?",
-      "When is differential privacy worth the accuracy cost?",
-      "What goes into an audit log for inference?",
-    ],
-    references: [],
-  },
-  {
-    day: 70, title: "Build vs buy + migration planning", pillar: "ml-system-design",
-    focus: "Vector stores, feature platforms, eval tooling — when each.",
-    tracks: [
-      { label: "Read", items: [
-        { id: "bvb-framework", label: "Build vs buy framework", href: "https://martinfowler.com/articles/build-or-buy.html", meta: "Read" },
-        { id: "mig-zero-down", label: "Zero-downtime migration patterns (Stripe)", href: "https://stripe.com/blog/online-migrations", meta: "Read" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Frame a build-vs-buy answer as a reversible decision with explicit triggers.",
-      "Walk me through a zero-downtime migration with shadow + parity + ramp.",
-      "What's the rollback trigger you'd commit to for the migration?",
-    ],
-    references: [],
-    questionIds: ["architect-build-vs-buy", "architect-migration-plan"],
-  },
-  {
-    day: 71, title: "ML infra design mock", pillar: "ml-system-design",
-    focus: "60-minute infra-flavored design round.",
-    tracks: [
-      { label: "Mock", items: [
-        { id: "infra-mock-pick", label: "Pick a serving + monitoring + retraining prompt", meta: "Pick" },
-        { id: "infra-mock-run", label: "60-min mock", meta: "Mock" },
-      ]},
-    ],
-    interviewQuestions: [
-      "Defend latency budgets, scaling, fallback paths.",
-      "Trade-off close: which axis would you protect hardest?",
-      "What's your incident playbook for this system?",
-    ],
-    references: [],
-  },
-  {
-    day: 72, title: "OOP fundamentals + design patterns", pillar: "foundations",
+    day: 78, title: "OOP fundamentals + design patterns", pillar: "foundations",
     focus: "Classes, inheritance, polymorphism + Singleton / Factory / Observer / Strategy.",
     tracks: [
       { label: "Read", items: [
@@ -3836,7 +4662,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 73, title: "Concurrency basics", pillar: "foundations",
+    day: 79, title: "Concurrency basics", pillar: "foundations",
     focus: "Threads, locks, async — what each is for.",
     tracks: [
       { label: "Read", items: [
@@ -3855,7 +4681,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 74, title: "OOP design problems", pillar: "foundations",
+    day: 80, title: "OOP design problems", pillar: "foundations",
     focus: "Walk an OOP design problem end to end (Parking Lot, Cache, Rate Limiter).",
     tracks: [
       { label: "Practice · Out loud", items: [
@@ -3871,7 +4697,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 75, title: "AI-assisted coding round practice", pillar: "foundations",
+    day: 81, title: "AI-assisted coding round practice", pillar: "foundations",
     focus: "Practice the new AI-pair-programming round style.",
     tracks: [
       { label: "Practice", items: [
@@ -3888,7 +4714,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_YUAN_MENG_HURRY, REF_KAGGLE_AI_ETHICS],
   },
   {
-    day: 76, title: "Company-tag drilling — target #1", pillar: "foundations",
+    day: 82, title: "Company-tag drilling — target #1", pillar: "foundations",
     focus: "5-7 problems from your highest-priority company tag.",
     tracks: [
       { label: "Practice", items: [
@@ -3903,7 +4729,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_YUAN_MENG_HURRY],
   },
   {
-    day: 77, title: "Company-tag drilling — target #2", pillar: "foundations",
+    day: 83, title: "Company-tag drilling — target #2", pillar: "foundations",
     focus: "Switch to second company; compare styles.",
     tracks: [
       { label: "Practice", items: [
@@ -3918,7 +4744,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 78, title: "ML model design mock", pillar: "ml-system-design",
+    day: 84, title: "ML model design mock", pillar: "ml-system-design",
     focus: "60-min full case from cold-start to monitoring.",
     tracks: [
       { label: "Mock", items: [
@@ -3935,7 +4761,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 79, title: "Catch-up + DSA hard practice", pillar: "foundations",
+    day: 85, title: "Catch-up + DSA hard practice", pillar: "foundations",
     focus: "Tackle 2 LC Hards from your weakest category.",
     tracks: [
       { label: "Practice", items: [
@@ -3950,7 +4776,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 80, title: "Behavioral · Resume rewrite", pillar: "behavioral-storytelling",
+    day: 86, title: "Behavioral · Resume rewrite", pillar: "behavioral-storytelling",
     focus: "Quantify outcomes; lead with the decision you owned.",
     tracks: [
       { label: "Practice", items: [
@@ -3966,7 +4792,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_YUAN_MENG_HURRY],
   },
   {
-    day: 81, title: "Behavioral · Career story", pillar: "behavioral-storytelling",
+    day: 87, title: "Behavioral · Career story", pillar: "behavioral-storytelling",
     focus: "3-minute version that lands the arc.",
     tracks: [
       { label: "Practice", items: [
@@ -3982,7 +4808,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 82, title: "Behavioral · Most complex project deep dive", pillar: "behavioral-storytelling",
+    day: 88, title: "Behavioral · Most complex project deep dive", pillar: "behavioral-storytelling",
     focus: "Be ready for follow-ups two layers deep.",
     tracks: [
       { label: "Practice", items: [
@@ -4000,7 +4826,7 @@ export const dailyPlan: DayPlan[] = [
     topicId: "project-storytelling",
   },
   {
-    day: 83, title: "Behavioral · Ownership / failure story", pillar: "behavioral-storytelling",
+    day: 89, title: "Behavioral · Ownership / failure story", pillar: "behavioral-storytelling",
     focus: "Show learning without minimizing impact.",
     tracks: [
       { label: "Practice", items: [
@@ -4018,7 +4844,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["story-failure"],
   },
   {
-    day: 84, title: "Behavioral · Conflict / disagreement story", pillar: "behavioral-storytelling",
+    day: 90, title: "Behavioral · Conflict / disagreement story", pillar: "behavioral-storytelling",
     focus: "Demonstrate disagreement without making the other side look bad.",
     tracks: [
       { label: "Practice", items: [
@@ -4033,7 +4859,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 85, title: "Behavioral · Leadership / influence story", pillar: "behavioral-storytelling",
+    day: 91, title: "Behavioral · Leadership / influence story", pillar: "behavioral-storytelling",
     focus: "Cross-team alignment without inflating your title.",
     tracks: [
       { label: "Practice", items: [
@@ -4048,7 +4874,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 86, title: "Behavioral · Company-specific prep", pillar: "behavioral-storytelling",
+    day: 92, title: "Behavioral · Company-specific prep", pillar: "behavioral-storytelling",
     focus: "Tailor stories to each target company's value rubric.",
     tracks: [
       { label: "Research", items: [
@@ -4064,7 +4890,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 87, title: "Coding mock — Meta style", pillar: "foundations",
+    day: 93, title: "Coding mock — Meta style", pillar: "foundations",
     focus: "Fast classic mediums; you must finish without stalling.",
     tracks: [
       { label: "Mock", items: [
@@ -4080,7 +4906,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 88, title: "Coding mock — Google style", pillar: "foundations",
+    day: 94, title: "Coding mock — Google style", pillar: "foundations",
     focus: "Hard LC: graph or DP, with elegant simplification.",
     tracks: [
       { label: "Mock", items: [
@@ -4097,7 +4923,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 89, title: "Coding mock — OpenAI / OOP style", pillar: "foundations",
+    day: 95, title: "Coding mock — OpenAI / OOP style", pillar: "foundations",
     focus: "Object-modeling design problem under interview pressure.",
     tracks: [
       { label: "Mock", items: [
@@ -4114,7 +4940,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_YUAN_MENG_HURRY],
   },
   {
-    day: 90, title: "ML model design mock — full case", pillar: "ml-system-design",
+    day: 96, title: "ML model design mock — full case", pillar: "ml-system-design",
     focus: "60-min full case round, scored honestly.",
     tracks: [
       { label: "Mock", items: [
@@ -4131,7 +4957,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 91, title: "ML infra design mock — full case", pillar: "ml-system-design",
+    day: 97, title: "ML infra design mock — full case", pillar: "ml-system-design",
     focus: "60-min infra-flavored design (serving + monitoring + retraining).",
     tracks: [
       { label: "Mock", items: [
@@ -4146,7 +4972,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_YUAN_MENG_HURRY],
   },
   {
-    day: 92, title: "GenAI / RAG design mock", pillar: "generative-ai",
+    day: 98, title: "GenAI / RAG design mock", pillar: "generative-ai",
     focus: "Architecture round with evals + guardrails included.",
     tracks: [
       { label: "Mock", items: [
@@ -4163,7 +4989,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_LANGCHAIN_RAG],
   },
   {
-    day: 93, title: "Behavioral mock — 6 prompts back to back", pillar: "behavioral-storytelling",
+    day: 99, title: "Behavioral mock — 6 prompts back to back", pillar: "behavioral-storytelling",
     focus: "Behavioral stamina + opener variations.",
     tracks: [
       { label: "Mock", items: [
@@ -4179,7 +5005,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 94, title: "Cross-pillar weak-area repair (round 1)", pillar: "foundations",
+    day: 100, title: "Cross-pillar weak-area repair (round 1)", pillar: "foundations",
     focus: "Spend the full session on the gap list, nothing else.",
     tracks: [
       { label: "Practice", items: [
@@ -4195,7 +5021,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 95, title: "End-to-end design rehearsal", pillar: "ml-system-design",
+    day: 101, title: "End-to-end design rehearsal", pillar: "ml-system-design",
     focus: "One unfamiliar design prompt, performed cleanly.",
     tracks: [
       { label: "Mock", items: [
@@ -4212,7 +5038,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 96, title: "Story rehearsal & timing", pillar: "behavioral-storytelling",
+    day: 102, title: "Story rehearsal & timing", pillar: "behavioral-storytelling",
     focus: "Time every story, kill filler, sharpen openers.",
     tracks: [
       { label: "Practice", items: [
@@ -4228,7 +5054,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 97, title: "Coding mock — fresh medium under 25 min", pillar: "foundations",
+    day: 103, title: "Coding mock — fresh medium under 25 min", pillar: "foundations",
     focus: "Speed, not novelty.",
     tracks: [
       { label: "Mock", items: [
@@ -4243,7 +5069,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 98, title: "Cross-pillar weak-area repair (round 2)", pillar: "foundations",
+    day: 104, title: "Cross-pillar weak-area repair (round 2)", pillar: "foundations",
     focus: "Tighten the gap list one more pass.",
     tracks: [
       { label: "Practice", items: [
@@ -4258,7 +5084,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 99, title: "Read deeply: 1 paper + 1 case", pillar: "ml-system-design",
+    day: 105, title: "Read deeply: 1 paper + 1 case", pillar: "ml-system-design",
     focus: "Build context for follow-up questions you might get.",
     tracks: [
       { label: "Read", items: [
@@ -4273,7 +5099,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 100, title: "Mock sprint — DSA Hard + ML design", pillar: "foundations",
+    day: 106, title: "Mock sprint — DSA Hard + ML design", pillar: "foundations",
     focus: "60 min DSA Hard then 60 min ML design back to back.",
     tracks: [
       { label: "Mock", items: [
@@ -4289,7 +5115,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 101, title: "Mock sprint — GenAI design + behavioral", pillar: "generative-ai",
+    day: 107, title: "Mock sprint — GenAI design + behavioral", pillar: "generative-ai",
     focus: "60 min GenAI design then 30 min behavioral.",
     tracks: [
       { label: "Mock", items: [
@@ -4304,7 +5130,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 102, title: "Cost / latency / quality cascade — mini design", pillar: "ml-system-design",
+    day: 108, title: "Cost / latency / quality cascade — mini design", pillar: "ml-system-design",
     focus: "Drill the cascade trade-off until it's automatic.",
     tracks: [
       { label: "Practice", items: [
@@ -4320,7 +5146,7 @@ export const dailyPlan: DayPlan[] = [
     questionIds: ["architect-cost-optimization"],
   },
   {
-    day: 103, title: "Read & rehearse: monitoring playbooks", pillar: "mlops",
+    day: 109, title: "Read & rehearse: monitoring playbooks", pillar: "mlops",
     focus: "Make 'what would you alert on' an automatic answer.",
     tracks: [
       { label: "Read", items: [
@@ -4337,7 +5163,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 104, title: "Project deep dive practice — recorded", pillar: "behavioral-storytelling",
+    day: 110, title: "Project deep dive practice — recorded", pillar: "behavioral-storytelling",
     focus: "Record yourself, watch back, kill filler.",
     tracks: [
       { label: "Practice", items: [
@@ -4353,7 +5179,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 105, title: "Mid-funnel rest day (light review)", pillar: "behavioral-storytelling",
+    day: 111, title: "Mid-funnel rest day (light review)", pillar: "behavioral-storytelling",
     focus: "Don't add new content. Recovery compounds.",
     tracks: [
       { label: "Light review", items: [
@@ -4366,7 +5192,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 106, title: "Cross-loop simulation: morning coding + afternoon design", pillar: "foundations",
+    day: 112, title: "Cross-loop simulation: morning coding + afternoon design", pillar: "foundations",
     focus: "Simulate a real onsite cadence.",
     tracks: [
       { label: "Mock", items: [
@@ -4381,7 +5207,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 107, title: "Cross-loop simulation: behavioral + GenAI", pillar: "generative-ai",
+    day: 113, title: "Cross-loop simulation: behavioral + GenAI", pillar: "generative-ai",
     focus: "Simulate the second half of an onsite.",
     tracks: [
       { label: "Mock", items: [
@@ -4396,7 +5222,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 108, title: "Final weak-area repair", pillar: "foundations",
+    day: 114, title: "Final weak-area repair", pillar: "foundations",
     focus: "Last pass on the gap list.",
     tracks: [
       { label: "Practice", items: [
@@ -4410,7 +5236,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 109, title: "Story polishing — final pass", pillar: "behavioral-storytelling",
+    day: 115, title: "Story polishing — final pass", pillar: "behavioral-storytelling",
     focus: "Land every story without notes.",
     tracks: [
       { label: "Practice", items: [
@@ -4424,7 +5250,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 110, title: "Final design rehearsal — fresh prompt", pillar: "ml-system-design",
+    day: 116, title: "Final design rehearsal — fresh prompt", pillar: "ml-system-design",
     focus: "One last cold design.",
     tracks: [
       { label: "Mock", items: [
@@ -4439,7 +5265,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 111, title: "Taper: light review only", pillar: "behavioral-storytelling",
+    day: 117, title: "Taper: light review only", pillar: "behavioral-storytelling",
     focus: "No new material. Skim what's already strong.",
     tracks: [
       { label: "Light review", items: [
@@ -4451,7 +5277,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 112, title: "Taper: 1 light coding mock + walk", pillar: "foundations",
+    day: 118, title: "Taper: 1 light coding mock + walk", pillar: "foundations",
     focus: "Stay sharp without burning out.",
     tracks: [
       { label: "Light", items: [
@@ -4463,7 +5289,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 113, title: "Taper: 1 design rehearsal — favorite case", pillar: "ml-system-design",
+    day: 119, title: "Taper: 1 design rehearsal — favorite case", pillar: "ml-system-design",
     focus: "Run a familiar case to stay in flow.",
     tracks: [
       { label: "Light", items: [
@@ -4474,7 +5300,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 114, title: "Taper: behavioral skim + sleep", pillar: "behavioral-storytelling",
+    day: 120, title: "Taper: behavioral skim + sleep", pillar: "behavioral-storytelling",
     focus: "Read your stories once. Sleep early.",
     tracks: [
       { label: "Light", items: [
@@ -4486,7 +5312,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 115, title: "Logistics + setup", pillar: "behavioral-storytelling",
+    day: 121, title: "Logistics + setup", pillar: "behavioral-storytelling",
     focus: "Set up the week-of-interview the way athletes taper.",
     tracks: [
       { label: "Logistics", items: [
@@ -4499,7 +5325,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 116, title: "Light: 5 quick LC easy + skim resume", pillar: "foundations",
+    day: 122, title: "Light: 5 quick LC easy + skim resume", pillar: "foundations",
     focus: "Warm up without strain.",
     tracks: [
       { label: "Light", items: [
@@ -4511,7 +5337,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 117, title: "Light: 1 short design + behavioral skim", pillar: "ml-system-design",
+    day: 123, title: "Light: 1 short design + behavioral skim", pillar: "ml-system-design",
     focus: "Stay loose.",
     tracks: [
       { label: "Light", items: [
@@ -4523,7 +5349,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 118, title: "Off day — full rest", pillar: "behavioral-storytelling",
+    day: 124, title: "Off day — full rest", pillar: "behavioral-storytelling",
     focus: "No prep. Full reset.",
     tracks: [
       { label: "Off", items: [
@@ -4535,7 +5361,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 119, title: "Final glance: framework + trade-offs + 1 story", pillar: "ml-system-design",
+    day: 125, title: "Final glance: framework + trade-offs + 1 story", pillar: "ml-system-design",
     focus: "5-minute scan of the framework + 5-minute scan of trade-offs + 1 story.",
     tracks: [
       { label: "5-min reads", items: [
@@ -4548,7 +5374,7 @@ export const dailyPlan: DayPlan[] = [
     references: [],
   },
   {
-    day: 120, title: "Walk in — trust the prep", pillar: "behavioral-storytelling",
+    day: 126, title: "Walk in — trust the prep", pillar: "behavioral-storytelling",
     focus: "Don't add new content. Listen, breathe, perform.",
     tracks: [
       { label: "Day-of", items: [
@@ -4560,12 +5386,8 @@ export const dailyPlan: DayPlan[] = [
     interviewQuestions: [],
     references: [],
   },
-
-  // ───── PHASE 5: Optional specialization days (121-126) ─────
-  // Pick the subdomains you'll be tested on. Even one in-depth day per
-  // domain dramatically raises the floor on a domain-specific round.
   {
-    day: 121, title: "Specialization · Computer Vision (deep dive)", pillar: "deep-learning",
+    day: 127, title: "Specialization · Computer Vision (deep dive)", pillar: "deep-learning",
     focus: "CV-specific architectures, augmentation, OD/segmentation, modern foundation models.",
     tracks: [
       { label: "Read · Architectures", items: [
@@ -4591,7 +5413,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_PAPERS_WITH_CODE, REF_FAST_AI, REF_D2L, REF_GOOGLE_AI_BLOG, REF_KAGGLE_CV],
   },
   {
-    day: 122, title: "Specialization · NLP / NLU (deep dive)", pillar: "generative-ai",
+    day: 128, title: "Specialization · NLP / NLU (deep dive)", pillar: "generative-ai",
     focus: "Tokenization, encoder vs decoder vs encoder-decoder, NER, classification, summarization.",
     tracks: [
       { label: "Read · Architectures", items: [
@@ -4617,7 +5439,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_HF_LLM, REF_HF_NLP, REF_ILLUSTRATED_TRANSFORMER, REF_PAPERS_WITH_CODE],
   },
   {
-    day: 123, title: "Specialization · Speech & Audio (deep dive)", pillar: "deep-learning",
+    day: 129, title: "Specialization · Speech & Audio (deep dive)", pillar: "deep-learning",
     focus: "ASR, TTS, audio embeddings, streaming inference.",
     tracks: [
       { label: "Read · Architectures", items: [
@@ -4642,7 +5464,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_PAPERS_WITH_CODE, REF_HF_LLM],
   },
   {
-    day: 124, title: "Specialization · Reinforcement Learning (deep dive)", pillar: "deep-learning",
+    day: 130, title: "Specialization · Reinforcement Learning (deep dive)", pillar: "deep-learning",
     focus: "MDP basics, value vs policy methods, exploration-exploitation, RLHF.",
     tracks: [
       { label: "Read · Foundations", items: [
@@ -4667,7 +5489,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG, REF_OPENAI_RL],
   },
   {
-    day: 125, title: "Specialization · RecSys deep dive (Ranking / Predictions)", pillar: "ml-system-design",
+    day: 131, title: "Specialization · RecSys deep dive (Ranking / Predictions)", pillar: "ml-system-design",
     focus: "Two-tower retrieval, multi-task ranking, position bias, key papers.",
     tracks: [
       { label: "Read · Canonical papers", items: [
@@ -4693,7 +5515,7 @@ export const dailyPlan: DayPlan[] = [
     references: [REF_CHIP_HUYEN_DESIGN, REF_KHANGICH_REPO],
   },
   {
-    day: 126, title: "Specialization · Distributed ML / ML Infrastructure", pillar: "mlops",
+    day: 132, title: "Specialization · Distributed ML / ML Infrastructure", pillar: "mlops",
     focus: "DDP, FSDP / ZeRO, model + pipeline parallelism, gradient checkpointing, large-scale serving.",
     tracks: [
       { label: "Read · Training", items: [
@@ -4719,6 +5541,7 @@ export const dailyPlan: DayPlan[] = [
     ],
     references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG],
   },
+
 ];
 
 export function getDayPlan(day: number) {
@@ -4735,9 +5558,9 @@ export function dayItemIds(plan: DayPlan) {
 
 export function getRoadmapHref(slug: RoadmapSlug) {
   const shortcutMap: Record<RoadmapSlug, string> = {
-    "90-day": "/90-day-roadmap",
-    "60-day": "/60-day-roadmap",
-    "30-day": "/30-day-crash-plan",
+    "90-day": "/roadmaps#90-day",
+    "60-day": "/roadmaps#60-day",
+    "30-day": "/roadmaps#30-day",
     "data-scientist": "/roadmaps#data-scientist",
     "ml-engineer": "/roadmaps#ml-engineer",
     "ai-engineer": "/roadmaps#ai-engineer",

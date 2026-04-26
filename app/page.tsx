@@ -15,9 +15,10 @@ export default function Home() {
         </h1>
         <p className="max-w-2xl text-base leading-7 text-muted md:text-lg">
           A focused day-by-day path: NeetCode 150 in parallel with ML
-          fundamentals, system design cases, MLOps, and behavioral. Every day
-          is checkable. Every day has references and the interview questions
-          you should be ready for.
+          interview prep in the right order: statistics, traditional ML, deep
+          learning, MLOps, GenAI, LLMOps, and ML system design. Every day is
+          checkable, with references and the interview questions you should be
+          ready for.
         </p>
       </header>
 

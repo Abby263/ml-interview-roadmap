@@ -54,14 +54,15 @@ export default function RoadmapView() {
     <div className="space-y-10">
       <header className="space-y-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-          ML Architect Roadmap · {dailyPlan.length} days
+          Full ML Interview Roadmap · {dailyPlan.length} days
         </p>
         <h1 className="font-display text-3xl font-extrabold leading-[1.1] text-foreground md:text-4xl">
           The full path, at a glance.
         </h1>
         <p className="max-w-2xl text-base leading-7 text-muted">
           Click any node to jump into its first day. Branches show what runs
-          in parallel; the vertical line is the order of progression.
+          in parallel; the vertical line follows the progression from statistics
+          through ML system design.
         </p>
       </header>
 
