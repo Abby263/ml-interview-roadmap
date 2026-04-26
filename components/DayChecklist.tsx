@@ -164,6 +164,32 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                         </span>
                       ) : null}
                     </div>
+
+                    {item.interviewQuestions &&
+                    item.interviewQuestions.length > 0 ? (
+                      <div
+                        className="mt-3 border-l-2 pl-3"
+                        style={{
+                          borderColor:
+                            "color-mix(in srgb, var(--accent) 45%, transparent)",
+                        }}
+                      >
+                        <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent">
+                          Interview questions to prep
+                        </p>
+                        <ol className="mt-2 list-decimal space-y-1.5 pl-4 text-[0.85rem] leading-6 text-muted">
+                          {item.interviewQuestions.map((q) => (
+                            <li key={q}>{q}</li>
+                          ))}
+                        </ol>
+                        {item.href ? (
+                          <p className="mt-2 text-[0.7rem] text-muted">
+                            Use the reference above to prep answers and
+                            anticipate follow-ups.
+                          </p>
+                        ) : null}
+                      </div>
+                    ) : null}
                   </div>
                 </li>
               );

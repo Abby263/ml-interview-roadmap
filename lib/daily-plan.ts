@@ -55,6 +55,28 @@ function validateDayPlan(day: DayPlan, file: string) {
       assertString(item.label, `tracks[${trackIndex}].items[${itemIndex}].label`, file);
       assertOptionalString(item.href, `tracks[${trackIndex}].items[${itemIndex}].href`, file);
       assertOptionalString(item.meta, `tracks[${trackIndex}].items[${itemIndex}].meta`, file);
+      if (item.interviewQuestions !== undefined) {
+        if (!Array.isArray(item.interviewQuestions)) {
+          throw new Error(
+            `${file}: tracks[${trackIndex}].items[${itemIndex}].interviewQuestions must be an array`
+          );
+        }
+        if (
+          item.interviewQuestions.length < 2 ||
+          item.interviewQuestions.length > 5
+        ) {
+          throw new Error(
+            `${file}: tracks[${trackIndex}].items[${itemIndex}].interviewQuestions must have 2-5 items when present`
+          );
+        }
+        for (const [questionIndex, question] of item.interviewQuestions.entries()) {
+          assertString(
+            question,
+            `tracks[${trackIndex}].items[${itemIndex}].interviewQuestions[${questionIndex}]`,
+            file
+          );
+        }
+      }
       if (itemIds.has(item.id)) {
         throw new Error(`${file}: duplicate item id "${item.id}"`);
       }
