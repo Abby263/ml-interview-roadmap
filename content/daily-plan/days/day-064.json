@@ -27,7 +27,12 @@
           "id": "case-vid-rerank",
           "label": "Diversity in re-ranking (Eugene Yan)",
           "href": "https://eugeneyan.com/writing/serendipity-and-accuracy-in-recommender-systems/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How does diversity re-ranking change the user experience?",
+            "What feedback-loop pathology would you watch for after launch?",
+            "How do you measure serendipity vs accuracy?"
+          ]
         }
       ]
     }

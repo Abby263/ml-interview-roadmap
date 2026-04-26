@@ -11,13 +11,23 @@
           "id": "sd-tritan",
           "label": "Triton / KServe / Ray Serve — what each is for",
           "href": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare Triton, KServe, and Ray Serve — when each fits.",
+            "What's the role of an inference server beyond just running the model?",
+            "How do you choose between serverless and dedicated GPU for inference?"
+          ]
         },
         {
           "id": "sd-batching",
           "label": "Dynamic batching for inference",
           "href": "https://www.databricks.com/blog/dynamic-batching-llm-inference",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When does dynamic batching hurt latency more than it helps throughput?",
+            "How do you size the max batch size for an LLM inference server?",
+            "What's continuous batching and why does it matter for LLMs?"
+          ]
         }
       ]
     },

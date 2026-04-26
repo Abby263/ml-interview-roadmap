@@ -40,13 +40,23 @@
           "id": "ml-bias-variance",
           "label": "Read: bias-variance trade-off (then explain it cold)",
           "href": "https://scott.fortmann-roe.com/docs/BiasVariance.html",
-          "meta": "Concept"
+          "meta": "Concept",
+          "interviewQuestions": [
+            "Define bias and variance — what does each look like in a learning curve?",
+            "Why does adding more training data only help one of the two?",
+            "When is regularization the wrong remedy?"
+          ]
         },
         {
           "id": "ml-bv-curves",
           "label": "Diagnose under- vs over-fitting from learning curves",
           "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk me through a learning curve and tell me whether the model is over- or under-fitting.",
+            "What does it mean when train and validation loss both plateau high?",
+            "How would you debug a model with high variance?"
+          ]
         }
       ]
     }

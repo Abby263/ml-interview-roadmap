@@ -30,6 +30,12 @@ export interface DayItem {
   href?: string;
   /** Optional small badge, such as "Easy", "LeetCode", or "30 min". */
   meta?: string;
+  /**
+   * Optional 2-5 interview questions a candidate could be asked on this
+   * specific topic. Encouraged for ML-concept items so users can rehearse
+   * answers, then deepen with the reference link.
+   */
+  interviewQuestions?: string[];
 }
 
 export interface DayTrack {

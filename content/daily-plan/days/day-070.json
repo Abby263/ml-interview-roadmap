@@ -11,13 +11,23 @@
           "id": "case-fraud-stripe",
           "label": "Stripe Radar overview",
           "href": "https://stripe.com/radar",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through Stripe Radar at a high level.",
+            "How would you handle the cost imbalance between false positives and false negatives?",
+            "How do you bootstrap labels for a brand-new fraud type?"
+          ]
         },
         {
           "id": "case-fraud-graph",
           "label": "Graph features for fraud",
           "href": "https://www.tigergraph.com/solutions/fraud-detection/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why are graph features useful for fraud?",
+            "How would you build account-linkage features in real time?",
+            "What's the trade-off between graph features and serving latency?"
+          ]
         }
       ]
     },

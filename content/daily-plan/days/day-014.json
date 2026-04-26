@@ -34,13 +34,23 @@
           "id": "ml-ndcg-mrr",
           "label": "NDCG, MRR, MAP — by hand on a tiny example",
           "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is NDCG more useful than precision@K for ranking?",
+            "Compute NDCG@3 by hand for a tiny example with relevance grades [3, 2, 0].",
+            "When is MRR the right metric vs MAP?"
+          ]
         },
         {
           "id": "ml-rmse-mae",
           "label": "RMSE vs MAE vs R² — when each",
           "href": "https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When does R² lie? Give a counter-example.",
+            "Why might MAE be the right metric for a delivery-time model?",
+            "What's the practical difference between RMSE and MSE?"
+          ]
         }
       ]
     }

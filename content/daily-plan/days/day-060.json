@@ -34,13 +34,23 @@
           "id": "sd-feast",
           "label": "Feast / Tecton overview — what a feature store actually does",
           "href": "https://docs.feast.dev/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When does a feature store earn its complexity vs become overhead?",
+            "How do you ensure offline / online parity over months?",
+            "What's the failure mode of feature staleness in a fraud model?"
+          ]
         },
         {
           "id": "sd-pit-correct",
           "label": "Point-in-time correctness — the canonical bug",
           "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through point-in-time correctness for a fraud model backfill.",
+            "What goes wrong if you join features without timestamp filtering?",
+            "How do you test that point-in-time correctness is preserved?"
+          ]
         }
       ]
     }

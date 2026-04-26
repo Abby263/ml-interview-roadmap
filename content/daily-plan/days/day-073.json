@@ -11,13 +11,23 @@
           "id": "case-agent-anthropic",
           "label": "Anthropic: building effective agents",
           "href": "https://www.anthropic.com/engineering/building-effective-agents",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's an example of an irreversible action that needs hard human-in-the-loop?",
+            "How do you keep an agent from looping on a failing tool?",
+            "What's your red-team plan for a customer-facing agent?"
+          ]
         },
         {
           "id": "case-agent-klarna",
           "label": "Klarna's customer-service AI assistant — public reports",
           "href": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What signals from Klarna's deployment would tell you the agent is succeeding?",
+            "What metrics would you watch to catch silent regressions?",
+            "How would you handle the long tail of edge-case customer requests?"
+          ]
         }
       ]
     },

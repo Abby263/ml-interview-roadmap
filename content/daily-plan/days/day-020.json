@@ -39,12 +39,22 @@
         {
           "id": "ml-code-linreg",
           "label": "Implement linear regression with GD (NumPy only)",
-          "meta": "Code"
+          "meta": "Code",
+          "interviewQuestions": [
+            "Walk me through your gradient update for linear regression.",
+            "How would you extend this to L2 regularization in 5 minutes?",
+            "Why might GD diverge — and how would you detect it?"
+          ]
         },
         {
           "id": "ml-code-test",
           "label": "Fit on toy data; plot loss curve; reason about convergence",
-          "meta": "Code"
+          "meta": "Code",
+          "interviewQuestions": [
+            "How do you sanity-check that your loss is decreasing for the right reasons?",
+            "What does it mean if the loss curve is jagged?",
+            "How would you compare convergence between SGD and full-batch GD?"
+          ]
         }
       ]
     }

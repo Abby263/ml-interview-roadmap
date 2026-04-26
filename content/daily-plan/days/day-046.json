@@ -40,13 +40,23 @@
           "id": "rag-rerank",
           "label": "Bi-encoder vs cross-encoder rerankers",
           "href": "https://www.sbert.net/examples/applications/cross-encoder/README.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Cross-encoder vs bi-encoder reranking: cost-vs-quality breakdown.",
+            "When does a reranker actually move the needle?",
+            "How do you decide which top-K to rerank?"
+          ]
         },
         {
           "id": "rag-rerank-llm",
           "label": "LLM-based rerankers — when worth the cost",
           "href": "https://www.pinecone.io/learn/series/rag/rerankers/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the operational cost of an LLM-judge reranker at scale?",
+            "When is an LLM reranker worth the latency?",
+            "How would you fine-tune a smaller cross-encoder reranker?"
+          ]
         }
       ]
     }

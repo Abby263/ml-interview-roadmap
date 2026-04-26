@@ -40,13 +40,23 @@
           "id": "ml-linreg-derivation",
           "label": "Derive normal equation + GD update",
           "href": "https://web.stanford.edu/~jurafsky/slp3/5.pdf",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Derive the normal equation for linear regression.",
+            "When does GD beat the normal equation in practice?",
+            "What happens to the normal equation if features are collinear?"
+          ]
         },
         {
           "id": "ml-linreg-assumptions",
           "label": "Five assumptions (and which ones fail loudly)",
           "href": "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "List the assumptions of linear regression and which ones break loudly.",
+            "What does heteroscedasticity do to OLS estimates?",
+            "How would you detect autocorrelation in residuals?"
+          ]
         }
       ]
     }

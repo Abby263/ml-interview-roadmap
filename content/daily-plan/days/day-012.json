@@ -40,13 +40,23 @@
           "id": "ml-cv-strategies",
           "label": "k-fold vs stratified vs time-based vs group",
           "href": "https://scikit-learn.org/stable/modules/cross_validation.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When does k-fold leak signal? Give a concrete example.",
+            "Why is time-based split mandatory for forecasting?",
+            "What's the difference between group k-fold and stratified k-fold?"
+          ]
         },
         {
           "id": "ml-cv-leakage",
           "label": "Why nested CV exists",
           "href": "https://machinelearningmastery.com/nested-cross-validation-for-machine-learning-with-python/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does nested CV exist?",
+            "How does naive CV inflate model selection metrics?",
+            "When can you skip nested CV without lying to yourself?"
+          ]
         }
       ]
     }

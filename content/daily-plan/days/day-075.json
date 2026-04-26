@@ -11,13 +11,23 @@
           "id": "case-doc-textract",
           "label": "AWS Textract overview",
           "href": "https://aws.amazon.com/textract/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When would you build vs buy for OCR?",
+            "What's the failure mode of OCR on scanned PDFs vs digital PDFs?",
+            "How do you handle layout reconstruction for tables?"
+          ]
         },
         {
           "id": "case-doc-layoutlm",
           "label": "LayoutLM family — what it does",
           "href": "https://huggingface.co/docs/transformers/model_doc/layoutlmv3",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "How does LayoutLM use position information that plain LLMs ignore?",
+            "When does LayoutLM beat a vision-language model?",
+            "How would you fine-tune LayoutLM on a custom form?"
+          ]
         }
       ]
     },

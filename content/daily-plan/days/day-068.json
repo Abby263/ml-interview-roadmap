@@ -11,13 +11,23 @@
           "id": "case-search-yan",
           "label": "Eugene Yan — search ranking architecture",
           "href": "https://eugeneyan.com/writing/search-query-matching/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through the canonical 3-stage search ranking architecture.",
+            "How do you handle query understanding for ambiguous queries?",
+            "What does NDCG@10 buy you that CTR doesn't?"
+          ]
         },
         {
           "id": "case-search-airbnb",
           "label": "Airbnb listing embeddings paper",
           "href": "https://www.kdd.org/kdd2018/accepted-papers/view/real-time-personalization-using-embeddings-for-search-ranking-at-airbnb",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why does Airbnb use listing embeddings for search?",
+            "How does cold-start work for a brand-new listing?",
+            "How would you debias clicks for offline training?"
+          ]
         }
       ]
     },

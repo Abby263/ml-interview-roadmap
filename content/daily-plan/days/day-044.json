@@ -40,13 +40,23 @@
           "id": "rag-pipeline",
           "label": "Chunking → retrieval → reranking → generation → citations",
           "href": "https://python.langchain.com/docs/concepts/rag/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through chunking trade-offs (size + overlap).",
+            "How would you handle citations when the retrieved chunk doesn't actually support the claim?",
+            "What's the right refusal behavior when retrieval is weak?"
+          ]
         },
         {
           "id": "rag-hybrid",
           "label": "Why hybrid (dense + sparse) usually wins",
           "href": "https://www.pinecone.io/learn/hybrid-search-intro/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does pure dense retrieval miss product names and error codes?",
+            "How would you combine BM25 and dense scores?",
+            "When does reciprocal rank fusion beat learned re-ranking?"
+          ]
         }
       ]
     },

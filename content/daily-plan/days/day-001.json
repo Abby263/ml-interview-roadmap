@@ -40,13 +40,23 @@
           "id": "stats-bayes",
           "label": "Bayes intuition: detection / diagnosis / ranking examples",
           "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
-          "meta": "Interactive"
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity). Why is positive predictive value still low?",
+            "How would you use Bayes to update belief in an A/B test as data arrives?",
+            "Explain the difference between the prior and the likelihood with a concrete example."
+          ]
         },
         {
           "id": "stats-cond-prob",
           "label": "Conditional probability traps in interviews",
           "href": "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's wrong with saying P(disease | positive test) = sensitivity?",
+            "Two children: one is a girl. What is the probability the other is also a girl? Defend your answer.",
+            "Explain the base-rate fallacy with a hiring example."
+          ]
         }
       ]
     },
@@ -57,13 +67,23 @@
           "id": "linalg-vectors",
           "label": "Vectors, matrices, dot product, transpose",
           "href": "https://www.3blue1brown.com/lessons/vectors",
-          "meta": "Watch"
+          "meta": "Watch",
+          "interviewQuestions": [
+            "What does the dot product mean geometrically?",
+            "Compare cosine similarity vs Euclidean distance — when is each appropriate?",
+            "Why do we transpose a matrix in y = X·θ vs y = θ·X?"
+          ]
         },
         {
           "id": "linalg-norms",
           "label": "Norms + cosine similarity (used everywhere in ML)",
           "href": "https://machinelearningmastery.com/vector-norms-machine-learning/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare L1, L2, and L-infinity norms — when each is the right choice.",
+            "How does the choice of norm change the geometry of regularization?",
+            "Why is cosine similarity preferred over dot product for normalized embeddings?"
+          ]
         }
       ]
     },

@@ -46,13 +46,23 @@
           "id": "ml-gbdt-paper",
           "label": "Read: XGBoost paper (skim sections 1-3)",
           "href": "https://arxiv.org/abs/1603.02754",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why does GBDT usually beat Random Forest on tabular data?",
+            "What does shrinkage do in gradient boosting?",
+            "Walk me through how XGBoost handles missing values."
+          ]
         },
         {
           "id": "ml-rf-vs-gbdt",
           "label": "Random Forest vs GBDT — defend a default",
           "href": "https://towardsdatascience.com/random-forest-vs-xgboost-comparing-tree-based-algorithms-with-codes-c8a4d18d3e74/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When does a single decision tree still beat XGBoost?",
+            "What's the difference between bagging and boosting in one sentence each?",
+            "How do you defend GBDT as your tabular default in an interview?"
+          ]
         }
       ]
     }

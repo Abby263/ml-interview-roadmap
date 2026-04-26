@@ -40,13 +40,23 @@
           "id": "ml-metrics-pr-roc",
           "label": "Precision, recall, F1, ROC-AUC, PR-AUC",
           "href": "https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is ROC-AUC misleading on imbalanced data?",
+            "When would you pick PR-AUC over ROC-AUC?",
+            "How do you choose F1 vs F0.5 vs F2?"
+          ]
         },
         {
           "id": "ml-platt-isotonic",
           "label": "Platt vs isotonic vs temperature scaling",
           "href": "https://scikit-learn.org/stable/modules/calibration.html#calibration",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When would you choose isotonic regression over Platt scaling?",
+            "Why does an auction system need calibrated probabilities, not just rankings?",
+            "How does temperature scaling fit into modern deep-learning calibration?"
+          ]
         }
       ]
     }

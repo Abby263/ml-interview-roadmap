@@ -40,13 +40,23 @@
           "id": "llm-fewshot",
           "label": "Few-shot vs zero-shot — when each helps",
           "href": "https://www.promptingguide.ai/techniques/fewshot",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When does few-shot prompting hurt vs help?",
+            "How would you choose few-shot examples?",
+            "Why do some models do better with zero-shot than few-shot?"
+          ]
         },
         {
           "id": "llm-cot",
           "label": "Chain-of-thought (CoT) prompting",
           "href": "https://arxiv.org/abs/2201.11903",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "When does CoT prompting hurt vs help?",
+            "How does CoT relate to reasoning models like o1?",
+            "What goes wrong when you force CoT on tasks that don't need it?"
+          ]
         }
       ]
     }

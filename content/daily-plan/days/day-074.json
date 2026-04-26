@@ -11,13 +11,23 @@
           "id": "case-eval-genai",
           "label": "Chip Huyen — building a GenAI platform",
           "href": "https://huyenchip.com/2024/07/25/genai-platform.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How do you prevent teams from over-fitting to the eval suite (Goodhart)?",
+            "How do you make releases gate-block on regressions without slowing iteration?",
+            "What's the failure mode of an LLM-judge calibrated only against itself?"
+          ]
         },
         {
           "id": "case-eval-ragas",
           "label": "Ragas metrics catalog",
           "href": "https://docs.ragas.io/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk me through Ragas's faithfulness / answer-relevance / context-precision metrics.",
+            "When would you supplement Ragas with human eval?",
+            "How do you handle disagreement between evaluators?"
+          ]
         }
       ]
     },

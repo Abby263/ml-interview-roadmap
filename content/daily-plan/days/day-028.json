@@ -34,13 +34,23 @@
           "id": "dl-cnn-basics",
           "label": "Kernels, stride, padding, pooling",
           "href": "https://cs231n.github.io/convolutional-networks/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
+            "Why is parameter sharing in CNNs a strong inductive bias for vision?",
+            "When would you choose stride over pooling for downsampling?"
+          ]
         },
         {
           "id": "dl-resnet",
           "label": "Why residual connections fix degradation",
           "href": "https://arxiv.org/abs/1512.03385",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why do residual connections help train deep nets?",
+            "What is the degradation problem residuals fix?",
+            "When does a CNN beat a transformer for vision today?"
+          ]
         }
       ]
     },

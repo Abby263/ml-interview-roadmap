@@ -11,13 +11,23 @@
           "id": "case-ads-criteo",
           "label": "Criteo paper on display advertising (skim)",
           "href": "https://arxiv.org/abs/1410.0696",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Walk me through key ideas from Criteo's display advertising paper.",
+            "Why are sparse features the dominant input in CTR models?",
+            "How do you handle the cold-start ad problem?"
+          ]
         },
         {
           "id": "case-ads-cal",
           "label": "Why pCTR must be calibrated for an auction",
           "href": "https://eugeneyan.com/writing/uncertainty-in-recommender-systems/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does a ranking-only model break in an auction?",
+            "How would you detect calibration drift?",
+            "What's the relationship between calibration and revenue?"
+          ]
         }
       ]
     },

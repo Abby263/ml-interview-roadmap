@@ -11,13 +11,23 @@
           "id": "case-yt-twotower",
           "label": "YouTube two-tower paper (Sampling-bias-corrected)",
           "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why does the two-tower architecture work for retrieval at YouTube scale?",
+            "How does sampling-bias correction work in the two-tower paper?",
+            "What are the trade-offs vs a unified ranking model?"
+          ]
         },
         {
           "id": "case-tiktok-mono",
           "label": "Eugene Yan: System design for recommendations",
           "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through Eugene Yan's recsys system-design framework.",
+            "How would you stage retrieval → ranking → re-ranking with budgets?",
+            "What's the role of a re-ranking layer for diversity?"
+          ]
         }
       ]
     },

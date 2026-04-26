@@ -46,13 +46,23 @@
           "id": "dl-batchnorm",
           "label": "Why batch norm stabilizes training",
           "href": "https://arxiv.org/abs/1502.03167",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why does batch norm help? And what's the modern critique?",
+            "What goes wrong with batch norm at very small batch sizes?",
+            "How does batch norm behave differently at training vs inference?"
+          ]
         },
         {
           "id": "dl-layernorm",
           "label": "Layer norm — why transformers prefer it",
           "href": "https://arxiv.org/abs/1607.06450",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why do transformers use layer norm and not batch norm?",
+            "When would you choose group norm over layer norm?",
+            "What's the role of normalization in training stability?"
+          ]
         }
       ]
     }

@@ -34,13 +34,23 @@
           "id": "stats-ci-frequentist",
           "label": "Frequentist interpretation done right",
           "href": "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
+            "Explain the frequentist interpretation of a confidence interval to a PM.",
+            "How does CI width scale with sample size?"
+          ]
         },
         {
           "id": "stats-bootstrap",
           "label": "Bootstrap CIs — when they save you",
           "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Why does the bootstrap work when classical CIs don't?",
+            "How would you bootstrap a CI for the median?",
+            "What are the failure modes of bootstrapping?"
+          ]
         }
       ]
     }
