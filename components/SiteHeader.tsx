@@ -4,7 +4,8 @@ import AuthButtons from "@/components/AuthButtons";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV = [
-  { href: "/", label: "Roadmap" },
+  { href: "/roadmap", label: "Roadmap" },
+  { href: "/", label: "Daily plan" },
   { href: "/blog", label: "Blog" },
 ] as const;
 
