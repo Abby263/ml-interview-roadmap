@@ -5558,14 +5558,14 @@ export function dayItemIds(plan: DayPlan) {
 
 export function getRoadmapHref(slug: RoadmapSlug) {
   const shortcutMap: Record<RoadmapSlug, string> = {
-    "90-day": "/roadmaps#90-day",
-    "60-day": "/roadmaps#60-day",
-    "30-day": "/roadmaps#30-day",
-    "data-scientist": "/roadmaps#data-scientist",
-    "ml-engineer": "/roadmaps#ml-engineer",
-    "ai-engineer": "/roadmaps#ai-engineer",
-    "senior-mle": "/roadmaps#senior-mle",
-    "ml-architect": "/roadmaps#ml-architect",
+    "90-day": "/roadmap",
+    "60-day": "/roadmap",
+    "30-day": "/roadmap",
+    "data-scientist": "/roadmap",
+    "ml-engineer": "/roadmap",
+    "ai-engineer": "/roadmap",
+    "senior-mle": "/roadmap",
+    "ml-architect": "/roadmap",
   };
 
   return shortcutMap[slug];
