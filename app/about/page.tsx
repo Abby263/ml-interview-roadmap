@@ -53,7 +53,7 @@ export default function AboutPage() {
             <li>• 30, 60, and 90-day tracks</li>
             <li>• Ordered pillar pages and topic cards from statistics to ML system design</li>
             <li>• Question bank and case-study library</li>
-            <li>• Curated resources and SEO-oriented blog scaffolding</li>
+            <li>• Curated resources for deeper study</li>
             <li>• Public GitHub repo with CI, release, and deployment workflow setup</li>
           </ul>
         </article>
@@ -112,7 +112,7 @@ export default function AboutPage() {
             Content-first foundation
           </h2>
           <p className="mt-3 text-sm leading-7 text-muted">
-            Roadmaps, blog posts, and case studies are stored in versioned MDX
+            Case studies are stored in versioned MDX
             so the platform can scale through clear editorial workflows rather
             than hidden CMS state.
           </p>

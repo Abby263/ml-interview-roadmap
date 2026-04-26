@@ -83,7 +83,7 @@ CI runs the same lint and production build checks on pushes and pull requests.
 ```text
 app/        Next.js App Router pages, server actions, and route groups
 components/ Shared UI and interactive checklist components
-content/    MDX blog posts and case studies
+content/    MDX case studies
 lib/        Content data, feature flags, Supabase client, progress store
 proxy.ts    Optional Clerk proxy when auth is configured
 ```

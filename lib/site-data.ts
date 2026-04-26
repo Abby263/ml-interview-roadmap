@@ -79,22 +79,16 @@ export interface Resource {
   tags: string[];
 }
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  publishedOn: string;
-  readTime: string;
-  tags: string[];
-}
-
 export const siteName = "ML Interview Roadmap";
 export const siteTagline =
   "A structured roadmap to prepare for statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, and ML system design interviews in 30, 60, or 90 days.";
 
 export const navigationLinks = [
-  { href: "/", label: "Roadmap", group: "Overview" },
-  { href: "/blog", label: "Blog", group: "Reference" },
+  { href: "/", label: "Daily Plan", group: "Overview" },
+  { href: "/questions", label: "Questions", group: "Reference" },
+  { href: "/case-studies", label: "Case Studies", group: "Reference" },
+  { href: "/resources", label: "Resources", group: "Reference" },
+  { href: "/about", label: "About", group: "Reference" },
 ] as const;
 
 export const navGroupOrder = ["Overview", "Reference"] as const;
@@ -2016,63 +2010,6 @@ export const resources: Resource[] = [
     description:
       "Good field notes on experiment tracking, model evaluation, and production workflows.",
     tags: ["MLOps", "Experiment Tracking"],
-  },
-];
-
-export const blogPosts: BlogPost[] = [
-  {
-    slug: "90-day-machine-learning-interview-roadmap",
-    title: "90-Day Machine Learning Interview Roadmap",
-    description:
-      "A week-by-week study path that covers coding, ML, GenAI, system design, and behavioral prep.",
-    publishedOn: "April 2026",
-    readTime: "9 min read",
-    tags: ["Roadmap", "ML Interview"],
-  },
-  {
-    slug: "how-to-prepare-for-ml-system-design-interviews",
-    title: "How to Prepare for ML System Design Interviews",
-    description:
-      "A framework for turning business problems into training, serving, and monitoring architectures.",
-    publishedOn: "April 2026",
-    readTime: "7 min read",
-    tags: ["System Design", "MLE"],
-  },
-  {
-    slug: "rag-interview-questions-for-ai-engineers",
-    title: "Top RAG Interview Questions for AI Engineers",
-    description:
-      "The questions most likely to appear in GenAI interview loops, with the signals interviewers look for.",
-    publishedOn: "April 2026",
-    readTime: "8 min read",
-    tags: ["RAG", "AI Engineer"],
-  },
-  {
-    slug: "feature-store-interview-questions",
-    title: "Feature Store Interview Questions for ML Engineers",
-    description:
-      "Why feature stores exist, when to skip them, and what design trade-offs matter in interviews.",
-    publishedOn: "April 2026",
-    readTime: "6 min read",
-    tags: ["Feature Store", "MLOps"],
-  },
-  {
-    slug: "llm-evaluation-in-interviews",
-    title: "How to Talk About LLM Evaluation in Interviews",
-    description:
-      "Separate retrieval quality, answer quality, groundedness, and operational metrics the right way.",
-    publishedOn: "April 2026",
-    readTime: "8 min read",
-    tags: ["LLMOps", "Evaluation"],
-  },
-  {
-    slug: "ai-engineer-interview-preparation-roadmap-2026",
-    title: "AI Engineer Interview Preparation Roadmap",
-    description:
-      "A role-based plan for engineers targeting prompt engineering, RAG, agents, and LLMOps loops.",
-    publishedOn: "April 2026",
-    readTime: "10 min read",
-    tags: ["AI Engineer", "Roadmap"],
   },
 ];
 
