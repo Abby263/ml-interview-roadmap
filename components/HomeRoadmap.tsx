@@ -1,6 +1,6 @@
 "use client";
 
-import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 
@@ -58,17 +58,17 @@ function chunkWeeks(plan: DayPlan[]): Week[] {
 
 const emptyProgress: Record<number, number> = {};
 
-function useAuthState(): { canTrack: boolean; isLoaded: boolean } {
+function useAuthState(): { canTrack: boolean } {
   if (!publicFlags.clerkEnabled) {
-    return { canTrack: true, isLoaded: true };
+    return { canTrack: true };
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { isSignedIn, isLoaded } = useUser();
-  return { canTrack: Boolean(isSignedIn), isLoaded };
+  const { isSignedIn } = useUser();
+  return { canTrack: Boolean(isSignedIn) };
 }
 
 export default function HomeRoadmap() {
-  const { canTrack, isLoaded } = useAuthState();
+  const { canTrack } = useAuthState();
   const progress = useSyncExternalStore(
     subscribeProgress,
     readAllProgress,
@@ -131,43 +131,13 @@ export default function HomeRoadmap() {
                 </span>
               </p>
             </div>
-            <p className="text-sm text-muted">
-              Synced to your account.
-            </p>
+            <p className="text-sm text-muted">Synced to your account.</p>
           </div>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-line">
             <div
               className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
               style={{ width: `${totalPct}%` }}
             />
-          </div>
-        </section>
-      ) : publicFlags.clerkEnabled && isLoaded ? (
-        <section className="section-card flex flex-wrap items-center justify-between gap-3 rounded-[28px] p-5 md:p-6">
-          <div>
-            <p className="panel-label">Sign in to track your progress</p>
-            <p className="mt-1 text-sm leading-6 text-foreground">
-              Browse the full roadmap freely. Sign in to check off items
-              and have your progress sync across devices.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <SignInButton mode="modal">
-              <button
-                type="button"
-                className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-semibold text-foreground transition hover:border-primary"
-              >
-                Sign in
-              </button>
-            </SignInButton>
-            <SignUpButton mode="modal">
-              <button
-                type="button"
-                className="rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-white transition hover:opacity-95"
-              >
-                Sign up
-              </button>
-            </SignUpButton>
           </div>
         </section>
       ) : null}
@@ -234,7 +204,7 @@ export default function HomeRoadmap() {
                     <li key={entry.day}>
                       <Link
                         href={`/day/${entry.day}`}
-                        className="group relative block overflow-hidden rounded-xl border border-line border-l-[3px] border-l-primary bg-surface px-4 py-3 transition hover:border-primary hover:bg-surface-strong"
+                        className="group relative block h-full min-h-[5.5rem] overflow-hidden rounded-xl border border-line border-l-[3px] border-l-primary bg-surface px-4 py-3 transition hover:border-primary hover:bg-surface-strong"
                       >
                         {/* Progress fill in the background (only when signed in) */}
                         {canTrack ? (
@@ -248,12 +218,26 @@ export default function HomeRoadmap() {
                             }}
                           />
                         ) : null}
-                        <div className="relative flex items-baseline gap-3">
-                          <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted">
-                            Day {String(entry.day).padStart(2, "0")}
-                          </span>
+                        <div className="relative flex h-full flex-col gap-1.5">
+                          <div className="flex items-baseline justify-between gap-2">
+                            <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-muted">
+                              Day {String(entry.day).padStart(2, "0")}
+                            </span>
+                            {canTrack ? (
+                              <span className="font-mono text-[0.65rem] font-semibold text-primary">
+                                {done}/{total}
+                              </span>
+                            ) : (
+                              <span
+                                className="font-mono text-[0.65rem] font-semibold text-muted"
+                                title="Sign in to track items"
+                              >
+                                {total} items
+                              </span>
+                            )}
+                          </div>
                           <span
-                            className={`flex-1 truncate text-[0.95rem] font-semibold leading-snug group-hover:text-primary ${
+                            className={`text-[0.95rem] font-semibold leading-snug group-hover:text-primary ${
                               isDone
                                 ? "text-muted line-through"
                                 : "text-foreground"
@@ -261,18 +245,6 @@ export default function HomeRoadmap() {
                           >
                             {entry.title}
                           </span>
-                          {canTrack ? (
-                            <span className="font-mono text-[0.65rem] font-semibold text-primary">
-                              {done}/{total}
-                            </span>
-                          ) : (
-                            <span
-                              className="font-mono text-[0.65rem] font-semibold text-muted"
-                              title="Sign in to track items"
-                            >
-                              {total} items
-                            </span>
-                          )}
                         </div>
                       </Link>
                     </li>

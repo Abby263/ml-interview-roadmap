@@ -1,6 +1,6 @@
 "use client";
 
-import { SignInButton, SignUpButton, useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { useSyncExternalStore } from "react";
 
 import { publicFlags } from "@/lib/feature-flags";
@@ -51,38 +51,12 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
   const pct =
     totalItems === 0 ? 0 : Math.round((doneCount / totalItems) * 100);
 
+  // Suppress unused-warning: isLoaded is part of the auth shape but not
+  // currently rendered — body sign-in banner removed (lives in header now).
+  void isLoaded;
+
   return (
     <div className="space-y-8">
-      {publicFlags.clerkEnabled && !canTrack && isLoaded ? (
-        <div className="section-card flex flex-wrap items-center justify-between gap-3 rounded-[28px] p-5 md:p-6">
-          <div>
-            <p className="panel-label">Tracking is for signed-in users</p>
-            <p className="mt-1 text-sm leading-6 text-foreground">
-              Browse the plan freely. Sign in to check items off and have
-              your progress sync across devices.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <SignInButton mode="modal">
-              <button
-                type="button"
-                className="rounded-full border border-line bg-surface px-3 py-1.5 text-sm font-semibold text-foreground transition hover:border-primary"
-              >
-                Sign in
-              </button>
-            </SignInButton>
-            <SignUpButton mode="modal">
-              <button
-                type="button"
-                className="rounded-full bg-primary px-3 py-1.5 text-sm font-semibold text-white transition hover:opacity-95"
-              >
-                Sign up
-              </button>
-            </SignUpButton>
-          </div>
-        </div>
-      ) : null}
-
       {canTrack ? (
         <div className="section-card rounded-[28px] p-6 md:p-8">
           <div className="flex items-center justify-between gap-4">

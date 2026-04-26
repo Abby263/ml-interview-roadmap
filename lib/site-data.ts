@@ -2428,6 +2428,34 @@ const REF_GOOGLE_AI_BLOG: DayReference = { label: "Google AI Blog", href: "https
 const REF_DATASCIENCE_JAY: DayReference = { label: "DataScienceJay — interview walkthroughs", href: "https://www.youtube.com/c/DataScienceJay/videos", source: "YouTube" };
 const REF_HF_SPACES: DayReference = { label: "Hugging Face Spaces — deploy demos for free", href: "https://huggingface.co/spaces", source: "Hugging Face" };
 const REF_STREAMLIT: DayReference = { label: "Streamlit — quick ML-app deployment", href: "https://docs.streamlit.io/", source: "Streamlit" };
+// Logan Thorneloe's ML Roadmap — comprehensive curated reading list.
+const REF_LOGAN_ROADMAP: DayReference = { label: "Logan Thorneloe — ML Road Map (curated, free)", href: "https://github.com/loganthorneloe/ml-road-map", source: "GitHub" };
+const REF_AI4SWES: DayReference = { label: "AI for Software Engineers newsletter", href: "https://aiforswes.com", source: "AI for SWEs" };
+const REF_CS50: DayReference = { label: "CS50 — intro to programming", href: "https://cs50.harvard.edu/x/2024/weeks/0/", source: "Harvard" };
+const REF_GOOGLE_PYTHON: DayReference = { label: "Google's Python Class", href: "https://developers.google.com/edu/python", source: "Google" };
+const REF_NUMPY: DayReference = { label: "NumPy quickstart tutorial", href: "https://numpy.org/doc/stable/user/quickstart.html", source: "NumPy" };
+const REF_KAGGLE_PANDAS: DayReference = { label: "Kaggle — Pandas course", href: "https://www.kaggle.com/learn/pandas", source: "Kaggle" };
+const REF_KHAN_LINALG: DayReference = { label: "Khan Academy — Linear Algebra", href: "https://www.khanacademy.org/math/linear-algebra", source: "Khan Academy" };
+const REF_KHAN_PROB: DayReference = { label: "CS50 AI — Probability week", href: "https://cs50.harvard.edu/ai/2024/weeks/2/", source: "Harvard" };
+const REF_KHAN_DERIV: DayReference = { label: "Khan Academy — multivariable derivatives", href: "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives", source: "Khan Academy" };
+const REF_GOOGLE_BACKPROP: DayReference = { label: "Google — Backpropagation visualization (interactive)", href: "https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/backprop-scroll/", source: "Google" };
+const REF_KARPATHY_LLM: DayReference = { label: "Karpathy — Intro to LLMs (1-hr video)", href: "https://www.youtube.com/watch?v=zjkBMFhNj_g", source: "YouTube" };
+const REF_LABONNE_LLM: DayReference = { label: "Maxime Labonne — LLM Course (Colab notebooks)", href: "https://github.com/mlabonne/llm-course", source: "GitHub" };
+const REF_HF_NLP: DayReference = { label: "Hugging Face NLP Course", href: "https://huggingface.co/learn/nlp-course/chapter1/1", source: "Hugging Face" };
+const REF_KAGGLE_CV: DayReference = { label: "Kaggle — Computer Vision", href: "https://www.kaggle.com/learn/computer-vision", source: "Kaggle" };
+const REF_PINECONE_VDB: DayReference = { label: "Pinecone — Vector Databases Explained", href: "https://www.pinecone.io/learn/vector-database/", source: "Pinecone" };
+const REF_ANTHROPIC_PROMPT: DayReference = { label: "Anthropic — Prompt Engineering Guide", href: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview", source: "Anthropic" };
+const REF_ANTHROPIC_AGENTS: DayReference = { label: "Anthropic — Building Effective Agents", href: "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems", source: "Anthropic" };
+const REF_ANTHROPIC_EVAL: DayReference = { label: "Anthropic — Testing & Evaluation", href: "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests", source: "Anthropic" };
+const REF_DLAI_AGENTIC_RAG: DayReference = { label: "DeepLearning.AI — Building Agentic RAG with LlamaIndex", href: "https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/", source: "DeepLearning.AI" };
+const REF_HF_PEFT: DayReference = { label: "Hugging Face — LoRA & PEFT", href: "https://huggingface.co/learn/smol-course/en/unit1/3a", source: "Hugging Face" };
+const REF_MADE_WITH_ML: DayReference = { label: "Made with ML — full MLOps course", href: "https://madewithml.com/", source: "Goku Mohandas" };
+const REF_MIT_ML_EFFICIENCY: DayReference = { label: "MIT — ML Efficiency playlist", href: "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB", source: "MIT" };
+const REF_OPENAI_RL: DayReference = { label: "OpenAI — Spinning Up in Reinforcement Learning", href: "https://spinningup.openai.com/en/latest/", source: "OpenAI" };
+const REF_OAI_REASONING: DayReference = { label: "OpenAI — Learning to reason with LLMs", href: "https://openai.com/index/learning-to-reason-with-llms/", source: "OpenAI" };
+const REF_MCP_DOCS: DayReference = { label: "Model Context Protocol — connecting AI to external tools", href: "https://modelcontextprotocol.io/", source: "MCP" };
+const REF_KAGGLE_AI_ETHICS: DayReference = { label: "Kaggle — AI Ethics", href: "https://www.kaggle.com/learn/ai-ethics", source: "Kaggle" };
+const REF_GIT: DayReference = { label: "Pro Git book", href: "https://git-scm.com/book/en/v2", source: "Pro Git" };
 
 export const dailyPlan: DayPlan[] = [
   // ───── PHASE 1: Coding & ML basics in parallel (Days 1-50) ─────
@@ -2458,7 +2486,7 @@ export const dailyPlan: DayPlan[] = [
       "Why can a model with strong recall still have weak positive predictive value?",
       "What is the dot product geometrically — and how does that relate to cosine similarity?",
     ],
-    references: [REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY, REF_ANDREW_NG_ML, REF_3B1B_LINALG, REF_STATQUEST],
+    references: [REF_LOGAN_ROADMAP, REF_NEETCODE_VIDEOS, REF_LC_PATTERNS, REF_YUAN_MENG_HURRY, REF_ANDREW_NG_ML, REF_3B1B_LINALG, REF_STATQUEST, REF_KHAN_LINALG, REF_KHAN_PROB, REF_CS50, REF_GOOGLE_PYTHON, REF_NUMPY, REF_KAGGLE_PANDAS, REF_GIT],
     topicId: "probability-toolkit",
   },
   {
@@ -2882,7 +2910,7 @@ export const dailyPlan: DayPlan[] = [
       "Why does ReLU help vs sigmoid?",
       "What's the role of softmax in the cross-entropy gradient?",
     ],
-    references: [REF_UDL_BOOK],
+    references: [REF_UDL_BOOK, REF_GOOGLE_BACKPROP, REF_DLAI_SPEC, REF_KHAN_DERIV],
     topicId: "backprop-and-optimization",
     questionIds: ["backprop"],
   },
@@ -3016,7 +3044,7 @@ export const dailyPlan: DayPlan[] = [
       "Why do LLMs hallucinate? Give a structural explanation.",
       "Temperature vs top-p — what does each control?",
     ],
-    references: [REF_HF_LLM],
+    references: [REF_HF_LLM, REF_KARPATHY_LLM, REF_LABONNE_LLM, REF_OAI_REASONING],
     topicId: "llm-basics",
     questionIds: ["temperature-top-p"],
   },
@@ -3052,7 +3080,7 @@ export const dailyPlan: DayPlan[] = [
       "How would you enforce structured JSON output reliably?",
       "What's the difference between system prompt and user prompt?",
     ],
-    references: [REF_OAI_DOCS],
+    references: [REF_OAI_DOCS, REF_ANTHROPIC_PROMPT, REF_ANTHROPIC_EVAL],
   },
   {
     day: 34, title: "2-D DP (cont.) + RAG architecture + project: RAG chatbot", pillar: "generative-ai",
@@ -3086,6 +3114,7 @@ export const dailyPlan: DayPlan[] = [
       { label: "GenAI · Vector stores", items: [
         { id: "rag-ann", label: "HNSW vs IVF vs flat — trade-offs", href: "https://www.pinecone.io/learn/series/faiss/hnsw/", meta: "Read" },
         { id: "rag-bm25", label: "When BM25 still wins", href: "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables", meta: "Read" },
+        { id: "rag-vdb-explain", label: "Pinecone — vector databases explained", href: "https://www.pinecone.io/learn/vector-database/", meta: "Read" },
       ]},
     ],
     interviewQuestions: [
@@ -3093,7 +3122,7 @@ export const dailyPlan: DayPlan[] = [
       "When is BM25 better than dense retrieval today?",
       "What's the operational cost of re-embedding when the model changes?",
     ],
-    references: [],
+    references: [REF_PINECONE_VDB, REF_DLAI_AGENTIC_RAG, REF_MCP_DOCS],
   },
   {
     day: 36, title: "Greedy + Reranking", pillar: "generative-ai",
@@ -3152,7 +3181,7 @@ export const dailyPlan: DayPlan[] = [
       "Walk me through how YOUR resume analyzer scores job fit — what could go wrong?",
       "How do you evaluate whether a fine-tune succeeded?",
     ],
-    references: [REF_DLAI_GENAI, REF_OAI_DOCS],
+    references: [REF_DLAI_GENAI, REF_OAI_DOCS, REF_HF_PEFT],
   },
   {
     day: 39, title: "Intervals finish + Agents", pillar: "generative-ai",
@@ -3169,7 +3198,7 @@ export const dailyPlan: DayPlan[] = [
       "What's the planner / executor split, and why?",
       "How do you stop an agent from looping on a failing tool?",
     ],
-    references: [REF_OAI_DOCS],
+    references: [REF_OAI_DOCS, REF_ANTHROPIC_AGENTS],
     topicId: "agents-and-guardrails",
     questionIds: ["agent-architecture"],
   },
@@ -3211,7 +3240,7 @@ export const dailyPlan: DayPlan[] = [
       "What goes wrong if you skip the metrics step?",
       "How do you decide between batch vs realtime inference?",
     ],
-    references: [REF_CHIP_HUYEN_DESIGN, REF_FSDL, REF_HUYEN_INT_BOOK, REF_KHANGICH_REPO, REF_ALIREZADIR_REPO, REF_PATRICK_HALINA, REF_DATASCIENCE_JAY],
+    references: [REF_LOGAN_ROADMAP, REF_AI4SWES, REF_CHIP_HUYEN_DESIGN, REF_FSDL, REF_HUYEN_INT_BOOK, REF_KHANGICH_REPO, REF_ALIREZADIR_REPO, REF_PATRICK_HALINA, REF_DATASCIENCE_JAY, REF_MADE_WITH_ML, REF_MIT_ML_EFFICIENCY],
     topicId: "system-design-framework",
   },
   {
@@ -3856,7 +3885,7 @@ export const dailyPlan: DayPlan[] = [
       "Where did you override it and why?",
       "How would you describe your AI workflow to an interviewer in 60 seconds?",
     ],
-    references: [REF_YUAN_MENG_HURRY],
+    references: [REF_YUAN_MENG_HURRY, REF_KAGGLE_AI_ETHICS],
   },
   {
     day: 76, title: "Company-tag drilling — target #1", pillar: "foundations",
@@ -4559,7 +4588,7 @@ export const dailyPlan: DayPlan[] = [
       "Walk me through how you'd build an image moderation system end-to-end.",
       "What augmentation strategy would you pick for a small medical-imaging dataset?",
     ],
-    references: [REF_PAPERS_WITH_CODE, REF_FAST_AI, REF_D2L, REF_GOOGLE_AI_BLOG],
+    references: [REF_PAPERS_WITH_CODE, REF_FAST_AI, REF_D2L, REF_GOOGLE_AI_BLOG, REF_KAGGLE_CV],
   },
   {
     day: 122, title: "Specialization · NLP / NLU (deep dive)", pillar: "generative-ai",
@@ -4585,7 +4614,7 @@ export const dailyPlan: DayPlan[] = [
       "Walk me through how you'd evaluate a summarization system.",
       "Why is tokenization the most common cause of multilingual NLP bugs?",
     ],
-    references: [REF_HF_LLM, REF_ILLUSTRATED_TRANSFORMER, REF_PAPERS_WITH_CODE],
+    references: [REF_HF_LLM, REF_HF_NLP, REF_ILLUSTRATED_TRANSFORMER, REF_PAPERS_WITH_CODE],
   },
   {
     day: 123, title: "Specialization · Speech & Audio (deep dive)", pillar: "deep-learning",
@@ -4635,7 +4664,7 @@ export const dailyPlan: DayPlan[] = [
       "How do you handle exploration in a recommender system without hurting metrics?",
       "What's the practical difference between RLHF and DPO?",
     ],
-    references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG],
+    references: [REF_PAPERS_WITH_CODE, REF_GOOGLE_AI_BLOG, REF_OPENAI_RL],
   },
   {
     day: 125, title: "Specialization · RecSys deep dive (Ranking / Predictions)", pillar: "ml-system-design",
