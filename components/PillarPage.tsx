@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 
 import SectionHeading from "@/components/SectionHeading";
 import {
-  getRoadmapHref,
   getTopicsByPillar,
   pillars,
   questions,
-  roadmaps,
   type PillarSlug,
 } from "@/lib/site-data";
 
@@ -140,23 +138,6 @@ export default function PillarPage({ slug }: { slug: PillarSlug }) {
         </div>
       </section>
 
-      <section className="grid gap-5 lg:grid-cols-3">
-        {roadmaps.slice(0, 3).map((roadmap) => (
-          <Link
-            key={roadmap.slug}
-            href={getRoadmapHref(roadmap.slug)}
-            className="section-card rounded-[24px] p-6 transition hover:-translate-y-1 hover:border-primary"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">
-              {roadmap.durationLabel}
-            </p>
-            <h3 className="mt-4 font-display text-2xl font-bold text-foreground">
-              {roadmap.title}
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-muted">{roadmap.headline}</p>
-          </Link>
-        ))}
-      </section>
     </div>
   );
 }

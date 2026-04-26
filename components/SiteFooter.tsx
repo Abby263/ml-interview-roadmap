@@ -12,9 +12,9 @@ export default function SiteFooter() {
             Content-first now. Progress tracking and mock interviews next.
           </h3>
           <p className="max-w-xl text-sm leading-7 text-muted">
-            This MVP is intentionally public and content-heavy: roadmaps, topic
-            cards, questions, case studies, and curated resources. The logged-in
-            dashboard layer can sit on top of this foundation later.
+            This MVP is intentionally public and content-heavy: the daily plan,
+            topic cards, questions, case studies, and curated resources. The
+            logged-in dashboard layer can sit on top of this foundation later.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function SiteFooter() {
             Build path
           </p>
           <div className="space-y-2 text-sm text-muted">
-            <p>MVP: public roadmap and learning library</p>
+            <p>MVP: public daily plan and learning library</p>
             <p>V2: saved progress and readiness score</p>
             <p>V3: mock interviews, JD analysis, and AI coaching</p>
           </div>

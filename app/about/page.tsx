@@ -49,7 +49,7 @@ export default function AboutPage() {
             What the MVP includes
           </h2>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-muted">
-            <li>• Public homepage and roadmap navigation</li>
+            <li>• Public homepage and daily plan navigation</li>
             <li>• 30, 60, and 90-day tracks</li>
             <li>• Ordered pillar pages and topic cards from statistics to ML system design</li>
             <li>• Question bank and case-study library</li>

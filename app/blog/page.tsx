@@ -11,9 +11,9 @@ export default async function BlogPage() {
         <p className="eyebrow">Blog</p>
         <h1 className="hero-title">SEO-driven content around ML interview preparation.</h1>
         <p className="hero-copy">
-          The blog layer extends the roadmap into search-friendly entry points:
+          The blog layer extends the learning plan into search-friendly entry points:
           ML system design, RAG interview prep, feature stores, LLM evaluation,
-          and role-based roadmaps.
+          and role-based prep guides.
         </p>
       </section>
 

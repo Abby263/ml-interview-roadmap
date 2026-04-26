@@ -3,10 +3,7 @@ import Link from "next/link";
 import AuthButtons from "@/components/AuthButtons";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const NAV = [
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/blog", label: "Blog" },
-] as const;
+const NAV = [{ href: "/blog", label: "Blog" }] as const;
 
 export default function SiteHeader() {
   return (

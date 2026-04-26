@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
-import type { Difficulty, RoadmapSlug } from "@/lib/site-data";
+import type { Difficulty } from "@/lib/site-data";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
 
@@ -27,12 +27,6 @@ export interface CaseStudyFrontmatter {
   evaluationLens: string[];
 }
 
-export interface RoadmapGuideFrontmatter {
-  title: string;
-  summary: string;
-  updatedAt: string;
-}
-
 export interface BlogSummary extends BlogFrontmatter {
   slug: string;
 }
@@ -41,11 +35,11 @@ export interface CaseStudySummary extends CaseStudyFrontmatter {
   slug: string;
 }
 
-function getCollectionPath(collection: "blog" | "case-studies" | "roadmaps") {
+function getCollectionPath(collection: "blog" | "case-studies") {
   return path.join(CONTENT_ROOT, collection);
 }
 
-async function listMdxSlugs(collection: "blog" | "case-studies" | "roadmaps") {
+async function listMdxSlugs(collection: "blog" | "case-studies") {
   const files = await fs.readdir(getCollectionPath(collection));
 
   return files
@@ -55,7 +49,7 @@ async function listMdxSlugs(collection: "blog" | "case-studies" | "roadmaps") {
 }
 
 async function readCollectionFile(
-  collection: "blog" | "case-studies" | "roadmaps",
+  collection: "blog" | "case-studies",
   slug: string
 ) {
   return fs.readFile(path.join(getCollectionPath(collection), `${slug}.mdx`), "utf8");
@@ -135,24 +129,6 @@ export async function getCaseStudyEntry(slug: string) {
       },
     },
   });
-}
-
-export async function getRoadmapGuide(slug: RoadmapSlug) {
-  try {
-    const source = await readCollectionFile("roadmaps", slug);
-
-    return await compileMDX<RoadmapGuideFrontmatter>({
-      source,
-      options: {
-        parseFrontmatter: true,
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-        },
-      },
-    });
-  } catch {
-    return null;
-  }
 }
 
 export async function getBlogStaticParams() {

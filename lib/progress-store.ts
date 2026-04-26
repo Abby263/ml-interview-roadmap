@@ -11,7 +11,7 @@ const ACTIVITY_KEY = "ml-roadmap-activity";
 const EVENT_NAME = "ml-roadmap-progress-change";
 
 // ── Activity tracking (per calendar date) ─────────────────────────────────
-// Used by the Calendar widget to highlight active days + compute streaks.
+// Used by progress-aware UI to highlight active days + compute streaks.
 // Format: { "YYYY-MM-DD": numberOfChecksThatDay }
 
 function todayLocalISO(): string {
