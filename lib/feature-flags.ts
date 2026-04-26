@@ -7,9 +7,12 @@
  * changes.
  */
 
+export const clerkClientEnabled = Boolean(
+  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+);
+
 export const clerkEnabled = Boolean(
-  process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
-    process.env.CLERK_SECRET_KEY
+  clerkClientEnabled && process.env.CLERK_SECRET_KEY
 );
 
 // Supabase recently renamed their public key from `anon` to `publishable`.
@@ -25,7 +28,7 @@ export const supabaseEnabled = Boolean(
 
 /** Public/runtime-safe view (used in client components). */
 export const publicFlags = {
-  clerkEnabled: Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY),
+  clerkEnabled: clerkClientEnabled,
   supabaseEnabled: Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL && supabasePublicKey
   ),

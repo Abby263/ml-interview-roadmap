@@ -7,9 +7,8 @@ const clerkConfigured = Boolean(
     process.env.CLERK_SECRET_KEY
 );
 
-// When Clerk is configured, run its middleware so auth context (user id,
-// session) is available on every request. When it isn't, fall through
-// without doing any work — the app stays 100% localStorage.
+// When Clerk is configured, run its proxy so auth context is available on
+// every request. Without Clerk, the app stays localStorage-only.
 const handler = clerkConfigured
   ? clerkMiddleware()
   : (_req: NextRequest) => {
@@ -20,8 +19,6 @@ const handler = clerkConfigured
 export default handler;
 
 export const config = {
-  // Skip Next.js internals and all static files; run on everything else +
-  // API routes.
   matcher: [
     "/((?!_next|.*\\..*).*)",
     "/(api|trpc)(.*)",

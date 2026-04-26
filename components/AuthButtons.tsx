@@ -5,7 +5,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 
-import { clerkEnabled } from "@/lib/feature-flags";
+import { clerkClientEnabled } from "@/lib/feature-flags";
 
 /**
  * Render Clerk auth controls when Clerk is configured. When it isn't
@@ -13,7 +13,7 @@ import { clerkEnabled } from "@/lib/feature-flags";
  * clean for local-only use.
  */
 export default function AuthButtons() {
-  if (!clerkEnabled) return null;
+  if (!clerkClientEnabled) return null;
   return (
     <div className="flex items-center gap-2">
       <Show when="signed-out">

@@ -6,5 +6,8 @@ coverage
 .DS_Store
 *.log
 .vercel
+.env
+.env.*
+!.env.example
+.claude/
 tsconfig.tsbuildinfo
-.claude/launch.json

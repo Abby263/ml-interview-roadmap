@@ -1,11 +1,14 @@
 import HomeRoadmap from "@/components/HomeRoadmap";
+import { dailyPlan } from "@/lib/site-data";
 
 export default function Home() {
+  const totalDays = dailyPlan.length;
+
   return (
     <div className="space-y-12">
       <header className="space-y-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-          ML Interview Roadmap · 120 days
+          ML Interview Roadmap · {totalDays} days
         </p>
         <h1 className="font-display text-4xl font-extrabold leading-[1.05] text-foreground md:text-5xl">
           Click any day to open the plan.
@@ -31,7 +34,7 @@ export default function Home() {
           >
             Yuan Meng&apos;s &ldquo;Prepare in a Hurry&rdquo;
           </a>{" "}
-          guide, expanded across 120 days. NeetCode 150 problems link
+          guide, expanded across {totalDays} days. NeetCode 150 problems link
           directly to LeetCode; full roadmap at{" "}
           <a
             href="https://neetcode.io/roadmap"

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import { clerkEnabled } from "@/lib/feature-flags";
+import { clerkClientEnabled } from "@/lib/feature-flags";
 import { siteName, siteTagline } from "@/lib/site-data";
 
 import "./globals.css";
@@ -51,7 +51,7 @@ export default function RootLayout({
   // Wrap with ClerkProvider only when keys are configured. ClerkProvider
   // itself is safe to render in either case, but skipping it when there's
   // no key avoids a noisy console warning during local dev without auth.
-  if (!clerkEnabled) {
+  if (!clerkClientEnabled) {
     return <Shell>{children}</Shell>;
   }
   return (

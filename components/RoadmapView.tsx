@@ -7,6 +7,7 @@ import Calendar from "@/components/Calendar";
 import RoadmapFlow from "@/components/RoadmapFlow";
 import { publicFlags } from "@/lib/feature-flags";
 import { setDayChecks } from "@/lib/progress-store";
+import { dailyPlan } from "@/lib/site-data";
 
 function useAuthState(): { canTrack: boolean } {
   if (!publicFlags.clerkEnabled) {
@@ -53,7 +54,7 @@ export default function RoadmapView() {
     <div className="space-y-10">
       <header className="space-y-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-          ML Architect Roadmap · 126 days
+          ML Architect Roadmap · {dailyPlan.length} days
         </p>
         <h1 className="font-display text-3xl font-extrabold leading-[1.1] text-foreground md:text-4xl">
           The full path, at a glance.
