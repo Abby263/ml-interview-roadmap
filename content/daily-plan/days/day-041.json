@@ -40,13 +40,23 @@
           "id": "llm-pretraining",
           "label": "What pretraining actually optimizes",
           "href": "https://huggingface.co/learn/llm-course/chapter1/4",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What does pretraining actually optimize?",
+            "Why is next-token prediction such a powerful objective?",
+            "How does masked-LM differ from causal-LM training?"
+          ]
         },
         {
           "id": "llm-rlhf",
           "label": "RLHF / DPO at a high level",
           "href": "https://huyenchip.com/2023/05/02/rlhf.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through RLHF at a high level — what does PPO do here?",
+            "What's the practical difference between RLHF and DPO?",
+            "Why do LLMs hallucinate? Give a structural explanation."
+          ]
         }
       ]
     }

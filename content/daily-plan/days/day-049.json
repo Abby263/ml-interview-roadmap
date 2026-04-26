@@ -28,13 +28,23 @@
           "id": "llm-agents",
           "label": "Anthropic: Building effective agents",
           "href": "https://www.anthropic.com/engineering/building-effective-agents",
-          "meta": "Read (canonical)"
+          "meta": "Read (canonical)",
+          "interviewQuestions": [
+            "When is a multi-agent architecture justified?",
+            "What's the planner / executor split, and why?",
+            "How do you stop an agent from looping on a failing tool?"
+          ]
         },
         {
           "id": "llm-tool-use",
           "label": "Tool-use schemas + permissions",
           "href": "https://platform.openai.com/docs/guides/function-calling",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk through how function-calling works at the protocol level.",
+            "How do you design tool schemas that the model uses correctly?",
+            "What's the right permission model for irreversible tool actions?"
+          ]
         }
       ]
     }

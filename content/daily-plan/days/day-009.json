@@ -34,13 +34,23 @@
           "id": "ml-loss-mse-mae",
           "label": "MSE vs MAE vs Huber — when each",
           "href": "https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is MAE more robust to outliers than MSE?",
+            "When would you choose Huber loss?",
+            "What's the gradient behavior near the minimum for MSE vs MAE?"
+          ]
         },
         {
           "id": "ml-loss-cross-entropy",
           "label": "Binary & categorical cross-entropy (derive the gradient)",
           "href": "https://gombru.github.io/2018/05/23/cross_entropy_loss/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is cross-entropy preferred over MSE for classification?",
+            "Derive the gradient of binary cross-entropy by hand.",
+            "What does a class-weighted loss change about gradient updates?"
+          ]
         }
       ]
     }

@@ -11,13 +11,23 @@
           "id": "case-rag-langchain",
           "label": "LangChain RAG cookbook",
           "href": "https://python.langchain.com/docs/tutorials/rag/",
-          "meta": "Tutorial"
+          "meta": "Tutorial",
+          "interviewQuestions": [
+            "Walk me through the LangChain RAG cookbook — what would you keep, what would you replace?",
+            "How does LangChain's retriever abstraction help vs hurt?",
+            "When would you not use a framework like LangChain?"
+          ]
         },
         {
           "id": "case-rag-acl",
           "label": "Permissioned retrieval patterns",
           "href": "https://arxiv.org/abs/2305.13631",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Where do you enforce ACLs — at retrieval time or after generation? Why?",
+            "How do you test for permission leakage?",
+            "What's the right refusal behavior when retrieval returns no permitted docs?"
+          ]
         }
       ]
     },

@@ -11,19 +11,34 @@
           "id": "cv-cnn-fams",
           "label": "CNN families: ResNet → EfficientNet → ConvNeXt",
           "href": "https://paperswithcode.com/area/computer-vision",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare ResNet, EfficientNet, and ConvNeXt — when would you reach for each?",
+            "Why did ConvNeXt show CNNs can still match transformers?",
+            "What's the role of compound scaling in EfficientNet?"
+          ]
         },
         {
           "id": "cv-vit",
           "label": "Vision Transformer (ViT) paper",
           "href": "https://arxiv.org/abs/2010.11929",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "When does a ViT beat a CNN, and when doesn't it?",
+            "How does the patch embedding work in a ViT?",
+            "Why did ViTs need so much pretraining data to match CNNs?"
+          ]
         },
         {
           "id": "cv-clip",
           "label": "CLIP — image-text contrastive pretraining",
           "href": "https://arxiv.org/abs/2103.00020",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective.",
+            "When does CLIP fail catastrophically?"
+          ]
         }
       ]
     },
@@ -34,13 +49,23 @@
           "id": "cv-od",
           "label": "Object detection: YOLO / DETR / SAM",
           "href": "https://lilianweng.github.io/posts/2017-12-31-object-recognition-part-3/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare YOLO, DETR, and SAM — when does each fit?",
+            "Why is non-max suppression still the standard post-processing for OD?",
+            "How would you handle small-object detection in a custom dataset?"
+          ]
         },
         {
           "id": "cv-aug",
           "label": "Image augmentation patterns (RandAugment, CutMix, MixUp)",
           "href": "https://albumentations.ai/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare RandAugment, CutMix, and MixUp — when each helps.",
+            "Why does augmentation help less on very large datasets?",
+            "What augmentation strategy would you pick for a small medical-imaging dataset?"
+          ]
         }
       ]
     },

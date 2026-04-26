@@ -40,13 +40,23 @@
           "id": "llm-bpe",
           "label": "Byte-pair encoding (BPE)",
           "href": "https://huggingface.co/learn/llm-course/chapter6/5",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does BPE exist instead of word-level or char-level tokenization?",
+            "What multilingual edge cases break naive BPE?",
+            "How would you handle a domain with lots of new vocabulary?"
+          ]
         },
         {
           "id": "llm-embeddings",
           "label": "What embeddings encode",
           "href": "https://jalammar.github.io/illustrated-word2vec/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How does an embedding model differ from an LLM?",
+            "What does cosine similarity actually measure between embeddings?",
+            "How would you evaluate embedding quality?"
+          ]
         }
       ]
     }

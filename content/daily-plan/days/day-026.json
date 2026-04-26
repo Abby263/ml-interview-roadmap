@@ -40,13 +40,23 @@
           "id": "dl-dropout",
           "label": "Dropout as ensemble approximation",
           "href": "https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why does dropout work? Give the ensemble interpretation.",
+            "What changes between training and inference with dropout?",
+            "Why is dropout less common in modern transformer training?"
+          ]
         },
         {
           "id": "dl-weight-decay",
           "label": "Weight decay vs L2 in modern optimizers (AdamW)",
           "href": "https://arxiv.org/abs/1711.05101",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "What's the subtle difference between L2 and weight decay in Adam?",
+            "Why was AdamW introduced?",
+            "When is label smoothing the right call?"
+          ]
         }
       ]
     }

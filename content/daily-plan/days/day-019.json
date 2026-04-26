@@ -34,13 +34,23 @@
           "id": "ml-leakage",
           "label": "Target / temporal / contamination leakage",
           "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through 3 ways you'd detect target leakage in a churn model.",
+            "When is target encoding dangerous?",
+            "How do you align offline feature logic with online serving?"
+          ]
         },
         {
           "id": "ml-encoding",
           "label": "Encoding choices — one-hot, target, embedding",
           "href": "https://contrib.scikit-learn.org/category_encoders/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When is one-hot encoding the wrong choice?",
+            "How does target encoding work, and what are its risks?",
+            "When would you reach for a learned embedding instead of one-hot?"
+          ]
         }
       ]
     }

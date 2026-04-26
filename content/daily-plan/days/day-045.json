@@ -34,19 +34,34 @@
           "id": "rag-ann",
           "label": "HNSW vs IVF vs flat — trade-offs",
           "href": "https://www.pinecone.io/learn/series/faiss/hnsw/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How does HNSW work at a high level — what's the trade-off vs flat search?",
+            "Compare HNSW vs IVF-PQ.",
+            "What's the operational cost of re-embedding when the model changes?"
+          ]
         },
         {
           "id": "rag-bm25",
           "label": "When BM25 still wins",
           "href": "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When is BM25 better than dense retrieval today?",
+            "Walk me through BM25's IDF term and why it matters.",
+            "How do you tune BM25 for a new corpus?"
+          ]
         },
         {
           "id": "rag-vdb-explain",
           "label": "Pinecone — vector databases explained",
           "href": "https://www.pinecone.io/learn/vector-database/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When would you actually need a dedicated vector database vs Postgres pgvector?",
+            "What's the cost model of a managed vector DB at 1B vectors?",
+            "How do you handle filter + vector queries efficiently?"
+          ]
         }
       ]
     }

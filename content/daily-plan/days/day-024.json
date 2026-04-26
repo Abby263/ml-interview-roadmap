@@ -28,13 +28,23 @@
           "id": "dl-forward-back",
           "label": "Walk through forward + backward pass on paper",
           "href": "https://cs231n.github.io/optimization-2/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Explain backpropagation as if to an engineer who's used PyTorch but never derived gradients.",
+            "Walk through forward + backward pass on a 2-layer MLP by hand.",
+            "Why does the chain rule make autodiff possible?"
+          ]
         },
         {
           "id": "dl-activations",
           "label": "Activation functions: ReLU, GELU, sigmoid, softmax",
           "href": "https://en.wikipedia.org/wiki/Activation_function",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does ReLU help vs sigmoid?",
+            "When would you use GELU instead of ReLU?",
+            "What's the role of softmax in the cross-entropy gradient?"
+          ]
         }
       ]
     }

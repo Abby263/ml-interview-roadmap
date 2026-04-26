@@ -34,13 +34,23 @@
           "id": "stats-ab-power",
           "label": "Power analysis & sample size calculator",
           "href": "https://www.evanmiller.org/ab-testing/sample-size.html",
-          "meta": "Tool"
+          "meta": "Tool",
+          "interviewQuestions": [
+            "How would you size an A/B test for a 1% effect on a 5% baseline conversion?",
+            "Explain statistical power in one sentence.",
+            "What happens to required sample size if baseline conversion doubles?"
+          ]
         },
         {
           "id": "stats-ab-pitfalls",
           "label": "Common A/B test pitfalls (peeking, novelty, network effects)",
           "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the novelty effect, and how do you mitigate it?",
+            "Why is peeking dangerous in classical A/B testing?",
+            "How do network effects break A/B test independence?"
+          ]
         }
       ]
     }

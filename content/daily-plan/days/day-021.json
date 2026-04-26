@@ -33,12 +33,22 @@
         {
           "id": "ml-code-logreg",
           "label": "Implement logistic regression with binary cross-entropy",
-          "meta": "Code"
+          "meta": "Code",
+          "interviewQuestions": [
+            "Why is the cross-entropy gradient for logistic regression so clean?",
+            "How would you handle numerical instability in the sigmoid?",
+            "How do you extend binary logistic to multiclass?"
+          ]
         },
         {
           "id": "ml-code-kmeans",
           "label": "Implement k-means (Lloyd's) + k-means++ init",
-          "meta": "Code"
+          "meta": "Code",
+          "interviewQuestions": [
+            "Walk me through Lloyd's algorithm step by step.",
+            "Why does k-means++ initialization help?",
+            "How would you handle empty clusters during iteration?"
+          ]
         }
       ]
     }

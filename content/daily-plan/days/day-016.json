@@ -40,13 +40,23 @@
           "id": "ml-tuning-strategies",
           "label": "Grid vs random vs Bayesian search",
           "href": "https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is random search often better than grid search?",
+            "When is Bayesian optimization worth its overhead?",
+            "How would you tune XGBoost on a 100M-row dataset?"
+          ]
         },
         {
           "id": "ml-tuning-budget",
           "label": "Hyperband / successive halving — why they work",
           "href": "https://research.google/pubs/google-vizier-a-service-for-black-box-optimization/",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "How does Hyperband / successive halving allocate budget?",
+            "When is nested CV worth its compute cost?",
+            "How do you avoid leaking validation signal during tuning?"
+          ]
         }
       ]
     }

@@ -28,13 +28,23 @@
           "id": "stats-pvalue",
           "label": "Null, alternative, p-value, power — fast refresher",
           "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Define p-value precisely — what is it the probability of?",
+            "What goes wrong if you peek at A/B results before the planned end?",
+            "Why is statistical significance not the same as practical significance?"
+          ]
         },
         {
           "id": "stats-multitest",
           "label": "Multiple-testing correction (Bonferroni / FDR)",
           "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Why does running 20 A/B tests at α=0.05 produce false positives?",
+            "Compare Bonferroni vs FDR correction — when each is appropriate.",
+            "How do you handle multiple comparisons in a feature-importance analysis?"
+          ]
         }
       ]
     }

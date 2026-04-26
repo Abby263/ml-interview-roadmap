@@ -11,13 +11,23 @@
           "id": "mlops-evidently",
           "label": "Evidently AI — monitoring metrics catalog",
           "href": "https://docs.evidentlyai.com/reference/all-metrics",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "What metrics would you put on a production ML monitoring dashboard?",
+            "How do you separate infra monitoring from model monitoring?",
+            "When does drift detection actually trigger retraining?"
+          ]
         },
         {
           "id": "mlops-drift",
           "label": "KS / PSI for drift detection",
           "href": "https://towardsdatascience.com/population-stability-index-psi-and-characteristic-stability-index-csi-for-machine-learning-2c1f15823e94/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare KS and PSI for drift detection.",
+            "How do you set drift thresholds that don't alarm on noise?",
+            "What's the difference between feature drift and label drift?"
+          ]
         }
       ]
     },

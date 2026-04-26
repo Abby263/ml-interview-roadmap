@@ -11,19 +11,34 @@
           "id": "rl-mdp",
           "label": "MDPs, value functions, policy iteration",
           "href": "http://incompleteideas.net/book/the-book-2nd.html",
-          "meta": "Book"
+          "meta": "Book",
+          "interviewQuestions": [
+            "Define an MDP — state, action, reward, transition, policy.",
+            "When does the Markov assumption break in real-world systems?",
+            "Compare value iteration vs policy iteration."
+          ]
         },
         {
           "id": "rl-q-learning",
           "label": "Q-learning + DQN intuition",
           "href": "https://lilianweng.github.io/posts/2018-04-08-policy-gradient/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through Q-learning's update rule.",
+            "Why is DQN's target network needed for stability?",
+            "How does experience replay help?"
+          ]
         },
         {
           "id": "rl-policy-grad",
           "label": "Policy gradient (REINFORCE → PPO)",
           "href": "https://spinningup.openai.com/en/latest/algorithms/ppo.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk me through the REINFORCE update.",
+            "Why is the clip ratio in PPO there?",
+            "Compare on-policy vs off-policy methods."
+          ]
         }
       ]
     },
@@ -34,13 +49,23 @@
           "id": "rl-rlhf",
           "label": "RLHF as applied RL (PPO over LLM rewards)",
           "href": "https://huyenchip.com/2023/05/02/rlhf.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through RLHF as applied RL — what's the reward, what's the policy?",
+            "Why is PPO the default in RLHF?",
+            "What's the practical difference between RLHF and DPO?"
+          ]
         },
         {
           "id": "rl-bandits",
           "label": "Multi-armed bandits: contextual bandits in production",
           "href": "https://eugeneyan.com/writing/bandits/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When is a contextual bandit the right model vs a full RL setup?",
+            "Walk me through Thompson sampling vs UCB.",
+            "How do you handle exploration in a recommender system without hurting metrics?"
+          ]
         }
       ]
     },

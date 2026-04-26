@@ -34,13 +34,23 @@
           "id": "ml-imbalance",
           "label": "Class weights vs SMOTE vs threshold-moving",
           "href": "https://machinelearningmastery.com/what-is-imbalanced-classification/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare class weights vs SMOTE vs threshold-moving.",
+            "What breaks if you SMOTE before splitting train/test?",
+            "How do you tune the decision threshold for an imbalanced classifier?"
+          ]
         },
         {
           "id": "ml-imbalance-calibration",
           "label": "Why resampling breaks calibration",
           "href": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does class weighting preserve calibration but resampling does not?",
+            "How would you detect that resampling broke your calibration?",
+            "What's the simplest fix when calibration is destroyed by SMOTE?"
+          ]
         }
       ]
     },
@@ -51,19 +61,34 @@
           "id": "ml-svm",
           "label": "SVM intuition + kernel trick — when SVM still wins",
           "href": "https://scikit-learn.org/stable/modules/svm.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Explain the kernel trick in plain language.",
+            "When does SVM with an RBF kernel still beat a tree-based model?",
+            "Why does SVM training scale poorly with dataset size?"
+          ]
         },
         {
           "id": "ml-knn",
           "label": "KNN — when it's the right baseline (small data, low dim)",
           "href": "https://scikit-learn.org/stable/modules/neighbors.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When is KNN the right baseline?",
+            "Why does the curse of dimensionality kill KNN?",
+            "How would you make KNN scalable for 100M points?"
+          ]
         },
         {
           "id": "ml-naive-bayes",
           "label": "Naive Bayes — fast, calibrated, surprisingly strong on text",
           "href": "https://scikit-learn.org/stable/modules/naive_bayes.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Why does Naive Bayes work well on text despite the naive independence assumption?",
+            "Where does Naive Bayes fail badly?",
+            "Compare Naive Bayes vs logistic regression on a small text classification problem."
+          ]
         }
       ]
     }

@@ -34,13 +34,23 @@
           "id": "dl-rnn-vanish",
           "label": "Vanilla RNN vanishing-gradient problem",
           "href": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
-          "meta": "Read (canonical)"
+          "meta": "Read (canonical)",
+          "interviewQuestions": [
+            "Walk through the vanishing-gradient problem in vanilla RNNs.",
+            "Why don't RNNs parallelize over the time dimension?",
+            "How does truncated BPTT work?"
+          ]
         },
         {
           "id": "dl-lstm",
           "label": "LSTM gating — why it helps gradient flow",
           "href": "https://distill.pub/2019/memorization-in-rnns/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What does the cell state in an LSTM actually store?",
+            "Compare LSTM vs GRU — when does each win?",
+            "Where does a transformer still lose to an LSTM?"
+          ]
         }
       ]
     },

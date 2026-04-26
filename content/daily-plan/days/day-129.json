@@ -11,19 +11,34 @@
           "id": "speech-whisper",
           "label": "Whisper paper — ASR with weak supervision",
           "href": "https://arxiv.org/abs/2212.04356",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "How does Whisper handle multiple languages without a language ID input?",
+            "Why does Whisper's weak-supervision data pipeline help generalization?",
+            "What's Whisper's failure mode for low-resource languages?"
+          ]
         },
         {
           "id": "speech-wav2vec",
           "label": "wav2vec 2.0 — self-supervised audio representations",
           "href": "https://arxiv.org/abs/2006.11477",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Walk me through wav2vec 2.0's self-supervised pretraining.",
+            "When would you use wav2vec features vs raw mel spectrograms?",
+            "How do you fine-tune wav2vec for a new language?"
+          ]
         },
         {
           "id": "speech-tts",
           "label": "Modern TTS: VITS / Tortoise / ElevenLabs overview",
           "href": "https://github.com/jaywalnut310/vits",
-          "meta": "Repo"
+          "meta": "Repo",
+          "interviewQuestions": [
+            "Compare VITS, Tortoise, and ElevenLabs at a high level.",
+            "What's the trade-off between voice quality and inference latency in TTS?",
+            "How would you evaluate TTS quality without humans?"
+          ]
         }
       ]
     },
@@ -34,13 +49,23 @@
           "id": "speech-mel",
           "label": "Mel spectrograms + MFCC features",
           "href": "https://librosa.org/doc/latest/feature.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Why are mel spectrograms preferred over raw waveforms for ASR?",
+            "What's the difference between MFCCs and mel spectrograms?",
+            "How does mel-spectrogram resolution affect downstream models?"
+          ]
         },
         {
           "id": "speech-stream",
           "label": "Streaming ASR — chunking + endpointing",
           "href": "https://nvidia.github.io/NeMo/blogs/streaming.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the latency-vs-quality trade-off for streaming ASR vs full-utterance ASR?",
+            "How does endpointing work in streaming ASR?",
+            "Walk me through chunking strategy for an LLM-based real-time transcriber."
+          ]
         }
       ]
     },

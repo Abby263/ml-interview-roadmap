@@ -34,13 +34,23 @@
           "id": "ml-logreg",
           "label": "Derive logistic loss + gradient by hand",
           "href": "https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Derive the gradient of binary cross-entropy with the sigmoid.",
+            "Why is logistic regression a generalized linear model?",
+            "When would you prefer logistic regression over a tree-based model?"
+          ]
         },
         {
           "id": "ml-l1-vs-l2",
           "label": "L1 vs L2 — sparsity vs shrinkage intuition",
           "href": "https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does L1 produce sparse weights and L2 doesn't?",
+            "Explain L2 regularization as a Bayesian prior.",
+            "When is elastic net the right call?"
+          ]
         }
       ]
     }

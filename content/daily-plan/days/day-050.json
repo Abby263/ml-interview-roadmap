@@ -40,13 +40,23 @@
           "id": "llm-jailbreak",
           "label": "Prompt injection & jailbreaks (OWASP LLM Top 10)",
           "href": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
-          "meta": "Reference"
+          "meta": "Reference",
+          "interviewQuestions": [
+            "Walk me through 4 guardrail layers — what each catches.",
+            "How do you red-team a customer-facing agent?",
+            "What's the right escalation behavior for an unsure LLM in a support context?"
+          ]
         },
         {
           "id": "llm-guardrails",
           "label": "Layered guardrail patterns (NeMo Guardrails)",
           "href": "https://github.com/NVIDIA/NeMo-Guardrails",
-          "meta": "Reference"
+          "meta": "Reference",
+          "interviewQuestions": [
+            "Compare input filters vs output filters — which catches what?",
+            "How would you build a policy classifier for unsafe outputs?",
+            "What's the role of system prompts in guardrails?"
+          ]
         }
       ]
     }

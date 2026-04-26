@@ -40,18 +40,33 @@
           "id": "sd-framework",
           "label": "Read: Chip Huyen — ML systems design TOC",
           "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk me through your design framework on a fresh prompt.",
+            "What goes wrong if you skip the metrics step?",
+            "How do you decide between batch vs realtime inference?"
+          ]
         },
         {
           "id": "sd-halina",
           "label": "Patrick Halina — ML Systems Design Interview Guide",
           "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the structure Patrick Halina recommends for the design interview?",
+            "Where do most candidates get stuck in design interviews — and why?",
+            "How do you handle the 'I don't know' moment in a design interview?"
+          ]
         },
         {
           "id": "sd-scaffold",
           "label": "Memorize the scaffold: clarify → metrics → data → model → serving → monitoring → trade-off close",
-          "meta": "Concept"
+          "meta": "Concept",
+          "interviewQuestions": [
+            "Recite the scaffold cold: clarify → metrics → data → model → serving → monitoring → trade-off close.",
+            "Why does the trade-off close matter as much as the design itself?",
+            "What's the one trade-off you'd defend hardest if pushed?"
+          ]
         }
       ]
     },
@@ -62,19 +77,34 @@
           "id": "sd-khangich",
           "label": "khangich/machine-learning-interview — full prep guide",
           "href": "https://github.com/khangich/machine-learning-interview",
-          "meta": "Repo"
+          "meta": "Repo",
+          "interviewQuestions": [
+            "What's the structure khangich recommends for an ML interview prep schedule?",
+            "Which sections of the repo would you prioritize for a senior MLE loop?",
+            "How would you adapt the repo for an ML Architect loop?"
+          ]
         },
         {
           "id": "sd-alirezadir",
           "label": "alirezadir/Machine-Learning-Interviews — companion repo",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-          "meta": "Repo"
+          "meta": "Repo",
+          "interviewQuestions": [
+            "What does alirezadir's repo cover that khangich's doesn't?",
+            "Walk me through one design pattern from the repo you'd use in an interview.",
+            "How do you avoid memorizing answers from these repos?"
+          ]
         },
         {
           "id": "sd-huyen-int",
           "label": "Chip Huyen — ML Interviews Book (free)",
           "href": "https://huyenchip.com/ml-interviews-book/",
-          "meta": "Book"
+          "meta": "Book",
+          "interviewQuestions": [
+            "What's the most useful chapter in Chip Huyen's ML Interviews Book for design rounds?",
+            "How would you use the open-ended questions in the book for self-practice?",
+            "What did you learn from the book that surprised you?"
+          ]
         }
       ]
     }

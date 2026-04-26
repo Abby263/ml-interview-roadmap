@@ -11,19 +11,34 @@
           "id": "nlp-bert",
           "label": "BERT (encoder) — masked LM",
           "href": "https://arxiv.org/abs/1810.04805",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "How does BERT's masked-LM pretraining differ from GPT's causal LM?",
+            "When would you use BERT for retrieval vs classification?",
+            "Why is BERT no longer state-of-the-art for many NLP tasks?"
+          ]
         },
         {
           "id": "nlp-t5",
           "label": "T5 (encoder-decoder) — text-to-text",
           "href": "https://arxiv.org/abs/1910.10683",
-          "meta": "Paper"
+          "meta": "Paper",
+          "interviewQuestions": [
+            "Why is T5's text-to-text framing useful?",
+            "When would you choose an encoder-decoder over a decoder-only model?",
+            "How does T5 handle multi-task training?"
+          ]
         },
         {
           "id": "nlp-gpt",
           "label": "GPT family (decoder) — autoregressive",
           "href": "https://lilianweng.github.io/posts/2018-06-24-attention/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why has the decoder-only architecture won for general LLMs?",
+            "How does in-context learning emerge from autoregressive training?",
+            "What's the trade-off vs encoder-decoder for tasks like translation?"
+          ]
         }
       ]
     },
@@ -34,13 +49,23 @@
           "id": "nlp-ner",
           "label": "Named entity recognition (NER) tagging schemes (BIO, BILOU)",
           "href": "https://huggingface.co/docs/transformers/tasks/token_classification",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare BIO vs BILOU tagging — what do you gain with BILOU?",
+            "How would you handle nested or overlapping entities?",
+            "Why is span-based NER often better than token-level for modern models?"
+          ]
         },
         {
           "id": "nlp-summ",
           "label": "Abstractive vs extractive summarization",
           "href": "https://huggingface.co/docs/transformers/tasks/summarization",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare abstractive vs extractive summarization — when each is the right call.",
+            "How would you evaluate an abstractive summarizer without a gold reference?",
+            "What's the failure mode when the model invents facts in summarization?"
+          ]
         }
       ]
     },

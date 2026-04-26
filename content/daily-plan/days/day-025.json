@@ -40,13 +40,23 @@
           "id": "dl-adam",
           "label": "Adam vs SGD with momentum — when each generalizes better",
           "href": "https://ruder.io/optimizing-gradient-descent/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When does Adam generalize worse than SGD with momentum?",
+            "Walk through how Adam updates parameters.",
+            "Why is bias correction needed in Adam?"
+          ]
         },
         {
           "id": "dl-lr-warmup",
           "label": "LR warmup + cosine decay — why it stabilizes early training",
           "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What does LR warmup actually fix?",
+            "Walk me through how you'd find a good learning rate for a new model.",
+            "When does cosine decay beat step decay?"
+          ]
         }
       ]
     }

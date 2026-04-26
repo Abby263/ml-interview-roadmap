@@ -40,13 +40,23 @@
           "id": "llm-lora",
           "label": "LoRA / PEFT — what changes are made",
           "href": "https://huggingface.co/docs/peft/index",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "What does LoRA actually update — and why is the update so small?",
+            "Walk me through the LoRA matrix decomposition.",
+            "When would you use QLoRA over LoRA?"
+          ]
         },
         {
           "id": "llm-ft-vs-rag",
           "label": "When fine-tuning beats RAG (and when it doesn't)",
           "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When would you fine-tune instead of doing prompt + RAG?",
+            "How do you evaluate whether a fine-tune succeeded?",
+            "What's the catastrophic-forgetting risk in fine-tuning?"
+          ]
         }
       ]
     },

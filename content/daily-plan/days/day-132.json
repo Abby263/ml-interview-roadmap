@@ -11,25 +11,45 @@
           "id": "dist-ddp",
           "label": "DistributedDataParallel (DDP) — the default",
           "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
-          "meta": "Tutorial"
+          "meta": "Tutorial",
+          "interviewQuestions": [
+            "When do you actually need DDP vs single-node training?",
+            "Walk me through the all-reduce step in DDP.",
+            "What's the failure mode of DDP at very large model sizes?"
+          ]
         },
         {
           "id": "dist-fsdp",
           "label": "FSDP — what it shards and why",
           "href": "https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html",
-          "meta": "Tutorial"
+          "meta": "Tutorial",
+          "interviewQuestions": [
+            "What does FSDP shard, and why does that help?",
+            "Compare FSDP and ZeRO — they're related, how?",
+            "When would you choose FSDP over DeepSpeed?"
+          ]
         },
         {
           "id": "dist-zero",
           "label": "DeepSpeed ZeRO — the canonical staged sharding",
           "href": "https://www.deepspeed.ai/training/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk me through the memory layout under ZeRO-3.",
+            "What's the latency cost of ZeRO-3 vs ZeRO-2?",
+            "When is ZeRO-Offload actually worth it?"
+          ]
         },
         {
           "id": "dist-checkpt",
           "label": "Gradient checkpointing — trade compute for memory",
           "href": "https://pytorch.org/docs/stable/checkpoint.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Explain gradient checkpointing — what does it actually trade?",
+            "When is gradient checkpointing worth the recompute cost?",
+            "How does it interact with FSDP / mixed precision?"
+          ]
         }
       ]
     },
@@ -40,13 +60,23 @@
           "id": "dist-vllm",
           "label": "vLLM / TensorRT-LLM — high-throughput LLM serving",
           "href": "https://docs.vllm.ai/",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare vLLM and TensorRT-LLM — when does each fit?",
+            "What is paged attention and why does it matter?",
+            "How does continuous batching change throughput vs latency?"
+          ]
         },
         {
           "id": "dist-quant",
           "label": "Quantization at serving (INT8, FP8, GPTQ)",
           "href": "https://huggingface.co/docs/transformers/quantization",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Compare INT8, FP8, and GPTQ quantization — when each fits.",
+            "What accuracy hit do you typically see at INT8 vs FP8?",
+            "How do you decide if a quantized model meets your eval bar?"
+          ]
         }
       ]
     },

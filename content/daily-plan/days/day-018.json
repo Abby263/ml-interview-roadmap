@@ -34,13 +34,23 @@
           "id": "ml-kmeans",
           "label": "k-means vs hierarchical vs DBSCAN — assumptions each makes",
           "href": "https://scikit-learn.org/stable/modules/clustering.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "When does k-means silently fail? Give a concrete example.",
+            "How would you choose K without ground truth?",
+            "When does DBSCAN beat k-means?"
+          ]
         },
         {
           "id": "ml-pca",
           "label": "PCA as compression / denoising / visualization",
           "href": "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What does PCA throw away — and why does that matter for downstream models?",
+            "How would you decide how many components to keep?",
+            "When is t-SNE / UMAP a better choice than PCA?"
+          ]
         }
       ]
     }

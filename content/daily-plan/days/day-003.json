@@ -34,13 +34,23 @@
           "id": "stats-prior-likelihood",
           "label": "Priors, likelihoods, posteriors in plain language",
           "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
-          "meta": "Interactive"
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "Explain prior, likelihood, and posterior with a coin-flip example.",
+            "When does the prior dominate the posterior, and when does the data?",
+            "How do you choose a prior in a real Bayesian model?"
+          ]
         },
         {
           "id": "stats-base-rate",
           "label": "Base-rate fallacy — the most common interview trap",
           "href": "https://en.wikipedia.org/wiki/Base_rate_fallacy",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through the cancer-test base-rate problem.",
+            "How does the base-rate fallacy apply to fraud detection?",
+            "Why do interviewers love base-rate questions?"
+          ]
         }
       ]
     }

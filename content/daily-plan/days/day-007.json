@@ -31,31 +31,56 @@
           "id": "stats-gd-intuition",
           "label": "Gradient descent intuition (convex vs non-convex)",
           "href": "https://www.deeplearningbook.org/contents/optimization.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does gradient descent sometimes get stuck in non-convex problems?",
+            "How does the learning rate trade off speed vs stability?",
+            "What's the intuition for momentum in gradient descent?"
+          ]
         },
         {
           "id": "stats-convexity",
           "label": "Why convexity matters for guarantees",
           "href": "https://web.stanford.edu/~boyd/cvxbook/",
-          "meta": "Reference"
+          "meta": "Reference",
+          "interviewQuestions": [
+            "Why does logistic regression have a global optimum but a deep neural net does not?",
+            "Give a real example of a non-convex loss surface.",
+            "Why does convexity matter for guarantees in optimization?"
+          ]
         },
         {
           "id": "math-derivatives",
           "label": "Derivatives + chain rule (the only calculus you need)",
           "href": "https://www.3blue1brown.com/lessons/derivatives",
-          "meta": "Watch"
+          "meta": "Watch",
+          "interviewQuestions": [
+            "Walk me through the chain rule on a 2-layer neural network.",
+            "Why do we need partial derivatives for multivariable optimization?",
+            "How are backprop and the chain rule related?"
+          ]
         },
         {
           "id": "math-lagrange",
           "label": "Lagrange multipliers — basics + when they matter",
           "href": "https://en.wikipedia.org/wiki/Lagrange_multiplier",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When are Lagrange multipliers the right tool? Give a constrained-optimization example.",
+            "How does the Lagrangian relate to SVM's dual formulation?",
+            "Why is constrained optimization common in production ML?"
+          ]
         },
         {
           "id": "math-loss-landscape",
           "label": "Loss landscapes — why GD gets stuck",
           "href": "https://losslandscape.com/",
-          "meta": "Visual"
+          "meta": "Visual",
+          "interviewQuestions": [
+            "Why does GD sometimes get stuck — and what do you do about it?",
+            "How does momentum help escape saddle points?",
+            "What does a typical loss landscape look like for an over-parameterized model?"
+          ]
         }
       ]
     }

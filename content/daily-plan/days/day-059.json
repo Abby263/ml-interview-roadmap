@@ -40,13 +40,23 @@
           "id": "sd-streaming",
           "label": "When streaming beats batch",
           "href": "https://www.confluent.io/learn/data-streaming/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "When is streaming the right choice — and when is it just complexity?",
+            "Walk me through point-in-time correctness for a backfill.",
+            "How do you make a data pipeline idempotent?"
+          ]
         },
         {
           "id": "sd-schema-evol",
           "label": "Schema evolution & backfill discipline",
           "href": "https://docs.databricks.com/en/delta/update-schema.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "How do you evolve a schema without breaking downstream models?",
+            "What's the right backfill discipline for a column rename?",
+            "How would you test a schema migration before rolling it out?"
+          ]
         }
       ]
     }

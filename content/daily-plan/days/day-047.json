@@ -40,13 +40,23 @@
           "id": "llm-eval-faithfulness",
           "label": "Faithfulness vs answer relevance vs citation accuracy (Ragas)",
           "href": "https://docs.ragas.io/en/stable/concepts/metrics/index.html",
-          "meta": "Docs"
+          "meta": "Docs",
+          "interviewQuestions": [
+            "Walk me through evaluating a RAG system end-to-end.",
+            "What goes wrong if you only measure BLEU or ROUGE?",
+            "How do you measure faithfulness in production?"
+          ]
         },
         {
           "id": "llm-eval-judge",
           "label": "LLM-as-judge calibration against humans",
           "href": "https://huyenchip.com/2024/07/25/genai-platform.html",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How do you calibrate an LLM-judge against human ratings?",
+            "What's the failure mode of an LLM-judge calibrated only against itself?",
+            "When is an LLM-judge cheaper than human eval, and when isn't it?"
+          ]
         }
       ]
     }

@@ -40,13 +40,23 @@
           "id": "dl-attention",
           "label": "The Annotated Transformer",
           "href": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
-          "meta": "Read (canonical)"
+          "meta": "Read (canonical)",
+          "interviewQuestions": [
+            "Walk through self-attention(Q, K, V) end-to-end.",
+            "Why is multi-head attention better than one big head?",
+            "What are positional encodings and why are they needed?"
+          ]
         },
         {
           "id": "dl-self-attention",
           "label": "Walk through attention(Q, K, V) end to end",
           "href": "https://jalammar.github.io/illustrated-transformer/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why do transformers scale better than RNNs for long sequences?",
+            "What's the cost of self-attention in sequence length, and what mitigations exist?",
+            "Compare absolute vs rotary positional embeddings."
+          ]
         }
       ]
     }
