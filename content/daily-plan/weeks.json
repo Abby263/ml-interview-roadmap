@@ -1,0 +1,78 @@
+[
+  {
+    "week": 1,
+    "title": "Statistics, probability, linear algebra, and optimization"
+  },
+  {
+    "week": 2,
+    "title": "Traditional ML basics + stack / binary search practice"
+  },
+  {
+    "week": 3,
+    "title": "Traditional ML practicals: trees, imbalance, features, ML coding"
+  },
+  {
+    "week": 4,
+    "title": "SQL support + deep learning foundations"
+  },
+  {
+    "week": 5,
+    "title": "Deep learning finish + MLOps launch"
+  },
+  {
+    "week": 6,
+    "title": "MLOps finish + GenAI foundations"
+  },
+  {
+    "week": 7,
+    "title": "GenAI: prompting, RAG, retrieval, eval, fine-tuning, agents"
+  },
+  {
+    "week": 8,
+    "title": "Guardrails + LLMOps release gates, tracing, cost, safety"
+  },
+  {
+    "week": 9,
+    "title": "LLMOps finish + ML system design framework"
+  },
+  {
+    "week": 10,
+    "title": "ML system design cases: recommendations, ads, search, fraud"
+  },
+  {
+    "week": 11,
+    "title": "GenAI system cases + cross-case trade-off rehearsal"
+  },
+  {
+    "week": 12,
+    "title": "OOP, concurrency, AI coding, and company-tag drilling"
+  },
+  {
+    "week": 13,
+    "title": "DSA hard practice + behavioral story construction"
+  },
+  {
+    "week": 14,
+    "title": "Company prep + coding, ML design, and GenAI design mocks"
+  },
+  {
+    "week": 15,
+    "title": "Behavioral mock + weak-area repair + paper/case reading"
+  },
+  {
+    "week": 16,
+    "title": "Mock sprint, system mini-designs, and project deep dives"
+  },
+  {
+    "week": 17,
+    "title": "Final weak-area repair + taper"
+  },
+  {
+    "week": 18,
+    "title": "Final logistics, light review, and day-of prep"
+  },
+  {
+    "week": 19,
+    "title": "Specialization deep dives - CV, NLP, speech, RL, RecSys, infra"
+  }
+]

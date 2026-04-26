@@ -8,7 +8,8 @@ This folder is the editable source for the landing-page daily plan and `/day/[da
 - File names must stay in this format: `day-001.json`, `day-002.json`, etc.
 - Keep `day` aligned with the file name.
 - Keep every `id` inside `tracks[].items[]` stable after launch, because progress tracking stores completed items by id.
-- Do not edit `content/daily-plan/index.ts` for normal content changes. It only imports the per-day JSON files so the app build can bundle them.
+- Edit `content/daily-plan/weeks.json` when a week heading on the landing page needs to change.
+- Adding or removing a `day-###.json` file is picked up automatically at build time, as long as day numbers stay consecutive.
 
 ## Day schema
 
@@ -65,4 +66,19 @@ ML-focused pillars are:
 - `llmops`
 - `ml-system-design`
 
-Valid pillars are defined in `lib/site-data.ts`.
+## Week headings
+
+The landing page groups days into weeks. Edit `content/daily-plan/weeks.json` to change those headings:
+
+```json
+[
+  {
+    "week": 1,
+    "title": "Statistics, probability, linear algebra, and optimization"
+  }
+]
+```
+
+Keep week numbers consecutive. If you add enough days to create a new week, add a matching entry here.
+
+Valid pillars are defined in `lib/daily-plan-schema.ts`.

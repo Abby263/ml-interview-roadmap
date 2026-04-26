@@ -9,7 +9,7 @@ import {
   subscribeProgress,
   toggleDayCheck,
 } from "@/lib/progress-store";
-import type { DayPlan } from "@/lib/site-data";
+import type { DayPlan } from "@/lib/daily-plan-schema";
 
 interface DayChecklistProps {
   plan: DayPlan;

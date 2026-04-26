@@ -1,27 +1,22 @@
-import { dailyPlanContent } from "@/content/daily-plan";
-import type { DayPlan, PillarSlug } from "@/lib/site-data";
+import "server-only";
 
-const validPillars = new Set<PillarSlug>([
-  "foundations",
-  "math-stats",
-  "traditional-ml",
-  "deep-learning",
-  "generative-ai",
-  "llmops",
-  "ml-system-design",
-  "mlops",
-  "behavioral-storytelling",
-]);
+import fs from "node:fs";
+import path from "node:path";
 
-const mlPillars = new Set<PillarSlug>([
-  "math-stats",
-  "traditional-ml",
-  "deep-learning",
-  "generative-ai",
-  "llmops",
-  "ml-system-design",
-  "mlops",
-]);
+import {
+  mlDailyPlanPillars,
+  validDailyPlanPillars,
+  type DailyPlanWeek,
+  type DayPlan,
+} from "@/lib/daily-plan-schema";
+import type { PillarSlug } from "@/lib/site-data";
+
+const dailyPlanRoot = path.join(process.cwd(), "content", "daily-plan");
+const daysRoot = path.join(dailyPlanRoot, "days");
+const weeksPath = path.join(dailyPlanRoot, "weeks.json");
+const dayFilePattern = /^day-(\d{3})\.json$/;
+const validPillars = new Set<PillarSlug>(validDailyPlanPillars);
+const mlPillars = new Set<PillarSlug>(mlDailyPlanPillars);
 
 function assertString(value: unknown, field: string, file: string) {
   if (typeof value !== "string" || value.trim() === "") {
@@ -94,14 +89,36 @@ function validateDayPlan(day: DayPlan, file: string) {
   if (day.questionIds !== undefined && !Array.isArray(day.questionIds)) {
     throw new Error(`${file}: questionIds must be an array when present`);
   }
+  for (const [index, questionId] of (day.questionIds ?? []).entries()) {
+    assertString(questionId, `questionIds[${index}]`, file);
+  }
+}
+
+function readJsonFile<T>(filePath: string): T {
+  return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
+}
+
+function listDayFiles() {
+  return fs
+    .readdirSync(daysRoot)
+    .filter((file) => dayFilePattern.test(file))
+    .sort((left, right) => {
+      const leftDay = Number(left.match(dayFilePattern)?.[1]);
+      const rightDay = Number(right.match(dayFilePattern)?.[1]);
+      return leftDay - rightDay;
+    });
 }
 
 function loadDailyPlan(): DayPlan[] {
-  const days = dailyPlanContent.map((raw, index) => {
-    const day = raw as unknown as DayPlan;
-    const file = `day-${String(index + 1).padStart(3, "0")}.json`;
+  const files = listDayFiles();
+  if (files.length === 0) {
+    throw new Error("content/daily-plan/days must contain day-###.json files");
+  }
+
+  const days = files.map((file) => {
+    const day = readJsonFile<DayPlan>(path.join(daysRoot, file));
     validateDayPlan(day, file);
-    const expectedDay = index + 1;
+    const expectedDay = Number(file.match(dayFilePattern)?.[1]);
     if (day.day !== expectedDay) {
       throw new Error(`${file}: day must match file name (${expectedDay})`);
     }
@@ -118,7 +135,38 @@ function loadDailyPlan(): DayPlan[] {
   return days;
 }
 
+function validateWeek(week: DailyPlanWeek, file: string) {
+  if (!Number.isInteger(week.week) || week.week < 1) {
+    throw new Error(`${file}: week must be a positive integer`);
+  }
+  assertString(week.title, "title", file);
+}
+
+function loadDailyPlanWeeks(plan: DayPlan[]): DailyPlanWeek[] {
+  const weeks = readJsonFile<DailyPlanWeek[]>(weeksPath);
+  if (!Array.isArray(weeks) || weeks.length === 0) {
+    throw new Error("content/daily-plan/weeks.json must be a non-empty array");
+  }
+
+  const requiredWeeks = Math.ceil(plan.length / 7);
+  for (const [index, week] of weeks.entries()) {
+    validateWeek(week, "weeks.json");
+    const expected = index + 1;
+    if (week.week !== expected) {
+      throw new Error(`weeks.json: week ${week.week} must be ordered as ${expected}`);
+    }
+  }
+  if (weeks.length < requiredWeeks) {
+    throw new Error(
+      `weeks.json: expected at least ${requiredWeeks} week titles for ${plan.length} days`
+    );
+  }
+
+  return weeks;
+}
+
 export const dailyPlan = loadDailyPlan();
+export const dailyPlanWeeks = loadDailyPlanWeeks(dailyPlan);
 
 export function getDayPlan(day: number) {
   return dailyPlan.find((entry) => entry.day === day);

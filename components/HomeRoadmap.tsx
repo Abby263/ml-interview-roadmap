@@ -10,7 +10,11 @@ import {
   setDayChecks,
   subscribeProgress,
 } from "@/lib/progress-store";
-import { dayItemCount, type DayPlan } from "@/lib/site-data";
+import {
+  dayItemCount,
+  type DailyPlanWeek,
+  type DayPlan,
+} from "@/lib/daily-plan-schema";
 
 interface Week {
   number: number;
@@ -18,31 +22,8 @@ interface Week {
   days: DayPlan[];
 }
 
-// Explicit per-week titles. Derived from a content map of what each week
-// actually covers (DSA + ML/concept), not from any single day's pillar.
-const WEEK_TITLES: Record<number, string> = {
-  1: "Statistics, probability, linear algebra, and optimization",
-  2: "Traditional ML basics + stack / binary search practice",
-  3: "Traditional ML practicals: trees, imbalance, features, ML coding",
-  4: "SQL support + deep learning foundations",
-  5: "Deep learning finish + MLOps launch",
-  6: "MLOps finish + GenAI foundations",
-  7: "GenAI: prompting, RAG, retrieval, eval, fine-tuning, agents",
-  8: "Guardrails + LLMOps release gates, tracing, cost, safety",
-  9: "LLMOps finish + ML system design framework",
-  10: "ML system design cases: recommendations, ads, search, fraud",
-  11: "GenAI system cases + cross-case trade-off rehearsal",
-  12: "OOP, concurrency, AI coding, and company-tag drilling",
-  13: "DSA hard practice + behavioral story construction",
-  14: "Company prep + coding, ML design, and GenAI design mocks",
-  15: "Behavioral mock + weak-area repair + paper/case reading",
-  16: "Mock sprint, system mini-designs, and project deep dives",
-  17: "Final weak-area repair + taper",
-  18: "Final logistics, light review, and day-of prep",
-  19: "Specialization deep dives — CV, NLP, speech, RL, RecSys, infra",
-};
-
-function chunkWeeks(plan: DayPlan[]): Week[] {
+function chunkWeeks(plan: DayPlan[], weekConfig: DailyPlanWeek[]): Week[] {
+  const weekTitles = new Map(weekConfig.map((week) => [week.week, week.title]));
   const weeks: Week[] = [];
   for (let i = 0; i < plan.length; i += 7) {
     const days = plan.slice(i, i + 7);
@@ -50,7 +31,7 @@ function chunkWeeks(plan: DayPlan[]): Week[] {
     const number = Math.floor(i / 7) + 1;
     weeks.push({
       number,
-      title: WEEK_TITLES[number] ?? "",
+      title: weekTitles.get(number) ?? "",
       days,
     });
   }
@@ -68,7 +49,13 @@ function useAuthState(): { canTrack: boolean } {
   return { canTrack: Boolean(isSignedIn) };
 }
 
-export default function HomeRoadmap({ dailyPlan }: { dailyPlan: DayPlan[] }) {
+export default function HomeRoadmap({
+  dailyPlan,
+  dailyPlanWeeks,
+}: {
+  dailyPlan: DayPlan[];
+  dailyPlanWeeks: DailyPlanWeek[];
+}) {
   const { canTrack } = useAuthState();
   const progress = useSyncExternalStore(
     subscribeProgress,
@@ -108,7 +95,7 @@ export default function HomeRoadmap({ dailyPlan }: { dailyPlan: DayPlan[] }) {
     };
   }, [canTrack]);
 
-  const weeks = chunkWeeks(dailyPlan);
+  const weeks = chunkWeeks(dailyPlan, dailyPlanWeeks);
 
   // Site-wide totals — only shown to signed-in users.
   const totalItems = dailyPlan.reduce((s, d) => s + dayItemCount(d), 0);

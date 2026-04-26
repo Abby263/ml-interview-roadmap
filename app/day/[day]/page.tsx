@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import DayChecklist from "@/components/DayChecklist";
+import { listCaseStudyEntries } from "@/lib/content";
 import { dailyPlan, getDayPlan } from "@/lib/daily-plan";
 import {
-  caseStudies,
   getPillarBySlug,
   getPillarHref,
   getTopicById,
@@ -42,7 +42,9 @@ export default async function DayPage({
   const pillar = getPillarBySlug(plan.pillar);
   const topic = plan.topicId ? getTopicById(plan.topicId) : undefined;
   const caseStudy = plan.caseStudySlug
-    ? caseStudies.find((c) => c.slug === plan.caseStudySlug)
+    ? (await listCaseStudyEntries()).find(
+        (study) => study.slug === plan.caseStudySlug
+      )
     : undefined;
   const linkedQuestions = (plan.questionIds ?? [])
     .map((id) => questions.find((q) => q.id === id))
