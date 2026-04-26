@@ -1,0 +1,61 @@
+{
+  "day": 18,
+  "title": "Trees hard + Clustering / PCA / anomaly detection",
+  "pillar": "traditional-ml",
+  "focus": "Trickier tree problems + the unsupervised toolkit.",
+  "tracks": [
+    {
+      "label": "DSA · Trees",
+      "items": [
+        {
+          "id": "lc-construct-binary-tree-from-preorder-and-inorder-traversal",
+          "label": "Construct Binary Tree From Preorder And Inorder Traversal",
+          "href": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-binary-tree-maximum-path-sum",
+          "label": "Binary Tree Maximum Path Sum",
+          "href": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-serialize-and-deserialize-binary-tree",
+          "label": "Serialize And Deserialize Binary Tree",
+          "href": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Unsupervised",
+      "items": [
+        {
+          "id": "ml-kmeans",
+          "label": "k-means vs hierarchical vs DBSCAN — assumptions each makes",
+          "href": "https://scikit-learn.org/stable/modules/clustering.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "ml-pca",
+          "label": "PCA as compression / denoising / visualization",
+          "href": "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does k-means silently fail? (Hint: shape of clusters.)",
+    "What does PCA throw away — and why does that matter for downstream models?",
+    "How do you choose K for k-means without ground truth?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ],
+  "topicId": "anomaly-detection"
+}

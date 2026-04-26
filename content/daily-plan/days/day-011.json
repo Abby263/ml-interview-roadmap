@@ -1,0 +1,65 @@
+{
+  "day": 11,
+  "title": "Binary Search (cont.) + Logistic regression + regularization",
+  "pillar": "traditional-ml",
+  "focus": "Finish binary search + logistic regression + L1 vs L2.",
+  "tracks": [
+    {
+      "label": "DSA · Binary Search",
+      "items": [
+        {
+          "id": "lc-search-in-rotated-sorted-array",
+          "label": "Search IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+          "meta": "Binary Search"
+        },
+        {
+          "id": "lc-time-based-key-value-store",
+          "label": "Time Based Key Value Store",
+          "href": "https://leetcode.com/problems/time-based-key-value-store/",
+          "meta": "Binary Search"
+        },
+        {
+          "id": "lc-median-of-two-sorted-arrays",
+          "label": "Median OF Two Sorted Arrays",
+          "href": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "meta": "Binary Search"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Logistic regression",
+      "items": [
+        {
+          "id": "ml-logreg",
+          "label": "Derive logistic loss + gradient by hand",
+          "href": "https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-l1-vs-l2",
+          "label": "L1 vs L2 — sparsity vs shrinkage intuition",
+          "href": "https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why does L1 produce sparse weights and L2 doesn't?",
+    "What does multicollinearity do to logistic regression coefficients?",
+    "Walk me through how you would calibrate a logistic-regression model."
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    },
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

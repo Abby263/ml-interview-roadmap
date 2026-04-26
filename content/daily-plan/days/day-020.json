@@ -1,0 +1,59 @@
+{
+  "day": 20,
+  "title": "Heap + ML coding from scratch (linear)",
+  "pillar": "traditional-ml",
+  "focus": "Top-K patterns + implement linear regression from scratch.",
+  "tracks": [
+    {
+      "label": "DSA · Heap",
+      "items": [
+        {
+          "id": "lc-kth-largest-element-in-a-stream",
+          "label": "Kth Largest Element IN A Stream",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+          "meta": "Heap / Priority Queue"
+        },
+        {
+          "id": "lc-last-stone-weight",
+          "label": "Last Stone Weight",
+          "href": "https://leetcode.com/problems/last-stone-weight/",
+          "meta": "Heap / Priority Queue"
+        },
+        {
+          "id": "lc-k-closest-points-to-origin",
+          "label": "K Closest Points TO Origin",
+          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
+          "meta": "Heap / Priority Queue"
+        },
+        {
+          "id": "lc-kth-largest-element-in-an-array",
+          "label": "Kth Largest Element IN AN Array",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "ML coding · From scratch",
+      "items": [
+        {
+          "id": "ml-code-linreg",
+          "label": "Implement linear regression with GD (NumPy only)",
+          "meta": "Code"
+        },
+        {
+          "id": "ml-code-test",
+          "label": "Fit on toy data; plot loss curve; reason about convergence",
+          "meta": "Code"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through your gradient update for linear regression.",
+    "How would you extend this to L2 regularization in 5 minutes?",
+    "Why might GD diverge — and how would you detect it?"
+  ],
+  "references": [],
+  "topicId": "ml-from-scratch"
+}

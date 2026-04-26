@@ -1,0 +1,28 @@
+{
+  "day": 104,
+  "title": "Cross-pillar weak-area repair (round 2)",
+  "pillar": "foundations",
+  "focus": "Tighten the gap list one more pass.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "gap2-1",
+          "label": "Re-attempt 2 weakest concept prompts cold",
+          "meta": "Mock"
+        },
+        {
+          "id": "gap2-2",
+          "label": "Re-attempt 2 weakest LC patterns",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's left on the gap list?",
+    "What's the cheapest move that closes it?"
+  ],
+  "references": []
+}

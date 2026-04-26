@@ -1,0 +1,60 @@
+{
+  "day": 46,
+  "title": "Greedy + Reranking",
+  "pillar": "generative-ai",
+  "focus": "Maximum Subarray / Jump Game + cross-encoder rerankers.",
+  "tracks": [
+    {
+      "label": "DSA · Greedy",
+      "items": [
+        {
+          "id": "lc-maximum-subarray",
+          "label": "Maximum Subarray",
+          "href": "https://leetcode.com/problems/maximum-subarray/",
+          "meta": "Greedy"
+        },
+        {
+          "id": "lc-jump-game",
+          "label": "Jump Game",
+          "href": "https://leetcode.com/problems/jump-game/",
+          "meta": "Greedy"
+        },
+        {
+          "id": "lc-jump-game-ii",
+          "label": "Jump Game II",
+          "href": "https://leetcode.com/problems/jump-game-ii/",
+          "meta": "Greedy"
+        },
+        {
+          "id": "lc-gas-station",
+          "label": "Gas Station",
+          "href": "https://leetcode.com/problems/gas-station/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Reranking",
+      "items": [
+        {
+          "id": "rag-rerank",
+          "label": "Bi-encoder vs cross-encoder rerankers",
+          "href": "https://www.sbert.net/examples/applications/cross-encoder/README.html",
+          "meta": "Read"
+        },
+        {
+          "id": "rag-rerank-llm",
+          "label": "LLM-based rerankers — when worth the cost",
+          "href": "https://www.pinecone.io/learn/series/rag/rerankers/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Cross-encoder vs bi-encoder reranking: cost-vs-quality breakdown.",
+    "When does a reranker actually move the needle?",
+    "What's the operational cost of an LLM-judge reranker at scale?"
+  ],
+  "references": []
+}

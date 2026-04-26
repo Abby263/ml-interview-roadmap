@@ -1,0 +1,25 @@
+{
+  "day": 124,
+  "title": "Off day — full rest",
+  "pillar": "behavioral-storytelling",
+  "focus": "No prep. Full reset.",
+  "tracks": [
+    {
+      "label": "Off",
+      "items": [
+        {
+          "id": "off-fun",
+          "label": "Do something fun — not interview-related",
+          "meta": "Recovery"
+        },
+        {
+          "id": "off-sleep",
+          "label": "Sleep 8+ hours",
+          "meta": "Recovery"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

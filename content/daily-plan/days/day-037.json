@@ -1,0 +1,34 @@
+{
+  "day": 37,
+  "title": "Multi-tenant ML systems",
+  "pillar": "mlops",
+  "focus": "Compute / data / policy isolation by risk tier.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mt-isolation",
+          "label": "Multi-tenant SaaS isolation patterns",
+          "href": "https://docs.aws.amazon.com/whitepapers/latest/saas-tenant-isolation-strategies/",
+          "meta": "Read"
+        },
+        {
+          "id": "mt-cost-attr",
+          "label": "Cost attribution across tenants",
+          "href": "https://www.kubecost.com/blog/multi-tenancy/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Compute / data / policy isolation — when does each level apply?",
+    "How do you do per-tenant quotas without starving small tenants?",
+    "What's the simplest audit log that catches cross-tenant leakage?"
+  ],
+  "references": [],
+  "questionIds": [
+    "architect-multi-tenant-isolation"
+  ]
+}

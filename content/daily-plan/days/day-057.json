@@ -1,0 +1,47 @@
+{
+  "day": 57,
+  "title": "LLMOps · Fine-tuning operations and adapter management",
+  "pillar": "llmops",
+  "focus": "Operationalize LoRA, instruction tuning, dataset curation, model cards, and rollout decisions.",
+  "tracks": [
+    {
+      "label": "LLMOps · Adaptation",
+      "items": [
+        {
+          "id": "llmops-ft-vs-rag",
+          "label": "Decide fine-tune vs RAG vs prompt change with a written decision tree",
+          "meta": "Practice"
+        },
+        {
+          "id": "llmops-lora",
+          "label": "Review LoRA / PEFT adapter training and serving implications",
+          "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+          "meta": "Docs"
+        },
+        {
+          "id": "llmops-dataset-quality",
+          "label": "Define data quality checks for supervised fine-tuning datasets",
+          "meta": "Design"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When should you fine-tune instead of using RAG?",
+    "What can go wrong operationally when managing many LoRA adapters?",
+    "How do you evaluate whether a fine-tune improved behavior or memorized examples?"
+  ],
+  "references": [
+    {
+      "label": "Hugging Face — LoRA & PEFT",
+      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    }
+  ],
+  "topicId": "llm-finetuning-ops"
+}

@@ -1,0 +1,81 @@
+{
+  "day": 130,
+  "title": "Specialization · Reinforcement Learning (deep dive)",
+  "pillar": "deep-learning",
+  "focus": "MDP basics, value vs policy methods, exploration-exploitation, RLHF.",
+  "tracks": [
+    {
+      "label": "Read · Foundations",
+      "items": [
+        {
+          "id": "rl-mdp",
+          "label": "MDPs, value functions, policy iteration",
+          "href": "http://incompleteideas.net/book/the-book-2nd.html",
+          "meta": "Book"
+        },
+        {
+          "id": "rl-q-learning",
+          "label": "Q-learning + DQN intuition",
+          "href": "https://lilianweng.github.io/posts/2018-04-08-policy-gradient/",
+          "meta": "Read"
+        },
+        {
+          "id": "rl-policy-grad",
+          "label": "Policy gradient (REINFORCE → PPO)",
+          "href": "https://spinningup.openai.com/en/latest/algorithms/ppo.html",
+          "meta": "Docs"
+        }
+      ]
+    },
+    {
+      "label": "Read · Modern",
+      "items": [
+        {
+          "id": "rl-rlhf",
+          "label": "RLHF as applied RL (PPO over LLM rewards)",
+          "href": "https://huyenchip.com/2023/05/02/rlhf.html",
+          "meta": "Read"
+        },
+        {
+          "id": "rl-bandits",
+          "label": "Multi-armed bandits: contextual bandits in production",
+          "href": "https://eugeneyan.com/writing/bandits/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "rl-design",
+          "label": "Design a content-recommendation system using bandits",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When is a contextual bandit the right model vs a full RL setup?",
+    "Walk me through PPO at a high level — why is the clip ratio there?",
+    "How do you handle exploration in a recommender system without hurting metrics?",
+    "What's the practical difference between RLHF and DPO?"
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Google AI Blog",
+      "href": "https://blog.google/technology/ai/",
+      "source": "Google"
+    },
+    {
+      "label": "OpenAI — Spinning Up in Reinforcement Learning",
+      "href": "https://spinningup.openai.com/en/latest/",
+      "source": "OpenAI"
+    }
+  ]
+}

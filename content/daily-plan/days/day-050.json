@@ -1,0 +1,60 @@
+{
+  "day": 50,
+  "title": "Math & Geometry + Guardrails",
+  "pillar": "generative-ai",
+  "focus": "Rotate Image / Spiral Matrix + layered guardrails (input → schema → policy → output).",
+  "tracks": [
+    {
+      "label": "DSA · Math & Geometry",
+      "items": [
+        {
+          "id": "lc-rotate-image",
+          "label": "Rotate Image",
+          "href": "https://leetcode.com/problems/rotate-image/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-spiral-matrix",
+          "label": "Spiral Matrix",
+          "href": "https://leetcode.com/problems/spiral-matrix/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-set-matrix-zeroes",
+          "label": "Set Matrix Zeroes",
+          "href": "https://leetcode.com/problems/set-matrix-zeroes/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-happy-number",
+          "label": "Happy Number",
+          "href": "https://leetcode.com/problems/happy-number/",
+          "meta": "Math & Geometry"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Safety",
+      "items": [
+        {
+          "id": "llm-jailbreak",
+          "label": "Prompt injection & jailbreaks (OWASP LLM Top 10)",
+          "href": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+          "meta": "Reference"
+        },
+        {
+          "id": "llm-guardrails",
+          "label": "Layered guardrail patterns (NeMo Guardrails)",
+          "href": "https://github.com/NVIDIA/NeMo-Guardrails",
+          "meta": "Reference"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through 4 guardrail layers — what each catches.",
+    "How do you red-team a customer-facing agent?",
+    "What's the right escalation behavior for an unsure LLM in a support context?"
+  ],
+  "references": []
+}

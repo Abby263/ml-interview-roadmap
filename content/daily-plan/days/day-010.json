@@ -1,0 +1,66 @@
+{
+  "day": 10,
+  "title": "Binary Search + Linear regression",
+  "pillar": "traditional-ml",
+  "focus": "Master binary search variants + the linear baseline you must defend.",
+  "tracks": [
+    {
+      "label": "DSA · Binary Search",
+      "items": [
+        {
+          "id": "lc-binary-search",
+          "label": "Binary Search",
+          "href": "https://leetcode.com/problems/binary-search/",
+          "meta": "Binary Search"
+        },
+        {
+          "id": "lc-search-a-2d-matrix",
+          "label": "Search A 2d Matrix",
+          "href": "https://leetcode.com/problems/search-a-2d-matrix/",
+          "meta": "Binary Search"
+        },
+        {
+          "id": "lc-koko-eating-bananas",
+          "label": "Koko Eating Bananas",
+          "href": "https://leetcode.com/problems/koko-eating-bananas/",
+          "meta": "Binary Search"
+        },
+        {
+          "id": "lc-find-minimum-in-rotated-sorted-array",
+          "label": "Find Minimum IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+          "meta": "Binary Search"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Linear regression",
+      "items": [
+        {
+          "id": "ml-linreg-derivation",
+          "label": "Derive normal equation + GD update",
+          "href": "https://web.stanford.edu/~jurafsky/slp3/5.pdf",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-linreg-assumptions",
+          "label": "Five assumptions (and which ones fail loudly)",
+          "href": "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does linear regression break? Walk through 3 failure modes.",
+    "Why is L2 a Bayesian prior on coefficients?",
+    "What does heteroscedasticity do to OLS estimates?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

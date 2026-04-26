@@ -10,7 +10,7 @@ import {
   setDayChecks,
   subscribeProgress,
 } from "@/lib/progress-store";
-import { dailyPlan, dayItemCount, type DayPlan } from "@/lib/site-data";
+import { dayItemCount, type DayPlan } from "@/lib/site-data";
 
 interface Week {
   number: number;
@@ -68,7 +68,7 @@ function useAuthState(): { canTrack: boolean } {
   return { canTrack: Boolean(isSignedIn) };
 }
 
-export default function HomeRoadmap() {
+export default function HomeRoadmap({ dailyPlan }: { dailyPlan: DayPlan[] }) {
   const { canTrack } = useAuthState();
   const progress = useSyncExternalStore(
     subscribeProgress,

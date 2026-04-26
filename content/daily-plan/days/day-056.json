@@ -1,0 +1,51 @@
+{
+  "day": 56,
+  "title": "LLMOps · Safety, privacy, security, and red teaming",
+  "pillar": "llmops",
+  "focus": "Prepare for interviews that probe prompt injection, data leakage, jailbreaks, policy, and human escalation.",
+  "tracks": [
+    {
+      "label": "LLMOps · Risk controls",
+      "items": [
+        {
+          "id": "llmops-prompt-injection",
+          "label": "Explain prompt injection and data exfiltration in tool/RAG systems",
+          "meta": "Concept"
+        },
+        {
+          "id": "llmops-red-team",
+          "label": "Create a red-team checklist for jailbreaks, unsafe advice, PII leakage, and tool abuse",
+          "meta": "Build"
+        },
+        {
+          "id": "llmops-human-loop",
+          "label": "Design human escalation for high-risk or low-confidence outputs",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you defend a RAG system against prompt injection?",
+    "What should trigger human review in an AI support agent?",
+    "How do privacy and audit requirements change your logging plan?"
+  ],
+  "references": [
+    {
+      "label": "NIST AI Risk Management Framework",
+      "href": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "source": "NIST"
+    },
+    {
+      "label": "Model Context Protocol — connecting AI to external tools",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    },
+    {
+      "label": "Kaggle — AI Ethics",
+      "href": "https://www.kaggle.com/learn/ai-ethics",
+      "source": "Kaggle"
+    }
+  ],
+  "topicId": "llm-safety-security-privacy"
+}

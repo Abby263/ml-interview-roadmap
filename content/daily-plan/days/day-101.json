@@ -1,0 +1,34 @@
+{
+  "day": 101,
+  "title": "End-to-end design rehearsal",
+  "pillar": "ml-system-design",
+  "focus": "One unfamiliar design prompt, performed cleanly.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "rehearse-pick",
+          "label": "Use a prompt you haven't drilled",
+          "meta": "Pick"
+        },
+        {
+          "id": "rehearse-run",
+          "label": "Frame, design, trade off in 60 minutes",
+          "meta": "Mock"
+        },
+        {
+          "id": "rehearse-peer",
+          "label": "Have a peer score against signals",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's your trade-off close?",
+    "Where did you wave hands?",
+    "What's your residual risk plan?"
+  ],
+  "references": []
+}

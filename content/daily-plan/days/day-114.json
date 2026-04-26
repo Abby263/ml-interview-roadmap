@@ -1,0 +1,27 @@
+{
+  "day": 114,
+  "title": "Final weak-area repair",
+  "pillar": "foundations",
+  "focus": "Last pass on the gap list.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "final-gap-1",
+          "label": "Pick the single weakest item; spend 60 min",
+          "meta": "Mock"
+        },
+        {
+          "id": "final-gap-2",
+          "label": "Pick the second weakest; spend 30 min",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Is the gap list short enough to walk in?"
+  ],
+  "references": []
+}

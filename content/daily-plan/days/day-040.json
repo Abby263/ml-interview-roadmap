@@ -1,0 +1,29 @@
+{
+  "day": 40,
+  "title": "ML infra design mock",
+  "pillar": "mlops",
+  "focus": "60-minute infra-flavored design round.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "infra-mock-pick",
+          "label": "Pick a serving + monitoring + retraining prompt",
+          "meta": "Pick"
+        },
+        {
+          "id": "infra-mock-run",
+          "label": "60-min mock",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Defend latency budgets, scaling, fallback paths.",
+    "Trade-off close: which axis would you protect hardest?",
+    "What's your incident playbook for this system?"
+  ],
+  "references": []
+}

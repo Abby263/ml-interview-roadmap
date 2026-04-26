@@ -1,0 +1,52 @@
+{
+  "day": 21,
+  "title": "Heap finish + ML coding (logistic + k-means)",
+  "pillar": "traditional-ml",
+  "focus": "Median stream + logistic regression + k-means from scratch.",
+  "tracks": [
+    {
+      "label": "DSA · Heap",
+      "items": [
+        {
+          "id": "lc-task-scheduler",
+          "label": "Task Scheduler",
+          "href": "https://leetcode.com/problems/task-scheduler/",
+          "meta": "Heap / Priority Queue"
+        },
+        {
+          "id": "lc-design-twitter",
+          "label": "Design Twitter",
+          "href": "https://leetcode.com/problems/design-twitter/",
+          "meta": "Heap / Priority Queue"
+        },
+        {
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "ML coding · From scratch",
+      "items": [
+        {
+          "id": "ml-code-logreg",
+          "label": "Implement logistic regression with binary cross-entropy",
+          "meta": "Code"
+        },
+        {
+          "id": "ml-code-kmeans",
+          "label": "Implement k-means (Lloyd's) + k-means++ init",
+          "meta": "Code"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through 'find median from data stream' with two heaps.",
+    "What's the failure mode of softmax + cross-entropy with class imbalance?",
+    "When does k-means fail catastrophically?"
+  ],
+  "references": []
+}

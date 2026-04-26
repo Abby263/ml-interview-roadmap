@@ -1,0 +1,25 @@
+{
+  "day": 117,
+  "title": "Taper: light review only",
+  "pillar": "behavioral-storytelling",
+  "focus": "No new material. Skim what's already strong.",
+  "tracks": [
+    {
+      "label": "Light review",
+      "items": [
+        {
+          "id": "taper-resume",
+          "label": "Re-read resume + 1-page project brief",
+          "meta": "Read"
+        },
+        {
+          "id": "taper-tradeoffs",
+          "label": "Skim the trade-off playbook once",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

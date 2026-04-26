@@ -1,0 +1,29 @@
+{
+  "day": 105,
+  "title": "Read deeply: 1 paper + 1 case",
+  "pillar": "ml-system-design",
+  "focus": "Build context for follow-up questions you might get.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "deep-paper",
+          "label": "Pick 1 paper relevant to your target team's work; skim",
+          "meta": "Read"
+        },
+        {
+          "id": "deep-case",
+          "label": "Re-read 1 case study and write 5 follow-up questions you'd expect",
+          "href": "/case-studies",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What does this paper get right?",
+    "What's a critique you could voice?"
+  ],
+  "references": []
+}

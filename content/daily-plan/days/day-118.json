@@ -1,0 +1,25 @@
+{
+  "day": 118,
+  "title": "Taper: 1 light coding mock + walk",
+  "pillar": "foundations",
+  "focus": "Stay sharp without burning out.",
+  "tracks": [
+    {
+      "label": "Light",
+      "items": [
+        {
+          "id": "taper-mock",
+          "label": "1 medium LC, 25 min, no Hard",
+          "meta": "Timed"
+        },
+        {
+          "id": "taper-walk",
+          "label": "Walk 30 min — let it absorb",
+          "meta": "Recovery"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

@@ -1,0 +1,31 @@
+{
+  "day": 108,
+  "title": "Cost / latency / quality cascade — mini design",
+  "pillar": "ml-system-design",
+  "focus": "Drill the cascade trade-off until it's automatic.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "cascade-pick",
+          "label": "Pick a system where cascading would help; sketch it",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "cascade-num",
+          "label": "Estimate cost / quality across 3 tiers",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does a cascade hurt instead of help?",
+    "How do you keep the cascade from drifting silently?"
+  ],
+  "references": [],
+  "questionIds": [
+    "architect-cost-optimization"
+  ]
+}

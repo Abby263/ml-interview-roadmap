@@ -1,0 +1,42 @@
+{
+  "day": 75,
+  "title": "Case: Document intelligence",
+  "pillar": "ml-system-design",
+  "focus": "OCR + extraction + calibrated confidence + reviewer queue.",
+  "tracks": [
+    {
+      "label": "Read · Document AI",
+      "items": [
+        {
+          "id": "case-doc-textract",
+          "label": "AWS Textract overview",
+          "href": "https://aws.amazon.com/textract/",
+          "meta": "Docs"
+        },
+        {
+          "id": "case-doc-layoutlm",
+          "label": "LayoutLM family — what it does",
+          "href": "https://huggingface.co/docs/transformers/model_doc/layoutlmv3",
+          "meta": "Docs"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-doc-arch",
+          "label": "Sketch ingest → OCR → layout → extract → validate → confidence → route",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you compute a calibrated per-field confidence?",
+    "When do you build vs buy for OCR?",
+    "What's the right routing rule between auto-accept and manual review?"
+  ],
+  "references": [],
+  "caseStudySlug": "document-intelligence"
+}

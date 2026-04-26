@@ -1,0 +1,40 @@
+{
+  "day": 95,
+  "title": "Coding mock — OpenAI / OOP style",
+  "pillar": "foundations",
+  "focus": "Object-modeling design problem under interview pressure.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-oai-pick",
+          "label": "Pick an OOP design problem (Cache, Queue, Rate Limiter)",
+          "meta": "Pick"
+        },
+        {
+          "id": "mock-oai-walk",
+          "label": "Walk requirements → classes → methods → extension question",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "mock-oai-prep",
+          "label": "Be ready for a non-standard behavior round + project presentation",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What classes would you need? What's the interface for each?",
+    "How would you extend this to be distributed?",
+    "What test cases would you write first?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    }
+  ]
+}

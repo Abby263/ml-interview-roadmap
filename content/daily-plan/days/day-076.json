@@ -1,0 +1,41 @@
+{
+  "day": 76,
+  "title": "Cross-case design rehearsal",
+  "pillar": "ml-system-design",
+  "focus": "Pick one case you haven't drilled. Time a 60-min mock cold.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "case-cross-pick",
+          "label": "Pick a fresh case study",
+          "href": "/case-studies",
+          "meta": "Pick"
+        },
+        {
+          "id": "case-cross-mock",
+          "label": "60-min mock with a peer or solo",
+          "meta": "Mock"
+        },
+        {
+          "id": "case-cross-score",
+          "label": "Self-score against the framework",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What did you skip under time pressure?",
+    "Where did you wave hands?",
+    "What's the one trade-off you'd defend hardest if pushed?"
+  ],
+  "references": [
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import HomeRoadmap from "@/components/HomeRoadmap";
-import { dailyPlan } from "@/lib/site-data";
+import { dailyPlan } from "@/lib/daily-plan";
 
 export default function Home() {
   const totalDays = dailyPlan.length;
@@ -22,7 +22,7 @@ export default function Home() {
         </p>
       </header>
 
-      <HomeRoadmap />
+      <HomeRoadmap dailyPlan={dailyPlan} />
 
       <footer className="space-y-3 border-t border-line pt-8 text-sm leading-7 text-muted">
         <p className="text-xs">

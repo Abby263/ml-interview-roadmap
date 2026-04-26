@@ -1,0 +1,33 @@
+{
+  "day": 89,
+  "title": "Behavioral · Ownership / failure story",
+  "pillar": "behavioral-storytelling",
+  "focus": "Show learning without minimizing impact.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "beh-fail-star",
+          "label": "Write one failure story in STAR format",
+          "meta": "Doc"
+        },
+        {
+          "id": "beh-fail-action",
+          "label": "Make sure the corrective action is concrete (process / metric / system)",
+          "meta": "Doc"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Tell me about a project where your model failed after deployment.",
+    "What process changed because of this?",
+    "What would you do earlier next time?"
+  ],
+  "references": [],
+  "topicId": "behavioral-ownership",
+  "questionIds": [
+    "story-failure"
+  ]
+}

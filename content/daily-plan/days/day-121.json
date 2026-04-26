@@ -1,0 +1,30 @@
+{
+  "day": 121,
+  "title": "Logistics + setup",
+  "pillar": "behavioral-storytelling",
+  "focus": "Set up the week-of-interview the way athletes taper.",
+  "tracks": [
+    {
+      "label": "Logistics",
+      "items": [
+        {
+          "id": "log-cal",
+          "label": "Calendar holds for sleep + meals + walks",
+          "meta": "Setup"
+        },
+        {
+          "id": "log-tools",
+          "label": "Verify hardware: webcam, mic, charger, IDE setup",
+          "meta": "Setup"
+        },
+        {
+          "id": "log-mental",
+          "label": "One mental rehearsal of the worst case",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

@@ -1,0 +1,66 @@
+{
+  "day": 25,
+  "title": "Graphs DFS/BFS + Optimizers",
+  "pillar": "deep-learning",
+  "focus": "Grid DFS/BFS + SGD vs Adam + LR schedules.",
+  "tracks": [
+    {
+      "label": "DSA · Graphs",
+      "items": [
+        {
+          "id": "lc-number-of-islands",
+          "label": "Number OF Islands",
+          "href": "https://leetcode.com/problems/number-of-islands/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-clone-graph",
+          "label": "Clone Graph",
+          "href": "https://leetcode.com/problems/clone-graph/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-max-area-of-island",
+          "label": "Max Area OF Island",
+          "href": "https://leetcode.com/problems/max-area-of-island/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-pacific-atlantic-water-flow",
+          "label": "Pacific Atlantic Water Flow",
+          "href": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · Optimizers",
+      "items": [
+        {
+          "id": "dl-adam",
+          "label": "Adam vs SGD with momentum — when each generalizes better",
+          "href": "https://ruder.io/optimizing-gradient-descent/",
+          "meta": "Read"
+        },
+        {
+          "id": "dl-lr-warmup",
+          "label": "LR warmup + cosine decay — why it stabilizes early training",
+          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does Adam generalize worse than SGD with momentum?",
+    "What does LR warmup actually fix?",
+    "Walk me through how you'd find a good LR for a new model."
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    }
+  ]
+}

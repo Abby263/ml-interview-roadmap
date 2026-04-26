@@ -1,0 +1,33 @@
+{
+  "day": 106,
+  "title": "Mock sprint — DSA Hard + ML design",
+  "pillar": "foundations",
+  "focus": "60 min DSA Hard then 60 min ML design back to back.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "sprint-hard",
+          "label": "DSA Hard, 60 min",
+          "meta": "Timed"
+        },
+        {
+          "id": "sprint-design",
+          "label": "ML design, 60 min",
+          "meta": "Mock"
+        },
+        {
+          "id": "sprint-review",
+          "label": "Capture residual gaps for tomorrow",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Where did fatigue cost you?",
+    "Did the design quality drop after the coding round?"
+  ],
+  "references": []
+}

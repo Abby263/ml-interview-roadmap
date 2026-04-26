@@ -1,0 +1,57 @@
+{
+  "day": 52,
+  "title": "LLMOps · Prompt and model versioning",
+  "pillar": "llmops",
+  "focus": "Turn prompts, tools, retrieval configs, and model choices into versioned release artifacts.",
+  "tracks": [
+    {
+      "label": "LLMOps · Release discipline",
+      "items": [
+        {
+          "id": "llmops-prompt-registry",
+          "label": "Create a prompt registry entry with owner, task, model, tools, schema, and eval set",
+          "meta": "Build"
+        },
+        {
+          "id": "llmops-model-pinning",
+          "label": "Explain model pinning, upgrade windows, and rollback criteria",
+          "href": "https://platform.openai.com/docs/guides/prompt-engineering/strategies-to-improve-reliability",
+          "meta": "Docs"
+        },
+        {
+          "id": "llmops-config-diff",
+          "label": "Draft a release note for changing retrieval, prompt, and model routing together",
+          "meta": "Practice"
+        }
+      ]
+    },
+    {
+      "label": "Interview",
+      "items": [
+        {
+          "id": "llmops-q-versioning",
+          "label": "Answer: what should be versioned in an LLM application besides code?",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What do you version in a production LLM system besides application code?",
+    "How do you safely upgrade a model used by a customer-facing assistant?",
+    "What belongs in a prompt release note?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    }
+  ],
+  "topicId": "llm-prompt-versioning"
+}

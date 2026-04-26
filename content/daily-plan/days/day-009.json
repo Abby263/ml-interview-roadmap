@@ -1,0 +1,60 @@
+{
+  "day": 9,
+  "title": "Stack (cont.) + Loss functions",
+  "pillar": "traditional-ml",
+  "focus": "Finish stack + connect losses to gradients + when each fits.",
+  "tracks": [
+    {
+      "label": "DSA · Stack",
+      "items": [
+        {
+          "id": "lc-daily-temperatures",
+          "label": "Daily Temperatures",
+          "href": "https://leetcode.com/problems/daily-temperatures/",
+          "meta": "Stack"
+        },
+        {
+          "id": "lc-car-fleet",
+          "label": "Car Fleet",
+          "href": "https://leetcode.com/problems/car-fleet/",
+          "meta": "Stack"
+        },
+        {
+          "id": "lc-largest-rectangle-in-histogram",
+          "label": "Largest Rectangle IN Histogram",
+          "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+          "meta": "Stack"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Loss functions",
+      "items": [
+        {
+          "id": "ml-loss-mse-mae",
+          "label": "MSE vs MAE vs Huber — when each",
+          "href": "https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23/",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-loss-cross-entropy",
+          "label": "Binary & categorical cross-entropy (derive the gradient)",
+          "href": "https://gombru.github.io/2018/05/23/cross_entropy_loss/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why is cross-entropy preferred over MSE for classification?",
+    "When would you choose MAE or Huber over MSE?",
+    "What does a class-weighted loss change about gradient updates?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

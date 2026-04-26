@@ -1,0 +1,53 @@
+{
+  "day": 73,
+  "title": "Case: AI customer-support agent",
+  "pillar": "ml-system-design",
+  "focus": "Tool use + layered guardrails + tiered rollout.",
+  "tracks": [
+    {
+      "label": "Read · Production agents",
+      "items": [
+        {
+          "id": "case-agent-anthropic",
+          "label": "Anthropic: building effective agents",
+          "href": "https://www.anthropic.com/engineering/building-effective-agents",
+          "meta": "Read"
+        },
+        {
+          "id": "case-agent-klarna",
+          "label": "Klarna's customer-service AI assistant — public reports",
+          "href": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-agent-arch",
+          "label": "Sketch action allowlist + planner/executor split",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "case-agent-tiered",
+          "label": "Tiered rollout: shadow → read-only → tier-1 → tier-2",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's an example of an irreversible action that needs hard human-in-the-loop?",
+    "How do you keep the agent from looping on a failing tool?",
+    "What's your red-team plan for a customer-facing agent?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    }
+  ],
+  "caseStudySlug": "customer-support-agent"
+}

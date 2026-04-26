@@ -1,0 +1,60 @@
+{
+  "day": 16,
+  "title": "Trees BFS + Hyperparameter tuning",
+  "pillar": "traditional-ml",
+  "focus": "Level-order patterns + tune efficiently without overfitting CV.",
+  "tracks": [
+    {
+      "label": "DSA · Trees",
+      "items": [
+        {
+          "id": "lc-subtree-of-another-tree",
+          "label": "Subtree OF Another Tree",
+          "href": "https://leetcode.com/problems/subtree-of-another-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-lowest-common-ancestor-of-a-binary-search-tree",
+          "label": "Lowest Common Ancestor OF A Binary Search Tree",
+          "href": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-binary-tree-level-order-traversal",
+          "label": "Binary Tree Level Order Traversal",
+          "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-binary-tree-right-side-view",
+          "label": "Binary Tree Right Side View",
+          "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Hyperparameter tuning",
+      "items": [
+        {
+          "id": "ml-tuning-strategies",
+          "label": "Grid vs random vs Bayesian search",
+          "href": "https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-tuning-budget",
+          "label": "Hyperband / successive halving — why they work",
+          "href": "https://research.google/pubs/google-vizier-a-service-for-black-box-optimization/",
+          "meta": "Paper"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why is random search often better than grid search?",
+    "How do you avoid leaking validation signal during tuning?",
+    "When is nested CV worth its compute cost?"
+  ],
+  "references": []
+}

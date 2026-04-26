@@ -1,0 +1,42 @@
+{
+  "day": 68,
+  "title": "Case: Search ranking (part 1)",
+  "pillar": "ml-system-design",
+  "focus": "Three-stage architecture: query understanding → retrieval → ranking.",
+  "tracks": [
+    {
+      "label": "Read · Search ML",
+      "items": [
+        {
+          "id": "case-search-yan",
+          "label": "Eugene Yan — search ranking architecture",
+          "href": "https://eugeneyan.com/writing/search-query-matching/",
+          "meta": "Read"
+        },
+        {
+          "id": "case-search-airbnb",
+          "label": "Airbnb listing embeddings paper",
+          "href": "https://www.kdd.org/kdd2018/accepted-papers/view/real-time-personalization-using-embeddings-for-search-ranking-at-airbnb",
+          "meta": "Paper"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-search-stages",
+          "label": "Sketch query understanding + retrieval + ranking with budgets",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you handle query understanding for ambiguous queries?",
+    "When does learning-to-rank beat a simple linear scoring function?",
+    "How would you cold-start search for a new geographic market?"
+  ],
+  "references": [],
+  "caseStudySlug": "search-ranking"
+}

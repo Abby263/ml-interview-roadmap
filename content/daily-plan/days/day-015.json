@@ -1,0 +1,73 @@
+{
+  "day": 15,
+  "title": "Trees DFS + Trees & ensembles (GBDT)",
+  "pillar": "traditional-ml",
+  "focus": "Tree DFS templates + the tabular default (XGBoost / LightGBM).",
+  "tracks": [
+    {
+      "label": "DSA · Trees",
+      "items": [
+        {
+          "id": "lc-invert-binary-tree",
+          "label": "Invert Binary Tree",
+          "href": "https://leetcode.com/problems/invert-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-maximum-depth-of-binary-tree",
+          "label": "Maximum Depth OF Binary Tree",
+          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-diameter-of-binary-tree",
+          "label": "Diameter OF Binary Tree",
+          "href": "https://leetcode.com/problems/diameter-of-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-balanced-binary-tree",
+          "label": "Balanced Binary Tree",
+          "href": "https://leetcode.com/problems/balanced-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-same-tree",
+          "label": "Same Tree",
+          "href": "https://leetcode.com/problems/same-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Trees & ensembles",
+      "items": [
+        {
+          "id": "ml-gbdt-paper",
+          "label": "Read: XGBoost paper (skim sections 1-3)",
+          "href": "https://arxiv.org/abs/1603.02754",
+          "meta": "Paper"
+        },
+        {
+          "id": "ml-rf-vs-gbdt",
+          "label": "Random Forest vs GBDT — defend a default",
+          "href": "https://towardsdatascience.com/random-forest-vs-xgboost-comparing-tree-based-algorithms-with-codes-c8a4d18d3e74/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why does GBDT usually beat Random Forest on tabular data?",
+    "When does a single decision tree still beat XGBoost?",
+    "What's the difference between bagging and boosting in one sentence each?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ],
+  "topicId": "tree-ensembles"
+}

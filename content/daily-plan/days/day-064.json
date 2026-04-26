@@ -1,0 +1,42 @@
+{
+  "day": 64,
+  "title": "Case: Short-video recommendations (part 2)",
+  "pillar": "ml-system-design",
+  "focus": "Walk the case end-to-end out loud against the framework.",
+  "tracks": [
+    {
+      "label": "Practice · Out loud",
+      "items": [
+        {
+          "id": "case-vid-mock",
+          "label": "Time yourself: 50-min mock on the prompt",
+          "meta": "Mock"
+        },
+        {
+          "id": "case-vid-feedback",
+          "label": "Compare to the case page; note 3 gaps",
+          "href": "/case-studies/video-recommendation",
+          "meta": "Compare"
+        }
+      ]
+    },
+    {
+      "label": "Read · Re-ranking & feedback loops",
+      "items": [
+        {
+          "id": "case-vid-rerank",
+          "label": "Diversity in re-ranking (Eugene Yan)",
+          "href": "https://eugeneyan.com/writing/serendipity-and-accuracy-in-recommender-systems/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the one trade-off you'd defend hardest in this design?",
+    "How does your design degrade if the catalog 10x's overnight?",
+    "What feedback-loop pathology would you watch for after launch?"
+  ],
+  "references": [],
+  "caseStudySlug": "video-recommendation"
+}

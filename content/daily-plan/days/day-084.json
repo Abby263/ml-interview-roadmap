@@ -1,0 +1,35 @@
+{
+  "day": 84,
+  "title": "ML model design mock",
+  "pillar": "ml-system-design",
+  "focus": "60-min full case from cold-start to monitoring.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "model-mock-pick",
+          "label": "Pick a fresh case study",
+          "href": "/case-studies",
+          "meta": "Pick"
+        },
+        {
+          "id": "model-mock-run",
+          "label": "60-min mock",
+          "meta": "Mock"
+        },
+        {
+          "id": "model-mock-score",
+          "label": "Trade-off close: name the one trade-off you'd defend hardest",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the one trade-off you'd defend hardest?",
+    "Where did you wave hands?",
+    "What's your residual risk monitoring plan?"
+  ],
+  "references": []
+}

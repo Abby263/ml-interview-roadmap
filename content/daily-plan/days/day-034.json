@@ -1,0 +1,41 @@
+{
+  "day": 34,
+  "title": "Observability for ML",
+  "pillar": "mlops",
+  "focus": "Logs, metrics, traces — and the model-specific overlay.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mlops-otel",
+          "label": "OpenTelemetry overview",
+          "href": "https://opentelemetry.io/docs/concepts/",
+          "meta": "Docs"
+        },
+        {
+          "id": "mlops-prom-grafana",
+          "label": "Prometheus + Grafana for ML serving",
+          "href": "https://prometheus.io/docs/practices/instrumentation/",
+          "meta": "Docs"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-trace",
+          "label": "Trace propagation through inference (request → features → model → response)",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the model-specific overlay on top of standard observability?",
+    "How do you correlate a slow request to a specific model version?",
+    "Walk me through a dashboard you'd actually use in an incident."
+  ],
+  "references": []
+}

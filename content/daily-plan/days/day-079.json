@@ -1,0 +1,41 @@
+{
+  "day": 79,
+  "title": "Concurrency basics",
+  "pillar": "foundations",
+  "focus": "Threads, locks, async — what each is for.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "conc-gil",
+          "label": "Python GIL: threading vs asyncio vs multiprocessing",
+          "href": "https://realpython.com/python-gil/",
+          "meta": "Read"
+        },
+        {
+          "id": "conc-pat",
+          "label": "Producer / consumer pattern",
+          "href": "https://en.wikipedia.org/wiki/Producer-consumer_problem",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "conc-impl-pc",
+          "label": "Implement bounded producer/consumer with a queue + lock",
+          "meta": "Code"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does asyncio beat threading in Python? When does it lose?",
+    "Why is GIL not a problem for ML training but is one for ML serving?",
+    "Walk through a deadlock scenario you'd avoid."
+  ],
+  "references": []
+}

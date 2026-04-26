@@ -1,0 +1,63 @@
+{
+  "day": 49,
+  "title": "Intervals finish + Agents",
+  "pillar": "generative-ai",
+  "focus": "Meeting Rooms / Min-interval + planner / executor split.",
+  "tracks": [
+    {
+      "label": "DSA · Intervals",
+      "items": [
+        {
+          "id": "lc-meeting-rooms-ii",
+          "label": "Meeting Rooms II",
+          "href": "https://leetcode.com/problems/meeting-rooms-ii/",
+          "meta": "Intervals"
+        },
+        {
+          "id": "lc-minimum-interval-to-include-each-query",
+          "label": "Minimum Interval TO Include Each Query",
+          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Agents",
+      "items": [
+        {
+          "id": "llm-agents",
+          "label": "Anthropic: Building effective agents",
+          "href": "https://www.anthropic.com/engineering/building-effective-agents",
+          "meta": "Read (canonical)"
+        },
+        {
+          "id": "llm-tool-use",
+          "label": "Tool-use schemas + permissions",
+          "href": "https://platform.openai.com/docs/guides/function-calling",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When is a multi-agent architecture justified?",
+    "What's the planner / executor split, and why?",
+    "How do you stop an agent from looping on a failing tool?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ],
+  "topicId": "agents-and-guardrails",
+  "questionIds": [
+    "agent-architecture"
+  ]
+}

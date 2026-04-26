@@ -1,0 +1,28 @@
+{
+  "day": 90,
+  "title": "Behavioral · Conflict / disagreement story",
+  "pillar": "behavioral-storytelling",
+  "focus": "Demonstrate disagreement without making the other side look bad.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "beh-conflict",
+          "label": "Pick a real disagreement (technical or cross-functional)",
+          "meta": "Doc"
+        },
+        {
+          "id": "beh-conflict-frame",
+          "label": "Frame as 'we wanted different things, here's how we aligned'",
+          "meta": "Doc"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Tell me about a time you disagreed with your manager.",
+    "How do you decide when to escalate vs let it go?"
+  ],
+  "references": []
+}

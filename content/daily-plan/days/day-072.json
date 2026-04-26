@@ -1,0 +1,53 @@
+{
+  "day": 72,
+  "title": "Case: Enterprise RAG chatbot",
+  "pillar": "ml-system-design",
+  "focus": "Permissioned retrieval + citations + faithfulness.",
+  "tracks": [
+    {
+      "label": "Read · Enterprise RAG",
+      "items": [
+        {
+          "id": "case-rag-langchain",
+          "label": "LangChain RAG cookbook",
+          "href": "https://python.langchain.com/docs/tutorials/rag/",
+          "meta": "Tutorial"
+        },
+        {
+          "id": "case-rag-acl",
+          "label": "Permissioned retrieval patterns",
+          "href": "https://arxiv.org/abs/2305.13631",
+          "meta": "Paper"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-rag-arch",
+          "label": "Sketch ingest → ACL chunks → hybrid retrieval → rerank → cite",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "case-rag-mock",
+          "label": "Time a 50-min mock",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Where do you enforce ACLs — at retrieval time or after generation? Why?",
+    "How do you test for permission leakage?",
+    "What's the right refusal behavior when retrieval is weak?"
+  ],
+  "references": [
+    {
+      "label": "RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ],
+  "caseStudySlug": "enterprise-rag-chatbot"
+}

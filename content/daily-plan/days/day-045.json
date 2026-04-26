@@ -1,0 +1,76 @@
+{
+  "day": 45,
+  "title": "2-D DP finish + Vector stores",
+  "pillar": "generative-ai",
+  "focus": "Distinct Subsequences / Regex Match + HNSW / IVF.",
+  "tracks": [
+    {
+      "label": "DSA · 2-D DP",
+      "items": [
+        {
+          "id": "lc-edit-distance",
+          "label": "Edit Distance",
+          "href": "https://leetcode.com/problems/edit-distance/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-burst-balloons",
+          "label": "Burst Balloons",
+          "href": "https://leetcode.com/problems/burst-balloons/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-regular-expression-matching",
+          "label": "Regular Expression Matching",
+          "href": "https://leetcode.com/problems/regular-expression-matching/",
+          "meta": "2-D Dynamic Programming"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Vector stores",
+      "items": [
+        {
+          "id": "rag-ann",
+          "label": "HNSW vs IVF vs flat — trade-offs",
+          "href": "https://www.pinecone.io/learn/series/faiss/hnsw/",
+          "meta": "Read"
+        },
+        {
+          "id": "rag-bm25",
+          "label": "When BM25 still wins",
+          "href": "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables",
+          "meta": "Read"
+        },
+        {
+          "id": "rag-vdb-explain",
+          "label": "Pinecone — vector databases explained",
+          "href": "https://www.pinecone.io/learn/vector-database/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How does HNSW work at a high level — what's the trade-off vs flat search?",
+    "When is BM25 better than dense retrieval today?",
+    "What's the operational cost of re-embedding when the model changes?"
+  ],
+  "references": [
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "DeepLearning.AI — Building Agentic RAG with LlamaIndex",
+      "href": "https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "Model Context Protocol — connecting AI to external tools",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    }
+  ]
+}

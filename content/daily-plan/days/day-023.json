@@ -1,0 +1,58 @@
+{
+  "day": 23,
+  "title": "Backtracking (cont.) + SQL window functions",
+  "pillar": "foundations",
+  "focus": "Word search / palindrome partitioning + windows for cohort queries.",
+  "tracks": [
+    {
+      "label": "DSA · Backtracking",
+      "items": [
+        {
+          "id": "lc-combination-sum-ii",
+          "label": "Combination Sum II",
+          "href": "https://leetcode.com/problems/combination-sum-ii/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-word-search",
+          "label": "Word Search",
+          "href": "https://leetcode.com/problems/word-search/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-palindrome-partitioning",
+          "label": "Palindrome Partitioning",
+          "href": "https://leetcode.com/problems/palindrome-partitioning/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "SQL · Windows",
+      "items": [
+        {
+          "id": "sql-windows",
+          "label": "ROW_NUMBER, RANK, LAG/LEAD — solve 3 LC SQL Medium",
+          "href": "https://leetcode.com/problemset/database/?topicSlugs=window-function",
+          "meta": "Practice"
+        },
+        {
+          "id": "sql-cohort",
+          "label": "Cohort retention pattern",
+          "href": "https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/cohort-analysis",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Compute day-7 retention by signup cohort. How do you avoid double-counting?",
+    "When is LAG cleaner than a self-join?",
+    "What's the difference between PARTITION BY and GROUP BY?"
+  ],
+  "references": [],
+  "topicId": "sql-window-functions",
+  "questionIds": [
+    "window-functions"
+  ]
+}

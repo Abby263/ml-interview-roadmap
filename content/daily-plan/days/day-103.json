@@ -1,0 +1,28 @@
+{
+  "day": 103,
+  "title": "Coding mock — fresh medium under 25 min",
+  "pillar": "foundations",
+  "focus": "Speed, not novelty.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-fast-1",
+          "label": "Solve a fresh medium in under 25 minutes",
+          "meta": "Timed"
+        },
+        {
+          "id": "mock-fast-2",
+          "label": "Repeat with a different pattern",
+          "meta": "Timed"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What slowed you down?",
+    "Which step were you over-thinking?"
+  ],
+  "references": []
+}

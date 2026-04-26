@@ -1,0 +1,30 @@
+{
+  "day": 111,
+  "title": "Mid-funnel rest day (light review)",
+  "pillar": "behavioral-storytelling",
+  "focus": "Don't add new content. Recovery compounds.",
+  "tracks": [
+    {
+      "label": "Light review",
+      "items": [
+        {
+          "id": "rest-resume",
+          "label": "Skim your resume and 1-page project brief",
+          "meta": "Read"
+        },
+        {
+          "id": "rest-walk",
+          "label": "Do something physical — walk, run, gym",
+          "meta": "Recovery"
+        },
+        {
+          "id": "rest-sleep",
+          "label": "Sleep 8+ hours tonight",
+          "meta": "Recovery"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

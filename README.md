@@ -11,6 +11,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 
 - A 132-day interview roadmap with day-by-day study tasks ordered from statistics through ML system design.
 - Clickable daily pages with checklists, interview prompts, references, linked topics, and case studies.
+- Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
 - A question bank and expanded ML/GenAI/LLMOps system design case-study library.
 - Optional Clerk auth for accounts and optional Supabase sync for cross-device progress.
@@ -83,10 +84,19 @@ CI runs the same lint and production build checks on pushes and pull requests.
 ```text
 app/        Next.js App Router pages, server actions, and route groups
 components/ Shared UI and interactive checklist components
-content/    MDX case studies
+content/    Editable daily plan JSON files and MDX case studies
 lib/        Content data, feature flags, Supabase client, progress store
 proxy.ts    Optional Clerk proxy when auth is configured
 ```
+
+## Editing Daily Content
+
+Daily plan content lives in `content/daily-plan/days/day-001.json` through `day-132.json`.
+Each file mirrors the landing-page/day-page structure: title, pillar, focus, checklist tracks,
+interview questions, references, and optional links to topic or case-study pages.
+
+For ML-focused days, keep `interviewQuestions` in the 2-5 question range and write them as
+real interview prompts rather than topic names. See `content/daily-plan/README.md` for the schema.
 
 ## Deployment
 

@@ -1,0 +1,28 @@
+{
+  "day": 123,
+  "title": "Light: 1 short design + behavioral skim",
+  "pillar": "ml-system-design",
+  "focus": "Stay loose.",
+  "tracks": [
+    {
+      "label": "Light",
+      "items": [
+        {
+          "id": "light-design-30",
+          "label": "30-min design rehearsal — your strongest case",
+          "meta": "Mock"
+        },
+        {
+          "id": "light-beh-skim",
+          "label": "Read each story silently",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What are the first three clarifying questions you would ask before drawing the architecture?",
+    "Which monitoring signal would tell you this design is failing after launch?"
+  ],
+  "references": []
+}

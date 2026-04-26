@@ -1,0 +1,25 @@
+{
+  "day": 122,
+  "title": "Light: 5 quick LC easy + skim resume",
+  "pillar": "foundations",
+  "focus": "Warm up without strain.",
+  "tracks": [
+    {
+      "label": "Light",
+      "items": [
+        {
+          "id": "warm-easy",
+          "label": "5 LC Easy, no time pressure",
+          "meta": "Practice"
+        },
+        {
+          "id": "warm-resume",
+          "label": "Skim resume. Memorize bullet decisions.",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

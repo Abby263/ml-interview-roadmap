@@ -1,0 +1,33 @@
+{
+  "day": 100,
+  "title": "Cross-pillar weak-area repair (round 1)",
+  "pillar": "foundations",
+  "focus": "Spend the full session on the gap list, nothing else.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "gap-pick",
+          "label": "Pick 3 weakest prompts from your gap list",
+          "meta": "Pick"
+        },
+        {
+          "id": "gap-redo",
+          "label": "Re-answer cold, then revisit notes",
+          "meta": "Mock"
+        },
+        {
+          "id": "gap-confirm",
+          "label": "Confirm they leave the gap list",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What pattern is still slowest for you?",
+    "Which ML topic do you avoid in mocks?"
+  ],
+  "references": []
+}

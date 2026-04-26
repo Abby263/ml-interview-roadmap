@@ -1,0 +1,34 @@
+{
+  "day": 97,
+  "title": "ML infra design mock — full case",
+  "pillar": "ml-system-design",
+  "focus": "60-min infra-flavored design (serving + monitoring + retraining).",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-infra-prompt",
+          "label": "Use a prompt focused on serving / scale / cost",
+          "meta": "Pick"
+        },
+        {
+          "id": "mock-infra-run",
+          "label": "60-min mock with a peer or solo",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Defend latency budgets, scaling, fallback paths.",
+    "What's your incident playbook for this system?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    }
+  ]
+}

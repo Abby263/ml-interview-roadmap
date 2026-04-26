@@ -1,0 +1,60 @@
+{
+  "day": 59,
+  "title": "Bit Manipulation + Data pipelines",
+  "pillar": "ml-system-design",
+  "focus": "Single Number / 1-bits + batch vs streaming + idempotency.",
+  "tracks": [
+    {
+      "label": "DSA · Bit Manipulation",
+      "items": [
+        {
+          "id": "lc-single-number",
+          "label": "Single Number",
+          "href": "https://leetcode.com/problems/single-number/",
+          "meta": "Bit Manipulation"
+        },
+        {
+          "id": "lc-number-of-1-bits",
+          "label": "Number OF 1 Bits",
+          "href": "https://leetcode.com/problems/number-of-1-bits/",
+          "meta": "Bit Manipulation"
+        },
+        {
+          "id": "lc-counting-bits",
+          "label": "Counting Bits",
+          "href": "https://leetcode.com/problems/counting-bits/",
+          "meta": "Bit Manipulation"
+        },
+        {
+          "id": "lc-reverse-bits",
+          "label": "Reverse Bits",
+          "href": "https://leetcode.com/problems/reverse-bits/",
+          "meta": "Bit Manipulation"
+        }
+      ]
+    },
+    {
+      "label": "ML system design · Data",
+      "items": [
+        {
+          "id": "sd-streaming",
+          "label": "When streaming beats batch",
+          "href": "https://www.confluent.io/learn/data-streaming/",
+          "meta": "Read"
+        },
+        {
+          "id": "sd-schema-evol",
+          "label": "Schema evolution & backfill discipline",
+          "href": "https://docs.databricks.com/en/delta/update-schema.html",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When is streaming the right choice — and when is it just complexity?",
+    "Walk me through point-in-time correctness for a backfill.",
+    "How do you make a data pipeline idempotent?"
+  ],
+  "references": []
+}

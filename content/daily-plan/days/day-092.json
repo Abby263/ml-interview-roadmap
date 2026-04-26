@@ -1,0 +1,33 @@
+{
+  "day": 92,
+  "title": "Behavioral · Company-specific prep",
+  "pillar": "behavioral-storytelling",
+  "focus": "Tailor stories to each target company's value rubric.",
+  "tracks": [
+    {
+      "label": "Research",
+      "items": [
+        {
+          "id": "beh-company-read",
+          "label": "Read recent posts / blog / RFCs from your top companies",
+          "meta": "Read"
+        },
+        {
+          "id": "beh-company-map",
+          "label": "Map your existing stories to their stated values",
+          "meta": "Doc"
+        },
+        {
+          "id": "beh-company-q",
+          "label": "Prepare 2 questions per round per interviewer",
+          "meta": "Doc"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why this company, specifically?",
+    "What's your strongest value-match story for this company?"
+  ],
+  "references": []
+}

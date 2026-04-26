@@ -1,0 +1,47 @@
+{
+  "day": 70,
+  "title": "Case: Fraud detection (part 1)",
+  "pillar": "ml-system-design",
+  "focus": "Real-time scoring with imbalanced labels + reviewer queue capacity.",
+  "tracks": [
+    {
+      "label": "Read · Fraud ML",
+      "items": [
+        {
+          "id": "case-fraud-stripe",
+          "label": "Stripe Radar overview",
+          "href": "https://stripe.com/radar",
+          "meta": "Read"
+        },
+        {
+          "id": "case-fraud-graph",
+          "label": "Graph features for fraud",
+          "href": "https://www.tigergraph.com/solutions/fraud-detection/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-fraud-arch",
+          "label": "Sketch sync features + cached aggregates + slower enrichment",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "case-fraud-threshold",
+          "label": "Per-segment threshold logic",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you handle the cost imbalance between false positives and false negatives?",
+    "When would you separate the model from the rules engine vs combine them?",
+    "How do you bootstrap labels for a brand-new fraud type?"
+  ],
+  "references": [],
+  "caseStudySlug": "fraud-detection"
+}

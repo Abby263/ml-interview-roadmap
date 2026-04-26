@@ -1,0 +1,172 @@
+{
+  "day": 1,
+  "title": "Arrays & Hashing + Probability + Linear algebra refresh",
+  "pillar": "math-stats",
+  "focus": "Open the loop: easiest NeetCode pattern, probability fundamentals, vectors / matrices warm-up.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Arrays & Hashing",
+      "items": [
+        {
+          "id": "lc-contains-duplicate",
+          "label": "Contains Duplicate",
+          "href": "https://leetcode.com/problems/contains-duplicate/",
+          "meta": "Arrays & Hashing"
+        },
+        {
+          "id": "lc-valid-anagram",
+          "label": "Valid Anagram",
+          "href": "https://leetcode.com/problems/valid-anagram/",
+          "meta": "Arrays & Hashing"
+        },
+        {
+          "id": "lc-two-sum",
+          "label": "Two Sum",
+          "href": "https://leetcode.com/problems/two-sum/",
+          "meta": "Arrays & Hashing"
+        },
+        {
+          "id": "lc-group-anagrams",
+          "label": "Group Anagrams",
+          "href": "https://leetcode.com/problems/group-anagrams/",
+          "meta": "Arrays & Hashing"
+        }
+      ]
+    },
+    {
+      "label": "Math · Probability foundations",
+      "items": [
+        {
+          "id": "stats-bayes",
+          "label": "Bayes intuition: detection / diagnosis / ranking examples",
+          "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
+          "meta": "Interactive"
+        },
+        {
+          "id": "stats-cond-prob",
+          "label": "Conditional probability traps in interviews",
+          "href": "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Math · Linear algebra warm-up",
+      "items": [
+        {
+          "id": "linalg-vectors",
+          "label": "Vectors, matrices, dot product, transpose",
+          "href": "https://www.3blue1brown.com/lessons/vectors",
+          "meta": "Watch"
+        },
+        {
+          "id": "linalg-norms",
+          "label": "Norms + cosine similarity (used everywhere in ML)",
+          "href": "https://machinelearningmastery.com/vector-norms-machine-learning/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Setup",
+      "items": [
+        {
+          "id": "setup-leetcode",
+          "label": "Create LeetCode account; pick 1-2 target companies",
+          "href": "https://leetcode.com/",
+          "meta": "5 min"
+        },
+        {
+          "id": "setup-neetcode",
+          "label": "Bookmark NeetCode roadmap",
+          "href": "https://neetcode.io/roadmap",
+          "meta": "1 min"
+        },
+        {
+          "id": "setup-andrew-ng",
+          "label": "Enroll in Andrew Ng's ML Specialization (skim Course 1 syllabus)",
+          "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+          "meta": "Setup"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
+    "Why can a model with strong recall still have weak positive predictive value?",
+    "What is the dot product geometrically — and how does that relate to cosine similarity?"
+  ],
+  "references": [
+    {
+      "label": "Logan Thorneloe — ML Road Map (curated, free)",
+      "href": "https://github.com/loganthorneloe/ml-road-map",
+      "source": "GitHub"
+    },
+    {
+      "label": "NeetCode YouTube playlists by category",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    },
+    {
+      "label": "14 patterns to ace any coding interview",
+      "href": "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed",
+      "source": "HackerNoon"
+    },
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization (Coursera)",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "3Blue1Brown — Essence of Linear Algebra",
+      "href": "https://www.3blue1brown.com/topics/linear-algebra",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Khan Academy — Linear Algebra",
+      "href": "https://www.khanacademy.org/math/linear-algebra",
+      "source": "Khan Academy"
+    },
+    {
+      "label": "CS50 AI — Probability week",
+      "href": "https://cs50.harvard.edu/ai/2024/weeks/2/",
+      "source": "Harvard"
+    },
+    {
+      "label": "CS50 — intro to programming",
+      "href": "https://cs50.harvard.edu/x/2024/weeks/0/",
+      "source": "Harvard"
+    },
+    {
+      "label": "Google's Python Class",
+      "href": "https://developers.google.com/edu/python",
+      "source": "Google"
+    },
+    {
+      "label": "NumPy quickstart tutorial",
+      "href": "https://numpy.org/doc/stable/user/quickstart.html",
+      "source": "NumPy"
+    },
+    {
+      "label": "Kaggle — Pandas course",
+      "href": "https://www.kaggle.com/learn/pandas",
+      "source": "Kaggle"
+    },
+    {
+      "label": "Pro Git book",
+      "href": "https://git-scm.com/book/en/v2",
+      "source": "Pro Git"
+    }
+  ],
+  "topicId": "probability-toolkit"
+}

@@ -1,0 +1,66 @@
+{
+  "day": 22,
+  "title": "Backtracking + SQL fundamentals",
+  "pillar": "foundations",
+  "focus": "Backtracking template + joins, GROUP BY, CTEs.",
+  "tracks": [
+    {
+      "label": "DSA · Backtracking",
+      "items": [
+        {
+          "id": "lc-subsets",
+          "label": "Subsets",
+          "href": "https://leetcode.com/problems/subsets/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-combination-sum",
+          "label": "Combination Sum",
+          "href": "https://leetcode.com/problems/combination-sum/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-permutations",
+          "label": "Permutations",
+          "href": "https://leetcode.com/problems/permutations/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-subsets-ii",
+          "label": "Subsets II",
+          "href": "https://leetcode.com/problems/subsets-ii/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "SQL · Fundamentals",
+      "items": [
+        {
+          "id": "sql-joins",
+          "label": "Joins, GROUP BY, HAVING — solve 3 LC SQL Easy",
+          "href": "https://leetcode.com/problemset/database/",
+          "meta": "Practice"
+        },
+        {
+          "id": "sql-ctes",
+          "label": "CTEs and recursive CTEs",
+          "href": "https://learnsql.com/blog/sql-recursive-cte/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Generic backtracking template: state, choice, undo — what does each look like?",
+    "When does INNER vs LEFT join silently change your answer?",
+    "Why are recursive CTEs the right tool for graph traversal in SQL?"
+  ],
+  "references": [
+    {
+      "label": "14 patterns to ace any coding interview",
+      "href": "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed",
+      "source": "HackerNoon"
+    }
+  ]
+}

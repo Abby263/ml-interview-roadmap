@@ -1,0 +1,28 @@
+{
+  "day": 91,
+  "title": "Behavioral · Leadership / influence story",
+  "pillar": "behavioral-storytelling",
+  "focus": "Cross-team alignment without inflating your title.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "beh-lead",
+          "label": "Pick a moment you influenced a decision outside your reporting line",
+          "meta": "Doc"
+        },
+        {
+          "id": "beh-lead-rfc",
+          "label": "Show the framing / RFC / data you used",
+          "meta": "Doc"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through a time you influenced a decision outside your team.",
+    "What's an RFC you've written that changed direction?"
+  ],
+  "references": []
+}

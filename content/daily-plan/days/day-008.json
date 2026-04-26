@@ -1,0 +1,74 @@
+{
+  "day": 8,
+  "title": "Stack + Bias-variance trade-off",
+  "pillar": "traditional-ml",
+  "focus": "Stack patterns + the most-asked ML diagnostic.",
+  "tracks": [
+    {
+      "label": "DSA · Stack",
+      "items": [
+        {
+          "id": "lc-valid-parentheses",
+          "label": "Valid Parentheses",
+          "href": "https://leetcode.com/problems/valid-parentheses/",
+          "meta": "Stack"
+        },
+        {
+          "id": "lc-min-stack",
+          "label": "Min Stack",
+          "href": "https://leetcode.com/problems/min-stack/",
+          "meta": "Stack"
+        },
+        {
+          "id": "lc-evaluate-reverse-polish-notation",
+          "label": "Evaluate Reverse Polish Notation",
+          "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          "meta": "Stack"
+        },
+        {
+          "id": "lc-generate-parentheses",
+          "label": "Generate Parentheses",
+          "href": "https://leetcode.com/problems/generate-parentheses/",
+          "meta": "Stack"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Bias-variance",
+      "items": [
+        {
+          "id": "ml-bias-variance",
+          "label": "Read: bias-variance trade-off (then explain it cold)",
+          "href": "https://scott.fortmann-roe.com/docs/BiasVariance.html",
+          "meta": "Concept"
+        },
+        {
+          "id": "ml-bv-curves",
+          "label": "Diagnose under- vs over-fitting from learning curves",
+          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Define bias and variance — what does each look like in a learning curve?",
+    "Why does adding more training data only help one of the two?",
+    "When is regularization the wrong remedy?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    },
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    }
+  ],
+  "questionIds": [
+    "bias-variance"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "day": 61,
+  "title": "Reading + Online serving",
+  "pillar": "ml-system-design",
+  "focus": "No new DSA today — read deeply + design serving for a 100ms p99 budget.",
+  "tracks": [
+    {
+      "label": "Read · ML serving",
+      "items": [
+        {
+          "id": "sd-tritan",
+          "label": "Triton / KServe / Ray Serve — what each is for",
+          "href": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "sd-batching",
+          "label": "Dynamic batching for inference",
+          "href": "https://www.databricks.com/blog/dynamic-batching-llm-inference",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "sd-design-100ms",
+          "label": "Sketch a serving path for a ranking model under 100ms p99",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "sd-fallback",
+          "label": "Add a graceful-degradation fallback",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Decompose a 100ms latency budget across feature fetch, model inference, and post-processing.",
+    "When does dynamic batching hurt latency more than it helps throughput?",
+    "What's a graceful-degradation strategy when the model tier saturates?"
+  ],
+  "references": [
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "Full Stack Deep Learning"
+    }
+  ],
+  "topicId": "online-serving-tradeoffs",
+  "questionIds": [
+    "architect-capacity-planning"
+  ]
+}

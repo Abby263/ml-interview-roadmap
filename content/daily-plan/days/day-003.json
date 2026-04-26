@@ -1,0 +1,54 @@
+{
+  "day": 3,
+  "title": "Two Pointers + Bayesian thinking",
+  "pillar": "math-stats",
+  "focus": "Two-pointer template + Bayes for screening / ranking / uncertainty.",
+  "tracks": [
+    {
+      "label": "DSA · Two Pointers",
+      "items": [
+        {
+          "id": "lc-valid-palindrome",
+          "label": "Valid Palindrome",
+          "href": "https://leetcode.com/problems/valid-palindrome/",
+          "meta": "Two Pointers"
+        },
+        {
+          "id": "lc-two-sum-ii-input-array-is-sorted",
+          "label": "Two Sum II Input Array IS Sorted",
+          "href": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+          "meta": "Two Pointers"
+        },
+        {
+          "id": "lc-3sum",
+          "label": "3sum",
+          "href": "https://leetcode.com/problems/3sum/",
+          "meta": "Two Pointers"
+        }
+      ]
+    },
+    {
+      "label": "Stats · Bayesian thinking",
+      "items": [
+        {
+          "id": "stats-prior-likelihood",
+          "label": "Priors, likelihoods, posteriors in plain language",
+          "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
+          "meta": "Interactive"
+        },
+        {
+          "id": "stats-base-rate",
+          "label": "Base-rate fallacy — the most common interview trap",
+          "href": "https://en.wikipedia.org/wiki/Base_rate_fallacy",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through the cancer-test base-rate problem.",
+    "When does choosing a different prior change a hiring or screening decision?",
+    "Posterior intervals vs. confidence intervals — what's the difference?"
+  ],
+  "references": []
+}

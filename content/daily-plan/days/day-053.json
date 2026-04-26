@@ -1,0 +1,57 @@
+{
+  "day": 53,
+  "title": "LLMOps · Evaluation datasets and regression gates",
+  "pillar": "llmops",
+  "focus": "Build eval sets that catch regressions before prompt, retrieval, model, or tool changes hit users.",
+  "tracks": [
+    {
+      "label": "LLMOps · Evals",
+      "items": [
+        {
+          "id": "llmops-golden-set",
+          "label": "Design a golden dataset with normal, edge, adversarial, and refusal cases",
+          "meta": "Design"
+        },
+        {
+          "id": "llmops-trace-grading",
+          "label": "Study trace-level grading for agent workflows",
+          "href": "https://platform.openai.com/docs/guides/agent-evals",
+          "meta": "Docs"
+        },
+        {
+          "id": "llmops-offline-online",
+          "label": "Separate offline evals from online feedback and escalation metrics",
+          "meta": "Concept"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "llmops-eval-rubric",
+          "label": "Write a rubric for faithfulness, instruction following, safety, latency, and cost",
+          "meta": "Build"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you build a regression test suite for a RAG or agent system?",
+    "What should be graded at the trace level rather than only final answer level?",
+    "How do you keep eval datasets from overfitting to your current prompt?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ],
+  "topicId": "llm-eval-ops"
+}

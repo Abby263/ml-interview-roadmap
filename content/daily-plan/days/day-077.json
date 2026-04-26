@@ -1,0 +1,59 @@
+{
+  "day": 77,
+  "title": "Architect trade-off playbook drill",
+  "pillar": "ml-system-design",
+  "focus": "Memorize the 6 architect trade-offs you'll be asked to defend.",
+  "tracks": [
+    {
+      "label": "Read & rehearse",
+      "items": [
+        {
+          "id": "tradeoff-batch-realtime",
+          "label": "Batch vs real-time inference",
+          "meta": "Concept"
+        },
+        {
+          "id": "tradeoff-ft-rag-prompt",
+          "label": "Fine-tune vs RAG vs prompt",
+          "meta": "Concept"
+        },
+        {
+          "id": "tradeoff-build-buy",
+          "label": "Build vs buy",
+          "meta": "Concept"
+        },
+        {
+          "id": "tradeoff-central-fed",
+          "label": "Centralized platform vs team-owned",
+          "meta": "Concept"
+        },
+        {
+          "id": "tradeoff-acc-cost-lat",
+          "label": "Accuracy vs cost vs latency cascade",
+          "meta": "Concept"
+        },
+        {
+          "id": "tradeoff-retrain-monitor",
+          "label": "Retrain cadence vs monitoring",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When do you default to streaming vs batch?",
+    "When does fine-tuning beat RAG?",
+    "How do you make a build-vs-buy decision reversible?"
+  ],
+  "references": [
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    }
+  ],
+  "questionIds": [
+    "architect-build-vs-buy",
+    "architect-multi-tenant-isolation"
+  ]
+}

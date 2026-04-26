@@ -1,0 +1,23 @@
+{
+  "day": 119,
+  "title": "Taper: 1 design rehearsal — favorite case",
+  "pillar": "ml-system-design",
+  "focus": "Run a familiar case to stay in flow.",
+  "tracks": [
+    {
+      "label": "Light",
+      "items": [
+        {
+          "id": "taper-fav",
+          "label": "Pick a case you know well; run it cleanly in 45 min",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "If this familiar case were changed to require 10x lower latency, what part of your design would change first?",
+    "Which trade-off in your favorite case is most likely to be challenged by a senior interviewer?"
+  ],
+  "references": []
+}

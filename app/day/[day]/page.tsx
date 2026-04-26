@@ -3,10 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import DayChecklist from "@/components/DayChecklist";
+import { dailyPlan, getDayPlan } from "@/lib/daily-plan";
 import {
   caseStudies,
-  dailyPlan,
-  getDayPlan,
   getPillarBySlug,
   getPillarHref,
   getTopicById,

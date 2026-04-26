@@ -1,0 +1,28 @@
+{
+  "day": 112,
+  "title": "Cross-loop simulation: morning coding + afternoon design",
+  "pillar": "foundations",
+  "focus": "Simulate a real onsite cadence.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "sim-am",
+          "label": "AM: 2 coding rounds (45 min each)",
+          "meta": "Timed"
+        },
+        {
+          "id": "sim-pm",
+          "label": "PM: 1 model design + 1 infra design (60 min each)",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Where did stamina fail?",
+    "What would you eat / drink to fix it?"
+  ],
+  "references": []
+}

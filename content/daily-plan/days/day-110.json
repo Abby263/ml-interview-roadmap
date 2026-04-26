@@ -1,0 +1,33 @@
+{
+  "day": 110,
+  "title": "Project deep dive practice — recorded",
+  "pillar": "behavioral-storytelling",
+  "focus": "Record yourself, watch back, kill filler.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "rec-proj",
+          "label": "Record the 5-minute project deep dive",
+          "meta": "Mock"
+        },
+        {
+          "id": "rec-review",
+          "label": "Watch back; mark every filler word",
+          "meta": "Review"
+        },
+        {
+          "id": "rec-redo",
+          "label": "Re-record without the filler",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the riskiest decision you made?",
+    "What would you change?"
+  ],
+  "references": []
+}

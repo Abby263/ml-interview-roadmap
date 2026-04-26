@@ -1,0 +1,70 @@
+{
+  "day": 30,
+  "title": "1-D DP + Transformers from first principles",
+  "pillar": "deep-learning",
+  "focus": "Climbing Stairs / House Robber + self-attention math.",
+  "tracks": [
+    {
+      "label": "DSA · 1-D DP",
+      "items": [
+        {
+          "id": "lc-climbing-stairs",
+          "label": "Climbing Stairs",
+          "href": "https://leetcode.com/problems/climbing-stairs/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-min-cost-climbing-stairs",
+          "label": "Min Cost Climbing Stairs",
+          "href": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-house-robber",
+          "label": "House Robber",
+          "href": "https://leetcode.com/problems/house-robber/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-house-robber-ii",
+          "label": "House Robber II",
+          "href": "https://leetcode.com/problems/house-robber-ii/",
+          "meta": "1-D Dynamic Programming"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · Transformers",
+      "items": [
+        {
+          "id": "dl-attention",
+          "label": "The Annotated Transformer",
+          "href": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+          "meta": "Read (canonical)"
+        },
+        {
+          "id": "dl-self-attention",
+          "label": "Walk through attention(Q, K, V) end to end",
+          "href": "https://jalammar.github.io/illustrated-transformer/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why do transformers scale better than RNNs for long sequences?",
+    "What's the cost of self-attention in sequence length, and what mitigations exist?",
+    "Why does multi-head attention help vs one big head?"
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    }
+  ],
+  "topicId": "transformers-first-principles",
+  "questionIds": [
+    "self-attention"
+  ]
+}

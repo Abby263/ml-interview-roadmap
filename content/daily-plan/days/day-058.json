@@ -1,0 +1,145 @@
+{
+  "day": 58,
+  "title": "Math (cont.) + System design framework + interview-prep canon",
+  "pillar": "ml-system-design",
+  "focus": "Happy Number / Plus One + the reusable design scaffold + the canonical interview repos.",
+  "tracks": [
+    {
+      "label": "DSA · Math & Geometry",
+      "items": [
+        {
+          "id": "lc-plus-one",
+          "label": "Plus One",
+          "href": "https://leetcode.com/problems/plus-one/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-powx-n",
+          "label": "Powx N",
+          "href": "https://leetcode.com/problems/powx-n/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-multiply-strings",
+          "label": "Multiply Strings",
+          "href": "https://leetcode.com/problems/multiply-strings/",
+          "meta": "Math & Geometry"
+        },
+        {
+          "id": "lc-detect-squares",
+          "label": "Detect Squares",
+          "href": "https://leetcode.com/problems/detect-squares/",
+          "meta": "Math & Geometry"
+        }
+      ]
+    },
+    {
+      "label": "ML system design · Framework",
+      "items": [
+        {
+          "id": "sd-framework",
+          "label": "Read: Chip Huyen — ML systems design TOC",
+          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+          "meta": "Read"
+        },
+        {
+          "id": "sd-halina",
+          "label": "Patrick Halina — ML Systems Design Interview Guide",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Read"
+        },
+        {
+          "id": "sd-scaffold",
+          "label": "Memorize the scaffold: clarify → metrics → data → model → serving → monitoring → trade-off close",
+          "meta": "Concept"
+        }
+      ]
+    },
+    {
+      "label": "Reference · Interview repos to bookmark",
+      "items": [
+        {
+          "id": "sd-khangich",
+          "label": "khangich/machine-learning-interview — full prep guide",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "Repo"
+        },
+        {
+          "id": "sd-alirezadir",
+          "label": "alirezadir/Machine-Learning-Interviews — companion repo",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+          "meta": "Repo"
+        },
+        {
+          "id": "sd-huyen-int",
+          "label": "Chip Huyen — ML Interviews Book (free)",
+          "href": "https://huyenchip.com/ml-interviews-book/",
+          "meta": "Book"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through your design framework on a fresh prompt.",
+    "What goes wrong if you skip the metrics step?",
+    "How do you decide between batch vs realtime inference?"
+  ],
+  "references": [
+    {
+      "label": "Logan Thorneloe — ML Road Map (curated, free)",
+      "href": "https://github.com/loganthorneloe/ml-road-map",
+      "source": "GitHub"
+    },
+    {
+      "label": "AI for Software Engineers newsletter",
+      "href": "https://aiforswes.com",
+      "source": "AI for SWEs"
+    },
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "Full Stack Deep Learning"
+    },
+    {
+      "label": "Chip Huyen — ML Interviews Book (free)",
+      "href": "https://huyenchip.com/ml-interviews-book/",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Khangich — Machine Learning Interview repo",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "DataScienceJay — interview walkthroughs",
+      "href": "https://www.youtube.com/c/DataScienceJay/videos",
+      "source": "YouTube"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    }
+  ],
+  "topicId": "system-design-framework"
+}

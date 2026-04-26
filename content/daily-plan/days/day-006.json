@@ -1,0 +1,54 @@
+{
+  "day": 6,
+  "title": "Sliding Window (cont.) + A/B testing math",
+  "pillar": "math-stats",
+  "focus": "Finish sliding-window + sample sizing + multiple testing.",
+  "tracks": [
+    {
+      "label": "DSA · Sliding Window",
+      "items": [
+        {
+          "id": "lc-permutation-in-string",
+          "label": "Permutation IN String",
+          "href": "https://leetcode.com/problems/permutation-in-string/",
+          "meta": "Sliding Window"
+        },
+        {
+          "id": "lc-minimum-window-substring",
+          "label": "Minimum Window Substring",
+          "href": "https://leetcode.com/problems/minimum-window-substring/",
+          "meta": "Sliding Window"
+        },
+        {
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window"
+        }
+      ]
+    },
+    {
+      "label": "Stats · Experimentation",
+      "items": [
+        {
+          "id": "stats-ab-power",
+          "label": "Power analysis & sample size calculator",
+          "href": "https://www.evanmiller.org/ab-testing/sample-size.html",
+          "meta": "Tool"
+        },
+        {
+          "id": "stats-ab-pitfalls",
+          "label": "Common A/B test pitfalls (peeking, novelty, network effects)",
+          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you size an A/B test for a 1% effect on a 5% baseline conversion?",
+    "What's the novelty effect, and how do you mitigate it?",
+    "When does a sequential test beat a fixed-horizon test?"
+  ],
+  "references": []
+}

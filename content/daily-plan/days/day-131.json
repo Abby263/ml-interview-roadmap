@@ -1,0 +1,81 @@
+{
+  "day": 131,
+  "title": "Specialization · RecSys deep dive (Ranking / Predictions)",
+  "pillar": "ml-system-design",
+  "focus": "Two-tower retrieval, multi-task ranking, position bias, key papers.",
+  "tracks": [
+    {
+      "label": "Read · Canonical papers",
+      "items": [
+        {
+          "id": "rs-yt-mt",
+          "label": "YouTube multi-task ranking system (canonical)",
+          "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
+          "meta": "Paper"
+        },
+        {
+          "id": "rs-pal",
+          "label": "PAL — position-bias aware learning for CTR",
+          "href": "https://dl.acm.org/doi/10.1145/3298689.3347033",
+          "meta": "Paper"
+        },
+        {
+          "id": "rs-twotower",
+          "label": "Sampling-bias-corrected two-tower (Google)",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Paper"
+        }
+      ]
+    },
+    {
+      "label": "Read · Patterns",
+      "items": [
+        {
+          "id": "rs-yan-discovery",
+          "label": "Eugene Yan — System design for discovery",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Read"
+        },
+        {
+          "id": "rs-cf-collab",
+          "label": "Two common collaborative-filtering techniques + trade-offs",
+          "href": "https://en.wikipedia.org/wiki/Collaborative_filtering",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "rs-design",
+          "label": "Design a 3-stage recommender for short-form video",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "rs-multitask",
+          "label": "Sketch a multi-task head (engagement + satisfaction + diversity)",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Compare two collaborative-filtering techniques and their strengths / weaknesses.",
+    "How do you correct for position bias when training on click logs?",
+    "How would a multi-task head balance watch-time vs satisfaction signals?",
+    "Walk me through cold-start handling for a brand-new creator."
+  ],
+  "references": [
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Khangich — Machine Learning Interview repo",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "day": 44,
+  "title": "2-D DP (cont.) + RAG architecture + project: RAG chatbot",
+  "pillar": "generative-ai",
+  "focus": "Edit Distance / Coin Change II + end-to-end RAG + ship a chatbot over your own docs.",
+  "tracks": [
+    {
+      "label": "DSA · 2-D DP",
+      "items": [
+        {
+          "id": "lc-target-sum",
+          "label": "Target Sum",
+          "href": "https://leetcode.com/problems/target-sum/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-interleaving-string",
+          "label": "Interleaving String",
+          "href": "https://leetcode.com/problems/interleaving-string/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-longest-increasing-path-in-a-matrix",
+          "label": "Longest Increasing Path IN A Matrix",
+          "href": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-distinct-subsequences",
+          "label": "Distinct Subsequences",
+          "href": "https://leetcode.com/problems/distinct-subsequences/",
+          "meta": "2-D Dynamic Programming"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · RAG",
+      "items": [
+        {
+          "id": "rag-pipeline",
+          "label": "Chunking → retrieval → reranking → generation → citations",
+          "href": "https://python.langchain.com/docs/concepts/rag/",
+          "meta": "Read"
+        },
+        {
+          "id": "rag-hybrid",
+          "label": "Why hybrid (dense + sparse) usually wins",
+          "href": "https://www.pinecone.io/learn/hybrid-search-intro/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Project · Build a RAG chatbot",
+      "items": [
+        {
+          "id": "proj-rag-build",
+          "label": "Chatbot over a custom knowledge base (LangChain + OpenAI)",
+          "href": "https://python.langchain.com/docs/tutorials/rag/",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-rag-local",
+          "label": "Run the same chatbot fully locally with Ollama",
+          "href": "https://ollama.com/",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-rag-deploy",
+          "label": "Deploy it as a Streamlit / HF Space demo",
+          "href": "https://huggingface.co/spaces",
+          "meta": "Deploy"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through chunking trade-offs (size + overlap).",
+    "Why does pure dense retrieval miss product names and error codes?",
+    "Walk me through the architecture of YOUR RAG chatbot — where would it fail under load?",
+    "How would you handle citations when the retrieved chunk doesn't actually support the claim?"
+  ],
+  "references": [
+    {
+      "label": "RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "DeepLearning.AI — short courses on GenAI / LLMs",
+      "href": "https://www.deeplearning.ai/short-courses/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Streamlit — quick ML-app deployment",
+      "href": "https://docs.streamlit.io/",
+      "source": "Streamlit"
+    }
+  ],
+  "topicId": "rag-architecture"
+}

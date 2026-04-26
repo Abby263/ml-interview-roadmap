@@ -1,0 +1,49 @@
+{
+  "day": 55,
+  "title": "LLMOps · Cost, latency, caching, and model routing",
+  "pillar": "llmops",
+  "focus": "Reduce inference cost with routing and caching while preserving measurable quality.",
+  "tracks": [
+    {
+      "label": "LLMOps · Efficiency",
+      "items": [
+        {
+          "id": "llmops-routing",
+          "label": "Design small-to-large model routing with quality gates",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "llmops-cache",
+          "label": "Compare semantic cache, exact cache, prompt cache, and retrieval cache",
+          "meta": "Concept"
+        },
+        {
+          "id": "llmops-context-budget",
+          "label": "Trim context with retrieval filters, compression, reranking, and summaries",
+          "meta": "Practice"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "An LLM feature is over budget. What do you measure and change first?",
+    "When is semantic caching unsafe?",
+    "How do you route traffic across models without silently hurting answer quality?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    }
+  ],
+  "questionIds": [
+    "architect-cost-optimization"
+  ],
+  "topicId": "llm-routing-cost-latency"
+}

@@ -1,0 +1,29 @@
+{
+  "day": 99,
+  "title": "Behavioral mock — 6 prompts back to back",
+  "pillar": "behavioral-storytelling",
+  "focus": "Behavioral stamina + opener variations.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-beh-6",
+          "label": "Run 6 behavioral prompts in 45 min, recorded",
+          "meta": "Mock"
+        },
+        {
+          "id": "mock-beh-review",
+          "label": "Watch back; trim filler; sharpen openers",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Tell me about a time you owned an ambiguous problem.",
+    "Tell me about a time you disagreed with data.",
+    "Tell me about a project that didn't ship."
+  ],
+  "references": []
+}

@@ -1,0 +1,29 @@
+{
+  "day": 80,
+  "title": "OOP design problems",
+  "pillar": "foundations",
+  "focus": "Walk an OOP design problem end to end (Parking Lot, Cache, Rate Limiter).",
+  "tracks": [
+    {
+      "label": "Practice · Out loud",
+      "items": [
+        {
+          "id": "oop-parking",
+          "label": "Design Parking Lot — classes, methods, edge cases, scale-up",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "oop-cache",
+          "label": "Design Cache (LRU + TTL)",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through requirements → classes → methods for a parking lot.",
+    "How would you extend your cache to be thread-safe?",
+    "What's the right way to handle concurrent updates to the LRU?"
+  ],
+  "references": []
+}

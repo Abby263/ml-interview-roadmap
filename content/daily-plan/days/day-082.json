@@ -1,0 +1,35 @@
+{
+  "day": 82,
+  "title": "Company-tag drilling — target #1",
+  "pillar": "foundations",
+  "focus": "5-7 problems from your highest-priority company tag.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "tag1-1",
+          "label": "Solve 5-7 from your top company's LC tag",
+          "href": "https://leetcode.com/problemset/",
+          "meta": "Practice"
+        },
+        {
+          "id": "tag1-notes",
+          "label": "After each, write the 'pattern + trick' in 1 line",
+          "meta": "Notes"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What pattern recurs in this company's questions?",
+    "What tricks come up that don't come up elsewhere?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    }
+  ]
+}

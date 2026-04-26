@@ -1,0 +1,41 @@
+{
+  "day": 35,
+  "title": "Incident response & rollback",
+  "pillar": "mlops",
+  "focus": "Run a model incident the way SRE runs a service incident.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mlops-postmortem",
+          "label": "Google SRE: blameless postmortems",
+          "href": "https://sre.google/sre-book/postmortem-culture/",
+          "meta": "Read"
+        },
+        {
+          "id": "mlops-incident-ml",
+          "label": "ML-specific incident patterns",
+          "href": "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-pm-template",
+          "label": "Write a 1-page postmortem template for an ML incident",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the difference between a fix-forward and a rollback decision?",
+    "Walk me through your first 10 minutes of a model regression incident.",
+    "How do you make sure a postmortem actually changes behavior?"
+  ],
+  "references": []
+}

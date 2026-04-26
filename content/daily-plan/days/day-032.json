@@ -1,0 +1,47 @@
+{
+  "day": 32,
+  "title": "Model registry + CI/CD",
+  "pillar": "mlops",
+  "focus": "Promote models like code: tests gate promotion, rollback is first-class.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mlops-mlflow",
+          "label": "MLflow Model Registry — what it stores",
+          "href": "https://mlflow.org/docs/latest/model-registry.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "mlops-cicd",
+          "label": "CI/CD for ML — what's different from app CI",
+          "href": "https://martinfowler.com/articles/cd4ml.html",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-gate",
+          "label": "Define promotion gates (offline metric, fairness, calibration)",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "mlops-rollback",
+          "label": "Define rollback playbook",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What gates the promotion from dev → staging → prod?",
+    "How do you make rollback deterministic?",
+    "Why is auto-promote dangerous?"
+  ],
+  "references": [],
+  "topicId": "model-registry-cicd"
+}

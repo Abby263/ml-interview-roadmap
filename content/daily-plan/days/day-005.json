@@ -1,0 +1,57 @@
+{
+  "day": 5,
+  "title": "Sliding Window + Confidence intervals",
+  "pillar": "math-stats",
+  "focus": "Sliding-window template + frequentist CI without sliding into Bayesian language.",
+  "tracks": [
+    {
+      "label": "DSA · Sliding Window",
+      "items": [
+        {
+          "id": "lc-best-time-to-buy-and-sell-stock",
+          "label": "Best Time TO Buy And Sell Stock",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          "meta": "Sliding Window"
+        },
+        {
+          "id": "lc-longest-substring-without-repeating-characters",
+          "label": "Longest Substring Without Repeating Characters",
+          "href": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+          "meta": "Sliding Window"
+        },
+        {
+          "id": "lc-longest-repeating-character-replacement",
+          "label": "Longest Repeating Character Replacement",
+          "href": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+          "meta": "Sliding Window"
+        }
+      ]
+    },
+    {
+      "label": "Stats · CIs",
+      "items": [
+        {
+          "id": "stats-ci-frequentist",
+          "label": "Frequentist interpretation done right",
+          "href": "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings",
+          "meta": "Read"
+        },
+        {
+          "id": "stats-bootstrap",
+          "label": "Bootstrap CIs — when they save you",
+          "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
+    "Why does the bootstrap work when classical CIs don't?",
+    "How does sample size affect the width of a CI quadratically?"
+  ],
+  "references": [],
+  "questionIds": [
+    "confidence-interval"
+  ]
+}

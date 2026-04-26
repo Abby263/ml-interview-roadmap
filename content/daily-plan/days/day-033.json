@@ -1,0 +1,41 @@
+{
+  "day": 33,
+  "title": "Deployment strategies",
+  "pillar": "mlops",
+  "focus": "Shadow → canary → progressive rollout that protects users.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mlops-shadow",
+          "label": "Shadow mode vs canary vs blue-green",
+          "href": "https://martinfowler.com/bliki/CanaryRelease.html",
+          "meta": "Read"
+        },
+        {
+          "id": "mlops-multi-region",
+          "label": "Multi-region ML deployment patterns",
+          "href": "https://aws.amazon.com/blogs/machine-learning/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-rollout-trigger",
+          "label": "Auto-rollback triggers (SLO breach, regression on guardrail)",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the difference between shadow mode and canary?",
+    "When does blue-green not work for ML?",
+    "How do you handle model state during a region failover?"
+  ],
+  "references": []
+}

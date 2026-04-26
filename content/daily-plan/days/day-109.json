@@ -1,0 +1,34 @@
+{
+  "day": 109,
+  "title": "Read & rehearse: monitoring playbooks",
+  "pillar": "mlops",
+  "focus": "Make 'what would you alert on' an automatic answer.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "monit-yan",
+          "label": "Practical guide to maintaining ML (Eugene Yan)",
+          "href": "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "monit-write",
+          "label": "Write a 1-page monitoring playbook for one of your case studies",
+          "meta": "Doc"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the alert that maps directly to a known action?",
+    "How do you avoid alert fatigue?"
+  ],
+  "references": []
+}

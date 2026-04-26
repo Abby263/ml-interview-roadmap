@@ -1,0 +1,35 @@
+{
+  "day": 39,
+  "title": "Build vs buy + migration planning",
+  "pillar": "mlops",
+  "focus": "Vector stores, feature platforms, eval tooling — when each.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "bvb-framework",
+          "label": "Build vs buy framework",
+          "href": "https://martinfowler.com/articles/build-or-buy.html",
+          "meta": "Read"
+        },
+        {
+          "id": "mig-zero-down",
+          "label": "Zero-downtime migration patterns (Stripe)",
+          "href": "https://stripe.com/blog/online-migrations",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Frame a build-vs-buy answer as a reversible decision with explicit triggers.",
+    "Walk me through a zero-downtime migration with shadow + parity + ramp.",
+    "What's the rollback trigger you'd commit to for the migration?"
+  ],
+  "references": [],
+  "questionIds": [
+    "architect-build-vs-buy",
+    "architect-migration-plan"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "day": 14,
+  "title": "Linked List finish + Ranking & regression metrics",
+  "pillar": "traditional-ml",
+  "focus": "Wrap LL patterns (LRU, merge-K) + NDCG / MRR / RMSE.",
+  "tracks": [
+    {
+      "label": "DSA · Linked List",
+      "items": [
+        {
+          "id": "lc-lru-cache",
+          "label": "Lru Cache",
+          "href": "https://leetcode.com/problems/lru-cache/",
+          "meta": "Linked List"
+        },
+        {
+          "id": "lc-merge-k-sorted-lists",
+          "label": "Merge K Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "meta": "Linked List"
+        },
+        {
+          "id": "lc-reverse-nodes-in-k-group",
+          "label": "Reverse Nodes IN K Group",
+          "href": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+          "meta": "Linked List"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Ranking + regression metrics",
+      "items": [
+        {
+          "id": "ml-ndcg-mrr",
+          "label": "NDCG, MRR, MAP — by hand on a tiny example",
+          "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-rmse-mae",
+          "label": "RMSE vs MAE vs R² — when each",
+          "href": "https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why is NDCG more useful than precision@K for ranking?",
+    "When does R² lie? Give a counter-example.",
+    "How do you sanity-check that your validation metric tracks the production one?"
+  ],
+  "references": []
+}

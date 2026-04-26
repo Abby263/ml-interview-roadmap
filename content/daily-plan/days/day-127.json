@@ -1,0 +1,97 @@
+{
+  "day": 127,
+  "title": "Specialization · Computer Vision (deep dive)",
+  "pillar": "deep-learning",
+  "focus": "CV-specific architectures, augmentation, OD/segmentation, modern foundation models.",
+  "tracks": [
+    {
+      "label": "Read · Architectures",
+      "items": [
+        {
+          "id": "cv-cnn-fams",
+          "label": "CNN families: ResNet → EfficientNet → ConvNeXt",
+          "href": "https://paperswithcode.com/area/computer-vision",
+          "meta": "Read"
+        },
+        {
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT) paper",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Paper"
+        },
+        {
+          "id": "cv-clip",
+          "label": "CLIP — image-text contrastive pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "Paper"
+        }
+      ]
+    },
+    {
+      "label": "Read · Tasks",
+      "items": [
+        {
+          "id": "cv-od",
+          "label": "Object detection: YOLO / DETR / SAM",
+          "href": "https://lilianweng.github.io/posts/2017-12-31-object-recognition-part-3/",
+          "meta": "Read"
+        },
+        {
+          "id": "cv-aug",
+          "label": "Image augmentation patterns (RandAugment, CutMix, MixUp)",
+          "href": "https://albumentations.ai/",
+          "meta": "Docs"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "cv-design",
+          "label": "Design a content-moderation system for user-uploaded images",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "cv-finetune",
+          "label": "Fine-tune CLIP / ResNet on a small custom dataset",
+          "href": "https://huggingface.co/docs/transformers/training",
+          "meta": "Build"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does a ViT beat a CNN, and when doesn't it?",
+    "How does CLIP enable zero-shot image classification?",
+    "Walk me through how you'd build an image moderation system end-to-end.",
+    "What augmentation strategy would you pick for a small medical-imaging dataset?"
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning for Coders",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai) — interactive book",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    },
+    {
+      "label": "Google AI Blog",
+      "href": "https://blog.google/technology/ai/",
+      "source": "Google"
+    },
+    {
+      "label": "Kaggle — Computer Vision",
+      "href": "https://www.kaggle.com/learn/computer-vision",
+      "source": "Kaggle"
+    }
+  ]
+}

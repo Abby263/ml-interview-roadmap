@@ -1,0 +1,61 @@
+{
+  "day": 19,
+  "title": "Tries + Feature engineering & leakage",
+  "pillar": "traditional-ml",
+  "focus": "Trie implementation + spot leakage in features.",
+  "tracks": [
+    {
+      "label": "DSA · Tries",
+      "items": [
+        {
+          "id": "lc-implement-trie-prefix-tree",
+          "label": "Implement Trie Prefix Tree",
+          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "meta": "Tries"
+        },
+        {
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries"
+        },
+        {
+          "id": "lc-word-search-ii",
+          "label": "Word Search II",
+          "href": "https://leetcode.com/problems/word-search-ii/",
+          "meta": "Tries"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Feature engineering",
+      "items": [
+        {
+          "id": "ml-leakage",
+          "label": "Target / temporal / contamination leakage",
+          "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-encoding",
+          "label": "Encoding choices — one-hot, target, embedding",
+          "href": "https://contrib.scikit-learn.org/category_encoders/",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through 3 ways you'd detect target leakage in a churn model.",
+    "When is target encoding dangerous?",
+    "How do you align offline feature logic with serving?"
+  ],
+  "references": [
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    }
+  ],
+  "topicId": "feature-engineering-leakage"
+}

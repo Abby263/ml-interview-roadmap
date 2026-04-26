@@ -1,0 +1,66 @@
+{
+  "day": 42,
+  "title": "1-D DP finish + Tokenization & embeddings",
+  "pillar": "generative-ai",
+  "focus": "LIS / Partition Equal Subset + BPE intuition + embedding space.",
+  "tracks": [
+    {
+      "label": "DSA · 1-D DP",
+      "items": [
+        {
+          "id": "lc-maximum-product-subarray",
+          "label": "Maximum Product Subarray",
+          "href": "https://leetcode.com/problems/maximum-product-subarray/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-word-break",
+          "label": "Word Break",
+          "href": "https://leetcode.com/problems/word-break/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-longest-increasing-subsequence",
+          "label": "Longest Increasing Subsequence",
+          "href": "https://leetcode.com/problems/longest-increasing-subsequence/",
+          "meta": "1-D Dynamic Programming"
+        },
+        {
+          "id": "lc-partition-equal-subset-sum",
+          "label": "Partition Equal Subset Sum",
+          "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
+          "meta": "1-D Dynamic Programming"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Tokenization",
+      "items": [
+        {
+          "id": "llm-bpe",
+          "label": "Byte-pair encoding (BPE)",
+          "href": "https://huggingface.co/learn/llm-course/chapter6/5",
+          "meta": "Read"
+        },
+        {
+          "id": "llm-embeddings",
+          "label": "What embeddings encode",
+          "href": "https://jalammar.github.io/illustrated-word2vec/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why does BPE exist instead of word-level or char-level tokenization?",
+    "What multilingual edge cases break naive BPE?",
+    "How does an embedding model differ from an LLM?"
+  ],
+  "references": [
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    }
+  ]
+}

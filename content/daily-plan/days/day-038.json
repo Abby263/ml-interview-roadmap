@@ -1,0 +1,31 @@
+{
+  "day": 38,
+  "title": "Privacy + compliance",
+  "pillar": "mlops",
+  "focus": "Bake privacy in, not after.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "priv-min",
+          "label": "Data minimization & retention windows (GDPR)",
+          "href": "https://gdpr.eu/data-minimization/",
+          "meta": "Read"
+        },
+        {
+          "id": "priv-dp",
+          "label": "Differential privacy in ML — quick intro",
+          "href": "https://github.com/google/differential-privacy",
+          "meta": "Reference"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you minimize PII flow through an ML pipeline?",
+    "When is differential privacy worth the accuracy cost?",
+    "What goes into an audit log for inference?"
+  ],
+  "references": []
+}

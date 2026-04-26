@@ -1,0 +1,46 @@
+{
+  "day": 54,
+  "title": "LLMOps · Observability, tracing, and incident response",
+  "pillar": "llmops",
+  "focus": "Instrument prompts, retrieval, tools, model calls, costs, and user outcomes so failures are debuggable.",
+  "tracks": [
+    {
+      "label": "LLMOps · Observability",
+      "items": [
+        {
+          "id": "llmops-traces",
+          "label": "Sketch the trace schema: prompt, context, retrieved docs, tool calls, model, latency, cost",
+          "meta": "Design"
+        },
+        {
+          "id": "llmops-alerts",
+          "label": "Define alerts for hallucination spikes, tool failures, latency, cost, and refusal drift",
+          "meta": "Concept"
+        },
+        {
+          "id": "llmops-postmortem",
+          "label": "Write an incident playbook for bad generated advice or unsafe tool execution",
+          "meta": "Practice"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What do you log for an LLM request, and what should you avoid logging?",
+    "How do you debug a sudden hallucination spike?",
+    "How would you run an incident review for an unsafe agent action?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "NIST AI Risk Management Framework",
+      "href": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "source": "NIST"
+    }
+  ],
+  "topicId": "llm-observability-incidents"
+}

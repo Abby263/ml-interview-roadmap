@@ -1,0 +1,53 @@
+{
+  "day": 65,
+  "title": "Case: Ads conversion (CTR) — part 1",
+  "pillar": "ml-system-design",
+  "focus": "Frame the auction; calibration is the architect's word.",
+  "tracks": [
+    {
+      "label": "Read · Ads ML",
+      "items": [
+        {
+          "id": "case-ads-criteo",
+          "label": "Criteo paper on display advertising (skim)",
+          "href": "https://arxiv.org/abs/1410.0696",
+          "meta": "Paper"
+        },
+        {
+          "id": "case-ads-cal",
+          "label": "Why pCTR must be calibrated for an auction",
+          "href": "https://eugeneyan.com/writing/uncertainty-in-recommender-systems/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-ads-clarify",
+          "label": "Auction integration: bid × pCTR with quality adjustment",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "case-ads-features",
+          "label": "Feature plan: user / ad / context / cross",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why does a ranking-only model break in an auction?",
+    "Walk me through how you'd detect calibration drift.",
+    "How do you handle delayed conversion labels?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    }
+  ],
+  "caseStudySlug": "ad-click-prediction"
+}

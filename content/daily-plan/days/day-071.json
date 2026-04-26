@@ -1,0 +1,30 @@
+{
+  "day": 71,
+  "title": "Case: Fraud detection (part 2)",
+  "pillar": "ml-system-design",
+  "focus": "End-to-end mock + delayed labels + reviewer SLA.",
+  "tracks": [
+    {
+      "label": "Practice · Out loud",
+      "items": [
+        {
+          "id": "case-fraud-mock",
+          "label": "Time a 50-min mock",
+          "meta": "Mock"
+        },
+        {
+          "id": "case-fraud-monitor",
+          "label": "Monitoring: score distribution, queue length, fraud-recall@FPR",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you keep the reviewer queue from blowing up after a model swap?",
+    "What's the corrective action when fraud-recall@FPR drops 2pp?",
+    "Survivorship bias in fraud labels — how do you mitigate?"
+  ],
+  "references": [],
+  "caseStudySlug": "fraud-detection"
+}

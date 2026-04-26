@@ -1,0 +1,94 @@
+{
+  "day": 17,
+  "title": "Trees BST + Imbalanced classification + SVM / KNN",
+  "pillar": "traditional-ml",
+  "focus": "BST validation + handle rare positives without breaking calibration + the other classic models.",
+  "tracks": [
+    {
+      "label": "DSA · Trees",
+      "items": [
+        {
+          "id": "lc-count-good-nodes-in-binary-tree",
+          "label": "Count Good Nodes IN Binary Tree",
+          "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-validate-binary-search-tree",
+          "label": "Validate Binary Search Tree",
+          "href": "https://leetcode.com/problems/validate-binary-search-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-kth-smallest-element-in-a-bst",
+          "label": "Kth Smallest Element IN A Bst",
+          "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Imbalanced classification",
+      "items": [
+        {
+          "id": "ml-imbalance",
+          "label": "Class weights vs SMOTE vs threshold-moving",
+          "href": "https://machinelearningmastery.com/what-is-imbalanced-classification/",
+          "meta": "Read"
+        },
+        {
+          "id": "ml-imbalance-calibration",
+          "label": "Why resampling breaks calibration",
+          "href": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · SVM, KNN, Naive Bayes",
+      "items": [
+        {
+          "id": "ml-svm",
+          "label": "SVM intuition + kernel trick — when SVM still wins",
+          "href": "https://scikit-learn.org/stable/modules/svm.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "ml-knn",
+          "label": "KNN — when it's the right baseline (small data, low dim)",
+          "href": "https://scikit-learn.org/stable/modules/neighbors.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "ml-naive-bayes",
+          "label": "Naive Bayes — fast, calibrated, surprisingly strong on text",
+          "href": "https://scikit-learn.org/stable/modules/naive_bayes.html",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What breaks if you SMOTE before splitting train/test?",
+    "When does SVM with an RBF kernel still beat a tree-based model?",
+    "Why does Naive Bayes work well on text despite the naive independence assumption?",
+    "How do you tune the decision threshold for an imbalanced classifier?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization (Coursera)",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    }
+  ]
+}

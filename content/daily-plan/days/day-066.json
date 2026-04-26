@@ -1,0 +1,30 @@
+{
+  "day": 66,
+  "title": "Case: Ads conversion (CTR) — part 2",
+  "pillar": "ml-system-design",
+  "focus": "End-to-end mock + position bias + exploration slots.",
+  "tracks": [
+    {
+      "label": "Practice · Out loud",
+      "items": [
+        {
+          "id": "case-ads-mock",
+          "label": "Time a 50-min mock on this prompt",
+          "meta": "Mock"
+        },
+        {
+          "id": "case-ads-rollout",
+          "label": "Rollout plan: shadow → 1% → 5% → 25% with auto-rollback",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How do you mitigate position bias at training time?",
+    "What's a sane exploration budget for a new advertiser?",
+    "How would you split A/B traffic so you don't fool yourself with selection bias?"
+  ],
+  "references": [],
+  "caseStudySlug": "ad-click-prediction"
+}

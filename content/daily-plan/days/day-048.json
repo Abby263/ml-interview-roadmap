@@ -1,0 +1,100 @@
+{
+  "day": 48,
+  "title": "Intervals + Fine-tuning + project: resume analyzer",
+  "pillar": "generative-ai",
+  "focus": "Insert / Merge intervals + fine-tune-only-when-prompt+RAG-plateaus + ship a resume analyzer.",
+  "tracks": [
+    {
+      "label": "DSA · Intervals",
+      "items": [
+        {
+          "id": "lc-insert-interval",
+          "label": "Insert Interval",
+          "href": "https://leetcode.com/problems/insert-interval/",
+          "meta": "Intervals"
+        },
+        {
+          "id": "lc-merge-intervals",
+          "label": "Merge Intervals",
+          "href": "https://leetcode.com/problems/merge-intervals/",
+          "meta": "Intervals"
+        },
+        {
+          "id": "lc-non-overlapping-intervals",
+          "label": "Non Overlapping Intervals",
+          "href": "https://leetcode.com/problems/non-overlapping-intervals/",
+          "meta": "Intervals"
+        },
+        {
+          "id": "lc-meeting-rooms",
+          "label": "Meeting Rooms",
+          "href": "https://leetcode.com/problems/meeting-rooms/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Fine-tuning",
+      "items": [
+        {
+          "id": "llm-lora",
+          "label": "LoRA / PEFT — what changes are made",
+          "href": "https://huggingface.co/docs/peft/index",
+          "meta": "Docs"
+        },
+        {
+          "id": "llm-ft-vs-rag",
+          "label": "When fine-tuning beats RAG (and when it doesn't)",
+          "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Project · Resume analyzer",
+      "items": [
+        {
+          "id": "proj-resume-extract",
+          "label": "Build resume → structured-output extractor (LLM + JSON schema)",
+          "href": "https://platform.openai.com/docs/guides/structured-outputs",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-resume-match",
+          "label": "Match resume to job description with embeddings (cosine sim)",
+          "href": "https://platform.openai.com/docs/guides/embeddings",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-resume-deploy",
+          "label": "Deploy as Streamlit demo",
+          "href": "https://docs.streamlit.io/",
+          "meta": "Deploy"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When would you fine-tune instead of doing prompt + RAG?",
+    "What does LoRA actually update — and why is the update so small?",
+    "Walk me through how YOUR resume analyzer scores job fit — what could go wrong?",
+    "How do you evaluate whether a fine-tune succeeded?"
+  ],
+  "references": [
+    {
+      "label": "DeepLearning.AI — short courses on GenAI / LLMs",
+      "href": "https://www.deeplearning.ai/short-courses/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Hugging Face — LoRA & PEFT",
+      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+      "source": "Hugging Face"
+    }
+  ]
+}

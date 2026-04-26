@@ -1,0 +1,99 @@
+{
+  "day": 28,
+  "title": "Advanced Graphs + CNNs + project: CIFAR-10 classifier",
+  "pillar": "deep-learning",
+  "focus": "Dijkstra / Network Delay + CNN intuition + ship a small image classifier you can demo.",
+  "tracks": [
+    {
+      "label": "DSA · Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-reconstruct-itinerary",
+          "label": "Reconstruct Itinerary",
+          "href": "https://leetcode.com/problems/reconstruct-itinerary/",
+          "meta": "Advanced Graphs"
+        },
+        {
+          "id": "lc-min-cost-to-connect-all-points",
+          "label": "Min Cost TO Connect All Points",
+          "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+          "meta": "Advanced Graphs"
+        },
+        {
+          "id": "lc-network-delay-time",
+          "label": "Network Delay Time",
+          "href": "https://leetcode.com/problems/network-delay-time/",
+          "meta": "Advanced Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · CNNs",
+      "items": [
+        {
+          "id": "dl-cnn-basics",
+          "label": "Kernels, stride, padding, pooling",
+          "href": "https://cs231n.github.io/convolutional-networks/",
+          "meta": "Read"
+        },
+        {
+          "id": "dl-resnet",
+          "label": "Why residual connections fix degradation",
+          "href": "https://arxiv.org/abs/1512.03385",
+          "meta": "Paper"
+        }
+      ]
+    },
+    {
+      "label": "Project · Image classifier",
+      "items": [
+        {
+          "id": "proj-cifar",
+          "label": "Train a small CNN on CIFAR-10 / Fashion-MNIST",
+          "href": "https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-cifar-deploy",
+          "label": "Deploy as a Streamlit demo or Hugging Face Space",
+          "href": "https://huggingface.co/spaces",
+          "meta": "Deploy"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
+    "Why do residual connections help train deep nets?",
+    "Walk me through the training loop for your CIFAR classifier — where would it overfit?",
+    "When does a CNN beat a transformer for vision today?"
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    },
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning for Coders",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Streamlit — quick ML-app deployment",
+      "href": "https://docs.streamlit.io/",
+      "source": "Streamlit"
+    },
+    {
+      "label": "Hugging Face Spaces — deploy demos for free",
+      "href": "https://huggingface.co/spaces",
+      "source": "Hugging Face"
+    }
+  ],
+  "topicId": "cnn-design-patterns"
+}

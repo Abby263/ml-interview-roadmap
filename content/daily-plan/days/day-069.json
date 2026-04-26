@@ -1,0 +1,30 @@
+{
+  "day": 69,
+  "title": "Case: Search ranking (part 2)",
+  "pillar": "ml-system-design",
+  "focus": "End-to-end mock + cold-start + selection bias.",
+  "tracks": [
+    {
+      "label": "Practice · Out loud",
+      "items": [
+        {
+          "id": "case-search-mock",
+          "label": "Time a 50-min mock",
+          "meta": "Mock"
+        },
+        {
+          "id": "case-search-eval",
+          "label": "Write your offline + online eval plan",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What does NDCG@10 buy you that CTR doesn't?",
+    "How do you debias clicks for offline training?",
+    "What's an exposure-fairness metric, and when do you need one?"
+  ],
+  "references": [],
+  "caseStudySlug": "search-ranking"
+}

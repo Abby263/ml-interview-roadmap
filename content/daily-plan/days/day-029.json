@@ -1,0 +1,88 @@
+{
+  "day": 29,
+  "title": "Advanced Graphs (cont.) + RNN / LSTM + project: sentiment analysis",
+  "pillar": "deep-learning",
+  "focus": "Cheapest Flights + sequential modeling pre-transformers + ship a tiny NLP demo.",
+  "tracks": [
+    {
+      "label": "DSA · Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-swim-in-rising-water",
+          "label": "Swim IN Rising Water",
+          "href": "https://leetcode.com/problems/swim-in-rising-water/",
+          "meta": "Advanced Graphs"
+        },
+        {
+          "id": "lc-alien-dictionary",
+          "label": "Alien Dictionary",
+          "href": "https://leetcode.com/problems/alien-dictionary/",
+          "meta": "Advanced Graphs"
+        },
+        {
+          "id": "lc-cheapest-flights-within-k-stops",
+          "label": "Cheapest Flights Within K Stops",
+          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+          "meta": "Advanced Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · Sequence",
+      "items": [
+        {
+          "id": "dl-rnn-vanish",
+          "label": "Vanilla RNN vanishing-gradient problem",
+          "href": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
+          "meta": "Read (canonical)"
+        },
+        {
+          "id": "dl-lstm",
+          "label": "LSTM gating — why it helps gradient flow",
+          "href": "https://distill.pub/2019/memorization-in-rnns/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Project · Sentiment analysis",
+      "items": [
+        {
+          "id": "proj-sent-finetune",
+          "label": "Fine-tune DistilBERT on IMDb reviews (HF Trainer)",
+          "href": "https://huggingface.co/learn/llm-course/chapter3/3",
+          "meta": "Build"
+        },
+        {
+          "id": "proj-sent-deploy",
+          "label": "Deploy as Streamlit / HF Space",
+          "href": "https://huggingface.co/spaces",
+          "meta": "Deploy"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What does the cell state in an LSTM actually store?",
+    "How would you handle out-of-vocabulary tokens in your sentiment classifier?",
+    "Where does a transformer still lose to an LSTM?",
+    "Why don't RNNs parallelize over the time dimension?"
+  ],
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning for Coders",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Hugging Face Spaces — deploy demos for free",
+      "href": "https://huggingface.co/spaces",
+      "source": "Hugging Face"
+    }
+  ]
+}

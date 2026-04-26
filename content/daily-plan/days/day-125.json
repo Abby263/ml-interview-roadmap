@@ -1,0 +1,33 @@
+{
+  "day": 125,
+  "title": "Final glance: framework + trade-offs + 1 story",
+  "pillar": "ml-system-design",
+  "focus": "5-minute scan of the framework + 5-minute scan of trade-offs + 1 story.",
+  "tracks": [
+    {
+      "label": "5-min reads",
+      "items": [
+        {
+          "id": "scan-frame",
+          "label": "Scan the design framework once",
+          "meta": "Read"
+        },
+        {
+          "id": "scan-trade",
+          "label": "Scan the 6 trade-offs once",
+          "meta": "Read"
+        },
+        {
+          "id": "scan-story",
+          "label": "Run through your strongest story silently",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What is the cleanest way to summarize the design framework in the first two minutes of an interview?",
+    "Which accuracy, latency, cost, or freshness trade-off would you proactively call out before the interviewer asks?"
+  ],
+  "references": []
+}

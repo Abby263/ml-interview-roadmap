@@ -1,0 +1,50 @@
+{
+  "day": 62,
+  "title": "Monitoring & drift",
+  "pillar": "ml-system-design",
+  "focus": "Separate infra / data / model monitoring; alerts that map to actions.",
+  "tracks": [
+    {
+      "label": "Read · Monitoring",
+      "items": [
+        {
+          "id": "mlops-evidently",
+          "label": "Evidently AI — monitoring metrics catalog",
+          "href": "https://docs.evidentlyai.com/reference/all-metrics",
+          "meta": "Docs"
+        },
+        {
+          "id": "mlops-drift",
+          "label": "KS / PSI for drift detection",
+          "href": "https://towardsdatascience.com/population-stability-index-psi-and-characteristic-stability-index-csi-for-machine-learning-2c1f15823e94/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-design-monitor",
+          "label": "Design a monitoring stack for a fraud model with delayed labels",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "mlops-playbook",
+          "label": "Write a playbook for one alert type",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Separate infra monitoring, data monitoring, and model monitoring — what's in each?",
+    "Walk me through monitoring a fraud model with 30-day label lag.",
+    "What's an example of an alert that doesn't map to an action — and how do you fix it?"
+  ],
+  "references": [],
+  "topicId": "monitoring-drift",
+  "questionIds": [
+    "monitoring-production"
+  ]
+}

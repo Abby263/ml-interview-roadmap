@@ -1,0 +1,45 @@
+{
+  "day": 81,
+  "title": "AI-assisted coding round practice",
+  "pillar": "foundations",
+  "focus": "Practice the new AI-pair-programming round style.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "ai-pair-pick",
+          "label": "Pick a medium-hard problem you haven't seen",
+          "meta": "Pick"
+        },
+        {
+          "id": "ai-pair-do",
+          "label": "Solve with AI assistance (Cursor / Copilot / chat); narrate your decisions",
+          "meta": "Code"
+        },
+        {
+          "id": "ai-pair-reflect",
+          "label": "Reflect: where did you over-trust the AI? Where did you correctly override?",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When did the AI suggestion match what you'd have written?",
+    "Where did you override it and why?",
+    "How would you describe your AI workflow to an interviewer in 60 seconds?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    },
+    {
+      "label": "Kaggle — AI Ethics",
+      "href": "https://www.kaggle.com/learn/ai-ethics",
+      "source": "Kaggle"
+    }
+  ]
+}

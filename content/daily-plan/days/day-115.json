@@ -1,0 +1,27 @@
+{
+  "day": 115,
+  "title": "Story polishing — final pass",
+  "pillar": "behavioral-storytelling",
+  "focus": "Land every story without notes.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "polish-3",
+          "label": "Run through 3 stories cold; time each",
+          "meta": "Mock"
+        },
+        {
+          "id": "polish-followup",
+          "label": "Practice the 3 most likely follow-ups for each",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Which story still needs work?"
+  ],
+  "references": []
+}

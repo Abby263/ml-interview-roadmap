@@ -1,0 +1,48 @@
+{
+  "day": 67,
+  "title": "Catch-up · half DSA review, half ML review",
+  "pillar": "ml-system-design",
+  "focus": "Re-attempt 3 hardest LC problems + revisit the 3 weakest ML topics.",
+  "tracks": [
+    {
+      "label": "DSA review",
+      "items": [
+        {
+          "id": "review-50-1",
+          "label": "Re-solve a previously stuck problem (any pattern)",
+          "meta": "30 min"
+        },
+        {
+          "id": "review-50-2",
+          "label": "Re-solve another",
+          "meta": "30 min"
+        },
+        {
+          "id": "review-50-3",
+          "label": "Re-solve a third",
+          "meta": "30 min"
+        }
+      ]
+    },
+    {
+      "label": "ML review",
+      "items": [
+        {
+          "id": "review-50-ml-1",
+          "label": "Pick 3 ML topics where you stalled — re-explain each cold",
+          "meta": "Concept"
+        },
+        {
+          "id": "review-50-ml-2",
+          "label": "Update your gap list",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What pattern is still slowest for you, and why?",
+    "Which ML topic do you avoid in mocks? Confront it now."
+  ],
+  "references": []
+}

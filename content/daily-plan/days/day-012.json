@@ -1,0 +1,66 @@
+{
+  "day": 12,
+  "title": "Linked List + Cross-validation",
+  "pillar": "traditional-ml",
+  "focus": "LL templates + a CV strategy that mirrors production leakage.",
+  "tracks": [
+    {
+      "label": "DSA · Linked List",
+      "items": [
+        {
+          "id": "lc-reverse-linked-list",
+          "label": "Reverse Linked List",
+          "href": "https://leetcode.com/problems/reverse-linked-list/",
+          "meta": "Linked List"
+        },
+        {
+          "id": "lc-merge-two-sorted-lists",
+          "label": "Merge Two Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
+          "meta": "Linked List"
+        },
+        {
+          "id": "lc-reorder-list",
+          "label": "Reorder List",
+          "href": "https://leetcode.com/problems/reorder-list/",
+          "meta": "Linked List"
+        },
+        {
+          "id": "lc-remove-nth-node-from-end-of-list",
+          "label": "Remove Nth Node From End OF List",
+          "href": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "meta": "Linked List"
+        }
+      ]
+    },
+    {
+      "label": "Trad ML · Cross-validation",
+      "items": [
+        {
+          "id": "ml-cv-strategies",
+          "label": "k-fold vs stratified vs time-based vs group",
+          "href": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "ml-cv-leakage",
+          "label": "Why nested CV exists",
+          "href": "https://machinelearningmastery.com/nested-cross-validation-for-machine-learning-with-python/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does k-fold leak signal? Give a concrete example.",
+    "Why is time-based split mandatory for forecasting?",
+    "What's the difference between group k-fold and stratified k-fold?"
+  ],
+  "references": [
+    {
+      "label": "Google Machine Learning Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

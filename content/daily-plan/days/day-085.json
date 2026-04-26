@@ -1,0 +1,28 @@
+{
+  "day": 85,
+  "title": "Catch-up + DSA hard practice",
+  "pillar": "foundations",
+  "focus": "Tackle 2 LC Hards from your weakest category.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "hard-1",
+          "label": "Pick 1 Hard from your weakest pattern; spend up to 60 min",
+          "meta": "Mock"
+        },
+        {
+          "id": "hard-2",
+          "label": "Pick another Hard from a different weak pattern",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What stalled you?",
+    "What's the simplification you'd verbalize next time?"
+  ],
+  "references": []
+}

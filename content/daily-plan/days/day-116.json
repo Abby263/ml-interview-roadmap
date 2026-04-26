@@ -1,0 +1,28 @@
+{
+  "day": 116,
+  "title": "Final design rehearsal — fresh prompt",
+  "pillar": "ml-system-design",
+  "focus": "One last cold design.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "final-design-pick",
+          "label": "Pick a prompt you haven't seen this whole round",
+          "meta": "Pick"
+        },
+        {
+          "id": "final-design-run",
+          "label": "60-min mock",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Was the framework muscle memory or did you have to think about it?",
+    "Where would a senior interviewer push you next?"
+  ],
+  "references": []
+}

@@ -1,0 +1,29 @@
+{
+  "day": 93,
+  "title": "Coding mock — Meta style",
+  "pillar": "foundations",
+  "focus": "Fast classic mediums; you must finish without stalling.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-meta-1",
+          "label": "Solve 2 fresh mediums in under 22 minutes each",
+          "meta": "Timed"
+        },
+        {
+          "id": "mock-meta-talk",
+          "label": "Verbalize trade-offs continuously",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why this approach over alternatives?",
+    "What's your test plan?",
+    "How would you scale this if input is 10x?"
+  ],
+  "references": []
+}

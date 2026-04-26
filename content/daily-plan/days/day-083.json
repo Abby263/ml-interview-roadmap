@@ -1,0 +1,29 @@
+{
+  "day": 83,
+  "title": "Company-tag drilling — target #2",
+  "pillar": "foundations",
+  "focus": "Switch to second company; compare styles.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "tag2-1",
+          "label": "Solve 5-7 from a second company's tag",
+          "href": "https://leetcode.com/problemset/",
+          "meta": "Practice"
+        },
+        {
+          "id": "tag2-compare",
+          "label": "Compare: how does this company's style differ?",
+          "meta": "Notes"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What patterns are common to both companies — drill those first.",
+    "Which tag was harder, and why?"
+  ],
+  "references": []
+}

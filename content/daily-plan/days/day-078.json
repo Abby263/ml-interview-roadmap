@@ -1,0 +1,46 @@
+{
+  "day": 78,
+  "title": "OOP fundamentals + design patterns",
+  "pillar": "foundations",
+  "focus": "Classes, inheritance, polymorphism + Singleton / Factory / Observer / Strategy.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "oop-solid",
+          "label": "SOLID principles — short reference",
+          "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
+          "meta": "Read"
+        },
+        {
+          "id": "oop-patterns",
+          "label": "Refactoring.guru — design patterns catalog",
+          "href": "https://refactoring.guru/design-patterns",
+          "meta": "Reference"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "oop-impl-singleton",
+          "label": "Implement Singleton + Factory in your language",
+          "meta": "Code"
+        },
+        {
+          "id": "oop-impl-observer",
+          "label": "Implement Observer + Strategy",
+          "meta": "Code"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Explain Liskov Substitution and Single Responsibility in 30 seconds each.",
+    "When does Factory beat direct construction?",
+    "Where would Observer fit in an ML system?"
+  ],
+  "references": []
+}

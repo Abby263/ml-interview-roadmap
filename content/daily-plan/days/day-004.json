@@ -1,0 +1,48 @@
+{
+  "day": 4,
+  "title": "Two Pointers (cont.) + Hypothesis testing",
+  "pillar": "math-stats",
+  "focus": "Finish two-pointers + frame experiments rigorously.",
+  "tracks": [
+    {
+      "label": "DSA · Two Pointers",
+      "items": [
+        {
+          "id": "lc-container-with-most-water",
+          "label": "Container With Most Water",
+          "href": "https://leetcode.com/problems/container-with-most-water/",
+          "meta": "Two Pointers"
+        },
+        {
+          "id": "lc-trapping-rain-water",
+          "label": "Trapping Rain Water",
+          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "meta": "Two Pointers"
+        }
+      ]
+    },
+    {
+      "label": "Stats · Hypothesis testing",
+      "items": [
+        {
+          "id": "stats-pvalue",
+          "label": "Null, alternative, p-value, power — fast refresher",
+          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "meta": "Read"
+        },
+        {
+          "id": "stats-multitest",
+          "label": "Multiple-testing correction (Bonferroni / FDR)",
+          "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What goes wrong if you peek at A/B results before the planned end?",
+    "Define statistical power in one sentence.",
+    "When is FDR correction more appropriate than Bonferroni?"
+  ],
+  "references": []
+}

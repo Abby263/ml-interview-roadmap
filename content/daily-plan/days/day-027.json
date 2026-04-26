@@ -1,0 +1,72 @@
+{
+  "day": 27,
+  "title": "Graphs finish + Normalization",
+  "pillar": "deep-learning",
+  "focus": "Word Ladder / Topo sort + batch / layer / group norm.",
+  "tracks": [
+    {
+      "label": "DSA · Graphs",
+      "items": [
+        {
+          "id": "lc-course-schedule-ii",
+          "label": "Course Schedule II",
+          "href": "https://leetcode.com/problems/course-schedule-ii/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-redundant-connection",
+          "label": "Redundant Connection",
+          "href": "https://leetcode.com/problems/redundant-connection/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-number-of-connected-components-in-an-undirected-graph",
+          "label": "Number OF Connected Components IN AN Undirected Graph",
+          "href": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-graph-valid-tree",
+          "label": "Graph Valid Tree",
+          "href": "https://leetcode.com/problems/graph-valid-tree/",
+          "meta": "Graphs"
+        },
+        {
+          "id": "lc-word-ladder",
+          "label": "Word Ladder",
+          "href": "https://leetcode.com/problems/word-ladder/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · Normalization",
+      "items": [
+        {
+          "id": "dl-batchnorm",
+          "label": "Why batch norm stabilizes training",
+          "href": "https://arxiv.org/abs/1502.03167",
+          "meta": "Paper"
+        },
+        {
+          "id": "dl-layernorm",
+          "label": "Layer norm — why transformers prefer it",
+          "href": "https://arxiv.org/abs/1607.06450",
+          "meta": "Paper"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why does batch norm help? And what's the modern critique?",
+    "Why do transformers use layer norm and not batch norm?",
+    "What goes wrong with batch norm at very small batch sizes?"
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    }
+  ]
+}

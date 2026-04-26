@@ -1,0 +1,30 @@
+{
+  "day": 126,
+  "title": "Walk in — trust the prep",
+  "pillar": "behavioral-storytelling",
+  "focus": "Don't add new content. Listen, breathe, perform.",
+  "tracks": [
+    {
+      "label": "Day-of",
+      "items": [
+        {
+          "id": "go-water",
+          "label": "Hydrate, eat something, do not over-caffeinate",
+          "meta": "Day-of"
+        },
+        {
+          "id": "go-listen",
+          "label": "Listen first; clarify before designing",
+          "meta": "Concept"
+        },
+        {
+          "id": "go-trust",
+          "label": "Trust the prep — the gap list is short enough",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

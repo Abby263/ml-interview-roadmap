@@ -1,0 +1,76 @@
+{
+  "day": 43,
+  "title": "2-D DP + Prompt engineering",
+  "pillar": "generative-ai",
+  "focus": "Unique Paths / LCS + few-shot + CoT + structured output.",
+  "tracks": [
+    {
+      "label": "DSA · 2-D DP",
+      "items": [
+        {
+          "id": "lc-unique-paths",
+          "label": "Unique Paths",
+          "href": "https://leetcode.com/problems/unique-paths/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-longest-common-subsequence",
+          "label": "Longest Common Subsequence",
+          "href": "https://leetcode.com/problems/longest-common-subsequence/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-best-time-to-buy-and-sell-stock-with-cooldown",
+          "label": "Best Time TO Buy And Sell Stock With Cooldown",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+          "meta": "2-D Dynamic Programming"
+        },
+        {
+          "id": "lc-coin-change-ii",
+          "label": "Coin Change II",
+          "href": "https://leetcode.com/problems/coin-change-ii/",
+          "meta": "2-D Dynamic Programming"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Prompting",
+      "items": [
+        {
+          "id": "llm-fewshot",
+          "label": "Few-shot vs zero-shot — when each helps",
+          "href": "https://www.promptingguide.ai/techniques/fewshot",
+          "meta": "Read"
+        },
+        {
+          "id": "llm-cot",
+          "label": "Chain-of-thought (CoT) prompting",
+          "href": "https://arxiv.org/abs/2201.11903",
+          "meta": "Paper"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does CoT prompting hurt vs help?",
+    "How would you enforce structured JSON output reliably?",
+    "What's the difference between system prompt and user prompt?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ]
+}

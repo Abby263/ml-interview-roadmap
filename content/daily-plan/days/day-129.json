@@ -1,0 +1,76 @@
+{
+  "day": 129,
+  "title": "Specialization · Speech & Audio (deep dive)",
+  "pillar": "deep-learning",
+  "focus": "ASR, TTS, audio embeddings, streaming inference.",
+  "tracks": [
+    {
+      "label": "Read · Architectures",
+      "items": [
+        {
+          "id": "speech-whisper",
+          "label": "Whisper paper — ASR with weak supervision",
+          "href": "https://arxiv.org/abs/2212.04356",
+          "meta": "Paper"
+        },
+        {
+          "id": "speech-wav2vec",
+          "label": "wav2vec 2.0 — self-supervised audio representations",
+          "href": "https://arxiv.org/abs/2006.11477",
+          "meta": "Paper"
+        },
+        {
+          "id": "speech-tts",
+          "label": "Modern TTS: VITS / Tortoise / ElevenLabs overview",
+          "href": "https://github.com/jaywalnut310/vits",
+          "meta": "Repo"
+        }
+      ]
+    },
+    {
+      "label": "Read · Audio basics",
+      "items": [
+        {
+          "id": "speech-mel",
+          "label": "Mel spectrograms + MFCC features",
+          "href": "https://librosa.org/doc/latest/feature.html",
+          "meta": "Docs"
+        },
+        {
+          "id": "speech-stream",
+          "label": "Streaming ASR — chunking + endpointing",
+          "href": "https://nvidia.github.io/NeMo/blogs/streaming.html",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "speech-design",
+          "label": "Design a real-time meeting transcription + summarization system",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "How does Whisper handle multiple languages without a language ID input?",
+    "What's the latency-vs-quality trade-off for streaming ASR vs full-utterance ASR?",
+    "Walk me through your end-to-end real-time transcription system.",
+    "When do you use mel spectrograms vs raw audio inputs?"
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    }
+  ]
+}

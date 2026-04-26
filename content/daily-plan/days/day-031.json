@@ -1,0 +1,47 @@
+{
+  "day": 31,
+  "title": "Training pipelines",
+  "pillar": "mlops",
+  "focus": "Reliable, reproducible training from data to artifact.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "mlops-airflow",
+          "label": "Pipeline orchestration: Airflow / Prefect / Dagster",
+          "href": "https://www.dagster.io/blog/dagster-airflow-prefect",
+          "meta": "Read"
+        },
+        {
+          "id": "mlops-distributed",
+          "label": "Distributed training (DDP, FSDP, ZeRO)",
+          "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+          "meta": "Tutorial"
+        }
+      ]
+    },
+    {
+      "label": "Design exercise",
+      "items": [
+        {
+          "id": "mlops-trigger",
+          "label": "Write retraining triggers (drift, time, label volume)",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When do you actually need DDP / FSDP vs single-node?",
+    "What's a sane retraining trigger that isn't just calendar-based?",
+    "How do you ensure pipeline lineage end-to-end?"
+  ],
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "Full Stack Deep Learning"
+    }
+  ]
+}

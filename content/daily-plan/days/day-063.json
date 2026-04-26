@@ -1,0 +1,61 @@
+{
+  "day": 63,
+  "title": "Case: Short-video recommendations (part 1)",
+  "pillar": "ml-system-design",
+  "focus": "Read Yuan Meng's example doc + write your own framing on paper.",
+  "tracks": [
+    {
+      "label": "Read · Recsys foundations",
+      "items": [
+        {
+          "id": "case-yt-twotower",
+          "label": "YouTube two-tower paper (Sampling-bias-corrected)",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Paper"
+        },
+        {
+          "id": "case-tiktok-mono",
+          "label": "Eugene Yan: System design for recommendations",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Design · On paper",
+      "items": [
+        {
+          "id": "case-vid-clarify",
+          "label": "Clarification step: watch time vs retention vs creator diversity",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "case-vid-stage-budgets",
+          "label": "Sketch the 3-stage architecture with latency budgets",
+          "meta": "Whiteboard"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What product metric would you optimize for — watch time, retention, both?",
+    "How do you handle cold-start for new creators?",
+    "What's the role of an exploration budget in a feed?"
+  ],
+  "references": [
+    {
+      "label": "Prepare in a Hurry (MLE 2.0)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    },
+    {
+      "label": "ML Systems Design — interview book",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    }
+  ],
+  "caseStudySlug": "video-recommendation",
+  "questionIds": [
+    "recommendation-design"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "day": 24,
+  "title": "Backtracking finish + NN basics",
+  "pillar": "deep-learning",
+  "focus": "N-Queens / Letter Combinations + forward + backward pass on a 2-layer net.",
+  "tracks": [
+    {
+      "label": "DSA · Backtracking",
+      "items": [
+        {
+          "id": "lc-letter-combinations-of-a-phone-number",
+          "label": "Letter Combinations OF A Phone Number",
+          "href": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+          "meta": "Backtracking"
+        },
+        {
+          "id": "lc-n-queens",
+          "label": "N Queens",
+          "href": "https://leetcode.com/problems/n-queens/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "Deep learning · NN basics",
+      "items": [
+        {
+          "id": "dl-forward-back",
+          "label": "Walk through forward + backward pass on paper",
+          "href": "https://cs231n.github.io/optimization-2/",
+          "meta": "Read"
+        },
+        {
+          "id": "dl-activations",
+          "label": "Activation functions: ReLU, GELU, sigmoid, softmax",
+          "href": "https://en.wikipedia.org/wiki/Activation_function",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Explain backprop as if to an engineer who's used PyTorch but never derived gradients.",
+    "Why does ReLU help vs sigmoid?",
+    "What's the role of softmax in the cross-entropy gradient?"
+  ],
+  "references": [
+    {
+      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    },
+    {
+      "label": "Google — Backpropagation visualization (interactive)",
+      "href": "https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/backprop-scroll/",
+      "source": "Google"
+    },
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "Khan Academy — multivariable derivatives",
+      "href": "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives",
+      "source": "Khan Academy"
+    }
+  ],
+  "topicId": "backprop-and-optimization",
+  "questionIds": [
+    "backprop"
+  ]
+}

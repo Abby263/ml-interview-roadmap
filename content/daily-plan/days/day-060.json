@@ -1,0 +1,58 @@
+{
+  "day": 60,
+  "title": "Bit (cont.) + Feature stores",
+  "pillar": "ml-system-design",
+  "focus": "Counting Bits / XOR + online/offline parity, feature TTLs.",
+  "tracks": [
+    {
+      "label": "DSA · Bit Manipulation",
+      "items": [
+        {
+          "id": "lc-missing-number",
+          "label": "Missing Number",
+          "href": "https://leetcode.com/problems/missing-number/",
+          "meta": "Bit Manipulation"
+        },
+        {
+          "id": "lc-sum-of-two-integers",
+          "label": "Sum OF Two Integers",
+          "href": "https://leetcode.com/problems/sum-of-two-integers/",
+          "meta": "Bit Manipulation"
+        },
+        {
+          "id": "lc-reverse-integer",
+          "label": "Reverse Integer",
+          "href": "https://leetcode.com/problems/reverse-integer/",
+          "meta": "Bit Manipulation"
+        }
+      ]
+    },
+    {
+      "label": "ML system design · Feature stores",
+      "items": [
+        {
+          "id": "sd-feast",
+          "label": "Feast / Tecton overview — what a feature store actually does",
+          "href": "https://docs.feast.dev/",
+          "meta": "Docs"
+        },
+        {
+          "id": "sd-pit-correct",
+          "label": "Point-in-time correctness — the canonical bug",
+          "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "When does a feature store earn its complexity vs become overhead?",
+    "Walk me through point-in-time correctness for a fraud model backfill.",
+    "How do you ensure offline / online parity over months?"
+  ],
+  "references": [],
+  "topicId": "feature-stores",
+  "questionIds": [
+    "feature-store-purpose"
+  ]
+}

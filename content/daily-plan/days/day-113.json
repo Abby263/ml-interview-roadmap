@@ -1,0 +1,28 @@
+{
+  "day": 113,
+  "title": "Cross-loop simulation: behavioral + GenAI",
+  "pillar": "generative-ai",
+  "focus": "Simulate the second half of an onsite.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "sim2-beh",
+          "label": "AM: 1 behavioral round (45 min, 5 prompts)",
+          "meta": "Mock"
+        },
+        {
+          "id": "sim2-genai",
+          "label": "PM: 1 GenAI design + 1 trade-off discussion",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What story did you over-explain?",
+    "Where did the GenAI design feel formulaic?"
+  ],
+  "references": []
+}

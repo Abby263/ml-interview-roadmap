@@ -1,0 +1,33 @@
+{
+  "day": 102,
+  "title": "Story rehearsal & timing",
+  "pillar": "behavioral-storytelling",
+  "focus": "Time every story, kill filler, sharpen openers.",
+  "tracks": [
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "story-trim",
+          "label": "Trim each story to 2-4 minutes",
+          "meta": "Doc"
+        },
+        {
+          "id": "story-decision",
+          "label": "Lead with the decision, not setup",
+          "meta": "Concept"
+        },
+        {
+          "id": "story-openers",
+          "label": "Drill 3 opener variations per story",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through your shortest story.",
+    "What's the strongest version of your failure story?"
+  ],
+  "references": []
+}

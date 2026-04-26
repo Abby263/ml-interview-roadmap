@@ -1,0 +1,25 @@
+{
+  "day": 120,
+  "title": "Taper: behavioral skim + sleep",
+  "pillar": "behavioral-storytelling",
+  "focus": "Read your stories once. Sleep early.",
+  "tracks": [
+    {
+      "label": "Light",
+      "items": [
+        {
+          "id": "taper-beh-read",
+          "label": "Read each story once. No re-recording.",
+          "meta": "Read"
+        },
+        {
+          "id": "taper-sleep",
+          "label": "Sleep 8+ hours",
+          "meta": "Recovery"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": []
+}

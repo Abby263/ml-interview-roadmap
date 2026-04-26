@@ -1,0 +1,34 @@
+{
+  "day": 94,
+  "title": "Coding mock — Google style",
+  "pillar": "foundations",
+  "focus": "Hard LC: graph or DP, with elegant simplification.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-google-1",
+          "label": "Pick a Hard from your weak pattern",
+          "meta": "Pick"
+        },
+        {
+          "id": "mock-google-design",
+          "label": "Spend 5 minutes designing before coding",
+          "meta": "Concept"
+        },
+        {
+          "id": "mock-google-iterate",
+          "label": "If you stall, talk through alternatives — Google rewards reasoning",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Walk me through your design before any code.",
+    "What invariant does your solution preserve?",
+    "What's a slower-but-clearer alternative?"
+  ],
+  "references": []
+}

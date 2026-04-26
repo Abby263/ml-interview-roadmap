@@ -1,0 +1,40 @@
+{
+  "day": 98,
+  "title": "GenAI / RAG design mock",
+  "pillar": "generative-ai",
+  "focus": "Architecture round with evals + guardrails included.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-genai-pick",
+          "label": "Pick an enterprise GenAI prompt",
+          "meta": "Pick"
+        },
+        {
+          "id": "mock-genai-run",
+          "label": "60-min mock",
+          "meta": "Mock"
+        },
+        {
+          "id": "mock-genai-cover",
+          "label": "Cover RAG, evals, cost, safety — end to end",
+          "meta": "Concept"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's your faithfulness eval design?",
+    "How do you cap cost per request?",
+    "What's the rollback trigger?"
+  ],
+  "references": [
+    {
+      "label": "RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
+}

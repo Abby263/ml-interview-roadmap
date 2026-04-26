@@ -1,0 +1,28 @@
+{
+  "day": 107,
+  "title": "Mock sprint — GenAI design + behavioral",
+  "pillar": "generative-ai",
+  "focus": "60 min GenAI design then 30 min behavioral.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "sprint-genai",
+          "label": "GenAI design, 60 min",
+          "meta": "Mock"
+        },
+        {
+          "id": "sprint-beh",
+          "label": "Behavioral, 30 min, 5 prompts",
+          "meta": "Mock"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Did the behavioral feel rote after the design round?",
+    "Where can you tighten?"
+  ],
+  "references": []
+}

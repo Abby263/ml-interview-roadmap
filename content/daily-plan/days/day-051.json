@@ -1,0 +1,43 @@
+{
+  "day": 51,
+  "title": "LLMOps specifics",
+  "pillar": "llmops",
+  "focus": "Prompt versioning, model routing, regression gating.",
+  "tracks": [
+    {
+      "label": "Read",
+      "items": [
+        {
+          "id": "llmops-versioning",
+          "label": "Versioning prompts + models + retrieval together",
+          "href": "https://huyenchip.com/2024/07/25/genai-platform.html",
+          "meta": "Read"
+        },
+        {
+          "id": "llmops-routing",
+          "label": "Model routing by uncertainty / cost / risk",
+          "href": "https://eugeneyan.com/writing/llm-patterns/",
+          "meta": "Read"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Why version prompt + model + retrieval as one artifact?",
+    "How do you decide a request goes to GPT-4o vs a smaller model?",
+    "What's a release-time regression gate look like for an LLM feature?"
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ],
+  "topicId": "llm-prompt-versioning"
+}

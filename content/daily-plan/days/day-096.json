@@ -1,0 +1,35 @@
+{
+  "day": 96,
+  "title": "ML model design mock — full case",
+  "pillar": "ml-system-design",
+  "focus": "60-min full case round, scored honestly.",
+  "tracks": [
+    {
+      "label": "Mock",
+      "items": [
+        {
+          "id": "mock-model-pick",
+          "label": "Pick a fresh case study you haven't drilled in this round",
+          "href": "/case-studies",
+          "meta": "Pick"
+        },
+        {
+          "id": "mock-model-run",
+          "label": "Use the framework start to finish in 60 min",
+          "meta": "Mock"
+        },
+        {
+          "id": "mock-model-score",
+          "label": "Trade-off close: name the one trade-off you'd defend hardest",
+          "meta": "Review"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "What's your one-sentence framing of the problem?",
+    "What's the metric you'd put on the team's wall?",
+    "What would you cut from this design if you only had 4 weeks to ship?"
+  ],
+  "references": []
+}

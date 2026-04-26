@@ -1,0 +1,92 @@
+{
+  "day": 128,
+  "title": "Specialization · NLP / NLU (deep dive)",
+  "pillar": "generative-ai",
+  "focus": "Tokenization, encoder vs decoder vs encoder-decoder, NER, classification, summarization.",
+  "tracks": [
+    {
+      "label": "Read · Architectures",
+      "items": [
+        {
+          "id": "nlp-bert",
+          "label": "BERT (encoder) — masked LM",
+          "href": "https://arxiv.org/abs/1810.04805",
+          "meta": "Paper"
+        },
+        {
+          "id": "nlp-t5",
+          "label": "T5 (encoder-decoder) — text-to-text",
+          "href": "https://arxiv.org/abs/1910.10683",
+          "meta": "Paper"
+        },
+        {
+          "id": "nlp-gpt",
+          "label": "GPT family (decoder) — autoregressive",
+          "href": "https://lilianweng.github.io/posts/2018-06-24-attention/",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Read · Tasks",
+      "items": [
+        {
+          "id": "nlp-ner",
+          "label": "Named entity recognition (NER) tagging schemes (BIO, BILOU)",
+          "href": "https://huggingface.co/docs/transformers/tasks/token_classification",
+          "meta": "Docs"
+        },
+        {
+          "id": "nlp-summ",
+          "label": "Abstractive vs extractive summarization",
+          "href": "https://huggingface.co/docs/transformers/tasks/summarization",
+          "meta": "Docs"
+        }
+      ]
+    },
+    {
+      "label": "Practice",
+      "items": [
+        {
+          "id": "nlp-design",
+          "label": "Design a multilingual customer support classifier",
+          "meta": "Whiteboard"
+        },
+        {
+          "id": "nlp-eval",
+          "label": "Pick an evaluation suite for your NLP system (BLEU / ROUGE / BERTScore / human)",
+          "href": "https://huggingface.co/docs/evaluate",
+          "meta": "Docs"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [
+    "Encoder vs decoder vs encoder-decoder — when do you pick each?",
+    "How do transformers handle different modalities (text → image → audio)?",
+    "Walk me through how you'd evaluate a summarization system.",
+    "Why is tokenization the most common cause of multilingual NLP bugs?"
+  ],
+  "references": [
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Hugging Face NLP Course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}
