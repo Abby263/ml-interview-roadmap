@@ -32,13 +32,21 @@
           "id": "sd-fraud-features",
           "label": "Feature engineering: velocity, graph, behavioral",
           "href": "https://eugeneyan.com/writing/feature-stores/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What kinds of features (velocity, graph, behavioral) actually catch fraud?",
+            "How do you serve graph-based fraud features in real-time without exploding compute?"
+          ]
         },
         {
           "id": "sd-fraud-feedback",
           "label": "Delayed labels & feedback loops",
           "href": "https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html",
-          "meta": "Chip Huyen"
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "Fraud labels arrive weeks late (chargebacks). How do you train and monitor under delayed labels?",
+            "How would you use early proxy signals (e.g., risk score, manual review) when chargebacks are slow?"
+          ]
         }
       ]
     }

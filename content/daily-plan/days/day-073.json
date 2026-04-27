@@ -39,13 +39,21 @@
           "id": "llm-speculative",
           "label": "Speculative decoding & draft models",
           "href": "https://arxiv.org/abs/2211.17192",
-          "meta": "Leviathan et al."
+          "meta": "Leviathan et al.",
+          "interviewQuestions": [
+            "How does speculative decoding speed up inference without hurting quality?",
+            "Why doesn't speculative decoding always help — what's the relationship between draft acceptance rate and speedup?"
+          ]
         },
         {
           "id": "llm-constrained",
           "label": "Constrained / structured decoding (JSON mode, grammars)",
           "href": "https://github.com/outlines-dev/outlines",
-          "meta": "Outlines"
+          "meta": "Outlines",
+          "interviewQuestions": [
+            "How would you force an LLM to emit valid JSON — and what are the failure modes?",
+            "Compare grammar-constrained decoding vs prompt-+-retry-+-validate — when does each fit?"
+          ]
         }
       ]
     }

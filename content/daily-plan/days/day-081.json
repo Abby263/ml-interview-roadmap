@@ -22,19 +22,31 @@
           "id": "rag-rerank-bi-cross",
           "label": "Bi-encoder (retrieve) vs cross-encoder (rerank)",
           "href": "https://www.sbert.net/examples/applications/cross-encoder/README.html",
-          "meta": "Sentence-BERT"
+          "meta": "Sentence-BERT",
+          "interviewQuestions": [
+            "Why is a cross-encoder more accurate than a bi-encoder, and why can't we use it for retrieval?",
+            "What's the latency cost of cross-encoder reranking, and how do you keep it under your budget?"
+          ]
         },
         {
           "id": "rag-rerank-models",
           "label": "Cohere Rerank, BGE Rerank, monoT5",
           "href": "https://docs.cohere.com/docs/rerank-2",
-          "meta": "Cohere"
+          "meta": "Cohere",
+          "interviewQuestions": [
+            "When does adding a reranker actually move the needle?",
+            "Compare hosted (Cohere) vs self-hosted (BGE / monoT5) rerankers — when would you pick each?"
+          ]
         },
         {
           "id": "rag-mmr",
           "label": "MMR & diversity reranking",
           "href": "https://docs.llamaindex.ai/en/stable/examples/node_postprocessor/MaximalMarginalRelevanceMMR/",
-          "meta": "LlamaIndex"
+          "meta": "LlamaIndex",
+          "interviewQuestions": [
+            "What is MMR, and why does diversity matter in retrieved context?",
+            "How would you tune the MMR diversity λ — what does the user actually feel as it changes?"
+          ]
         }
       ]
     }

@@ -42,7 +42,11 @@
           "id": "dist-tp-pp",
           "label": "Tensor & pipeline parallelism",
           "href": "https://huggingface.co/docs/transformers/perf_train_gpu_many",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "When do you need tensor parallelism vs pipeline parallelism, and how do they compose with data parallelism (3D parallelism)?",
+            "What is pipeline-parallel bubble overhead, and how do you minimize it?"
+          ]
         }
       ]
     }

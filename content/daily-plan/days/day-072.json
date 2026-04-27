@@ -38,13 +38,21 @@
           "id": "llm-vocab",
           "label": "Vocabulary size trade-offs",
           "href": "https://huggingface.co/docs/transformers/tokenizer_summary",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why is vocabulary size a critical design choice — what does increasing it cost?",
+            "How does vocab size affect throughput and memory of the embedding + LM-head layers?"
+          ]
         },
         {
           "id": "llm-tokenization-issues",
           "label": "Tokenization quirks: numbers, code, multilingual",
           "href": "https://www.beren.io/2023-07-05-Tokenization-and-its-discontents/",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why do LLMs struggle with arithmetic, and how does tokenization contribute?",
+            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?"
+          ]
         }
       ]
     }

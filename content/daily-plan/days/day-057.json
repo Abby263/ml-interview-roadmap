@@ -28,19 +28,31 @@
           "id": "mlops-lifecycle",
           "label": "Lifecycle: data → train → eval → deploy → monitor → retrain",
           "href": "https://madewithml.com/",
-          "meta": "Made with ML"
+          "meta": "Made with ML",
+          "interviewQuestions": [
+            "Walk through the end-to-end ML lifecycle and the failure modes at each stage.",
+            "Where do most ML projects actually fail in the lifecycle, and what catches it earlier?"
+          ]
         },
         {
           "id": "mlops-roles",
           "label": "ML roles: research, applied, MLE, MLOps, platform",
           "href": "https://huyenchip.com/2022/06/30/mlops-platform.html",
-          "meta": "Chip Huyen"
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "Compare the responsibilities of an ML researcher vs an MLE vs an MLOps engineer.",
+            "When does a company actually need a dedicated ML platform team — and what's the smallest valid platform?"
+          ]
         },
         {
           "id": "mlops-team",
           "label": "Team topology & ownership boundaries",
           "href": "https://eugeneyan.com/writing/mlops-team-structure/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How would you structure an ML team at a 50-person startup vs a 5,000-person company?",
+            "Where do ownership disputes typically erupt between data, ML, and platform teams — and how do you preempt them?"
+          ]
         }
       ]
     }

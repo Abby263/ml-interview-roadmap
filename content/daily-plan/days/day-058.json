@@ -38,13 +38,21 @@
           "id": "mlops-fs-tools",
           "label": "Feast, Tecton, Vertex Feature Store",
           "href": "https://docs.feast.dev/",
-          "meta": "Feast"
+          "meta": "Feast",
+          "interviewQuestions": [
+            "Walk through how Feast separates the offline and online stores.",
+            "Compare Feast vs Tecton vs Vertex Feature Store — when does each fit?"
+          ]
         },
         {
           "id": "mlops-fs-pit",
           "label": "Point-in-time correctness",
           "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
-          "meta": "Tecton"
+          "meta": "Tecton",
+          "interviewQuestions": [
+            "Why is point-in-time correctness critical for training data, and how does feature store handle it?",
+            "Walk me through how a leak from forward-looking features actually breaks model rollout."
+          ]
         }
       ]
     }

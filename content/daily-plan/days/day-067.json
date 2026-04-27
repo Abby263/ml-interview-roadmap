@@ -28,25 +28,41 @@
           "id": "mlops-pii",
           "label": "PII handling, anonymization, k-anonymity",
           "href": "https://en.wikipedia.org/wiki/K-anonymity",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "How would you remove PII from training data without destroying signal?",
+            "Compare hashing vs tokenization vs full redaction for PII fields — when does each fit?"
+          ]
         },
         {
           "id": "mlops-dp",
           "label": "Differential privacy basics",
           "href": "https://github.com/google/differential-privacy",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "Explain differential privacy in one minute — what does ε mean?",
+            "How does DP-SGD differ from regular SGD, and what does it cost in accuracy?"
+          ]
         },
         {
           "id": "mlops-fed",
           "label": "Federated learning",
           "href": "https://federated.withgoogle.com/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "When is federated learning the right choice over centralized training?",
+            "What are the systems-side challenges in federated learning beyond the algorithm?"
+          ]
         },
         {
           "id": "mlops-attacks",
           "label": "Adversarial & model-extraction attacks",
           "href": "https://ai.googleblog.com/2018/02/adversarial-examples-on-real.html",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "What is a model-extraction attack, and how do you mitigate it?",
+            "How would you defend a public ML API from membership-inference attacks?"
+          ]
         }
       ]
     }

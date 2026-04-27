@@ -32,19 +32,31 @@
           "id": "inf-distill",
           "label": "Knowledge distillation (teacher → student)",
           "href": "https://arxiv.org/abs/1503.02531",
-          "meta": "Hinton et al."
+          "meta": "Hinton et al.",
+          "interviewQuestions": [
+            "Walk me through knowledge distillation — what is the soft-target loss?",
+            "Why does temperature in the soft target matter, and how do you pick it?"
+          ]
         },
         {
           "id": "inf-prune",
           "label": "Pruning: structured vs unstructured",
           "href": "https://pytorch.org/tutorials/intermediate/pruning_tutorial.html",
-          "meta": "PyTorch"
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Compare structured vs unstructured pruning — which actually speeds up inference?",
+            "Why does unstructured pruning rarely move latency on GPU, even when sparsity is high?"
+          ]
         },
         {
           "id": "inf-batch",
           "label": "Continuous batching & dynamic batching",
           "href": "https://www.anyscale.com/blog/continuous-batching-llm-inference",
-          "meta": "Anyscale"
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How does continuous batching beat static batching for LLM serving?",
+            "What's the trade-off between max batch size and per-request latency under continuous batching?"
+          ]
         }
       ]
     }

@@ -38,7 +38,11 @@
           "id": "dl-gan",
           "label": "GANs: generator/discriminator, mode collapse",
           "href": "https://lilianweng.github.io/posts/2017-08-20-gan/",
-          "meta": "Lilian Weng"
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "What is mode collapse in GANs and what fixes it?",
+            "Walk me through Wasserstein GAN — why does the new loss stabilize training?"
+          ]
         },
         {
           "id": "dl-diffusion",

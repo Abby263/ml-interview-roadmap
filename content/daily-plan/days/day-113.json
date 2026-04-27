@@ -33,7 +33,11 @@
           "id": "sd-rag-eval",
           "label": "Eval & monitoring for enterprise RAG",
           "href": "https://docs.ragas.io/",
-          "meta": "Ragas"
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you build an offline + online eval pipeline for an enterprise RAG?",
+            "What synthetic golden set would you generate for a domain where humans can't easily score answers?"
+          ]
         }
       ]
     }

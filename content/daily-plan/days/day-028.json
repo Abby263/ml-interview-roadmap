@@ -28,19 +28,31 @@
           "id": "ml-code-knn",
           "label": "Code k-NN classifier from scratch",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-NN from scratch and explain its time/space complexity.",
+            "How would you speed up k-NN inference on millions of points without changing the prediction?"
+          ]
         },
         {
           "id": "ml-code-kmeans",
           "label": "Code k-means from scratch",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-means with k-means++ initialization.",
+            "Why does k-means++ initialization matter, and what does it cost vs random init?"
+          ]
         },
         {
           "id": "ml-code-logreg",
           "label": "Code logistic regression with SGD",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement logistic regression with mini-batch SGD and L2 regularization.",
+            "What numerical-stability pitfalls do you watch out for when implementing the sigmoid + log-loss?"
+          ]
         }
       ]
     }

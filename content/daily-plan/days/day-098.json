@@ -22,13 +22,21 @@
           "id": "lo-cache",
           "label": "Prompt caching & semantic caching",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Compare exact-match prompt caching vs semantic caching — when does each fit?",
+            "How would you measure semantic-cache safety — what's the false-hit failure mode?"
+          ]
         },
         {
           "id": "lo-routing",
           "label": "Model routing: cheap-then-expensive cascades",
           "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
-          "meta": "Anyscale"
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you route requests across GPT-5, Claude 4.5, and a small open-source model?",
+            "Walk through how a verifier model gates the cheap-model output before falling back to the expensive one."
+          ]
         },
         {
           "id": "lo-vllm",
@@ -59,13 +67,21 @@
           "id": "mlops-autoscale",
           "label": "Autoscaling: HPA, KEDA, queue-based",
           "href": "https://keda.sh/",
-          "meta": "KEDA"
+          "meta": "KEDA",
+          "interviewQuestions": [
+            "Compare CPU-based HPA vs queue-based KEDA scaling for ML inference.",
+            "Why does GPU-pinned inference often defeat HPA, and how do you actually scale GPU pods?"
+          ]
         },
         {
           "id": "mlops-spot",
           "label": "Spot/preemptible instances for training",
           "href": "https://cloud.google.com/architecture/run-cost-effective-deep-learning-workloads",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you train safely on spot instances (checkpointing, retries)?",
+            "When does spot training become NET more expensive than on-demand — what's the breakeven?"
+          ]
         }
       ]
     }

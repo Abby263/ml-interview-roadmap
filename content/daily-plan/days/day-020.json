@@ -48,7 +48,11 @@
           "id": "ml-stacking",
           "label": "Stacking & blending",
           "href": "https://mlwave.com/kaggle-ensembling-guide/",
-          "meta": "MLWave"
+          "meta": "MLWave",
+          "interviewQuestions": [
+            "When does stacking actually help vs just adding overhead?",
+            "Walk me through how you'd avoid leakage when training a stacked model with k-fold meta-features."
+          ]
         }
       ]
     }

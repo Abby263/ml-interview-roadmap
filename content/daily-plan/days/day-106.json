@@ -32,7 +32,11 @@
           "id": "sd-clarify",
           "label": "Clarifying questions: scope, scale, latency, constraints",
           "href": "https://github.com/khangich/machine-learning-interview",
-          "meta": "khangich"
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
         },
         {
           "id": "sd-metrics",

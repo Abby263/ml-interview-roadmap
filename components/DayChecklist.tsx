@@ -139,13 +139,29 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className={`text-[0.98rem] font-semibold leading-snug hover:underline ${
+                          className={`group/link inline-flex items-baseline gap-1 text-[0.98rem] font-semibold leading-snug underline decoration-dotted underline-offset-4 transition hover:decoration-solid ${
                             isChecked
-                              ? "text-muted line-through"
-                              : "text-foreground"
+                              ? "text-muted line-through decoration-muted/40"
+                              : "text-primary decoration-primary/50"
                           }`}
                         >
-                          {item.label}
+                          <span>{item.label}</span>
+                          {item.href.startsWith("http") ? (
+                            <svg
+                              viewBox="0 0 12 12"
+                              aria-hidden="true"
+                              className="h-2.5 w-2.5 flex-shrink-0 self-center opacity-70 transition group-hover/link:opacity-100"
+                            >
+                              <path
+                                d="M3 3h6v6M3 9l6-6"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          ) : null}
                         </a>
                       ) : (
                         <span
@@ -182,12 +198,6 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                             <li key={q}>{q}</li>
                           ))}
                         </ol>
-                        {item.href ? (
-                          <p className="mt-2 text-[0.7rem] text-muted">
-                            Use the reference above to prep answers and
-                            anticipate follow-ups.
-                          </p>
-                        ) : null}
                       </div>
                     ) : null}
                   </div>

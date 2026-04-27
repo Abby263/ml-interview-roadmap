@@ -38,7 +38,11 @@
           "id": "dp-structural",
           "label": "Structural: adapter, decorator, facade",
           "href": "https://refactoring.guru/design-patterns/structural-patterns",
-          "meta": "Refactoring.guru"
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "When would you reach for an adapter vs a facade?",
+            "Where does the decorator pattern show up cleanly in an ML inference pipeline?"
+          ]
         },
         {
           "id": "dp-behavioral",

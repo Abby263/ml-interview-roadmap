@@ -32,13 +32,21 @@
           "id": "ap-a2a",
           "label": "Agent-to-agent (A2A) protocols",
           "href": "https://google.github.io/A2A/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "What problem does A2A solve over ad-hoc agent integration?",
+            "Compare MCP and A2A — when do you reach for each, and can they coexist?"
+          ]
         },
         {
           "id": "ap-tools",
           "label": "Standardizing tool catalogs across agents",
           "href": "https://modelcontextprotocol.io/clients",
-          "meta": "MCP"
+          "meta": "MCP",
+          "interviewQuestions": [
+            "How would you design a shared tool registry for multiple agents in your company?",
+            "How do you handle versioning and breaking changes in tool definitions consumed by many agents?"
+          ]
         }
       ]
     }

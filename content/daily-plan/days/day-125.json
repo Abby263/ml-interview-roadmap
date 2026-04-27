@@ -32,7 +32,11 @@
           "id": "sd-clarify",
           "label": "Clarifying questions: scope, scale, latency, constraints",
           "href": "https://github.com/khangich/machine-learning-interview",
-          "meta": "khangich"
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
         },
         {
           "id": "sd-metrics",
@@ -64,7 +68,11 @@
           "id": "sd-rag-eval",
           "label": "Eval & monitoring for enterprise RAG",
           "href": "https://docs.ragas.io/",
-          "meta": "Ragas"
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you build an offline + online eval pipeline for an enterprise RAG?",
+            "What synthetic golden set would you generate for a domain where humans can't easily score answers?"
+          ]
         }
       ]
     }

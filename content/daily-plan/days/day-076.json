@@ -38,13 +38,21 @@
           "id": "llm-thinking",
           "label": "Claude extended thinking & test-time compute",
           "href": "https://www.anthropic.com/news/visible-extended-thinking",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "What does test-time compute scaling buy you over training-time compute?",
+            "When does extended thinking actually hurt — what tasks does it slow down without quality gains?"
+          ]
         },
         {
           "id": "llm-tot",
           "label": "Tree of Thoughts, self-consistency",
           "href": "https://arxiv.org/abs/2305.10601",
-          "meta": "Yao et al."
+          "meta": "Yao et al.",
+          "interviewQuestions": [
+            "Compare CoT vs ToT vs self-consistency — when does each help?",
+            "Why does self-consistency improve reasoning, and when does it fail?"
+          ]
         }
       ]
     }

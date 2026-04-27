@@ -22,13 +22,21 @@
           "id": "mock-sd-pick",
           "label": "Pick a case (recsys / search / fraud / RAG) and self-mock 60 min",
           "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
-          "meta": "Patrick Halina"
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Run a full 60-min self-mock and review your answers against the 7-step framework.",
+            "Which step did you spend too long on, and which did you skim — what's your time budget next round?"
+          ]
         },
         {
           "id": "mock-sd-followups",
           "label": "Anticipate 5 follow-up questions and write answers",
           "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What 5 follow-up questions would the interviewer ask, and what's your answer to each?",
+            "Pick the follow-up you're weakest on and write a 2-minute answer for it."
+          ]
         }
       ]
     }

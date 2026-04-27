@@ -22,19 +22,31 @@
           "id": "rag-long-ctx",
           "label": "1M+ context windows: when do they replace RAG?",
           "href": "https://www.anthropic.com/news/100k-context-windows",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Do long context windows kill RAG? Defend your view.",
+            "What's the cost picture (latency + $) of stuffing 1M tokens vs RAG over the same corpus?"
+          ]
         },
         {
           "id": "rag-agentic",
           "label": "Agentic RAG: planning + tool-use over retrieval",
           "href": "https://www.llamaindex.ai/blog/agentic-rag-with-llamaindex-2721b8a49ff6",
-          "meta": "LlamaIndex"
+          "meta": "LlamaIndex",
+          "interviewQuestions": [
+            "What does agentic RAG add over a static RAG pipeline?",
+            "When does agentic RAG perform WORSE than static RAG — what are the failure modes?"
+          ]
         },
         {
           "id": "rag-cache",
           "label": "Prompt caching & retrieval caching",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How does prompt caching change the cost picture for repeated context?",
+            "Compare exact-match retrieval caching vs semantic caching — when does each fit?"
+          ]
         }
       ]
     }

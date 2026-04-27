@@ -49,7 +49,11 @@
           "id": "dl-data-aug",
           "label": "Data augmentation (vision, text, mixup)",
           "href": "https://pytorch.org/vision/stable/transforms.html",
-          "meta": "PyTorch"
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "How does mixup regularize, and why does it improve calibration?",
+            "Compare mixup vs CutMix vs RandAugment — when does each shine?"
+          ]
         }
       ]
     }

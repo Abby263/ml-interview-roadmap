@@ -48,7 +48,11 @@
           "id": "mlops-shadow",
           "label": "Shadow deployments & blue/green for ML",
           "href": "https://martinfowler.com/articles/cd4ml.html",
-          "meta": "Martin Fowler"
+          "meta": "Martin Fowler",
+          "interviewQuestions": [
+            "Compare shadow, canary, and blue/green deployments for ML.",
+            "What's the operational cost of running a shadow deployment for weeks before you cut over?"
+          ]
         }
       ]
     }

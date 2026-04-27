@@ -33,7 +33,11 @@
           "id": "sd-search-ltr",
           "label": "Learning-to-rank: pointwise, pairwise, listwise",
           "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Compare pointwise, pairwise, and listwise LTR — when does each fit?",
+            "Why does pairwise LTR usually beat pointwise on click-data, even though pointwise is simpler?"
+          ]
         }
       ]
     }

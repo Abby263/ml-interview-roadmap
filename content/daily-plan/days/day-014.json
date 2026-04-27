@@ -48,7 +48,11 @@
           "id": "ml-learning-curves",
           "label": "Learning curves: diagnose underfit vs overfit",
           "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
-          "meta": "scikit-learn"
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "How do you read a learning curve to decide between more data, regularization, or a bigger model?",
+            "What does a large gap between training and validation curves usually mean — and what shrinks it?"
+          ]
         }
       ]
     },

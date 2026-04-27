@@ -48,7 +48,11 @@
           "id": "oops-design-mistakes",
           "label": "Common OO design mistakes (god class, anemic models, deep inheritance)",
           "href": "https://refactoring.guru/refactoring/smells",
-          "meta": "Refactoring.guru"
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "Spot a god class — what would you refactor it into?",
+            "Why are deep inheritance hierarchies usually a smell, and what do you reach for instead?"
+          ]
         }
       ]
     }

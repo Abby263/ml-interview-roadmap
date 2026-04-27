@@ -38,13 +38,21 @@
           "id": "llm-tools-design",
           "label": "Designing tool catalogs for agents",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you design a tool catalog for a research agent — what are the trade-offs in granularity?",
+            "Why do agents perform worse when you give them too many tools, and what's a good cutoff?"
+          ]
         },
         {
           "id": "llm-mcp",
           "label": "Model Context Protocol (MCP)",
           "href": "https://modelcontextprotocol.io/",
-          "meta": "MCP"
+          "meta": "MCP",
+          "interviewQuestions": [
+            "What problem does MCP solve compared to ad-hoc function calling?",
+            "Walk me through how an MCP server is built and what guarantees the protocol gives you."
+          ]
         }
       ]
     }

@@ -34,19 +34,31 @@
           "id": "ml-fs-filter",
           "label": "Filter methods: chi-squared, mutual information",
           "href": "https://scikit-learn.org/stable/modules/feature_selection.html",
-          "meta": "scikit-learn"
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Compare filter, wrapper, and embedded feature selection.",
+            "When would mutual information beat chi-squared as a filter, and vice versa?"
+          ]
         },
         {
           "id": "ml-fs-embedded",
           "label": "Embedded: L1, tree-based importance",
           "href": "https://scikit-learn.org/stable/modules/feature_selection.html#l1-based-feature-selection",
-          "meta": "scikit-learn"
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Why is L1 effectively a feature selector?",
+            "When would you trust tree-based importance over L1 selection?"
+          ]
         },
         {
           "id": "ml-fs-shap",
           "label": "SHAP for feature attribution",
           "href": "https://shap.readthedocs.io/",
-          "meta": "SHAP"
+          "meta": "SHAP",
+          "interviewQuestions": [
+            "How does SHAP compute fair attributions, and how does it relate to game theory?",
+            "Where does SHAP mislead — what's a worked example of correlated features confusing SHAP?"
+          ]
         }
       ]
     }

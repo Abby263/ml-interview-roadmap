@@ -33,7 +33,11 @@
           "id": "sd-feed-diversity",
           "label": "Diversity & filter bubbles",
           "href": "https://research.facebook.com/publications/",
-          "meta": "Meta"
+          "meta": "Meta",
+          "interviewQuestions": [
+            "How do you measure and improve diversity in a feed without hurting engagement?",
+            "What's the trade-off between short-term engagement and long-term retention in feed ranking?"
+          ]
         }
       ]
     }

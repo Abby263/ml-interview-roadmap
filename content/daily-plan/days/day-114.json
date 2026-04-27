@@ -33,7 +33,11 @@
           "id": "sd-agent-tools",
           "label": "Tool catalog & guardrails",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "What tools would you give the agent (account lookup, refund, ticket create) and what guardrails?",
+            "How would you scope a 'refund' tool so the agent can't accidentally refund $1M instead of $100?"
+          ]
         }
       ]
     }

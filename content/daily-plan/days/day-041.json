@@ -38,13 +38,21 @@
           "id": "dl-mixed-prec",
           "label": "Mixed precision (fp16, bf16, fp8)",
           "href": "https://pytorch.org/docs/stable/amp.html",
-          "meta": "PyTorch"
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Compare fp16 vs bf16 — why does bf16 matter for training stability?",
+            "What is loss scaling and when do you still need it under bf16/fp8?"
+          ]
         },
         {
           "id": "dl-checkpoint",
           "label": "Activation checkpointing for memory",
           "href": "https://pytorch.org/docs/stable/checkpoint.html",
-          "meta": "PyTorch"
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "How does activation checkpointing trade compute for memory?",
+            "When does activation checkpointing become NOT worth it — what's the typical compute overhead?"
+          ]
         }
       ]
     }

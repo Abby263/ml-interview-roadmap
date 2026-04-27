@@ -22,13 +22,21 @@
           "id": "eff-mp",
           "label": "Mixed precision training (fp16, bf16, fp8)",
           "href": "https://pytorch.org/docs/stable/amp.html",
-          "meta": "PyTorch"
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Compare fp16 vs bf16 vs fp8 training — when does each fail or shine?",
+            "What does dynamic loss scaling do, and on which hardware do you still need it?"
+          ]
         },
         {
           "id": "eff-grad-accum",
           "label": "Gradient accumulation & micro-batching",
           "href": "https://huggingface.co/docs/transformers/perf_train_gpu_one",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why does gradient accumulation let you simulate a larger batch size?",
+            "When does gradient accumulation NOT match true large-batch training (e.g., BatchNorm)?"
+          ]
         },
         {
           "id": "eff-checkpoint",

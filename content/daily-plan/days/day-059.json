@@ -38,13 +38,21 @@
           "id": "mlops-versioning",
           "label": "Versioning: code + data + model + features",
           "href": "https://dvc.org/doc",
-          "meta": "DVC"
+          "meta": "DVC",
+          "interviewQuestions": [
+            "Why is versioning data as important as versioning code in ML?",
+            "What does DVC give you that git-LFS doesn't?"
+          ]
         },
         {
           "id": "mlops-model-cards",
           "label": "Model cards & documentation",
           "href": "https://modelcards.withgoogle.com/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "What goes into a useful model card for a production model?",
+            "How would you keep a model card honest and up-to-date as the model retrains?"
+          ]
         }
       ]
     }

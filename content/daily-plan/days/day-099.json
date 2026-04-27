@@ -32,13 +32,21 @@
           "id": "speech-tts",
           "label": "TTS: Tacotron, FastSpeech, neural vocoders",
           "href": "https://google.github.io/tacotron/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare two-stage (text → mel → wav) vs end-to-end TTS.",
+            "Why does prosody / expressive control remain hard in TTS, and how do modern systems handle it?"
+          ]
         },
         {
           "id": "speech-streaming",
           "label": "Streaming ASR: latency vs accuracy",
           "href": "https://arxiv.org/abs/2102.01547",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the trade-off between latency and accuracy in streaming ASR?",
+            "How would you design a chunked / look-ahead streaming ASR to keep latency under 300ms?"
+          ]
         }
       ]
     }

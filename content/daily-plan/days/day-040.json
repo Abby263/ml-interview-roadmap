@@ -48,7 +48,11 @@
           "id": "dl-seq-loss",
           "label": "Sequence losses: CTC, seq2seq cross-entropy",
           "href": "https://distill.pub/2017/ctc/",
-          "meta": "Distill"
+          "meta": "Distill",
+          "interviewQuestions": [
+            "Walk me through CTC loss for speech recognition.",
+            "Why does CTC need a blank token, and how does the alignment marginalization work?"
+          ]
         }
       ]
     }

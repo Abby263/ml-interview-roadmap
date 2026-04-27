@@ -22,19 +22,31 @@
           "id": "mock-dsa-1",
           "label": "Mock 1: medium array/hashing problem (20 min)",
           "href": "https://neetcode.io/practice",
-          "meta": "NeetCode"
+          "meta": "NeetCode",
+          "interviewQuestions": [
+            "Solve and explain time/space complexity in under 25 minutes.",
+            "Verbalize one optimization you skipped — and explain why it didn't make the cut for interview pacing."
+          ]
         },
         {
           "id": "mock-dsa-2",
           "label": "Mock 2: medium tree/graph problem (20 min)",
           "href": "https://neetcode.io/practice",
-          "meta": "NeetCode"
+          "meta": "NeetCode",
+          "interviewQuestions": [
+            "Solve and explain time/space complexity in under 25 minutes.",
+            "What edge cases (empty input, cycle, single node) did you cover before coding?"
+          ]
         },
         {
           "id": "mock-dsa-debrief",
           "label": "Self-debrief: communication, edge cases, complexity",
           "href": "https://www.pramp.com/",
-          "meta": "Pramp"
+          "meta": "Pramp",
+          "interviewQuestions": [
+            "What did you skip explaining that the interviewer would have asked?",
+            "Identify one moment where you went silent — what could you have said instead?"
+          ]
         }
       ]
     }

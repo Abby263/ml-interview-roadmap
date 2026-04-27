@@ -22,7 +22,11 @@
           "id": "ft-sft",
           "label": "Supervised fine-tuning (SFT)",
           "href": "https://huggingface.co/blog/peft",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the SFT objective — how is it different from pretraining?",
+            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?"
+          ]
         },
         {
           "id": "ft-rlhf",

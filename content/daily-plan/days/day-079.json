@@ -42,7 +42,11 @@
           "id": "rag-ann",
           "label": "ANN indexes: HNSW, IVF, ScaNN",
           "href": "https://github.com/facebookresearch/faiss/wiki",
-          "meta": "FAISS"
+          "meta": "FAISS",
+          "interviewQuestions": [
+            "Compare HNSW vs IVF for ANN — accuracy/speed/memory trade-offs.",
+            "When would you switch from in-memory FAISS to a hosted vector DB — what's the breakpoint?"
+          ]
         }
       ]
     }

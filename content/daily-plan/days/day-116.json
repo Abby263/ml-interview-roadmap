@@ -32,7 +32,11 @@
           "id": "sd-doc-eval",
           "label": "Eval & confidence scoring",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you flag low-confidence extractions for human review?",
+            "What's the unit cost of a human-review pass, and how do you optimize the routing threshold?"
+          ]
         }
       ]
     }
