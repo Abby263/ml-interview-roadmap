@@ -62,12 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare span-based vs sequence-tagging information extraction — when does each win?",
-    "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
-    "How is training a code model different from training a natural-language model?",
-    "Choose between encoder-only, decoder-only, and encoder-decoder models for classification, summarization, and extraction."
-  ],
   "references": [
     {
       "label": "Hugging Face NLP course",

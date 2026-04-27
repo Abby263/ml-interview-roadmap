@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through promoting a model from staging → production in MLflow.",
-    "Why is versioning data as important as versioning code in ML?",
-    "What goes into a useful model card for a production model?"
-  ],
   "references": [
     {
       "label": "MLflow docs",

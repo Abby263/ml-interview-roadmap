@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What's the difference between logs, metrics, and traces, and what does each tell you about an ML system?",
-    "What dimensions do you slice LLM observability by (model, prompt, user, tool)?",
-    "What's a meaningful SLO for an ML inference service, and how do you alert on it?"
-  ],
   "references": [
     {
       "label": "LangSmith — LLM tracing & eval",

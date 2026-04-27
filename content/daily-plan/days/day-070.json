@@ -82,10 +82,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through your decision framework for build vs buy on an ML platform component.",
-    "What axes would you use to evaluate an LLM API vendor for production use?"
-  ],
   "references": [
     {
       "label": "Eugene Yan — applied ML writing",

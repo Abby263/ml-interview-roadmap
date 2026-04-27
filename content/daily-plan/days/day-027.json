@@ -63,11 +63,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare filter, wrapper, and embedded feature selection — when do you reach for each?",
-    "Why is L1 regularization effectively a feature selector?",
-    "How does SHAP compute fair feature attributions and where can it mislead you?"
-  ],
   "references": [
     {
       "label": "scikit-learn user guide",

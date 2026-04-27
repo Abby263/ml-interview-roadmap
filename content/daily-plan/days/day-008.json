@@ -64,11 +64,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What does the dot product mean geometrically, and why is cosine similarity preferred over raw dot product for normalized embeddings?",
-    "Compare L1 vs L2 regularization — what's the geometric intuition, and when does L1 give true sparsity?",
-    "What is matrix rank, and how does rank deficiency in your feature matrix break OLS regression?"
-  ],
   "references": [
     {
       "label": "3Blue1Brown — Essence of Linear Algebra",

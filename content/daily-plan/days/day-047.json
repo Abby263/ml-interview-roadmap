@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How does ViT tokenize an image, and what's the role of the [CLS] token?",
-    "How does CLIP enable zero-shot image classification?",
-    "Walk me through CLIP's contrastive training objective end-to-end.",
-    "How do multimodal LLMs like LLaVA fuse a vision encoder with a language model?"
-  ],
   "references": [
     {
       "label": "Vision Transformer (ViT) paper",

@@ -59,12 +59,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through BERT's MLM and NSP pretraining objectives — and why later models dropped NSP.",
-    "Compare encoder-only (BERT), decoder-only (GPT), and encoder-decoder (T5) — when do you reach for each?",
-    "How would you fine-tune BERT for NER vs sentence classification — what changes?",
-    "What changes between teacher-forced training and autoregressive inference for GPT-style models?"
-  ],
   "references": [
     {
       "label": "BERT paper",

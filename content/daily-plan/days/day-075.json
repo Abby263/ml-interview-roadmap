@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through how function calling works under the hood — what does the model actually emit?",
-    "How do you handle a model that hallucinates a tool call with bad arguments?",
-    "What problem does MCP solve compared to ad-hoc function calling?"
-  ],
   "references": [
     {
       "label": "OpenAI platform docs",

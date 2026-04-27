@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare Airflow vs Prefect vs Kubeflow for ML pipelines — when does each fit?",
-    "What metadata do you log for every training run, and why does it matter?",
-    "Why does setting a seed not guarantee bit-perfect reproducibility on GPUs?"
-  ],
   "references": [
     {
       "label": "MLflow docs",

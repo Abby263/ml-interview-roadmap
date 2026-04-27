@@ -67,12 +67,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Implement k-means with k-means++ initialization in 30 minutes.",
-    "Implement logistic regression with mini-batch SGD and explain each step.",
-    "Implement k-NN classifier and discuss time/space complexity.",
-    "Implement linear regression training from scratch and verify it against a library baseline."
-  ],
   "references": [
     {
       "label": "alirezadir — Machine Learning Interviews",

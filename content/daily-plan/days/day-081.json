@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why is a cross-encoder more accurate than a bi-encoder, and why can't we use it for retrieval?",
-    "When does adding a reranker actually move the needle in a RAG system?",
-    "What is MMR, and why does diversity matter in retrieved context?"
-  ],
   "references": [
     {
       "label": "Pinecone — Vector Databases Explained",

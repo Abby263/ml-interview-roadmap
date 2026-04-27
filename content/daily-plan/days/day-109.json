@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing Meta's ad CTR prediction system end-to-end.",
-    "How do you handle billion-cardinality features (user_id, ad_id) at scale?",
-    "Why is calibration critical for ad ranking — what breaks if your model is uncalibrated?"
-  ],
   "references": [
     {
       "label": "khangich — Machine Learning Interview",

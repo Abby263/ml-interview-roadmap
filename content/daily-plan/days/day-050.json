@@ -68,12 +68,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare BPE, WordPiece, and SentencePiece tokenizers — when do you reach for each?",
-    "Walk through how word2vec skip-gram is trained, and contrast static vs contextual embeddings.",
-    "Why does tokenizer choice strongly affect cross-lingual model performance?",
-    "How would you build a TF-IDF + linear-model baseline for sentiment analysis, and why is it still useful?"
-  ],
   "references": [
     {
       "label": "Hugging Face NLP course",

@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How does CI/CD for ML differ from traditional CI/CD — what extra pipelines do you need?",
-    "What kinds of tests do you write specifically for ML code (unit, integration, model, data)?",
-    "Compare shadow, canary, and blue/green deployments for ML — when does each fit?"
-  ],
   "references": [
     {
       "label": "Eugene Yan — applied ML writing",

@@ -42,11 +42,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing Twitter's news feed ranking.",
-    "How would you incorporate social-graph signals into a news feed model?",
-    "How do you measure and improve diversity in a feed without hurting engagement?"
-  ],
   "references": [
     {
       "label": "khangich — Machine Learning Interview",

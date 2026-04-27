@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When does parent-child or auto-merging retrieval beat naive chunked retrieval?",
-    "How does GraphRAG help with multi-hop reasoning over enterprise knowledge?",
-    "When is it worth fine-tuning the embedding model on your domain data?"
-  ],
   "references": [
     {
       "label": "LangChain — RAG concepts",

@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare A100, H100, and B200 — what changed each generation?",
-    "Why does HBM bandwidth matter more than FLOPs for many ML workloads?",
-    "Why does interconnect (NVLink, IB) often bottleneck distributed training before compute does?"
-  ],
   "references": [
     {
       "label": "MIT — ML Efficiency playlist",

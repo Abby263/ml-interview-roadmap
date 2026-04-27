@@ -69,13 +69,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through self-attention(Q, K, V) end-to-end including the √d_k scaling.",
-    "What does multi-head attention buy you over a single head?",
-    "Compare absolute, relative, and rotary (RoPE) positional encodings.",
-    "What problem does FlashAttention solve, and how does it speed up training?",
-    "Implement masked self-attention for a tiny GPT model — where do the shape bugs usually happen?"
-  ],
   "references": [
     {
       "label": "Attention Is All You Need",

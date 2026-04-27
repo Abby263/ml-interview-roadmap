@@ -67,11 +67,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How would you remove PII from training data without destroying signal?",
-    "Explain differential privacy in plain English — what does ε mean and what does it cost in accuracy?",
-    "When is federated learning the right choice over centralized training?"
-  ],
   "references": [
     {
       "label": "Full Stack Deep Learning",

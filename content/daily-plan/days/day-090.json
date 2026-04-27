@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What's the MCP architecture (host, client, server) and when would you reach for it?",
-    "When would you build an MCP server vs use function calling directly?",
-    "What problem does A2A solve over ad-hoc agent integration?"
-  ],
   "references": [
     {
       "label": "Model Context Protocol",

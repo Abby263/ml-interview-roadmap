@@ -66,12 +66,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare Bernoulli, Binomial, and Poisson — when do you reach for each in modeling?",
-    "Why is the normal distribution everywhere — what's the CLT and what does it actually claim?",
-    "When does the CLT fail or converge slowly enough that you should NOT trust it?",
-    "Pick a real product metric (e.g., session length): which distribution would you model it with and why?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

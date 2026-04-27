@@ -64,12 +64,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Derive backprop end-to-end for a 2-layer MLP with cross-entropy loss.",
-    "Why does a deep sigmoid network suffer from vanishing gradients, and how do ReLU and residuals help?",
-    "When would you use torch.no_grad() vs detach() in PyTorch — what's the difference?",
-    "What exactly happens during loss.backward(), optimizer.step(), and optimizer.zero_grad() in PyTorch?"
-  ],
   "references": [
     {
       "label": "Karpathy — Neural Networks: Zero to Hero",

@@ -97,13 +97,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Derive the OLS closed-form θ = (XᵀX)⁻¹Xᵀy and explain when it fails.",
-    "Show that OLS coincides with MLE under Gaussian noise — why does that matter?",
-    "Compare MSE vs MAE vs Huber loss for regression — when do you reach for each?",
-    "Explain loss vs cost vs prediction error for linear regression — which one do you optimize?",
-    "Does sklearn's LinearRegression use gradient descent or OLS, and when would you implement GD yourself?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

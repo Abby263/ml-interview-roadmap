@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare per-tenant fine-tuned models vs a shared base model with LoRA adapters — when does each win?",
-    "How do data-residency requirements (e.g., EU data stays in EU) shape your serving topology?",
-    "How would you protect a critical model from noisy-neighbor latency on shared infra?"
-  ],
   "references": [
     {
       "label": "Full Stack Deep Learning",

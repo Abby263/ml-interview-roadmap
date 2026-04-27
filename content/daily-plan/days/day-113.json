@@ -64,13 +64,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing an enterprise RAG over Confluence + Slack + Google Drive.",
-    "How do you handle access control / permissions in retrieval?",
-    "How would you build an offline + online eval pipeline for an enterprise RAG?",
-    "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
-    "Implement heading-aware markdown chunk retrieval for enterprise docs — how do you handle H1/H2/H3 context?"
-  ],
   "references": [
     {
       "label": "LangChain — RAG concepts",

@@ -52,12 +52,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When does fine-tuning beat RAG, and vice versa?",
-    "Walk through how LoRA decomposes weight updates into low-rank matrices.",
-    "What does QLoRA add on top of LoRA, and what does it cost in quality?",
-    "How would you curate 10k high-quality examples for fine-tuning a domain LLM?"
-  ],
   "references": [
     {
       "label": "LoRA paper",

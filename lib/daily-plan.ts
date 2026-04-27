@@ -45,6 +45,7 @@ function validateDayPlan(day: DayPlan, file: string) {
   }
 
   const itemIds = new Set<string>();
+  let itemQuestionCount = 0;
   for (const [trackIndex, track] of day.tracks.entries()) {
     assertString(track.label, `tracks[${trackIndex}].label`, file);
     if (!Array.isArray(track.items) || track.items.length === 0) {
@@ -76,6 +77,7 @@ function validateDayPlan(day: DayPlan, file: string) {
             file
           );
         }
+        itemQuestionCount += item.interviewQuestions.length;
       }
       if (itemIds.has(item.id)) {
         throw new Error(`${file}: duplicate item id "${item.id}"`);
@@ -84,17 +86,10 @@ function validateDayPlan(day: DayPlan, file: string) {
     }
   }
 
-  if (!Array.isArray(day.interviewQuestions)) {
-    throw new Error(`${file}: interviewQuestions must be an array`);
-  }
-  for (const [index, question] of day.interviewQuestions.entries()) {
-    assertString(question, `interviewQuestions[${index}]`, file);
-  }
-  if (
-    mlPillars.has(day.pillar) &&
-    (day.interviewQuestions.length < 2 || day.interviewQuestions.length > 5)
-  ) {
-    throw new Error(`${file}: ML days must have 2-5 interviewQuestions`);
+  if (mlPillars.has(day.pillar) && itemQuestionCount < 2) {
+    throw new Error(
+      `${file}: ML days must have item-level interviewQuestions`
+    );
   }
 
   if (!Array.isArray(day.references)) {

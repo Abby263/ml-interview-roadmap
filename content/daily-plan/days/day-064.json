@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare data drift, concept drift, and label drift — give a real example of each.",
-    "Walk through three statistical tests for detecting drift (PSI, KS, JS) — when does each apply?",
-    "What metrics do you monitor for a deployed model beyond accuracy?",
-    "How would you monitor a model when ground-truth labels arrive with weeks of delay?"
-  ],
   "references": [
     {
       "label": "Evidently AI — monitoring metrics catalog",

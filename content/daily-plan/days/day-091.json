@@ -62,13 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare exact-match prompt caching vs semantic caching — when does each fit?",
-    "How would you route LLM requests across cheap and expensive models — what's the framework?",
-    "What does vLLM's PagedAttention do for throughput, and how does it differ from naive batching?",
-    "Compare vLLM, TensorRT-LLM, and SGLang for LLM serving — strengths of each.",
-    "How would you debug high first-token latency and API rate-limit failures in production?"
-  ],
   "references": [
     {
       "label": "vLLM docs",

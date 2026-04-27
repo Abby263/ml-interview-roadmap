@@ -62,13 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the four Ragas metrics — what does each tell you, and what do they miss?",
-    "How would you build a golden eval set for a domain-specific RAG system?",
-    "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
-    "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
-    "How would you connect RAG quality metrics to business outcomes like deflection, escalations, latency, and cost?"
-  ],
   "references": [
     {
       "label": "Ragas metrics catalog",

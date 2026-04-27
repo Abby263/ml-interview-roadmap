@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why does GBDT usually beat Random Forest on tabular data — what's the intuition?",
-    "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle for years?",
-    "Compare XGBoost, LightGBM, and CatBoost — when would you reach for each?",
-    "How does XGBoost handle missing values and why is that a big deal?"
-  ],
   "references": [
     {
       "label": "XGBoost docs (parameters + tuning)",

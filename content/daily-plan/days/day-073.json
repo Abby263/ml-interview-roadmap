@@ -69,13 +69,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare greedy, beam, top-k, and nucleus (top-p) decoding — when do you reach for each?",
-    "Why is beam search usually a bad choice for open-ended generation?",
-    "How does speculative decoding speed up inference without hurting quality?",
-    "How would you force an LLM to emit valid JSON, and what are the failure modes?",
-    "Implement a generate() loop with temperature, top-k, and top-p sampling — what bugs do you watch for?"
-  ],
   "references": [
     {
       "label": "Hugging Face LLM course",

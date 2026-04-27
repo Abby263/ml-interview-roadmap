@@ -66,12 +66,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What does a p-value of 0.03 mean — and what does it NOT mean?",
-    "Walk through the difference between Type I and Type II errors with a fraud-detection example.",
-    "How do you choose between a t-test, z-test, chi-squared, and ANOVA?",
-    "Why is multiple-testing correction critical when running dozens of A/B variants?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

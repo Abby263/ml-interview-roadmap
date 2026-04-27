@@ -59,12 +59,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Explain SVD geometrically and why X = UΣVᵀ always exists even when eigendecomposition doesn't.",
-    "Walk through the derivation of PCA as maximizing variance OR minimizing reconstruction error — show they're equivalent.",
-    "Compare PCA vs t-SNE vs UMAP — strengths, weaknesses, and when you'd reach for each.",
-    "Why are distances in t-SNE plots misleading, and how should you actually interpret them?"
-  ],
   "references": [
     {
       "label": "3Blue1Brown — Essence of Linear Algebra",

@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When does chain-of-thought prompting hurt accuracy instead of helping?",
-    "Walk me through designing a system prompt for a customer-support agent.",
-    "How would you defend a customer-facing LLM against prompt injection from user-supplied content?",
-    "When does few-shot prompting help vs hurt — what's the rule of thumb?"
-  ],
   "references": [
     {
       "label": "Anthropic — Prompt Engineering Guide",

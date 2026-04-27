@@ -62,12 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
-    "How do you build a GPT-style dataset from text, including tokenization, context windows, and targets?",
-    "Walk through one forward pass of a decoder-only LLM at inference time, including the KV cache.",
-    "What does 'emergent abilities' mean in LLMs and why is the framing controversial?"
-  ],
   "references": [
     {
       "label": "Karpathy — Intro to LLMs",

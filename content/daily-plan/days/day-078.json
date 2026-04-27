@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When would you reach for RAG over fine-tuning, and vice versa?",
-    "Walk through the four stages of a standard RAG pipeline and where latency hides.",
-    "Compare fixed-size, semantic, and hierarchical chunking — when does each fit?",
-    "How does chunk size affect retrieval quality vs answer quality?"
-  ],
   "references": [
     {
       "label": "LangChain — RAG concepts",

@@ -32,11 +32,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing a GitHub Copilot-style code assistant.",
-    "How do you handle context: open files, repo structure, project conventions?",
-    "How do you measure quality (acceptance rate, retention, latency) for a coding assistant?"
-  ],
   "references": [
     {
       "label": "Anthropic — Building Effective Agents",

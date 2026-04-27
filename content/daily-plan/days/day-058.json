@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What is training/serving skew, and how does a feature store eliminate it?",
-    "Why is point-in-time correctness critical for training data, and how does a feature store handle it?",
-    "When is a feature store overkill — what's the smaller alternative?"
-  ],
   "references": [
     {
       "label": "Feast feature store docs",

@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare input vs output filtering for LLM safety — what does each catch and miss?",
-    "Walk through three categories of jailbreak attacks, and how you'd defend against each.",
-    "How would you build a red-teaming process for a customer-facing LLM?"
-  ],
   "references": [
     {
       "label": "Anthropic — Testing & Evaluation",

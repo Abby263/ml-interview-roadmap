@@ -96,12 +96,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
-    "Why is positive predictive value low when the base rate is small, even with a great classifier?",
-    "Explain conditional probability and why P(A|B) ≠ P(B|A) — with a fraud-detection example.",
-    "When does treating two events as independent break a model in production?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When does sparse retrieval (BM25) beat dense retrieval?",
-    "How does HyDE work, and when does it actually help?",
-    "How would you handle a multi-hop question that requires chaining retrieval calls?"
-  ],
   "references": [
     {
       "label": "Pinecone — Vector Databases Explained",

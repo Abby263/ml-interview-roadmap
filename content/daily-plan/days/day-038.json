@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
-    "Why is AdamW preferred over Adam when using weight decay?",
-    "Why is learning-rate warmup critical for transformer training, and what schedule do you use after?"
-  ],
   "references": [
     {
       "label": "fast.ai — Practical Deep Learning",

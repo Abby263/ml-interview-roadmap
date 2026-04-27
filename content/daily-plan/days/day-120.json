@@ -61,12 +61,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What levers do you pull when accuracy is great but latency misses the budget?",
-    "How would you design a cascade: cheap model first, expensive model only when needed?",
-    "Walk through cold-start strategies for new users vs new items in a recsys.",
-    "When would you reach for federated learning vs differential privacy vs on-device inference?"
-  ],
   "references": [
     {
       "label": "Eugene Yan — applied ML writing",

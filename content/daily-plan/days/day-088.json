@@ -51,12 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the three stages of RLHF: SFT → reward model → PPO.",
-    "Why is reward hacking a problem in RLHF, and how do you mitigate it?",
-    "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
-    "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
-  ],
   "references": [
     {
       "label": "Hugging Face — LoRA & PEFT",

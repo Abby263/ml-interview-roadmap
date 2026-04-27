@@ -34,30 +34,6 @@ export async function run({ NC, R, nc, ncTrack, daysRoot, weeksPath, root }) {
       for (const t of day.extraTracks) tracks.push(t);
     }
 
-    // Day-level interview questions
-    let dayQuestions = day.interviewQuestions ?? [];
-    if (dayQuestions.length === 0) {
-      // Pull from first ML topic if available
-      for (const tid of day.topics ?? []) {
-        if (TOPICS[tid].dayQuestions?.length) {
-          dayQuestions = TOPICS[tid].dayQuestions;
-          break;
-        }
-      }
-    }
-
-    // ML pillars must have 2-5 day-level questions
-    const mlPillars = new Set([
-      "math-stats", "traditional-ml", "deep-learning",
-      "generative-ai", "llmops", "ml-system-design", "mlops",
-    ]);
-    if (mlPillars.has(day.pillar)) {
-      if (dayQuestions.length < 2) {
-        throw new Error(`Day ${day.day} (${day.pillar}) needs 2-5 interview questions, got ${dayQuestions.length}`);
-      }
-      if (dayQuestions.length > 5) dayQuestions = dayQuestions.slice(0, 5);
-    }
-
     // Normalize per-item interviewQuestions: validator requires 2-5 when present
     for (const track of tracks) {
       track.items = track.items.map((it) => {
@@ -70,6 +46,29 @@ export async function run({ NC, R, nc, ncTrack, daysRoot, weeksPath, root }) {
         }
         return it;
       });
+    }
+
+    // ML pillars must carry interview practice at the item level. The day page
+    // intentionally avoids a separate daily question block to prevent repetition.
+    const mlPillars = new Set([
+      "math-stats", "traditional-ml", "deep-learning",
+      "generative-ai", "llmops", "ml-system-design", "mlops",
+    ]);
+    if (mlPillars.has(day.pillar)) {
+      const itemQuestionCount = tracks.reduce(
+        (sum, track) =>
+          sum +
+          track.items.reduce(
+            (trackSum, it) => trackSum + (it.interviewQuestions?.length ?? 0),
+            0
+          ),
+        0
+      );
+      if (itemQuestionCount < 2) {
+        throw new Error(
+          `Day ${day.day} (${day.pillar}) needs item-level interview questions`
+        );
+      }
     }
 
     // Dedup item ids per day (validator requires uniqueness)
@@ -98,7 +97,6 @@ export async function run({ NC, R, nc, ncTrack, daysRoot, weeksPath, root }) {
       pillar: day.pillar,
       focus: day.focus,
       tracks,
-      interviewQuestions: dayQuestions,
       references: refs,
     };
     if (day.topicId) out.topicId = day.topicId;

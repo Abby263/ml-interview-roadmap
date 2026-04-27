@@ -62,13 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare supervisor vs swarm vs hierarchical multi-agent topologies.",
-    "How do you handle two agents that disagree on the next action in a multi-agent system?",
-    "Compare AutoGen, CrewAI, and LangGraph for multi-agent orchestration.",
-    "How would you version agents and shared tools without breaking downstream workflows?",
-    "How do you test a multi-agent system when outputs are stochastic and agents can disagree?"
-  ],
   "references": [
     {
       "label": "Anthropic — Building Effective Agents",

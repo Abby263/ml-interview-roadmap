@@ -51,12 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing Stripe Radar — real-time fraud detection.",
-    "How do you balance false positives (blocked good users) vs false negatives (fraud)?",
-    "Fraud labels arrive weeks late (chargebacks) — how do you train and monitor under delayed labels?",
-    "What kinds of features (velocity, graph, behavioral) actually catch fraud?"
-  ],
   "references": [
     {
       "label": "khangich — Machine Learning Interview",
