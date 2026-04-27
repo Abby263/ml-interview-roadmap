@@ -47,6 +47,17 @@
             "Compare workflow vs agent — when do you NOT need an agent?",
             "Walk through the building-blocks: prompt chaining, routing, parallelization, orchestrator-workers — when does each apply?"
           ]
+        },
+        {
+          "id": "agent-validation-hitl",
+          "label": "Agent validation, security, and human-in-the-loop",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How do you validate intermediate agent steps before allowing a high-risk tool call?",
+            "Where do you add human approval in a support, finance, or compliance agent?",
+            "How do you prevent prompt injection from tool outputs from hijacking the agent?"
+          ]
         }
       ]
     }
@@ -55,7 +66,8 @@
     "Walk through ReAct: how does interleaving thought and action change agent behavior?",
     "When does Plan-and-Execute beat pure ReAct?",
     "How would you design memory for a long-running personal-assistant agent?",
-    "Compare workflow vs agent — when do you NOT need an agent?"
+    "Compare workflow vs agent — when do you NOT need an agent?",
+    "How do you validate intermediate agent steps and add human approval for risky actions?"
   ],
   "references": [
     {

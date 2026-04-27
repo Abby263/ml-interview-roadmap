@@ -71,6 +71,7 @@ function ncTrack(category, start, count, label) {
 // 2. Reference shelf
 const R = {
   neetcode: { label: "NeetCode roadmap (full 250)", href: "https://neetcode.io/roadmap", source: "NeetCode" },
+  neetcodeMl: { label: "NeetCode Machine Learning practice", href: "https://neetcode.io/practice/machine-learning", source: "NeetCode" },
   ncVideos: { label: "NeetCode YouTube playlists", href: "https://www.youtube.com/c/NeetCode/playlists", source: "NeetCode" },
   lcPatterns: { label: "14 patterns to ace any coding interview", href: "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed", source: "HackerNoon" },
   yuanMeng: { label: "Prepare in a Hurry (Yuan Meng)", href: "https://www.yuan-meng.com/posts/mle_interviews_2.0/", source: "Yuan Meng" },

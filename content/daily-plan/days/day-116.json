@@ -37,6 +37,17 @@
             "How would you flag low-confidence extractions for human review?",
             "What's the unit cost of a human-review pass, and how do you optimize the routing threshold?"
           ]
+        },
+        {
+          "id": "sd-doc-mixed-inputs",
+          "label": "Mixed PDFs, scans, tables, and attachments",
+          "href": "https://www.anthropic.com/news/claude-3-vision",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you process a document set that mixes PDFs, scanned images, tables, email attachments, and OCR errors?",
+            "How do you validate extracted fields when the source document has conflicting values?",
+            "When do you use vision-language models directly vs OCR + layout parsing + LLM extraction?"
+          ]
         }
       ]
     }
@@ -44,7 +55,8 @@
   "interviewQuestions": [
     "Walk me through designing a document-intelligence pipeline for invoices/contracts.",
     "How would you handle hand-written or low-quality scans?",
-    "How would you flag low-confidence extractions for human review?"
+    "How would you flag low-confidence extractions for human review?",
+    "How do you handle mixed PDFs, scans, tables, attachments, OCR errors, and conflicting extracted values?"
   ],
   "references": [
     {

@@ -92,6 +92,17 @@
             "What does vLLM's PagedAttention do for throughput?",
             "Compare vLLM vs TensorRT-LLM vs SGLang."
           ]
+        },
+        {
+          "id": "lo-latency-limits",
+          "label": "Latency debugging, rate limits, and concurrency controls",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "How would you diagnose high first-token latency vs high tokens-per-second latency?",
+            "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
+          ]
         }
       ]
     }

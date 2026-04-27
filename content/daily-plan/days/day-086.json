@@ -47,6 +47,17 @@
             "Compare AutoGen, CrewAI, and LangGraph — when do you reach for each?",
             "Why might you prefer LangGraph's explicit state machine over AutoGen's free-form conversation?"
           ]
+        },
+        {
+          "id": "ma-versioning-tools",
+          "label": "Versioning agents and shared tools",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "How would you version prompts, tools, memories, and policies across a multi-agent system?",
+            "What breaks when multiple agents share a tool catalog but one tool changes its schema?",
+            "How do you test a multi-agent workflow deterministically enough for CI?"
+          ]
         }
       ]
     }
@@ -54,7 +65,9 @@
   "interviewQuestions": [
     "Compare supervisor vs swarm vs hierarchical multi-agent topologies.",
     "How do you handle two agents that disagree on the next action in a multi-agent system?",
-    "Compare AutoGen, CrewAI, and LangGraph for multi-agent orchestration."
+    "Compare AutoGen, CrewAI, and LangGraph for multi-agent orchestration.",
+    "How would you version agents and shared tools without breaking downstream workflows?",
+    "How do you test a multi-agent system when outputs are stochastic and agents can disagree?"
   ],
   "references": [
     {

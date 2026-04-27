@@ -81,7 +81,8 @@
           "meta": "PyTorch",
           "interviewQuestions": [
             "When would you use torch.no_grad() and detach()?",
-            "What does requires_grad=True actually do under the hood?"
+            "What does requires_grad=True actually do under the hood?",
+            "Explain the order loss.backward(), optimizer.step(), optimizer.zero_grad() in a PyTorch training loop."
           ]
         }
       ]

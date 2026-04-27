@@ -53,6 +53,17 @@
             "Compare token-level (NER) vs sequence-level (classification) tasks.",
             "Why is dependency parsing harder than POS tagging, and where does it still matter today?"
           ]
+        },
+        {
+          "id": "nlp-classic-features",
+          "label": "Classic text features: BoW, TF-IDF, stemming, lemmatization",
+          "href": "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Compare bag-of-words and TF-IDF for sentiment analysis — what signal does TF-IDF add?",
+            "When would stemming hurt compared with lemmatization?",
+            "How would you build a strong non-LLM NLP baseline before using transformers?"
+          ]
         }
       ]
     }
@@ -60,7 +71,8 @@
   "interviewQuestions": [
     "Compare BPE, WordPiece, and SentencePiece tokenizers — when do you reach for each?",
     "Walk through how word2vec skip-gram is trained, and contrast static vs contextual embeddings.",
-    "Why does tokenizer choice strongly affect cross-lingual model performance?"
+    "Why does tokenizer choice strongly affect cross-lingual model performance?",
+    "How would you build a TF-IDF + linear-model baseline for sentiment analysis, and why is it still useful?"
   ],
   "references": [
     {

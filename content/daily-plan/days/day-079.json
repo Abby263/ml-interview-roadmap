@@ -47,6 +47,17 @@
             "Compare HNSW vs IVF for ANN — accuracy/speed/memory trade-offs.",
             "When would you switch from in-memory FAISS to a hosted vector DB — what's the breakpoint?"
           ]
+        },
+        {
+          "id": "rag-sbert",
+          "label": "Sentence-BERT vs vanilla BERT embeddings",
+          "href": "https://www.sbert.net/",
+          "meta": "Sentence-BERT",
+          "interviewQuestions": [
+            "Why does mean-pooled vanilla BERT often underperform Sentence-BERT for semantic search?",
+            "When is cosine similarity insufficient for retrieval quality, and what diagnostics would you add?",
+            "How do you evaluate embedding quality beyond a single nearest-neighbor demo?"
+          ]
         }
       ]
     }
@@ -54,7 +65,8 @@
   "interviewQuestions": [
     "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
     "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
-    "Compare HNSW vs IVF for ANN search — accuracy/speed/memory trade-offs."
+    "Compare HNSW vs IVF for ANN search — accuracy/speed/memory trade-offs.",
+    "Why does Sentence-BERT work better than vanilla BERT embeddings for semantic search?"
   ],
   "references": [
     {

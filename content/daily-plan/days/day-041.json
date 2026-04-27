@@ -53,6 +53,17 @@
             "How does activation checkpointing trade compute for memory?",
             "When does activation checkpointing become NOT worth it — what's the typical compute overhead?"
           ]
+        },
+        {
+          "id": "dl-pytorch-loop",
+          "label": "PyTorch training loops: tensors, channels, and handwritten digits",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement a minimal PyTorch training loop for MNIST-style handwritten digits and name each required step.",
+            "Why do PyTorch image tensors usually use channel-first shape NCHW instead of NHWC?",
+            "What is the practical difference between a PyTorch tensor and a NumPy array during training?"
+          ]
         }
       ]
     }
@@ -60,7 +71,8 @@
   "interviewQuestions": [
     "When would you reach for gradient clipping vs gradient accumulation?",
     "Compare fp16 vs bf16 vs fp8 — what changes for training stability?",
-    "How does activation checkpointing trade compute for memory, and when is it worth it?"
+    "How does activation checkpointing trade compute for memory, and when is it worth it?",
+    "Walk through a PyTorch training loop for image classification: forward, loss, backward, optimizer step, and zero-grad."
   ],
   "references": [
     {

@@ -53,6 +53,17 @@
             "When is LLM-as-judge reliable, and what biases does it introduce?",
             "How would you calibrate an LLM judge to human preferences?"
           ]
+        },
+        {
+          "id": "llm-eval-metrics",
+          "label": "Generation metrics: BLEU, ROUGE, BERTScore, exact match",
+          "href": "https://huggingface.co/evaluate-metric",
+          "meta": "Hugging Face",
+          "interviewQuestions": [
+            "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
+            "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
+            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?"
+          ]
         }
       ]
     }
@@ -61,7 +72,8 @@
     "Define perplexity precisely and explain why it's a poor proxy for downstream task quality.",
     "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
     "When is LLM-as-judge reliable, and what biases does it introduce?",
-    "Why has benchmark contamination become a serious issue, and how do you defend against it?"
+    "Why has benchmark contamination become a serious issue, and how do you defend against it?",
+    "Compare BLEU, ROUGE, BERTScore, exact match, and human/LLM judging for generation quality."
   ],
   "references": [
     {

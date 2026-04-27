@@ -80,6 +80,16 @@
           ]
         },
         {
+          "id": "opt-nc-gradient-descent",
+          "label": "Code gradient descent for a scalar loss",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement gradient descent for a simple squared-error objective and explain the update rule line by line.",
+            "How would you debug a training run where gradient descent diverges after a few steps?"
+          ]
+        },
+        {
           "id": "opt-momentum",
           "label": "Momentum, Nesterov, Adam, AdamW, schedulers",
           "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",

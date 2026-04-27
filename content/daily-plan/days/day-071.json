@@ -29,6 +29,17 @@
           ]
         },
         {
+          "id": "llm-gpt-dataset",
+          "label": "Build a GPT dataset for next-token prediction",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "How do you turn raw text into input-target pairs for GPT next-token prediction?",
+            "What are block size, context window, and stride in a language-model dataset?",
+            "How do train/validation splits prevent contamination in LLM pretraining or fine-tuning?"
+          ]
+        },
+        {
           "id": "llm-arch",
           "label": "Decoder-only transformer for LLMs",
           "href": "https://jalammar.github.io/illustrated-gpt2/",
@@ -53,6 +64,7 @@
   ],
   "interviewQuestions": [
     "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
+    "How do you build a GPT-style dataset from text, including tokenization, context windows, and targets?",
     "Walk through one forward pass of a decoder-only LLM at inference time, including the KV cache.",
     "What does 'emergent abilities' mean in LLMs and why is the framing controversial?"
   ],
