@@ -47,7 +47,8 @@
           "meta": "StatQuest",
           "interviewQuestions": [
             "Why do you need both a validation and a test set for hyperparameter tuning?",
-            "What is nested cross-validation and when is it worth the cost?"
+            "What is nested cross-validation and when is it worth the cost?",
+            "How would your split strategy change for time-series forecasting vs random tabular rows?"
           ]
         },
         {
@@ -66,7 +67,8 @@
   "interviewQuestions": [
     "Why does standard k-fold leak data on time-series, and what does TimeSeriesSplit do differently?",
     "Walk through three real ways data leakage sneaks into an ML pipeline and how you'd prevent each.",
-    "Why do you need both a validation and a test set for hyperparameter tuning — can't you just use one?"
+    "Why do you need both a validation and a test set for hyperparameter tuning — can't you just use one?",
+    "How do you evaluate a time-series model without accidentally training on the future?"
   ],
   "references": [
     {

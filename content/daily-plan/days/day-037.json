@@ -57,7 +57,8 @@
           "meta": "PyTorch",
           "interviewQuestions": [
             "When would you use torch.no_grad() and detach()?",
-            "What does requires_grad=True actually do under the hood?"
+            "What does requires_grad=True actually do under the hood?",
+            "Explain the order loss.backward(), optimizer.step(), optimizer.zero_grad() in a PyTorch training loop."
           ]
         }
       ]
@@ -66,7 +67,8 @@
   "interviewQuestions": [
     "Derive backprop end-to-end for a 2-layer MLP with cross-entropy loss.",
     "Why does a deep sigmoid network suffer from vanishing gradients, and how do ReLU and residuals help?",
-    "When would you use torch.no_grad() vs detach() in PyTorch — what's the difference?"
+    "When would you use torch.no_grad() vs detach() in PyTorch — what's the difference?",
+    "What exactly happens during loss.backward(), optimizer.step(), and optimizer.zero_grad() in PyTorch?"
   ],
   "references": [
     {

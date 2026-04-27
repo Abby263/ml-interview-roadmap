@@ -47,6 +47,17 @@
             "How does prompt caching change the cost picture for repeated context?",
             "Compare exact-match retrieval caching vs semantic caching — when does each fit?"
           ]
+        },
+        {
+          "id": "rag-long-docs",
+          "label": "Long documents: chunk, summarize, route, or stuff context",
+          "href": "https://www.pinecone.io/learn/chunking-strategies/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "How would you answer questions over a 500-page PDF without exceeding the context window?",
+            "When do you choose hierarchical summaries, parent-child chunks, or long-context stuffing?",
+            "How do you avoid losing section-level citations when chunking long documents?"
+          ]
         }
       ]
     }
@@ -54,7 +65,8 @@
   "interviewQuestions": [
     "Do long context windows kill RAG? Defend your view.",
     "What does agentic RAG add over a static RAG pipeline?",
-    "How does prompt caching change the cost picture for repeated context?"
+    "How does prompt caching change the cost picture for repeated context?",
+    "How would you handle a 500-page document when the relevant answer spans multiple sections?"
   ],
   "references": [
     {

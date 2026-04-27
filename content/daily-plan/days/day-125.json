@@ -73,6 +73,28 @@
             "How would you build an offline + online eval pipeline for an enterprise RAG?",
             "What synthetic golden set would you generate for a domain where humans can't easily score answers?"
           ]
+        },
+        {
+          "id": "sd-rag-connectors",
+          "label": "Mixed enterprise docs: SharePoint, Jira, Slack, Drive",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
+            "What metadata schema would you attach to chunks so retrieval can enforce ACLs and route by source?",
+            "How do you backfill 50M documents without breaking freshness for newly edited docs?"
+          ]
+        },
+        {
+          "id": "sd-rag-markdown-retrieval",
+          "label": "Implement heading-aware markdown chunk retrieval",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "Interview coding",
+          "interviewQuestions": [
+            "Implement retrieve_relevant_chunks(markdown, query) that preserves H1/H2/H3 hierarchy in returned chunks.",
+            "How would you score headings plus body text so a section title can match even when the paragraph uses different wording?",
+            "What edge cases break naive markdown chunking: tables, code blocks, duplicate headings, or very long sections?"
+          ]
         }
       ]
     }

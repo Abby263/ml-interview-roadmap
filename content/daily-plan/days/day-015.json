@@ -59,6 +59,17 @@
             "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
             "Why is Huber loss differentiable and robust at the same time?"
           ]
+        },
+        {
+          "id": "ml-lr-nc-forward-train",
+          "label": "Code linear regression forward pass and training loop",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement a vectorized linear regression forward pass for X @ w + b and state the expected tensor shapes.",
+            "Implement one gradient-descent training step for linear regression and explain loss vs cost vs prediction error.",
+            "Does sklearn's LinearRegression use gradient descent or ordinary least squares? Why does that matter in an interview?"
+          ]
         }
       ]
     }
@@ -67,7 +78,8 @@
     "Derive the OLS closed-form θ = (XᵀX)⁻¹Xᵀy and explain when it fails.",
     "Show that OLS coincides with MLE under Gaussian noise — why does that matter?",
     "Compare MSE vs MAE vs Huber loss for regression — when do you reach for each?",
-    "What are the four classical OLS assumptions and how do you diagnose violations?"
+    "Explain loss vs cost vs prediction error for linear regression — which one do you optimize?",
+    "Does sklearn's LinearRegression use gradient descent or OLS, and when would you implement GD yourself?"
   ],
   "references": [
     {

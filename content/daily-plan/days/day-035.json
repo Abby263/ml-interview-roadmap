@@ -82,6 +82,17 @@
             "When is mean/median imputation harmful?",
             "Why do tree models often handle missing values natively while linear models cannot?"
           ]
+        },
+        {
+          "id": "ml-fe-outliers-collinearity",
+          "label": "Outliers, multicollinearity, and distribution shifts",
+          "href": "https://scikit-learn.org/stable/modules/preprocessing.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "How do you detect and handle outliers using box plots, robust scaling, winsorization, or model choice?",
+            "Why does multicollinearity destabilize linear models, and why are tree models less sensitive?",
+            "How would you distinguish true data drift from a one-off outlier spike in production?"
+          ]
         }
       ]
     }

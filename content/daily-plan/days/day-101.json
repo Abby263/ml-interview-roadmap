@@ -47,6 +47,17 @@
             "How is training a code model different from training a natural-language model?",
             "How would you evaluate a code generation model — pass@k, HumanEval, SWE-bench?"
           ]
+        },
+        {
+          "id": "nlp-model-choice",
+          "label": "Encoder-only vs decoder-only vs encoder-decoder for NLP products",
+          "href": "https://huggingface.co/learn/nlp-course/chapter1/4",
+          "meta": "HF",
+          "interviewQuestions": [
+            "When would you choose BERT-style encoder-only models over GPT-style decoder-only models?",
+            "When is encoder-decoder still the cleanest choice for summarization, translation, or extraction?",
+            "How would latency and serving cost affect that architecture choice?"
+          ]
         }
       ]
     }
@@ -54,7 +65,8 @@
   "interviewQuestions": [
     "Compare span-based vs sequence-tagging information extraction — when does each win?",
     "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
-    "How is training a code model different from training a natural-language model?"
+    "How is training a code model different from training a natural-language model?",
+    "Choose between encoder-only, decoder-only, and encoder-decoder models for classification, summarization, and extraction."
   ],
   "references": [
     {

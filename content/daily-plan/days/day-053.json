@@ -52,7 +52,8 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Why did decoder-only models win the LLM race?",
-            "What does the causal-LM objective give you that masked-LM doesn't, and vice versa?"
+            "What does the causal-LM objective give you that masked-LM doesn't, and vice versa?",
+            "Explain teacher forcing during training and autoregressive decoding during inference."
           ]
         }
       ]
@@ -61,7 +62,8 @@
   "interviewQuestions": [
     "Walk through BERT's MLM and NSP pretraining objectives — and why later models dropped NSP.",
     "Compare encoder-only (BERT), decoder-only (GPT), and encoder-decoder (T5) — when do you reach for each?",
-    "How would you fine-tune BERT for NER vs sentence classification — what changes?"
+    "How would you fine-tune BERT for NER vs sentence classification — what changes?",
+    "What changes between teacher-forced training and autoregressive inference for GPT-style models?"
   ],
   "references": [
     {

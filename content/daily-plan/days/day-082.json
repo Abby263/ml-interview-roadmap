@@ -47,6 +47,17 @@
             "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
             "What does 'lost in the middle' mean for long-context LLMs, and how do you mitigate it?"
           ]
+        },
+        {
+          "id": "rag-golden-business",
+          "label": "Golden datasets, business metrics, and RAG dashboards",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you create a GOLD dataset for RAG from real user questions, documents, and expected citations?",
+            "Which business metrics would you track for RAG: deflection, task success, escalation rate, latency, and cost?",
+            "What dashboard slices show whether retrieval or generation is failing in production?"
+          ]
         }
       ]
     }
@@ -55,7 +66,8 @@
     "Walk through the four Ragas metrics — what does each tell you, and what do they miss?",
     "How would you build a golden eval set for a domain-specific RAG system?",
     "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
-    "Why are needle-in-haystack tests easy to game, and what are stronger evals?"
+    "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
+    "How would you connect RAG quality metrics to business outcomes like deflection, escalations, latency, and cost?"
   ],
   "references": [
     {

@@ -131,6 +131,17 @@
             "What problem does FlashAttention solve, and how?",
             "Compare MHA, MQA, and GQA — KV-cache trade-offs."
           ]
+        },
+        {
+          "id": "dl-nc-attention",
+          "label": "Code self-attention, multi-head attention, and a tiny transformer",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement scaled dot-product self-attention and track the shapes of Q, K, V, scores, and output.",
+            "How do masks change self-attention for causal language modeling?",
+            "What changes when you split attention into multiple heads and then concatenate them?"
+          ]
         }
       ]
     }

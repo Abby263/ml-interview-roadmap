@@ -277,6 +277,10 @@ export async function build({ R }) {
         "Compare batch GD, SGD, and mini-batch SGD — trade-offs in compute, noise, and convergence.",
         "Why does SGD with momentum converge faster than vanilla SGD?",
       ]),
+      item("opt-nc-gradient-descent", "Code gradient descent for a scalar loss", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement gradient descent for a simple squared-error objective and explain the update rule line by line.",
+        "How would you debug a training run where gradient descent diverges after a few steps?",
+      ]),
       item("opt-momentum", "Momentum, Nesterov, Adam, AdamW, schedulers", "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html", "fast.ai", [
         "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
         "Why is the AdamW correction important when using weight decay with adaptive optimizers?",
@@ -330,12 +334,18 @@ export async function build({ R }) {
         "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
         "Why is Huber loss differentiable and robust at the same time?",
       ]),
+      item("ml-lr-nc-forward-train", "Code linear regression forward pass and training loop", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement a vectorized linear regression forward pass for X @ w + b and state the expected tensor shapes.",
+        "Implement one gradient-descent training step for linear regression and explain loss vs cost vs prediction error.",
+        "Does sklearn's LinearRegression use gradient descent or ordinary least squares? Why does that matter in an interview?",
+      ]),
     ],
     dayQuestions: [
       "Derive the OLS closed-form θ = (XᵀX)⁻¹Xᵀy and explain when it fails.",
       "Show that OLS coincides with MLE under Gaussian noise — why does that matter?",
       "Compare MSE vs MAE vs Huber loss for regression — when do you reach for each?",
-      "What are the four classical OLS assumptions and how do you diagnose violations?",
+      "Explain loss vs cost vs prediction error for linear regression — which one do you optimize?",
+      "Does sklearn's LinearRegression use gradient descent or OLS, and when would you implement GD yourself?",
     ],
   });
 
@@ -355,12 +365,18 @@ export async function build({ R }) {
         "Compare one-vs-rest vs softmax for multi-class classification.",
         "What's the difference between multi-class and multi-label, and how does the loss change?",
       ]),
+      item("ml-logreg-traps", "Logistic regression interview traps: odds, thresholds, sigmoid vs softmax", "https://www.youtube.com/watch?v=yIYKR4sgzI8", "StatQuest", [
+        "Why is logistic regression called regression if it solves classification?",
+        "How do you interpret a logistic-regression coefficient as an odds ratio?",
+        "When do you use sigmoid outputs vs softmax outputs, and how does that change for multi-label problems?",
+      ]),
     ],
     dayQuestions: [
       "Why do we use cross-entropy instead of MSE for logistic regression — what breaks?",
       "When is ROC-AUC misleading and when should you use PR-AUC instead?",
       "How do you choose a classification threshold for a fraud-detection system with very imbalanced classes?",
       "What is calibration, why does it matter for decisions, and how do you fix a poorly-calibrated model?",
+      "Why is logistic regression called regression, and how do you interpret its coefficients as odds ratios?",
     ],
   });
 
@@ -397,6 +413,7 @@ export async function build({ R }) {
       item("ml-train-val-test", "Train/val/test split & nested CV", "https://www.youtube.com/watch?v=fSytzGwwBVw", "StatQuest", [
         "Why do you need both a validation and a test set for hyperparameter tuning?",
         "What is nested cross-validation and when is it worth the cost?",
+        "How would your split strategy change for time-series forecasting vs random tabular rows?",
       ]),
       item("ml-leakage", "Common forms of data leakage", "https://machinelearningmastery.com/data-leakage-machine-learning/", "MLM", [
         "Walk through three common ways data leakage sneaks into an ML pipeline.",
@@ -407,6 +424,7 @@ export async function build({ R }) {
       "Why does standard k-fold leak data on time-series, and what does TimeSeriesSplit do differently?",
       "Walk through three real ways data leakage sneaks into an ML pipeline and how you'd prevent each.",
       "Why do you need both a validation and a test set for hyperparameter tuning — can't you just use one?",
+      "How do you evaluate a time-series model without accidentally training on the future?",
     ],
   });
 
@@ -439,6 +457,7 @@ export async function build({ R }) {
       item("ml-bagging-rf", "Bagging & Random Forest", "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ", "StatQuest", [
         "How does bagging reduce variance? Why doesn't it reduce bias?",
         "What two extra ingredients does Random Forest add on top of bagging?",
+        "Which Random Forest hyperparameters control tree diversity, and how does out-of-bag validation work?",
       ]),
       item("ml-boosting", "Boosting intuition: AdaBoost, GBM", "https://www.youtube.com/watch?v=3CC4N4z3GJc", "StatQuest", [
         "Compare bagging vs boosting — what's reduced and how?",
@@ -453,6 +472,7 @@ export async function build({ R }) {
       "Compare bagging and boosting — which reduces bias, which reduces variance, and why?",
       "What two extra ingredients does Random Forest add on top of vanilla bagging?",
       "When does stacking actually help in production vs just adding latency and ops cost?",
+      "How do out-of-bag estimates work in Random Forest, and when would you trust them?",
     ],
   });
 
@@ -587,11 +607,18 @@ export async function build({ R }) {
         "When is mean/median imputation harmful?",
         "Why do tree models often handle missing values natively while linear models cannot?",
       ]),
+      item("ml-fe-outliers-collinearity", "Outliers, multicollinearity, and distribution shifts", "https://scikit-learn.org/stable/modules/preprocessing.html", "scikit-learn", [
+        "How do you detect and handle outliers using box plots, robust scaling, winsorization, or model choice?",
+        "Why does multicollinearity destabilize linear models, and why are tree models less sensitive?",
+        "How would you distinguish true data drift from a one-off outlier spike in production?",
+      ]),
     ],
     dayQuestions: [
       "Compare one-hot, target, frequency, and hashing encoders — when do you reach for each?",
       "Why is target encoding leak-prone, and how does k-fold target encoding fix it?",
       "When is mean/median imputation harmful, and what should you do instead?",
+      "How do you detect and handle outliers without hiding a real production drift event?",
+      "Why does multicollinearity matter for linear models, and how do you diagnose it?",
     ],
   });
 
@@ -633,11 +660,16 @@ export async function build({ R }) {
         "Implement logistic regression with mini-batch SGD and L2 regularization.",
         "What numerical-stability pitfalls do you watch out for when implementing the sigmoid + log-loss?",
       ]),
+      item("ml-code-lr-neetcode", "Code linear regression training from scratch", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement linear regression training with vectorized gradients and a learning-rate parameter.",
+        "How do you verify your from-scratch implementation against sklearn or a closed-form OLS solution?",
+      ]),
     ],
     dayQuestions: [
       "Implement k-means with k-means++ initialization in 30 minutes.",
       "Implement logistic regression with mini-batch SGD and explain each step.",
       "Implement k-NN classifier and discuss time/space complexity.",
+      "Implement linear regression training from scratch and verify it against a library baseline.",
     ],
   });
 
@@ -736,12 +768,14 @@ export async function build({ R }) {
       item("dl-autograd", "PyTorch autograd in 30 minutes", "https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html", "PyTorch", [
         "When would you use torch.no_grad() and detach()?",
         "What does requires_grad=True actually do under the hood?",
+        "Explain the order loss.backward(), optimizer.step(), optimizer.zero_grad() in a PyTorch training loop.",
       ]),
     ],
     dayQuestions: [
       "Derive backprop end-to-end for a 2-layer MLP with cross-entropy loss.",
       "Why does a deep sigmoid network suffer from vanishing gradients, and how do ReLU and residuals help?",
       "When would you use torch.no_grad() vs detach() in PyTorch — what's the difference?",
+      "What exactly happens during loss.backward(), optimizer.step(), and optimizer.zero_grad() in PyTorch?",
     ],
   });
 
@@ -831,11 +865,17 @@ export async function build({ R }) {
         "How does activation checkpointing trade compute for memory?",
         "When does activation checkpointing become NOT worth it — what's the typical compute overhead?",
       ]),
+      item("dl-pytorch-loop", "PyTorch training loops: tensors, channels, and handwritten digits", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement a minimal PyTorch training loop for MNIST-style handwritten digits and name each required step.",
+        "Why do PyTorch image tensors usually use channel-first shape NCHW instead of NHWC?",
+        "What is the practical difference between a PyTorch tensor and a NumPy array during training?",
+      ]),
     ],
     dayQuestions: [
       "When would you reach for gradient clipping vs gradient accumulation?",
       "Compare fp16 vs bf16 vs fp8 — what changes for training stability?",
       "How does activation checkpointing trade compute for memory, and when is it worth it?",
+      "Walk through a PyTorch training loop for image classification: forward, loss, backward, optimizer step, and zero-grad.",
     ],
   });
 
@@ -850,6 +890,7 @@ export async function build({ R }) {
       item("cnn-pool", "Pooling, receptive field", "https://distill.pub/2019/computing-receptive-fields/", "Distill", [
         "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
         "Compare max pooling vs average pooling vs strided convolution — when does each fit?",
+        "How would you implement a function that computes receptive field, jump, and start offset across conv/pool layers?",
       ]),
       item("cnn-translation", "Translation invariance & equivariance", "https://arxiv.org/abs/1907.00657", "Read", [
         "Why are CNNs called translation-equivariant rather than translation-invariant?",
@@ -861,6 +902,7 @@ export async function build({ R }) {
       "Compute the output shape of a 3×3 conv with stride 2 and padding 1 on a 32×32×3 input.",
       "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
       "Why are CNNs called translation-equivariant rather than translation-invariant?",
+      "How would you implement a receptive-field calculator for a stack of conv and pooling layers?",
     ],
   });
 
@@ -920,6 +962,12 @@ export async function build({ R }) {
       item("cv-eval", "mAP, IoU, panoptic quality", "https://cocodataset.org/#detection-eval", "COCO", [
         "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
         "Why does NMS need careful tuning, and what does it break when set wrong?",
+        "How would you implement mAP from predicted boxes, confidences, and class labels?",
+      ]),
+      item("cv-yolo-traps", "YOLO anchors, losses, and limitations", "https://pjreddie.com/darknet/yolo/", "YOLO", [
+        "What are anchor boxes in YOLO, and why did anchor-free detectors become popular?",
+        "What terms usually appear in a YOLO loss, and how do localization, objectness, and class losses interact?",
+        "Where does YOLO struggle compared with two-stage detectors or DETR?",
       ]),
     ],
     dayQuestions: [
@@ -927,6 +975,7 @@ export async function build({ R }) {
       "How does DETR remove the need for NMS and anchor boxes?",
       "How does U-Net's skip connection design help with segmentation?",
       "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
+      "Explain YOLO anchors, objectness loss, and why NMS tuning changes final detections.",
     ],
   });
 
@@ -994,11 +1043,17 @@ export async function build({ R }) {
         "Compare token-level (NER) vs sequence-level (classification) tasks.",
         "Why is dependency parsing harder than POS tagging, and where does it still matter today?",
       ]),
+      item("nlp-classic-features", "Classic text features: BoW, TF-IDF, stemming, lemmatization", "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction", "scikit-learn", [
+        "Compare bag-of-words and TF-IDF for sentiment analysis — what signal does TF-IDF add?",
+        "When would stemming hurt compared with lemmatization?",
+        "How would you build a strong non-LLM NLP baseline before using transformers?",
+      ]),
     ],
     dayQuestions: [
       "Compare BPE, WordPiece, and SentencePiece tokenizers — when do you reach for each?",
       "Walk through how word2vec skip-gram is trained, and contrast static vs contextual embeddings.",
       "Why does tokenizer choice strongly affect cross-lingual model performance?",
+      "How would you build a TF-IDF + linear-model baseline for sentiment analysis, and why is it still useful?",
     ],
   });
 
@@ -1041,13 +1096,18 @@ export async function build({ R }) {
         "What problem does FlashAttention solve, and how?",
         "Compare MHA, MQA, and GQA — KV-cache trade-offs.",
       ]),
+      item("dl-nc-attention", "Code self-attention, multi-head attention, and a tiny transformer", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement scaled dot-product self-attention and track the shapes of Q, K, V, scores, and output.",
+        "How do masks change self-attention for causal language modeling?",
+        "What changes when you split attention into multiple heads and then concatenate them?",
+      ]),
     ],
     dayQuestions: [
       "Walk me through self-attention(Q, K, V) end-to-end including the √d_k scaling.",
       "What does multi-head attention buy you over a single head?",
       "Compare absolute, relative, and rotary (RoPE) positional encodings.",
       "What problem does FlashAttention solve, and how does it speed up training?",
-      "Compare MHA vs MQA vs GQA — what changes in the KV cache?",
+      "Implement masked self-attention for a tiny GPT model — where do the shape bugs usually happen?",
     ],
   });
 
@@ -1066,12 +1126,14 @@ export async function build({ R }) {
       item("nlp-gpt", "GPT: decoder-only, causal LM", "https://openai.com/research/language-unsupervised", "OpenAI", [
         "Why did decoder-only models win the LLM race?",
         "What does the causal-LM objective give you that masked-LM doesn't, and vice versa?",
+        "Explain teacher forcing during training and autoregressive decoding during inference.",
       ]),
     ],
     dayQuestions: [
       "Walk through BERT's MLM and NSP pretraining objectives — and why later models dropped NSP.",
       "Compare encoder-only (BERT), decoder-only (GPT), and encoder-decoder (T5) — when do you reach for each?",
       "How would you fine-tune BERT for NER vs sentence classification — what changes?",
+      "What changes between teacher-forced training and autoregressive inference for GPT-style models?",
     ],
   });
 
@@ -1090,11 +1152,17 @@ export async function build({ R }) {
         "Why is beam search standard for translation but not for open-ended generation?",
         "What is BLEU actually measuring, and where does it mislead?",
       ]),
+      item("nlp-sentiment", "Sentiment analysis: baselines, transformers, and failure modes", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Design a sentiment classifier starting from TF-IDF + logistic regression and then a transformer baseline.",
+        "How would you handle negation, sarcasm, domain shift, and class imbalance in sentiment analysis?",
+        "Which metric would you report for an imbalanced sentiment dataset and why?",
+      ]),
     ],
     dayQuestions: [
       "How would you evaluate a summarization model — ROUGE, BERTScore, or LLM-as-judge?",
       "Compare BIO tagging vs span-based NER — pros and cons of each approach.",
       "Why is beam search standard for translation but not for open-ended generation?",
+      "Design a sentiment-analysis system and explain the baseline, metric, and common failure modes.",
     ],
   });
 
@@ -1429,6 +1497,11 @@ export async function build({ R }) {
         "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
         "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?",
       ]),
+      item("llm-gpt-dataset", "Build a GPT dataset for next-token prediction", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "How do you turn raw text into input-target pairs for GPT next-token prediction?",
+        "What are block size, context window, and stride in a language-model dataset?",
+        "How do train/validation splits prevent contamination in LLM pretraining or fine-tuning?",
+      ]),
       item("llm-arch", "Decoder-only transformer for LLMs", "https://jalammar.github.io/illustrated-gpt2/", "Jay Alammar", [
         "Walk me through one forward pass of a decoder-only LLM at inference time.",
         "What is the KV cache and why is it so important?",
@@ -1440,6 +1513,7 @@ export async function build({ R }) {
     ],
     dayQuestions: [
       "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
+      "How do you build a GPT-style dataset from text, including tokenization, context windows, and targets?",
       "Walk through one forward pass of a decoder-only LLM at inference time, including the KV cache.",
       "What does 'emergent abilities' mean in LLMs and why is the framing controversial?",
     ],
@@ -1484,12 +1558,18 @@ export async function build({ R }) {
         "How would you force an LLM to emit valid JSON — and what are the failure modes?",
         "Compare grammar-constrained decoding vs prompt-+-retry-+-validate — when does each fit?",
       ]),
+      item("llm-generate-loop", "Implement a generate() loop for a tiny GPT", "https://neetcode.io/practice/machine-learning", "NeetCode ML", [
+        "Implement top-k and nucleus sampling inside an autoregressive generate() loop.",
+        "How do temperature, top-k, and top-p interact when a model becomes repetitive or incoherent?",
+        "What stopping conditions do you need for a chat model beyond max_new_tokens?",
+      ]),
     ],
     dayQuestions: [
       "Compare greedy, beam, top-k, and nucleus (top-p) decoding — when do you reach for each?",
       "Why is beam search usually a bad choice for open-ended generation?",
       "How does speculative decoding speed up inference without hurting quality?",
       "How would you force an LLM to emit valid JSON, and what are the failure modes?",
+      "Implement a generate() loop with temperature, top-k, and top-p sampling — what bugs do you watch for?",
     ],
   });
 
@@ -1578,12 +1658,18 @@ export async function build({ R }) {
         "When is LLM-as-judge reliable, and what biases does it introduce?",
         "How would you calibrate an LLM judge to human preferences?",
       ]),
+      item("llm-eval-metrics", "Generation metrics: BLEU, ROUGE, BERTScore, exact match", "https://huggingface.co/evaluate-metric", "Hugging Face", [
+        "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
+        "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
+        "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?",
+      ]),
     ],
     dayQuestions: [
       "Define perplexity precisely and explain why it's a poor proxy for downstream task quality.",
       "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
       "When is LLM-as-judge reliable, and what biases does it introduce?",
       "Why has benchmark contamination become a serious issue, and how do you defend against it?",
+      "Compare BLEU, ROUGE, BERTScore, exact match, and human/LLM judging for generation quality.",
     ],
   });
 
@@ -1626,11 +1712,17 @@ export async function build({ R }) {
         "Compare HNSW vs IVF for ANN — accuracy/speed/memory trade-offs.",
         "When would you switch from in-memory FAISS to a hosted vector DB — what's the breakpoint?",
       ]),
+      item("rag-sbert", "Sentence-BERT vs vanilla BERT embeddings", "https://www.sbert.net/", "Sentence-BERT", [
+        "Why does mean-pooled vanilla BERT often underperform Sentence-BERT for semantic search?",
+        "When is cosine similarity insufficient for retrieval quality, and what diagnostics would you add?",
+        "How do you evaluate embedding quality beyond a single nearest-neighbor demo?",
+      ]),
     ],
     dayQuestions: [
       "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
       "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
       "Compare HNSW vs IVF for ANN search — accuracy/speed/memory trade-offs.",
+      "Why does Sentence-BERT work better than vanilla BERT embeddings for semantic search?",
     ],
   });
 
@@ -1695,12 +1787,18 @@ export async function build({ R }) {
         "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
         "What does 'lost in the middle' mean for long-context LLMs, and how do you mitigate it?",
       ]),
+      item("rag-golden-business", "Golden datasets, business metrics, and RAG dashboards", "https://docs.ragas.io/", "Ragas", [
+        "How would you create a GOLD dataset for RAG from real user questions, documents, and expected citations?",
+        "Which business metrics would you track for RAG: deflection, task success, escalation rate, latency, and cost?",
+        "What dashboard slices show whether retrieval or generation is failing in production?",
+      ]),
     ],
     dayQuestions: [
       "Walk through the four Ragas metrics — what does each tell you, and what do they miss?",
       "How would you build a golden eval set for a domain-specific RAG system?",
       "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
       "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
+      "How would you connect RAG quality metrics to business outcomes like deflection, escalations, latency, and cost?",
     ],
   });
 
@@ -1742,11 +1840,17 @@ export async function build({ R }) {
         "How does prompt caching change the cost picture for repeated context?",
         "Compare exact-match retrieval caching vs semantic caching — when does each fit?",
       ]),
+      item("rag-long-docs", "Long documents: chunk, summarize, route, or stuff context", "https://www.pinecone.io/learn/chunking-strategies/", "Pinecone", [
+        "How would you answer questions over a 500-page PDF without exceeding the context window?",
+        "When do you choose hierarchical summaries, parent-child chunks, or long-context stuffing?",
+        "How do you avoid losing section-level citations when chunking long documents?",
+      ]),
     ],
     dayQuestions: [
       "Do long context windows kill RAG? Defend your view.",
       "What does agentic RAG add over a static RAG pipeline?",
       "How does prompt caching change the cost picture for repeated context?",
+      "How would you handle a 500-page document when the relevant answer spans multiple sections?",
     ],
   });
 
@@ -1765,12 +1869,18 @@ export async function build({ R }) {
         "Compare workflow vs agent — when do you NOT need an agent?",
         "Walk through the building-blocks: prompt chaining, routing, parallelization, orchestrator-workers — when does each apply?",
       ]),
+      item("agent-validation-hitl", "Agent validation, security, and human-in-the-loop", "https://docs.anthropic.com/en/docs/build-with-claude/tool-use", "Anthropic", [
+        "How do you validate intermediate agent steps before allowing a high-risk tool call?",
+        "Where do you add human approval in a support, finance, or compliance agent?",
+        "How do you prevent prompt injection from tool outputs from hijacking the agent?",
+      ]),
     ],
     dayQuestions: [
       "Walk through ReAct: how does interleaving thought and action change agent behavior?",
       "When does Plan-and-Execute beat pure ReAct?",
       "How would you design memory for a long-running personal-assistant agent?",
       "Compare workflow vs agent — when do you NOT need an agent?",
+      "How do you validate intermediate agent steps and add human approval for risky actions?",
     ],
   });
 
@@ -1789,11 +1899,18 @@ export async function build({ R }) {
         "Compare AutoGen, CrewAI, and LangGraph — when do you reach for each?",
         "Why might you prefer LangGraph's explicit state machine over AutoGen's free-form conversation?",
       ]),
+      item("ma-versioning-tools", "Versioning agents and shared tools", "https://modelcontextprotocol.io/", "MCP", [
+        "How would you version prompts, tools, memories, and policies across a multi-agent system?",
+        "What breaks when multiple agents share a tool catalog but one tool changes its schema?",
+        "How do you test a multi-agent workflow deterministically enough for CI?",
+      ]),
     ],
     dayQuestions: [
       "Compare supervisor vs swarm vs hierarchical multi-agent topologies.",
       "How do you handle two agents that disagree on the next action in a multi-agent system?",
       "Compare AutoGen, CrewAI, and LangGraph for multi-agent orchestration.",
+      "How would you version agents and shared tools without breaking downstream workflows?",
+      "How do you test a multi-agent system when outputs are stochastic and agents can disagree?",
     ],
   });
 
@@ -1907,12 +2024,18 @@ export async function build({ R }) {
         "What does vLLM's PagedAttention do for throughput?",
         "Compare vLLM vs TensorRT-LLM vs SGLang.",
       ]),
+      item("lo-latency-limits", "Latency debugging, rate limits, and concurrency controls", "https://docs.vllm.ai/", "vLLM", [
+        "How would you diagnose high first-token latency vs high tokens-per-second latency?",
+        "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
+        "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?",
+      ]),
     ],
     dayQuestions: [
       "Compare exact-match prompt caching vs semantic caching — when does each fit?",
       "How would you route LLM requests across cheap and expensive models — what's the framework?",
       "What does vLLM's PagedAttention do for throughput, and how does it differ from naive batching?",
       "Compare vLLM, TensorRT-LLM, and SGLang for LLM serving — strengths of each.",
+      "How would you debug high first-token latency and API rate-limit failures in production?",
     ],
   });
 
@@ -2005,12 +2128,18 @@ export async function build({ R }) {
         "How does continuous batching beat static batching for LLM serving?",
         "What's the trade-off between max batch size and per-request latency under continuous batching?",
       ]),
+      item("inf-kv-paged", "KV cache, PagedAttention, and memory-aware serving", "https://docs.vllm.ai/", "vLLM", [
+        "Why does KV-cache memory become the bottleneck for long-context LLM serving?",
+        "How does PagedAttention reduce memory fragmentation compared with a naive KV cache?",
+        "What serving knobs would you tune when long prompts cause out-of-memory errors?",
+      ]),
     ],
     dayQuestions: [
       "Compare post-training quantization vs quantization-aware training — when does each fit?",
       "Walk me through knowledge distillation — what is the soft-target loss?",
       "Compare structured vs unstructured pruning — which actually speeds up inference?",
       "How does continuous batching beat static batching for LLM serving?",
+      "How do KV-cache size and PagedAttention affect throughput, latency, and memory?",
     ],
   });
 
@@ -2075,11 +2204,17 @@ export async function build({ R }) {
         "How is training a code model different from training a natural-language model?",
         "How would you evaluate a code generation model — pass@k, HumanEval, SWE-bench?",
       ]),
+      item("nlp-model-choice", "Encoder-only vs decoder-only vs encoder-decoder for NLP products", "https://huggingface.co/learn/nlp-course/chapter1/4", "HF", [
+        "When would you choose BERT-style encoder-only models over GPT-style decoder-only models?",
+        "When is encoder-decoder still the cleanest choice for summarization, translation, or extraction?",
+        "How would latency and serving cost affect that architecture choice?",
+      ]),
     ],
     dayQuestions: [
       "Compare span-based vs sequence-tagging information extraction — when does each win?",
       "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
       "How is training a code model different from training a natural-language model?",
+      "Choose between encoder-only, decoder-only, and encoder-decoder models for classification, summarization, and extraction.",
     ],
   });
 
@@ -2409,12 +2544,23 @@ export async function build({ R }) {
         "How would you build an offline + online eval pipeline for an enterprise RAG?",
         "What synthetic golden set would you generate for a domain where humans can't easily score answers?",
       ]),
+      item("sd-rag-connectors", "Mixed enterprise docs: SharePoint, Jira, Slack, Drive", "https://www.glean.com/blog/", "Glean", [
+        "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
+        "What metadata schema would you attach to chunks so retrieval can enforce ACLs and route by source?",
+        "How do you backfill 50M documents without breaking freshness for newly edited docs?",
+      ]),
+      item("sd-rag-markdown-retrieval", "Implement heading-aware markdown chunk retrieval", "https://neetcode.io/practice/machine-learning", "Interview coding", [
+        "Implement retrieve_relevant_chunks(markdown, query) that preserves H1/H2/H3 hierarchy in returned chunks.",
+        "How would you score headings plus body text so a section title can match even when the paragraph uses different wording?",
+        "What edge cases break naive markdown chunking: tables, code blocks, duplicate headings, or very long sections?",
+      ]),
     ],
     dayQuestions: [
       "Walk me through designing an enterprise RAG over Confluence + Slack + Google Drive.",
       "How do you handle access control / permissions in retrieval?",
       "How would you build an offline + online eval pipeline for an enterprise RAG?",
-      "How would you scale to 50M docs and 10k QPS?",
+      "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
+      "Implement heading-aware markdown chunk retrieval for enterprise docs — how do you handle H1/H2/H3 context?",
     ],
   });
 
@@ -2469,11 +2615,17 @@ export async function build({ R }) {
         "How would you flag low-confidence extractions for human review?",
         "What's the unit cost of a human-review pass, and how do you optimize the routing threshold?",
       ]),
+      item("sd-doc-mixed-inputs", "Mixed PDFs, scans, tables, and attachments", "https://www.anthropic.com/news/claude-3-vision", "Anthropic", [
+        "How would you process a document set that mixes PDFs, scanned images, tables, email attachments, and OCR errors?",
+        "How do you validate extracted fields when the source document has conflicting values?",
+        "When do you use vision-language models directly vs OCR + layout parsing + LLM extraction?",
+      ]),
     ],
     dayQuestions: [
       "Walk me through designing a document-intelligence pipeline for invoices/contracts.",
       "How would you handle hand-written or low-quality scans?",
       "How would you flag low-confidence extractions for human review?",
+      "How do you handle mixed PDFs, scans, tables, attachments, OCR errors, and conflicting extracted values?",
     ],
   });
 
@@ -2677,7 +2829,3 @@ export async function build({ R }) {
 
   return { TOPICS };
 }
-
-
-
-

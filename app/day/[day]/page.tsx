@@ -84,6 +84,23 @@ export default async function DayPage({
 
       <DayChecklist plan={plan} />
 
+      {plan.interviewQuestions.length > 0 ? (
+        <section className="section-card rounded-[28px] p-6 md:p-8">
+          <p className="panel-label">Daily interview questions</p>
+          <ul className="mt-5 space-y-3">
+            {plan.interviewQuestions.map((question) => (
+              <li
+                key={question}
+                className="flex gap-3 text-[0.98rem] leading-7 text-foreground"
+              >
+                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                <span>{question}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {linkedQuestions.length > 0 ? (
         <section className="section-card rounded-[28px] p-6 md:p-8">
           <p className="panel-label">Related question-bank prompts</p>

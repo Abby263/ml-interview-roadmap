@@ -54,6 +54,17 @@
             "How would you force an LLM to emit valid JSON — and what are the failure modes?",
             "Compare grammar-constrained decoding vs prompt-+-retry-+-validate — when does each fit?"
           ]
+        },
+        {
+          "id": "llm-generate-loop",
+          "label": "Implement a generate() loop for a tiny GPT",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement top-k and nucleus sampling inside an autoregressive generate() loop.",
+            "How do temperature, top-k, and top-p interact when a model becomes repetitive or incoherent?",
+            "What stopping conditions do you need for a chat model beyond max_new_tokens?"
+          ]
         }
       ]
     }
@@ -62,7 +73,8 @@
     "Compare greedy, beam, top-k, and nucleus (top-p) decoding — when do you reach for each?",
     "Why is beam search usually a bad choice for open-ended generation?",
     "How does speculative decoding speed up inference without hurting quality?",
-    "How would you force an LLM to emit valid JSON, and what are the failure modes?"
+    "How would you force an LLM to emit valid JSON, and what are the failure modes?",
+    "Implement a generate() loop with temperature, top-k, and top-p sampling — what bugs do you watch for?"
   ],
   "references": [
     {

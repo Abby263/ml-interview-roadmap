@@ -47,6 +47,16 @@
             "Implement logistic regression with mini-batch SGD and L2 regularization.",
             "What numerical-stability pitfalls do you watch out for when implementing the sigmoid + log-loss?"
           ]
+        },
+        {
+          "id": "ml-code-lr-neetcode",
+          "label": "Code linear regression training from scratch",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement linear regression training with vectorized gradients and a learning-rate parameter.",
+            "How do you verify your from-scratch implementation against sklearn or a closed-form OLS solution?"
+          ]
         }
       ]
     },
@@ -89,7 +99,8 @@
   "interviewQuestions": [
     "Implement k-means with k-means++ initialization in 30 minutes.",
     "Implement logistic regression with mini-batch SGD and explain each step.",
-    "Implement k-NN classifier and discuss time/space complexity."
+    "Implement k-NN classifier and discuss time/space complexity.",
+    "Implement linear regression training from scratch and verify it against a library baseline."
   ],
   "references": [
     {

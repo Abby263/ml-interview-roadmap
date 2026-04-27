@@ -51,7 +51,19 @@
           "meta": "COCO",
           "interviewQuestions": [
             "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
-            "Why does NMS need careful tuning, and what does it break when set wrong?"
+            "Why does NMS need careful tuning, and what does it break when set wrong?",
+            "How would you implement mAP from predicted boxes, confidences, and class labels?"
+          ]
+        },
+        {
+          "id": "cv-yolo-traps",
+          "label": "YOLO anchors, losses, and limitations",
+          "href": "https://pjreddie.com/darknet/yolo/",
+          "meta": "YOLO",
+          "interviewQuestions": [
+            "What are anchor boxes in YOLO, and why did anchor-free detectors become popular?",
+            "What terms usually appear in a YOLO loss, and how do localization, objectness, and class losses interact?",
+            "Where does YOLO struggle compared with two-stage detectors or DETR?"
           ]
         }
       ]
@@ -61,7 +73,8 @@
     "Compare two-stage (Faster R-CNN) vs one-stage (YOLO) detectors — speed/accuracy trade-offs.",
     "How does DETR remove the need for NMS and anchor boxes?",
     "How does U-Net's skip connection design help with segmentation?",
-    "Define mAP at IoU=0.5:0.95 — what does each piece mean?"
+    "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
+    "Explain YOLO anchors, objectness loss, and why NMS tuning changes final detections."
   ],
   "references": [
     {

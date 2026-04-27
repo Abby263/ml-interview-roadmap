@@ -57,6 +57,17 @@
             "How does continuous batching beat static batching for LLM serving?",
             "What's the trade-off between max batch size and per-request latency under continuous batching?"
           ]
+        },
+        {
+          "id": "inf-kv-paged",
+          "label": "KV cache, PagedAttention, and memory-aware serving",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "Why does KV-cache memory become the bottleneck for long-context LLM serving?",
+            "How does PagedAttention reduce memory fragmentation compared with a naive KV cache?",
+            "What serving knobs would you tune when long prompts cause out-of-memory errors?"
+          ]
         }
       ]
     }
@@ -65,7 +76,8 @@
     "Compare post-training quantization vs quantization-aware training — when does each fit?",
     "Walk me through knowledge distillation — what is the soft-target loss?",
     "Compare structured vs unstructured pruning — which actually speeds up inference?",
-    "How does continuous batching beat static batching for LLM serving?"
+    "How does continuous batching beat static batching for LLM serving?",
+    "How do KV-cache size and PagedAttention affect throughput, latency, and memory?"
   ],
   "references": [
     {

@@ -31,7 +31,8 @@
           "meta": "StatQuest",
           "interviewQuestions": [
             "How does bagging reduce variance? Why doesn't it reduce bias?",
-            "What two extra ingredients does Random Forest add on top of bagging?"
+            "What two extra ingredients does Random Forest add on top of bagging?",
+            "Which Random Forest hyperparameters control tree diversity, and how does out-of-bag validation work?"
           ]
         },
         {
@@ -60,7 +61,8 @@
   "interviewQuestions": [
     "Compare bagging and boosting — which reduces bias, which reduces variance, and why?",
     "What two extra ingredients does Random Forest add on top of vanilla bagging?",
-    "When does stacking actually help in production vs just adding latency and ops cost?"
+    "When does stacking actually help in production vs just adding latency and ops cost?",
+    "How do out-of-bag estimates work in Random Forest, and when would you trust them?"
   ],
   "references": [
     {
