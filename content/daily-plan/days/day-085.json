@@ -1,28 +1,64 @@
 {
   "day": 85,
-  "title": "Catch-up + DSA hard practice",
-  "pillar": "foundations",
-  "focus": "Tackle 2 LC Hards from your weakest category.",
+  "title": "LLM agents: ReAct, Plan-and-Execute, memory + DSA review",
+  "pillar": "generative-ai",
+  "focus": "When to use an agent; designing memory for long-running agents.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "hard-1",
-          "label": "Pick 1 Hard from your weakest pattern; spend up to 60 min",
-          "meta": "Mock"
+          "id": "lc-merge-k-sorted-lists",
+          "label": "Merge K Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "meta": "Linked List"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM agents",
+      "items": [
+        {
+          "id": "agent-react",
+          "label": "ReAct, Plan-and-Execute",
+          "href": "https://arxiv.org/abs/2210.03629",
+          "meta": "Yao et al.",
+          "interviewQuestions": [
+            "Walk through ReAct: how does interleaving thought and action change behavior?",
+            "When does Plan-and-Execute beat pure ReAct?"
+          ]
         },
         {
-          "id": "hard-2",
-          "label": "Pick another Hard from a different weak pattern",
-          "meta": "Mock"
+          "id": "agent-mem",
+          "label": "Agent memory: short, long, episodic, semantic",
+          "href": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+          "meta": "Lilian Weng"
+        },
+        {
+          "id": "agent-anthropic",
+          "label": "Building effective agents (Anthropic)",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+          "meta": "Anthropic"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What stalled you?",
-    "What's the simplification you'd verbalize next time?"
+    "Walk through ReAct: how does interleaving thought and action change agent behavior?",
+    "When does Plan-and-Execute beat pure ReAct?",
+    "How would you design memory for a long-running personal-assistant agent?",
+    "Compare workflow vs agent — when do you NOT need an agent?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    }
+  ]
 }

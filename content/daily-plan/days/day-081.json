@@ -1,45 +1,59 @@
 {
   "day": 81,
-  "title": "AI-assisted coding round practice",
-  "pillar": "foundations",
-  "focus": "Practice the new AI-pair-programming round style.",
+  "title": "Reranking: cross-encoders, Cohere/BGE rerank, MMR",
+  "pillar": "generative-ai",
+  "focus": "Bi-encoder retrieve + cross-encoder rerank — the two-stage pattern.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "ai-pair-pick",
-          "label": "Pick a medium-hard problem you haven't seen",
-          "meta": "Pick"
+          "id": "lc-distinct-subsequences",
+          "label": "Distinct Subsequences",
+          "href": "https://leetcode.com/problems/distinct-subsequences/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Reranking",
+      "items": [
+        {
+          "id": "rag-rerank-bi-cross",
+          "label": "Bi-encoder (retrieve) vs cross-encoder (rerank)",
+          "href": "https://www.sbert.net/examples/applications/cross-encoder/README.html",
+          "meta": "Sentence-BERT"
         },
         {
-          "id": "ai-pair-do",
-          "label": "Solve with AI assistance (Cursor / Copilot / chat); narrate your decisions",
-          "meta": "Code"
+          "id": "rag-rerank-models",
+          "label": "Cohere Rerank, BGE Rerank, monoT5",
+          "href": "https://docs.cohere.com/docs/rerank-2",
+          "meta": "Cohere"
         },
         {
-          "id": "ai-pair-reflect",
-          "label": "Reflect: where did you over-trust the AI? Where did you correctly override?",
-          "meta": "Concept"
+          "id": "rag-mmr",
+          "label": "MMR & diversity reranking",
+          "href": "https://docs.llamaindex.ai/en/stable/examples/node_postprocessor/MaximalMarginalRelevanceMMR/",
+          "meta": "LlamaIndex"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When did the AI suggestion match what you'd have written?",
-    "Where did you override it and why?",
-    "How would you describe your AI workflow to an interviewer in 60 seconds?"
+    "Why is a cross-encoder more accurate than a bi-encoder, and why can't we use it for retrieval?",
+    "When does adding a reranker actually move the needle in a RAG system?",
+    "What is MMR, and why does diversity matter in retrieved context?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
     },
     {
-      "label": "Kaggle — AI Ethics",
-      "href": "https://www.kaggle.com/learn/ai-ethics",
-      "source": "Kaggle"
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
     }
   ]
 }

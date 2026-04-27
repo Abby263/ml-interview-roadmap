@@ -1,33 +1,63 @@
 {
   "day": 102,
-  "title": "Story rehearsal & timing",
-  "pillar": "behavioral-storytelling",
-  "focus": "Time every story, kill filler, sharpen openers.",
+  "title": "RL basics: MDP, value, policy, exploration",
+  "pillar": "deep-learning",
+  "focus": "Bellman; on-policy vs off-policy; Thompson sampling for bandits.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "story-trim",
-          "label": "Trim each story to 2-4 minutes",
-          "meta": "Doc"
+          "id": "lc-merge-two-sorted-lists",
+          "label": "Merge Two Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
+          "meta": "Linked List"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Reinforcement learning basics",
+      "items": [
+        {
+          "id": "rl-mdp",
+          "label": "MDPs, value, policy, Bellman equation",
+          "href": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Walk through the Bellman equation for the value function.",
+            "What's the difference between value iteration and policy iteration?"
+          ]
         },
         {
-          "id": "story-decision",
-          "label": "Lead with the decision, not setup",
-          "meta": "Concept"
+          "id": "rl-onoff",
+          "label": "On-policy vs off-policy",
+          "href": "https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html",
+          "meta": "OpenAI"
         },
         {
-          "id": "story-openers",
-          "label": "Drill 3 opener variations per story",
-          "meta": "Mock"
+          "id": "rl-explore",
+          "label": "Exploration: epsilon-greedy, UCB, Thompson sampling",
+          "href": "https://lilianweng.github.io/posts/2018-01-23-multi-armed-bandit/",
+          "meta": "Lilian Weng"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through your shortest story.",
-    "What's the strongest version of your failure story?"
+    "Walk through the Bellman equation for the value function and the policy iteration algorithm.",
+    "Compare on-policy vs off-policy RL — give an example algorithm of each.",
+    "Compare epsilon-greedy, UCB, and Thompson sampling for exploration in contextual bandits."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "OpenAI — Spinning Up in RL",
+      "href": "https://spinningup.openai.com/en/latest/",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
 }

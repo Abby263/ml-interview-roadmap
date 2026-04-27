@@ -1,28 +1,95 @@
 {
   "day": 123,
-  "title": "Light: 1 short design + behavioral skim",
+  "title": "Privacy-preserving ML (federated, DP, on-device) + DSA review",
   "pillar": "ml-system-design",
-  "focus": "Stay loose.",
+  "focus": "When each is the right answer; cost in accuracy.",
   "tracks": [
     {
-      "label": "Light",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "light-design-30",
-          "label": "30-min design rehearsal — your strongest case",
-          "meta": "Mock"
+          "id": "lc-non-overlapping-intervals",
+          "label": "Non Overlapping Intervals",
+          "href": "https://leetcode.com/problems/non-overlapping-intervals/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan"
         },
         {
-          "id": "light-beh-skim",
-          "label": "Read each story silently",
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan"
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Privacy & security",
+      "items": [
+        {
+          "id": "mlops-pii",
+          "label": "PII handling, anonymization, k-anonymity",
+          "href": "https://en.wikipedia.org/wiki/K-anonymity",
           "meta": "Read"
+        },
+        {
+          "id": "mlops-dp",
+          "label": "Differential privacy basics",
+          "href": "https://github.com/google/differential-privacy",
+          "meta": "Google"
+        },
+        {
+          "id": "mlops-fed",
+          "label": "Federated learning",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
+        },
+        {
+          "id": "mlops-attacks",
+          "label": "Adversarial & model-extraction attacks",
+          "href": "https://ai.googleblog.com/2018/02/adversarial-examples-on-real.html",
+          "meta": "Google"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What are the first three clarifying questions you would ask before drawing the architecture?",
-    "Which monitoring signal would tell you this design is failing after launch?"
+    "What levers do you pull when accuracy is great but latency misses the budget?",
+    "How would you design a cascade: cheap model first, expensive model only when needed?",
+    "Walk through cold-start strategies for new users vs new items in a recsys.",
+    "When would you reach for federated learning vs differential privacy vs on-device inference?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

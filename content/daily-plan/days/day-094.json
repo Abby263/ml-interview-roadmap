@@ -1,34 +1,63 @@
 {
   "day": 94,
-  "title": "Coding mock — Google style",
-  "pillar": "foundations",
-  "focus": "Hard LC: graph or DP, with elegant simplification.",
+  "title": "Hardware: GPUs, TPUs, NVLink, IB + DSA review",
+  "pillar": "mlops",
+  "focus": "A100 vs H100 vs B200; HBM bandwidth; interconnect bottlenecks.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "mock-google-1",
-          "label": "Pick a Hard from your weak pattern",
-          "meta": "Pick"
+          "id": "lc-combination-sum-ii",
+          "label": "Combination Sum II",
+          "href": "https://leetcode.com/problems/combination-sum-ii/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "Infra · GPUs, TPUs, accelerators",
+      "items": [
+        {
+          "id": "hw-gpu",
+          "label": "NVIDIA GPUs: A100, H100, B200 — memory, FLOPs, tensor cores",
+          "href": "https://developer.nvidia.com/h100",
+          "meta": "NVIDIA",
+          "interviewQuestions": [
+            "Compare A100, H100, and B200 — what changed each generation?",
+            "Why does HBM matter more than FLOPs for many ML workloads?"
+          ]
         },
         {
-          "id": "mock-google-design",
-          "label": "Spend 5 minutes designing before coding",
-          "meta": "Concept"
+          "id": "hw-tpu",
+          "label": "TPUs: pods, slices, XLA",
+          "href": "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm",
+          "meta": "Google"
         },
         {
-          "id": "mock-google-iterate",
-          "label": "If you stall, talk through alternatives — Google rewards reasoning",
-          "meta": "Concept"
+          "id": "hw-net",
+          "label": "NVLink, InfiniBand, network bottlenecks",
+          "href": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html",
+          "meta": "NCCL"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through your design before any code.",
-    "What invariant does your solution preserve?",
-    "What's a slower-but-clearer alternative?"
+    "Compare A100, H100, and B200 — what changed each generation?",
+    "Why does HBM bandwidth matter more than FLOPs for many ML workloads?",
+    "Why does interconnect (NVLink, IB) often bottleneck distributed training before compute does?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    }
+  ]
 }

@@ -1,70 +1,69 @@
 {
   "day": 59,
-  "title": "Bit Manipulation + Data pipelines",
-  "pillar": "ml-system-design",
-  "focus": "Single Number / 1-bits + batch vs streaming + idempotency.",
+  "title": "Model registry, versioning, lineage + DSA Adv Graphs finish",
+  "pillar": "mlops",
+  "focus": "MLflow stages; data + code + model versioning; model cards.",
   "tracks": [
     {
-      "label": "DSA · Bit Manipulation",
+      "label": "DSA · NeetCode Advanced Graphs",
       "items": [
         {
-          "id": "lc-single-number",
-          "label": "Single Number",
-          "href": "https://leetcode.com/problems/single-number/",
-          "meta": "Bit Manipulation"
+          "id": "lc-alien-dictionary",
+          "label": "Alien Dictionary",
+          "href": "https://leetcode.com/problems/alien-dictionary/",
+          "meta": "Advanced Graphs"
         },
         {
-          "id": "lc-number-of-1-bits",
-          "label": "Number OF 1 Bits",
-          "href": "https://leetcode.com/problems/number-of-1-bits/",
-          "meta": "Bit Manipulation"
-        },
-        {
-          "id": "lc-counting-bits",
-          "label": "Counting Bits",
-          "href": "https://leetcode.com/problems/counting-bits/",
-          "meta": "Bit Manipulation"
-        },
-        {
-          "id": "lc-reverse-bits",
-          "label": "Reverse Bits",
-          "href": "https://leetcode.com/problems/reverse-bits/",
-          "meta": "Bit Manipulation"
+          "id": "lc-cheapest-flights-within-k-stops",
+          "label": "Cheapest Flights Within K Stops",
+          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+          "meta": "Advanced Graphs"
         }
       ]
     },
     {
-      "label": "ML system design · Data",
+      "label": "MLOps · Model registry & versioning",
       "items": [
         {
-          "id": "sd-streaming",
-          "label": "When streaming beats batch",
-          "href": "https://www.confluent.io/learn/data-streaming/",
-          "meta": "Read",
+          "id": "mlops-mlflow",
+          "label": "MLflow registry: stages, lineage, model cards",
+          "href": "https://mlflow.org/docs/latest/model-registry.html",
+          "meta": "MLflow",
           "interviewQuestions": [
-            "When is streaming the right choice — and when is it just complexity?",
-            "Walk me through point-in-time correctness for a backfill.",
-            "How do you make a data pipeline idempotent?"
+            "Walk through promoting a model from staging → production in MLflow.",
+            "Why is lineage (data → model → deployment) important for compliance?"
           ]
         },
         {
-          "id": "sd-schema-evol",
-          "label": "Schema evolution & backfill discipline",
-          "href": "https://docs.databricks.com/en/delta/update-schema.html",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "How do you evolve a schema without breaking downstream models?",
-            "What's the right backfill discipline for a column rename?",
-            "How would you test a schema migration before rolling it out?"
-          ]
+          "id": "mlops-versioning",
+          "label": "Versioning: code + data + model + features",
+          "href": "https://dvc.org/doc",
+          "meta": "DVC"
+        },
+        {
+          "id": "mlops-model-cards",
+          "label": "Model cards & documentation",
+          "href": "https://modelcards.withgoogle.com/",
+          "meta": "Google"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When is streaming the right choice — and when is it just complexity?",
-    "Walk me through point-in-time correctness for a backfill.",
-    "How do you make a data pipeline idempotent?"
+    "Walk through promoting a model from staging → production in MLflow.",
+    "Why is versioning data as important as versioning code in ML?",
+    "What goes into a useful model card for a production model?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "MLflow docs",
+      "href": "https://mlflow.org/docs/latest/index.html",
+      "source": "MLflow"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    }
+  ]
 }

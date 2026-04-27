@@ -1,98 +1,69 @@
 {
   "day": 29,
-  "title": "Advanced Graphs (cont.) + RNN / LSTM + project: sentiment analysis",
-  "pillar": "deep-learning",
-  "focus": "Cheapest Flights + sequential modeling pre-transformers + ship a tiny NLP demo.",
+  "title": "OOPS pillars & SOLID principles + DSA Heap",
+  "pillar": "foundations",
+  "focus": "SRP, OCP, LSP, ISP, DIP — pick the one you violate most and refactor.",
   "tracks": [
     {
-      "label": "DSA · Advanced Graphs",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "lc-swim-in-rising-water",
-          "label": "Swim IN Rising Water",
-          "href": "https://leetcode.com/problems/swim-in-rising-water/",
-          "meta": "Advanced Graphs"
+          "id": "lc-k-closest-points-to-origin",
+          "label": "K Closest Points TO Origin",
+          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
+          "meta": "Heap / Priority Queue"
         },
         {
-          "id": "lc-alien-dictionary",
-          "label": "Alien Dictionary",
-          "href": "https://leetcode.com/problems/alien-dictionary/",
-          "meta": "Advanced Graphs"
-        },
-        {
-          "id": "lc-cheapest-flights-within-k-stops",
-          "label": "Cheapest Flights Within K Stops",
-          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
-          "meta": "Advanced Graphs"
+          "id": "lc-kth-largest-element-in-an-array",
+          "label": "Kth Largest Element IN AN Array",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "meta": "Heap / Priority Queue"
         }
       ]
     },
     {
-      "label": "Deep learning · Sequence",
+      "label": "SWE · OOPS & SOLID",
       "items": [
         {
-          "id": "dl-rnn-vanish",
-          "label": "Vanilla RNN vanishing-gradient problem",
-          "href": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
-          "meta": "Read (canonical)",
-          "interviewQuestions": [
-            "Walk through the vanishing-gradient problem in vanilla RNNs.",
-            "Why don't RNNs parallelize over the time dimension?",
-            "How does truncated BPTT work?"
-          ]
-        },
-        {
-          "id": "dl-lstm",
-          "label": "LSTM gating — why it helps gradient flow",
-          "href": "https://distill.pub/2019/memorization-in-rnns/",
+          "id": "oops-pillars",
+          "label": "Encapsulation, inheritance, polymorphism, abstraction",
+          "href": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/",
           "meta": "Read",
           "interviewQuestions": [
-            "What does the cell state in an LSTM actually store?",
-            "Compare LSTM vs GRU — when does each win?",
-            "Where does a transformer still lose to an LSTM?"
+            "Walk through the four pillars of OOP with code examples.",
+            "When does composition beat inheritance?"
           ]
-        }
-      ]
-    },
-    {
-      "label": "Project · Sentiment analysis",
-      "items": [
-        {
-          "id": "proj-sent-finetune",
-          "label": "Fine-tune DistilBERT on IMDb reviews (HF Trainer)",
-          "href": "https://huggingface.co/learn/llm-course/chapter3/3",
-          "meta": "Build"
         },
         {
-          "id": "proj-sent-deploy",
-          "label": "Deploy as Streamlit / HF Space",
-          "href": "https://huggingface.co/spaces",
-          "meta": "Deploy"
+          "id": "oops-solid-principles",
+          "label": "SOLID: SRP, OCP, LSP, ISP, DIP",
+          "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
+          "meta": "DigitalOcean",
+          "interviewQuestions": [
+            "Walk through each SOLID principle with a real example.",
+            "Which SOLID principle do you violate most often, and why?"
+          ]
+        },
+        {
+          "id": "oops-design-mistakes",
+          "label": "Common OO design mistakes (god class, anemic models, deep inheritance)",
+          "href": "https://refactoring.guru/refactoring/smells",
+          "meta": "Refactoring.guru"
         }
       ]
     }
   ],
-  "interviewQuestions": [
-    "What does the cell state in an LSTM actually store?",
-    "How would you handle out-of-vocabulary tokens in your sentiment classifier?",
-    "Where does a transformer still lose to an LSTM?",
-    "Why don't RNNs parallelize over the time dimension?"
-  ],
+  "interviewQuestions": [],
   "references": [
     {
-      "label": "DeepLearning.AI Deep Learning Specialization",
-      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
-      "source": "DeepLearning.AI"
+      "label": "SOLID principles",
+      "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
+      "source": "DigitalOcean"
     },
     {
-      "label": "fast.ai — Practical Deep Learning for Coders",
-      "href": "https://course.fast.ai/",
-      "source": "fast.ai"
-    },
-    {
-      "label": "Hugging Face Spaces — deploy demos for free",
-      "href": "https://huggingface.co/spaces",
-      "source": "Hugging Face"
+      "label": "Refactoring.guru — design patterns",
+      "href": "https://refactoring.guru/design-patterns",
+      "source": "Refactoring.guru"
     }
   ]
 }

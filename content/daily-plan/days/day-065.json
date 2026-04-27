@@ -1,63 +1,69 @@
 {
   "day": 65,
-  "title": "Case: Ads conversion (CTR) — part 1",
-  "pillar": "ml-system-design",
-  "focus": "Frame the auction; calibration is the architect's word.",
+  "title": "Online experimentation for ML + DSA 1-D DP finish",
+  "pillar": "mlops",
+  "focus": "A/B for models vs UI; shadow / canary / interleaving / off-policy.",
   "tracks": [
     {
-      "label": "Read · Ads ML",
+      "label": "DSA · NeetCode 1-D DP",
       "items": [
         {
-          "id": "case-ads-criteo",
-          "label": "Criteo paper on display advertising (skim)",
-          "href": "https://arxiv.org/abs/1410.0696",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Walk me through key ideas from Criteo's display advertising paper.",
-            "Why are sparse features the dominant input in CTR models?",
-            "How do you handle the cold-start ad problem?"
-          ]
+          "id": "lc-longest-increasing-subsequence",
+          "label": "Longest Increasing Subsequence",
+          "href": "https://leetcode.com/problems/longest-increasing-subsequence/",
+          "meta": "1-D DP"
         },
         {
-          "id": "case-ads-cal",
-          "label": "Why pCTR must be calibrated for an auction",
-          "href": "https://eugeneyan.com/writing/uncertainty-in-recommender-systems/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Why does a ranking-only model break in an auction?",
-            "How would you detect calibration drift?",
-            "What's the relationship between calibration and revenue?"
-          ]
+          "id": "lc-partition-equal-subset-sum",
+          "label": "Partition Equal Subset Sum",
+          "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
+          "meta": "1-D DP"
         }
       ]
     },
     {
-      "label": "Design · On paper",
+      "label": "MLOps · Online experimentation",
       "items": [
         {
-          "id": "case-ads-clarify",
-          "label": "Auction integration: bid × pCTR with quality adjustment",
-          "meta": "Whiteboard"
+          "id": "mlops-ab",
+          "label": "A/B testing for models: lift, guardrails, ramp",
+          "href": "https://eugeneyan.com/writing/ab-testing-and-beyond/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How is A/B testing a model different from A/B testing a UI feature?",
+            "What guardrail metrics do you track on every model launch?"
+          ]
         },
         {
-          "id": "case-ads-features",
-          "label": "Feature plan: user / ad / context / cross",
-          "meta": "Whiteboard"
+          "id": "mlops-canary",
+          "label": "Canary, shadow, interleaving",
+          "href": "https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html",
+          "meta": "Chip Huyen"
+        },
+        {
+          "id": "mlops-causal",
+          "label": "Counterfactual & off-policy evaluation",
+          "href": "https://eugeneyan.com/writing/counterfactual-evaluation/",
+          "meta": "Eugene Yan"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why does a ranking-only model break in an auction?",
-    "Walk me through how you'd detect calibration drift.",
-    "How do you handle delayed conversion labels?"
+    "How is A/B testing a model different from A/B testing a UI feature?",
+    "When does interleaving beat A/B testing for ranking systems?",
+    "What is off-policy evaluation, and where does it show up in recommender systems?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Evan Miller — A/B testing pitfalls",
+      "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+      "source": "Evan Miller"
     }
-  ],
-  "caseStudySlug": "ad-click-prediction"
+  ]
 }

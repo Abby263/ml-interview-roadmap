@@ -1,33 +1,69 @@
 {
   "day": 110,
-  "title": "Project deep dive practice — recorded",
-  "pillar": "behavioral-storytelling",
-  "focus": "Record yourself, watch back, kill filler.",
+  "title": "Design real-time fraud detection (Stripe Radar) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Velocity / graph / behavioral features; delayed labels; cost-sensitive thresholds.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "rec-proj",
-          "label": "Record the 5-minute project deep dive",
-          "meta": "Mock"
+          "id": "lc-combination-sum",
+          "label": "Combination Sum",
+          "href": "https://leetcode.com/problems/combination-sum/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Fraud detection",
+      "items": [
+        {
+          "id": "sd-fraud-design",
+          "label": "Design real-time fraud detection (Stripe/PayPal)",
+          "href": "https://stripe.com/blog/how-we-built-it-stripe-radar",
+          "meta": "Stripe",
+          "interviewQuestions": [
+            "Walk me through designing Stripe Radar — real-time fraud detection.",
+            "How do you balance false positives (blocked good users) vs false negatives (fraud)?"
+          ]
         },
         {
-          "id": "rec-review",
-          "label": "Watch back; mark every filler word",
-          "meta": "Review"
+          "id": "sd-fraud-features",
+          "label": "Feature engineering: velocity, graph, behavioral",
+          "href": "https://eugeneyan.com/writing/feature-stores/",
+          "meta": "Eugene Yan"
         },
         {
-          "id": "rec-redo",
-          "label": "Re-record without the filler",
-          "meta": "Mock"
+          "id": "sd-fraud-feedback",
+          "label": "Delayed labels & feedback loops",
+          "href": "https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html",
+          "meta": "Chip Huyen"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the riskiest decision you made?",
-    "What would you change?"
+    "Walk me through designing Stripe Radar — real-time fraud detection.",
+    "How do you balance false positives (blocked good users) vs false negatives (fraud)?",
+    "Fraud labels arrive weeks late (chargebacks) — how do you train and monitor under delayed labels?",
+    "What kinds of features (velocity, graph, behavioral) actually catch fraud?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

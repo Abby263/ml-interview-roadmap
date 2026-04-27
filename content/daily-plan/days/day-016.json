@@ -1,70 +1,84 @@
 {
   "day": 16,
-  "title": "Trees BFS + Hyperparameter tuning",
+  "title": "Logistic regression + classification metrics + DSA Stack",
   "pillar": "traditional-ml",
-  "focus": "Level-order patterns + tune efficiently without overfitting CV.",
+  "focus": "Cross-entropy, ROC vs PR, calibration, threshold selection.",
   "tracks": [
     {
-      "label": "DSA · Trees",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "lc-subtree-of-another-tree",
-          "label": "Subtree OF Another Tree",
-          "href": "https://leetcode.com/problems/subtree-of-another-tree/",
-          "meta": "Trees"
+          "id": "lc-generate-parentheses",
+          "label": "Generate Parentheses",
+          "href": "https://leetcode.com/problems/generate-parentheses/",
+          "meta": "Stack"
         },
         {
-          "id": "lc-lowest-common-ancestor-of-a-binary-search-tree",
-          "label": "Lowest Common Ancestor OF A Binary Search Tree",
-          "href": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-          "meta": "Trees"
-        },
-        {
-          "id": "lc-binary-tree-level-order-traversal",
-          "label": "Binary Tree Level Order Traversal",
-          "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-          "meta": "Trees"
-        },
-        {
-          "id": "lc-binary-tree-right-side-view",
-          "label": "Binary Tree Right Side View",
-          "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
-          "meta": "Trees"
+          "id": "lc-daily-temperatures",
+          "label": "Daily Temperatures",
+          "href": "https://leetcode.com/problems/daily-temperatures/",
+          "meta": "Stack"
         }
       ]
     },
     {
-      "label": "Trad ML · Hyperparameter tuning",
+      "label": "ML · Logistic regression & classification",
       "items": [
         {
-          "id": "ml-tuning-strategies",
-          "label": "Grid vs random vs Bayesian search",
-          "href": "https://machinelearningmastery.com/hyperparameter-optimization-with-random-search-and-grid-search/",
-          "meta": "Read",
+          "id": "ml-logreg",
+          "label": "Sigmoid, log-odds, and the LR loss",
+          "href": "https://www.youtube.com/watch?v=yIYKR4sgzI8",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Why is random search often better than grid search?",
-            "When is Bayesian optimization worth its overhead?",
-            "How would you tune XGBoost on a 100M-row dataset?"
+            "Why do we use the log-loss (cross-entropy) instead of MSE for logistic regression?",
+            "Derive the gradient of binary cross-entropy w.r.t. the weights."
           ]
         },
         {
-          "id": "ml-tuning-budget",
-          "label": "Hyperband / successive halving — why they work",
-          "href": "https://research.google/pubs/google-vizier-a-service-for-black-box-optimization/",
-          "meta": "Paper",
+          "id": "ml-classification-metrics",
+          "label": "Precision, recall, F1, ROC-AUC, PR-AUC, calibration",
+          "href": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+          "meta": "scikit-learn",
           "interviewQuestions": [
-            "How does Hyperband / successive halving allocate budget?",
-            "When is nested CV worth its compute cost?",
-            "How do you avoid leaking validation signal during tuning?"
+            "When is ROC-AUC misleading? When should you use PR-AUC instead?",
+            "What is a calibration plot and why does it matter for downstream decisions?",
+            "How do you choose a classification threshold for a fraud-detection system?"
+          ]
+        },
+        {
+          "id": "ml-multiclass",
+          "label": "Multi-class: one-vs-rest, softmax, multi-label vs multi-class",
+          "href": "https://en.wikipedia.org/wiki/Multiclass_classification",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare one-vs-rest vs softmax for multi-class classification.",
+            "What's the difference between multi-class and multi-label, and how does the loss change?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why is random search often better than grid search?",
-    "How do you avoid leaking validation signal during tuning?",
-    "When is nested CV worth its compute cost?"
+    "Why do we use cross-entropy instead of MSE for logistic regression — what breaks?",
+    "When is ROC-AUC misleading and when should you use PR-AUC instead?",
+    "How do you choose a classification threshold for a fraud-detection system with very imbalanced classes?",
+    "What is calibration, why does it matter for decisions, and how do you fix a poorly-calibrated model?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
 }

@@ -1,28 +1,63 @@
 {
   "day": 90,
-  "title": "Behavioral · Conflict / disagreement story",
-  "pillar": "behavioral-storytelling",
-  "focus": "Demonstrate disagreement without making the other side look bad.",
+  "title": "Agent protocols: MCP & A2A deep dive",
+  "pillar": "generative-ai",
+  "focus": "MCP host/client/server; A2A; shared tool registries.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "beh-conflict",
-          "label": "Pick a real disagreement (technical or cross-functional)",
-          "meta": "Doc"
+          "id": "lc-minimum-interval-to-include-each-query",
+          "label": "Minimum Interval TO Include Each Query",
+          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · MCP, A2A, agent protocols",
+      "items": [
+        {
+          "id": "ap-mcp",
+          "label": "Model Context Protocol (MCP) deep dive",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "What's the MCP architecture (host, client, server)?",
+            "When would you build an MCP server vs use function calling directly?"
+          ]
         },
         {
-          "id": "beh-conflict-frame",
-          "label": "Frame as 'we wanted different things, here's how we aligned'",
-          "meta": "Doc"
+          "id": "ap-a2a",
+          "label": "Agent-to-agent (A2A) protocols",
+          "href": "https://google.github.io/A2A/",
+          "meta": "Google"
+        },
+        {
+          "id": "ap-tools",
+          "label": "Standardizing tool catalogs across agents",
+          "href": "https://modelcontextprotocol.io/clients",
+          "meta": "MCP"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Tell me about a time you disagreed with your manager.",
-    "How do you decide when to escalate vs let it go?"
+    "What's the MCP architecture (host, client, server) and when would you reach for it?",
+    "When would you build an MCP server vs use function calling directly?",
+    "What problem does A2A solve over ad-hoc agent integration?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Model Context Protocol",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
 }

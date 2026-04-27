@@ -1,30 +1,102 @@
 {
   "day": 126,
-  "title": "Walk in — trust the prep",
-  "pillar": "behavioral-storytelling",
-  "focus": "Don't add new content. Listen, breathe, perform.",
+  "title": "Self-mock 3: 60-min full ML system design (your hardest case)",
+  "pillar": "ml-system-design",
+  "focus": "Pick the case you're least comfortable with. Record. Self-debrief.",
   "tracks": [
     {
-      "label": "Day-of",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "go-water",
-          "label": "Hydrate, eat something, do not over-caffeinate",
-          "meta": "Day-of"
+          "id": "lc-car-fleet",
+          "label": "Car Fleet",
+          "href": "https://leetcode.com/problems/car-fleet/",
+          "meta": "Stack"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
         },
         {
-          "id": "go-listen",
-          "label": "Listen first; clarify before designing",
-          "meta": "Concept"
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich"
         },
         {
-          "id": "go-trust",
-          "label": "Trust the prep — the gap list is short enough",
-          "meta": "Concept"
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan"
+        },
+        {
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan"
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "Walk me through your 7-step framework for any ML system design interview.",
+    "What are the first five clarifying questions you ask in any ML system design interview?",
+    "How do you map a business metric to an offline ML metric — and where does the mapping break?",
+    "Walk through three real cases where offline gains didn't translate online."
+  ],
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
 }

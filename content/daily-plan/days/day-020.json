@@ -1,69 +1,73 @@
 {
   "day": 20,
-  "title": "Heap + ML coding from scratch (linear)",
+  "title": "Bagging, Random Forest, boosting intuition + DSA Binary Search finish",
   "pillar": "traditional-ml",
-  "focus": "Top-K patterns + implement linear regression from scratch.",
+  "focus": "Variance reduction vs bias reduction; bagging vs boosting.",
   "tracks": [
     {
-      "label": "DSA · Heap",
+      "label": "DSA · NeetCode Binary Search",
       "items": [
         {
-          "id": "lc-kth-largest-element-in-a-stream",
-          "label": "Kth Largest Element IN A Stream",
-          "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
-          "meta": "Heap / Priority Queue"
+          "id": "lc-time-based-key-value-store",
+          "label": "Time Based Key Value Store",
+          "href": "https://leetcode.com/problems/time-based-key-value-store/",
+          "meta": "Binary Search"
         },
         {
-          "id": "lc-last-stone-weight",
-          "label": "Last Stone Weight",
-          "href": "https://leetcode.com/problems/last-stone-weight/",
-          "meta": "Heap / Priority Queue"
-        },
-        {
-          "id": "lc-k-closest-points-to-origin",
-          "label": "K Closest Points TO Origin",
-          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
-          "meta": "Heap / Priority Queue"
-        },
-        {
-          "id": "lc-kth-largest-element-in-an-array",
-          "label": "Kth Largest Element IN AN Array",
-          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
-          "meta": "Heap / Priority Queue"
+          "id": "lc-median-of-two-sorted-arrays",
+          "label": "Median OF Two Sorted Arrays",
+          "href": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "meta": "Binary Search"
         }
       ]
     },
     {
-      "label": "ML coding · From scratch",
+      "label": "ML · Ensembles: bagging, RF, boosting",
       "items": [
         {
-          "id": "ml-code-linreg",
-          "label": "Implement linear regression with GD (NumPy only)",
-          "meta": "Code",
+          "id": "ml-bagging-rf",
+          "label": "Bagging & Random Forest",
+          "href": "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Walk me through your gradient update for linear regression.",
-            "How would you extend this to L2 regularization in 5 minutes?",
-            "Why might GD diverge — and how would you detect it?"
+            "How does bagging reduce variance? Why doesn't it reduce bias?",
+            "What two extra ingredients does Random Forest add on top of bagging?"
           ]
         },
         {
-          "id": "ml-code-test",
-          "label": "Fit on toy data; plot loss curve; reason about convergence",
-          "meta": "Code",
+          "id": "ml-boosting",
+          "label": "Boosting intuition: AdaBoost, GBM",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "How do you sanity-check that your loss is decreasing for the right reasons?",
-            "What does it mean if the loss curve is jagged?",
-            "How would you compare convergence between SGD and full-batch GD?"
+            "Compare bagging vs boosting — what's reduced and how?",
+            "Walk me through how AdaBoost reweights samples after each weak learner."
           ]
+        },
+        {
+          "id": "ml-stacking",
+          "label": "Stacking & blending",
+          "href": "https://mlwave.com/kaggle-ensembling-guide/",
+          "meta": "MLWave"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through your gradient update for linear regression.",
-    "How would you extend this to L2 regularization in 5 minutes?",
-    "Why might GD diverge — and how would you detect it?"
+    "Compare bagging and boosting — which reduces bias, which reduces variance, and why?",
+    "What two extra ingredients does Random Forest add on top of vanilla bagging?",
+    "When does stacking actually help in production vs just adding latency and ops cost?"
   ],
-  "references": [],
-  "topicId": "ml-from-scratch"
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
 }

@@ -1,110 +1,79 @@
 {
   "day": 48,
-  "title": "Intervals + Fine-tuning + project: resume analyzer",
-  "pillar": "generative-ai",
-  "focus": "Insert / Merge intervals + fine-tune-only-when-prompt+RAG-plateaus + ship a resume analyzer.",
+  "title": "Generative vision (VAE, GAN, Diffusion / Stable Diffusion)",
+  "pillar": "deep-learning",
+  "focus": "ELBO, mode collapse, DDPM forward/reverse, latent diffusion.",
   "tracks": [
     {
-      "label": "DSA · Intervals",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "lc-insert-interval",
-          "label": "Insert Interval",
-          "href": "https://leetcode.com/problems/insert-interval/",
-          "meta": "Intervals"
+          "id": "lc-combination-sum-ii",
+          "label": "Combination Sum II",
+          "href": "https://leetcode.com/problems/combination-sum-ii/",
+          "meta": "Backtracking"
         },
         {
-          "id": "lc-merge-intervals",
-          "label": "Merge Intervals",
-          "href": "https://leetcode.com/problems/merge-intervals/",
-          "meta": "Intervals"
-        },
-        {
-          "id": "lc-non-overlapping-intervals",
-          "label": "Non Overlapping Intervals",
-          "href": "https://leetcode.com/problems/non-overlapping-intervals/",
-          "meta": "Intervals"
-        },
-        {
-          "id": "lc-meeting-rooms",
-          "label": "Meeting Rooms",
-          "href": "https://leetcode.com/problems/meeting-rooms/",
-          "meta": "Intervals"
+          "id": "lc-word-search",
+          "label": "Word Search",
+          "href": "https://leetcode.com/problems/word-search/",
+          "meta": "Backtracking"
         }
       ]
     },
     {
-      "label": "GenAI · Fine-tuning",
+      "label": "DL · Generative vision (VAE, GAN, Diffusion)",
       "items": [
         {
-          "id": "llm-lora",
-          "label": "LoRA / PEFT — what changes are made",
-          "href": "https://huggingface.co/docs/peft/index",
-          "meta": "Docs",
+          "id": "dl-vae",
+          "label": "Variational Autoencoders",
+          "href": "https://lilianweng.github.io/posts/2018-08-12-vae/",
+          "meta": "Lilian Weng",
           "interviewQuestions": [
-            "What does LoRA actually update — and why is the update so small?",
-            "Walk me through the LoRA matrix decomposition.",
-            "When would you use QLoRA over LoRA?"
+            "Walk through VAE's evidence lower bound (ELBO).",
+            "Why is the reparameterization trick necessary?"
           ]
         },
         {
-          "id": "llm-ft-vs-rag",
-          "label": "When fine-tuning beats RAG (and when it doesn't)",
-          "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
-          "meta": "Read",
+          "id": "dl-gan",
+          "label": "GANs: generator/discriminator, mode collapse",
+          "href": "https://lilianweng.github.io/posts/2017-08-20-gan/",
+          "meta": "Lilian Weng"
+        },
+        {
+          "id": "dl-diffusion",
+          "label": "Diffusion models (DDPM, latent diffusion)",
+          "href": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/",
+          "meta": "Lilian Weng",
           "interviewQuestions": [
-            "When would you fine-tune instead of doing prompt + RAG?",
-            "How do you evaluate whether a fine-tune succeeded?",
-            "What's the catastrophic-forgetting risk in fine-tuning?"
+            "Walk me through the forward and reverse processes in DDPM.",
+            "What does latent diffusion (Stable Diffusion) do differently?"
           ]
-        }
-      ]
-    },
-    {
-      "label": "Project · Resume analyzer",
-      "items": [
-        {
-          "id": "proj-resume-extract",
-          "label": "Build resume → structured-output extractor (LLM + JSON schema)",
-          "href": "https://platform.openai.com/docs/guides/structured-outputs",
-          "meta": "Build"
-        },
-        {
-          "id": "proj-resume-match",
-          "label": "Match resume to job description with embeddings (cosine sim)",
-          "href": "https://platform.openai.com/docs/guides/embeddings",
-          "meta": "Build"
-        },
-        {
-          "id": "proj-resume-deploy",
-          "label": "Deploy as Streamlit demo",
-          "href": "https://docs.streamlit.io/",
-          "meta": "Deploy"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When would you fine-tune instead of doing prompt + RAG?",
-    "What does LoRA actually update — and why is the update so small?",
-    "Walk me through how YOUR resume analyzer scores job fit — what could go wrong?",
-    "How do you evaluate whether a fine-tune succeeded?"
+    "Walk through the VAE evidence lower bound (ELBO) and the reparameterization trick.",
+    "What is mode collapse in GANs, and what techniques fix it?",
+    "Walk me through the forward and reverse processes in a DDPM diffusion model.",
+    "Why does latent diffusion (Stable Diffusion) work in latent space instead of pixel space?"
   ],
   "references": [
     {
-      "label": "DeepLearning.AI — short courses on GenAI / LLMs",
-      "href": "https://www.deeplearning.ai/short-courses/",
-      "source": "DeepLearning.AI"
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
     },
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
     },
     {
-      "label": "Hugging Face — LoRA & PEFT",
-      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
-      "source": "Hugging Face"
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
     }
   ]
 }

@@ -1,109 +1,70 @@
 {
   "day": 28,
-  "title": "Advanced Graphs + CNNs + project: CIFAR-10 classifier",
-  "pillar": "deep-learning",
-  "focus": "Dijkstra / Network Delay + CNN intuition + ship a small image classifier you can demo.",
+  "title": "ML coding from scratch — k-means, kNN, logistic regression",
+  "pillar": "traditional-ml",
+  "focus": "Implement, time, debug. The most-skipped form of practice.",
   "tracks": [
     {
-      "label": "DSA · Advanced Graphs",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "lc-reconstruct-itinerary",
-          "label": "Reconstruct Itinerary",
-          "href": "https://leetcode.com/problems/reconstruct-itinerary/",
-          "meta": "Advanced Graphs"
+          "id": "lc-kth-largest-element-in-a-stream",
+          "label": "Kth Largest Element IN A Stream",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+          "meta": "Heap / Priority Queue"
         },
         {
-          "id": "lc-min-cost-to-connect-all-points",
-          "label": "Min Cost TO Connect All Points",
-          "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
-          "meta": "Advanced Graphs"
-        },
-        {
-          "id": "lc-network-delay-time",
-          "label": "Network Delay Time",
-          "href": "https://leetcode.com/problems/network-delay-time/",
-          "meta": "Advanced Graphs"
+          "id": "lc-last-stone-weight",
+          "label": "Last Stone Weight",
+          "href": "https://leetcode.com/problems/last-stone-weight/",
+          "meta": "Heap / Priority Queue"
         }
       ]
     },
     {
-      "label": "Deep learning · CNNs",
+      "label": "ML · Coding from scratch",
       "items": [
         {
-          "id": "dl-cnn-basics",
-          "label": "Kernels, stride, padding, pooling",
-          "href": "https://cs231n.github.io/convolutional-networks/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
-            "Why is parameter sharing in CNNs a strong inductive bias for vision?",
-            "When would you choose stride over pooling for downsampling?"
-          ]
+          "id": "ml-code-knn",
+          "label": "Code k-NN classifier from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir"
         },
         {
-          "id": "dl-resnet",
-          "label": "Why residual connections fix degradation",
-          "href": "https://arxiv.org/abs/1512.03385",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Why do residual connections help train deep nets?",
-            "What is the degradation problem residuals fix?",
-            "When does a CNN beat a transformer for vision today?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Project · Image classifier",
-      "items": [
-        {
-          "id": "proj-cifar",
-          "label": "Train a small CNN on CIFAR-10 / Fashion-MNIST",
-          "href": "https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html",
-          "meta": "Build"
+          "id": "ml-code-kmeans",
+          "label": "Code k-means from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir"
         },
         {
-          "id": "proj-cifar-deploy",
-          "label": "Deploy as a Streamlit demo or Hugging Face Space",
-          "href": "https://huggingface.co/spaces",
-          "meta": "Deploy"
+          "id": "ml-code-logreg",
+          "label": "Code logistic regression with SGD",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the receptive field after 3 conv layers with kernel 3, stride 1?",
-    "Why do residual connections help train deep nets?",
-    "Walk me through the training loop for your CIFAR classifier — where would it overfit?",
-    "When does a CNN beat a transformer for vision today?"
+    "Implement k-means with k-means++ initialization in 30 minutes.",
+    "Implement logistic regression with mini-batch SGD and explain each step.",
+    "Implement k-NN classifier and discuss time/space complexity."
   ],
   "references": [
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
     },
     {
-      "label": "DeepLearning.AI Deep Learning Specialization",
-      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
-      "source": "DeepLearning.AI"
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
     },
     {
-      "label": "fast.ai — Practical Deep Learning for Coders",
-      "href": "https://course.fast.ai/",
-      "source": "fast.ai"
-    },
-    {
-      "label": "Streamlit — quick ML-app deployment",
-      "href": "https://docs.streamlit.io/",
-      "source": "Streamlit"
-    },
-    {
-      "label": "Hugging Face Spaces — deploy demos for free",
-      "href": "https://huggingface.co/spaces",
-      "source": "Hugging Face"
+      "label": "Chip Huyen — ML Interviews Book (free)",
+      "href": "https://huyenchip.com/ml-interviews-book/",
+      "source": "Chip Huyen"
     }
-  ],
-  "topicId": "cnn-design-patterns"
+  ]
 }

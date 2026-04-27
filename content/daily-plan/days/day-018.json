@@ -1,71 +1,88 @@
 {
   "day": 18,
-  "title": "Trees hard + Clustering / PCA / anomaly detection",
+  "title": "Cross-validation & data leakage + DSA Binary Search",
   "pillar": "traditional-ml",
-  "focus": "Trickier tree problems + the unsupervised toolkit.",
+  "focus": "k-fold, stratified, time-series CV, nested CV, leak prevention.",
   "tracks": [
     {
-      "label": "DSA · Trees",
+      "label": "DSA · NeetCode Binary Search",
       "items": [
         {
-          "id": "lc-construct-binary-tree-from-preorder-and-inorder-traversal",
-          "label": "Construct Binary Tree From Preorder And Inorder Traversal",
-          "href": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
-          "meta": "Trees"
+          "id": "lc-binary-search",
+          "label": "Binary Search",
+          "href": "https://leetcode.com/problems/binary-search/",
+          "meta": "Binary Search"
         },
         {
-          "id": "lc-binary-tree-maximum-path-sum",
-          "label": "Binary Tree Maximum Path Sum",
-          "href": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
-          "meta": "Trees"
+          "id": "lc-search-a-2d-matrix",
+          "label": "Search A 2d Matrix",
+          "href": "https://leetcode.com/problems/search-a-2d-matrix/",
+          "meta": "Binary Search"
         },
         {
-          "id": "lc-serialize-and-deserialize-binary-tree",
-          "label": "Serialize And Deserialize Binary Tree",
-          "href": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-          "meta": "Trees"
+          "id": "lc-koko-eating-bananas",
+          "label": "Koko Eating Bananas",
+          "href": "https://leetcode.com/problems/koko-eating-bananas/",
+          "meta": "Binary Search"
         }
       ]
     },
     {
-      "label": "Trad ML · Unsupervised",
+      "label": "ML · Cross-validation & evaluation",
       "items": [
         {
-          "id": "ml-kmeans",
-          "label": "k-means vs hierarchical vs DBSCAN — assumptions each makes",
-          "href": "https://scikit-learn.org/stable/modules/clustering.html",
-          "meta": "Docs",
+          "id": "ml-cv",
+          "label": "k-fold, stratified, leave-one-out, time-series CV",
+          "href": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "meta": "scikit-learn",
           "interviewQuestions": [
-            "When does k-means silently fail? Give a concrete example.",
-            "How would you choose K without ground truth?",
-            "When does DBSCAN beat k-means?"
+            "When does k-fold leak data, and what does TimeSeriesSplit do differently?",
+            "Why is stratified k-fold important for imbalanced classification?"
           ]
         },
         {
-          "id": "ml-pca",
-          "label": "PCA as compression / denoising / visualization",
-          "href": "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/",
-          "meta": "Read",
+          "id": "ml-train-val-test",
+          "label": "Train/val/test split & nested CV",
+          "href": "https://www.youtube.com/watch?v=fSytzGwwBVw",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "What does PCA throw away — and why does that matter for downstream models?",
-            "How would you decide how many components to keep?",
-            "When is t-SNE / UMAP a better choice than PCA?"
+            "Why do you need both a validation and a test set for hyperparameter tuning?",
+            "What is nested cross-validation and when is it worth the cost?"
+          ]
+        },
+        {
+          "id": "ml-leakage",
+          "label": "Common forms of data leakage",
+          "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Walk through three common ways data leakage sneaks into an ML pipeline.",
+            "How would you build a pipeline that prevents leakage when scaling features?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does k-means silently fail? (Hint: shape of clusters.)",
-    "What does PCA throw away — and why does that matter for downstream models?",
-    "How do you choose K for k-means without ground truth?"
+    "Why does standard k-fold leak data on time-series, and what does TimeSeriesSplit do differently?",
+    "Walk through three real ways data leakage sneaks into an ML pipeline and how you'd prevent each.",
+    "Why do you need both a validation and a test set for hyperparameter tuning — can't you just use one?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
     }
-  ],
-  "topicId": "anomaly-detection"
+  ]
 }

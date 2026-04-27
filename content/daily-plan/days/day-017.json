@@ -1,112 +1,62 @@
 {
   "day": 17,
-  "title": "Trees BST + Imbalanced classification + SVM / KNN",
+  "title": "Regularization (L1, L2, ElasticNet) + DSA Stack finish",
   "pillar": "traditional-ml",
-  "focus": "BST validation + handle rare positives without breaking calibration + the other classic models.",
+  "focus": "Sparsity geometry, Bayesian priors, why ElasticNet exists.",
   "tracks": [
     {
-      "label": "DSA · Trees",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "lc-count-good-nodes-in-binary-tree",
-          "label": "Count Good Nodes IN Binary Tree",
-          "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
-          "meta": "Trees"
+          "id": "lc-car-fleet",
+          "label": "Car Fleet",
+          "href": "https://leetcode.com/problems/car-fleet/",
+          "meta": "Stack"
         },
         {
-          "id": "lc-validate-binary-search-tree",
-          "label": "Validate Binary Search Tree",
-          "href": "https://leetcode.com/problems/validate-binary-search-tree/",
-          "meta": "Trees"
-        },
-        {
-          "id": "lc-kth-smallest-element-in-a-bst",
-          "label": "Kth Smallest Element IN A Bst",
-          "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
-          "meta": "Trees"
+          "id": "lc-largest-rectangle-in-histogram",
+          "label": "Largest Rectangle IN Histogram",
+          "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+          "meta": "Stack"
         }
       ]
     },
     {
-      "label": "Trad ML · Imbalanced classification",
+      "label": "ML · Regularization (L1, L2, ElasticNet)",
       "items": [
         {
-          "id": "ml-imbalance",
-          "label": "Class weights vs SMOTE vs threshold-moving",
-          "href": "https://machinelearningmastery.com/what-is-imbalanced-classification/",
-          "meta": "Read",
+          "id": "ml-l1-l2",
+          "label": "L1 vs L2 vs ElasticNet — geometry and selection",
+          "href": "https://www.youtube.com/watch?v=Q81RR3yKn30",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Compare class weights vs SMOTE vs threshold-moving.",
-            "What breaks if you SMOTE before splitting train/test?",
-            "How do you tune the decision threshold for an imbalanced classifier?"
+            "Why does L1 produce sparse solutions while L2 doesn't? Show the geometric picture.",
+            "When do you use ElasticNet over L1 or L2 alone?"
           ]
         },
         {
-          "id": "ml-imbalance-calibration",
-          "label": "Why resampling breaks calibration",
-          "href": "https://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Why does class weighting preserve calibration but resampling does not?",
-            "How would you detect that resampling broke your calibration?",
-            "What's the simplest fix when calibration is destroyed by SMOTE?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Trad ML · SVM, KNN, Naive Bayes",
-      "items": [
-        {
-          "id": "ml-svm",
-          "label": "SVM intuition + kernel trick — when SVM still wins",
-          "href": "https://scikit-learn.org/stable/modules/svm.html",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "Explain the kernel trick in plain language.",
-            "When does SVM with an RBF kernel still beat a tree-based model?",
-            "Why does SVM training scale poorly with dataset size?"
-          ]
+          "id": "ml-early-stopping",
+          "label": "Early stopping & dropout as regularizers",
+          "href": "https://en.wikipedia.org/wiki/Early_stopping",
+          "meta": "Read"
         },
         {
-          "id": "ml-knn",
-          "label": "KNN — when it's the right baseline (small data, low dim)",
-          "href": "https://scikit-learn.org/stable/modules/neighbors.html",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "When is KNN the right baseline?",
-            "Why does the curse of dimensionality kill KNN?",
-            "How would you make KNN scalable for 100M points?"
-          ]
-        },
-        {
-          "id": "ml-naive-bayes",
-          "label": "Naive Bayes — fast, calibrated, surprisingly strong on text",
-          "href": "https://scikit-learn.org/stable/modules/naive_bayes.html",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "Why does Naive Bayes work well on text despite the naive independence assumption?",
-            "Where does Naive Bayes fail badly?",
-            "Compare Naive Bayes vs logistic regression on a small text classification problem."
-          ]
+          "id": "ml-bayes-prior",
+          "label": "Regularization as a Bayesian prior",
+          "href": "https://en.wikipedia.org/wiki/Tikhonov_regularization#Bayesian_interpretation",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What breaks if you SMOTE before splitting train/test?",
-    "When does SVM with an RBF kernel still beat a tree-based model?",
-    "Why does Naive Bayes work well on text despite the naive independence assumption?",
-    "How do you tune the decision threshold for an imbalanced classifier?"
+    "Why does L1 produce sparse solutions while L2 doesn't — show the geometric picture.",
+    "Show that L2 regularization is equivalent to a Gaussian prior on the weights — what's the Bayesian story?",
+    "When would you choose ElasticNet over pure L1 or L2 — what's the failure mode it fixes?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
-    },
-    {
-      "label": "Andrew Ng — Machine Learning Specialization (Coursera)",
+      "label": "Andrew Ng — Machine Learning Specialization",
       "href": "https://www.coursera.org/specializations/machine-learning-introduction",
       "source": "Coursera"
     },
@@ -114,6 +64,11 @@
       "label": "StatQuest — Statistics & ML playlists",
       "href": "https://www.youtube.com/@statquest/playlists",
       "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
     }
   ]
 }

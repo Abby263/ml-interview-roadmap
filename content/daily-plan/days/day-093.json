@@ -1,29 +1,68 @@
 {
   "day": 93,
-  "title": "Coding mock — Meta style",
-  "pillar": "foundations",
-  "focus": "Fast classic mediums; you must finish without stalling.",
+  "title": "Training efficiency: mixed precision, accumulation, checkpointing",
+  "pillar": "mlops",
+  "focus": "fp16 vs bf16 vs fp8; activation checkpointing math.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "mock-meta-1",
-          "label": "Solve 2 fresh mediums in under 22 minutes each",
-          "meta": "Timed"
+          "id": "lc-kth-largest-element-in-an-array",
+          "label": "Kth Largest Element IN AN Array",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "Infra · Training efficiency",
+      "items": [
+        {
+          "id": "eff-mp",
+          "label": "Mixed precision training (fp16, bf16, fp8)",
+          "href": "https://pytorch.org/docs/stable/amp.html",
+          "meta": "PyTorch"
         },
         {
-          "id": "mock-meta-talk",
-          "label": "Verbalize trade-offs continuously",
-          "meta": "Concept"
+          "id": "eff-grad-accum",
+          "label": "Gradient accumulation & micro-batching",
+          "href": "https://huggingface.co/docs/transformers/perf_train_gpu_one",
+          "meta": "HF"
+        },
+        {
+          "id": "eff-checkpoint",
+          "label": "Activation checkpointing & offloading",
+          "href": "https://pytorch.org/docs/stable/checkpoint.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "How does activation checkpointing trade compute for memory?",
+            "When would you offload optimizer state to CPU/NVMe?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why this approach over alternatives?",
-    "What's your test plan?",
-    "How would you scale this if input is 10x?"
+    "Compare fp16 vs bf16 vs fp8 training — when does each fail or shine?",
+    "How does activation checkpointing trade compute for memory, and when is it worth it?",
+    "When would you offload optimizer state to CPU/NVMe, and what's the throughput cost?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "PyTorch DDP tutorial",
+      "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "source": "PyTorch"
+    }
+  ]
 }

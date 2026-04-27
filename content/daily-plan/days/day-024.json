@@ -1,83 +1,78 @@
 {
   "day": 24,
-  "title": "Backtracking finish + NN basics",
-  "pillar": "deep-learning",
-  "focus": "N-Queens / Letter Combinations + forward + backward pass on a 2-layer net.",
+  "title": "SVM, kNN, Naive Bayes + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Kernel trick, curse of dimensionality, generative vs discriminative.",
   "tracks": [
     {
-      "label": "DSA · Backtracking",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "lc-letter-combinations-of-a-phone-number",
-          "label": "Letter Combinations OF A Phone Number",
-          "href": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
-          "meta": "Backtracking"
+          "id": "lc-linked-list-cycle",
+          "label": "Linked List Cycle",
+          "href": "https://leetcode.com/problems/linked-list-cycle/",
+          "meta": "Linked List"
         },
         {
-          "id": "lc-n-queens",
-          "label": "N Queens",
-          "href": "https://leetcode.com/problems/n-queens/",
-          "meta": "Backtracking"
+          "id": "lc-find-the-duplicate-number",
+          "label": "Find The Duplicate Number",
+          "href": "https://leetcode.com/problems/find-the-duplicate-number/",
+          "meta": "Linked List"
         }
       ]
     },
     {
-      "label": "Deep learning · NN basics",
+      "label": "ML · SVM, kNN, Naive Bayes",
       "items": [
         {
-          "id": "dl-forward-back",
-          "label": "Walk through forward + backward pass on paper",
-          "href": "https://cs231n.github.io/optimization-2/",
-          "meta": "Read",
+          "id": "ml-svm",
+          "label": "SVM: max-margin, kernel trick, soft margin",
+          "href": "https://www.youtube.com/watch?v=efR1C6CvhmE",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Explain backpropagation as if to an engineer who's used PyTorch but never derived gradients.",
-            "Walk through forward + backward pass on a 2-layer MLP by hand.",
-            "Why does the chain rule make autodiff possible?"
+            "What's the geometric intuition behind the max-margin SVM?",
+            "Explain the kernel trick — why it lets us work in infinite-dimensional spaces without computing them.",
+            "When would you NOT use an SVM today?"
           ]
         },
         {
-          "id": "dl-activations",
-          "label": "Activation functions: ReLU, GELU, sigmoid, softmax",
-          "href": "https://en.wikipedia.org/wiki/Activation_function",
+          "id": "ml-knn",
+          "label": "kNN: distance metrics, curse of dimensionality",
+          "href": "https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm",
           "meta": "Read",
           "interviewQuestions": [
-            "Why does ReLU help vs sigmoid?",
-            "When would you use GELU instead of ReLU?",
-            "What's the role of softmax in the cross-entropy gradient?"
+            "Why does kNN degrade in high dimensions (curse of dimensionality)?",
+            "How would you choose k and the distance metric for kNN?"
+          ]
+        },
+        {
+          "id": "ml-nb",
+          "label": "Naive Bayes: when 'naive' actually works",
+          "href": "https://www.youtube.com/watch?v=O2L2Uv9pdDA",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why does Naive Bayes still work despite the unrealistic independence assumption?",
+            "Compare generative vs discriminative classifiers using NB and Logistic Regression."
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Explain backprop as if to an engineer who's used PyTorch but never derived gradients.",
-    "Why does ReLU help vs sigmoid?",
-    "What's the role of softmax in the cross-entropy gradient?"
+    "Explain the kernel trick in SVMs and why it lets you work in infinite-dimensional spaces.",
+    "Why does kNN degrade in high dimensions — what's the curse of dimensionality?",
+    "Compare generative (Naive Bayes) vs discriminative (Logistic Regression) classifiers — when does each win?"
   ],
   "references": [
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
     },
     {
-      "label": "Google — Backpropagation visualization (interactive)",
-      "href": "https://developers-dot-devsite-v2-prod.appspot.com/machine-learning/crash-course/backprop-scroll/",
-      "source": "Google"
-    },
-    {
-      "label": "DeepLearning.AI Deep Learning Specialization",
-      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
-      "source": "DeepLearning.AI"
-    },
-    {
-      "label": "Khan Academy — multivariable derivatives",
-      "href": "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives",
-      "source": "Khan Academy"
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
     }
-  ],
-  "topicId": "backprop-and-optimization",
-  "questionIds": [
-    "backprop"
   ]
 }

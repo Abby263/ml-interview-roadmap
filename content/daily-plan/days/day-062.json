@@ -1,60 +1,69 @@
 {
   "day": 62,
-  "title": "Monitoring & drift",
-  "pillar": "ml-system-design",
-  "focus": "Separate infra / data / model monitoring; alerts that map to actions.",
+  "title": "Deployment patterns: batch / real-time / streaming / edge + DSA 1-D DP",
+  "pillar": "mlops",
+  "focus": "Latency budgets, async inference, when to push to device.",
   "tracks": [
     {
-      "label": "Read · Monitoring",
+      "label": "DSA · NeetCode 1-D DP",
       "items": [
         {
-          "id": "mlops-evidently",
-          "label": "Evidently AI — monitoring metrics catalog",
-          "href": "https://docs.evidentlyai.com/reference/all-metrics",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "What metrics would you put on a production ML monitoring dashboard?",
-            "How do you separate infra monitoring from model monitoring?",
-            "When does drift detection actually trigger retraining?"
-          ]
+          "id": "lc-longest-palindromic-substring",
+          "label": "Longest Palindromic Substring",
+          "href": "https://leetcode.com/problems/longest-palindromic-substring/",
+          "meta": "1-D DP"
         },
         {
-          "id": "mlops-drift",
-          "label": "KS / PSI for drift detection",
-          "href": "https://towardsdatascience.com/population-stability-index-psi-and-characteristic-stability-index-csi-for-machine-learning-2c1f15823e94/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Compare KS and PSI for drift detection.",
-            "How do you set drift thresholds that don't alarm on noise?",
-            "What's the difference between feature drift and label drift?"
-          ]
+          "id": "lc-palindromic-substrings",
+          "label": "Palindromic Substrings",
+          "href": "https://leetcode.com/problems/palindromic-substrings/",
+          "meta": "1-D DP"
         }
       ]
     },
     {
-      "label": "Design exercise",
+      "label": "MLOps · Deployment patterns",
       "items": [
         {
-          "id": "mlops-design-monitor",
-          "label": "Design a monitoring stack for a fraud model with delayed labels",
-          "meta": "Whiteboard"
+          "id": "mlops-batch-rt",
+          "label": "Batch vs real-time vs streaming inference",
+          "href": "https://huyenchip.com/2020/12/27/real-time-machine-learning.html",
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "Compare batch, real-time, and streaming inference — when do you reach for each?",
+            "What's the latency budget for an ad CTR model vs a churn model?"
+          ]
         },
         {
-          "id": "mlops-playbook",
-          "label": "Write a playbook for one alert type",
-          "meta": "Concept"
+          "id": "mlops-edge",
+          "label": "Edge deployment & on-device ML",
+          "href": "https://pytorch.org/mobile/home/",
+          "meta": "PyTorch Mobile"
+        },
+        {
+          "id": "mlops-async",
+          "label": "Async inference & queues",
+          "href": "https://aws.amazon.com/blogs/machine-learning/announcing-the-launch-of-new-hugging-face-llm-inference-containers-on-amazon-sagemaker/",
+          "meta": "AWS"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Separate infra monitoring, data monitoring, and model monitoring — what's in each?",
-    "Walk me through monitoring a fraud model with 30-day label lag.",
-    "What's an example of an alert that doesn't map to an action — and how do you fix it?"
+    "Compare batch, real-time, and streaming inference — when do you reach for each?",
+    "What's the latency budget for an ad CTR model vs a churn model — how does that change architecture?",
+    "When does on-device ML beat cloud inference, and what are the engineering constraints?"
   ],
-  "references": [],
-  "topicId": "monitoring-drift",
-  "questionIds": [
-    "monitoring-production"
+  "references": [
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    }
   ]
 }

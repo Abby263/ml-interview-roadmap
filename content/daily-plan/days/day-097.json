@@ -1,34 +1,100 @@
 {
   "day": 97,
-  "title": "ML infra design mock — full case",
-  "pillar": "ml-system-design",
-  "focus": "60-min infra-flavored design (serving + monitoring + retraining).",
+  "title": "Infra mocks: pick a serving design + answer cost / SLO trade-offs",
+  "pillar": "mlops",
+  "focus": "Self-mock 30-min: 'serve a 70B model at 100 QPS, $X budget, P99 < Y'.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "mock-infra-prompt",
-          "label": "Use a prompt focused on serving / scale / cost",
-          "meta": "Pick"
+          "id": "lc-interleaving-string",
+          "label": "Interleaving String",
+          "href": "https://leetcode.com/problems/interleaving-string/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Serving infrastructure",
+      "items": [
+        {
+          "id": "mlops-serving",
+          "label": "Model servers: TorchServe, Triton, BentoML, Seldon",
+          "href": "https://github.com/triton-inference-server/server",
+          "meta": "Triton",
+          "interviewQuestions": [
+            "Compare TorchServe, Triton, and BentoML — when does each fit?",
+            "What is dynamic batching and why does it matter for GPU utilization?"
+          ]
         },
         {
-          "id": "mock-infra-run",
-          "label": "60-min mock with a peer or solo",
-          "meta": "Mock"
+          "id": "mlops-k8s",
+          "label": "Containerization & Kubernetes for ML",
+          "href": "https://www.kubeflow.org/docs/",
+          "meta": "Kubeflow",
+          "interviewQuestions": [
+            "Walk through deploying a model on Kubernetes with autoscaling.",
+            "When do you reach for KServe vs custom Deployment + HPA?"
+          ]
+        },
+        {
+          "id": "mlops-routing",
+          "label": "Traffic routing, model rollback, A/B serving",
+          "href": "https://kserve.github.io/website/",
+          "meta": "KServe"
+        }
+      ]
+    },
+    {
+      "label": "Infra · Inference optimization",
+      "items": [
+        {
+          "id": "inf-quant",
+          "label": "Quantization: INT8, INT4, FP8, GPTQ, AWQ",
+          "href": "https://huggingface.co/docs/transformers/main_classes/quantization",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
+            "How do GPTQ and AWQ work, and what quality do you lose?"
+          ]
+        },
+        {
+          "id": "inf-distill",
+          "label": "Knowledge distillation (teacher → student)",
+          "href": "https://arxiv.org/abs/1503.02531",
+          "meta": "Hinton et al."
+        },
+        {
+          "id": "inf-prune",
+          "label": "Pruning: structured vs unstructured",
+          "href": "https://pytorch.org/tutorials/intermediate/pruning_tutorial.html",
+          "meta": "PyTorch"
+        },
+        {
+          "id": "inf-batch",
+          "label": "Continuous batching & dynamic batching",
+          "href": "https://www.anyscale.com/blog/continuous-batching-llm-inference",
+          "meta": "Anyscale"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Defend latency budgets, scaling, fallback paths.",
-    "What's your incident playbook for this system?"
+    "Compare TorchServe, Triton, and BentoML — when does each fit?",
+    "What is dynamic batching, and why does it matter for GPU utilization?",
+    "Walk through deploying a model on Kubernetes with autoscaling — what knobs matter?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
     }
   ]
 }

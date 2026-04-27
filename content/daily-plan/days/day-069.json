@@ -1,30 +1,70 @@
 {
   "day": 69,
-  "title": "Case: Search ranking (part 2)",
-  "pillar": "ml-system-design",
-  "focus": "End-to-end mock + cold-start + selection bias.",
+  "title": "Observability for ML systems + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "Logs / metrics / traces; LLM-specific dimensions; SLOs and alerts.",
   "tracks": [
     {
-      "label": "Practice · Out loud",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "case-search-mock",
-          "label": "Time a 50-min mock",
-          "meta": "Mock"
+          "id": "lc-longest-increasing-path-in-a-matrix",
+          "label": "Longest Increasing Path IN A Matrix",
+          "href": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+          "meta": "2-D DP"
         },
         {
-          "id": "case-search-eval",
-          "label": "Write your offline + online eval plan",
-          "meta": "Whiteboard"
+          "id": "lc-distinct-subsequences",
+          "label": "Distinct Subsequences",
+          "href": "https://leetcode.com/problems/distinct-subsequences/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Observability for ML",
+      "items": [
+        {
+          "id": "mlops-obs",
+          "label": "Logs, metrics, traces for ML systems",
+          "href": "https://opentelemetry.io/",
+          "meta": "OpenTelemetry"
+        },
+        {
+          "id": "mlops-llm-obs",
+          "label": "LLM-specific observability: tokens, latency, cost",
+          "href": "https://docs.smith.langchain.com/",
+          "meta": "LangSmith"
+        },
+        {
+          "id": "mlops-alerts",
+          "label": "Alerts & on-call for ML systems",
+          "href": "https://sre.google/workbook/practical-alerting/",
+          "meta": "Google SRE"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What does NDCG@10 buy you that CTR doesn't?",
-    "How do you debias clicks for offline training?",
-    "What's an exposure-fairness metric, and when do you need one?"
+    "What's the difference between logs, metrics, and traces, and what does each tell you about an ML system?",
+    "What dimensions do you slice LLM observability by (model, prompt, user, tool)?",
+    "What's a meaningful SLO for an ML inference service, and how do you alert on it?"
   ],
-  "references": [],
-  "caseStudySlug": "search-ranking"
+  "references": [
+    {
+      "label": "LangSmith — LLM tracing & eval",
+      "href": "https://docs.smith.langchain.com/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Arize AI — ML observability",
+      "href": "https://docs.arize.com/",
+      "source": "Arize"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

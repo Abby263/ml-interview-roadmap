@@ -1,41 +1,107 @@
 {
   "day": 33,
-  "title": "Deployment strategies",
-  "pillar": "mlops",
-  "focus": "Shadow → canary → progressive rollout that protects users.",
+  "title": "Trad-ML breadth review (regression, trees, ensembles, clustering)",
+  "pillar": "traditional-ml",
+  "focus": "60-min self-quiz on weeks 3-4. Note the questions you fumble.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "mlops-shadow",
-          "label": "Shadow mode vs canary vs blue-green",
-          "href": "https://martinfowler.com/bliki/CanaryRelease.html",
-          "meta": "Read"
-        },
-        {
-          "id": "mlops-multi-region",
-          "label": "Multi-region ML deployment patterns",
-          "href": "https://aws.amazon.com/blogs/machine-learning/",
-          "meta": "Read"
+          "id": "lc-daily-temperatures",
+          "label": "Daily Temperatures",
+          "href": "https://leetcode.com/problems/daily-temperatures/",
+          "meta": "Stack"
         }
       ]
     },
     {
-      "label": "Design exercise",
+      "label": "ML · Linear regression",
       "items": [
         {
-          "id": "mlops-rollout-trigger",
-          "label": "Auto-rollback triggers (SLO breach, regression on guardrail)",
-          "meta": "Whiteboard"
+          "id": "ml-ols",
+          "label": "OLS, normal equations, MLE interpretation",
+          "href": "https://www.statlearning.com/",
+          "meta": "ISLR ch. 3",
+          "interviewQuestions": [
+            "Derive the OLS solution θ = (XᵀX)⁻¹Xᵀy. When is XᵀX not invertible?",
+            "Show that OLS = MLE under Gaussian noise."
+          ]
+        },
+        {
+          "id": "ml-lr-assumptions",
+          "label": "Assumptions: linearity, independence, homoscedasticity, normality",
+          "href": "https://en.wikipedia.org/wiki/Linear_regression#Assumptions",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through the four classical assumptions of linear regression and how to diagnose violations.",
+            "What's heteroscedasticity and how do you fix it?"
+          ]
+        },
+        {
+          "id": "ml-loss-fns",
+          "label": "Loss functions: MSE, MAE, Huber — when to use each",
+          "href": "https://heartbeat.comet.ml/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
+            "Why is Huber loss differentiable and robust at the same time?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Gradient boosting (XGBoost, LightGBM, CatBoost)",
+      "items": [
+        {
+          "id": "ml-gbm-math",
+          "label": "GBM: gradient boosting on residuals",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Walk me through how GBM fits each new tree on the negative gradient of the loss.",
+            "Why is GBM more sensitive to learning rate than Random Forest?"
+          ]
+        },
+        {
+          "id": "ml-xgb",
+          "label": "XGBoost: histogram splits, regularization, missing values",
+          "href": "https://xgboost.readthedocs.io/en/stable/",
+          "meta": "XGBoost",
+          "interviewQuestions": [
+            "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle?",
+            "How does XGBoost handle missing values automatically?"
+          ]
+        },
+        {
+          "id": "ml-lgbm",
+          "label": "LightGBM & CatBoost: leaf-wise growth, GOSS, ordered boosting",
+          "href": "https://lightgbm.readthedocs.io/",
+          "meta": "LightGBM",
+          "interviewQuestions": [
+            "When would you pick LightGBM over XGBoost?",
+            "What problem does CatBoost's ordered boosting solve?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the difference between shadow mode and canary?",
-    "When does blue-green not work for ML?",
-    "How do you handle model state during a region failover?"
+    "Derive the OLS closed-form θ = (XᵀX)⁻¹Xᵀy and explain when it fails.",
+    "Show that OLS coincides with MLE under Gaussian noise — why does that matter?",
+    "Compare MSE vs MAE vs Huber loss for regression — when do you reach for each?",
+    "What are the four classical OLS assumptions and how do you diagnose violations?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
 }

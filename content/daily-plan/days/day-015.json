@@ -1,83 +1,94 @@
 {
   "day": 15,
-  "title": "Trees DFS + Trees & ensembles (GBDT)",
+  "title": "Linear regression deep dive + DSA Stack kickoff",
   "pillar": "traditional-ml",
-  "focus": "Tree DFS templates + the tabular default (XGBoost / LightGBM).",
+  "focus": "OLS derivation, MLE under Gaussian noise, assumptions, loss choice.",
   "tracks": [
     {
-      "label": "DSA · Trees",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "lc-invert-binary-tree",
-          "label": "Invert Binary Tree",
-          "href": "https://leetcode.com/problems/invert-binary-tree/",
-          "meta": "Trees"
+          "id": "lc-valid-parentheses",
+          "label": "Valid Parentheses",
+          "href": "https://leetcode.com/problems/valid-parentheses/",
+          "meta": "Stack"
         },
         {
-          "id": "lc-maximum-depth-of-binary-tree",
-          "label": "Maximum Depth OF Binary Tree",
-          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-          "meta": "Trees"
+          "id": "lc-min-stack",
+          "label": "Min Stack",
+          "href": "https://leetcode.com/problems/min-stack/",
+          "meta": "Stack"
         },
         {
-          "id": "lc-diameter-of-binary-tree",
-          "label": "Diameter OF Binary Tree",
-          "href": "https://leetcode.com/problems/diameter-of-binary-tree/",
-          "meta": "Trees"
-        },
-        {
-          "id": "lc-balanced-binary-tree",
-          "label": "Balanced Binary Tree",
-          "href": "https://leetcode.com/problems/balanced-binary-tree/",
-          "meta": "Trees"
-        },
-        {
-          "id": "lc-same-tree",
-          "label": "Same Tree",
-          "href": "https://leetcode.com/problems/same-tree/",
-          "meta": "Trees"
+          "id": "lc-evaluate-reverse-polish-notation",
+          "label": "Evaluate Reverse Polish Notation",
+          "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          "meta": "Stack"
         }
       ]
     },
     {
-      "label": "Trad ML · Trees & ensembles",
+      "label": "ML · Linear regression",
       "items": [
         {
-          "id": "ml-gbdt-paper",
-          "label": "Read: XGBoost paper (skim sections 1-3)",
-          "href": "https://arxiv.org/abs/1603.02754",
-          "meta": "Paper",
+          "id": "ml-ols",
+          "label": "OLS, normal equations, MLE interpretation",
+          "href": "https://www.statlearning.com/",
+          "meta": "ISLR ch. 3",
           "interviewQuestions": [
-            "Why does GBDT usually beat Random Forest on tabular data?",
-            "What does shrinkage do in gradient boosting?",
-            "Walk me through how XGBoost handles missing values."
+            "Derive the OLS solution θ = (XᵀX)⁻¹Xᵀy. When is XᵀX not invertible?",
+            "Show that OLS = MLE under Gaussian noise."
           ]
         },
         {
-          "id": "ml-rf-vs-gbdt",
-          "label": "Random Forest vs GBDT — defend a default",
-          "href": "https://towardsdatascience.com/random-forest-vs-xgboost-comparing-tree-based-algorithms-with-codes-c8a4d18d3e74/",
+          "id": "ml-lr-assumptions",
+          "label": "Assumptions: linearity, independence, homoscedasticity, normality",
+          "href": "https://en.wikipedia.org/wiki/Linear_regression#Assumptions",
           "meta": "Read",
           "interviewQuestions": [
-            "When does a single decision tree still beat XGBoost?",
-            "What's the difference between bagging and boosting in one sentence each?",
-            "How do you defend GBDT as your tabular default in an interview?"
+            "Walk through the four classical assumptions of linear regression and how to diagnose violations.",
+            "What's heteroscedasticity and how do you fix it?"
+          ]
+        },
+        {
+          "id": "ml-loss-fns",
+          "label": "Loss functions: MSE, MAE, Huber — when to use each",
+          "href": "https://heartbeat.comet.ml/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
+            "Why is Huber loss differentiable and robust at the same time?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why does GBDT usually beat Random Forest on tabular data?",
-    "When does a single decision tree still beat XGBoost?",
-    "What's the difference between bagging and boosting in one sentence each?"
+    "Derive the OLS closed-form θ = (XᵀX)⁻¹Xᵀy and explain when it fails.",
+    "Show that OLS coincides with MLE under Gaussian noise — why does that matter?",
+    "Compare MSE vs MAE vs Huber loss for regression — when do you reach for each?",
+    "What are the four classical OLS assumptions and how do you diagnose violations?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
     }
-  ],
-  "topicId": "tree-ensembles"
+  ]
 }

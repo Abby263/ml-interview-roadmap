@@ -1,33 +1,83 @@
 {
   "day": 106,
-  "title": "Mock sprint — DSA Hard + ML design",
-  "pillar": "foundations",
-  "focus": "60 min DSA Hard then 60 min ML design back to back.",
+  "title": "ML System Design framework (7 steps)",
+  "pillar": "ml-system-design",
+  "focus": "The reusable scaffold for every design round: clarify → metrics → data → model → infra → eval → edges.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Sliding Window",
       "items": [
         {
-          "id": "sprint-hard",
-          "label": "DSA Hard, 60 min",
-          "meta": "Timed"
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
         },
         {
-          "id": "sprint-design",
-          "label": "ML design, 60 min",
-          "meta": "Mock"
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich"
         },
         {
-          "id": "sprint-review",
-          "label": "Capture residual gaps for tomorrow",
-          "meta": "Review"
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Where did fatigue cost you?",
-    "Did the design quality drop after the coding round?"
+    "Walk me through your 7-step framework for any ML system design interview.",
+    "What are the first five clarifying questions you ask in any ML system design interview?",
+    "How do you map a business metric to an offline ML metric — and where does the mapping break?",
+    "Walk through three real cases where offline gains didn't translate online."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

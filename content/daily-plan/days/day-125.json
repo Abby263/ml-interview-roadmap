@@ -1,33 +1,90 @@
 {
   "day": 125,
-  "title": "Final glance: framework + trade-offs + 1 story",
+  "title": "Self-mock 2: pick a Week-17 GenAI case and rework + DSA review",
   "pillar": "ml-system-design",
-  "focus": "5-minute scan of the framework + 5-minute scan of trade-offs + 1 story.",
+  "focus": "Run a 60-min self-mock on a GenAI case (RAG/agent/eval/doc/code/img/voice).",
   "tracks": [
     {
-      "label": "5-min reads",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "scan-frame",
-          "label": "Scan the design framework once",
-          "meta": "Read"
+          "id": "lc-binary-tree-right-side-view",
+          "label": "Binary Tree Right Side View",
+          "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
         },
         {
-          "id": "scan-trade",
-          "label": "Scan the 6 trade-offs once",
-          "meta": "Read"
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich"
         },
         {
-          "id": "scan-story",
-          "label": "Run through your strongest story silently",
-          "meta": "Read"
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Enterprise RAG",
+      "items": [
+        {
+          "id": "sd-rag-design",
+          "label": "Design enterprise RAG over docs (Glean-style)",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "Walk me through designing an enterprise RAG over Confluence + Slack + Drive.",
+            "How do you handle access control / permissions in retrieval?",
+            "How would you handle 50M docs and 10k QPS?"
+          ]
+        },
+        {
+          "id": "sd-rag-eval",
+          "label": "Eval & monitoring for enterprise RAG",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What is the cleanest way to summarize the design framework in the first two minutes of an interview?",
-    "Which accuracy, latency, cost, or freshness trade-off would you proactively call out before the interviewer asks?"
+    "Walk me through your 7-step framework for any ML system design interview.",
+    "What are the first five clarifying questions you ask in any ML system design interview?",
+    "How do you map a business metric to an offline ML metric — and where does the mapping break?",
+    "Walk through three real cases where offline gains didn't translate online."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
 }

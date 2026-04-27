@@ -1,46 +1,65 @@
 {
   "day": 54,
-  "title": "LLMOps · Observability, tracing, and incident response",
-  "pillar": "llmops",
-  "focus": "Instrument prompts, retrieval, tools, model calls, costs, and user outcomes so failures are debuggable.",
+  "title": "NLP practical tasks: NER, summarization, MT + DSA Graphs",
+  "pillar": "deep-learning",
+  "focus": "BIO tagging vs span-based; ROUGE / BERTScore / LLM-as-judge; beam search.",
   "tracks": [
     {
-      "label": "LLMOps · Observability",
+      "label": "DSA · NeetCode Graphs",
       "items": [
         {
-          "id": "llmops-traces",
-          "label": "Sketch the trace schema: prompt, context, retrieved docs, tool calls, model, latency, cost",
-          "meta": "Design"
+          "id": "lc-walls-and-gates",
+          "label": "Walls And Gates",
+          "href": "https://leetcode.com/problems/walls-and-gates/",
+          "meta": "Graphs"
         },
         {
-          "id": "llmops-alerts",
-          "label": "Define alerts for hallucination spikes, tool failures, latency, cost, and refusal drift",
-          "meta": "Concept"
+          "id": "lc-course-schedule",
+          "label": "Course Schedule",
+          "href": "https://leetcode.com/problems/course-schedule/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "NLP · Practical tasks",
+      "items": [
+        {
+          "id": "nlp-ner",
+          "label": "Named-entity recognition: BIO tagging, span-based",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/2",
+          "meta": "HF"
         },
         {
-          "id": "llmops-postmortem",
-          "label": "Write an incident playbook for bad generated advice or unsafe tool execution",
-          "meta": "Practice"
+          "id": "nlp-summarization",
+          "label": "Extractive vs abstractive summarization",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/5",
+          "meta": "HF"
+        },
+        {
+          "id": "nlp-translation",
+          "label": "Machine translation: BLEU, beam search",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/4",
+          "meta": "HF"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What do you log for an LLM request, and what should you avoid logging?",
-    "How do you debug a sudden hallucination spike?",
-    "How would you run an incident review for an unsafe agent action?"
+    "How would you evaluate a summarization model — ROUGE, BERTScore, or LLM-as-judge?",
+    "Compare BIO tagging vs span-based NER — pros and cons of each approach.",
+    "Why is beam search standard for translation but not for open-ended generation?"
   ],
   "references": [
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
     },
     {
-      "label": "NIST AI Risk Management Framework",
-      "href": "https://www.nist.gov/itl/ai-risk-management-framework",
-      "source": "NIST"
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
     }
-  ],
-  "topicId": "llm-observability-incidents"
+  ]
 }

@@ -1,31 +1,64 @@
 {
   "day": 108,
-  "title": "Cost / latency / quality cascade — mini design",
+  "title": "Design search ranking (Amazon/Google) + DSA review",
   "pillar": "ml-system-design",
-  "focus": "Drill the cascade trade-off until it's automatic.",
+  "focus": "Relevance vs freshness vs diversity; LTR; long-tail queries.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Binary Search",
       "items": [
         {
-          "id": "cascade-pick",
-          "label": "Pick a system where cascading would help; sketch it",
-          "meta": "Whiteboard"
+          "id": "lc-search-a-2d-matrix",
+          "label": "Search A 2d Matrix",
+          "href": "https://leetcode.com/problems/search-a-2d-matrix/",
+          "meta": "Binary Search"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Search ranking",
+      "items": [
+        {
+          "id": "sd-search-design",
+          "label": "Design Google/Amazon search ranking",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk me through designing Amazon's product search.",
+            "How do you balance relevance, freshness, and diversity in search ranking?",
+            "How would you handle long-tail queries with no historical data?"
+          ]
         },
         {
-          "id": "cascade-num",
-          "label": "Estimate cost / quality across 3 tiers",
-          "meta": "Concept"
+          "id": "sd-search-ltr",
+          "label": "Learning-to-rank: pointwise, pairwise, listwise",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Eugene Yan"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does a cascade hurt instead of help?",
-    "How do you keep the cascade from drifting silently?"
+    "Walk me through designing Amazon's product search end-to-end.",
+    "How do you balance relevance, freshness, and diversity in search ranking?",
+    "Compare pointwise, pairwise, and listwise learning-to-rank approaches.",
+    "How would you handle long-tail queries with no historical click data?"
   ],
-  "references": [],
-  "questionIds": [
-    "architect-cost-optimization"
+  "references": [
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    }
   ]
 }

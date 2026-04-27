@@ -1,27 +1,59 @@
 {
   "day": 114,
-  "title": "Final weak-area repair",
-  "pillar": "foundations",
-  "focus": "Last pass on the gap list.",
+  "title": "Design AI customer-support agent + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Tool catalog; escalation policy; quality eval offline/online.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Graphs",
       "items": [
         {
-          "id": "final-gap-1",
-          "label": "Pick the single weakest item; spend 60 min",
-          "meta": "Mock"
+          "id": "lc-clone-graph",
+          "label": "Clone Graph",
+          "href": "https://leetcode.com/problems/clone-graph/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · AI customer-support agent",
+      "items": [
+        {
+          "id": "sd-agent-design",
+          "label": "Design an AI customer-support agent",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Walk me through designing an LLM-based customer-support agent for a fintech.",
+            "How would you decide when to escalate to a human?",
+            "How do you measure ticket resolution quality offline and online?"
+          ]
         },
         {
-          "id": "final-gap-2",
-          "label": "Pick the second weakest; spend 30 min",
-          "meta": "Mock"
+          "id": "sd-agent-tools",
+          "label": "Tool catalog & guardrails",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+          "meta": "Anthropic"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Is the gap list short enough to walk in?"
+    "Walk me through designing an LLM-based customer-support agent for a fintech.",
+    "How would you decide when to escalate to a human?",
+    "How do you measure ticket resolution quality offline and online?",
+    "What tools would you give the agent (account lookup, refund, ticket create) and what guardrails?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

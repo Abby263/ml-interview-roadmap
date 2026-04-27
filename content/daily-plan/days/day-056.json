@@ -1,51 +1,157 @@
 {
   "day": 56,
-  "title": "LLMOps · Safety, privacy, security, and red teaming",
-  "pillar": "llmops",
-  "focus": "Prepare for interviews that probe prompt injection, data leakage, jailbreaks, policy, and human escalation.",
+  "title": "Deep learning wrap + DSA Graphs finish",
+  "pillar": "deep-learning",
+  "focus": "Re-record CV + NLP breadth answers; identify shaky topics for re-study.",
   "tracks": [
     {
-      "label": "LLMOps · Risk controls",
+      "label": "DSA · NeetCode Graphs",
       "items": [
         {
-          "id": "llmops-prompt-injection",
-          "label": "Explain prompt injection and data exfiltration in tool/RAG systems",
-          "meta": "Concept"
+          "id": "lc-number-of-connected-components-in-an-undirected-graph",
+          "label": "Number OF Connected Components IN AN Undirected Graph",
+          "href": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+          "meta": "Graphs"
         },
         {
-          "id": "llmops-red-team",
-          "label": "Create a red-team checklist for jailbreaks, unsafe advice, PII leakage, and tool abuse",
-          "meta": "Build"
+          "id": "lc-graph-valid-tree",
+          "label": "Graph Valid Tree",
+          "href": "https://leetcode.com/problems/graph-valid-tree/",
+          "meta": "Graphs"
         },
         {
-          "id": "llmops-human-loop",
-          "label": "Design human escalation for high-risk or low-confidence outputs",
-          "meta": "Whiteboard"
+          "id": "lc-word-ladder",
+          "label": "Word Ladder",
+          "href": "https://leetcode.com/problems/word-ladder/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "DL · Neural network foundations",
+      "items": [
+        {
+          "id": "dl-perceptron",
+          "label": "Perceptron, MLP, forward pass",
+          "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "meta": "DLS C1",
+          "interviewQuestions": [
+            "Walk me through forward pass through a 2-layer MLP for binary classification.",
+            "Why can't a single perceptron solve XOR — and how does adding a hidden layer fix it?"
+          ]
+        },
+        {
+          "id": "dl-activations",
+          "label": "Activations: sigmoid, tanh, ReLU, GELU, SwiGLU",
+          "href": "https://en.wikipedia.org/wiki/Activation_function",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+            "Why did ReLU largely replace sigmoid/tanh in deep networks?",
+            "What is the dying ReLU problem and how do you mitigate it?"
+          ]
+        },
+        {
+          "id": "dl-init",
+          "label": "Weight initialization (Xavier, He)",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does poor initialization cause vanishing or exploding gradients?",
+            "Compare Xavier vs He initialization — which goes with which activation and why?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · ViT, CLIP, multimodal",
+      "items": [
+        {
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT)",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
+          ]
+        },
+        {
+          "id": "cv-clip",
+          "label": "CLIP: contrastive image-text pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective."
+          ]
+        },
+        {
+          "id": "cv-multimodal",
+          "label": "BLIP, LLaVA, multimodal LLMs",
+          "href": "https://arxiv.org/abs/2304.08485",
+          "meta": "LLaVA"
+        }
+      ]
+    },
+    {
+      "label": "DL · Attention & Transformer",
+      "items": [
+        {
+          "id": "dl-attention",
+          "label": "Self-attention(Q, K, V) end-to-end",
+          "href": "https://jalammar.github.io/illustrated-transformer/",
+          "meta": "Jay Alammar",
+          "interviewQuestions": [
+            "Walk me through self-attention(Q, K, V) end-to-end.",
+            "Why divide by √d_k inside softmax?",
+            "What does multi-head attention buy you over a single head?"
+          ]
+        },
+        {
+          "id": "dl-transformer",
+          "label": "Encoder-decoder, positional encoding, residuals",
+          "href": "https://arxiv.org/abs/1706.03762",
+          "meta": "Vaswani et al.",
+          "interviewQuestions": [
+            "Walk me through the transformer block: attention → add+norm → FFN → add+norm.",
+            "Compare absolute vs relative vs RoPE positional encodings."
+          ]
+        },
+        {
+          "id": "dl-attn-variants",
+          "label": "Sparse, linear, FlashAttention, MQA, GQA",
+          "href": "https://arxiv.org/abs/2205.14135",
+          "meta": "FlashAttention",
+          "interviewQuestions": [
+            "What problem does FlashAttention solve, and how?",
+            "Compare MHA, MQA, and GQA — KV-cache trade-offs."
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you defend a RAG system against prompt injection?",
-    "What should trigger human review in an AI support agent?",
-    "How do privacy and audit requirements change your logging plan?"
+    "Walk me through the forward pass through a 2-layer MLP for binary classification.",
+    "Why can't a single perceptron solve XOR, and how does adding a hidden layer fix it?",
+    "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+    "Why does poor initialization cause vanishing or exploding gradients?"
   ],
   "references": [
     {
-      "label": "NIST AI Risk Management Framework",
-      "href": "https://www.nist.gov/itl/ai-risk-management-framework",
-      "source": "NIST"
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
     },
     {
-      "label": "Model Context Protocol — connecting AI to external tools",
-      "href": "https://modelcontextprotocol.io/",
-      "source": "MCP"
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
     },
     {
-      "label": "Kaggle — AI Ethics",
-      "href": "https://www.kaggle.com/learn/ai-ethics",
-      "source": "Kaggle"
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
     }
-  ],
-  "topicId": "llm-safety-security-privacy"
+  ]
 }

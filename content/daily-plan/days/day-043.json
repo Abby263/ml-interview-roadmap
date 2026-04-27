@@ -1,86 +1,76 @@
 {
   "day": 43,
-  "title": "2-D DP + Prompt engineering",
-  "pillar": "generative-ai",
-  "focus": "Unique Paths / LCS + few-shot + CoT + structured output.",
+  "title": "CNN basics: conv, pool, receptive field + DSA Heap",
+  "pillar": "deep-learning",
+  "focus": "Compute output shapes. Receptive field of stacked 3×3 vs one 7×7.",
   "tracks": [
     {
-      "label": "DSA · 2-D DP",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "lc-unique-paths",
-          "label": "Unique Paths",
-          "href": "https://leetcode.com/problems/unique-paths/",
-          "meta": "2-D Dynamic Programming"
+          "id": "lc-design-twitter",
+          "label": "Design Twitter",
+          "href": "https://leetcode.com/problems/design-twitter/",
+          "meta": "Heap / Priority Queue"
         },
         {
-          "id": "lc-longest-common-subsequence",
-          "label": "Longest Common Subsequence",
-          "href": "https://leetcode.com/problems/longest-common-subsequence/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-best-time-to-buy-and-sell-stock-with-cooldown",
-          "label": "Best Time TO Buy And Sell Stock With Cooldown",
-          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-coin-change-ii",
-          "label": "Coin Change II",
-          "href": "https://leetcode.com/problems/coin-change-ii/",
-          "meta": "2-D Dynamic Programming"
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue"
         }
       ]
     },
     {
-      "label": "GenAI · Prompting",
+      "label": "DL · CNN basics",
       "items": [
         {
-          "id": "llm-fewshot",
-          "label": "Few-shot vs zero-shot — when each helps",
-          "href": "https://www.promptingguide.ai/techniques/fewshot",
-          "meta": "Read",
+          "id": "cnn-conv",
+          "label": "Conv, padding, stride, dilation",
+          "href": "https://cs231n.github.io/convolutional-networks/",
+          "meta": "CS231n",
           "interviewQuestions": [
-            "When does few-shot prompting hurt vs help?",
-            "How would you choose few-shot examples?",
-            "Why do some models do better with zero-shot than few-shot?"
+            "Walk me through how a conv layer works step by step.",
+            "Compute the output shape of a 3×3 conv with stride 2 and padding 1 on a 32×32 input.",
+            "What is dilation and where would you use it?"
           ]
         },
         {
-          "id": "llm-cot",
-          "label": "Chain-of-thought (CoT) prompting",
-          "href": "https://arxiv.org/abs/2201.11903",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "When does CoT prompting hurt vs help?",
-            "How does CoT relate to reasoning models like o1?",
-            "What goes wrong when you force CoT on tasks that don't need it?"
-          ]
+          "id": "cnn-pool",
+          "label": "Pooling, receptive field",
+          "href": "https://distill.pub/2019/computing-receptive-fields/",
+          "meta": "Distill"
+        },
+        {
+          "id": "cnn-translation",
+          "label": "Translation invariance & equivariance",
+          "href": "https://arxiv.org/abs/1907.00657",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does CoT prompting hurt vs help?",
-    "How would you enforce structured JSON output reliably?",
-    "What's the difference between system prompt and user prompt?"
+    "Walk me through how a conv layer computes its output, including padding, stride, and dilation.",
+    "Compute the output shape of a 3×3 conv with stride 2 and padding 1 on a 32×32×3 input.",
+    "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
+    "Why are CNNs called translation-equivariant rather than translation-invariant?"
   ],
   "references": [
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
     },
     {
-      "label": "Anthropic — Prompt Engineering Guide",
-      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
-      "source": "Anthropic"
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
     },
     {
-      "label": "Anthropic — Testing & Evaluation",
-      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
-      "source": "Anthropic"
+      "label": "Kaggle — Computer Vision",
+      "href": "https://www.kaggle.com/learn/computer-vision",
+      "source": "Kaggle"
     }
   ]
 }

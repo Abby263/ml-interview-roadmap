@@ -1,64 +1,82 @@
 {
   "day": 6,
-  "title": "Sliding Window (cont.) + A/B testing math",
+  "title": "Sampling, bias, resampling — and pattern review",
   "pillar": "math-stats",
-  "focus": "Finish sliding-window + sample sizing + multiple testing.",
+  "focus": "Random/stratified/cluster/importance sampling. Selection/survivorship bias.",
   "tracks": [
     {
-      "label": "DSA · Sliding Window",
+      "label": "DSA · NeetCode Sliding Window",
       "items": [
         {
-          "id": "lc-permutation-in-string",
-          "label": "Permutation IN String",
-          "href": "https://leetcode.com/problems/permutation-in-string/",
+          "id": "lc-best-time-to-buy-and-sell-stock",
+          "label": "Best Time TO Buy And Sell Stock",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
           "meta": "Sliding Window"
         },
         {
-          "id": "lc-minimum-window-substring",
-          "label": "Minimum Window Substring",
-          "href": "https://leetcode.com/problems/minimum-window-substring/",
-          "meta": "Sliding Window"
-        },
-        {
-          "id": "lc-sliding-window-maximum",
-          "label": "Sliding Window Maximum",
-          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "id": "lc-longest-substring-without-repeating-characters",
+          "label": "Longest Substring Without Repeating Characters",
+          "href": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
           "meta": "Sliding Window"
         }
       ]
     },
     {
-      "label": "Stats · Experimentation",
+      "label": "Math · Sampling & survey design",
       "items": [
         {
-          "id": "stats-ab-power",
-          "label": "Power analysis & sample size calculator",
-          "href": "https://www.evanmiller.org/ab-testing/sample-size.html",
-          "meta": "Tool",
+          "id": "stats-sampling-methods",
+          "label": "Random, stratified, cluster, importance sampling",
+          "href": "https://en.wikipedia.org/wiki/Sampling_(statistics)",
+          "meta": "Read",
           "interviewQuestions": [
-            "How would you size an A/B test for a 1% effect on a 5% baseline conversion?",
-            "Explain statistical power in one sentence.",
-            "What happens to required sample size if baseline conversion doubles?"
+            "Compare simple random sampling vs stratified sampling — when does stratification reduce variance?",
+            "What is importance sampling and where does it show up in ML?"
           ]
         },
         {
-          "id": "stats-ab-pitfalls",
-          "label": "Common A/B test pitfalls (peeking, novelty, network effects)",
-          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "id": "stats-bias",
+          "label": "Selection bias, survivorship bias, response bias",
+          "href": "https://towardsdatascience.com/types-of-bias-in-data-science-2d3c4d4f8c2c",
           "meta": "Read",
           "interviewQuestions": [
-            "What's the novelty effect, and how do you mitigate it?",
-            "Why is peeking dangerous in classical A/B testing?",
-            "How do network effects break A/B test independence?"
+            "Give an example where selection bias silently broke a model deployment.",
+            "What is survivorship bias and where does it hurt model evaluation?"
+          ]
+        },
+        {
+          "id": "stats-resampling",
+          "label": "Resampling for class imbalance & uncertainty",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "What's the difference between bootstrapping for uncertainty vs resampling for imbalance?",
+            "When does oversampling the minority class help and when does it leak?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you size an A/B test for a 1% effect on a 5% baseline conversion?",
-    "What's the novelty effect, and how do you mitigate it?",
-    "When does a sequential test beat a fixed-horizon test?"
+    "Compare simple random vs stratified vs cluster sampling — what governs your choice?",
+    "Walk me through three real situations where selection bias broke a model deployment.",
+    "What is importance sampling and where does it show up in ML training pipelines?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "imbalanced-learn user guide",
+      "href": "https://imbalanced-learn.org/stable/user_guide.html",
+      "source": "scikit-learn-contrib"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
 }

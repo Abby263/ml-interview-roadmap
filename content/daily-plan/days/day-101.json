@@ -1,34 +1,59 @@
 {
   "day": 101,
-  "title": "End-to-end design rehearsal",
-  "pillar": "ml-system-design",
-  "focus": "One unfamiliar design prompt, performed cleanly.",
+  "title": "NLP deep dive: IE, multilingual, code generation",
+  "pillar": "deep-learning",
+  "focus": "Span-based IE; XLM-R; StarCoder / Code Llama.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Advanced Graphs",
       "items": [
         {
-          "id": "rehearse-pick",
-          "label": "Use a prompt you haven't drilled",
-          "meta": "Pick"
+          "id": "lc-cheapest-flights-within-k-stops",
+          "label": "Cheapest Flights Within K Stops",
+          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+          "meta": "Advanced Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · NLP deep dive",
+      "items": [
+        {
+          "id": "nlp-ie",
+          "label": "Information extraction (NER, RE, OpenIE)",
+          "href": "https://web.stanford.edu/class/cs224n/",
+          "meta": "CS224n"
         },
         {
-          "id": "rehearse-run",
-          "label": "Frame, design, trade off in 60 minutes",
-          "meta": "Mock"
+          "id": "nlp-multilingual",
+          "label": "Multilingual & low-resource NLP",
+          "href": "https://arxiv.org/abs/1911.02116",
+          "meta": "XLM-R"
         },
         {
-          "id": "rehearse-peer",
-          "label": "Have a peer score against signals",
-          "meta": "Review"
+          "id": "nlp-code",
+          "label": "Code generation: Codex, StarCoder, Code Llama",
+          "href": "https://huggingface.co/blog/starcoder",
+          "meta": "HF"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's your trade-off close?",
-    "Where did you wave hands?",
-    "What's your residual risk plan?"
+    "Compare span-based vs sequence-tagging information extraction — when does each win?",
+    "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
+    "How is training a code model different from training a natural-language model?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
 }

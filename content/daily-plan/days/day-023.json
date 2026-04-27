@@ -1,58 +1,79 @@
 {
   "day": 23,
-  "title": "Backtracking (cont.) + SQL window functions",
-  "pillar": "foundations",
-  "focus": "Word search / palindrome partitioning + windows for cohort queries.",
+  "title": "Imbalanced classification + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "SMOTE / class weights / focal loss. PR-AUC, F-beta, MCC.",
   "tracks": [
     {
-      "label": "DSA · Backtracking",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "lc-combination-sum-ii",
-          "label": "Combination Sum II",
-          "href": "https://leetcode.com/problems/combination-sum-ii/",
-          "meta": "Backtracking"
+          "id": "lc-copy-list-with-random-pointer",
+          "label": "Copy List With Random Pointer",
+          "href": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "meta": "Linked List"
         },
         {
-          "id": "lc-word-search",
-          "label": "Word Search",
-          "href": "https://leetcode.com/problems/word-search/",
-          "meta": "Backtracking"
-        },
-        {
-          "id": "lc-palindrome-partitioning",
-          "label": "Palindrome Partitioning",
-          "href": "https://leetcode.com/problems/palindrome-partitioning/",
-          "meta": "Backtracking"
+          "id": "lc-add-two-numbers",
+          "label": "Add Two Numbers",
+          "href": "https://leetcode.com/problems/add-two-numbers/",
+          "meta": "Linked List"
         }
       ]
     },
     {
-      "label": "SQL · Windows",
+      "label": "ML · Imbalanced classification",
       "items": [
         {
-          "id": "sql-windows",
-          "label": "ROW_NUMBER, RANK, LAG/LEAD — solve 3 LC SQL Medium",
-          "href": "https://leetcode.com/problemset/database/?topicSlugs=window-function",
-          "meta": "Practice"
+          "id": "ml-imbalance-fix",
+          "label": "Resampling, class weights, SMOTE",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "Compare random oversampling, undersampling, SMOTE, and class weighting — when does each help?",
+            "Why can SMOTE leak when applied before cross-validation?"
+          ]
         },
         {
-          "id": "sql-cohort",
-          "label": "Cohort retention pattern",
-          "href": "https://www.metabase.com/learn/grow-your-data-skills/data-fundamentals/cohort-analysis",
-          "meta": "Read"
+          "id": "ml-imbalance-loss",
+          "label": "Focal loss & cost-sensitive learning",
+          "href": "https://arxiv.org/abs/1708.02002",
+          "meta": "Lin et al."
+        },
+        {
+          "id": "ml-imbalance-eval",
+          "label": "Metric choice for imbalance: PR-AUC, F-beta, MCC",
+          "href": "https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Why is accuracy a terrible metric for imbalanced classification?",
+            "When do you reach for F1, F-beta, MCC, or PR-AUC?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Compute day-7 retention by signup cohort. How do you avoid double-counting?",
-    "When is LAG cleaner than a self-join?",
-    "What's the difference between PARTITION BY and GROUP BY?"
+    "Compare oversampling, undersampling, SMOTE, and class weights — what are the failure modes of each?",
+    "Why does SMOTE leak when applied before cross-validation, and how do you fix it?",
+    "What metric do you reach for in extreme class imbalance and why is accuracy useless?",
+    "Why does focal loss help with object detection but rarely fix tabular imbalance?"
   ],
-  "references": [],
-  "topicId": "sql-window-functions",
-  "questionIds": [
-    "window-functions"
+  "references": [
+    {
+      "label": "imbalanced-learn user guide",
+      "href": "https://imbalanced-learn.org/stable/user_guide.html",
+      "source": "scikit-learn-contrib"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
   ]
 }

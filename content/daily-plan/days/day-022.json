@@ -1,66 +1,83 @@
 {
   "day": 22,
-  "title": "Backtracking + SQL fundamentals",
-  "pillar": "foundations",
-  "focus": "Backtracking template + joins, GROUP BY, CTEs.",
+  "title": "Gradient boosting (XGBoost, LightGBM, CatBoost) + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Why GBDT beats RF on tabular. XGBoost tricks. Pick one and tune.",
   "tracks": [
     {
-      "label": "DSA · Backtracking",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "lc-subsets",
-          "label": "Subsets",
-          "href": "https://leetcode.com/problems/subsets/",
-          "meta": "Backtracking"
+          "id": "lc-reorder-list",
+          "label": "Reorder List",
+          "href": "https://leetcode.com/problems/reorder-list/",
+          "meta": "Linked List"
         },
         {
-          "id": "lc-combination-sum",
-          "label": "Combination Sum",
-          "href": "https://leetcode.com/problems/combination-sum/",
-          "meta": "Backtracking"
-        },
-        {
-          "id": "lc-permutations",
-          "label": "Permutations",
-          "href": "https://leetcode.com/problems/permutations/",
-          "meta": "Backtracking"
-        },
-        {
-          "id": "lc-subsets-ii",
-          "label": "Subsets II",
-          "href": "https://leetcode.com/problems/subsets-ii/",
-          "meta": "Backtracking"
+          "id": "lc-remove-nth-node-from-end-of-list",
+          "label": "Remove Nth Node From End OF List",
+          "href": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "meta": "Linked List"
         }
       ]
     },
     {
-      "label": "SQL · Fundamentals",
+      "label": "ML · Gradient boosting (XGBoost, LightGBM, CatBoost)",
       "items": [
         {
-          "id": "sql-joins",
-          "label": "Joins, GROUP BY, HAVING — solve 3 LC SQL Easy",
-          "href": "https://leetcode.com/problemset/database/",
-          "meta": "Practice"
+          "id": "ml-gbm-math",
+          "label": "GBM: gradient boosting on residuals",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Walk me through how GBM fits each new tree on the negative gradient of the loss.",
+            "Why is GBM more sensitive to learning rate than Random Forest?"
+          ]
         },
         {
-          "id": "sql-ctes",
-          "label": "CTEs and recursive CTEs",
-          "href": "https://learnsql.com/blog/sql-recursive-cte/",
-          "meta": "Read"
+          "id": "ml-xgb",
+          "label": "XGBoost: histogram splits, regularization, missing values",
+          "href": "https://xgboost.readthedocs.io/en/stable/",
+          "meta": "XGBoost",
+          "interviewQuestions": [
+            "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle?",
+            "How does XGBoost handle missing values automatically?"
+          ]
+        },
+        {
+          "id": "ml-lgbm",
+          "label": "LightGBM & CatBoost: leaf-wise growth, GOSS, ordered boosting",
+          "href": "https://lightgbm.readthedocs.io/",
+          "meta": "LightGBM",
+          "interviewQuestions": [
+            "When would you pick LightGBM over XGBoost?",
+            "What problem does CatBoost's ordered boosting solve?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Generic backtracking template: state, choice, undo — what does each look like?",
-    "When does INNER vs LEFT join silently change your answer?",
-    "Why are recursive CTEs the right tool for graph traversal in SQL?"
+    "Why does GBDT usually beat Random Forest on tabular data — what's the intuition?",
+    "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle for years?",
+    "Compare XGBoost, LightGBM, and CatBoost — when would you reach for each?",
+    "How does XGBoost handle missing values and why is that a big deal?"
   ],
   "references": [
     {
-      "label": "14 patterns to ace any coding interview",
-      "href": "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed",
-      "source": "HackerNoon"
+      "label": "XGBoost docs (parameters + tuning)",
+      "href": "https://xgboost.readthedocs.io/en/stable/",
+      "source": "XGBoost"
+    },
+    {
+      "label": "LightGBM docs",
+      "href": "https://lightgbm.readthedocs.io/",
+      "source": "Microsoft"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
     }
   ]
 }

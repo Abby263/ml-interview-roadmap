@@ -1,35 +1,69 @@
 {
   "day": 82,
-  "title": "Company-tag drilling — target #1",
-  "pillar": "foundations",
-  "focus": "5-7 problems from your highest-priority company tag.",
+  "title": "RAG evaluation: Ragas + LLM-as-judge + DSA Heap review",
+  "pillar": "generative-ai",
+  "focus": "Faithfulness, context precision/recall, answer relevance.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "tag1-1",
-          "label": "Solve 5-7 from your top company's LC tag",
-          "href": "https://leetcode.com/problemset/",
-          "meta": "Practice"
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · RAG evaluation",
+      "items": [
+        {
+          "id": "rag-ragas",
+          "label": "Ragas: faithfulness, context recall, context precision, answer relevance",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "Walk through the four Ragas metrics and what each tells you.",
+            "How would you build a golden eval set for a domain-specific RAG?"
+          ]
         },
         {
-          "id": "tag1-notes",
-          "label": "After each, write the 'pattern + trick' in 1 line",
-          "meta": "Notes"
+          "id": "rag-eval-llm-judge",
+          "label": "LLM-as-judge for RAG",
+          "href": "https://www.evidentlyai.com/llm-guide/llm-as-a-judge",
+          "meta": "Evidently"
+        },
+        {
+          "id": "rag-needle",
+          "label": "Needle-in-haystack & long-context evals",
+          "href": "https://github.com/gkamradt/LLMTest_NeedleInAHaystack",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What pattern recurs in this company's questions?",
-    "What tricks come up that don't come up elsewhere?"
+    "Walk through the four Ragas metrics — what does each tell you, and what do they miss?",
+    "How would you build a golden eval set for a domain-specific RAG system?",
+    "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
+    "Why are needle-in-haystack tests easy to game, and what are stronger evals?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    },
+    {
+      "label": "Evidently AI — monitoring metrics catalog",
+      "href": "https://docs.evidentlyai.com/reference/all-metrics",
+      "source": "Evidently"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
     }
   ]
 }

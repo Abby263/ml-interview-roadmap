@@ -1,29 +1,63 @@
 {
   "day": 99,
-  "title": "Behavioral mock — 6 prompts back to back",
-  "pillar": "behavioral-storytelling",
-  "focus": "Behavioral stamina + opener variations.",
+  "title": "Speech: ASR (Whisper) + TTS + streaming",
+  "pillar": "deep-learning",
+  "focus": "Encoder-decoder vs CTC; Tacotron / FastSpeech; streaming latency.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "mock-beh-6",
-          "label": "Run 6 behavioral prompts in 45 min, recorded",
-          "meta": "Mock"
+          "id": "lc-binary-tree-level-order-traversal",
+          "label": "Binary Tree Level Order Traversal",
+          "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Speech (ASR, TTS)",
+      "items": [
+        {
+          "id": "speech-asr",
+          "label": "ASR: from HMMs to Whisper",
+          "href": "https://arxiv.org/abs/2212.04356",
+          "meta": "OpenAI Whisper",
+          "interviewQuestions": [
+            "Walk through Whisper's encoder-decoder design and weakly-supervised training data.",
+            "Compare CTC vs attention-based seq2seq for ASR."
+          ]
         },
         {
-          "id": "mock-beh-review",
-          "label": "Watch back; trim filler; sharpen openers",
-          "meta": "Review"
+          "id": "speech-tts",
+          "label": "TTS: Tacotron, FastSpeech, neural vocoders",
+          "href": "https://google.github.io/tacotron/",
+          "meta": "Google"
+        },
+        {
+          "id": "speech-streaming",
+          "label": "Streaming ASR: latency vs accuracy",
+          "href": "https://arxiv.org/abs/2102.01547",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Tell me about a time you owned an ambiguous problem.",
-    "Tell me about a time you disagreed with data.",
-    "Tell me about a project that didn't ship."
+    "Walk through Whisper's encoder-decoder design and weakly-supervised training.",
+    "Compare CTC vs attention-based seq2seq for ASR — when does each win?",
+    "What's the trade-off between latency and accuracy in streaming ASR?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Whisper paper (ASR)",
+      "href": "https://arxiv.org/abs/2212.04356",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
 }

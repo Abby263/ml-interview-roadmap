@@ -1,74 +1,79 @@
 {
   "day": 47,
-  "title": "Greedy (cont.) + LLM evaluation",
-  "pillar": "generative-ai",
-  "focus": "Gas Station / Hand of Straights + faithfulness, calibration, LLM-as-judge.",
+  "title": "ViT, CLIP, multimodal LLMs",
+  "pillar": "deep-learning",
+  "focus": "Patch tokenization, [CLS] token, contrastive image-text training.",
   "tracks": [
     {
-      "label": "DSA · Greedy",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "lc-hand-of-straights",
-          "label": "Hand OF Straights",
-          "href": "https://leetcode.com/problems/hand-of-straights/",
-          "meta": "Greedy"
+          "id": "lc-permutations",
+          "label": "Permutations",
+          "href": "https://leetcode.com/problems/permutations/",
+          "meta": "Backtracking"
         },
         {
-          "id": "lc-merge-triplets-to-form-target-triplet",
-          "label": "Merge Triplets TO Form Target Triplet",
-          "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
-          "meta": "Greedy"
-        },
-        {
-          "id": "lc-partition-labels",
-          "label": "Partition Labels",
-          "href": "https://leetcode.com/problems/partition-labels/",
-          "meta": "Greedy"
-        },
-        {
-          "id": "lc-valid-parenthesis-string",
-          "label": "Valid Parenthesis String",
-          "href": "https://leetcode.com/problems/valid-parenthesis-string/",
-          "meta": "Greedy"
+          "id": "lc-subsets-ii",
+          "label": "Subsets II",
+          "href": "https://leetcode.com/problems/subsets-ii/",
+          "meta": "Backtracking"
         }
       ]
     },
     {
-      "label": "GenAI · Evaluation",
+      "label": "DL · ViT, CLIP, multimodal",
       "items": [
         {
-          "id": "llm-eval-faithfulness",
-          "label": "Faithfulness vs answer relevance vs citation accuracy (Ragas)",
-          "href": "https://docs.ragas.io/en/stable/concepts/metrics/index.html",
-          "meta": "Docs",
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT)",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Google",
           "interviewQuestions": [
-            "Walk me through evaluating a RAG system end-to-end.",
-            "What goes wrong if you only measure BLEU or ROUGE?",
-            "How do you measure faithfulness in production?"
+            "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
           ]
         },
         {
-          "id": "llm-eval-judge",
-          "label": "LLM-as-judge calibration against humans",
-          "href": "https://huyenchip.com/2024/07/25/genai-platform.html",
-          "meta": "Read",
+          "id": "cv-clip",
+          "label": "CLIP: contrastive image-text pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "OpenAI",
           "interviewQuestions": [
-            "How do you calibrate an LLM-judge against human ratings?",
-            "What's the failure mode of an LLM-judge calibrated only against itself?",
-            "When is an LLM-judge cheaper than human eval, and when isn't it?"
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective."
           ]
+        },
+        {
+          "id": "cv-multimodal",
+          "label": "BLIP, LLaVA, multimodal LLMs",
+          "href": "https://arxiv.org/abs/2304.08485",
+          "meta": "LLaVA"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through evaluating a RAG system end-to-end.",
-    "What goes wrong if you only measure BLEU or ROUGE?",
-    "How do you calibrate an LLM-judge against human ratings?"
+    "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+    "How does CLIP enable zero-shot image classification?",
+    "Walk me through CLIP's contrastive training objective end-to-end.",
+    "How do multimodal LLMs like LLaVA fuse a vision encoder with a language model?"
   ],
-  "references": [],
-  "topicId": "llm-evaluation",
-  "questionIds": [
-    "rag-eval"
+  "references": [
+    {
+      "label": "Vision Transformer (ViT) paper",
+      "href": "https://arxiv.org/abs/2010.11929",
+      "source": "Google"
+    },
+    {
+      "label": "CLIP paper",
+      "href": "https://arxiv.org/abs/2103.00020",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
   ]
 }

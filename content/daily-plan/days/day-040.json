@@ -1,29 +1,78 @@
 {
   "day": 40,
-  "title": "ML infra design mock",
-  "pillar": "mlops",
-  "focus": "60-minute infra-flavored design round.",
+  "title": "DL loss functions + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Cross-entropy, label smoothing, focal, contrastive (InfoNCE), CTC.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "infra-mock-pick",
-          "label": "Pick a serving + monitoring + retraining prompt",
-          "meta": "Pick"
+          "id": "lc-validate-binary-search-tree",
+          "label": "Validate Binary Search Tree",
+          "href": "https://leetcode.com/problems/validate-binary-search-tree/",
+          "meta": "Trees"
         },
         {
-          "id": "infra-mock-run",
-          "label": "60-min mock",
-          "meta": "Mock"
+          "id": "lc-kth-smallest-element-in-a-bst",
+          "label": "Kth Smallest Element IN A Bst",
+          "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "DL · Loss functions in deep learning",
+      "items": [
+        {
+          "id": "dl-ce",
+          "label": "Cross-entropy, NLL, label smoothing",
+          "href": "https://gombru.github.io/2018/05/23/cross_entropy_loss/",
+          "meta": "Gombru",
+          "interviewQuestions": [
+            "Why use cross-entropy instead of MSE for classification?",
+            "What is label smoothing and why does it help calibration?"
+          ]
+        },
+        {
+          "id": "dl-focal-contrastive",
+          "label": "Focal, contrastive, triplet, InfoNCE",
+          "href": "https://arxiv.org/abs/1708.02002",
+          "meta": "Lin et al.",
+          "interviewQuestions": [
+            "When does focal loss help, and how is it different from class weighting?",
+            "What is contrastive loss (InfoNCE) and where is it used?"
+          ]
+        },
+        {
+          "id": "dl-seq-loss",
+          "label": "Sequence losses: CTC, seq2seq cross-entropy",
+          "href": "https://distill.pub/2017/ctc/",
+          "meta": "Distill"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Defend latency budgets, scaling, fallback paths.",
-    "Trade-off close: which axis would you protect hardest?",
-    "What's your incident playbook for this system?"
+    "Why use cross-entropy instead of MSE for classification — what breaks?",
+    "When does focal loss actually help, and how is it different from class weighting?",
+    "What is InfoNCE loss and where is it used in modern representation learning?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    }
+  ]
 }

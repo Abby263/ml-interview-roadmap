@@ -1,39 +1,59 @@
 {
   "day": 86,
-  "title": "Behavioral · Resume rewrite",
-  "pillar": "behavioral-storytelling",
-  "focus": "Quantify outcomes; lead with the decision you owned.",
+  "title": "Multi-agent systems: orchestration patterns + DSA review",
+  "pillar": "generative-ai",
+  "focus": "Supervisor / swarm / hierarchical; AutoGen / CrewAI / LangGraph.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "beh-resume",
-          "label": "Rewrite each bullet as 'I decided X under Y constraints; result was Z'",
-          "meta": "Doc"
+          "id": "lc-largest-rectangle-in-histogram",
+          "label": "Largest Rectangle IN Histogram",
+          "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+          "meta": "Stack"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Multi-agent systems",
+      "items": [
+        {
+          "id": "ma-orchestration",
+          "label": "Orchestration patterns: supervisor, swarm, hierarchical",
+          "href": "https://github.com/langchain-ai/langgraph",
+          "meta": "LangGraph"
         },
         {
-          "id": "beh-resume-cut",
-          "label": "Cut anything you can't defend in 60 seconds",
-          "meta": "Doc"
+          "id": "ma-coord",
+          "label": "Coordination, conflict resolution, voting",
+          "href": "https://arxiv.org/abs/2308.10848",
+          "meta": "AutoGen"
         },
         {
-          "id": "beh-resume-verify",
-          "label": "Verify every metric you cite — interviewers will ask",
-          "meta": "Concept"
+          "id": "ma-frameworks",
+          "label": "AutoGen, CrewAI, LangGraph",
+          "href": "https://microsoft.github.io/autogen/",
+          "meta": "AutoGen"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the decision behind each top-line bullet?",
-    "Which bullet would you remove if asked to cut to 5?"
+    "Compare supervisor vs swarm vs hierarchical multi-agent topologies.",
+    "How do you handle two agents that disagree on the next action in a multi-agent system?",
+    "Compare AutoGen, CrewAI, and LangGraph for multi-agent orchestration."
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
     }
   ]
 }

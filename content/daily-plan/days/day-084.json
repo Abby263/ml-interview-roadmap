@@ -1,35 +1,59 @@
 {
   "day": 84,
-  "title": "ML model design mock",
-  "pillar": "ml-system-design",
-  "focus": "60-min full case from cold-start to monitoring.",
+  "title": "Long-context vs RAG; agentic RAG; prompt caching",
+  "pillar": "generative-ai",
+  "focus": "1M+ contexts; agent loops over retrieval; cost via caching.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "model-mock-pick",
-          "label": "Pick a fresh case study",
-          "href": "/case-studies",
-          "meta": "Pick"
+          "id": "lc-n-queens",
+          "label": "N Queens",
+          "href": "https://leetcode.com/problems/n-queens/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Long context & agentic RAG",
+      "items": [
+        {
+          "id": "rag-long-ctx",
+          "label": "1M+ context windows: when do they replace RAG?",
+          "href": "https://www.anthropic.com/news/100k-context-windows",
+          "meta": "Anthropic"
         },
         {
-          "id": "model-mock-run",
-          "label": "60-min mock",
-          "meta": "Mock"
+          "id": "rag-agentic",
+          "label": "Agentic RAG: planning + tool-use over retrieval",
+          "href": "https://www.llamaindex.ai/blog/agentic-rag-with-llamaindex-2721b8a49ff6",
+          "meta": "LlamaIndex"
         },
         {
-          "id": "model-mock-score",
-          "label": "Trade-off close: name the one trade-off you'd defend hardest",
-          "meta": "Review"
+          "id": "rag-cache",
+          "label": "Prompt caching & retrieval caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the one trade-off you'd defend hardest?",
-    "Where did you wave hands?",
-    "What's your residual risk monitoring plan?"
+    "Do long context windows kill RAG? Defend your view.",
+    "What does agentic RAG add over a static RAG pipeline?",
+    "How does prompt caching change the cost picture for repeated context?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
 }

@@ -1,41 +1,72 @@
 {
   "day": 79,
-  "title": "Concurrency basics",
-  "pillar": "foundations",
-  "focus": "Threads, locks, async — what each is for.",
+  "title": "Embeddings + vector DBs + ANN indexes",
+  "pillar": "generative-ai",
+  "focus": "MTEB; pgvector vs Pinecone vs Weaviate vs Qdrant; HNSW vs IVF.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode 1-D DP",
       "items": [
         {
-          "id": "conc-gil",
-          "label": "Python GIL: threading vs asyncio vs multiprocessing",
-          "href": "https://realpython.com/python-gil/",
-          "meta": "Read"
-        },
-        {
-          "id": "conc-pat",
-          "label": "Producer / consumer pattern",
-          "href": "https://en.wikipedia.org/wiki/Producer-consumer_problem",
-          "meta": "Read"
+          "id": "lc-partition-equal-subset-sum",
+          "label": "Partition Equal Subset Sum",
+          "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
+          "meta": "1-D DP"
         }
       ]
     },
     {
-      "label": "Practice",
+      "label": "GenAI · Embeddings & vector DBs",
       "items": [
         {
-          "id": "conc-impl-pc",
-          "label": "Implement bounded producer/consumer with a queue + lock",
-          "meta": "Code"
+          "id": "rag-emb-models",
+          "label": "Embedding models: ada, e5, bge, voyage, jina",
+          "href": "https://huggingface.co/spaces/mteb/leaderboard",
+          "meta": "MTEB",
+          "interviewQuestions": [
+            "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
+            "Why does dimension count matter for cost and recall?"
+          ]
+        },
+        {
+          "id": "rag-vdb",
+          "label": "Vector DBs: Pinecone, Weaviate, Qdrant, pgvector",
+          "href": "https://www.pinecone.io/learn/vector-database/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
+            "When is pgvector enough vs when do you need a dedicated vector DB?"
+          ]
+        },
+        {
+          "id": "rag-ann",
+          "label": "ANN indexes: HNSW, IVF, ScaNN",
+          "href": "https://github.com/facebookresearch/faiss/wiki",
+          "meta": "FAISS"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does asyncio beat threading in Python? When does it lose?",
-    "Why is GIL not a problem for ML training but is one for ML serving?",
-    "Walk through a deadlock scenario you'd avoid."
+    "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
+    "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
+    "Compare HNSW vs IVF for ANN search — accuracy/speed/memory trade-offs."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "day": 1,
-  "title": "Arrays & Hashing + Probability + Linear algebra refresh",
+  "title": "Probability fundamentals + DSA Arrays/Hashing kickoff",
   "pillar": "math-stats",
-  "focus": "Open the loop: easiest NeetCode pattern, probability fundamentals, vectors / matrices warm-up.",
+  "focus": "Open the loop: probability axioms, conditional probability, Bayes' theorem; ease into the easiest NeetCode pattern.",
   "tracks": [
     {
       "label": "DSA · NeetCode Arrays & Hashing",
@@ -24,106 +24,67 @@
           "label": "Two Sum",
           "href": "https://leetcode.com/problems/two-sum/",
           "meta": "Arrays & Hashing"
-        },
-        {
-          "id": "lc-group-anagrams",
-          "label": "Group Anagrams",
-          "href": "https://leetcode.com/problems/group-anagrams/",
-          "meta": "Arrays & Hashing"
         }
       ]
     },
     {
-      "label": "Math · Probability foundations",
+      "label": "Math · Probability fundamentals",
       "items": [
         {
+          "id": "stats-prob-axioms",
+          "label": "Probability axioms, sample spaces, joint / marginal / conditional",
+          "href": "https://seeing-theory.brown.edu/basic-probability/index.html",
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "What's the difference between joint, marginal and conditional probability — give a worked example?",
+            "When is independence the same as conditional independence? Why does the distinction matter for Naive Bayes?",
+            "Explain the law of total probability with a churn-prediction example."
+          ]
+        },
+        {
           "id": "stats-bayes",
-          "label": "Bayes intuition: detection / diagnosis / ranking examples",
+          "label": "Bayes' theorem: priors, likelihood, posterior",
           "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
           "meta": "Interactive",
           "interviewQuestions": [
-            "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity). Why is positive predictive value still low?",
-            "How would you use Bayes to update belief in an A/B test as data arrives?",
-            "Explain the difference between the prior and the likelihood with a concrete example."
+            "Walk through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity) — why is positive predictive value still low?",
+            "How would you use Bayes to update belief during an A/B test as data arrives?",
+            "When does using a strong prior hurt vs help in production ML?"
           ]
         },
         {
           "id": "stats-cond-prob",
-          "label": "Conditional probability traps in interviews",
+          "label": "Conditional probability traps & base-rate fallacy",
           "href": "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies",
           "meta": "Read",
           "interviewQuestions": [
-            "What's wrong with saying P(disease | positive test) = sensitivity?",
-            "Two children: one is a girl. What is the probability the other is also a girl? Defend your answer.",
-            "Explain the base-rate fallacy with a hiring example."
+            "Two children: at least one is a girl. What's the probability the other is also a girl? Defend your answer.",
+            "Why is P(disease|positive) ≠ sensitivity in general?",
+            "Explain the base-rate fallacy with a hiring or fraud example."
           ]
-        }
-      ]
-    },
-    {
-      "label": "Math · Linear algebra warm-up",
-      "items": [
-        {
-          "id": "linalg-vectors",
-          "label": "Vectors, matrices, dot product, transpose",
-          "href": "https://www.3blue1brown.com/lessons/vectors",
-          "meta": "Watch",
-          "interviewQuestions": [
-            "What does the dot product mean geometrically?",
-            "Compare cosine similarity vs Euclidean distance — when is each appropriate?",
-            "Why do we transpose a matrix in y = X·θ vs y = θ·X?"
-          ]
-        },
-        {
-          "id": "linalg-norms",
-          "label": "Norms + cosine similarity (used everywhere in ML)",
-          "href": "https://machinelearningmastery.com/vector-norms-machine-learning/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Compare L1, L2, and L-infinity norms — when each is the right choice.",
-            "How does the choice of norm change the geometry of regularization?",
-            "Why is cosine similarity preferred over dot product for normalized embeddings?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Setup",
-      "items": [
-        {
-          "id": "setup-leetcode",
-          "label": "Create LeetCode account; pick 1-2 target companies",
-          "href": "https://leetcode.com/",
-          "meta": "5 min"
-        },
-        {
-          "id": "setup-neetcode",
-          "label": "Bookmark NeetCode roadmap",
-          "href": "https://neetcode.io/roadmap",
-          "meta": "1 min"
-        },
-        {
-          "id": "setup-andrew-ng",
-          "label": "Enroll in Andrew Ng's ML Specialization (skim Course 1 syllabus)",
-          "href": "https://www.coursera.org/specializations/machine-learning-introduction",
-          "meta": "Setup"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
-    "Why can a model with strong recall still have weak positive predictive value?",
-    "What is the dot product geometrically — and how does that relate to cosine similarity?"
+    "Walk through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity).",
+    "Why is positive predictive value low when the base rate is small, even with a great classifier?",
+    "Explain conditional probability and why P(A|B) ≠ P(B|A) — with a fraud-detection example.",
+    "When does treating two events as independent break a model in production?"
   ],
   "references": [
     {
-      "label": "Logan Thorneloe — ML Road Map (curated, free)",
+      "label": "Logan Thorneloe — ML Road Map",
       "href": "https://github.com/loganthorneloe/ml-road-map",
       "source": "GitHub"
     },
     {
-      "label": "NeetCode YouTube playlists by category",
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
       "href": "https://www.youtube.com/c/NeetCode/playlists",
       "source": "NeetCode"
     },
@@ -133,19 +94,14 @@
       "source": "HackerNoon"
     },
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
+      "label": "Prepare in a Hurry (Yuan Meng)",
       "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
       "source": "Yuan Meng"
     },
     {
-      "label": "Andrew Ng — Machine Learning Specialization (Coursera)",
+      "label": "Andrew Ng — Machine Learning Specialization",
       "href": "https://www.coursera.org/specializations/machine-learning-introduction",
       "source": "Coursera"
-    },
-    {
-      "label": "3Blue1Brown — Essence of Linear Algebra",
-      "href": "https://www.3blue1brown.com/topics/linear-algebra",
-      "source": "3Blue1Brown"
     },
     {
       "label": "StatQuest — Statistics & ML playlists",
@@ -153,40 +109,14 @@
       "source": "YouTube"
     },
     {
-      "label": "Khan Academy — Linear Algebra",
-      "href": "https://www.khanacademy.org/math/linear-algebra",
-      "source": "Khan Academy"
-    },
-    {
       "label": "CS50 AI — Probability week",
       "href": "https://cs50.harvard.edu/ai/2024/weeks/2/",
       "source": "Harvard"
     },
     {
-      "label": "CS50 — intro to programming",
-      "href": "https://cs50.harvard.edu/x/2024/weeks/0/",
-      "source": "Harvard"
-    },
-    {
-      "label": "Google's Python Class",
-      "href": "https://developers.google.com/edu/python",
-      "source": "Google"
-    },
-    {
-      "label": "NumPy quickstart tutorial",
-      "href": "https://numpy.org/doc/stable/user/quickstart.html",
-      "source": "NumPy"
-    },
-    {
-      "label": "Kaggle — Pandas course",
-      "href": "https://www.kaggle.com/learn/pandas",
-      "source": "Kaggle"
-    },
-    {
-      "label": "Pro Git book",
-      "href": "https://git-scm.com/book/en/v2",
-      "source": "Pro Git"
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
     }
-  ],
-  "topicId": "probability-toolkit"
+  ]
 }

@@ -1,63 +1,69 @@
 {
   "day": 72,
-  "title": "Case: Enterprise RAG chatbot",
-  "pillar": "ml-system-design",
-  "focus": "Permissioned retrieval + citations + faithfulness.",
+  "title": "Tokenization deep dive (BPE step-by-step) + DSA Greedy",
+  "pillar": "generative-ai",
+  "focus": "Why tokenization breaks math; vocab size trade-offs.",
   "tracks": [
     {
-      "label": "Read · Enterprise RAG",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "case-rag-langchain",
-          "label": "LangChain RAG cookbook",
-          "href": "https://python.langchain.com/docs/tutorials/rag/",
-          "meta": "Tutorial",
-          "interviewQuestions": [
-            "Walk me through the LangChain RAG cookbook — what would you keep, what would you replace?",
-            "How does LangChain's retriever abstraction help vs hurt?",
-            "When would you not use a framework like LangChain?"
-          ]
+          "id": "lc-maximum-subarray",
+          "label": "Maximum Subarray",
+          "href": "https://leetcode.com/problems/maximum-subarray/",
+          "meta": "Greedy"
         },
         {
-          "id": "case-rag-acl",
-          "label": "Permissioned retrieval patterns",
-          "href": "https://arxiv.org/abs/2305.13631",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Where do you enforce ACLs — at retrieval time or after generation? Why?",
-            "How do you test for permission leakage?",
-            "What's the right refusal behavior when retrieval returns no permitted docs?"
-          ]
+          "id": "lc-jump-game",
+          "label": "Jump Game",
+          "href": "https://leetcode.com/problems/jump-game/",
+          "meta": "Greedy"
         }
       ]
     },
     {
-      "label": "Design · On paper",
+      "label": "GenAI · Tokenization deep-dive",
       "items": [
         {
-          "id": "case-rag-arch",
-          "label": "Sketch ingest → ACL chunks → hybrid retrieval → rerank → cite",
-          "meta": "Whiteboard"
+          "id": "llm-bpe",
+          "label": "BPE algorithm step-by-step",
+          "href": "https://huggingface.co/learn/nlp-course/chapter6/5",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the BPE training algorithm.",
+            "Why does BPE result in different tokenizations for similar words across languages?"
+          ]
         },
         {
-          "id": "case-rag-mock",
-          "label": "Time a 50-min mock",
-          "meta": "Mock"
+          "id": "llm-vocab",
+          "label": "Vocabulary size trade-offs",
+          "href": "https://huggingface.co/docs/transformers/tokenizer_summary",
+          "meta": "HF"
+        },
+        {
+          "id": "llm-tokenization-issues",
+          "label": "Tokenization quirks: numbers, code, multilingual",
+          "href": "https://www.beren.io/2023-07-05-Tokenization-and-its-discontents/",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Where do you enforce ACLs — at retrieval time or after generation? Why?",
-    "How do you test for permission leakage?",
-    "What's the right refusal behavior when retrieval is weak?"
+    "Walk through the BPE training algorithm step by step.",
+    "Why does vocabulary size matter — what does doubling it cost in compute and memory?",
+    "Why do LLMs struggle with arithmetic, and how does tokenization contribute?"
   ],
   "references": [
     {
-      "label": "RAG concepts",
-      "href": "https://python.langchain.com/docs/concepts/rag/",
-      "source": "LangChain"
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
     }
-  ],
-  "caseStudySlug": "enterprise-rag-chatbot"
+  ]
 }

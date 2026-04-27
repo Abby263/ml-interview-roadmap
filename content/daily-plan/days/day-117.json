@@ -1,25 +1,52 @@
 {
   "day": 117,
-  "title": "Taper: light review only",
-  "pillar": "behavioral-storytelling",
-  "focus": "No new material. Skim what's already strong.",
+  "title": "Design code assistant (GitHub Copilot / Cursor) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Context construction; acceptance / retention metrics; latency budget.",
   "tracks": [
     {
-      "label": "Light review",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "taper-resume",
-          "label": "Re-read resume + 1-page project brief",
-          "meta": "Read"
-        },
+          "id": "lc-longest-common-subsequence",
+          "label": "Longest Common Subsequence",
+          "href": "https://leetcode.com/problems/longest-common-subsequence/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Code assistant",
+      "items": [
         {
-          "id": "taper-tradeoffs",
-          "label": "Skim the trade-off playbook once",
-          "meta": "Read"
+          "id": "sd-code-design",
+          "label": "Design GitHub Copilot / Cursor",
+          "href": "https://github.blog/2023-05-17-how-github-copilot-is-getting-better-at-understanding-your-code/",
+          "meta": "GitHub",
+          "interviewQuestions": [
+            "Walk me through designing a GitHub Copilot-style code assistant.",
+            "How do you handle context: open files, repo structure, project conventions?",
+            "How do you measure quality (acceptance rate, retention, latency)?"
+          ]
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "Walk me through designing a GitHub Copilot-style code assistant.",
+    "How do you handle context: open files, repo structure, project conventions?",
+    "How do you measure quality (acceptance rate, retention, latency) for a coding assistant?"
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

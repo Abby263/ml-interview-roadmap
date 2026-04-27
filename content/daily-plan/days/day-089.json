@@ -1,33 +1,59 @@
 {
   "day": 89,
-  "title": "Behavioral · Ownership / failure story",
-  "pillar": "behavioral-storytelling",
-  "focus": "Show learning without minimizing impact.",
+  "title": "Guardrails & safety: input/output filters, jailbreaks, red-teaming",
+  "pillar": "generative-ai",
+  "focus": "Defense-in-depth; classify the major jailbreak categories.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "beh-fail-star",
-          "label": "Write one failure story in STAR format",
-          "meta": "Doc"
+          "id": "lc-valid-parenthesis-string",
+          "label": "Valid Parenthesis String",
+          "href": "https://leetcode.com/problems/valid-parenthesis-string/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Guardrails & safety",
+      "items": [
+        {
+          "id": "safety-input-output",
+          "label": "Input filtering & output moderation",
+          "href": "https://github.com/NVIDIA/NeMo-Guardrails",
+          "meta": "NeMo Guardrails"
         },
         {
-          "id": "beh-fail-action",
-          "label": "Make sure the corrective action is concrete (process / metric / system)",
-          "meta": "Doc"
+          "id": "safety-jailbreak",
+          "label": "Jailbreaks: DAN, role-play, payload smuggling",
+          "href": "https://www.anthropic.com/research/many-shot-jailbreaking",
+          "meta": "Anthropic"
+        },
+        {
+          "id": "safety-redteam",
+          "label": "Red-teaming & evals for safety",
+          "href": "https://www.anthropic.com/news/frontier-model-security",
+          "meta": "Anthropic"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Tell me about a project where your model failed after deployment.",
-    "What process changed because of this?",
-    "What would you do earlier next time?"
+    "Compare input vs output filtering for LLM safety — what does each catch and miss?",
+    "Walk through three categories of jailbreak attacks, and how you'd defend against each.",
+    "How would you build a red-teaming process for a customer-facing LLM?"
   ],
-  "references": [],
-  "topicId": "behavioral-ownership",
-  "questionIds": [
-    "story-failure"
+  "references": [
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
   ]
 }

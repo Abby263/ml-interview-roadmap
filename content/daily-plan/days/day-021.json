@@ -1,62 +1,64 @@
 {
   "day": 21,
-  "title": "Heap finish + ML coding (logistic + k-means)",
+  "title": "Hyperparameter tuning — random > grid; Bayes / Hyperband",
   "pillar": "traditional-ml",
-  "focus": "Median stream + logistic regression + k-means from scratch.",
+  "focus": "Search spaces, pruning bad runs early.",
   "tracks": [
     {
-      "label": "DSA · Heap",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "lc-task-scheduler",
-          "label": "Task Scheduler",
-          "href": "https://leetcode.com/problems/task-scheduler/",
-          "meta": "Heap / Priority Queue"
+          "id": "lc-reverse-linked-list",
+          "label": "Reverse Linked List",
+          "href": "https://leetcode.com/problems/reverse-linked-list/",
+          "meta": "Linked List"
         },
         {
-          "id": "lc-design-twitter",
-          "label": "Design Twitter",
-          "href": "https://leetcode.com/problems/design-twitter/",
-          "meta": "Heap / Priority Queue"
-        },
-        {
-          "id": "lc-find-median-from-data-stream",
-          "label": "Find Median From Data Stream",
-          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
-          "meta": "Heap / Priority Queue"
+          "id": "lc-merge-two-sorted-lists",
+          "label": "Merge Two Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
+          "meta": "Linked List"
         }
       ]
     },
     {
-      "label": "ML coding · From scratch",
+      "label": "ML · Hyperparameter tuning",
       "items": [
         {
-          "id": "ml-code-logreg",
-          "label": "Implement logistic regression with binary cross-entropy",
-          "meta": "Code",
+          "id": "ml-tuning-search",
+          "label": "Grid, random, Bayesian, Hyperband search",
+          "href": "https://distill.pub/2020/bayesian-optimization/",
+          "meta": "Distill",
           "interviewQuestions": [
-            "Why is the cross-entropy gradient for logistic regression so clean?",
-            "How would you handle numerical instability in the sigmoid?",
-            "How do you extend binary logistic to multiclass?"
+            "Why does random search often beat grid search?",
+            "When is Bayesian optimization worth the complexity over random search?",
+            "How does Hyperband save compute by early-stopping bad configs?"
           ]
         },
         {
-          "id": "ml-code-kmeans",
-          "label": "Implement k-means (Lloyd's) + k-means++ init",
-          "meta": "Code",
-          "interviewQuestions": [
-            "Walk me through Lloyd's algorithm step by step.",
-            "Why does k-means++ initialization help?",
-            "How would you handle empty clusters during iteration?"
-          ]
+          "id": "ml-tuning-tools",
+          "label": "Optuna / Ray Tune in practice",
+          "href": "https://optuna.org/",
+          "meta": "Optuna"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through 'find median from data stream' with two heaps.",
-    "What's the failure mode of softmax + cross-entropy with class imbalance?",
-    "When does k-means fail catastrophically?"
+    "Why does random search often beat grid search for hyperparameter tuning?",
+    "When is Bayesian optimization worth the complexity over random or Hyperband search?",
+    "How would you tune an XGBoost model with a tight compute budget?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "XGBoost docs (parameters + tuning)",
+      "href": "https://xgboost.readthedocs.io/en/stable/",
+      "source": "XGBoost"
+    }
+  ]
 }

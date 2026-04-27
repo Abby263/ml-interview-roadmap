@@ -1,31 +1,78 @@
 {
   "day": 38,
-  "title": "Privacy + compliance",
-  "pillar": "mlops",
-  "focus": "Bake privacy in, not after.",
+  "title": "DL optimizers in practice + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Adam vs AdamW vs SGD+momentum. Warmup, cosine, OneCycle.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "priv-min",
-          "label": "Data minimization & retention windows (GDPR)",
-          "href": "https://gdpr.eu/data-minimization/",
-          "meta": "Read"
+          "id": "lc-lowest-common-ancestor-of-a-binary-search-tree",
+          "label": "Lowest Common Ancestor OF A Binary Search Tree",
+          "href": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+          "meta": "Trees"
         },
         {
-          "id": "priv-dp",
-          "label": "Differential privacy in ML — quick intro",
-          "href": "https://github.com/google/differential-privacy",
-          "meta": "Reference"
+          "id": "lc-binary-tree-level-order-traversal",
+          "label": "Binary Tree Level Order Traversal",
+          "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "DL · Optimizers in practice",
+      "items": [
+        {
+          "id": "dl-sgd-momentum",
+          "label": "SGD, momentum, Nesterov",
+          "href": "https://ruder.io/optimizing-gradient-descent/",
+          "meta": "Ruder"
+        },
+        {
+          "id": "dl-adam-adamw",
+          "label": "Adam, AdamW, RMSprop",
+          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
+          "meta": "fast.ai",
+          "interviewQuestions": [
+            "Why is AdamW preferred over Adam when using weight decay?",
+            "When would you ever pick SGD over Adam in deep learning?"
+          ]
+        },
+        {
+          "id": "dl-lr-sched",
+          "label": "Warmup, cosine, OneCycle, step decay",
+          "href": "https://huggingface.co/docs/transformers/main_classes/optimizer_schedules",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why is learning rate warmup important for transformer training?",
+            "Compare cosine vs step decay — when does each work better?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you minimize PII flow through an ML pipeline?",
-    "When is differential privacy worth the accuracy cost?",
-    "What goes into an audit log for inference?"
+    "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
+    "Why is AdamW preferred over Adam when using weight decay?",
+    "Why is learning-rate warmup critical for transformer training, and what schedule do you use after?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    }
+  ]
 }

@@ -1,67 +1,84 @@
 {
   "day": 5,
-  "title": "Sliding Window + Confidence intervals",
+  "title": "A/B testing in production + DSA Two Pointers finish",
   "pillar": "math-stats",
-  "focus": "Sliding-window template + frequentist CI without sliding into Bayesian language.",
+  "focus": "MDE, sample size, SRM, peeking, CUPED — the four things that ruin tests.",
   "tracks": [
     {
-      "label": "DSA · Sliding Window",
+      "label": "DSA · NeetCode Two Pointers",
       "items": [
         {
-          "id": "lc-best-time-to-buy-and-sell-stock",
-          "label": "Best Time TO Buy And Sell Stock",
-          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
-          "meta": "Sliding Window"
+          "id": "lc-container-with-most-water",
+          "label": "Container With Most Water",
+          "href": "https://leetcode.com/problems/container-with-most-water/",
+          "meta": "Two Pointers"
         },
         {
-          "id": "lc-longest-substring-without-repeating-characters",
-          "label": "Longest Substring Without Repeating Characters",
-          "href": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-          "meta": "Sliding Window"
-        },
-        {
-          "id": "lc-longest-repeating-character-replacement",
-          "label": "Longest Repeating Character Replacement",
-          "href": "https://leetcode.com/problems/longest-repeating-character-replacement/",
-          "meta": "Sliding Window"
+          "id": "lc-trapping-rain-water",
+          "label": "Trapping Rain Water",
+          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "meta": "Two Pointers"
         }
       ]
     },
     {
-      "label": "Stats · CIs",
+      "label": "Math · A/B testing in production",
       "items": [
         {
-          "id": "stats-ci-frequentist",
-          "label": "Frequentist interpretation done right",
-          "href": "https://en.wikipedia.org/wiki/Confidence_interval#Misunderstandings",
-          "meta": "Read",
+          "id": "stats-ab-design",
+          "label": "Experiment design: power, MDE, randomization, SRM",
+          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "meta": "Evan Miller",
           "interviewQuestions": [
-            "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
-            "Explain the frequentist interpretation of a confidence interval to a PM.",
-            "How does CI width scale with sample size?"
+            "How do you choose sample size for an A/B test? What's MDE?",
+            "What is sample-ratio mismatch (SRM) and why is it a red flag?",
+            "Walk through how to design an experiment to detect a 1% lift in conversion."
           ]
         },
         {
-          "id": "stats-bootstrap",
-          "label": "Bootstrap CIs — when they save you",
-          "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.weightstats.DescrStatsW.html",
-          "meta": "Docs",
+          "id": "stats-peeking",
+          "label": "Sequential / peeking problems & remedies",
+          "href": "https://www.evanmiller.org/sequential-ab-testing.html",
+          "meta": "Evan Miller",
           "interviewQuestions": [
-            "Why does the bootstrap work when classical CIs don't?",
-            "How would you bootstrap a CI for the median?",
-            "What are the failure modes of bootstrapping?"
+            "Why does 'checking the test daily and stopping when significant' inflate Type I error?",
+            "What are sequential testing methods (e.g., always-valid p-values) and when would you use them?"
+          ]
+        },
+        {
+          "id": "stats-cuped",
+          "label": "Variance reduction: stratification & CUPED",
+          "href": "https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf",
+          "meta": "Microsoft",
+          "interviewQuestions": [
+            "Explain CUPED in plain English. Why does it shrink confidence intervals?",
+            "What's the difference between stratification and CUPED for variance reduction?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's wrong with saying 'there's a 95% chance the true mean is in this interval'?",
-    "Why does the bootstrap work when classical CIs don't?",
-    "How does sample size affect the width of a CI quadratically?"
+    "Walk through how you'd design an A/B test to detect a 1% lift in conversion — what sample size, what guardrails?",
+    "What is sample-ratio mismatch and why is it a red flag in an A/B test?",
+    "Why does peeking at A/B results daily inflate Type I error, and what do you do instead?",
+    "Explain CUPED in one minute and when it actually pays off."
   ],
-  "references": [],
-  "questionIds": [
-    "confidence-interval"
+  "references": [
+    {
+      "label": "Evan Miller — A/B testing pitfalls",
+      "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+      "source": "Evan Miller"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
   ]
 }

@@ -1,29 +1,145 @@
 {
   "day": 105,
-  "title": "Read deeply: 1 paper + 1 case",
-  "pillar": "ml-system-design",
-  "focus": "Build context for follow-up questions you might get.",
+  "title": "RecSys foundations + two-tower + ranking + sequential",
+  "pillar": "deep-learning",
+  "focus": "MF, two-tower, MMoE/PLE, position bias (PAL), SASRec / BERT4Rec.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "deep-paper",
-          "label": "Pick 1 paper relevant to your target team's work; skim",
+          "id": "lc-last-stone-weight",
+          "label": "Last Stone Weight",
+          "href": "https://leetcode.com/problems/last-stone-weight/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · RecSys foundations",
+      "items": [
+        {
+          "id": "recs-cf",
+          "label": "Collaborative filtering & matrix factorization",
+          "href": "https://developers.google.com/machine-learning/recommendation",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through matrix factorization for recommendations and how SGD trains it.",
+            "What's the cold-start problem in CF and how do hybrid models fix it?"
+          ]
+        },
+        {
+          "id": "recs-content",
+          "label": "Content-based & hybrid recsys",
+          "href": "https://developers.google.com/machine-learning/recommendation/content-based/basics",
+          "meta": "Google"
+        },
+        {
+          "id": "recs-eval",
+          "label": "RecSys metrics: nDCG, MAP, Hit Rate, MRR",
+          "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
+          "meta": "Read"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Two-tower retrieval",
+      "items": [
+        {
+          "id": "recs-2t",
+          "label": "Two-tower architecture (YouTube, retrieval)",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through the YouTube two-tower paper — what does sampling-bias correction fix?",
+            "Why is in-batch negative sampling biased, and how do you correct for it?"
+          ]
+        },
+        {
+          "id": "recs-emb",
+          "label": "Embedding tables & ANN serving",
+          "href": "https://www.pinecone.io/learn/series/recs/",
+          "meta": "Pinecone"
+        },
+        {
+          "id": "recs-temporal",
+          "label": "Temporal & freshness signals",
+          "href": "https://research.google/pubs/recurrent-recommender-networks/",
+          "meta": "Google"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Ranking & multi-task",
+      "items": [
+        {
+          "id": "rank-mtl",
+          "label": "Multi-task learning: MMoE, PLE",
+          "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through MMoE — how does it handle conflicting tasks?",
+            "Compare MMoE vs PLE — what does PLE fix?"
+          ]
+        },
+        {
+          "id": "rank-pos-bias",
+          "label": "Position bias correction (PAL)",
+          "href": "https://dl.acm.org/doi/10.1145/3298689.3347033",
+          "meta": "Huawei"
+        },
+        {
+          "id": "rank-calibrate",
+          "label": "Calibration in ranking models",
+          "href": "https://eugeneyan.com/writing/calibration-eval/",
+          "meta": "Eugene Yan"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Sequential & LLM-based recsys",
+      "items": [
+        {
+          "id": "recs-seq",
+          "label": "Sequential recsys: SASRec, BERT4Rec",
+          "href": "https://arxiv.org/abs/1808.09781",
+          "meta": "SASRec"
+        },
+        {
+          "id": "recs-llm",
+          "label": "LLM-based recsys: P5, GenRec",
+          "href": "https://arxiv.org/abs/2305.06474",
           "meta": "Read"
         },
         {
-          "id": "deep-case",
-          "label": "Re-read 1 case study and write 5 follow-up questions you'd expect",
-          "href": "/case-studies",
-          "meta": "Read"
+          "id": "recs-causal",
+          "label": "Causal & off-policy recsys",
+          "href": "https://eugeneyan.com/writing/counterfactual-evaluation/",
+          "meta": "Eugene Yan"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What does this paper get right?",
-    "What's a critique you could voice?"
+    "Walk through matrix factorization for recommendations and how SGD trains it.",
+    "What's the cold-start problem in CF and how do hybrid models fix it?",
+    "Compare nDCG, MAP, MRR, and Recall@k — when do you use each?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "YouTube two-tower (sampling-bias-corrected)",
+      "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+      "source": "Google"
+    },
+    {
+      "label": "YouTube multi-task ranking",
+      "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
+      "source": "Google"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

@@ -1,28 +1,63 @@
 {
   "day": 104,
-  "title": "Cross-pillar weak-area repair (round 2)",
-  "pillar": "foundations",
-  "focus": "Tighten the gap list one more pass.",
+  "title": "RLHF & RLAIF deep dive",
+  "pillar": "generative-ai",
+  "focus": "Reward modeling pipeline; Constitutional AI; reward hacking detection.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Tries",
       "items": [
         {
-          "id": "gap2-1",
-          "label": "Re-attempt 2 weakest concept prompts cold",
-          "meta": "Mock"
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · RLHF & RLAIF deep dive",
+      "items": [
+        {
+          "id": "rlhf-pipeline",
+          "label": "RLHF pipeline: SFT → RM → PPO",
+          "href": "https://huggingface.co/blog/rlhf",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the three stages of RLHF end-to-end.",
+            "What goes wrong if your reward model is poorly calibrated?"
+          ]
         },
         {
-          "id": "gap2-2",
-          "label": "Re-attempt 2 weakest LC patterns",
-          "meta": "Mock"
+          "id": "rlhf-rlaif",
+          "label": "RLAIF, Constitutional AI, RLEF",
+          "href": "https://arxiv.org/abs/2212.08073",
+          "meta": "Anthropic"
+        },
+        {
+          "id": "rlhf-eval",
+          "label": "Reward hacking & alignment evals",
+          "href": "https://arxiv.org/abs/2305.18290",
+          "meta": "Rafailov et al."
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's left on the gap list?",
-    "What's the cheapest move that closes it?"
+    "Walk through the three stages of RLHF end-to-end and what each stage actually optimizes.",
+    "What is Constitutional AI, and how does it reduce reliance on human labels?",
+    "How does reward hacking show up in practice, and how would you detect it?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
 }

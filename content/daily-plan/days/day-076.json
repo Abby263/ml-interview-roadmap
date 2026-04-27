@@ -1,41 +1,69 @@
 {
   "day": 76,
-  "title": "Cross-case design rehearsal",
-  "pillar": "ml-system-design",
-  "focus": "Pick one case you haven't drilled. Time a 60-min mock cold.",
+  "title": "Reasoning models (o1/o3, Claude thinking) + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "Test-time compute; CoT vs ToT vs self-consistency.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "case-cross-pick",
-          "label": "Pick a fresh case study",
-          "href": "/case-studies",
-          "meta": "Pick"
+          "id": "lc-insert-interval",
+          "label": "Insert Interval",
+          "href": "https://leetcode.com/problems/insert-interval/",
+          "meta": "Intervals"
         },
         {
-          "id": "case-cross-mock",
-          "label": "60-min mock with a peer or solo",
-          "meta": "Mock"
+          "id": "lc-merge-intervals",
+          "label": "Merge Intervals",
+          "href": "https://leetcode.com/problems/merge-intervals/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Reasoning models (o1, o3, thinking)",
+      "items": [
+        {
+          "id": "llm-o1",
+          "label": "o1 / o3: long reasoning, RL on reasoning traces",
+          "href": "https://openai.com/index/learning-to-reason-with-llms/",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How do reasoning models like o1 differ from standard chat LLMs?",
+            "When are reasoning models worth their cost, and when are they overkill?"
+          ]
         },
         {
-          "id": "case-cross-score",
-          "label": "Self-score against the framework",
-          "meta": "Review"
+          "id": "llm-thinking",
+          "label": "Claude extended thinking & test-time compute",
+          "href": "https://www.anthropic.com/news/visible-extended-thinking",
+          "meta": "Anthropic"
+        },
+        {
+          "id": "llm-tot",
+          "label": "Tree of Thoughts, self-consistency",
+          "href": "https://arxiv.org/abs/2305.10601",
+          "meta": "Yao et al."
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What did you skip under time pressure?",
-    "Where did you wave hands?",
-    "What's the one trade-off you'd defend hardest if pushed?"
+    "How do reasoning models like o1 / o3 differ from standard chat LLMs?",
+    "When are reasoning models worth their cost, and when are they overkill?",
+    "What does test-time compute scaling buy you over training-time compute?"
   ],
   "references": [
     {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
+      "label": "OpenAI — Learning to reason with LLMs",
+      "href": "https://openai.com/index/learning-to-reason-with-llms/",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
     }
   ]
 }
