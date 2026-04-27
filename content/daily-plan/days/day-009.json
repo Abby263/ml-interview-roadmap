@@ -54,7 +54,11 @@
           "id": "linalg-condition",
           "label": "Condition number & numerical stability",
           "href": "https://en.wikipedia.org/wiki/Condition_number",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "What is the condition number of a matrix and why does a high condition number hurt training?",
+            "Give two practical fixes when your design matrix is ill-conditioned (e.g., regularization, feature scaling, removing collinear features)."
+          ]
         }
       ]
     }

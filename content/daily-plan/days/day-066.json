@@ -38,13 +38,21 @@
           "id": "mlops-autoscale",
           "label": "Autoscaling: HPA, KEDA, queue-based",
           "href": "https://keda.sh/",
-          "meta": "KEDA"
+          "meta": "KEDA",
+          "interviewQuestions": [
+            "Compare CPU-based HPA vs queue-based KEDA scaling for ML inference.",
+            "Why does GPU-pinned inference often defeat HPA, and how do you actually scale GPU pods?"
+          ]
         },
         {
           "id": "mlops-spot",
           "label": "Spot/preemptible instances for training",
           "href": "https://cloud.google.com/architecture/run-cost-effective-deep-learning-workloads",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you train safely on spot instances (checkpointing, retries)?",
+            "When does spot training become NET more expensive than on-demand — what's the breakeven?"
+          ]
         }
       ]
     }

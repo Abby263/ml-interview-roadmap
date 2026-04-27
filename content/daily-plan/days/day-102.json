@@ -32,13 +32,21 @@
           "id": "rl-onoff",
           "label": "On-policy vs off-policy",
           "href": "https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html",
-          "meta": "OpenAI"
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Compare on-policy vs off-policy RL — examples of each algorithm class.",
+            "When is sample efficiency a deciding factor between on-policy and off-policy methods?"
+          ]
         },
         {
           "id": "rl-explore",
           "label": "Exploration: epsilon-greedy, UCB, Thompson sampling",
           "href": "https://lilianweng.github.io/posts/2018-01-23-multi-armed-bandit/",
-          "meta": "Lilian Weng"
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Compare epsilon-greedy, UCB, and Thompson sampling in a contextual bandit.",
+            "Why does Thompson sampling adapt better to non-stationary rewards than epsilon-greedy?"
+          ]
         }
       ]
     }

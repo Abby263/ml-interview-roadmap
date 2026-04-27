@@ -28,19 +28,31 @@
           "id": "nlp-ner",
           "label": "Named-entity recognition: BIO tagging, span-based",
           "href": "https://huggingface.co/learn/nlp-course/chapter7/2",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare BIO tagging vs span-based NER models.",
+            "How would you evaluate a NER model — token-level F1 vs entity-level F1, and which actually matters?"
+          ]
         },
         {
           "id": "nlp-summarization",
           "label": "Extractive vs abstractive summarization",
           "href": "https://huggingface.co/learn/nlp-course/chapter7/5",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "How would you evaluate a summarization model — ROUGE vs BERTScore vs LLM-as-judge?",
+            "Compare extractive vs abstractive summarization — when is each the right tool?"
+          ]
         },
         {
           "id": "nlp-translation",
           "label": "Machine translation: BLEU, beam search",
           "href": "https://huggingface.co/learn/nlp-course/chapter7/4",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why is beam search standard for translation but not for open-ended generation?",
+            "What is BLEU actually measuring, and where does it mislead?"
+          ]
         }
       ]
     }

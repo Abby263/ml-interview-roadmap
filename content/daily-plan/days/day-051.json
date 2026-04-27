@@ -28,7 +28,11 @@
           "id": "dl-rnn",
           "label": "RNN forward + truncated BPTT",
           "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
-          "meta": "DLS C5"
+          "meta": "DLS C5",
+          "interviewQuestions": [
+            "Why do vanilla RNNs struggle with long-term dependencies?",
+            "Walk through truncated backprop-through-time — why is it the practical default?"
+          ]
         },
         {
           "id": "dl-lstm",
@@ -44,7 +48,11 @@
           "id": "dl-gru",
           "label": "GRU vs LSTM",
           "href": "https://arxiv.org/abs/1412.3555",
-          "meta": "Chung et al."
+          "meta": "Chung et al.",
+          "interviewQuestions": [
+            "When would you pick GRU over LSTM?",
+            "What does GRU's update gate do that LSTM splits across forget + input gates?"
+          ]
         }
       ]
     }

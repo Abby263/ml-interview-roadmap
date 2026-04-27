@@ -32,7 +32,11 @@
           "id": "cnn-aug",
           "label": "Augmentation strategies (RandAugment, AutoAugment)",
           "href": "https://arxiv.org/abs/1909.13719",
-          "meta": "RandAugment"
+          "meta": "RandAugment",
+          "interviewQuestions": [
+            "Compare AutoAugment vs RandAugment — what's the simplification?",
+            "When does heavy augmentation hurt instead of help — what's the failure mode?"
+          ]
         }
       ]
     }

@@ -42,7 +42,11 @@
           "id": "llm-emergent",
           "label": "Emergent abilities & in-context learning",
           "href": "https://arxiv.org/abs/2206.07682",
-          "meta": "Wei et al."
+          "meta": "Wei et al.",
+          "interviewQuestions": [
+            "Define 'emergent abilities' in LLMs — and why some researchers say they're a measurement artifact.",
+            "What does the 'mirage' paper claim, and how does the choice of metric drive apparent emergence?"
+          ]
         }
       ]
     }

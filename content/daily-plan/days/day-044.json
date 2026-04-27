@@ -48,7 +48,11 @@
           "id": "cnn-eff",
           "label": "Depthwise separable convs (MobileNet, EfficientNet)",
           "href": "https://arxiv.org/abs/1905.11946",
-          "meta": "EfficientNet"
+          "meta": "EfficientNet",
+          "interviewQuestions": [
+            "How do depthwise separable convolutions reduce compute?",
+            "What does EfficientNet's compound scaling do that one-axis scaling doesn't?"
+          ]
         }
       ]
     }

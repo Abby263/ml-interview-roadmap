@@ -38,13 +38,21 @@
           "id": "mlops-edge",
           "label": "Edge deployment & on-device ML",
           "href": "https://pytorch.org/mobile/home/",
-          "meta": "PyTorch Mobile"
+          "meta": "PyTorch Mobile",
+          "interviewQuestions": [
+            "When does on-device ML beat cloud inference, and what are the constraints?",
+            "What model-side techniques (quantization, pruning, distillation) actually move the needle for mobile?"
+          ]
         },
         {
           "id": "mlops-async",
           "label": "Async inference & queues",
           "href": "https://aws.amazon.com/blogs/machine-learning/announcing-the-launch-of-new-hugging-face-llm-inference-containers-on-amazon-sagemaker/",
-          "meta": "AWS"
+          "meta": "AWS",
+          "interviewQuestions": [
+            "When would you use async inference behind a queue?",
+            "How do you size a queue worker pool for spiky inference traffic without over-provisioning?"
+          ]
         }
       ]
     }

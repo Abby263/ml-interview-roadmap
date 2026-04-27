@@ -43,7 +43,11 @@
           "id": "ft-data",
           "label": "Fine-tuning data: curation, dedup, contamination",
           "href": "https://huggingface.co/learn/llm-course/chapter11/1",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "How would you curate 10k high-quality examples for fine-tuning a domain LLM?",
+            "What's your dedup + contamination check between training and eval sets — and why does it matter?"
+          ]
         }
       ]
     }

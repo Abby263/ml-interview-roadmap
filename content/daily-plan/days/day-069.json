@@ -28,19 +28,31 @@
           "id": "mlops-obs",
           "label": "Logs, metrics, traces for ML systems",
           "href": "https://opentelemetry.io/",
-          "meta": "OpenTelemetry"
+          "meta": "OpenTelemetry",
+          "interviewQuestions": [
+            "What's the difference between logs, metrics, and traces, and what does each tell you?",
+            "How would you trace a single user request through retrieval → LLM → tool calls and back?"
+          ]
         },
         {
           "id": "mlops-llm-obs",
           "label": "LLM-specific observability: tokens, latency, cost",
           "href": "https://docs.smith.langchain.com/",
-          "meta": "LangSmith"
+          "meta": "LangSmith",
+          "interviewQuestions": [
+            "What dimensions do you slice LLM observability by (model, prompt, user, tool)?",
+            "How would you detect prompt regressions on production traffic without leaking PII to humans?"
+          ]
         },
         {
           "id": "mlops-alerts",
           "label": "Alerts & on-call for ML systems",
           "href": "https://sre.google/workbook/practical-alerting/",
-          "meta": "Google SRE"
+          "meta": "Google SRE",
+          "interviewQuestions": [
+            "What's a meaningful SLO for an ML inference service?",
+            "How do you avoid alert fatigue from noisy ML metrics — what's a sane page-worthy threshold?"
+          ]
         }
       ]
     }

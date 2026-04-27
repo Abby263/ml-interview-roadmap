@@ -38,7 +38,11 @@
           "id": "mlops-monitor",
           "label": "Monitoring stack: predictions, latency, errors",
           "href": "https://docs.arize.com/",
-          "meta": "Arize"
+          "meta": "Arize",
+          "interviewQuestions": [
+            "What metrics do you monitor for a deployed model beyond accuracy?",
+            "How would you slice your model monitoring dashboard so a regression in one cohort doesn't get masked?"
+          ]
         },
         {
           "id": "mlops-feedback",

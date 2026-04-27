@@ -48,7 +48,11 @@
           "id": "mlops-routing",
           "label": "Traffic routing, model rollback, A/B serving",
           "href": "https://kserve.github.io/website/",
-          "meta": "KServe"
+          "meta": "KServe",
+          "interviewQuestions": [
+            "How would you do a safe rollback when a new model regresses online metrics?",
+            "What guardrail metrics would automatically trigger a rollback without a human in the loop?"
+          ]
         }
       ]
     }

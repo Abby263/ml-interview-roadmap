@@ -32,7 +32,11 @@
           "id": "sd-pricing",
           "label": "Design surge pricing / dynamic pricing",
           "href": "https://www.uber.com/blog/",
-          "meta": "Uber"
+          "meta": "Uber",
+          "interviewQuestions": [
+            "How would you design surge pricing — what's the optimization objective and constraints?",
+            "How do you avoid the price-spiral feedback loop where surge causes drivers to game positions?"
+          ]
         }
       ]
     }

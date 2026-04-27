@@ -38,13 +38,21 @@
           "id": "mlops-canary",
           "label": "Canary, shadow, interleaving",
           "href": "https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html",
-          "meta": "Chip Huyen"
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "When does interleaving beat A/B for ranking systems?",
+            "What's the smallest canary slice that's still statistically meaningful for a ranking model?"
+          ]
         },
         {
           "id": "mlops-causal",
           "label": "Counterfactual & off-policy evaluation",
           "href": "https://eugeneyan.com/writing/counterfactual-evaluation/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What is off-policy evaluation, and where does it show up in recommender systems?",
+            "Compare IPS vs doubly-robust off-policy estimators — when does each fall apart?"
+          ]
         }
       ]
     }

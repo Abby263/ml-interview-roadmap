@@ -38,13 +38,21 @@
           "id": "mlops-tracking",
           "label": "Experiment tracking: MLflow, W&B, Comet",
           "href": "https://docs.wandb.ai/",
-          "meta": "W&B"
+          "meta": "W&B",
+          "interviewQuestions": [
+            "What metadata do you log for every training run?",
+            "How would you reconstruct a 6-month-old training run from your tracking metadata?"
+          ]
         },
         {
           "id": "mlops-repro",
           "label": "Reproducibility: seeds, environments, lockfiles",
           "href": "https://huggingface.co/docs/transformers/main_classes/trainer",
-          "meta": "HF Trainer"
+          "meta": "HF Trainer",
+          "interviewQuestions": [
+            "Why does setting a seed not guarantee reproducibility on GPUs?",
+            "What three artifacts MUST you pin to make an ML training run actually reproducible?"
+          ]
         }
       ]
     }

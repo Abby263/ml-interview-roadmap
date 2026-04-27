@@ -32,13 +32,21 @@
           "id": "agent-mem",
           "label": "Agent memory: short, long, episodic, semantic",
           "href": "https://lilianweng.github.io/posts/2023-06-23-agent/",
-          "meta": "Lilian Weng"
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "How would you design memory for a long-running personal-assistant agent?",
+            "What invalidates a memory entry, and how do you forget gracefully without losing important state?"
+          ]
         },
         {
           "id": "agent-anthropic",
           "label": "Building effective agents (Anthropic)",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Compare workflow vs agent — when do you NOT need an agent?",
+            "Walk through the building-blocks: prompt chaining, routing, parallelization, orchestrator-workers — when does each apply?"
+          ]
         }
       ]
     }

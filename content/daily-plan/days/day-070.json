@@ -28,13 +28,21 @@
           "id": "mlops-bvb",
           "label": "Framework: build vs buy for ML platform components",
           "href": "https://eugeneyan.com/writing/applied-mlops-resources/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through your decision framework for build vs buy on an ML platform component.",
+            "What recurring failure modes have you seen when teams 'build' something that should have been 'bought'?"
+          ]
         },
         {
           "id": "mlops-vendor-eval",
           "label": "Evaluating ML/AI vendors",
           "href": "https://www.latent.space/",
-          "meta": "Latent Space"
+          "meta": "Latent Space",
+          "interviewQuestions": [
+            "What axes would you use to evaluate an LLM API vendor?",
+            "How do you de-risk vendor lock-in when you adopt a hosted ML service?"
+          ]
         }
       ]
     },
@@ -55,7 +63,11 @@
           "id": "mlops-monitor",
           "label": "Monitoring stack: predictions, latency, errors",
           "href": "https://docs.arize.com/",
-          "meta": "Arize"
+          "meta": "Arize",
+          "interviewQuestions": [
+            "What metrics do you monitor for a deployed model beyond accuracy?",
+            "How would you slice your model monitoring dashboard so a regression in one cohort doesn't get masked?"
+          ]
         },
         {
           "id": "mlops-feedback",

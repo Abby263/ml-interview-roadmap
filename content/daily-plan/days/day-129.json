@@ -32,13 +32,21 @@
           "id": "beh-influence",
           "label": "Influence: convincing leadership of an ML investment",
           "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
-          "meta": "Amazon LPs"
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Tell me about a time you convinced leadership to invest in an ML platform.",
+            "Describe a time a senior leader pushed back on your proposal — how did you handle it?"
+          ]
         },
         {
           "id": "beh-cross-team",
           "label": "Cross-team / cross-org collaboration",
           "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
-          "meta": "Amazon LPs"
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Describe a project that required deep alignment across teams — what did you do?",
+            "Tell me about a time another team's incentives conflicted with yours, and how you got to a shared outcome."
+          ]
         }
       ]
     }

@@ -32,13 +32,21 @@
           "id": "sd-ctr-features",
           "label": "Feature engineering for CTR (cross features, embeddings)",
           "href": "https://research.google/pubs/pub45530/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "How do cross features (e.g., user × ad) work, and how do you scale them?",
+            "When does DCN / DeepFM beat hand-crafted cross features in production?"
+          ]
         },
         {
           "id": "sd-ctr-cal",
           "label": "Calibration & bid optimization",
           "href": "https://eugeneyan.com/writing/calibration-eval/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Why is calibration critical for ad ranking, and how do you evaluate it?",
+            "How would you recalibrate after a model retrain without disturbing existing bid logic?"
+          ]
         }
       ]
     }

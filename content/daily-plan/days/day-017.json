@@ -38,13 +38,21 @@
           "id": "ml-early-stopping",
           "label": "Early stopping & dropout as regularizers",
           "href": "https://en.wikipedia.org/wiki/Early_stopping",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is early stopping equivalent to L2 regularization in some cases?",
+            "How would you choose the early-stopping patience and what happens when it's too small or too large?"
+          ]
         },
         {
           "id": "ml-bayes-prior",
           "label": "Regularization as a Bayesian prior",
           "href": "https://en.wikipedia.org/wiki/Tikhonov_regularization#Bayesian_interpretation",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Show that L2 regularization corresponds to a Gaussian prior on weights and L1 to a Laplace prior.",
+            "When does the Bayesian framing actually change a modeling decision in practice?"
+          ]
         }
       ]
     }

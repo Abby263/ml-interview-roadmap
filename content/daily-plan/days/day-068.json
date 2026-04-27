@@ -28,19 +28,31 @@
           "id": "mlops-mt",
           "label": "Multi-tenant model serving (per-tenant fine-tuning, isolation)",
           "href": "https://www.anyscale.com/blog/turbo-charging-llm-fine-tuning-with-anyscale",
-          "meta": "Anyscale"
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "Compare per-tenant fine-tuned models vs a shared base model with adapters (LoRA).",
+            "How would you isolate a noisy or abusive tenant from degrading other tenants' latency?"
+          ]
         },
         {
           "id": "mlops-region",
           "label": "Multi-region serving & data residency",
           "href": "https://cloud.google.com/architecture/best-practices-vpc-design",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "How do data-residency requirements (e.g., EU data stays in EU) shape your serving topology?",
+            "What's the failover playbook when a region serving model traffic goes down?"
+          ]
         },
         {
           "id": "mlops-noisy",
           "label": "Noisy neighbor & QoS",
           "href": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
-          "meta": "k8s"
+          "meta": "k8s",
+          "interviewQuestions": [
+            "How would you protect a critical model from noisy-neighbor latency on shared infra?",
+            "Compare priority classes, resource quotas, and dedicated node pools for QoS — when does each fit?"
+          ]
         }
       ]
     }

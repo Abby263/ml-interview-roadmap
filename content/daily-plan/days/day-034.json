@@ -67,7 +67,11 @@
           "id": "ml-imbalance-loss",
           "label": "Focal loss & cost-sensitive learning",
           "href": "https://arxiv.org/abs/1708.02002",
-          "meta": "Lin et al."
+          "meta": "Lin et al.",
+          "interviewQuestions": [
+            "Why does focal loss help with extreme imbalance in object detection?",
+            "Compare focal loss vs class-weighted cross-entropy — when does focal actually win?"
+          ]
         },
         {
           "id": "ml-imbalance-eval",

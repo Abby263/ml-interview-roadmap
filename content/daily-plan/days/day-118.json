@@ -32,7 +32,11 @@
           "id": "sd-imggen-safety",
           "label": "Safety: NSFW, IP, deepfakes",
           "href": "https://openai.com/safety",
-          "meta": "OpenAI"
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How would you build safety filters for an image-generation product?",
+            "How do you handle IP / artist-style mimicry concerns at scale?"
+          ]
         }
       ]
     }

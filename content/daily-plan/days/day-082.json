@@ -32,13 +32,21 @@
           "id": "rag-eval-llm-judge",
           "label": "LLM-as-judge for RAG",
           "href": "https://www.evidentlyai.com/llm-guide/llm-as-a-judge",
-          "meta": "Evidently"
+          "meta": "Evidently",
+          "interviewQuestions": [
+            "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
+            "What biases would an LLM judge introduce, and how do you control for them?"
+          ]
         },
         {
           "id": "rag-needle",
           "label": "Needle-in-haystack & long-context evals",
           "href": "https://github.com/gkamradt/LLMTest_NeedleInAHaystack",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
+            "What does 'lost in the middle' mean for long-context LLMs, and how do you mitigate it?"
+          ]
         }
       ]
     }

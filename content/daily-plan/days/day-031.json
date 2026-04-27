@@ -42,7 +42,11 @@
           "id": "conc-patterns",
           "label": "Producer-consumer, queues, futures",
           "href": "https://docs.python.org/3/library/concurrent.futures.html",
-          "meta": "Python docs"
+          "meta": "Python docs",
+          "interviewQuestions": [
+            "How would you parallelize an embarrassingly parallel inference workload?",
+            "Compare ThreadPoolExecutor vs ProcessPoolExecutor — when does each fit, and what does the GIL mean here?"
+          ]
         }
       ]
     }

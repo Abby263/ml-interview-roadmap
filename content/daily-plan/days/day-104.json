@@ -32,13 +32,21 @@
           "id": "rlhf-rlaif",
           "label": "RLAIF, Constitutional AI, RLEF",
           "href": "https://arxiv.org/abs/2212.08073",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "What is Constitutional AI, and how does it reduce reliance on human labels?",
+            "Where does RLAIF struggle — what kinds of judgments still need humans?"
+          ]
         },
         {
           "id": "rlhf-eval",
           "label": "Reward hacking & alignment evals",
           "href": "https://arxiv.org/abs/2305.18290",
-          "meta": "Rafailov et al."
+          "meta": "Rafailov et al.",
+          "interviewQuestions": [
+            "Walk through how reward hacking shows up in practice and how you'd detect it.",
+            "How would you design an eval suite that catches sycophancy and excessive hedging in an RLHF'd model?"
+          ]
         }
       ]
     }

@@ -85,7 +85,11 @@
           "id": "nlp-gpt",
           "label": "GPT: decoder-only, causal LM",
           "href": "https://openai.com/research/language-unsupervised",
-          "meta": "OpenAI"
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Why did decoder-only models win the LLM race?",
+            "What does the causal-LM objective give you that masked-LM doesn't, and vice versa?"
+          ]
         }
       ]
     }

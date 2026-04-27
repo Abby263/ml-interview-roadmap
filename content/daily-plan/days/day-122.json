@@ -22,25 +22,41 @@
           "id": "sd-tradeoff-lat-acc",
           "label": "Latency vs accuracy: caching, distillation, cascades",
           "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What levers do you pull when accuracy is great but latency misses the budget?",
+            "Walk through where you'd add caching in a RAG + LLM pipeline to halve P99."
+          ]
         },
         {
           "id": "sd-tradeoff-routing",
           "label": "Multi-model routing & cascades",
           "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
-          "meta": "Anyscale"
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you design a cascade: cheap model first, expensive only when needed?",
+            "What's the right verifier for the cheap model's output — and when does it dominate cost?"
+          ]
         },
         {
           "id": "sd-tradeoff-coldstart",
           "label": "Cold-start strategies (recsys, search, ads)",
           "href": "https://eugeneyan.com/writing/",
-          "meta": "Eugene Yan"
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through cold-start strategies for new users vs new items.",
+            "Compare bandit-based exploration vs content-based bridges for cold start — when does each fit?"
+          ]
         },
         {
           "id": "sd-tradeoff-privacy",
           "label": "Privacy-preserving ML: federated, DP, on-device",
           "href": "https://federated.withgoogle.com/",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "When would you reach for federated learning vs differential privacy vs on-device inference?",
+            "What's the accuracy cost of DP-SGD at typical ε values, and how do you decide if it's acceptable?"
+          ]
         }
       ]
     },
@@ -61,13 +77,21 @@
           "id": "recs-content",
           "label": "Content-based & hybrid recsys",
           "href": "https://developers.google.com/machine-learning/recommendation/content-based/basics",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare content-based vs collaborative filtering — when does each fail?",
+            "How would you blend content and CF signals — what's the failure mode of naive averaging?"
+          ]
         },
         {
           "id": "recs-eval",
           "label": "RecSys metrics: nDCG, MAP, Hit Rate, MRR",
           "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare nDCG, MAP, MRR, and Recall@k — when do you use each?",
+            "Why do offline metrics often disagree with online A/B test results in recsys?"
+          ]
         }
       ]
     }

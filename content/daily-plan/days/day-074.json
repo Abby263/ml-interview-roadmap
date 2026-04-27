@@ -48,7 +48,11 @@
           "id": "llm-prompt-attacks",
           "label": "Prompt injection & jailbreaks",
           "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
-          "meta": "Anthropic"
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you defend a customer-facing LLM against prompt injection from user-supplied content?",
+            "Why is 'just tell the model to ignore injection' insufficient — what's the actual defense-in-depth?"
+          ]
         }
       ]
     }

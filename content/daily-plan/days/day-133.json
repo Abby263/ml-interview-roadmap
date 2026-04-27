@@ -22,19 +22,31 @@
           "id": "mock-beh-stories",
           "label": "Run 5 STAR stories back-to-back, time each at 3 min",
           "href": "https://www.themuse.com/advice/star-interview-method",
-          "meta": "The Muse"
+          "meta": "The Muse",
+          "interviewQuestions": [
+            "Pick 5 stories (conflict, failure, leadership, influence, ambiguity) — record yourself, listen back.",
+            "Which story is your strongest, and which is the most likely to come up on this loop?"
+          ]
         },
         {
           "id": "mock-beh-feedback",
           "label": "Review recordings: filler words, structure, impact",
           "href": "https://www.lennysnewsletter.com/",
-          "meta": "Lenny's Newsletter"
+          "meta": "Lenny's Newsletter",
+          "interviewQuestions": [
+            "What's the one thing you'd cut from each story?",
+            "Where did you bury the impact — how can you lead with the result and only then explain how?"
+          ]
         },
         {
           "id": "mock-onsite",
           "label": "Day-of prep: sleep, food, environment, breaks",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "What's your plan for the 5 minutes between rounds on a virtual onsite?",
+            "What's your fallback if your camera or audio dies mid-round?"
+          ]
         }
       ]
     }

@@ -42,7 +42,11 @@
           "id": "rag-multi-hop",
           "label": "Multi-hop & iterative retrieval",
           "href": "https://arxiv.org/abs/2305.14283",
-          "meta": "FLARE"
+          "meta": "FLARE",
+          "interviewQuestions": [
+            "How would you handle a multi-hop question that requires chaining retrieval calls?",
+            "What stopping criterion do you use for iterative retrieval — and how do you avoid runaway loops?"
+          ]
         }
       ]
     }

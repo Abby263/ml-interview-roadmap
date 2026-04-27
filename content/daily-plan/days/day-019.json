@@ -48,7 +48,11 @@
           "id": "ml-feature-importance",
           "label": "Feature importance: gain, permutation, SHAP",
           "href": "https://christophm.github.io/interpretable-ml-book/",
-          "meta": "Molnar"
+          "meta": "Molnar",
+          "interviewQuestions": [
+            "Compare gain-based feature importance, permutation importance, and SHAP — pros and cons.",
+            "Why can gain-based importance be misleading when features are correlated?"
+          ]
         }
       ]
     }

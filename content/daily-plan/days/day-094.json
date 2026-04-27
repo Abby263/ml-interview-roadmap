@@ -32,13 +32,21 @@
           "id": "hw-tpu",
           "label": "TPUs: pods, slices, XLA",
           "href": "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm",
-          "meta": "Google"
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare GPUs vs TPUs for training — when does each win?",
+            "What's the cost of porting a PyTorch model to TPU via XLA, and where does it break?"
+          ]
         },
         {
           "id": "hw-net",
           "label": "NVLink, InfiniBand, network bottlenecks",
           "href": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html",
-          "meta": "NCCL"
+          "meta": "NCCL",
+          "interviewQuestions": [
+            "Why does interconnect (NVLink, IB) often bottleneck distributed training before compute does?",
+            "How would you diagnose whether your distributed training is bottlenecked by compute, memory, or network?"
+          ]
         }
       ]
     }

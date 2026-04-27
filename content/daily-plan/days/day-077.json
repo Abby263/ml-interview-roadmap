@@ -28,7 +28,11 @@
           "id": "llm-perplexity",
           "label": "Perplexity: what it is and isn't",
           "href": "https://huggingface.co/docs/transformers/perplexity",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "Define perplexity precisely — and explain why it's a poor proxy for downstream task quality.",
+            "Two models with the same perplexity perform very differently on a benchmark. What's going on?"
+          ]
         },
         {
           "id": "llm-bench",

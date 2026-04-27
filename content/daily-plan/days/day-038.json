@@ -28,7 +28,11 @@
           "id": "dl-sgd-momentum",
           "label": "SGD, momentum, Nesterov",
           "href": "https://ruder.io/optimizing-gradient-descent/",
-          "meta": "Ruder"
+          "meta": "Ruder",
+          "interviewQuestions": [
+            "Why does momentum help SGD escape narrow ravines?",
+            "How is Nesterov momentum different from plain momentum, and when does the difference matter?"
+          ]
         },
         {
           "id": "dl-adam-adamw",

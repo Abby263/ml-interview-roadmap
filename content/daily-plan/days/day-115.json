@@ -32,7 +32,11 @@
           "id": "sd-eval-pipeline",
           "label": "Online + offline eval pipelines",
           "href": "https://www.braintrust.dev/docs",
-          "meta": "Braintrust"
+          "meta": "Braintrust",
+          "interviewQuestions": [
+            "How would you continuously evaluate a production LLM agent on real traffic without leaking PII?",
+            "How do you keep eval datasets fresh as user behavior shifts — what's the refresh cadence?"
+          ]
         }
       ]
     }

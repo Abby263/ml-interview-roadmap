@@ -39,13 +39,21 @@
           "id": "cnn-pool",
           "label": "Pooling, receptive field",
           "href": "https://distill.pub/2019/computing-receptive-fields/",
-          "meta": "Distill"
+          "meta": "Distill",
+          "interviewQuestions": [
+            "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
+            "Compare max pooling vs average pooling vs strided convolution — when does each fit?"
+          ]
         },
         {
           "id": "cnn-translation",
           "label": "Translation invariance & equivariance",
           "href": "https://arxiv.org/abs/1907.00657",
-          "meta": "Read"
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why are CNNs called translation-equivariant rather than translation-invariant?",
+            "Where does global pooling at the end of a CNN buy you (approximate) translation invariance?"
+          ]
         }
       ]
     }

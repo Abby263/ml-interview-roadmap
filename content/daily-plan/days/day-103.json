@@ -22,7 +22,11 @@
           "id": "rl-dqn",
           "label": "DQN: experience replay, target nets",
           "href": "https://www.nature.com/articles/nature14236",
-          "meta": "DeepMind"
+          "meta": "DeepMind",
+          "interviewQuestions": [
+            "Why does DQN need experience replay and a target network?",
+            "What does Double DQN fix that vanilla DQN gets wrong, and why does it matter in practice?"
+          ]
         },
         {
           "id": "rl-pg",

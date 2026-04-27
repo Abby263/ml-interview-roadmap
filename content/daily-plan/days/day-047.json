@@ -48,7 +48,11 @@
           "id": "cv-multimodal",
           "label": "BLIP, LLaVA, multimodal LLMs",
           "href": "https://arxiv.org/abs/2304.08485",
-          "meta": "LLaVA"
+          "meta": "LLaVA",
+          "interviewQuestions": [
+            "How do multimodal LLMs like LLaVA fuse vision encoders with language models?",
+            "Compare early fusion vs late fusion in vision-language models — what does each cost in compute and quality?"
+          ]
         }
       ]
     }

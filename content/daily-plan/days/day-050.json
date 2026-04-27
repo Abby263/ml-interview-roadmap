@@ -48,7 +48,11 @@
           "id": "nlp-tasks",
           "label": "Classic NLP tasks (NER, POS, SRL, parsing)",
           "href": "https://web.stanford.edu/class/cs224n/",
-          "meta": "CS224n"
+          "meta": "CS224n",
+          "interviewQuestions": [
+            "Compare token-level (NER) vs sequence-level (classification) tasks.",
+            "Why is dependency parsing harder than POS tagging, and where does it still matter today?"
+          ]
         }
       ]
     }

@@ -22,13 +22,21 @@
           "id": "mock-mlc-breadth",
           "label": "Breadth round: 6 ML concepts in 45 min",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Pick 6 ML concept questions and time yourself for 7 min each.",
+            "Which concept did you fumble — and what's the cleaner 90-second answer you'd give next time?"
+          ]
         },
         {
           "id": "mock-mlc-coding",
           "label": "ML coding: implement k-means or logistic regression in 30 min",
           "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
-          "meta": "alirezadir"
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-means with k-means++ in 30 minutes — and discuss complexity.",
+            "What edge cases (empty cluster, all points identical) did you handle, and how?"
+          ]
         }
       ]
     }

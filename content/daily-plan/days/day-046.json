@@ -38,13 +38,21 @@
           "id": "cv-segmentation",
           "label": "Semantic vs instance segmentation; U-Net & Mask R-CNN",
           "href": "https://arxiv.org/abs/1505.04597",
-          "meta": "U-Net"
+          "meta": "U-Net",
+          "interviewQuestions": [
+            "How does U-Net's skip connection design help with segmentation?",
+            "Compare semantic vs instance vs panoptic segmentation — when do you reach for each?"
+          ]
         },
         {
           "id": "cv-eval",
           "label": "mAP, IoU, panoptic quality",
           "href": "https://cocodataset.org/#detection-eval",
-          "meta": "COCO"
+          "meta": "COCO",
+          "interviewQuestions": [
+            "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
+            "Why does NMS need careful tuning, and what does it break when set wrong?"
+          ]
         }
       ]
     }

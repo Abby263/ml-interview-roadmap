@@ -22,19 +22,31 @@
           "id": "nlp-ie",
           "label": "Information extraction (NER, RE, OpenIE)",
           "href": "https://web.stanford.edu/class/cs224n/",
-          "meta": "CS224n"
+          "meta": "CS224n",
+          "interviewQuestions": [
+            "Compare span-based vs sequence-tagging IE — when does each win?",
+            "How would you design a relation-extraction system that handles entities not seen in training?"
+          ]
         },
         {
           "id": "nlp-multilingual",
           "label": "Multilingual & low-resource NLP",
           "href": "https://arxiv.org/abs/1911.02116",
-          "meta": "XLM-R"
+          "meta": "XLM-R",
+          "interviewQuestions": [
+            "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
+            "What's the curse of multilinguality, and how do you mitigate it for low-resource languages?"
+          ]
         },
         {
           "id": "nlp-code",
           "label": "Code generation: Codex, StarCoder, Code Llama",
           "href": "https://huggingface.co/blog/starcoder",
-          "meta": "HF"
+          "meta": "HF",
+          "interviewQuestions": [
+            "How is training a code model different from training a natural-language model?",
+            "How would you evaluate a code generation model — pass@k, HumanEval, SWE-bench?"
+          ]
         }
       ]
     }
