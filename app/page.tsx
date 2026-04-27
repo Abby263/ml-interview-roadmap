@@ -28,8 +28,8 @@ export default function Home() {
               <a href="#tracker" className="button-primary-accent">
                 View my tracker
               </a>
-              <a href="#week-1" className="button-secondary">
-                Browse all weeks
+              <a href="#planner" className="button-secondary">
+                Open day browser
               </a>
             </div>
           </div>
