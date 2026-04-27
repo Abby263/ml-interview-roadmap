@@ -1,76 +1,78 @@
 {
   "day": 25,
-  "title": "Graphs DFS/BFS + Optimizers",
-  "pillar": "deep-learning",
-  "focus": "Grid DFS/BFS + SGD vs Adam + LR schedules.",
+  "title": "Clustering: k-means, DBSCAN, hierarchical + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Lloyd's algorithm, cluster count selection, when DBSCAN beats k-means.",
   "tracks": [
     {
-      "label": "DSA · Graphs",
+      "label": "DSA · NeetCode Linked List",
       "items": [
         {
-          "id": "lc-number-of-islands",
-          "label": "Number OF Islands",
-          "href": "https://leetcode.com/problems/number-of-islands/",
-          "meta": "Graphs"
+          "id": "lc-lru-cache",
+          "label": "Lru Cache",
+          "href": "https://leetcode.com/problems/lru-cache/",
+          "meta": "Linked List"
         },
         {
-          "id": "lc-clone-graph",
-          "label": "Clone Graph",
-          "href": "https://leetcode.com/problems/clone-graph/",
-          "meta": "Graphs"
-        },
-        {
-          "id": "lc-max-area-of-island",
-          "label": "Max Area OF Island",
-          "href": "https://leetcode.com/problems/max-area-of-island/",
-          "meta": "Graphs"
-        },
-        {
-          "id": "lc-pacific-atlantic-water-flow",
-          "label": "Pacific Atlantic Water Flow",
-          "href": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
-          "meta": "Graphs"
+          "id": "lc-merge-k-sorted-lists",
+          "label": "Merge K Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "meta": "Linked List"
         }
       ]
     },
     {
-      "label": "Deep learning · Optimizers",
+      "label": "ML · Clustering",
       "items": [
         {
-          "id": "dl-adam",
-          "label": "Adam vs SGD with momentum — when each generalizes better",
-          "href": "https://ruder.io/optimizing-gradient-descent/",
-          "meta": "Read",
+          "id": "ml-kmeans",
+          "label": "k-means: algorithm, initialization, evaluation",
+          "href": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "When does Adam generalize worse than SGD with momentum?",
-            "Walk through how Adam updates parameters.",
-            "Why is bias correction needed in Adam?"
+            "Walk through Lloyd's algorithm for k-means.",
+            "Why does k-means initialization (k-means++) matter?",
+            "How would you choose k? Elbow vs silhouette vs gap statistic."
           ]
         },
         {
-          "id": "dl-lr-warmup",
-          "label": "LR warmup + cosine decay — why it stabilizes early training",
-          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
-          "meta": "Read",
+          "id": "ml-dbscan",
+          "label": "DBSCAN & HDBSCAN",
+          "href": "https://scikit-learn.org/stable/modules/clustering.html#dbscan",
+          "meta": "scikit-learn",
           "interviewQuestions": [
-            "What does LR warmup actually fix?",
-            "Walk me through how you'd find a good learning rate for a new model.",
-            "When does cosine decay beat step decay?"
+            "When does DBSCAN beat k-means?",
+            "What two hyperparameters does DBSCAN have and how do you pick them?"
+          ]
+        },
+        {
+          "id": "ml-hier",
+          "label": "Hierarchical clustering & dendrograms",
+          "href": "https://www.youtube.com/watch?v=7xHsRkOdVwo",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "When is hierarchical clustering more useful than k-means?",
+            "Compare linkage methods (single, complete, average, Ward)."
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does Adam generalize worse than SGD with momentum?",
-    "What does LR warmup actually fix?",
-    "Walk me through how you'd find a good LR for a new model."
+    "Walk through Lloyd's algorithm for k-means and explain why initialization matters.",
+    "Compare k-means, DBSCAN, and hierarchical clustering — when does each win?",
+    "How would you choose the number of clusters k — elbow, silhouette, or gap statistic?"
   ],
   "references": [
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
     }
   ]
 }

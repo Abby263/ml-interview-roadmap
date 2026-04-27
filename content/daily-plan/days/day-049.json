@@ -1,73 +1,98 @@
 {
   "day": 49,
-  "title": "Intervals finish + Agents",
-  "pillar": "generative-ai",
-  "focus": "Meeting Rooms / Min-interval + planner / executor split.",
+  "title": "CV consolidation + DSA Backtracking",
+  "pillar": "deep-learning",
+  "focus": "Run 60-min CV breadth quiz; rehearse mAP, IoU, U-Net, DETR.",
   "tracks": [
     {
-      "label": "DSA · Intervals",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "lc-meeting-rooms-ii",
-          "label": "Meeting Rooms II",
-          "href": "https://leetcode.com/problems/meeting-rooms-ii/",
-          "meta": "Intervals"
-        },
-        {
-          "id": "lc-minimum-interval-to-include-each-query",
-          "label": "Minimum Interval TO Include Each Query",
-          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
-          "meta": "Intervals"
+          "id": "lc-palindrome-partitioning",
+          "label": "Palindrome Partitioning",
+          "href": "https://leetcode.com/problems/palindrome-partitioning/",
+          "meta": "Backtracking"
         }
       ]
     },
     {
-      "label": "GenAI · Agents",
+      "label": "DL · CNN architectures",
       "items": [
         {
-          "id": "llm-agents",
-          "label": "Anthropic: Building effective agents",
-          "href": "https://www.anthropic.com/engineering/building-effective-agents",
-          "meta": "Read (canonical)",
+          "id": "cnn-arch-list",
+          "label": "AlexNet → VGG → Inception → ResNet → DenseNet → EfficientNet",
+          "href": "https://cs231n.github.io/convolutional-networks/#case",
+          "meta": "CS231n",
           "interviewQuestions": [
-            "When is a multi-agent architecture justified?",
-            "What's the planner / executor split, and why?",
-            "How do you stop an agent from looping on a failing tool?"
+            "What problem did ResNet's residual connections actually solve?",
+            "Why did 1×1 convs become so important (Inception, bottleneck blocks)?"
           ]
         },
         {
-          "id": "llm-tool-use",
-          "label": "Tool-use schemas + permissions",
-          "href": "https://platform.openai.com/docs/guides/function-calling",
-          "meta": "Docs",
+          "id": "cnn-resnet",
+          "label": "Why ResNet works: identity mappings",
+          "href": "https://arxiv.org/abs/1512.03385",
+          "meta": "He et al.",
           "interviewQuestions": [
-            "Walk through how function-calling works at the protocol level.",
-            "How do you design tool schemas that the model uses correctly?",
-            "What's the right permission model for irreversible tool actions?"
+            "Explain why training error went UP with depth before ResNet.",
+            "Walk me through a residual block."
           ]
+        },
+        {
+          "id": "cnn-eff",
+          "label": "Depthwise separable convs (MobileNet, EfficientNet)",
+          "href": "https://arxiv.org/abs/1905.11946",
+          "meta": "EfficientNet"
+        }
+      ]
+    },
+    {
+      "label": "DL · ViT, CLIP, multimodal",
+      "items": [
+        {
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT)",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
+          ]
+        },
+        {
+          "id": "cv-clip",
+          "label": "CLIP: contrastive image-text pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective."
+          ]
+        },
+        {
+          "id": "cv-multimodal",
+          "label": "BLIP, LLaVA, multimodal LLMs",
+          "href": "https://arxiv.org/abs/2304.08485",
+          "meta": "LLaVA"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When is a multi-agent architecture justified?",
-    "What's the planner / executor split, and why?",
-    "How do you stop an agent from looping on a failing tool?"
+    "What problem did ResNet's residual connections actually solve?",
+    "Why are 1×1 convolutions so important — Inception modules and bottleneck blocks?",
+    "How do depthwise separable convolutions reduce compute, and where does MobileNet use them?"
   ],
   "references": [
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
     },
     {
-      "label": "Anthropic — Building Effective Agents",
-      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
-      "source": "Anthropic"
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
     }
-  ],
-  "topicId": "agents-and-guardrails",
-  "questionIds": [
-    "agent-architecture"
   ]
 }

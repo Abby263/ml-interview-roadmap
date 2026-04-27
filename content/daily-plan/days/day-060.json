@@ -1,68 +1,74 @@
 {
   "day": 60,
-  "title": "Bit (cont.) + Feature stores",
-  "pillar": "ml-system-design",
-  "focus": "Counting Bits / XOR + online/offline parity, feature TTLs.",
+  "title": "Training pipelines & experiment tracking",
+  "pillar": "mlops",
+  "focus": "Airflow vs Kubeflow vs Prefect; MLflow / W&B; reproducibility traps.",
   "tracks": [
     {
-      "label": "DSA · Bit Manipulation",
+      "label": "DSA · NeetCode 1-D DP",
       "items": [
         {
-          "id": "lc-missing-number",
-          "label": "Missing Number",
-          "href": "https://leetcode.com/problems/missing-number/",
-          "meta": "Bit Manipulation"
+          "id": "lc-climbing-stairs",
+          "label": "Climbing Stairs",
+          "href": "https://leetcode.com/problems/climbing-stairs/",
+          "meta": "1-D DP"
         },
         {
-          "id": "lc-sum-of-two-integers",
-          "label": "Sum OF Two Integers",
-          "href": "https://leetcode.com/problems/sum-of-two-integers/",
-          "meta": "Bit Manipulation"
-        },
-        {
-          "id": "lc-reverse-integer",
-          "label": "Reverse Integer",
-          "href": "https://leetcode.com/problems/reverse-integer/",
-          "meta": "Bit Manipulation"
+          "id": "lc-min-cost-climbing-stairs",
+          "label": "Min Cost Climbing Stairs",
+          "href": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+          "meta": "1-D DP"
         }
       ]
     },
     {
-      "label": "ML system design · Feature stores",
+      "label": "MLOps · Training pipelines & experiment tracking",
       "items": [
         {
-          "id": "sd-feast",
-          "label": "Feast / Tecton overview — what a feature store actually does",
-          "href": "https://docs.feast.dev/",
-          "meta": "Docs",
+          "id": "mlops-pipelines",
+          "label": "Pipeline orchestrators: Airflow, Prefect, Kubeflow, Metaflow",
+          "href": "https://www.kubeflow.org/",
+          "meta": "Kubeflow",
           "interviewQuestions": [
-            "When does a feature store earn its complexity vs become overhead?",
-            "How do you ensure offline / online parity over months?",
-            "What's the failure mode of feature staleness in a fraud model?"
+            "Compare Airflow vs Prefect vs Kubeflow for ML pipelines.",
+            "When does an ML team outgrow Airflow?"
           ]
         },
         {
-          "id": "sd-pit-correct",
-          "label": "Point-in-time correctness — the canonical bug",
-          "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Walk me through point-in-time correctness for a fraud model backfill.",
-            "What goes wrong if you join features without timestamp filtering?",
-            "How do you test that point-in-time correctness is preserved?"
-          ]
+          "id": "mlops-tracking",
+          "label": "Experiment tracking: MLflow, W&B, Comet",
+          "href": "https://docs.wandb.ai/",
+          "meta": "W&B"
+        },
+        {
+          "id": "mlops-repro",
+          "label": "Reproducibility: seeds, environments, lockfiles",
+          "href": "https://huggingface.co/docs/transformers/main_classes/trainer",
+          "meta": "HF Trainer"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does a feature store earn its complexity vs become overhead?",
-    "Walk me through point-in-time correctness for a fraud model backfill.",
-    "How do you ensure offline / online parity over months?"
+    "Compare Airflow vs Prefect vs Kubeflow for ML pipelines — when does each fit?",
+    "What metadata do you log for every training run, and why does it matter?",
+    "Why does setting a seed not guarantee bit-perfect reproducibility on GPUs?"
   ],
-  "references": [],
-  "topicId": "feature-stores",
-  "questionIds": [
-    "feature-store-purpose"
+  "references": [
+    {
+      "label": "MLflow docs",
+      "href": "https://mlflow.org/docs/latest/index.html",
+      "source": "MLflow"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    }
   ]
 }

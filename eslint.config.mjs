@@ -11,6 +11,7 @@ const config = [
       "coverage/**",
       "dist/**",
       "node_modules/**",
+      "scripts/**",
     ],
   },
   ...nextVitals,

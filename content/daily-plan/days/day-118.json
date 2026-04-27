@@ -1,25 +1,57 @@
 {
   "day": 118,
-  "title": "Taper: 1 light coding mock + walk",
-  "pillar": "foundations",
-  "focus": "Stay sharp without burning out.",
+  "title": "Design image generation product (DALL-E / Midjourney scale) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "GPU capacity & queueing; cost; safety filters (NSFW/IP/deepfake).",
   "tracks": [
     {
-      "label": "Light",
+      "label": "DSA · NeetCode Math & Geometry",
       "items": [
         {
-          "id": "taper-mock",
-          "label": "1 medium LC, 25 min, no Hard",
-          "meta": "Timed"
+          "id": "lc-multiply-strings",
+          "label": "Multiply Strings",
+          "href": "https://leetcode.com/problems/multiply-strings/",
+          "meta": "Math & Geometry"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Image generation",
+      "items": [
+        {
+          "id": "sd-imggen-design",
+          "label": "Design an image-generation product (DALL-E/Midjourney scale)",
+          "href": "https://stability.ai/",
+          "meta": "Stability AI",
+          "interviewQuestions": [
+            "Walk me through designing an image-generation product end-to-end.",
+            "How would you handle GPU capacity, queueing, and cost?"
+          ]
         },
         {
-          "id": "taper-walk",
-          "label": "Walk 30 min — let it absorb",
-          "meta": "Recovery"
+          "id": "sd-imggen-safety",
+          "label": "Safety: NSFW, IP, deepfakes",
+          "href": "https://openai.com/safety",
+          "meta": "OpenAI"
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "Walk me through designing an image-generation product end-to-end.",
+    "How would you handle GPU capacity, queueing, and cost?",
+    "How would you build safety filters for an image-generation product (NSFW, IP, deepfakes)?"
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

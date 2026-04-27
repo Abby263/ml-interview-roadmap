@@ -1,82 +1,71 @@
 {
   "day": 27,
-  "title": "Graphs finish + Normalization",
-  "pillar": "deep-learning",
-  "focus": "Word Ladder / Topo sort + batch / layer / group norm.",
+  "title": "Feature selection (filter / wrapper / embedded / SHAP)",
+  "pillar": "traditional-ml",
+  "focus": "Mutual information, L1, permutation, SHAP — fair attributions.",
   "tracks": [
     {
-      "label": "DSA · Graphs",
+      "label": "DSA · NeetCode Tries",
       "items": [
         {
-          "id": "lc-course-schedule-ii",
-          "label": "Course Schedule II",
-          "href": "https://leetcode.com/problems/course-schedule-ii/",
-          "meta": "Graphs"
+          "id": "lc-implement-trie-prefix-tree",
+          "label": "Implement Trie Prefix Tree",
+          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "meta": "Tries"
         },
         {
-          "id": "lc-redundant-connection",
-          "label": "Redundant Connection",
-          "href": "https://leetcode.com/problems/redundant-connection/",
-          "meta": "Graphs"
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries"
         },
         {
-          "id": "lc-number-of-connected-components-in-an-undirected-graph",
-          "label": "Number OF Connected Components IN AN Undirected Graph",
-          "href": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
-          "meta": "Graphs"
-        },
-        {
-          "id": "lc-graph-valid-tree",
-          "label": "Graph Valid Tree",
-          "href": "https://leetcode.com/problems/graph-valid-tree/",
-          "meta": "Graphs"
-        },
-        {
-          "id": "lc-word-ladder",
-          "label": "Word Ladder",
-          "href": "https://leetcode.com/problems/word-ladder/",
-          "meta": "Graphs"
+          "id": "lc-word-search-ii",
+          "label": "Word Search II",
+          "href": "https://leetcode.com/problems/word-search-ii/",
+          "meta": "Tries"
         }
       ]
     },
     {
-      "label": "Deep learning · Normalization",
+      "label": "ML · Feature selection",
       "items": [
         {
-          "id": "dl-batchnorm",
-          "label": "Why batch norm stabilizes training",
-          "href": "https://arxiv.org/abs/1502.03167",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Why does batch norm help? And what's the modern critique?",
-            "What goes wrong with batch norm at very small batch sizes?",
-            "How does batch norm behave differently at training vs inference?"
-          ]
+          "id": "ml-fs-filter",
+          "label": "Filter methods: chi-squared, mutual information",
+          "href": "https://scikit-learn.org/stable/modules/feature_selection.html",
+          "meta": "scikit-learn"
         },
         {
-          "id": "dl-layernorm",
-          "label": "Layer norm — why transformers prefer it",
-          "href": "https://arxiv.org/abs/1607.06450",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Why do transformers use layer norm and not batch norm?",
-            "When would you choose group norm over layer norm?",
-            "What's the role of normalization in training stability?"
-          ]
+          "id": "ml-fs-embedded",
+          "label": "Embedded: L1, tree-based importance",
+          "href": "https://scikit-learn.org/stable/modules/feature_selection.html#l1-based-feature-selection",
+          "meta": "scikit-learn"
+        },
+        {
+          "id": "ml-fs-shap",
+          "label": "SHAP for feature attribution",
+          "href": "https://shap.readthedocs.io/",
+          "meta": "SHAP"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why does batch norm help? And what's the modern critique?",
-    "Why do transformers use layer norm and not batch norm?",
-    "What goes wrong with batch norm at very small batch sizes?"
+    "Compare filter, wrapper, and embedded feature selection — when do you reach for each?",
+    "Why is L1 regularization effectively a feature selector?",
+    "How does SHAP compute fair feature attributions and where can it mislead you?"
   ],
   "references": [
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
     }
   ]
 }

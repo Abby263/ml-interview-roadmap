@@ -1,46 +1,83 @@
 {
   "day": 78,
-  "title": "OOP fundamentals + design patterns",
-  "pillar": "foundations",
-  "focus": "Classes, inheritance, polymorphism + Singleton / Factory / Observer / Strategy.",
+  "title": "RAG foundations: pipeline + chunking + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "When RAG vs FT; latency in retrieve→rerank→generate; chunk strategies.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "oop-solid",
-          "label": "SOLID principles — short reference",
-          "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
-          "meta": "Read"
+          "id": "lc-meeting-rooms-ii",
+          "label": "Meeting Rooms II",
+          "href": "https://leetcode.com/problems/meeting-rooms-ii/",
+          "meta": "Intervals"
         },
         {
-          "id": "oop-patterns",
-          "label": "Refactoring.guru — design patterns catalog",
-          "href": "https://refactoring.guru/design-patterns",
-          "meta": "Reference"
+          "id": "lc-minimum-interval-to-include-each-query",
+          "label": "Minimum Interval TO Include Each Query",
+          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+          "meta": "Intervals"
         }
       ]
     },
     {
-      "label": "Practice",
+      "label": "GenAI · RAG foundations",
       "items": [
         {
-          "id": "oop-impl-singleton",
-          "label": "Implement Singleton + Factory in your language",
-          "meta": "Code"
+          "id": "rag-why",
+          "label": "Why RAG: closed-book vs open-book LLMs",
+          "href": "https://python.langchain.com/docs/concepts/rag/",
+          "meta": "LangChain",
+          "interviewQuestions": [
+            "When would you reach for RAG over fine-tuning, and vice versa?",
+            "What problems does RAG solve that long context windows don't?"
+          ]
         },
         {
-          "id": "oop-impl-observer",
-          "label": "Implement Observer + Strategy",
-          "meta": "Code"
+          "id": "rag-pipeline",
+          "label": "Standard RAG pipeline: index → retrieve → rerank → generate",
+          "href": "https://www.pinecone.io/learn/retrieval-augmented-generation/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Walk through the four stages of a standard RAG pipeline.",
+            "Where does latency hide in a RAG pipeline?"
+          ]
+        },
+        {
+          "id": "rag-chunking",
+          "label": "Chunking strategies: fixed, semantic, hierarchical",
+          "href": "https://www.pinecone.io/learn/chunking-strategies/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Compare fixed-size, semantic, and hierarchical chunking — when does each fit?",
+            "How does chunk size affect retrieval quality vs answer quality?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Explain Liskov Substitution and Single Responsibility in 30 seconds each.",
-    "When does Factory beat direct construction?",
-    "Where would Observer fit in an ML system?"
+    "When would you reach for RAG over fine-tuning, and vice versa?",
+    "Walk through the four stages of a standard RAG pipeline and where latency hides.",
+    "Compare fixed-size, semantic, and hierarchical chunking — when does each fit?",
+    "How does chunk size affect retrieval quality vs answer quality?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    }
+  ]
 }

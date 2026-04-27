@@ -1,84 +1,94 @@
 {
   "day": 8,
-  "title": "Stack + Bias-variance trade-off",
-  "pillar": "traditional-ml",
-  "focus": "Stack patterns + the most-asked ML diagnostic.",
+  "title": "Linear algebra essentials + DSA Math & Geometry",
+  "pillar": "math-stats",
+  "focus": "Vectors, matrices, dot product, norms — the operations under everything.",
   "tracks": [
     {
-      "label": "DSA · Stack",
+      "label": "DSA · NeetCode Math & Geometry",
       "items": [
         {
-          "id": "lc-valid-parentheses",
-          "label": "Valid Parentheses",
-          "href": "https://leetcode.com/problems/valid-parentheses/",
-          "meta": "Stack"
+          "id": "lc-rotate-image",
+          "label": "Rotate Image",
+          "href": "https://leetcode.com/problems/rotate-image/",
+          "meta": "Math & Geometry"
         },
         {
-          "id": "lc-min-stack",
-          "label": "Min Stack",
-          "href": "https://leetcode.com/problems/min-stack/",
-          "meta": "Stack"
+          "id": "lc-spiral-matrix",
+          "label": "Spiral Matrix",
+          "href": "https://leetcode.com/problems/spiral-matrix/",
+          "meta": "Math & Geometry"
         },
         {
-          "id": "lc-evaluate-reverse-polish-notation",
-          "label": "Evaluate Reverse Polish Notation",
-          "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
-          "meta": "Stack"
-        },
-        {
-          "id": "lc-generate-parentheses",
-          "label": "Generate Parentheses",
-          "href": "https://leetcode.com/problems/generate-parentheses/",
-          "meta": "Stack"
+          "id": "lc-set-matrix-zeroes",
+          "label": "Set Matrix Zeroes",
+          "href": "https://leetcode.com/problems/set-matrix-zeroes/",
+          "meta": "Math & Geometry"
         }
       ]
     },
     {
-      "label": "Trad ML · Bias-variance",
+      "label": "Math · Linear algebra essentials",
       "items": [
         {
-          "id": "ml-bias-variance",
-          "label": "Read: bias-variance trade-off (then explain it cold)",
-          "href": "https://scott.fortmann-roe.com/docs/BiasVariance.html",
-          "meta": "Concept",
+          "id": "linalg-vectors",
+          "label": "Vectors, matrices, dot product, transpose",
+          "href": "https://www.3blue1brown.com/lessons/vectors",
+          "meta": "3Blue1Brown",
           "interviewQuestions": [
-            "Define bias and variance — what does each look like in a learning curve?",
-            "Why does adding more training data only help one of the two?",
-            "When is regularization the wrong remedy?"
+            "What does the dot product mean geometrically?",
+            "Why is the transpose used in y = Xθ vs y = θX?",
+            "How does cosine similarity relate to the dot product?"
           ]
         },
         {
-          "id": "ml-bv-curves",
-          "label": "Diagnose under- vs over-fitting from learning curves",
-          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
-          "meta": "Docs",
+          "id": "linalg-rank-null",
+          "label": "Rank, null space, column space",
+          "href": "https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces",
+          "meta": "Khan Academy",
           "interviewQuestions": [
-            "Walk me through a learning curve and tell me whether the model is over- or under-fitting.",
-            "What does it mean when train and validation loss both plateau high?",
-            "How would you debug a model with high variance?"
+            "What is the rank of a matrix and why does it matter for solving Ax = b?",
+            "What does it mean for a feature matrix X to be rank-deficient, and how does it affect linear regression?"
+          ]
+        },
+        {
+          "id": "linalg-norms",
+          "label": "Norms (L1, L2, infinity) and cosine similarity",
+          "href": "https://machinelearningmastery.com/vector-norms-machine-learning/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Compare L1, L2, and L-infinity norms — when do you use each?",
+            "How does the choice of norm change the geometry of regularization?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Define bias and variance — what does each look like in a learning curve?",
-    "Why does adding more training data only help one of the two?",
-    "When is regularization the wrong remedy?"
+    "What does the dot product mean geometrically, and why is cosine similarity preferred over raw dot product for normalized embeddings?",
+    "Compare L1 vs L2 regularization — what's the geometric intuition, and when does L1 give true sparsity?",
+    "What is matrix rank, and how does rank deficiency in your feature matrix break OLS regression?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "3Blue1Brown — Essence of Linear Algebra",
+      "href": "https://www.3blue1brown.com/topics/linear-algebra",
+      "source": "3Blue1Brown"
     },
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "Khan Academy — Linear Algebra",
+      "href": "https://www.khanacademy.org/math/linear-algebra",
+      "source": "Khan Academy"
+    },
+    {
+      "label": "Gilbert Strang — Linear Algebra (MIT 18.06)",
+      "href": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "source": "MIT OCW"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
     }
-  ],
-  "questionIds": [
-    "bias-variance"
   ]
 }

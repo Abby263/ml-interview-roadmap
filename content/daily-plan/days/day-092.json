@@ -1,33 +1,72 @@
 {
   "day": 92,
-  "title": "Behavioral · Company-specific prep",
-  "pillar": "behavioral-storytelling",
-  "focus": "Tailor stories to each target company's value rubric.",
+  "title": "Distributed training: DDP, FSDP, ZeRO + DSA review",
+  "pillar": "mlops",
+  "focus": "Gradient sync; sharding strategies; NCCL.",
   "tracks": [
     {
-      "label": "Research",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "beh-company-read",
-          "label": "Read recent posts / blog / RFCs from your top companies",
-          "meta": "Read"
+          "id": "lc-kth-smallest-element-in-a-bst",
+          "label": "Kth Smallest Element IN A Bst",
+          "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Infra · Distributed training",
+      "items": [
+        {
+          "id": "dist-ddp",
+          "label": "Data parallelism: DDP",
+          "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Walk me through how DDP synchronizes gradients across GPUs.",
+            "What does NCCL do in this picture?"
+          ]
         },
         {
-          "id": "beh-company-map",
-          "label": "Map your existing stories to their stated values",
-          "meta": "Doc"
+          "id": "dist-fsdp",
+          "label": "FSDP, ZeRO, DeepSpeed",
+          "href": "https://engineering.fb.com/2021/07/15/open-source/fsdp/",
+          "meta": "Meta",
+          "interviewQuestions": [
+            "How does FSDP shard parameters, gradients, and optimizer state?",
+            "Compare ZeRO-1, ZeRO-2, ZeRO-3 stages."
+          ]
         },
         {
-          "id": "beh-company-q",
-          "label": "Prepare 2 questions per round per interviewer",
-          "meta": "Doc"
+          "id": "dist-tp-pp",
+          "label": "Tensor & pipeline parallelism",
+          "href": "https://huggingface.co/docs/transformers/perf_train_gpu_many",
+          "meta": "HF"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why this company, specifically?",
-    "What's your strongest value-match story for this company?"
+    "Walk me through how DDP synchronizes gradients across GPUs and what NCCL does.",
+    "How does FSDP shard parameters, gradients, and optimizer state — compare ZeRO-1/2/3.",
+    "When do you need tensor parallelism vs pipeline parallelism vs data parallelism (3D parallelism)?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "PyTorch DDP tutorial",
+      "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "source": "PyTorch"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    }
+  ]
 }

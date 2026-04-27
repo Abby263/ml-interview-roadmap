@@ -1,34 +1,100 @@
 {
   "day": 36,
-  "title": "Cost & capacity planning",
-  "pillar": "mlops",
-  "focus": "Per-request cost decomposition + small-first cascade routing.",
+  "title": "NN basics: perceptron, MLP, activations + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Forward pass, why XOR needs hidden layers, ReLU vs sigmoid vs GELU.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "mlops-llm-cost",
-          "label": "Reducing LLM cost: caching, routing, batching",
-          "href": "https://blog.langchain.dev/reducing-the-cost-of-llm-applications/",
-          "meta": "Read"
+          "id": "lc-invert-binary-tree",
+          "label": "Invert Binary Tree",
+          "href": "https://leetcode.com/problems/invert-binary-tree/",
+          "meta": "Trees"
         },
         {
-          "id": "mlops-gpu-util",
-          "label": "GPU utilization + batch sizing",
-          "href": "https://www.databricks.com/blog/optimize-gpu-utilization-llm-inference",
-          "meta": "Read"
+          "id": "lc-maximum-depth-of-binary-tree",
+          "label": "Maximum Depth OF Binary Tree",
+          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "meta": "Trees"
+        },
+        {
+          "id": "lc-diameter-of-binary-tree",
+          "label": "Diameter OF Binary Tree",
+          "href": "https://leetcode.com/problems/diameter-of-binary-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "DL · Neural network foundations",
+      "items": [
+        {
+          "id": "dl-perceptron",
+          "label": "Perceptron, MLP, forward pass",
+          "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "meta": "DLS C1",
+          "interviewQuestions": [
+            "Walk me through forward pass through a 2-layer MLP for binary classification.",
+            "Why can't a single perceptron solve XOR — and how does adding a hidden layer fix it?"
+          ]
+        },
+        {
+          "id": "dl-activations",
+          "label": "Activations: sigmoid, tanh, ReLU, GELU, SwiGLU",
+          "href": "https://en.wikipedia.org/wiki/Activation_function",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+            "Why did ReLU largely replace sigmoid/tanh in deep networks?",
+            "What is the dying ReLU problem and how do you mitigate it?"
+          ]
+        },
+        {
+          "id": "dl-init",
+          "label": "Weight initialization (Xavier, He)",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does poor initialization cause vanishing or exploding gradients?",
+            "Compare Xavier vs He initialization — which goes with which activation and why?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through cost decomposition for a single LLM request.",
-    "When does a small-first cascade beat a single large model?",
-    "How do you make a cost dashboard actionable for product teams?"
+    "Walk me through the forward pass through a 2-layer MLP for binary classification.",
+    "Why can't a single perceptron solve XOR, and how does adding a hidden layer fix it?",
+    "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+    "Why does poor initialization cause vanishing or exploding gradients?"
   ],
-  "references": [],
-  "questionIds": [
-    "architect-cost-optimization"
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Understanding Deep Learning (free PDF)",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    },
+    {
+      "label": "Karpathy — Neural Networks: Zero to Hero",
+      "href": "https://karpathy.ai/zero-to-hero.html",
+      "source": "Karpathy"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
   ]
 }

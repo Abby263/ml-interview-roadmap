@@ -1,76 +1,113 @@
 {
   "day": 42,
-  "title": "1-D DP finish + Tokenization & embeddings",
-  "pillar": "generative-ai",
-  "focus": "LIS / Partition Equal Subset + BPE intuition + embedding space.",
+  "title": "DL foundations consolidation + DSA Trees finish",
+  "pillar": "deep-learning",
+  "focus": "Run 60-min concept self-quiz on weeks 6 so far; finalize Trees pattern.",
   "tracks": [
     {
-      "label": "DSA · 1-D DP",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "lc-maximum-product-subarray",
-          "label": "Maximum Product Subarray",
-          "href": "https://leetcode.com/problems/maximum-product-subarray/",
-          "meta": "1-D Dynamic Programming"
-        },
-        {
-          "id": "lc-word-break",
-          "label": "Word Break",
-          "href": "https://leetcode.com/problems/word-break/",
-          "meta": "1-D Dynamic Programming"
-        },
-        {
-          "id": "lc-longest-increasing-subsequence",
-          "label": "Longest Increasing Subsequence",
-          "href": "https://leetcode.com/problems/longest-increasing-subsequence/",
-          "meta": "1-D Dynamic Programming"
-        },
-        {
-          "id": "lc-partition-equal-subset-sum",
-          "label": "Partition Equal Subset Sum",
-          "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
-          "meta": "1-D Dynamic Programming"
+          "id": "lc-serialize-and-deserialize-binary-tree",
+          "label": "Serialize And Deserialize Binary Tree",
+          "href": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+          "meta": "Trees"
         }
       ]
     },
     {
-      "label": "GenAI · Tokenization",
+      "label": "DL · Neural network foundations",
       "items": [
         {
-          "id": "llm-bpe",
-          "label": "Byte-pair encoding (BPE)",
-          "href": "https://huggingface.co/learn/llm-course/chapter6/5",
-          "meta": "Read",
+          "id": "dl-perceptron",
+          "label": "Perceptron, MLP, forward pass",
+          "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "meta": "DLS C1",
           "interviewQuestions": [
-            "Why does BPE exist instead of word-level or char-level tokenization?",
-            "What multilingual edge cases break naive BPE?",
-            "How would you handle a domain with lots of new vocabulary?"
+            "Walk me through forward pass through a 2-layer MLP for binary classification.",
+            "Why can't a single perceptron solve XOR — and how does adding a hidden layer fix it?"
           ]
         },
         {
-          "id": "llm-embeddings",
-          "label": "What embeddings encode",
-          "href": "https://jalammar.github.io/illustrated-word2vec/",
+          "id": "dl-activations",
+          "label": "Activations: sigmoid, tanh, ReLU, GELU, SwiGLU",
+          "href": "https://en.wikipedia.org/wiki/Activation_function",
           "meta": "Read",
           "interviewQuestions": [
-            "How does an embedding model differ from an LLM?",
-            "What does cosine similarity actually measure between embeddings?",
-            "How would you evaluate embedding quality?"
+            "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+            "Why did ReLU largely replace sigmoid/tanh in deep networks?",
+            "What is the dying ReLU problem and how do you mitigate it?"
+          ]
+        },
+        {
+          "id": "dl-init",
+          "label": "Weight initialization (Xavier, He)",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does poor initialization cause vanishing or exploding gradients?",
+            "Compare Xavier vs He initialization — which goes with which activation and why?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Backpropagation & autograd",
+      "items": [
+        {
+          "id": "dl-backprop",
+          "label": "Backprop on a computation graph",
+          "href": "https://karpathy.ai/zero-to-hero.html",
+          "meta": "Karpathy",
+          "interviewQuestions": [
+            "Derive backprop for a 2-layer MLP with cross-entropy loss.",
+            "Explain why automatic differentiation is reverse-mode for ML."
+          ]
+        },
+        {
+          "id": "dl-vanishing",
+          "label": "Vanishing & exploding gradients",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does a deep sigmoid network suffer vanishing gradients?",
+            "How do residual connections, ReLU, and BN/LN help?"
+          ]
+        },
+        {
+          "id": "dl-autograd",
+          "label": "PyTorch autograd in 30 minutes",
+          "href": "https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "When would you use torch.no_grad() and detach()?",
+            "What does requires_grad=True actually do under the hood?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why does BPE exist instead of word-level or char-level tokenization?",
-    "What multilingual edge cases break naive BPE?",
-    "How does an embedding model differ from an LLM?"
+    "Walk me through the forward pass through a 2-layer MLP for binary classification.",
+    "Why can't a single perceptron solve XOR, and how does adding a hidden layer fix it?",
+    "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+    "Why does poor initialization cause vanishing or exploding gradients?"
   ],
   "references": [
     {
-      "label": "Hugging Face LLM course",
-      "href": "https://huggingface.co/learn/llm-course",
-      "source": "Hugging Face"
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Understanding Deep Learning (free PDF)",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
     }
   ]
 }

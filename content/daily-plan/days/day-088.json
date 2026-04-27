@@ -1,41 +1,73 @@
 {
   "day": 88,
-  "title": "Behavioral · Most complex project deep dive",
-  "pillar": "behavioral-storytelling",
-  "focus": "Be ready for follow-ups two layers deep.",
+  "title": "Alignment: SFT, RLHF, DPO/IPO/KTO/ORPO + DSA review",
+  "pillar": "generative-ai",
+  "focus": "RLHF three stages; reward hacking; why DPO is simpler.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "beh-proj-brief",
-          "label": "Write a one-page brief: problem, decision, alternatives, outcome, what you'd change",
-          "meta": "Doc"
+          "id": "lc-task-scheduler",
+          "label": "Task Scheduler",
+          "href": "https://leetcode.com/problems/task-scheduler/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · SFT, DPO, RLHF",
+      "items": [
+        {
+          "id": "ft-sft",
+          "label": "Supervised fine-tuning (SFT)",
+          "href": "https://huggingface.co/blog/peft",
+          "meta": "HF"
         },
         {
-          "id": "beh-proj-followups",
-          "label": "Anticipate 3 follow-ups: technical, organizational, hindsight",
-          "meta": "Doc"
+          "id": "ft-rlhf",
+          "label": "RLHF: reward model + PPO",
+          "href": "https://huggingface.co/blog/rlhf",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the three stages of RLHF: SFT → reward model → PPO.",
+            "Why is reward hacking a problem in RLHF?"
+          ]
         },
         {
-          "id": "beh-proj-time",
-          "label": "Practice the 90-second + the 5-minute versions",
-          "meta": "Mock"
+          "id": "ft-dpo",
+          "label": "DPO and friends (IPO, KTO, ORPO)",
+          "href": "https://arxiv.org/abs/2305.18290",
+          "meta": "Rafailov et al.",
+          "interviewQuestions": [
+            "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
+            "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What was the riskiest decision you made in this project?",
-    "What would you change if you ran it again?",
-    "How did you measure success — and was that the right metric?"
+    "Walk through the three stages of RLHF: SFT → reward model → PPO.",
+    "Why is reward hacking a problem in RLHF, and how do you mitigate it?",
+    "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
+    "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "Hugging Face — LoRA & PEFT",
+      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
     }
-  ],
-  "topicId": "project-storytelling"
+  ]
 }

@@ -1,76 +1,85 @@
 {
   "day": 10,
-  "title": "Binary Search + Linear regression",
-  "pillar": "traditional-ml",
-  "focus": "Master binary search variants + the linear baseline you must defend.",
+  "title": "SVD, PCA, t-SNE, UMAP + DSA Math & Geometry finish",
+  "pillar": "math-stats",
+  "focus": "Workhorse decomposition, dimensionality reduction, when to read which plot.",
   "tracks": [
     {
-      "label": "DSA · Binary Search",
+      "label": "DSA · NeetCode Math & Geometry",
       "items": [
         {
-          "id": "lc-binary-search",
-          "label": "Binary Search",
-          "href": "https://leetcode.com/problems/binary-search/",
-          "meta": "Binary Search"
+          "id": "lc-multiply-strings",
+          "label": "Multiply Strings",
+          "href": "https://leetcode.com/problems/multiply-strings/",
+          "meta": "Math & Geometry"
         },
         {
-          "id": "lc-search-a-2d-matrix",
-          "label": "Search A 2d Matrix",
-          "href": "https://leetcode.com/problems/search-a-2d-matrix/",
-          "meta": "Binary Search"
-        },
-        {
-          "id": "lc-koko-eating-bananas",
-          "label": "Koko Eating Bananas",
-          "href": "https://leetcode.com/problems/koko-eating-bananas/",
-          "meta": "Binary Search"
-        },
-        {
-          "id": "lc-find-minimum-in-rotated-sorted-array",
-          "label": "Find Minimum IN Rotated Sorted Array",
-          "href": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
-          "meta": "Binary Search"
+          "id": "lc-detect-squares",
+          "label": "Detect Squares",
+          "href": "https://leetcode.com/problems/detect-squares/",
+          "meta": "Math & Geometry"
         }
       ]
     },
     {
-      "label": "Trad ML · Linear regression",
+      "label": "Math · SVD & PCA",
       "items": [
         {
-          "id": "ml-linreg-derivation",
-          "label": "Derive normal equation + GD update",
-          "href": "https://web.stanford.edu/~jurafsky/slp3/5.pdf",
-          "meta": "Read",
+          "id": "linalg-svd",
+          "label": "Singular Value Decomposition (SVD)",
+          "href": "https://www.youtube.com/watch?v=mBcLRGuAFUk",
+          "meta": "Strang",
           "interviewQuestions": [
-            "Derive the normal equation for linear regression.",
-            "When does GD beat the normal equation in practice?",
-            "What happens to the normal equation if features are collinear?"
+            "Explain SVD geometrically: X = UΣVᵀ.",
+            "Why does SVD always exist while eigendecomposition does not?",
+            "Where is SVD used in recommender systems and embeddings?"
           ]
         },
         {
-          "id": "ml-linreg-assumptions",
-          "label": "Five assumptions (and which ones fail loudly)",
-          "href": "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/",
-          "meta": "Read",
+          "id": "ml-pca",
+          "label": "PCA: derivation, variance retention, when it fails",
+          "href": "https://www.youtube.com/watch?v=FgakZw6K1QQ",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "List the assumptions of linear regression and which ones break loudly.",
-            "What does heteroscedasticity do to OLS estimates?",
-            "How would you detect autocorrelation in residuals?"
+            "Derive PCA as maximizing variance OR minimizing reconstruction error — they give the same answer. Why?",
+            "When does PCA fail (non-Gaussian, non-linear, scale-sensitive)?",
+            "Compare PCA vs t-SNE vs UMAP — when do you pick each?"
+          ]
+        },
+        {
+          "id": "ml-tsne",
+          "label": "t-SNE, UMAP — strengths and how to read the plots",
+          "href": "https://distill.pub/2016/misread-tsne/",
+          "meta": "Distill",
+          "interviewQuestions": [
+            "Why are distances in a t-SNE plot misleading?",
+            "When would you choose UMAP over t-SNE?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When does linear regression break? Walk through 3 failure modes.",
-    "Why is L2 a Bayesian prior on coefficients?",
-    "What does heteroscedasticity do to OLS estimates?"
+    "Explain SVD geometrically and why X = UΣVᵀ always exists even when eigendecomposition doesn't.",
+    "Walk through the derivation of PCA as maximizing variance OR minimizing reconstruction error — show they're equivalent.",
+    "Compare PCA vs t-SNE vs UMAP — strengths, weaknesses, and when you'd reach for each.",
+    "Why are distances in t-SNE plots misleading, and how should you actually interpret them?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "3Blue1Brown — Essence of Linear Algebra",
+      "href": "https://www.3blue1brown.com/topics/linear-algebra",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Gilbert Strang — Linear Algebra (MIT 18.06)",
+      "href": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "source": "MIT OCW"
     }
   ]
 }

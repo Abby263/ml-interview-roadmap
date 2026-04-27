@@ -1,30 +1,93 @@
 {
   "day": 121,
-  "title": "Logistics + setup",
-  "pillar": "behavioral-storytelling",
-  "focus": "Set up the week-of-interview the way athletes taper.",
+  "title": "Multi-model routing & cascades + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Cheap-then-expensive; verifier models; budget-aware routing.",
   "tracks": [
     {
-      "label": "Logistics",
+      "label": "DSA · NeetCode Backtracking",
       "items": [
         {
-          "id": "log-cal",
-          "label": "Calendar holds for sleep + meals + walks",
-          "meta": "Setup"
+          "id": "lc-word-search",
+          "label": "Word Search",
+          "href": "https://leetcode.com/problems/word-search/",
+          "meta": "Backtracking"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan"
         },
         {
-          "id": "log-tools",
-          "label": "Verify hardware: webcam, mic, charger, IDE setup",
-          "meta": "Setup"
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
         },
         {
-          "id": "log-mental",
-          "label": "One mental rehearsal of the worst case",
-          "meta": "Concept"
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan"
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
+        }
+      ]
+    },
+    {
+      "label": "LLMOps · Caching, routing, cost",
+      "items": [
+        {
+          "id": "lo-cache",
+          "label": "Prompt caching & semantic caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic"
+        },
+        {
+          "id": "lo-routing",
+          "label": "Model routing: cheap-then-expensive cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
+        },
+        {
+          "id": "lo-vllm",
+          "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "What does vLLM's PagedAttention do for throughput?",
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
+          ]
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "What levers do you pull when accuracy is great but latency misses the budget?",
+    "How would you design a cascade: cheap model first, expensive model only when needed?",
+    "Walk through cold-start strategies for new users vs new items in a recsys.",
+    "When would you reach for federated learning vs differential privacy vs on-device inference?"
+  ],
+  "references": [
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

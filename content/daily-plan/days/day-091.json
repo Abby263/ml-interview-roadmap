@@ -1,28 +1,69 @@
 {
   "day": 91,
-  "title": "Behavioral · Leadership / influence story",
-  "pillar": "behavioral-storytelling",
-  "focus": "Cross-team alignment without inflating your title.",
+  "title": "LLMOps: caching, routing, vLLM serving",
+  "pillar": "llmops",
+  "focus": "Exact vs semantic caching; cascade routing; PagedAttention.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "beh-lead",
-          "label": "Pick a moment you influenced a decision outside your reporting line",
-          "meta": "Doc"
+          "id": "lc-meeting-rooms-ii",
+          "label": "Meeting Rooms II",
+          "href": "https://leetcode.com/problems/meeting-rooms-ii/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "LLMOps · Caching, routing, cost",
+      "items": [
+        {
+          "id": "lo-cache",
+          "label": "Prompt caching & semantic caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic"
         },
         {
-          "id": "beh-lead-rfc",
-          "label": "Show the framing / RFC / data you used",
-          "meta": "Doc"
+          "id": "lo-routing",
+          "label": "Model routing: cheap-then-expensive cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
+        },
+        {
+          "id": "lo-vllm",
+          "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "What does vLLM's PagedAttention do for throughput?",
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through a time you influenced a decision outside your team.",
-    "What's an RFC you've written that changed direction?"
+    "Compare exact-match prompt caching vs semantic caching — when does each fit?",
+    "How would you route LLM requests across cheap and expensive models — what's the framework?",
+    "What does vLLM's PagedAttention do for throughput, and how does it differ from naive batching?",
+    "Compare vLLM, TensorRT-LLM, and SGLang for LLM serving — strengths of each."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "LangSmith — LLM tracing & eval",
+      "href": "https://docs.smith.langchain.com/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    }
+  ]
 }

@@ -1,23 +1,52 @@
 {
   "day": 119,
-  "title": "Taper: 1 design rehearsal — favorite case",
+  "title": "Design real-time voice agent (ASR → LLM → TTS) + DSA review",
   "pillar": "ml-system-design",
-  "focus": "Run a familiar case to stay in flow.",
+  "focus": "Turn-taking; barge-in; first-audio-out latency budget.",
   "tracks": [
     {
-      "label": "Light",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "taper-fav",
-          "label": "Pick a case you know well; run it cleanly in 45 min",
-          "meta": "Mock"
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Voice agent",
+      "items": [
+        {
+          "id": "sd-voice-design",
+          "label": "Design a real-time voice agent (Sesame/ChatGPT voice)",
+          "href": "https://www.sesame.com/research",
+          "meta": "Sesame",
+          "interviewQuestions": [
+            "Walk me through designing a real-time voice agent (ASR → LLM → TTS).",
+            "How do you handle interruption, turn-taking, and barge-in?",
+            "What's your latency budget end-to-end (first audio out)?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "If this familiar case were changed to require 10x lower latency, what part of your design would change first?",
-    "Which trade-off in your favorite case is most likely to be challenged by a senior interviewer?"
+    "Walk me through designing a real-time voice agent (ASR → LLM → TTS).",
+    "How do you handle interruption, turn-taking, and barge-in?",
+    "What's your latency budget end-to-end (first audio out), and how do you stay under it?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Whisper paper (ASR)",
+      "href": "https://arxiv.org/abs/2212.04356",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
 }

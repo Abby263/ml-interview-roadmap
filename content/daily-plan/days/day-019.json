@@ -1,71 +1,78 @@
 {
   "day": 19,
-  "title": "Tries + Feature engineering & leakage",
+  "title": "Decision trees + DSA Binary Search",
   "pillar": "traditional-ml",
-  "focus": "Trie implementation + spot leakage in features.",
+  "focus": "Splits (Gini/entropy), pruning, why trees are high-variance.",
   "tracks": [
     {
-      "label": "DSA · Tries",
+      "label": "DSA · NeetCode Binary Search",
       "items": [
         {
-          "id": "lc-implement-trie-prefix-tree",
-          "label": "Implement Trie Prefix Tree",
-          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
-          "meta": "Tries"
+          "id": "lc-find-minimum-in-rotated-sorted-array",
+          "label": "Find Minimum IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+          "meta": "Binary Search"
         },
         {
-          "id": "lc-design-add-and-search-words-data-structure",
-          "label": "Design Add And Search Words Data Structure",
-          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
-          "meta": "Tries"
-        },
-        {
-          "id": "lc-word-search-ii",
-          "label": "Word Search II",
-          "href": "https://leetcode.com/problems/word-search-ii/",
-          "meta": "Tries"
+          "id": "lc-search-in-rotated-sorted-array",
+          "label": "Search IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+          "meta": "Binary Search"
         }
       ]
     },
     {
-      "label": "Trad ML · Feature engineering",
+      "label": "ML · Decision trees",
       "items": [
         {
-          "id": "ml-leakage",
-          "label": "Target / temporal / contamination leakage",
-          "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
-          "meta": "Read",
+          "id": "ml-dt",
+          "label": "How a decision tree splits: Gini, entropy, information gain",
+          "href": "https://www.youtube.com/watch?v=_L39rN6gz7Y",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Walk me through 3 ways you'd detect target leakage in a churn model.",
-            "When is target encoding dangerous?",
-            "How do you align offline feature logic with online serving?"
+            "How does a decision tree decide where to split? Compare Gini vs entropy.",
+            "Why are decision trees high-variance, and how does pruning help?"
           ]
         },
         {
-          "id": "ml-encoding",
-          "label": "Encoding choices — one-hot, target, embedding",
-          "href": "https://contrib.scikit-learn.org/category_encoders/",
-          "meta": "Docs",
+          "id": "ml-dt-vs-linear",
+          "label": "Trees vs linear models: when each wins",
+          "href": "https://stats.stackexchange.com/questions/520622",
+          "meta": "Read",
           "interviewQuestions": [
-            "When is one-hot encoding the wrong choice?",
-            "How does target encoding work, and what are its risks?",
-            "When would you reach for a learned embedding instead of one-hot?"
+            "When does a tree-based model crush a linear model and vice versa?",
+            "Why don't decision trees need feature scaling?"
           ]
+        },
+        {
+          "id": "ml-feature-importance",
+          "label": "Feature importance: gain, permutation, SHAP",
+          "href": "https://christophm.github.io/interpretable-ml-book/",
+          "meta": "Molnar"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through 3 ways you'd detect target leakage in a churn model.",
-    "When is target encoding dangerous?",
-    "How do you align offline feature logic with serving?"
+    "How does a decision tree decide where to split, and how do Gini vs entropy compare?",
+    "Why are decision trees inherently high-variance, and what techniques fix it?",
+    "Compare gain-based, permutation, and SHAP feature importance — when does each mislead you?"
   ],
   "references": [
     {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
     }
-  ],
-  "topicId": "feature-engineering-leakage"
+  ]
 }

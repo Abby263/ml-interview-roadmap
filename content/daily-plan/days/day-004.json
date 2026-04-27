@@ -1,58 +1,95 @@
 {
   "day": 4,
-  "title": "Two Pointers (cont.) + Hypothesis testing",
+  "title": "Confidence intervals + bootstrapping + DSA Two Pointers",
   "pillar": "math-stats",
-  "focus": "Finish two-pointers + frame experiments rigorously.",
+  "focus": "CIs, bootstrap, frequentist vs Bayesian; start the Two Pointers pattern.",
   "tracks": [
     {
-      "label": "DSA · Two Pointers",
+      "label": "DSA · NeetCode Two Pointers",
       "items": [
         {
-          "id": "lc-container-with-most-water",
-          "label": "Container With Most Water",
-          "href": "https://leetcode.com/problems/container-with-most-water/",
+          "id": "lc-valid-palindrome",
+          "label": "Valid Palindrome",
+          "href": "https://leetcode.com/problems/valid-palindrome/",
           "meta": "Two Pointers"
         },
         {
-          "id": "lc-trapping-rain-water",
-          "label": "Trapping Rain Water",
-          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "id": "lc-two-sum-ii-input-array-is-sorted",
+          "label": "Two Sum II Input Array IS Sorted",
+          "href": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+          "meta": "Two Pointers"
+        },
+        {
+          "id": "lc-3sum",
+          "label": "3sum",
+          "href": "https://leetcode.com/problems/3sum/",
           "meta": "Two Pointers"
         }
       ]
     },
     {
-      "label": "Stats · Hypothesis testing",
+      "label": "Math · Confidence intervals & bootstrapping",
       "items": [
         {
-          "id": "stats-pvalue",
-          "label": "Null, alternative, p-value, power — fast refresher",
-          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "id": "stats-ci",
+          "label": "Confidence intervals: meaning, construction, common misreadings",
+          "href": "https://en.wikipedia.org/wiki/Confidence_interval#Common_misunderstandings",
           "meta": "Read",
           "interviewQuestions": [
-            "Define p-value precisely — what is it the probability of?",
-            "What goes wrong if you peek at A/B results before the planned end?",
-            "Why is statistical significance not the same as practical significance?"
+            "What does a 95% confidence interval actually mean?",
+            "Why is a 95% CI NOT 'a 95% probability the true value is in this range' under frequentist statistics?",
+            "How would you build a CI for a click-through rate with N=1,000?"
           ]
         },
         {
-          "id": "stats-multitest",
-          "label": "Multiple-testing correction (Bonferroni / FDR)",
-          "href": "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html",
-          "meta": "Docs",
+          "id": "stats-bootstrap",
+          "label": "Bootstrap & permutation tests",
+          "href": "https://www.youtube.com/watch?v=Xz0x-8-cgaQ",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Why does running 20 A/B tests at α=0.05 produce false positives?",
-            "Compare Bonferroni vs FDR correction — when each is appropriate.",
-            "How do you handle multiple comparisons in a feature-importance analysis?"
+            "When is bootstrapping more useful than a parametric CI?",
+            "Walk through bootstrapping a CI for the median.",
+            "How does a permutation test compare to a t-test when assumptions are violated?"
+          ]
+        },
+        {
+          "id": "stats-frequentist-bayes",
+          "label": "Frequentist vs Bayesian intervals",
+          "href": "https://en.wikipedia.org/wiki/Credible_interval",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare frequentist confidence intervals vs Bayesian credible intervals.",
+            "When does a Bayesian credible interval communicate uncertainty more naturally?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What goes wrong if you peek at A/B results before the planned end?",
-    "Define statistical power in one sentence.",
-    "When is FDR correction more appropriate than Bonferroni?"
+    "What does a 95% confidence interval actually mean — and what's the most common misinterpretation?",
+    "Walk through how you'd bootstrap a confidence interval for the median order value.",
+    "When would you reach for a Bayesian credible interval instead of a frequentist CI?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    }
+  ]
 }

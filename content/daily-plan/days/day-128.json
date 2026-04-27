@@ -1,117 +1,67 @@
 {
   "day": 128,
-  "title": "Specialization · NLP / NLU (deep dive)",
-  "pillar": "generative-ai",
-  "focus": "Tokenization, encoder vs decoder vs encoder-decoder, NER, classification, summarization.",
+  "title": "Behavioral: conflict, failure, leadership stories",
+  "pillar": "behavioral-storytelling",
+  "focus": "Five rehearsed STAR stories — record them, listen back, cut filler.",
   "tracks": [
     {
-      "label": "Read · Architectures",
+      "label": "DSA · NeetCode Sliding Window",
       "items": [
         {
-          "id": "nlp-bert",
-          "label": "BERT (encoder) — masked LM",
-          "href": "https://arxiv.org/abs/1810.04805",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "How does BERT's masked-LM pretraining differ from GPT's causal LM?",
-            "When would you use BERT for retrieval vs classification?",
-            "Why is BERT no longer state-of-the-art for many NLP tasks?"
-          ]
-        },
-        {
-          "id": "nlp-t5",
-          "label": "T5 (encoder-decoder) — text-to-text",
-          "href": "https://arxiv.org/abs/1910.10683",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Why is T5's text-to-text framing useful?",
-            "When would you choose an encoder-decoder over a decoder-only model?",
-            "How does T5 handle multi-task training?"
-          ]
-        },
-        {
-          "id": "nlp-gpt",
-          "label": "GPT family (decoder) — autoregressive",
-          "href": "https://lilianweng.github.io/posts/2018-06-24-attention/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Why has the decoder-only architecture won for general LLMs?",
-            "How does in-context learning emerge from autoregressive training?",
-            "What's the trade-off vs encoder-decoder for tasks like translation?"
-          ]
+          "id": "lc-minimum-window-substring",
+          "label": "Minimum Window Substring",
+          "href": "https://leetcode.com/problems/minimum-window-substring/",
+          "meta": "Sliding Window"
         }
       ]
     },
     {
-      "label": "Read · Tasks",
+      "label": "Behavioral · Conflict, failure, leadership",
       "items": [
         {
-          "id": "nlp-ner",
-          "label": "Named entity recognition (NER) tagging schemes (BIO, BILOU)",
-          "href": "https://huggingface.co/docs/transformers/tasks/token_classification",
-          "meta": "Docs",
+          "id": "beh-conflict",
+          "label": "Conflict with a teammate / stakeholder",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
           "interviewQuestions": [
-            "Compare BIO vs BILOU tagging — what do you gain with BILOU?",
-            "How would you handle nested or overlapping entities?",
-            "Why is span-based NER often better than token-level for modern models?"
+            "Tell me about a conflict with a teammate — how did you resolve it?",
+            "When did you disagree with a senior leader's call? What did you do?"
           ]
         },
         {
-          "id": "nlp-summ",
-          "label": "Abstractive vs extractive summarization",
-          "href": "https://huggingface.co/docs/transformers/tasks/summarization",
-          "meta": "Docs",
+          "id": "beh-failure",
+          "label": "Failure and what you learned",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
           "interviewQuestions": [
-            "Compare abstractive vs extractive summarization — when each is the right call.",
-            "How would you evaluate an abstractive summarizer without a gold reference?",
-            "What's the failure mode when the model invents facts in summarization?"
+            "Tell me about a project that failed — what would you do differently?",
+            "Describe a time you missed a deadline — root cause and learning."
           ]
-        }
-      ]
-    },
-    {
-      "label": "Practice",
-      "items": [
-        {
-          "id": "nlp-design",
-          "label": "Design a multilingual customer support classifier",
-          "meta": "Whiteboard"
         },
         {
-          "id": "nlp-eval",
-          "label": "Pick an evaluation suite for your NLP system (BLEU / ROUGE / BERTScore / human)",
-          "href": "https://huggingface.co/docs/evaluate",
-          "meta": "Docs"
+          "id": "beh-leadership",
+          "label": "Leadership / influence without authority",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Tell me about a time you led without formal authority.",
+            "Describe a time you mentored someone through a hard problem."
+          ]
         }
       ]
     }
   ],
-  "interviewQuestions": [
-    "Encoder vs decoder vs encoder-decoder — when do you pick each?",
-    "How do transformers handle different modalities (text → image → audio)?",
-    "Walk me through how you'd evaluate a summarization system.",
-    "Why is tokenization the most common cause of multilingual NLP bugs?"
-  ],
+  "interviewQuestions": [],
   "references": [
     {
-      "label": "Hugging Face LLM course",
-      "href": "https://huggingface.co/learn/llm-course",
-      "source": "Hugging Face"
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
     },
     {
-      "label": "Hugging Face NLP Course",
-      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
-      "source": "Hugging Face"
-    },
-    {
-      "label": "Illustrated Transformer (Jay Alammar)",
-      "href": "https://jalammar.github.io/illustrated-transformer/",
-      "source": "Jay Alammar"
-    },
-    {
-      "label": "Papers with Code — SOTA leaderboards",
-      "href": "https://paperswithcode.com/sota",
-      "source": "Papers with Code"
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
     }
   ]
 }

@@ -1,12 +1,18 @@
 {
   "day": 2,
-  "title": "Arrays & Hashing (cont.) + Distributions + Eigenvalues / SVD / PCA",
+  "title": "Distributions you'll see in interviews + DSA Arrays/Hashing",
   "pillar": "math-stats",
-  "focus": "Finish arrays + connect distributions to assumptions + the linear-algebra trio interviewers test.",
+  "focus": "Bernoulli/Binomial/Poisson/Normal/Exponential. CLT intuition. More NeetCode arrays/hashing.",
   "tracks": [
     {
       "label": "DSA · NeetCode Arrays & Hashing",
       "items": [
+        {
+          "id": "lc-group-anagrams",
+          "label": "Group Anagrams",
+          "href": "https://leetcode.com/problems/group-anagrams/",
+          "meta": "Arrays & Hashing"
+        },
         {
           "id": "lc-top-k-frequent-elements",
           "label": "Top K Frequent Elements",
@@ -18,113 +24,79 @@
           "label": "Encode And Decode Strings",
           "href": "https://leetcode.com/problems/encode-and-decode-strings/",
           "meta": "Arrays & Hashing"
-        },
-        {
-          "id": "lc-product-of-array-except-self",
-          "label": "Product OF Array Except Self",
-          "href": "https://leetcode.com/problems/product-of-array-except-self/",
-          "meta": "Arrays & Hashing"
-        },
-        {
-          "id": "lc-valid-sudoku",
-          "label": "Valid Sudoku",
-          "href": "https://leetcode.com/problems/valid-sudoku/",
-          "meta": "Arrays & Hashing"
-        },
-        {
-          "id": "lc-longest-consecutive-sequence",
-          "label": "Longest Consecutive Sequence",
-          "href": "https://leetcode.com/problems/longest-consecutive-sequence/",
-          "meta": "Arrays & Hashing"
         }
       ]
     },
     {
-      "label": "Math · Distributions",
+      "label": "Math · Distributions you'll see in interviews",
       "items": [
         {
-          "id": "stats-distributions",
-          "label": "Binomial / Poisson / Gaussian — when each fits",
-          "href": "https://www.probabilitycourse.com/chapter3/3_2_3_pmf_examples.php",
-          "meta": "Read",
+          "id": "stats-discrete-dists",
+          "label": "Bernoulli, Binomial, Poisson, Geometric — when to use which",
+          "href": "https://seeing-theory.brown.edu/probability-distributions/index.html",
+          "meta": "Interactive",
           "interviewQuestions": [
-            "When does the Poisson approximation to the Binomial work, and why is it useful in interviews?",
-            "Why is Gaussian a default assumption — and when is it dangerously wrong?",
-            "Pick a distribution to model time-between-events. Justify your choice."
+            "When should you model click events as Bernoulli vs Poisson?",
+            "Derive the mean and variance of a Binomial(n, p).",
+            "Why does the Poisson approximate the Binomial when n is large and p small?"
           ]
         },
         {
-          "id": "stats-heavy-tail",
-          "label": "Heavy tails and how they bite (income, latency)",
-          "href": "https://en.wikipedia.org/wiki/Heavy-tailed_distribution",
+          "id": "stats-continuous-dists",
+          "label": "Normal, Exponential, Uniform, Beta, Gamma — properties & use cases",
+          "href": "https://en.wikipedia.org/wiki/List_of_probability_distributions",
           "meta": "Read",
           "interviewQuestions": [
-            "What goes wrong when you assume Gaussian for income or latency data?",
-            "How would you detect heavy tails in a dataset before modeling?",
-            "Why does the central limit theorem fail to save you on heavy-tailed inputs?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Math · Eigenvalues, SVD, PCA",
-      "items": [
-        {
-          "id": "linalg-eigen",
-          "label": "Eigenvectors / eigenvalues — the visual intuition",
-          "href": "https://www.3blue1brown.com/lessons/eigenvectors",
-          "meta": "Watch",
-          "interviewQuestions": [
-            "Explain eigenvectors and eigenvalues geometrically — no formulas.",
-            "Why are eigenvectors useful for PCA?",
-            "When does a matrix have no real eigenvalues?"
+            "Why is the Normal so common — what's the Central Limit Theorem intuition?",
+            "When would you pick a Beta distribution over a Normal?",
+            "How is the Exponential distribution memoryless, and why does that matter for modeling time-to-event?"
           ]
         },
         {
-          "id": "linalg-svd",
-          "label": "SVD walkthrough (the algorithm behind embeddings + PCA)",
-          "href": "https://en.wikipedia.org/wiki/Singular_value_decomposition",
-          "meta": "Read",
+          "id": "stats-clt",
+          "label": "Central Limit Theorem & Law of Large Numbers",
+          "href": "https://www.youtube.com/watch?v=YAlJCEDH2uY",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Walk me through SVD on a small matrix and explain what U, Σ, V represent.",
-            "How are SVD and PCA related?",
-            "Why is truncated SVD a useful compression technique for embeddings?"
-          ]
-        },
-        {
-          "id": "linalg-pca",
-          "label": "PCA as compression + denoising + visualization",
-          "href": "https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Explain how PCA works — what does it actually compute step by step?",
-            "What information does PCA throw away, and why does that matter?",
-            "How would you choose the number of components without ground truth?"
+            "State the Central Limit Theorem precisely and explain what it does NOT say.",
+            "How does the CLT justify using normal-based confidence intervals on means?",
+            "When does the CLT fail or converge slowly?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Explain how PCA works — what does it actually compute?",
-    "How are word embeddings related to SVD?",
-    "When is the Poisson approximation to the Binomial a useful interview move?"
+    "Compare Bernoulli, Binomial, and Poisson — when do you reach for each in modeling?",
+    "Why is the normal distribution everywhere — what's the CLT and what does it actually claim?",
+    "When does the CLT fail or converge slowly enough that you should NOT trust it?",
+    "Pick a real product metric (e.g., session length): which distribution would you model it with and why?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
     },
     {
-      "label": "3Blue1Brown — Essence of Linear Algebra",
-      "href": "https://www.3blue1brown.com/topics/linear-algebra",
-      "source": "3Blue1Brown"
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
     },
     {
-      "label": "Gilbert Strang — Linear Algebra (MIT 18.06)",
-      "href": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
-      "source": "MIT OCW"
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
     }
   ]
 }

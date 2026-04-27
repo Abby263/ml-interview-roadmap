@@ -1,82 +1,78 @@
 {
   "day": 13,
-  "title": "Linked List (cont.) + Classification metrics + calibration",
-  "pillar": "traditional-ml",
-  "focus": "Pick metrics matching the business decision + calibration deep dive.",
+  "title": "Bias-variance, double descent, learning curves",
+  "pillar": "math-stats",
+  "focus": "The framing every model debugging conversation falls back on.",
   "tracks": [
     {
-      "label": "DSA · Linked List",
+      "label": "DSA · NeetCode Bit Manipulation",
       "items": [
         {
-          "id": "lc-copy-list-with-random-pointer",
-          "label": "Copy List With Random Pointer",
-          "href": "https://leetcode.com/problems/copy-list-with-random-pointer/",
-          "meta": "Linked List"
+          "id": "lc-sum-of-two-integers",
+          "label": "Sum OF Two Integers",
+          "href": "https://leetcode.com/problems/sum-of-two-integers/",
+          "meta": "Bit Manipulation"
         },
         {
-          "id": "lc-add-two-numbers",
-          "label": "Add Two Numbers",
-          "href": "https://leetcode.com/problems/add-two-numbers/",
-          "meta": "Linked List"
-        },
-        {
-          "id": "lc-linked-list-cycle",
-          "label": "Linked List Cycle",
-          "href": "https://leetcode.com/problems/linked-list-cycle/",
-          "meta": "Linked List"
-        },
-        {
-          "id": "lc-find-the-duplicate-number",
-          "label": "Find The Duplicate Number",
-          "href": "https://leetcode.com/problems/find-the-duplicate-number/",
-          "meta": "Linked List"
+          "id": "lc-reverse-integer",
+          "label": "Reverse Integer",
+          "href": "https://leetcode.com/problems/reverse-integer/",
+          "meta": "Bit Manipulation"
         }
       ]
     },
     {
-      "label": "Trad ML · Metrics + calibration",
+      "label": "ML · Bias-variance trade-off",
       "items": [
         {
-          "id": "ml-metrics-pr-roc",
-          "label": "Precision, recall, F1, ROC-AUC, PR-AUC",
-          "href": "https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall",
-          "meta": "Read",
+          "id": "ml-bias-var",
+          "label": "Bias-variance decomposition with worked example",
+          "href": "https://www.youtube.com/watch?v=EuBBz3bI-aA",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Why is ROC-AUC misleading on imbalanced data?",
-            "When would you pick PR-AUC over ROC-AUC?",
-            "How do you choose F1 vs F0.5 vs F2?"
+            "Decompose expected squared error into bias², variance, and irreducible noise.",
+            "Why does adding more training data reduce variance but not bias?"
           ]
         },
         {
-          "id": "ml-platt-isotonic",
-          "label": "Platt vs isotonic vs temperature scaling",
-          "href": "https://scikit-learn.org/stable/modules/calibration.html#calibration",
-          "meta": "Docs",
+          "id": "ml-double-descent",
+          "label": "Double descent: when more parameters help",
+          "href": "https://openai.com/index/deep-double-descent/",
+          "meta": "OpenAI",
           "interviewQuestions": [
-            "When would you choose isotonic regression over Platt scaling?",
-            "Why does an auction system need calibrated probabilities, not just rankings?",
-            "How does temperature scaling fit into modern deep-learning calibration?"
+            "Explain the double-descent phenomenon. How does it overturn classical bias-variance intuition?",
+            "Why do over-parameterized models often generalize well in deep learning?"
           ]
+        },
+        {
+          "id": "ml-learning-curves",
+          "label": "Learning curves: diagnose underfit vs overfit",
+          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
+          "meta": "scikit-learn"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why is ROC-AUC misleading on imbalanced data?",
-    "When would you choose isotonic regression over Platt scaling?",
-    "Why does an auction system need calibrated probabilities, not just rankings?"
+    "Decompose expected squared error into bias², variance, and irreducible noise — give an example of each.",
+    "How would you diagnose whether to add more data, regularize harder, or grow the model from a learning curve?",
+    "Explain double descent — why does it overturn the classical bias-variance picture?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
     },
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "Google ML Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
     }
-  ],
-  "topicId": "metrics-and-calibration"
+  ]
 }

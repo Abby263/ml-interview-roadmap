@@ -1,33 +1,64 @@
 {
   "day": 100,
-  "title": "Cross-pillar weak-area repair (round 1)",
-  "pillar": "foundations",
-  "focus": "Spend the full session on the gap list, nothing else.",
+  "title": "CV deep dive: production detection, video, multimodal",
+  "pillar": "deep-learning",
+  "focus": "YOLO production pipeline; video transformers; CLIP fusion.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Graphs",
       "items": [
         {
-          "id": "gap-pick",
-          "label": "Pick 3 weakest prompts from your gap list",
-          "meta": "Pick"
+          "id": "lc-redundant-connection",
+          "label": "Redundant Connection",
+          "href": "https://leetcode.com/problems/redundant-connection/",
+          "meta": "Graphs"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · CV deep dive",
+      "items": [
+        {
+          "id": "cv-deep-detection",
+          "label": "Production object detection pipelines",
+          "href": "https://github.com/ultralytics/ultralytics",
+          "meta": "Ultralytics"
         },
         {
-          "id": "gap-redo",
-          "label": "Re-answer cold, then revisit notes",
-          "meta": "Mock"
+          "id": "cv-deep-video",
+          "label": "Video understanding (3D CNN, video transformers)",
+          "href": "https://arxiv.org/abs/2103.15691",
+          "meta": "ViViT"
         },
         {
-          "id": "gap-confirm",
-          "label": "Confirm they leave the gap list",
-          "meta": "Review"
+          "id": "cv-deep-multi",
+          "label": "Multimodal CV: image-text, video-text",
+          "href": "https://openai.com/index/clip/",
+          "meta": "OpenAI"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What pattern is still slowest for you?",
-    "Which ML topic do you avoid in mocks?"
+    "Walk through deploying a YOLO model in production — pre/post-processing, NMS, calibration.",
+    "Compare 3D CNNs vs two-stream vs video transformers for action recognition.",
+    "Walk me through how a multimodal model fuses vision and text — case study CLIP."
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Vision Transformer (ViT) paper",
+      "href": "https://arxiv.org/abs/2010.11929",
+      "source": "Google"
+    },
+    {
+      "label": "CLIP paper",
+      "href": "https://arxiv.org/abs/2103.00020",
+      "source": "OpenAI"
+    }
+  ]
 }

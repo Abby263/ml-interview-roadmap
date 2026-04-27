@@ -1,175 +1,74 @@
 {
   "day": 58,
-  "title": "Math (cont.) + System design framework + interview-prep canon",
-  "pillar": "ml-system-design",
-  "focus": "Happy Number / Plus One + the reusable design scaffold + the canonical interview repos.",
+  "title": "Feature stores (Feast, Tecton) + point-in-time correctness + DSA Adv Graphs",
+  "pillar": "mlops",
+  "focus": "Training/serving skew, offline/online stores, PIT joins.",
   "tracks": [
     {
-      "label": "DSA · Math & Geometry",
+      "label": "DSA · NeetCode Advanced Graphs",
       "items": [
         {
-          "id": "lc-plus-one",
-          "label": "Plus One",
-          "href": "https://leetcode.com/problems/plus-one/",
-          "meta": "Math & Geometry"
+          "id": "lc-network-delay-time",
+          "label": "Network Delay Time",
+          "href": "https://leetcode.com/problems/network-delay-time/",
+          "meta": "Advanced Graphs"
         },
         {
-          "id": "lc-powx-n",
-          "label": "Powx N",
-          "href": "https://leetcode.com/problems/powx-n/",
-          "meta": "Math & Geometry"
-        },
-        {
-          "id": "lc-multiply-strings",
-          "label": "Multiply Strings",
-          "href": "https://leetcode.com/problems/multiply-strings/",
-          "meta": "Math & Geometry"
-        },
-        {
-          "id": "lc-detect-squares",
-          "label": "Detect Squares",
-          "href": "https://leetcode.com/problems/detect-squares/",
-          "meta": "Math & Geometry"
+          "id": "lc-swim-in-rising-water",
+          "label": "Swim IN Rising Water",
+          "href": "https://leetcode.com/problems/swim-in-rising-water/",
+          "meta": "Advanced Graphs"
         }
       ]
     },
     {
-      "label": "ML system design · Framework",
+      "label": "MLOps · Feature stores",
       "items": [
         {
-          "id": "sd-framework",
-          "label": "Read: Chip Huyen — ML systems design TOC",
-          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-          "meta": "Read",
+          "id": "mlops-fs-why",
+          "label": "Why feature stores: training/serving skew, reuse",
+          "href": "https://www.tecton.ai/blog/what-is-a-feature-store/",
+          "meta": "Tecton",
           "interviewQuestions": [
-            "Walk me through your design framework on a fresh prompt.",
-            "What goes wrong if you skip the metrics step?",
-            "How do you decide between batch vs realtime inference?"
+            "What is training/serving skew and how does a feature store eliminate it?",
+            "When is a feature store overkill?"
           ]
         },
         {
-          "id": "sd-halina",
-          "label": "Patrick Halina — ML Systems Design Interview Guide",
-          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "What's the structure Patrick Halina recommends for the design interview?",
-            "Where do most candidates get stuck in design interviews — and why?",
-            "How do you handle the 'I don't know' moment in a design interview?"
-          ]
+          "id": "mlops-fs-tools",
+          "label": "Feast, Tecton, Vertex Feature Store",
+          "href": "https://docs.feast.dev/",
+          "meta": "Feast"
         },
         {
-          "id": "sd-scaffold",
-          "label": "Memorize the scaffold: clarify → metrics → data → model → serving → monitoring → trade-off close",
-          "meta": "Concept",
-          "interviewQuestions": [
-            "Recite the scaffold cold: clarify → metrics → data → model → serving → monitoring → trade-off close.",
-            "Why does the trade-off close matter as much as the design itself?",
-            "What's the one trade-off you'd defend hardest if pushed?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Reference · Interview repos to bookmark",
-      "items": [
-        {
-          "id": "sd-khangich",
-          "label": "khangich/machine-learning-interview — full prep guide",
-          "href": "https://github.com/khangich/machine-learning-interview",
-          "meta": "Repo",
-          "interviewQuestions": [
-            "What's the structure khangich recommends for an ML interview prep schedule?",
-            "Which sections of the repo would you prioritize for a senior MLE loop?",
-            "How would you adapt the repo for an ML Architect loop?"
-          ]
-        },
-        {
-          "id": "sd-alirezadir",
-          "label": "alirezadir/Machine-Learning-Interviews — companion repo",
-          "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-          "meta": "Repo",
-          "interviewQuestions": [
-            "What does alirezadir's repo cover that khangich's doesn't?",
-            "Walk me through one design pattern from the repo you'd use in an interview.",
-            "How do you avoid memorizing answers from these repos?"
-          ]
-        },
-        {
-          "id": "sd-huyen-int",
-          "label": "Chip Huyen — ML Interviews Book (free)",
-          "href": "https://huyenchip.com/ml-interviews-book/",
-          "meta": "Book",
-          "interviewQuestions": [
-            "What's the most useful chapter in Chip Huyen's ML Interviews Book for design rounds?",
-            "How would you use the open-ended questions in the book for self-practice?",
-            "What did you learn from the book that surprised you?"
-          ]
+          "id": "mlops-fs-pit",
+          "label": "Point-in-time correctness",
+          "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
+          "meta": "Tecton"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through your design framework on a fresh prompt.",
-    "What goes wrong if you skip the metrics step?",
-    "How do you decide between batch vs realtime inference?"
+    "What is training/serving skew, and how does a feature store eliminate it?",
+    "Why is point-in-time correctness critical for training data, and how does a feature store handle it?",
+    "When is a feature store overkill — what's the smaller alternative?"
   ],
   "references": [
     {
-      "label": "Logan Thorneloe — ML Road Map (curated, free)",
-      "href": "https://github.com/loganthorneloe/ml-road-map",
-      "source": "GitHub"
+      "label": "Feast feature store docs",
+      "href": "https://docs.feast.dev/",
+      "source": "Feast"
     },
     {
-      "label": "AI for Software Engineers newsletter",
-      "href": "https://aiforswes.com",
-      "source": "AI for SWEs"
-    },
-    {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
-    },
-    {
-      "label": "Full Stack Deep Learning",
-      "href": "https://fullstackdeeplearning.com/",
-      "source": "Full Stack Deep Learning"
-    },
-    {
-      "label": "Chip Huyen — ML Interviews Book (free)",
-      "href": "https://huyenchip.com/ml-interviews-book/",
-      "source": "Chip Huyen"
-    },
-    {
-      "label": "Khangich — Machine Learning Interview repo",
-      "href": "https://github.com/khangich/machine-learning-interview",
-      "source": "GitHub"
-    },
-    {
-      "label": "alirezadir — Machine Learning Interviews",
-      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-      "source": "GitHub"
-    },
-    {
-      "label": "Patrick Halina — ML Systems Design Interview Guide",
-      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
-      "source": "Patrick Halina"
-    },
-    {
-      "label": "DataScienceJay — interview walkthroughs",
-      "href": "https://www.youtube.com/c/DataScienceJay/videos",
-      "source": "YouTube"
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
     },
     {
       "label": "Made with ML — full MLOps course",
       "href": "https://madewithml.com/",
       "source": "Goku Mohandas"
-    },
-    {
-      "label": "MIT — ML Efficiency playlist",
-      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
-      "source": "MIT"
     }
-  ],
-  "topicId": "system-design-framework"
+  ]
 }

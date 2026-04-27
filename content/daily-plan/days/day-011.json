@@ -1,75 +1,89 @@
 {
   "day": 11,
-  "title": "Binary Search (cont.) + Logistic regression + regularization",
-  "pillar": "traditional-ml",
-  "focus": "Finish binary search + logistic regression + L1 vs L2.",
+  "title": "Calculus & gradients + DSA Bit Manipulation kickoff",
+  "pillar": "math-stats",
+  "focus": "Chain rule, partial derivatives, Jacobians, Hessians — what backprop will use.",
   "tracks": [
     {
-      "label": "DSA · Binary Search",
+      "label": "DSA · NeetCode Bit Manipulation",
       "items": [
         {
-          "id": "lc-search-in-rotated-sorted-array",
-          "label": "Search IN Rotated Sorted Array",
-          "href": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
-          "meta": "Binary Search"
+          "id": "lc-single-number",
+          "label": "Single Number",
+          "href": "https://leetcode.com/problems/single-number/",
+          "meta": "Bit Manipulation"
         },
         {
-          "id": "lc-time-based-key-value-store",
-          "label": "Time Based Key Value Store",
-          "href": "https://leetcode.com/problems/time-based-key-value-store/",
-          "meta": "Binary Search"
+          "id": "lc-number-of-1-bits",
+          "label": "Number OF 1 Bits",
+          "href": "https://leetcode.com/problems/number-of-1-bits/",
+          "meta": "Bit Manipulation"
         },
         {
-          "id": "lc-median-of-two-sorted-arrays",
-          "label": "Median OF Two Sorted Arrays",
-          "href": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
-          "meta": "Binary Search"
+          "id": "lc-counting-bits",
+          "label": "Counting Bits",
+          "href": "https://leetcode.com/problems/counting-bits/",
+          "meta": "Bit Manipulation"
         }
       ]
     },
     {
-      "label": "Trad ML · Logistic regression",
+      "label": "Math · Calculus & gradients",
       "items": [
         {
-          "id": "ml-logreg",
-          "label": "Derive logistic loss + gradient by hand",
-          "href": "https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf",
-          "meta": "Read",
+          "id": "calc-derivatives",
+          "label": "Derivatives, partial derivatives, chain rule",
+          "href": "https://www.3blue1brown.com/topics/calculus",
+          "meta": "3Blue1Brown",
           "interviewQuestions": [
-            "Derive the gradient of binary cross-entropy with the sigmoid.",
-            "Why is logistic regression a generalized linear model?",
-            "When would you prefer logistic regression over a tree-based model?"
+            "Derive the chain rule for f(g(x)) and apply it to a 2-layer neural network.",
+            "What's the difference between a partial derivative and a directional derivative?"
           ]
         },
         {
-          "id": "ml-l1-vs-l2",
-          "label": "L1 vs L2 — sparsity vs shrinkage intuition",
-          "href": "https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c/",
-          "meta": "Read",
+          "id": "calc-gradients",
+          "label": "Gradients, Jacobians, Hessians",
+          "href": "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives",
+          "meta": "Khan Academy",
           "interviewQuestions": [
-            "Why does L1 produce sparse weights and L2 doesn't?",
-            "Explain L2 regularization as a Bayesian prior.",
-            "When is elastic net the right call?"
+            "What does the gradient vector represent geometrically?",
+            "When would you need the full Jacobian or Hessian in ML?",
+            "Why do second-order methods (Newton) rarely scale to deep nets?"
+          ]
+        },
+        {
+          "id": "calc-backprop",
+          "label": "Backprop as the chain rule on a computation graph",
+          "href": "https://colah.github.io/posts/2015-08-Backprop/",
+          "meta": "colah",
+          "interviewQuestions": [
+            "Explain backpropagation as the chain rule applied to a computation graph.",
+            "Why do vanishing gradients happen, and how do ReLU / residual connections help?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why does L1 produce sparse weights and L2 doesn't?",
-    "What does multicollinearity do to logistic regression coefficients?",
-    "Walk me through how you would calibrate a logistic-regression model."
+    "Walk through backpropagation as the chain rule on a computation graph — for a simple 2-layer MLP.",
+    "What does the gradient vector represent geometrically, and why do we move opposite to it during training?",
+    "Why do vanishing gradients happen in deep networks and how do ReLU and residual connections help?"
   ],
   "references": [
     {
-      "label": "Understanding Deep Learning (Simon Prince) — free PDF",
-      "href": "https://udlbook.github.io/udlbook/",
-      "source": "UDL Book"
+      "label": "3Blue1Brown — Essence of Calculus",
+      "href": "https://www.3blue1brown.com/topics/calculus",
+      "source": "3Blue1Brown"
     },
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "Khan Academy — Linear Algebra",
+      "href": "https://www.khanacademy.org/math/linear-algebra",
+      "source": "Khan Academy"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
     }
   ]
 }

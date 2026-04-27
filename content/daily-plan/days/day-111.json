@@ -1,30 +1,57 @@
 {
   "day": 111,
-  "title": "Mid-funnel rest day (light review)",
-  "pillar": "behavioral-storytelling",
-  "focus": "Don't add new content. Recovery compounds.",
+  "title": "Design Uber ETA + dynamic pricing + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "DeepETA features; surge pricing optimization.",
   "tracks": [
     {
-      "label": "Light review",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "rest-resume",
-          "label": "Skim your resume and 1-page project brief",
-          "meta": "Read"
+          "id": "lc-jump-game",
+          "label": "Jump Game",
+          "href": "https://leetcode.com/problems/jump-game/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · ETA & pricing",
+      "items": [
+        {
+          "id": "sd-eta-design",
+          "label": "Design Uber/DoorDash ETA prediction",
+          "href": "https://www.uber.com/blog/deepeta-how-uber-predicts-arrival-times/",
+          "meta": "Uber",
+          "interviewQuestions": [
+            "Walk me through Uber's DeepETA — what features and architecture?",
+            "How do you handle live traffic, weather, and rare events?"
+          ]
         },
         {
-          "id": "rest-walk",
-          "label": "Do something physical — walk, run, gym",
-          "meta": "Recovery"
-        },
-        {
-          "id": "rest-sleep",
-          "label": "Sleep 8+ hours tonight",
-          "meta": "Recovery"
+          "id": "sd-pricing",
+          "label": "Design surge pricing / dynamic pricing",
+          "href": "https://www.uber.com/blog/",
+          "meta": "Uber"
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "Walk me through Uber's DeepETA design — what features and architecture?",
+    "How do you handle live traffic, weather, and rare events in ETA prediction?",
+    "How would you design surge pricing — what's the optimization objective and constraints?"
+  ],
+  "references": [
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    }
+  ]
 }

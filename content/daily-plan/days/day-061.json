@@ -1,71 +1,78 @@
 {
   "day": 61,
-  "title": "Reading + Online serving",
-  "pillar": "ml-system-design",
-  "focus": "No new DSA today — read deeply + design serving for a 100ms p99 budget.",
+  "title": "CI/CD for ML (CD4ML) + DSA 1-D DP",
+  "pillar": "mlops",
+  "focus": "Code + data + model + deployment pipelines; tests for ML.",
   "tracks": [
     {
-      "label": "Read · ML serving",
+      "label": "DSA · NeetCode 1-D DP",
       "items": [
         {
-          "id": "sd-tritan",
-          "label": "Triton / KServe / Ray Serve — what each is for",
-          "href": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "Compare Triton, KServe, and Ray Serve — when each fits.",
-            "What's the role of an inference server beyond just running the model?",
-            "How do you choose between serverless and dedicated GPU for inference?"
-          ]
+          "id": "lc-house-robber",
+          "label": "House Robber",
+          "href": "https://leetcode.com/problems/house-robber/",
+          "meta": "1-D DP"
         },
         {
-          "id": "sd-batching",
-          "label": "Dynamic batching for inference",
-          "href": "https://www.databricks.com/blog/dynamic-batching-llm-inference",
-          "meta": "Read",
-          "interviewQuestions": [
-            "When does dynamic batching hurt latency more than it helps throughput?",
-            "How do you size the max batch size for an LLM inference server?",
-            "What's continuous batching and why does it matter for LLMs?"
-          ]
+          "id": "lc-house-robber-ii",
+          "label": "House Robber II",
+          "href": "https://leetcode.com/problems/house-robber-ii/",
+          "meta": "1-D DP"
         }
       ]
     },
     {
-      "label": "Design exercise",
+      "label": "MLOps · CI/CD for ML",
       "items": [
         {
-          "id": "sd-design-100ms",
-          "label": "Sketch a serving path for a ranking model under 100ms p99",
-          "meta": "Whiteboard"
+          "id": "mlops-cicd",
+          "label": "CI/CD pipelines: code, data, model, deployment",
+          "href": "https://martinfowler.com/articles/cd4ml.html",
+          "meta": "Martin Fowler",
+          "interviewQuestions": [
+            "How does CI/CD for ML differ from traditional CI/CD?",
+            "What are the four levels of MLOps maturity (Google's framing)?"
+          ]
         },
         {
-          "id": "sd-fallback",
-          "label": "Add a graceful-degradation fallback",
-          "meta": "Concept"
+          "id": "mlops-cicd-tests",
+          "label": "Testing ML systems: unit, integration, model, data",
+          "href": "https://eugeneyan.com/writing/testing-ml/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What kinds of tests do you write specifically for ML code?",
+            "What is a behavioral test (CheckList) for an NLP model?"
+          ]
+        },
+        {
+          "id": "mlops-shadow",
+          "label": "Shadow deployments & blue/green for ML",
+          "href": "https://martinfowler.com/articles/cd4ml.html",
+          "meta": "Martin Fowler"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Decompose a 100ms latency budget across feature fetch, model inference, and post-processing.",
-    "When does dynamic batching hurt latency more than it helps throughput?",
-    "What's a graceful-degradation strategy when the model tier saturates?"
+    "How does CI/CD for ML differ from traditional CI/CD — what extra pipelines do you need?",
+    "What kinds of tests do you write specifically for ML code (unit, integration, model, data)?",
+    "Compare shadow, canary, and blue/green deployments for ML — when does each fit?"
   ],
   "references": [
     {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
     },
     {
       "label": "Full Stack Deep Learning",
       "href": "https://fullstackdeeplearning.com/",
-      "source": "Full Stack Deep Learning"
+      "source": "FSDL"
     }
-  ],
-  "topicId": "online-serving-tradeoffs",
-  "questionIds": [
-    "architect-capacity-planning"
   ]
 }

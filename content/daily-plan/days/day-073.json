@@ -1,63 +1,76 @@
 {
   "day": 73,
-  "title": "Case: AI customer-support agent",
-  "pillar": "ml-system-design",
-  "focus": "Tool use + layered guardrails + tiered rollout.",
+  "title": "Decoding strategies + speculative decoding + JSON mode + DSA Greedy",
+  "pillar": "generative-ai",
+  "focus": "Greedy/beam/top-k/top-p/temperature; constrained generation.",
   "tracks": [
     {
-      "label": "Read · Production agents",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "case-agent-anthropic",
-          "label": "Anthropic: building effective agents",
-          "href": "https://www.anthropic.com/engineering/building-effective-agents",
-          "meta": "Read",
-          "interviewQuestions": [
-            "What's an example of an irreversible action that needs hard human-in-the-loop?",
-            "How do you keep an agent from looping on a failing tool?",
-            "What's your red-team plan for a customer-facing agent?"
-          ]
+          "id": "lc-jump-game-ii",
+          "label": "Jump Game II",
+          "href": "https://leetcode.com/problems/jump-game-ii/",
+          "meta": "Greedy"
         },
         {
-          "id": "case-agent-klarna",
-          "label": "Klarna's customer-service AI assistant — public reports",
-          "href": "https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "What signals from Klarna's deployment would tell you the agent is succeeding?",
-            "What metrics would you watch to catch silent regressions?",
-            "How would you handle the long tail of edge-case customer requests?"
-          ]
+          "id": "lc-gas-station",
+          "label": "Gas Station",
+          "href": "https://leetcode.com/problems/gas-station/",
+          "meta": "Greedy"
         }
       ]
     },
     {
-      "label": "Design · On paper",
+      "label": "GenAI · Decoding strategies",
       "items": [
         {
-          "id": "case-agent-arch",
-          "label": "Sketch action allowlist + planner/executor split",
-          "meta": "Whiteboard"
+          "id": "llm-decoding-strats",
+          "label": "Greedy, beam, top-k, top-p, temperature",
+          "href": "https://huggingface.co/blog/how-to-generate",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare greedy, beam, top-k, and nucleus (top-p) decoding.",
+            "Why is beam search usually a bad choice for open-ended generation?",
+            "What does temperature actually do to the softmax distribution?"
+          ]
         },
         {
-          "id": "case-agent-tiered",
-          "label": "Tiered rollout: shadow → read-only → tier-1 → tier-2",
-          "meta": "Whiteboard"
+          "id": "llm-speculative",
+          "label": "Speculative decoding & draft models",
+          "href": "https://arxiv.org/abs/2211.17192",
+          "meta": "Leviathan et al."
+        },
+        {
+          "id": "llm-constrained",
+          "label": "Constrained / structured decoding (JSON mode, grammars)",
+          "href": "https://github.com/outlines-dev/outlines",
+          "meta": "Outlines"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's an example of an irreversible action that needs hard human-in-the-loop?",
-    "How do you keep the agent from looping on a failing tool?",
-    "What's your red-team plan for a customer-facing agent?"
+    "Compare greedy, beam, top-k, and nucleus (top-p) decoding — when do you reach for each?",
+    "Why is beam search usually a bad choice for open-ended generation?",
+    "How does speculative decoding speed up inference without hurting quality?",
+    "How would you force an LLM to emit valid JSON, and what are the failure modes?"
   ],
   "references": [
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
     {
       "label": "OpenAI platform docs",
       "href": "https://platform.openai.com/docs",
       "source": "OpenAI"
     }
-  ],
-  "caseStudySlug": "customer-support-agent"
+  ]
 }

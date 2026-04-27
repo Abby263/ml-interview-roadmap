@@ -1,101 +1,59 @@
 {
   "day": 129,
-  "title": "Specialization · Speech & Audio (deep dive)",
-  "pillar": "deep-learning",
-  "focus": "ASR, TTS, audio embeddings, streaming inference.",
+  "title": "Behavioral: tech leadership + project deep-dive",
+  "pillar": "behavioral-storytelling",
+  "focus": "Walk through your hardest ML system. Trade-offs you considered AND rejected.",
   "tracks": [
     {
-      "label": "Read · Architectures",
+      "label": "DSA · NeetCode Stack",
       "items": [
         {
-          "id": "speech-whisper",
-          "label": "Whisper paper — ASR with weak supervision",
-          "href": "https://arxiv.org/abs/2212.04356",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "How does Whisper handle multiple languages without a language ID input?",
-            "Why does Whisper's weak-supervision data pipeline help generalization?",
-            "What's Whisper's failure mode for low-resource languages?"
-          ]
-        },
-        {
-          "id": "speech-wav2vec",
-          "label": "wav2vec 2.0 — self-supervised audio representations",
-          "href": "https://arxiv.org/abs/2006.11477",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Walk me through wav2vec 2.0's self-supervised pretraining.",
-            "When would you use wav2vec features vs raw mel spectrograms?",
-            "How do you fine-tune wav2vec for a new language?"
-          ]
-        },
-        {
-          "id": "speech-tts",
-          "label": "Modern TTS: VITS / Tortoise / ElevenLabs overview",
-          "href": "https://github.com/jaywalnut310/vits",
-          "meta": "Repo",
-          "interviewQuestions": [
-            "Compare VITS, Tortoise, and ElevenLabs at a high level.",
-            "What's the trade-off between voice quality and inference latency in TTS?",
-            "How would you evaluate TTS quality without humans?"
-          ]
+          "id": "lc-evaluate-reverse-polish-notation",
+          "label": "Evaluate Reverse Polish Notation",
+          "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          "meta": "Stack"
         }
       ]
     },
     {
-      "label": "Read · Audio basics",
+      "label": "Behavioral · Tech leadership & project deep-dive",
       "items": [
         {
-          "id": "speech-mel",
-          "label": "Mel spectrograms + MFCC features",
-          "href": "https://librosa.org/doc/latest/feature.html",
-          "meta": "Docs",
+          "id": "beh-deepdive",
+          "label": "Project deep-dive: structure & narrative",
+          "href": "https://www.lennysnewsletter.com/",
+          "meta": "Lenny's Newsletter",
           "interviewQuestions": [
-            "Why are mel spectrograms preferred over raw waveforms for ASR?",
-            "What's the difference between MFCCs and mel spectrograms?",
-            "How does mel-spectrogram resolution affect downstream models?"
+            "Walk me through the most complex ML system you've shipped.",
+            "What were the trade-offs you considered, and what did you NOT build?"
           ]
         },
         {
-          "id": "speech-stream",
-          "label": "Streaming ASR — chunking + endpointing",
-          "href": "https://nvidia.github.io/NeMo/blogs/streaming.html",
-          "meta": "Read",
-          "interviewQuestions": [
-            "What's the latency-vs-quality trade-off for streaming ASR vs full-utterance ASR?",
-            "How does endpointing work in streaming ASR?",
-            "Walk me through chunking strategy for an LLM-based real-time transcriber."
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Practice",
-      "items": [
+          "id": "beh-influence",
+          "label": "Influence: convincing leadership of an ML investment",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs"
+        },
         {
-          "id": "speech-design",
-          "label": "Design a real-time meeting transcription + summarization system",
-          "meta": "Whiteboard"
+          "id": "beh-cross-team",
+          "label": "Cross-team / cross-org collaboration",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs"
         }
       ]
     }
   ],
-  "interviewQuestions": [
-    "How does Whisper handle multiple languages without a language ID input?",
-    "What's the latency-vs-quality trade-off for streaming ASR vs full-utterance ASR?",
-    "Walk me through your end-to-end real-time transcription system.",
-    "When do you use mel spectrograms vs raw audio inputs?"
-  ],
+  "interviewQuestions": [],
   "references": [
     {
-      "label": "Papers with Code — SOTA leaderboards",
-      "href": "https://paperswithcode.com/sota",
-      "source": "Papers with Code"
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
     },
     {
-      "label": "Hugging Face LLM course",
-      "href": "https://huggingface.co/learn/llm-course",
-      "source": "Hugging Face"
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
     }
   ]
 }

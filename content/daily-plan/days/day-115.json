@@ -1,27 +1,62 @@
 {
   "day": 115,
-  "title": "Story polishing — final pass",
-  "pillar": "behavioral-storytelling",
-  "focus": "Land every story without notes.",
+  "title": "Design LLM eval platform (Braintrust/LangSmith) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Slicing dimensions; PII redaction; continuous online eval.",
   "tracks": [
     {
-      "label": "Practice",
+      "label": "DSA · NeetCode Advanced Graphs",
       "items": [
         {
-          "id": "polish-3",
-          "label": "Run through 3 stories cold; time each",
-          "meta": "Mock"
+          "id": "lc-min-cost-to-connect-all-points",
+          "label": "Min Cost TO Connect All Points",
+          "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+          "meta": "Advanced Graphs"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · LLM eval platform",
+      "items": [
+        {
+          "id": "sd-eval-platform",
+          "label": "Design an LLM eval platform (Braintrust/LangSmith style)",
+          "href": "https://docs.smith.langchain.com/",
+          "meta": "LangSmith",
+          "interviewQuestions": [
+            "Walk me through designing an internal LLM eval platform.",
+            "What dimensions would you slice eval results by?"
+          ]
         },
         {
-          "id": "polish-followup",
-          "label": "Practice the 3 most likely follow-ups for each",
-          "meta": "Mock"
+          "id": "sd-eval-pipeline",
+          "label": "Online + offline eval pipelines",
+          "href": "https://www.braintrust.dev/docs",
+          "meta": "Braintrust"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Which story still needs work?"
+    "Walk me through designing an internal LLM eval platform (Braintrust / LangSmith style).",
+    "What dimensions would you slice eval results by — model, prompt, user, tool?",
+    "How would you continuously evaluate a production LLM agent on real traffic without leaking PII?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "LangSmith — LLM tracing & eval",
+      "href": "https://docs.smith.langchain.com/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ]
 }

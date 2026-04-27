@@ -1,29 +1,67 @@
 {
   "day": 80,
-  "title": "OOP design problems",
-  "pillar": "foundations",
-  "focus": "Walk an OOP design problem end to end (Parking Lot, Cache, Rate Limiter).",
+  "title": "Retrieval strategies: dense / sparse / hybrid / HyDE",
+  "pillar": "generative-ai",
+  "focus": "BM25 + dense fusion; HyDE; multi-query; multi-hop.",
   "tracks": [
     {
-      "label": "Practice · Out loud",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "oop-parking",
-          "label": "Design Parking Lot — classes, methods, edge cases, scale-up",
-          "meta": "Whiteboard"
+          "id": "lc-burst-balloons",
+          "label": "Burst Balloons",
+          "href": "https://leetcode.com/problems/burst-balloons/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Retrieval strategies",
+      "items": [
+        {
+          "id": "rag-dense-sparse",
+          "label": "Dense vs sparse vs hybrid (BM25 + dense)",
+          "href": "https://www.pinecone.io/learn/hybrid-search-intro/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "When does sparse retrieval (BM25) beat dense retrieval?",
+            "How would you combine BM25 and dense scores in hybrid search?"
+          ]
         },
         {
-          "id": "oop-cache",
-          "label": "Design Cache (LRU + TTL)",
-          "meta": "Whiteboard"
+          "id": "rag-query-expansion",
+          "label": "Query expansion: HyDE, multi-query, query rewriting",
+          "href": "https://arxiv.org/abs/2212.10496",
+          "meta": "HyDE",
+          "interviewQuestions": [
+            "How does HyDE work, and when does it actually help?",
+            "When would you decompose a query into multiple sub-queries?"
+          ]
+        },
+        {
+          "id": "rag-multi-hop",
+          "label": "Multi-hop & iterative retrieval",
+          "href": "https://arxiv.org/abs/2305.14283",
+          "meta": "FLARE"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through requirements → classes → methods for a parking lot.",
-    "How would you extend your cache to be thread-safe?",
-    "What's the right way to handle concurrent updates to the LRU?"
+    "When does sparse retrieval (BM25) beat dense retrieval?",
+    "How does HyDE work, and when does it actually help?",
+    "How would you handle a multi-hop question that requires chaining retrieval calls?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
 }

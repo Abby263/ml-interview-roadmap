@@ -1,64 +1,114 @@
 {
   "day": 14,
-  "title": "Linked List finish + Ranking & regression metrics",
-  "pillar": "traditional-ml",
-  "focus": "Wrap LL patterns (LRU, merge-K) + NDCG / MRR / RMSE.",
+  "title": "Math/stats consolidation + DSA Sliding Window finish",
+  "pillar": "math-stats",
+  "focus": "Recap weeks 1-2 with rehearsed answers. Wrap Sliding Window pattern.",
   "tracks": [
     {
-      "label": "DSA · Linked List",
+      "label": "DSA · NeetCode Sliding Window",
       "items": [
         {
-          "id": "lc-lru-cache",
-          "label": "Lru Cache",
-          "href": "https://leetcode.com/problems/lru-cache/",
-          "meta": "Linked List"
+          "id": "lc-minimum-window-substring",
+          "label": "Minimum Window Substring",
+          "href": "https://leetcode.com/problems/minimum-window-substring/",
+          "meta": "Sliding Window"
         },
         {
-          "id": "lc-merge-k-sorted-lists",
-          "label": "Merge K Sorted Lists",
-          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
-          "meta": "Linked List"
-        },
-        {
-          "id": "lc-reverse-nodes-in-k-group",
-          "label": "Reverse Nodes IN K Group",
-          "href": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
-          "meta": "Linked List"
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window"
         }
       ]
     },
     {
-      "label": "Trad ML · Ranking + regression metrics",
+      "label": "ML · Bias-variance trade-off",
       "items": [
         {
-          "id": "ml-ndcg-mrr",
-          "label": "NDCG, MRR, MAP — by hand on a tiny example",
-          "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
-          "meta": "Read",
+          "id": "ml-bias-var",
+          "label": "Bias-variance decomposition with worked example",
+          "href": "https://www.youtube.com/watch?v=EuBBz3bI-aA",
+          "meta": "StatQuest",
           "interviewQuestions": [
-            "Why is NDCG more useful than precision@K for ranking?",
-            "Compute NDCG@3 by hand for a tiny example with relevance grades [3, 2, 0].",
-            "When is MRR the right metric vs MAP?"
+            "Decompose expected squared error into bias², variance, and irreducible noise.",
+            "Why does adding more training data reduce variance but not bias?"
           ]
         },
         {
-          "id": "ml-rmse-mae",
-          "label": "RMSE vs MAE vs R² — when each",
-          "href": "https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics",
-          "meta": "Docs",
+          "id": "ml-double-descent",
+          "label": "Double descent: when more parameters help",
+          "href": "https://openai.com/index/deep-double-descent/",
+          "meta": "OpenAI",
           "interviewQuestions": [
-            "When does R² lie? Give a counter-example.",
-            "Why might MAE be the right metric for a delivery-time model?",
-            "What's the practical difference between RMSE and MSE?"
+            "Explain the double-descent phenomenon. How does it overturn classical bias-variance intuition?",
+            "Why do over-parameterized models often generalize well in deep learning?"
+          ]
+        },
+        {
+          "id": "ml-learning-curves",
+          "label": "Learning curves: diagnose underfit vs overfit",
+          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
+          "meta": "scikit-learn"
+        }
+      ]
+    },
+    {
+      "label": "Math · Optimization for ML",
+      "items": [
+        {
+          "id": "opt-convex",
+          "label": "Convex vs non-convex optimization",
+          "href": "https://web.stanford.edu/~boyd/cvxbook/",
+          "meta": "Boyd",
+          "interviewQuestions": [
+            "What does convexity guarantee for optimization?",
+            "Are deep neural network losses convex? Why does SGD still work?"
+          ]
+        },
+        {
+          "id": "opt-gd",
+          "label": "Gradient descent, SGD, mini-batch SGD",
+          "href": "https://ruder.io/optimizing-gradient-descent/",
+          "meta": "Sebastian Ruder",
+          "interviewQuestions": [
+            "Compare batch GD, SGD, and mini-batch SGD — trade-offs in compute, noise, and convergence.",
+            "Why does SGD with momentum converge faster than vanilla SGD?"
+          ]
+        },
+        {
+          "id": "opt-momentum",
+          "label": "Momentum, Nesterov, Adam, AdamW, schedulers",
+          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
+          "meta": "fast.ai",
+          "interviewQuestions": [
+            "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
+            "Why is the AdamW correction important when using weight decay with adaptive optimizers?",
+            "What's the role of learning-rate warmup and cosine schedules?"
           ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why is NDCG more useful than precision@K for ranking?",
-    "When does R² lie? Give a counter-example.",
-    "How do you sanity-check that your validation metric tracks the production one?"
+    "Decompose expected squared error into bias², variance, and irreducible noise — give an example of each.",
+    "How would you diagnose whether to add more data, regularize harder, or grow the model from a learning curve?",
+    "Explain double descent — why does it overturn the classical bias-variance picture?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
 }

@@ -1,106 +1,49 @@
 {
   "day": 131,
-  "title": "Specialization · RecSys deep dive (Ranking / Predictions)",
-  "pillar": "ml-system-design",
-  "focus": "Two-tower retrieval, multi-task ranking, position bias, key papers.",
+  "title": "Mock interview: ML breadth + ML coding round",
+  "pillar": "behavioral-storytelling",
+  "focus": "6 ML concept questions in 45 min + implement k-means or logreg in 30 min.",
   "tracks": [
     {
-      "label": "Read · Canonical papers",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "rs-yt-mt",
-          "label": "YouTube multi-task ranking system (canonical)",
-          "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Walk me through the YouTube multi-task ranking paper.",
-            "How does multi-task learning balance engagement vs satisfaction?",
-            "How would you weigh tasks when objectives conflict?"
-          ]
-        },
-        {
-          "id": "rs-pal",
-          "label": "PAL — position-bias aware learning for CTR",
-          "href": "https://dl.acm.org/doi/10.1145/3298689.3347033",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "What is position bias and why does PAL care?",
-            "How does PAL correct for position bias at training time?",
-            "How would you test if your CTR model has position bias?"
-          ]
-        },
-        {
-          "id": "rs-twotower",
-          "label": "Sampling-bias-corrected two-tower (Google)",
-          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
-          "meta": "Paper",
-          "interviewQuestions": [
-            "Why does the two-tower architecture work at YouTube scale?",
-            "How does sampling-bias correction work?",
-            "When does a two-tower model lose to a unified ranker?"
-          ]
+          "id": "lc-k-closest-points-to-origin",
+          "label": "K Closest Points TO Origin",
+          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
+          "meta": "Heap / Priority Queue"
         }
       ]
     },
     {
-      "label": "Read · Patterns",
+      "label": "Mock · ML breadth + ML coding round",
       "items": [
         {
-          "id": "rs-yan-discovery",
-          "label": "Eugene Yan — System design for discovery",
-          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Walk me through the canonical 3-stage discovery architecture.",
-            "How do you handle cold-start at each stage?",
-            "What's the role of an exploration budget in discovery?"
-          ]
+          "id": "mock-mlc-breadth",
+          "label": "Breadth round: 6 ML concepts in 45 min",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+          "meta": "alirezadir"
         },
         {
-          "id": "rs-cf-collab",
-          "label": "Two common collaborative-filtering techniques + trade-offs",
-          "href": "https://en.wikipedia.org/wiki/Collaborative_filtering",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Compare two collaborative-filtering techniques and their strengths / weaknesses.",
-            "When does collaborative filtering fail catastrophically?",
-            "How would you combine collaborative + content-based signals?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Practice",
-      "items": [
-        {
-          "id": "rs-design",
-          "label": "Design a 3-stage recommender for short-form video",
-          "meta": "Whiteboard"
-        },
-        {
-          "id": "rs-multitask",
-          "label": "Sketch a multi-task head (engagement + satisfaction + diversity)",
-          "meta": "Whiteboard"
+          "id": "mock-mlc-coding",
+          "label": "ML coding: implement k-means or logistic regression in 30 min",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir"
         }
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare two collaborative-filtering techniques and their strengths / weaknesses.",
-    "How do you correct for position bias when training on click logs?",
-    "How would a multi-task head balance watch-time vs satisfaction signals?",
-    "Walk me through cold-start handling for a brand-new creator."
-  ],
+  "interviewQuestions": [],
   "references": [
     {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
     },
     {
-      "label": "Khangich — Machine Learning Interview repo",
-      "href": "https://github.com/khangich/machine-learning-interview",
-      "source": "GitHub"
+      "label": "Chip Huyen — ML Interviews Book (free)",
+      "href": "https://huyenchip.com/ml-interviews-book/",
+      "source": "Chip Huyen"
     }
   ]
 }

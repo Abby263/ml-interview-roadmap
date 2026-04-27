@@ -1,30 +1,77 @@
 {
   "day": 71,
-  "title": "Case: Fraud detection (part 2)",
-  "pillar": "ml-system-design",
-  "focus": "End-to-end mock + delayed labels + reviewer SLA.",
+  "title": "LLM foundations: pretraining, scaling laws, KV cache + DSA 2-D DP",
+  "pillar": "generative-ai",
+  "focus": "Chinchilla scaling, decoder-only at inference, emergent abilities debate.",
   "tracks": [
     {
-      "label": "Practice · Out loud",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "case-fraud-mock",
-          "label": "Time a 50-min mock",
-          "meta": "Mock"
+          "id": "lc-regular-expression-matching",
+          "label": "Regular Expression Matching",
+          "href": "https://leetcode.com/problems/regular-expression-matching/",
+          "meta": "2-D DP"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM foundations",
+      "items": [
+        {
+          "id": "llm-pretraining",
+          "label": "Pretraining: data, scaling laws (Chinchilla)",
+          "href": "https://arxiv.org/abs/2203.15556",
+          "meta": "Hoffmann et al.",
+          "interviewQuestions": [
+            "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
+            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?"
+          ]
         },
         {
-          "id": "case-fraud-monitor",
-          "label": "Monitoring: score distribution, queue length, fraud-recall@FPR",
-          "meta": "Whiteboard"
+          "id": "llm-arch",
+          "label": "Decoder-only transformer for LLMs",
+          "href": "https://jalammar.github.io/illustrated-gpt2/",
+          "meta": "Jay Alammar",
+          "interviewQuestions": [
+            "Walk me through one forward pass of a decoder-only LLM at inference time.",
+            "What is the KV cache and why is it so important?"
+          ]
+        },
+        {
+          "id": "llm-emergent",
+          "label": "Emergent abilities & in-context learning",
+          "href": "https://arxiv.org/abs/2206.07682",
+          "meta": "Wei et al."
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you keep the reviewer queue from blowing up after a model swap?",
-    "What's the corrective action when fraud-recall@FPR drops 2pp?",
-    "Survivorship bias in fraud labels — how do you mitigate?"
+    "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
+    "Walk through one forward pass of a decoder-only LLM at inference time, including the KV cache.",
+    "What does 'emergent abilities' mean in LLMs and why is the framing controversial?"
   ],
-  "references": [],
-  "caseStudySlug": "fraud-detection"
+  "references": [
+    {
+      "label": "Karpathy — Intro to LLMs",
+      "href": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+      "source": "YouTube"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
+    }
+  ]
 }

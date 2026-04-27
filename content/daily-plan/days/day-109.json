@@ -1,34 +1,68 @@
 {
   "day": 109,
-  "title": "Read & rehearse: monitoring playbooks",
-  "pillar": "mlops",
-  "focus": "Make 'what would you alert on' an automatic answer.",
+  "title": "Design ads CTR prediction at scale + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Billion-cardinality features; cross features; calibration.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Heap / Priority Queue",
       "items": [
         {
-          "id": "monit-yan",
-          "label": "Practical guide to maintaining ML (Eugene Yan)",
-          "href": "https://eugeneyan.com/writing/practical-guide-to-maintaining-machine-learning/",
-          "meta": "Read"
+          "id": "lc-kth-largest-element-in-a-stream",
+          "label": "Kth Largest Element IN A Stream",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+          "meta": "Heap / Priority Queue"
         }
       ]
     },
     {
-      "label": "Practice",
+      "label": "ML System Design · Ads CTR",
       "items": [
         {
-          "id": "monit-write",
-          "label": "Write a 1-page monitoring playbook for one of your case studies",
-          "meta": "Doc"
+          "id": "sd-ctr",
+          "label": "Design ad CTR prediction at scale",
+          "href": "https://research.facebook.com/publications/practical-lessons-from-predicting-clicks-on-ads-at-facebook/",
+          "meta": "Meta",
+          "interviewQuestions": [
+            "Walk me through designing Meta's ad CTR prediction system.",
+            "How do you handle billion-cardinality features (user_id, ad_id) at scale?"
+          ]
+        },
+        {
+          "id": "sd-ctr-features",
+          "label": "Feature engineering for CTR (cross features, embeddings)",
+          "href": "https://research.google/pubs/pub45530/",
+          "meta": "Google"
+        },
+        {
+          "id": "sd-ctr-cal",
+          "label": "Calibration & bid optimization",
+          "href": "https://eugeneyan.com/writing/calibration-eval/",
+          "meta": "Eugene Yan"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the alert that maps directly to a known action?",
-    "How do you avoid alert fatigue?"
+    "Walk me through designing Meta's ad CTR prediction system end-to-end.",
+    "How do you handle billion-cardinality features (user_id, ad_id) at scale?",
+    "Why is calibration critical for ad ranking — what breaks if your model is uncalibrated?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

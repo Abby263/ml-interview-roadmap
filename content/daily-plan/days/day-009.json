@@ -1,70 +1,84 @@
 {
   "day": 9,
-  "title": "Stack (cont.) + Loss functions",
-  "pillar": "traditional-ml",
-  "focus": "Finish stack + connect losses to gradients + when each fits.",
+  "title": "Eigenvalues & condition number + DSA Math & Geometry",
+  "pillar": "math-stats",
+  "focus": "Eigen-decompositions, spectral theorem, why condition number matters in training.",
   "tracks": [
     {
-      "label": "DSA · Stack",
+      "label": "DSA · NeetCode Math & Geometry",
       "items": [
         {
-          "id": "lc-daily-temperatures",
-          "label": "Daily Temperatures",
-          "href": "https://leetcode.com/problems/daily-temperatures/",
-          "meta": "Stack"
+          "id": "lc-happy-number",
+          "label": "Happy Number",
+          "href": "https://leetcode.com/problems/happy-number/",
+          "meta": "Math & Geometry"
         },
         {
-          "id": "lc-car-fleet",
-          "label": "Car Fleet",
-          "href": "https://leetcode.com/problems/car-fleet/",
-          "meta": "Stack"
+          "id": "lc-plus-one",
+          "label": "Plus One",
+          "href": "https://leetcode.com/problems/plus-one/",
+          "meta": "Math & Geometry"
         },
         {
-          "id": "lc-largest-rectangle-in-histogram",
-          "label": "Largest Rectangle IN Histogram",
-          "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
-          "meta": "Stack"
+          "id": "lc-powx-n",
+          "label": "Powx N",
+          "href": "https://leetcode.com/problems/powx-n/",
+          "meta": "Math & Geometry"
         }
       ]
     },
     {
-      "label": "Trad ML · Loss functions",
+      "label": "Math · Eigenvalues, eigenvectors, decompositions",
       "items": [
         {
-          "id": "ml-loss-mse-mae",
-          "label": "MSE vs MAE vs Huber — when each",
-          "href": "https://towardsdatascience.com/common-loss-functions-in-machine-learning-46af0ffc4d23/",
-          "meta": "Read",
+          "id": "linalg-eig",
+          "label": "Eigenvalues & eigenvectors — the geometric picture",
+          "href": "https://www.3blue1brown.com/lessons/eigenvalues",
+          "meta": "3Blue1Brown",
           "interviewQuestions": [
-            "Why is MAE more robust to outliers than MSE?",
-            "When would you choose Huber loss?",
-            "What's the gradient behavior near the minimum for MSE vs MAE?"
+            "What does it mean intuitively for a vector to be an eigenvector of a matrix?",
+            "Where do eigenvalues show up in ML?"
           ]
         },
         {
-          "id": "ml-loss-cross-entropy",
-          "label": "Binary & categorical cross-entropy (derive the gradient)",
-          "href": "https://gombru.github.io/2018/05/23/cross_entropy_loss/",
+          "id": "linalg-spectral",
+          "label": "Spectral theorem & symmetric matrices",
+          "href": "https://en.wikipedia.org/wiki/Spectral_theorem",
           "meta": "Read",
           "interviewQuestions": [
-            "Why is cross-entropy preferred over MSE for classification?",
-            "Derive the gradient of binary cross-entropy by hand.",
-            "What does a class-weighted loss change about gradient updates?"
+            "Why are eigenvectors of symmetric matrices orthogonal, and why does that matter for PCA?",
+            "Compare diagonalization vs eigendecomposition."
           ]
+        },
+        {
+          "id": "linalg-condition",
+          "label": "Condition number & numerical stability",
+          "href": "https://en.wikipedia.org/wiki/Condition_number",
+          "meta": "Read"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Why is cross-entropy preferred over MSE for classification?",
-    "When would you choose MAE or Huber over MSE?",
-    "What does a class-weighted loss change about gradient updates?"
+    "What does it mean intuitively for a vector to be an eigenvector of a matrix?",
+    "Why are eigenvectors of symmetric matrices orthogonal, and why does that matter for PCA?",
+    "What is the condition number of a feature matrix and how does ill-conditioning hurt linear regression?"
   ],
   "references": [
     {
-      "label": "Google Machine Learning Crash Course",
-      "href": "https://developers.google.com/machine-learning/crash-course",
-      "source": "Google"
+      "label": "3Blue1Brown — Essence of Linear Algebra",
+      "href": "https://www.3blue1brown.com/topics/linear-algebra",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "Gilbert Strang — Linear Algebra (MIT 18.06)",
+      "href": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "source": "MIT OCW"
+    },
+    {
+      "label": "Khan Academy — Linear Algebra",
+      "href": "https://www.khanacademy.org/math/linear-algebra",
+      "source": "Khan Academy"
     }
   ]
 }

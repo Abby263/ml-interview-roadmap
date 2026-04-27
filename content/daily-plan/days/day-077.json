@@ -1,59 +1,74 @@
 {
   "day": 77,
-  "title": "Architect trade-off playbook drill",
-  "pillar": "ml-system-design",
-  "focus": "Memorize the 6 architect trade-offs you'll be asked to defend.",
+  "title": "LLM evaluation + benchmarks + LLM-as-judge + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "Perplexity vs MMLU vs GPQA vs SWE-bench; judge calibration.",
   "tracks": [
     {
-      "label": "Read & rehearse",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "tradeoff-batch-realtime",
-          "label": "Batch vs real-time inference",
-          "meta": "Concept"
+          "id": "lc-non-overlapping-intervals",
+          "label": "Non Overlapping Intervals",
+          "href": "https://leetcode.com/problems/non-overlapping-intervals/",
+          "meta": "Intervals"
         },
         {
-          "id": "tradeoff-ft-rag-prompt",
-          "label": "Fine-tune vs RAG vs prompt",
-          "meta": "Concept"
+          "id": "lc-meeting-rooms",
+          "label": "Meeting Rooms",
+          "href": "https://leetcode.com/problems/meeting-rooms/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM evaluation",
+      "items": [
+        {
+          "id": "llm-perplexity",
+          "label": "Perplexity: what it is and isn't",
+          "href": "https://huggingface.co/docs/transformers/perplexity",
+          "meta": "HF"
         },
         {
-          "id": "tradeoff-build-buy",
-          "label": "Build vs buy",
-          "meta": "Concept"
+          "id": "llm-bench",
+          "label": "Benchmarks: MMLU, HumanEval, GPQA, SWE-bench",
+          "href": "https://paperswithcode.com/sota",
+          "meta": "Papers with Code",
+          "interviewQuestions": [
+            "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
+            "Why has benchmark contamination become a serious issue?"
+          ]
         },
         {
-          "id": "tradeoff-central-fed",
-          "label": "Centralized platform vs team-owned",
-          "meta": "Concept"
-        },
-        {
-          "id": "tradeoff-acc-cost-lat",
-          "label": "Accuracy vs cost vs latency cascade",
-          "meta": "Concept"
-        },
-        {
-          "id": "tradeoff-retrain-monitor",
-          "label": "Retrain cadence vs monitoring",
-          "meta": "Concept"
+          "id": "llm-eval-judge",
+          "label": "LLM-as-judge: design, biases, calibration",
+          "href": "https://arxiv.org/abs/2306.05685",
+          "meta": "Zheng et al.",
+          "interviewQuestions": [
+            "When is LLM-as-judge reliable, and what biases does it introduce?",
+            "How would you calibrate an LLM judge to human preferences?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "When do you default to streaming vs batch?",
-    "When does fine-tuning beat RAG?",
-    "How do you make a build-vs-buy decision reversible?"
+    "Define perplexity precisely and explain why it's a poor proxy for downstream task quality.",
+    "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
+    "When is LLM-as-judge reliable, and what biases does it introduce?",
+    "Why has benchmark contamination become a serious issue, and how do you defend against it?"
   ],
   "references": [
     {
-      "label": "ML Systems Design — interview book",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
     }
-  ],
-  "questionIds": [
-    "architect-build-vs-buy",
-    "architect-multi-tenant-isolation"
   ]
 }

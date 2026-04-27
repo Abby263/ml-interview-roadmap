@@ -1,41 +1,102 @@
 {
   "day": 34,
-  "title": "Observability for ML",
-  "pillar": "mlops",
-  "focus": "Logs, metrics, traces — and the model-specific overlay.",
+  "title": "Trad-ML pitfall drills (leakage, imbalance, calibration)",
+  "pillar": "traditional-ml",
+  "focus": "The three failure modes that show up in nearly every ML interview.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Binary Search",
       "items": [
         {
-          "id": "mlops-otel",
-          "label": "OpenTelemetry overview",
-          "href": "https://opentelemetry.io/docs/concepts/",
-          "meta": "Docs"
-        },
-        {
-          "id": "mlops-prom-grafana",
-          "label": "Prometheus + Grafana for ML serving",
-          "href": "https://prometheus.io/docs/practices/instrumentation/",
-          "meta": "Docs"
+          "id": "lc-time-based-key-value-store",
+          "label": "Time Based Key Value Store",
+          "href": "https://leetcode.com/problems/time-based-key-value-store/",
+          "meta": "Binary Search"
         }
       ]
     },
     {
-      "label": "Design exercise",
+      "label": "ML · Cross-validation & evaluation",
       "items": [
         {
-          "id": "mlops-trace",
-          "label": "Trace propagation through inference (request → features → model → response)",
-          "meta": "Whiteboard"
+          "id": "ml-cv",
+          "label": "k-fold, stratified, leave-one-out, time-series CV",
+          "href": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When does k-fold leak data, and what does TimeSeriesSplit do differently?",
+            "Why is stratified k-fold important for imbalanced classification?"
+          ]
+        },
+        {
+          "id": "ml-train-val-test",
+          "label": "Train/val/test split & nested CV",
+          "href": "https://www.youtube.com/watch?v=fSytzGwwBVw",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why do you need both a validation and a test set for hyperparameter tuning?",
+            "What is nested cross-validation and when is it worth the cost?"
+          ]
+        },
+        {
+          "id": "ml-leakage",
+          "label": "Common forms of data leakage",
+          "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Walk through three common ways data leakage sneaks into an ML pipeline.",
+            "How would you build a pipeline that prevents leakage when scaling features?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Imbalanced classification",
+      "items": [
+        {
+          "id": "ml-imbalance-fix",
+          "label": "Resampling, class weights, SMOTE",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "Compare random oversampling, undersampling, SMOTE, and class weighting — when does each help?",
+            "Why can SMOTE leak when applied before cross-validation?"
+          ]
+        },
+        {
+          "id": "ml-imbalance-loss",
+          "label": "Focal loss & cost-sensitive learning",
+          "href": "https://arxiv.org/abs/1708.02002",
+          "meta": "Lin et al."
+        },
+        {
+          "id": "ml-imbalance-eval",
+          "label": "Metric choice for imbalance: PR-AUC, F-beta, MCC",
+          "href": "https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Why is accuracy a terrible metric for imbalanced classification?",
+            "When do you reach for F1, F-beta, MCC, or PR-AUC?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the model-specific overlay on top of standard observability?",
-    "How do you correlate a slow request to a specific model version?",
-    "Walk me through a dashboard you'd actually use in an incident."
+    "Why does standard k-fold leak data on time-series, and what does TimeSeriesSplit do differently?",
+    "Walk through three real ways data leakage sneaks into an ML pipeline and how you'd prevent each.",
+    "Why do you need both a validation and a test set for hyperparameter tuning — can't you just use one?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

@@ -1,35 +1,80 @@
 {
   "day": 39,
-  "title": "Build vs buy + migration planning",
-  "pillar": "mlops",
-  "focus": "Vector stores, feature platforms, eval tooling — when each.",
+  "title": "DL regularization (dropout, BN/LN/RMSNorm, augmentation) + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Why transformers prefer LayerNorm. Mixup. When dropout hurts.",
   "tracks": [
     {
-      "label": "Read",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "bvb-framework",
-          "label": "Build vs buy framework",
-          "href": "https://martinfowler.com/articles/build-or-buy.html",
-          "meta": "Read"
+          "id": "lc-binary-tree-right-side-view",
+          "label": "Binary Tree Right Side View",
+          "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
+          "meta": "Trees"
         },
         {
-          "id": "mig-zero-down",
-          "label": "Zero-downtime migration patterns (Stripe)",
-          "href": "https://stripe.com/blog/online-migrations",
-          "meta": "Read"
+          "id": "lc-count-good-nodes-in-binary-tree",
+          "label": "Count Good Nodes IN Binary Tree",
+          "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "DL · Regularization in deep nets",
+      "items": [
+        {
+          "id": "dl-dropout",
+          "label": "Dropout: training vs inference, inverted dropout",
+          "href": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "meta": "JMLR",
+          "interviewQuestions": [
+            "Why is dropout disabled at inference, and what is inverted dropout?",
+            "Where does dropout work well, and where does it hurt (e.g., conv vs fully-connected)?"
+          ]
+        },
+        {
+          "id": "dl-batchnorm",
+          "label": "BatchNorm vs LayerNorm vs GroupNorm vs RMSNorm",
+          "href": "https://arxiv.org/abs/1607.06450",
+          "meta": "Ba et al.",
+          "interviewQuestions": [
+            "Why does BN behave differently between train and eval mode?",
+            "Why do transformers prefer LayerNorm over BatchNorm?",
+            "What problem does RMSNorm solve in modern LLMs?"
+          ]
+        },
+        {
+          "id": "dl-data-aug",
+          "label": "Data augmentation (vision, text, mixup)",
+          "href": "https://pytorch.org/vision/stable/transforms.html",
+          "meta": "PyTorch"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Frame a build-vs-buy answer as a reversible decision with explicit triggers.",
-    "Walk me through a zero-downtime migration with shadow + parity + ramp.",
-    "What's the rollback trigger you'd commit to for the migration?"
+    "Why is dropout disabled at inference, and what is inverted dropout?",
+    "Why do transformers prefer LayerNorm over BatchNorm?",
+    "Compare BatchNorm, LayerNorm, GroupNorm, and RMSNorm — when does each fit?",
+    "How does mixup regularize a classifier and why does it improve calibration?"
   ],
-  "references": [],
-  "questionIds": [
-    "architect-build-vs-buy",
-    "architect-migration-plan"
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    }
   ]
 }

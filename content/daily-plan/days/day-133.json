@@ -1,0 +1,55 @@
+{
+  "day": 133,
+  "title": "Mock interview: behavioral round + on-site simulation + day-of prep",
+  "pillar": "behavioral-storytelling",
+  "focus": "5 STAR stories back-to-back. Plan logistics for the actual onsite.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-gas-station",
+          "label": "Gas Station",
+          "href": "https://leetcode.com/problems/gas-station/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "Mock · Behavioral round + on-site simulation",
+      "items": [
+        {
+          "id": "mock-beh-stories",
+          "label": "Run 5 STAR stories back-to-back, time each at 3 min",
+          "href": "https://www.themuse.com/advice/star-interview-method",
+          "meta": "The Muse"
+        },
+        {
+          "id": "mock-beh-feedback",
+          "label": "Review recordings: filler words, structure, impact",
+          "href": "https://www.lennysnewsletter.com/",
+          "meta": "Lenny's Newsletter"
+        },
+        {
+          "id": "mock-onsite",
+          "label": "Day-of prep: sleep, food, environment, breaks",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+          "meta": "alirezadir"
+        }
+      ]
+    }
+  ],
+  "interviewQuestions": [],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
+}

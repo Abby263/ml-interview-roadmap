@@ -1,28 +1,63 @@
 {
   "day": 112,
-  "title": "Cross-loop simulation: morning coding + afternoon design",
-  "pillar": "foundations",
-  "focus": "Simulate a real onsite cadence.",
+  "title": "Design news feed / social ranking + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Social-graph signals; chronological vs algorithmic; diversity vs engagement.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Intervals",
       "items": [
         {
-          "id": "sim-am",
-          "label": "AM: 2 coding rounds (45 min each)",
-          "meta": "Timed"
+          "id": "lc-merge-intervals",
+          "label": "Merge Intervals",
+          "href": "https://leetcode.com/problems/merge-intervals/",
+          "meta": "Intervals"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · News feed / social ranking",
+      "items": [
+        {
+          "id": "sd-feed-design",
+          "label": "Design Facebook/Twitter news feed ranking",
+          "href": "https://research.facebook.com/publications/",
+          "meta": "Meta",
+          "interviewQuestions": [
+            "Walk me through designing Twitter's news feed ranking.",
+            "How would you incorporate social-graph signals?",
+            "How do you handle the chronological-vs-algorithmic trade-off?"
+          ]
         },
         {
-          "id": "sim-pm",
-          "label": "PM: 1 model design + 1 infra design (60 min each)",
-          "meta": "Mock"
+          "id": "sd-feed-diversity",
+          "label": "Diversity & filter bubbles",
+          "href": "https://research.facebook.com/publications/",
+          "meta": "Meta"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Where did stamina fail?",
-    "What would you eat / drink to fix it?"
+    "Walk me through designing Twitter's news feed ranking.",
+    "How would you incorporate social-graph signals into a news feed model?",
+    "How do you measure and improve diversity in a feed without hurting engagement?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

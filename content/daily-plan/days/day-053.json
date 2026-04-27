@@ -1,57 +1,79 @@
 {
   "day": 53,
-  "title": "LLMOps · Evaluation datasets and regression gates",
-  "pillar": "llmops",
-  "focus": "Build eval sets that catch regressions before prompt, retrieval, model, or tool changes hit users.",
+  "title": "Pretrained models — BERT, T5, GPT + DSA Graphs",
+  "pillar": "deep-learning",
+  "focus": "Encoder-only vs encoder-decoder vs decoder-only; MLM vs causal LM.",
   "tracks": [
     {
-      "label": "LLMOps · Evals",
+      "label": "DSA · NeetCode Graphs",
       "items": [
         {
-          "id": "llmops-golden-set",
-          "label": "Design a golden dataset with normal, edge, adversarial, and refusal cases",
-          "meta": "Design"
+          "id": "lc-surrounded-regions",
+          "label": "Surrounded Regions",
+          "href": "https://leetcode.com/problems/surrounded-regions/",
+          "meta": "Graphs"
         },
         {
-          "id": "llmops-trace-grading",
-          "label": "Study trace-level grading for agent workflows",
-          "href": "https://platform.openai.com/docs/guides/agent-evals",
-          "meta": "Docs"
-        },
-        {
-          "id": "llmops-offline-online",
-          "label": "Separate offline evals from online feedback and escalation metrics",
-          "meta": "Concept"
+          "id": "lc-rotting-oranges",
+          "label": "Rotting Oranges",
+          "href": "https://leetcode.com/problems/rotting-oranges/",
+          "meta": "Graphs"
         }
       ]
     },
     {
-      "label": "Practice",
+      "label": "NLP · Pretrained models (BERT, T5, GPT)",
       "items": [
         {
-          "id": "llmops-eval-rubric",
-          "label": "Write a rubric for faithfulness, instruction following, safety, latency, and cost",
-          "meta": "Build"
+          "id": "nlp-bert",
+          "label": "BERT: MLM + NSP, encoder-only",
+          "href": "https://arxiv.org/abs/1810.04805",
+          "meta": "Devlin et al.",
+          "interviewQuestions": [
+            "Walk through BERT's MLM and NSP objectives.",
+            "Why is BERT bidirectional while GPT is left-to-right?",
+            "How would you fine-tune BERT for token classification (NER)?"
+          ]
+        },
+        {
+          "id": "nlp-t5-bart",
+          "label": "T5 / BART: encoder-decoder",
+          "href": "https://arxiv.org/abs/1910.10683",
+          "meta": "Raffel et al.",
+          "interviewQuestions": [
+            "What is T5's text-to-text framing, and what does it enable?",
+            "Compare BART vs T5 for summarization."
+          ]
+        },
+        {
+          "id": "nlp-gpt",
+          "label": "GPT: decoder-only, causal LM",
+          "href": "https://openai.com/research/language-unsupervised",
+          "meta": "OpenAI"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you build a regression test suite for a RAG or agent system?",
-    "What should be graded at the trace level rather than only final answer level?",
-    "How do you keep eval datasets from overfitting to your current prompt?"
+    "Walk through BERT's MLM and NSP pretraining objectives — and why later models dropped NSP.",
+    "Compare encoder-only (BERT), decoder-only (GPT), and encoder-decoder (T5) — when do you reach for each?",
+    "How would you fine-tune BERT for NER vs sentence classification — what changes?"
   ],
   "references": [
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
+      "label": "BERT paper",
+      "href": "https://arxiv.org/abs/1810.04805",
+      "source": "Google"
     },
     {
-      "label": "Anthropic — Testing & Evaluation",
-      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
-      "source": "Anthropic"
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
     }
-  ],
-  "topicId": "llm-eval-ops"
+  ]
 }

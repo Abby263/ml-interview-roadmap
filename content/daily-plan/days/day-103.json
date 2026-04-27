@@ -1,28 +1,67 @@
 {
   "day": 103,
-  "title": "Coding mock — fresh medium under 25 min",
-  "pillar": "foundations",
-  "focus": "Speed, not novelty.",
+  "title": "Deep RL: DQN, policy gradients, PPO, GRPO",
+  "pillar": "deep-learning",
+  "focus": "Replay buffer; clipped surrogate; DeepSeek-R1's GRPO.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "mock-fast-1",
-          "label": "Solve a fresh medium in under 25 minutes",
-          "meta": "Timed"
+          "id": "lc-count-good-nodes-in-binary-tree",
+          "label": "Count Good Nodes IN Binary Tree",
+          "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Deep RL",
+      "items": [
+        {
+          "id": "rl-dqn",
+          "label": "DQN: experience replay, target nets",
+          "href": "https://www.nature.com/articles/nature14236",
+          "meta": "DeepMind"
         },
         {
-          "id": "mock-fast-2",
-          "label": "Repeat with a different pattern",
-          "meta": "Timed"
+          "id": "rl-pg",
+          "label": "Policy gradients & REINFORCE",
+          "href": "https://lilianweng.github.io/posts/2018-04-08-policy-gradient/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Walk through the policy gradient theorem.",
+            "Why are baselines used (e.g., advantage estimation)?"
+          ]
+        },
+        {
+          "id": "rl-ppo",
+          "label": "Actor-critic, PPO, GRPO",
+          "href": "https://arxiv.org/abs/1707.06347",
+          "meta": "Schulman et al.",
+          "interviewQuestions": [
+            "Walk me through PPO — what's the clipped surrogate objective and why does it stabilize training?",
+            "How is GRPO (used in DeepSeek-R1) different from PPO?"
+          ]
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What slowed you down?",
-    "Which step were you over-thinking?"
+    "Why does DQN need experience replay and a target network?",
+    "Walk me through PPO — what's the clipped surrogate objective and why does it stabilize training?",
+    "How is GRPO (used in DeepSeek-R1) different from PPO?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "OpenAI — Spinning Up in RL",
+      "href": "https://spinningup.openai.com/en/latest/",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
 }

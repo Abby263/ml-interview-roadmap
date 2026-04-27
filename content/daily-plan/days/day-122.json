@@ -1,25 +1,93 @@
 {
   "day": 122,
-  "title": "Light: 5 quick LC easy + skim resume",
-  "pillar": "foundations",
-  "focus": "Warm up without strain.",
+  "title": "Cold-start strategies (recsys, search, ads) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "New users vs new items; content-based bridges; bandits.",
   "tracks": [
     {
-      "label": "Light",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "warm-easy",
-          "label": "5 LC Easy, no time pressure",
-          "meta": "Practice"
+          "id": "lc-partition-labels",
+          "label": "Partition Labels",
+          "href": "https://leetcode.com/problems/partition-labels/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan"
         },
         {
-          "id": "warm-resume",
-          "label": "Skim resume. Memorize bullet decisions.",
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan"
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
+        }
+      ]
+    },
+    {
+      "label": "Specialization · RecSys foundations",
+      "items": [
+        {
+          "id": "recs-cf",
+          "label": "Collaborative filtering & matrix factorization",
+          "href": "https://developers.google.com/machine-learning/recommendation",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through matrix factorization for recommendations and how SGD trains it.",
+            "What's the cold-start problem in CF and how do hybrid models fix it?"
+          ]
+        },
+        {
+          "id": "recs-content",
+          "label": "Content-based & hybrid recsys",
+          "href": "https://developers.google.com/machine-learning/recommendation/content-based/basics",
+          "meta": "Google"
+        },
+        {
+          "id": "recs-eval",
+          "label": "RecSys metrics: nDCG, MAP, Hit Rate, MRR",
+          "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
           "meta": "Read"
         }
       ]
     }
   ],
-  "interviewQuestions": [],
-  "references": []
+  "interviewQuestions": [
+    "What levers do you pull when accuracy is great but latency misses the budget?",
+    "How would you design a cascade: cheap model first, expensive model only when needed?",
+    "Walk through cold-start strategies for new users vs new items in a recsys.",
+    "When would you reach for federated learning vs differential privacy vs on-device inference?"
+  ],
+  "references": [
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
 }

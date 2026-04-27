@@ -1,48 +1,71 @@
 {
   "day": 67,
-  "title": "Catch-up · half DSA review, half ML review",
-  "pillar": "ml-system-design",
-  "focus": "Re-attempt 3 hardest LC problems + revisit the 3 weakest ML topics.",
+  "title": "Privacy & security: PII, DP, federated, attacks + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "K-anonymity, ε in DP, model-extraction defenses.",
   "tracks": [
     {
-      "label": "DSA review",
+      "label": "DSA · NeetCode 2-D DP",
       "items": [
         {
-          "id": "review-50-1",
-          "label": "Re-solve a previously stuck problem (any pattern)",
-          "meta": "30 min"
+          "id": "lc-best-time-to-buy-and-sell-stock-with-cooldown",
+          "label": "Best Time TO Buy And Sell Stock With Cooldown",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+          "meta": "2-D DP"
         },
         {
-          "id": "review-50-2",
-          "label": "Re-solve another",
-          "meta": "30 min"
-        },
-        {
-          "id": "review-50-3",
-          "label": "Re-solve a third",
-          "meta": "30 min"
+          "id": "lc-coin-change-ii",
+          "label": "Coin Change II",
+          "href": "https://leetcode.com/problems/coin-change-ii/",
+          "meta": "2-D DP"
         }
       ]
     },
     {
-      "label": "ML review",
+      "label": "MLOps · Privacy & security",
       "items": [
         {
-          "id": "review-50-ml-1",
-          "label": "Pick 3 ML topics where you stalled — re-explain each cold",
-          "meta": "Concept"
+          "id": "mlops-pii",
+          "label": "PII handling, anonymization, k-anonymity",
+          "href": "https://en.wikipedia.org/wiki/K-anonymity",
+          "meta": "Read"
         },
         {
-          "id": "review-50-ml-2",
-          "label": "Update your gap list",
-          "meta": "Concept"
+          "id": "mlops-dp",
+          "label": "Differential privacy basics",
+          "href": "https://github.com/google/differential-privacy",
+          "meta": "Google"
+        },
+        {
+          "id": "mlops-fed",
+          "label": "Federated learning",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google"
+        },
+        {
+          "id": "mlops-attacks",
+          "label": "Adversarial & model-extraction attacks",
+          "href": "https://ai.googleblog.com/2018/02/adversarial-examples-on-real.html",
+          "meta": "Google"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What pattern is still slowest for you, and why?",
-    "Which ML topic do you avoid in mocks? Confront it now."
+    "How would you remove PII from training data without destroying signal?",
+    "Explain differential privacy in plain English — what does ε mean and what does it cost in accuracy?",
+    "When is federated learning the right choice over centralized training?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
 }

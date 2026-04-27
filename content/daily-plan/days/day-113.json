@@ -1,28 +1,64 @@
 {
   "day": 113,
-  "title": "Cross-loop simulation: behavioral + GenAI",
-  "pillar": "generative-ai",
-  "focus": "Simulate the second half of an onsite.",
+  "title": "Design enterprise RAG (Glean-style) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Multi-source ingestion; permission-aware retrieval; offline+online eval.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "sim2-beh",
-          "label": "AM: 1 behavioral round (45 min, 5 prompts)",
-          "meta": "Mock"
+          "id": "lc-maximum-depth-of-binary-tree",
+          "label": "Maximum Depth OF Binary Tree",
+          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "meta": "Trees"
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Enterprise RAG",
+      "items": [
+        {
+          "id": "sd-rag-design",
+          "label": "Design enterprise RAG over docs (Glean-style)",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "Walk me through designing an enterprise RAG over Confluence + Slack + Drive.",
+            "How do you handle access control / permissions in retrieval?",
+            "How would you handle 50M docs and 10k QPS?"
+          ]
         },
         {
-          "id": "sim2-genai",
-          "label": "PM: 1 GenAI design + 1 trade-off discussion",
-          "meta": "Mock"
+          "id": "sd-rag-eval",
+          "label": "Eval & monitoring for enterprise RAG",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What story did you over-explain?",
-    "Where did the GenAI design feel formulaic?"
+    "Walk me through designing an enterprise RAG over Confluence + Slack + Google Drive.",
+    "How do you handle access control / permissions in retrieval?",
+    "How would you build an offline + online eval pipeline for an enterprise RAG?",
+    "How would you scale to 50M docs and 10k QPS?"
   ],
-  "references": []
+  "references": [
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    }
+  ]
 }

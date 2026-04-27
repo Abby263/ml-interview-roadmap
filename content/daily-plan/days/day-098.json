@@ -1,40 +1,91 @@
 {
   "day": 98,
-  "title": "GenAI / RAG design mock",
-  "pillar": "generative-ai",
-  "focus": "Architecture round with evals + guardrails included.",
+  "title": "Infra wrap + LLMOps consolidation",
+  "pillar": "llmops",
+  "focus": "Cross-link distributed training + serving + cost questions.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "mock-genai-pick",
-          "label": "Pick an enterprise GenAI prompt",
-          "meta": "Pick"
+          "id": "lc-merge-triplets-to-form-target-triplet",
+          "label": "Merge Triplets TO Form Target Triplet",
+          "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
+          "meta": "Greedy"
+        }
+      ]
+    },
+    {
+      "label": "LLMOps · Caching, routing, cost",
+      "items": [
+        {
+          "id": "lo-cache",
+          "label": "Prompt caching & semantic caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic"
         },
         {
-          "id": "mock-genai-run",
-          "label": "60-min mock",
-          "meta": "Mock"
+          "id": "lo-routing",
+          "label": "Model routing: cheap-then-expensive cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale"
         },
         {
-          "id": "mock-genai-cover",
-          "label": "Cover RAG, evals, cost, safety — end to end",
-          "meta": "Concept"
+          "id": "lo-vllm",
+          "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "What does vLLM's PagedAttention do for throughput?",
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Cost & scaling",
+      "items": [
+        {
+          "id": "mlops-cost",
+          "label": "Cost modeling: training vs inference, batching, autoscaling",
+          "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "How would you model the unit cost of a prediction in production?",
+            "What levers reduce inference cost (batching, quantization, caching, distillation)?"
+          ]
+        },
+        {
+          "id": "mlops-autoscale",
+          "label": "Autoscaling: HPA, KEDA, queue-based",
+          "href": "https://keda.sh/",
+          "meta": "KEDA"
+        },
+        {
+          "id": "mlops-spot",
+          "label": "Spot/preemptible instances for training",
+          "href": "https://cloud.google.com/architecture/run-cost-effective-deep-learning-workloads",
+          "meta": "Google"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's your faithfulness eval design?",
-    "How do you cap cost per request?",
-    "What's the rollback trigger?"
+    "Compare exact-match prompt caching vs semantic caching — when does each fit?",
+    "How would you route LLM requests across cheap and expensive models — what's the framework?",
+    "What does vLLM's PagedAttention do for throughput, and how does it differ from naive batching?",
+    "Compare vLLM, TensorRT-LLM, and SGLang for LLM serving — strengths of each."
   ],
   "references": [
     {
-      "label": "RAG concepts",
-      "href": "https://python.langchain.com/docs/concepts/rag/",
-      "source": "LangChain"
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
     }
   ]
 }

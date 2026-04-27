@@ -1,40 +1,70 @@
 {
   "day": 95,
-  "title": "Coding mock — OpenAI / OOP style",
-  "pillar": "foundations",
-  "focus": "Object-modeling design problem under interview pressure.",
+  "title": "Inference optimization: quantization, distillation, pruning, batching",
+  "pillar": "mlops",
+  "focus": "PTQ vs QAT, GPTQ/AWQ, continuous batching.",
   "tracks": [
     {
-      "label": "Mock",
+      "label": "DSA · NeetCode Math & Geometry",
       "items": [
         {
-          "id": "mock-oai-pick",
-          "label": "Pick an OOP design problem (Cache, Queue, Rate Limiter)",
-          "meta": "Pick"
+          "id": "lc-powx-n",
+          "label": "Powx N",
+          "href": "https://leetcode.com/problems/powx-n/",
+          "meta": "Math & Geometry"
+        }
+      ]
+    },
+    {
+      "label": "Infra · Inference optimization",
+      "items": [
+        {
+          "id": "inf-quant",
+          "label": "Quantization: INT8, INT4, FP8, GPTQ, AWQ",
+          "href": "https://huggingface.co/docs/transformers/main_classes/quantization",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
+            "How do GPTQ and AWQ work, and what quality do you lose?"
+          ]
         },
         {
-          "id": "mock-oai-walk",
-          "label": "Walk requirements → classes → methods → extension question",
-          "meta": "Whiteboard"
+          "id": "inf-distill",
+          "label": "Knowledge distillation (teacher → student)",
+          "href": "https://arxiv.org/abs/1503.02531",
+          "meta": "Hinton et al."
         },
         {
-          "id": "mock-oai-prep",
-          "label": "Be ready for a non-standard behavior round + project presentation",
-          "meta": "Concept"
+          "id": "inf-prune",
+          "label": "Pruning: structured vs unstructured",
+          "href": "https://pytorch.org/tutorials/intermediate/pruning_tutorial.html",
+          "meta": "PyTorch"
+        },
+        {
+          "id": "inf-batch",
+          "label": "Continuous batching & dynamic batching",
+          "href": "https://www.anyscale.com/blog/continuous-batching-llm-inference",
+          "meta": "Anyscale"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What classes would you need? What's the interface for each?",
-    "How would you extend this to be distributed?",
-    "What test cases would you write first?"
+    "Compare post-training quantization vs quantization-aware training — when does each fit?",
+    "Walk me through knowledge distillation — what is the soft-target loss?",
+    "Compare structured vs unstructured pruning — which actually speeds up inference?",
+    "How does continuous batching beat static batching for LLM serving?"
   ],
   "references": [
     {
-      "label": "Prepare in a Hurry (MLE 2.0)",
-      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
-      "source": "Yuan Meng"
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
     }
   ]
 }

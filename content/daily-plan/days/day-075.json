@@ -1,52 +1,74 @@
 {
   "day": 75,
-  "title": "Case: Document intelligence",
-  "pillar": "ml-system-design",
-  "focus": "OCR + extraction + calibrated confidence + reviewer queue.",
+  "title": "Function calling, tool use, MCP + DSA Greedy finish",
+  "pillar": "generative-ai",
+  "focus": "Schemas, retries, hallucinated args; MCP architecture.",
   "tracks": [
     {
-      "label": "Read · Document AI",
+      "label": "DSA · NeetCode Greedy",
       "items": [
         {
-          "id": "case-doc-textract",
-          "label": "AWS Textract overview",
-          "href": "https://aws.amazon.com/textract/",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "When would you build vs buy for OCR?",
-            "What's the failure mode of OCR on scanned PDFs vs digital PDFs?",
-            "How do you handle layout reconstruction for tables?"
-          ]
+          "id": "lc-partition-labels",
+          "label": "Partition Labels",
+          "href": "https://leetcode.com/problems/partition-labels/",
+          "meta": "Greedy"
         },
         {
-          "id": "case-doc-layoutlm",
-          "label": "LayoutLM family — what it does",
-          "href": "https://huggingface.co/docs/transformers/model_doc/layoutlmv3",
-          "meta": "Docs",
-          "interviewQuestions": [
-            "How does LayoutLM use position information that plain LLMs ignore?",
-            "When does LayoutLM beat a vision-language model?",
-            "How would you fine-tune LayoutLM on a custom form?"
-          ]
+          "id": "lc-valid-parenthesis-string",
+          "label": "Valid Parenthesis String",
+          "href": "https://leetcode.com/problems/valid-parenthesis-string/",
+          "meta": "Greedy"
         }
       ]
     },
     {
-      "label": "Design · On paper",
+      "label": "GenAI · Tool use & function calling",
       "items": [
         {
-          "id": "case-doc-arch",
-          "label": "Sketch ingest → OCR → layout → extract → validate → confidence → route",
-          "meta": "Whiteboard"
+          "id": "llm-fc",
+          "label": "Function calling: schemas, parsing, retries",
+          "href": "https://platform.openai.com/docs/guides/function-calling",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Walk through how function calling works under the hood — what does the model actually emit?",
+            "How do you handle a model that hallucinates a tool call with bad arguments?"
+          ]
+        },
+        {
+          "id": "llm-tools-design",
+          "label": "Designing tool catalogs for agents",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+          "meta": "Anthropic"
+        },
+        {
+          "id": "llm-mcp",
+          "label": "Model Context Protocol (MCP)",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How do you compute a calibrated per-field confidence?",
-    "When do you build vs buy for OCR?",
-    "What's the right routing rule between auto-accept and manual review?"
+    "Walk through how function calling works under the hood — what does the model actually emit?",
+    "How do you handle a model that hallucinates a tool call with bad arguments?",
+    "What problem does MCP solve compared to ad-hoc function calling?"
   ],
-  "references": [],
-  "caseStudySlug": "document-intelligence"
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Model Context Protocol",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    }
+  ]
 }

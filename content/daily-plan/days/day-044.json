@@ -1,116 +1,78 @@
 {
   "day": 44,
-  "title": "2-D DP (cont.) + RAG architecture + project: RAG chatbot",
-  "pillar": "generative-ai",
-  "focus": "Edit Distance / Coin Change II + end-to-end RAG + ship a chatbot over your own docs.",
+  "title": "CNN architectures (AlexNet → ResNet → EfficientNet) + DSA Tries",
+  "pillar": "deep-learning",
+  "focus": "What problem each generation solved. Residuals, 1×1 convs, depthwise separable.",
   "tracks": [
     {
-      "label": "DSA · 2-D DP",
+      "label": "DSA · NeetCode Tries",
       "items": [
         {
-          "id": "lc-target-sum",
-          "label": "Target Sum",
-          "href": "https://leetcode.com/problems/target-sum/",
-          "meta": "2-D Dynamic Programming"
+          "id": "lc-implement-trie-prefix-tree",
+          "label": "Implement Trie Prefix Tree",
+          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "meta": "Tries"
         },
         {
-          "id": "lc-interleaving-string",
-          "label": "Interleaving String",
-          "href": "https://leetcode.com/problems/interleaving-string/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-longest-increasing-path-in-a-matrix",
-          "label": "Longest Increasing Path IN A Matrix",
-          "href": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-distinct-subsequences",
-          "label": "Distinct Subsequences",
-          "href": "https://leetcode.com/problems/distinct-subsequences/",
-          "meta": "2-D Dynamic Programming"
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries"
         }
       ]
     },
     {
-      "label": "GenAI · RAG",
+      "label": "DL · CNN architectures",
       "items": [
         {
-          "id": "rag-pipeline",
-          "label": "Chunking → retrieval → reranking → generation → citations",
-          "href": "https://python.langchain.com/docs/concepts/rag/",
-          "meta": "Read",
+          "id": "cnn-arch-list",
+          "label": "AlexNet → VGG → Inception → ResNet → DenseNet → EfficientNet",
+          "href": "https://cs231n.github.io/convolutional-networks/#case",
+          "meta": "CS231n",
           "interviewQuestions": [
-            "Walk me through chunking trade-offs (size + overlap).",
-            "How would you handle citations when the retrieved chunk doesn't actually support the claim?",
-            "What's the right refusal behavior when retrieval is weak?"
+            "What problem did ResNet's residual connections actually solve?",
+            "Why did 1×1 convs become so important (Inception, bottleneck blocks)?"
           ]
         },
         {
-          "id": "rag-hybrid",
-          "label": "Why hybrid (dense + sparse) usually wins",
-          "href": "https://www.pinecone.io/learn/hybrid-search-intro/",
-          "meta": "Read",
+          "id": "cnn-resnet",
+          "label": "Why ResNet works: identity mappings",
+          "href": "https://arxiv.org/abs/1512.03385",
+          "meta": "He et al.",
           "interviewQuestions": [
-            "Why does pure dense retrieval miss product names and error codes?",
-            "How would you combine BM25 and dense scores?",
-            "When does reciprocal rank fusion beat learned re-ranking?"
+            "Explain why training error went UP with depth before ResNet.",
+            "Walk me through a residual block."
           ]
-        }
-      ]
-    },
-    {
-      "label": "Project · Build a RAG chatbot",
-      "items": [
-        {
-          "id": "proj-rag-build",
-          "label": "Chatbot over a custom knowledge base (LangChain + OpenAI)",
-          "href": "https://python.langchain.com/docs/tutorials/rag/",
-          "meta": "Build"
         },
         {
-          "id": "proj-rag-local",
-          "label": "Run the same chatbot fully locally with Ollama",
-          "href": "https://ollama.com/",
-          "meta": "Build"
-        },
-        {
-          "id": "proj-rag-deploy",
-          "label": "Deploy it as a Streamlit / HF Space demo",
-          "href": "https://huggingface.co/spaces",
-          "meta": "Deploy"
+          "id": "cnn-eff",
+          "label": "Depthwise separable convs (MobileNet, EfficientNet)",
+          "href": "https://arxiv.org/abs/1905.11946",
+          "meta": "EfficientNet"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "Walk me through chunking trade-offs (size + overlap).",
-    "Why does pure dense retrieval miss product names and error codes?",
-    "Walk me through the architecture of YOUR RAG chatbot — where would it fail under load?",
-    "How would you handle citations when the retrieved chunk doesn't actually support the claim?"
+    "What problem did ResNet's residual connections actually solve?",
+    "Why are 1×1 convolutions so important — Inception modules and bottleneck blocks?",
+    "How do depthwise separable convolutions reduce compute, and where does MobileNet use them?"
   ],
   "references": [
     {
-      "label": "RAG concepts",
-      "href": "https://python.langchain.com/docs/concepts/rag/",
-      "source": "LangChain"
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
     },
     {
-      "label": "DeepLearning.AI — short courses on GenAI / LLMs",
-      "href": "https://www.deeplearning.ai/short-courses/",
-      "source": "DeepLearning.AI"
+      "label": "ResNet paper",
+      "href": "https://arxiv.org/abs/1512.03385",
+      "source": "He et al."
     },
     {
-      "label": "OpenAI platform docs",
-      "href": "https://platform.openai.com/docs",
-      "source": "OpenAI"
-    },
-    {
-      "label": "Streamlit — quick ML-app deployment",
-      "href": "https://docs.streamlit.io/",
-      "source": "Streamlit"
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
     }
-  ],
-  "topicId": "rag-architecture"
+  ]
 }

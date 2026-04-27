@@ -1,91 +1,62 @@
 {
   "day": 45,
-  "title": "2-D DP finish + Vector stores",
-  "pillar": "generative-ai",
-  "focus": "Distinct Subsequences / Regex Match + HNSW / IVF.",
+  "title": "Transfer learning for vision + DSA Tries finish",
+  "pillar": "deep-learning",
+  "focus": "Freeze vs fine-tune; AutoAugment vs RandAugment.",
   "tracks": [
     {
-      "label": "DSA · 2-D DP",
+      "label": "DSA · NeetCode Tries",
       "items": [
         {
-          "id": "lc-edit-distance",
-          "label": "Edit Distance",
-          "href": "https://leetcode.com/problems/edit-distance/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-burst-balloons",
-          "label": "Burst Balloons",
-          "href": "https://leetcode.com/problems/burst-balloons/",
-          "meta": "2-D Dynamic Programming"
-        },
-        {
-          "id": "lc-regular-expression-matching",
-          "label": "Regular Expression Matching",
-          "href": "https://leetcode.com/problems/regular-expression-matching/",
-          "meta": "2-D Dynamic Programming"
+          "id": "lc-word-search-ii",
+          "label": "Word Search II",
+          "href": "https://leetcode.com/problems/word-search-ii/",
+          "meta": "Tries"
         }
       ]
     },
     {
-      "label": "GenAI · Vector stores",
+      "label": "DL · Transfer learning for vision",
       "items": [
         {
-          "id": "rag-ann",
-          "label": "HNSW vs IVF vs flat — trade-offs",
-          "href": "https://www.pinecone.io/learn/series/faiss/hnsw/",
-          "meta": "Read",
+          "id": "cnn-tl",
+          "label": "Feature extraction vs fine-tuning",
+          "href": "https://www.fast.ai/",
+          "meta": "fast.ai",
           "interviewQuestions": [
-            "How does HNSW work at a high level — what's the trade-off vs flat search?",
-            "Compare HNSW vs IVF-PQ.",
-            "What's the operational cost of re-embedding when the model changes?"
+            "When do you freeze the backbone vs fine-tune end-to-end?",
+            "Why do you usually fine-tune with a lower learning rate than training from scratch?"
           ]
         },
         {
-          "id": "rag-bm25",
-          "label": "When BM25 still wins",
-          "href": "https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables",
-          "meta": "Read",
-          "interviewQuestions": [
-            "When is BM25 better than dense retrieval today?",
-            "Walk me through BM25's IDF term and why it matters.",
-            "How do you tune BM25 for a new corpus?"
-          ]
-        },
-        {
-          "id": "rag-vdb-explain",
-          "label": "Pinecone — vector databases explained",
-          "href": "https://www.pinecone.io/learn/vector-database/",
-          "meta": "Read",
-          "interviewQuestions": [
-            "When would you actually need a dedicated vector database vs Postgres pgvector?",
-            "What's the cost model of a managed vector DB at 1B vectors?",
-            "How do you handle filter + vector queries efficiently?"
-          ]
+          "id": "cnn-aug",
+          "label": "Augmentation strategies (RandAugment, AutoAugment)",
+          "href": "https://arxiv.org/abs/1909.13719",
+          "meta": "RandAugment"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "How does HNSW work at a high level — what's the trade-off vs flat search?",
-    "When is BM25 better than dense retrieval today?",
-    "What's the operational cost of re-embedding when the model changes?"
+    "When do you freeze the backbone vs fine-tune end-to-end in transfer learning?",
+    "Why do you fine-tune with a lower learning rate than training from scratch?",
+    "Compare AutoAugment vs RandAugment — what's the simplification and why does it matter?"
   ],
   "references": [
     {
-      "label": "Pinecone — Vector Databases Explained",
-      "href": "https://www.pinecone.io/learn/vector-database/",
-      "source": "Pinecone"
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
     },
     {
-      "label": "DeepLearning.AI — Building Agentic RAG with LlamaIndex",
-      "href": "https://www.deeplearning.ai/short-courses/building-agentic-rag-with-llamaindex/",
-      "source": "DeepLearning.AI"
+      "label": "Kaggle — Computer Vision",
+      "href": "https://www.kaggle.com/learn/computer-vision",
+      "source": "Kaggle"
     },
     {
-      "label": "Model Context Protocol — connecting AI to external tools",
-      "href": "https://modelcontextprotocol.io/",
-      "source": "MCP"
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
     }
   ]
 }

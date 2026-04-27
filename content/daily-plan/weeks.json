@@ -1,78 +1,78 @@
 [
   {
     "week": 1,
-    "title": "Statistics, probability, linear algebra, and optimization"
+    "title": "Probability, distributions, hypothesis testing + DSA Arrays/Hashing & Two Pointers"
   },
   {
     "week": 2,
-    "title": "Traditional ML basics + stack / binary search practice"
+    "title": "Linear algebra, calculus, optimization + DSA Math & Geometry"
   },
   {
     "week": 3,
-    "title": "Traditional ML practicals: trees, imbalance, features, ML coding"
+    "title": "Linear/Logistic regression, regularization + DSA Sliding Window"
   },
   {
     "week": 4,
-    "title": "SQL support + deep learning foundations"
+    "title": "Trees, GBDT, classification + DSA Stack & Binary Search"
   },
   {
     "week": 5,
-    "title": "Deep learning finish + MLOps launch"
+    "title": "Clustering, features, OOPS, design patterns + DSA Linked List"
   },
   {
     "week": 6,
-    "title": "MLOps finish + GenAI foundations"
+    "title": "Neural network foundations + DSA Trees"
   },
   {
     "week": 7,
-    "title": "GenAI: prompting, RAG, retrieval, eval, fine-tuning, agents"
+    "title": "Deep Learning - Computer Vision + DSA Heap"
   },
   {
     "week": 8,
-    "title": "Guardrails + LLMOps release gates, tracing, cost, safety"
+    "title": "Deep Learning - NLP, Transformers, BERT + DSA Tries"
   },
   {
     "week": 9,
-    "title": "LLMOps finish + ML system design framework"
+    "title": "MLOps - lifecycle, feature stores, training pipelines + DSA Backtracking"
   },
   {
     "week": 10,
-    "title": "ML system design cases: recommendations, ads, search, fraud"
+    "title": "MLOps - serving, monitoring, cost, privacy + DSA Graphs & Advanced Graphs"
   },
   {
     "week": 11,
-    "title": "GenAI system cases + cross-case trade-off rehearsal"
+    "title": "GenAI - LLM foundations, decoding, prompting + DSA 1-D DP"
   },
   {
     "week": 12,
-    "title": "OOP, concurrency, AI coding, and company-tag drilling"
+    "title": "GenAI - RAG, embeddings, retrieval, reranking + DSA 2-D DP"
   },
   {
     "week": 13,
-    "title": "DSA hard practice + behavioral story construction"
+    "title": "GenAI - agents, fine-tuning, alignment, MCP + DSA Greedy & Intervals"
   },
   {
     "week": 14,
-    "title": "Company prep + coding, ML design, and GenAI design mocks"
+    "title": "ML Infra - distributed training, GPUs, inference optimization"
   },
   {
     "week": 15,
-    "title": "Behavioral mock + weak-area repair + paper/case reading"
+    "title": "Specializations - Speech, RL, RLHF, RecSys deep dives"
   },
   {
     "week": 16,
-    "title": "Mock sprint, system mini-designs, and project deep dives"
+    "title": "ML System Design - framework + classic cases (recsys, search, ads, fraud)"
   },
   {
     "week": 17,
-    "title": "Final weak-area repair + taper"
+    "title": "ML System Design - GenAI cases (RAG, agent, eval, doc intel, code, voice)"
   },
   {
     "week": 18,
-    "title": "Final logistics, light review, and day-of prep"
+    "title": "ML System Design - cross-cutting trade-offs + self-mocks"
   },
   {
     "week": 19,
-    "title": "Specialization deep dives - CV, NLP, speech, RL, RecSys, infra"
+    "title": "Mock interviews + behavioral (DSA, ML, system design, behavioral)"
   }
 ]

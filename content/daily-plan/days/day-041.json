@@ -1,95 +1,74 @@
 {
   "day": 41,
-  "title": "1-D DP (cont.) + LLM basics",
-  "pillar": "generative-ai",
-  "focus": "Coin Change / Word Break + pretraining → instruction tuning → RLHF.",
+  "title": "DL training tricks (clipping, accum, mixed precision, checkpointing) + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "How real teams fit big models on small GPUs.",
   "tracks": [
     {
-      "label": "DSA · 1-D DP",
+      "label": "DSA · NeetCode Trees",
       "items": [
         {
-          "id": "lc-longest-palindromic-substring",
-          "label": "Longest Palindromic Substring",
-          "href": "https://leetcode.com/problems/longest-palindromic-substring/",
-          "meta": "1-D Dynamic Programming"
+          "id": "lc-construct-binary-tree-from-preorder-and-inorder-traversal",
+          "label": "Construct Binary Tree From Preorder And Inorder Traversal",
+          "href": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+          "meta": "Trees"
         },
         {
-          "id": "lc-palindromic-substrings",
-          "label": "Palindromic Substrings",
-          "href": "https://leetcode.com/problems/palindromic-substrings/",
-          "meta": "1-D Dynamic Programming"
-        },
-        {
-          "id": "lc-decode-ways",
-          "label": "Decode Ways",
-          "href": "https://leetcode.com/problems/decode-ways/",
-          "meta": "1-D Dynamic Programming"
-        },
-        {
-          "id": "lc-coin-change",
-          "label": "Coin Change",
-          "href": "https://leetcode.com/problems/coin-change/",
-          "meta": "1-D Dynamic Programming"
+          "id": "lc-binary-tree-maximum-path-sum",
+          "label": "Binary Tree Maximum Path Sum",
+          "href": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "meta": "Trees"
         }
       ]
     },
     {
-      "label": "GenAI · LLM basics",
+      "label": "DL · Training tricks that matter",
       "items": [
         {
-          "id": "llm-pretraining",
-          "label": "What pretraining actually optimizes",
-          "href": "https://huggingface.co/learn/llm-course/chapter1/4",
-          "meta": "Read",
+          "id": "dl-grad-clip",
+          "label": "Gradient clipping, accumulation",
+          "href": "https://pytorch.org/docs/stable/generated/torch.nn.utils.clip_grad_norm_.html",
+          "meta": "PyTorch",
           "interviewQuestions": [
-            "What does pretraining actually optimize?",
-            "Why is next-token prediction such a powerful objective?",
-            "How does masked-LM differ from causal-LM training?"
+            "When would you reach for gradient clipping?",
+            "Why does gradient accumulation let you simulate a larger batch size?"
           ]
         },
         {
-          "id": "llm-rlhf",
-          "label": "RLHF / DPO at a high level",
-          "href": "https://huyenchip.com/2023/05/02/rlhf.html",
-          "meta": "Read",
-          "interviewQuestions": [
-            "Walk through RLHF at a high level — what does PPO do here?",
-            "What's the practical difference between RLHF and DPO?",
-            "Why do LLMs hallucinate? Give a structural explanation."
-          ]
+          "id": "dl-mixed-prec",
+          "label": "Mixed precision (fp16, bf16, fp8)",
+          "href": "https://pytorch.org/docs/stable/amp.html",
+          "meta": "PyTorch"
+        },
+        {
+          "id": "dl-checkpoint",
+          "label": "Activation checkpointing for memory",
+          "href": "https://pytorch.org/docs/stable/checkpoint.html",
+          "meta": "PyTorch"
         }
       ]
     }
   ],
   "interviewQuestions": [
-    "What's the difference between pretraining, instruction tuning, and RLHF?",
-    "Why do LLMs hallucinate? Give a structural explanation.",
-    "Temperature vs top-p — what does each control?"
+    "When would you reach for gradient clipping vs gradient accumulation?",
+    "Compare fp16 vs bf16 vs fp8 — what changes for training stability?",
+    "How does activation checkpointing trade compute for memory, and when is it worth it?"
   ],
   "references": [
     {
-      "label": "Hugging Face LLM course",
-      "href": "https://huggingface.co/learn/llm-course",
-      "source": "Hugging Face"
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
     },
     {
-      "label": "Karpathy — Intro to LLMs (1-hr video)",
-      "href": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
-      "source": "YouTube"
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
     },
     {
-      "label": "Maxime Labonne — LLM Course (Colab notebooks)",
-      "href": "https://github.com/mlabonne/llm-course",
-      "source": "GitHub"
-    },
-    {
-      "label": "OpenAI — Learning to reason with LLMs",
-      "href": "https://openai.com/index/learning-to-reason-with-llms/",
-      "source": "OpenAI"
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
     }
-  ],
-  "topicId": "llm-basics",
-  "questionIds": [
-    "temperature-top-p"
   ]
 }
