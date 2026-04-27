@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why use cross-entropy instead of MSE for classification — what breaks?",
-    "When does focal loss actually help, and how is it different from class weighting?",
-    "What is InfoNCE loss and where is it used in modern representation learning?"
-  ],
   "references": [
     {
       "label": "DeepLearning.AI Deep Learning Specialization",

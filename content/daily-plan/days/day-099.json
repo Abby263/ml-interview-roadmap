@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through Whisper's encoder-decoder design and weakly-supervised training.",
-    "Compare CTC vs attention-based seq2seq for ASR — when does each win?",
-    "What's the trade-off between latency and accuracy in streaming ASR?"
-  ],
   "references": [
     {
       "label": "Whisper paper (ASR)",

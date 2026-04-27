@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How is A/B testing a model different from A/B testing a UI feature?",
-    "When does interleaving beat A/B testing for ranking systems?",
-    "What is off-policy evaluation, and where does it show up in recommender systems?"
-  ],
   "references": [
     {
       "label": "Eugene Yan — applied ML writing",

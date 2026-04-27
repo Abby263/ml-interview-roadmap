@@ -68,13 +68,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Define perplexity precisely and explain why it's a poor proxy for downstream task quality.",
-    "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
-    "When is LLM-as-judge reliable, and what biases does it introduce?",
-    "Why has benchmark contamination become a serious issue, and how do you defend against it?",
-    "Compare BLEU, ROUGE, BERTScore, exact match, and human/LLM judging for generation quality."
-  ],
   "references": [
     {
       "label": "Papers with Code — SOTA leaderboards",

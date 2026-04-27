@@ -58,12 +58,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why is dropout disabled at inference, and what is inverted dropout?",
-    "Why do transformers prefer LayerNorm over BatchNorm?",
-    "Compare BatchNorm, LayerNorm, GroupNorm, and RMSNorm — when does each fit?",
-    "How does mixup regularize a classifier and why does it improve calibration?"
-  ],
   "references": [
     {
       "label": "DeepLearning.AI Deep Learning Specialization",

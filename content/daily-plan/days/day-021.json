@@ -48,11 +48,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why does random search often beat grid search for hyperparameter tuning?",
-    "When is Bayesian optimization worth the complexity over random or Hyperband search?",
-    "How would you tune an XGBoost model with a tight compute budget?"
-  ],
   "references": [
     {
       "label": "scikit-learn user guide",

@@ -156,11 +156,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through matrix factorization for recommendations and how SGD trains it.",
-    "What's the cold-start problem in CF and how do hybrid models fix it?",
-    "Compare nDCG, MAP, MRR, and Recall@k — when do you use each?"
-  ],
   "references": [
     {
       "label": "YouTube two-tower (sampling-bias-corrected)",

@@ -42,12 +42,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing Amazon's product search end-to-end.",
-    "How do you balance relevance, freshness, and diversity in search ranking?",
-    "Compare pointwise, pairwise, and listwise learning-to-rank approaches.",
-    "How would you handle long-tail queries with no historical click data?"
-  ],
   "references": [
     {
       "label": "Eugene Yan — applied ML writing",

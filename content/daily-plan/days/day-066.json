@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How would you model the unit cost of a prediction in production?",
-    "What levers actually reduce inference cost (batching, quantization, caching, distillation)?",
-    "How would you train safely on spot/preemptible instances — what do you need to handle?"
-  ],
   "references": [
     {
       "label": "Chip Huyen — ML Systems Design",

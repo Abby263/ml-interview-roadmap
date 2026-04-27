@@ -64,11 +64,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through backpropagation as the chain rule on a computation graph — for a simple 2-layer MLP.",
-    "What does the gradient vector represent geometrically, and why do we move opposite to it during training?",
-    "Why do vanishing gradients happen in deep networks and how do ReLU and residual connections help?"
-  ],
   "references": [
     {
       "label": "3Blue1Brown — Essence of Calculus",

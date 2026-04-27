@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the end-to-end ML lifecycle and the failure modes at each stage.",
-    "Compare the responsibilities of an ML researcher vs an MLE vs an MLOps engineer.",
-    "How would you structure an ML team at a 50-person startup vs a 5,000-person company?"
-  ],
   "references": [
     {
       "label": "Made with ML — full MLOps course",

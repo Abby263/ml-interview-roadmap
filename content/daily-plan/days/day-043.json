@@ -59,13 +59,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through how a conv layer computes its output, including padding, stride, and dilation.",
-    "Compute the output shape of a 3×3 conv with stride 2 and padding 1 on a 32×32×3 input.",
-    "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
-    "Why are CNNs called translation-equivariant rather than translation-invariant?",
-    "How would you implement a receptive-field calculator for a stack of conv and pooling layers?"
-  ],
   "references": [
     {
       "label": "CS231n — CNNs for visual recognition",

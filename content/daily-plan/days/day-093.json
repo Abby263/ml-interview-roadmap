@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare fp16 vs bf16 vs fp8 training — when does each fail or shine?",
-    "How does activation checkpointing trade compute for memory, and when is it worth it?",
-    "When would you offload optimizer state to CPU/NVMe, and what's the throughput cost?"
-  ],
   "references": [
     {
       "label": "MIT — ML Efficiency playlist",

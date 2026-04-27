@@ -88,12 +88,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through the forward pass through a 2-layer MLP for binary classification.",
-    "Why can't a single perceptron solve XOR, and how does adding a hidden layer fix it?",
-    "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
-    "Why does poor initialization cause vanishing or exploding gradients?"
-  ],
   "references": [
     {
       "label": "DeepLearning.AI Deep Learning Specialization",

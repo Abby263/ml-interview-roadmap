@@ -1,6 +1,7 @@
 # Daily Plan Content
 
-This folder is the editable source for the landing-page daily plan and `/day/[day]` pages.
+This folder contains the generated, reviewable source for the landing-page daily plan and
+`/day/[day]` pages.
 
 ## What to edit
 
@@ -36,9 +37,6 @@ This folder is the editable source for the landing-page daily plan and `/day/[da
       ]
     }
   ],
-  "interviewQuestions": [
-    "Question an interviewer might ask for this day's topic"
-  ],
   "references": [
     {
       "label": "Reference title",
@@ -54,12 +52,12 @@ This folder is the editable source for the landing-page daily plan and `/day/[da
 
 ## Interview question rule
 
-For ML-focused days, keep `interviewQuestions` detailed and interview-shaped:
+For ML-focused days, keep item-level `interviewQuestions` detailed and interview-shaped:
 
-- Use 2-5 questions per ML day.
 - Use 2-5 item-level questions when `tracks[].items[].interviewQuestions` is present.
 - Prefer prompts like `How would you evaluate...?`, `When would you choose...?`, `What breaks if...?`, or `Walk me through...`.
 - Avoid only listing topic names. A non-technical reviewer should be able to read the questions and understand what the candidate needs to explain.
+- Do not add a top-level daily question list. The day page intentionally shows questions only under the relevant topic/checklist item to avoid repetition.
 
 ML-focused pillars are:
 

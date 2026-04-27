@@ -65,11 +65,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What does a 95% confidence interval actually mean — and what's the most common misinterpretation?",
-    "Walk through how you'd bootstrap a confidence interval for the median order value.",
-    "When would you reach for a Bayesian credible interval instead of a frequentist CI?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

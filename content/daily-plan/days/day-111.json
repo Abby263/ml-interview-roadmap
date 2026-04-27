@@ -41,11 +41,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through Uber's DeepETA design — what features and architecture?",
-    "How do you handle live traffic, weather, and rare events in ETA prediction?",
-    "How would you design surge pricing — what's the optimization objective and constraints?"
-  ],
   "references": [
     {
       "label": "khangich — Machine Learning Interview",

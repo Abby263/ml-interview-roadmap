@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare batch, real-time, and streaming inference — when do you reach for each?",
-    "What's the latency budget for an ad CTR model vs a churn model — how does that change architecture?",
-    "When does on-device ML beat cloud inference, and what are the engineering constraints?"
-  ],
   "references": [
     {
       "label": "Chip Huyen — ML Systems Design",

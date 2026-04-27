@@ -68,12 +68,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How would you evaluate a summarization model — ROUGE, BERTScore, or LLM-as-judge?",
-    "Compare BIO tagging vs span-based NER — pros and cons of each approach.",
-    "Why is beam search standard for translation but not for open-ended generation?",
-    "Design a sentiment-analysis system and explain the baseline, metric, and common failure modes."
-  ],
   "references": [
     {
       "label": "Hugging Face NLP course",

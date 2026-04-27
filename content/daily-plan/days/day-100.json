@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through deploying a YOLO model in production — pre/post-processing, NMS, calibration.",
-    "Compare 3D CNNs vs two-stream vs video transformers for action recognition.",
-    "Walk me through how a multimodal model fuses vision and text — case study CLIP."
-  ],
   "references": [
     {
       "label": "Papers with Code — SOTA leaderboards",

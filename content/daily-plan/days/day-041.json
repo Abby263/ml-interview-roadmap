@@ -68,12 +68,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When would you reach for gradient clipping vs gradient accumulation?",
-    "Compare fp16 vs bf16 vs fp8 — what changes for training stability?",
-    "How does activation checkpointing trade compute for memory, and when is it worth it?",
-    "Walk through a PyTorch training loop for image classification: forward, loss, backward, optimizer step, and zero-grad."
-  ],
   "references": [
     {
       "label": "DeepLearning.AI Deep Learning Specialization",

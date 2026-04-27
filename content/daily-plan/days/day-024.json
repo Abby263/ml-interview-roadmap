@@ -58,11 +58,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Explain the kernel trick in SVMs and why it lets you work in infinite-dimensional spaces.",
-    "Why does kNN degrade in high dimensions — what's the curse of dimensionality?",
-    "Compare generative (Naive Bayes) vs discriminative (Logistic Regression) classifiers — when does each win?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

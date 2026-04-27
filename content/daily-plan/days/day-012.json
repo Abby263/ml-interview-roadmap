@@ -68,12 +68,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare SGD, momentum, Adam, and AdamW — when do you reach for each in practice?",
-    "Why is the AdamW correction important when using weight decay with adaptive optimizers?",
-    "If your loss is non-convex (it usually is for deep nets), why does SGD still find good solutions?",
-    "Explain learning-rate warmup and cosine schedules — what problem do they fix?"
-  ],
   "references": [
     {
       "label": "3Blue1Brown — Essence of Calculus",

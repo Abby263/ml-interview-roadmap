@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the Bellman equation for the value function and the policy iteration algorithm.",
-    "Compare on-policy vs off-policy RL — give an example algorithm of each.",
-    "Compare epsilon-greedy, UCB, and Thompson sampling for exploration in contextual bandits."
-  ],
   "references": [
     {
       "label": "OpenAI — Spinning Up in RL",

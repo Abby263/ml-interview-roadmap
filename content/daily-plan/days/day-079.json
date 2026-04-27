@@ -62,12 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
-    "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
-    "Compare HNSW vs IVF for ANN search — accuracy/speed/memory trade-offs.",
-    "Why does Sentence-BERT work better than vanilla BERT embeddings for semantic search?"
-  ],
   "references": [
     {
       "label": "Pinecone — Vector Databases Explained",

@@ -42,12 +42,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing TikTok's For You feed end-to-end.",
-    "Why do industrial recsys use a two-stage (recall + rank) architecture?",
-    "How would you handle the cold-start problem for a new user in a feed product?",
-    "How do you avoid training/serving skew between recall and ranking stages?"
-  ],
   "references": [
     {
       "label": "khangich — Machine Learning Interview",

@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How does a decision tree decide where to split, and how do Gini vs entropy compare?",
-    "Why are decision trees inherently high-variance, and what techniques fix it?",
-    "Compare gain-based, permutation, and SHAP feature importance — when does each mislead you?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

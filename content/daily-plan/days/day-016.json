@@ -69,13 +69,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why do we use cross-entropy instead of MSE for logistic regression — what breaks?",
-    "When is ROC-AUC misleading and when should you use PR-AUC instead?",
-    "How do you choose a classification threshold for a fraud-detection system with very imbalanced classes?",
-    "What is calibration, why does it matter for decisions, and how do you fix a poorly-calibrated model?",
-    "Why is logistic regression called regression, and how do you interpret its coefficients as odds ratios?"
-  ],
   "references": [
     {
       "label": "Andrew Ng — Machine Learning Specialization",

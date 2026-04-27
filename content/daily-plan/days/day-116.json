@@ -52,12 +52,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing a document-intelligence pipeline for invoices/contracts.",
-    "How would you handle hand-written or low-quality scans?",
-    "How would you flag low-confidence extractions for human review?",
-    "How do you handle mixed PDFs, scans, tables, attachments, OCR errors, and conflicting extracted values?"
-  ],
   "references": [
     {
       "label": "Anthropic — Building Effective Agents",

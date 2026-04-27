@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the BPE training algorithm step by step.",
-    "Why does vocabulary size matter — what does doubling it cost in compute and memory?",
-    "Why do LLMs struggle with arithmetic, and how does tokenization contribute?"
-  ],
   "references": [
     {
       "label": "Hugging Face LLM course",

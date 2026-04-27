@@ -58,12 +58,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare bagging and boosting — which reduces bias, which reduces variance, and why?",
-    "What two extra ingredients does Random Forest add on top of vanilla bagging?",
-    "When does stacking actually help in production vs just adding latency and ops cost?",
-    "How do out-of-bag estimates work in Random Forest, and when would you trust them?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

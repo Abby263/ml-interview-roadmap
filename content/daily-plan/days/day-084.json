@@ -62,12 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Do long context windows kill RAG? Defend your view.",
-    "What does agentic RAG add over a static RAG pipeline?",
-    "How does prompt caching change the cost picture for repeated context?",
-    "How would you handle a 500-page document when the relevant answer spans multiple sections?"
-  ],
   "references": [
     {
       "label": "Anthropic — Prompt Engineering Guide",

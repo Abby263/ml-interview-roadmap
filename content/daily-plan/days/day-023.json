@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare oversampling, undersampling, SMOTE, and class weights — what are the failure modes of each?",
-    "Why does SMOTE leak when applied before cross-validation, and how do you fix it?",
-    "What metric do you reach for in extreme class imbalance and why is accuracy useless?",
-    "Why does focal loss help with object detection but rarely fix tabular imbalance?"
-  ],
   "references": [
     {
       "label": "imbalanced-learn user guide",

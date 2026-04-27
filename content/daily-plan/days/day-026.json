@@ -62,13 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare one-hot, target, frequency, and hashing encoders — when do you reach for each?",
-    "Why is target encoding leak-prone, and how does k-fold target encoding fix it?",
-    "When is mean/median imputation harmful, and what should you do instead?",
-    "How do you detect and handle outliers without hiding a real production drift event?",
-    "Why does multicollinearity matter for linear models, and how do you diagnose it?"
-  ],
   "references": [
     {
       "label": "scikit-learn user guide",

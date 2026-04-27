@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare simple random vs stratified vs cluster sampling — what governs your choice?",
-    "Walk me through three real situations where selection bias broke a model deployment.",
-    "What is importance sampling and where does it show up in ML training pipelines?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

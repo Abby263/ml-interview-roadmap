@@ -86,11 +86,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What problem did ResNet's residual connections actually solve?",
-    "Why are 1×1 convolutions so important — Inception modules and bottleneck blocks?",
-    "How do depthwise separable convolutions reduce compute, and where does MobileNet use them?"
-  ],
   "references": [
     {
       "label": "CS231n — CNNs for visual recognition",

@@ -32,11 +32,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing a real-time voice agent (ASR → LLM → TTS).",
-    "How do you handle interruption, turn-taking, and barge-in?",
-    "What's your latency budget end-to-end (first audio out), and how do you stay under it?"
-  ],
   "references": [
     {
       "label": "Whisper paper (ASR)",

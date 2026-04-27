@@ -41,11 +41,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "When do you freeze the backbone vs fine-tune end-to-end in transfer learning?",
-    "Why do you fine-tune with a lower learning rate than training from scratch?",
-    "Compare AutoAugment vs RandAugment — what's the simplification and why does it matter?"
-  ],
   "references": [
     {
       "label": "fast.ai — Practical Deep Learning",

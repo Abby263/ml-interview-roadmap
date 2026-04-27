@@ -63,11 +63,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "What does it mean intuitively for a vector to be an eigenvector of a matrix?",
-    "Why are eigenvectors of symmetric matrices orthogonal, and why does that matter for PCA?",
-    "What is the condition number of a feature matrix and how does ill-conditioning hurt linear regression?"
-  ],
   "references": [
     {
       "label": "3Blue1Brown — Essence of Linear Algebra",

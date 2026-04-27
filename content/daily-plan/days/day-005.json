@@ -58,12 +58,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through how you'd design an A/B test to detect a 1% lift in conversion — what sample size, what guardrails?",
-    "What is sample-ratio mismatch and why is it a red flag in an A/B test?",
-    "Why does peeking at A/B results daily inflate Type I error, and what do you do instead?",
-    "Explain CUPED in one minute and when it actually pays off."
-  ],
   "references": [
     {
       "label": "Evan Miller — A/B testing pitfalls",

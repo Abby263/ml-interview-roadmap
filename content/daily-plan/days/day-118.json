@@ -41,11 +41,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing an image-generation product end-to-end.",
-    "How would you handle GPU capacity, queueing, and cost?",
-    "How would you build safety filters for an image-generation product (NSFW, IP, deepfakes)?"
-  ],
   "references": [
     {
       "label": "Papers with Code — SOTA leaderboards",

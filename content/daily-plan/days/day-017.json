@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why does L1 produce sparse solutions while L2 doesn't — show the geometric picture.",
-    "Show that L2 regularization is equivalent to a Gaussian prior on the weights — what's the Bayesian story?",
-    "When would you choose ElasticNet over pure L1 or L2 — what's the failure mode it fixes?"
-  ],
   "references": [
     {
       "label": "Andrew Ng — Machine Learning Specialization",

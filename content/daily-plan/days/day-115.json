@@ -41,11 +41,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through designing an internal LLM eval platform (Braintrust / LangSmith style).",
-    "What dimensions would you slice eval results by — model, prompt, user, tool?",
-    "How would you continuously evaluate a production LLM agent on real traffic without leaking PII?"
-  ],
   "references": [
     {
       "label": "LangSmith — LLM tracing & eval",

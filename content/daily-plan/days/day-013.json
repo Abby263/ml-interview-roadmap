@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Decompose expected squared error into bias², variance, and irreducible noise — give an example of each.",
-    "How would you diagnose whether to add more data, regularize harder, or grow the model from a learning curve?",
-    "Explain double descent — why does it overturn the classical bias-variance picture?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

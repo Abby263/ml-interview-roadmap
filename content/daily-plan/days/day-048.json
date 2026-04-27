@@ -57,12 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the VAE evidence lower bound (ELBO) and the reparameterization trick.",
-    "What is mode collapse in GANs, and what techniques fix it?",
-    "Walk me through the forward and reverse processes in a DDPM diffusion model.",
-    "Why does latent diffusion (Stable Diffusion) work in latent space instead of pixel space?"
-  ],
   "references": [
     {
       "label": "Papers with Code — SOTA leaderboards",

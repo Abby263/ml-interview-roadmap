@@ -86,11 +86,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through how DDP synchronizes gradients across GPUs and what NCCL does.",
-    "How does FSDP shard parameters, gradients, and optimizer state — compare ZeRO-1/2/3.",
-    "When do you need tensor parallelism vs pipeline parallelism vs data parallelism (3D parallelism)?"
-  ],
   "references": [
     {
       "label": "PyTorch DDP tutorial",

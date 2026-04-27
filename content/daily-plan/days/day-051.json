@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through an LSTM cell — what each gate does and how the cell state helps with vanishing gradients.",
-    "Why do vanilla RNNs struggle with long-term dependencies?",
-    "When would you pick GRU over LSTM?"
-  ],
   "references": [
     {
       "label": "DeepLearning.AI Deep Learning Specialization",

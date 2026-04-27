@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Why does DQN need experience replay and a target network?",
-    "Walk me through PPO — what's the clipped surrogate objective and why does it stabilize training?",
-    "How is GRPO (used in DeepSeek-R1) different from PPO?"
-  ],
   "references": [
     {
       "label": "OpenAI — Spinning Up in RL",

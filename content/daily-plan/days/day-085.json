@@ -62,13 +62,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through ReAct: how does interleaving thought and action change agent behavior?",
-    "When does Plan-and-Execute beat pure ReAct?",
-    "How would you design memory for a long-running personal-assistant agent?",
-    "Compare workflow vs agent — when do you NOT need an agent?",
-    "How do you validate intermediate agent steps and add human approval for risky actions?"
-  ],
   "references": [
     {
       "label": "Anthropic — Building Effective Agents",

@@ -56,8 +56,6 @@ export interface DayPlan {
   pillar: PillarSlug;
   focus: string;
   tracks: DayTrack[];
-  /** Concept-oriented interview questions tied to this day's content. */
-  interviewQuestions: string[];
   /** External reading: blogs, papers, docs, or courses. */
   references: DayReference[];
   topicId?: string;

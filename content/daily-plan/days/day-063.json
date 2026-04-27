@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare TorchServe, Triton, and BentoML — when does each fit?",
-    "What is dynamic batching, and why does it matter for GPU utilization?",
-    "Walk through deploying a model on Kubernetes with autoscaling — what knobs matter?"
-  ],
   "references": [
     {
       "label": "Full Stack Deep Learning",

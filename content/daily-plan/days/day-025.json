@@ -58,11 +58,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through Lloyd's algorithm for k-means and explain why initialization matters.",
-    "Compare k-means, DBSCAN, and hierarchical clustering — when does each win?",
-    "How would you choose the number of clusters k — elbow, silhouette, or gap statistic?"
-  ],
   "references": [
     {
       "label": "StatQuest — Statistics & ML playlists",

@@ -69,13 +69,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Compare two-stage (Faster R-CNN) vs one-stage (YOLO) detectors — speed/accuracy trade-offs.",
-    "How does DETR remove the need for NMS and anchor boxes?",
-    "How does U-Net's skip connection design help with segmentation?",
-    "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
-    "Explain YOLO anchors, objectness loss, and why NMS tuning changes final detections."
-  ],
   "references": [
     {
       "label": "CS231n — CNNs for visual recognition",

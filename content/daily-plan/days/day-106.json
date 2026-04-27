@@ -51,12 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk me through your 7-step framework for any ML system design interview.",
-    "What are the first five clarifying questions you ask in any ML system design interview?",
-    "How do you map a business metric to an offline ML metric — and where does the mapping break?",
-    "Walk through three real cases where offline gains didn't translate online."
-  ],
   "references": [
     {
       "label": "Patrick Halina — ML Systems Design Interview Guide",

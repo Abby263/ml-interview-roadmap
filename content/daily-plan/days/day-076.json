@@ -57,11 +57,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "How do reasoning models like o1 / o3 differ from standard chat LLMs?",
-    "When are reasoning models worth their cost, and when are they overkill?",
-    "What does test-time compute scaling buy you over training-time compute?"
-  ],
   "references": [
     {
       "label": "OpenAI — Learning to reason with LLMs",

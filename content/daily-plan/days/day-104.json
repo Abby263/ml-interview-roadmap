@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "interviewQuestions": [
-    "Walk through the three stages of RLHF end-to-end and what each stage actually optimizes.",
-    "What is Constitutional AI, and how does it reduce reliance on human labels?",
-    "How does reward hacking show up in practice, and how would you detect it?"
-  ],
   "references": [
     {
       "label": "Anthropic — Building Effective Agents",

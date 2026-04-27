@@ -10,7 +10,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 ## What Is Included
 
 - A 133-day interview roadmap with day-by-day study tasks ordered from statistics through ML system design.
-- Clickable daily pages with checklists, interview prompts, references, linked topics, and case studies.
+- Clickable daily pages with checklists, item-level interview prompts, references, linked topics, and case studies.
 - Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day and editable week labels in `content/daily-plan/weeks.json`.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
 - A question bank and expanded ML/GenAI/LLMOps system design case-study library.
@@ -100,12 +100,13 @@ proxy.ts    Optional Clerk proxy when auth is configured
 
 Daily plan content lives in `content/daily-plan/days/day-001.json` through `day-133.json`.
 Each file mirrors the landing-page/day-page structure: title, pillar, focus, checklist tracks,
-interview questions, references, and optional links to topic or case-study pages. The app loads
+item-level interview questions, references, and optional links to topic or case-study pages. The app loads
 these files from the folder at build time, so adding or removing a day does not require changing a
 TypeScript import manifest as long as day numbers remain consecutive.
 
-For ML-focused days, keep `interviewQuestions` in the 2-5 question range and write them as
-real interview prompts rather than topic names. See `content/daily-plan/README.md` for the schema.
+For ML-focused days, keep `tracks[].items[].interviewQuestions` in the 2-5 question range when
+present and write them as real interview prompts rather than topic names. See
+`content/daily-plan/README.md` for the schema.
 
 The day files are generated from `scripts/build-curriculum*.mjs`. Use the JSON files for
 non-technical review and copy edits; use the scripts for broad curriculum changes so repeated
