@@ -230,22 +230,42 @@ export default function HomeRoadmap({
         ? "Review final day"
         : `Continue Day ${nextDay?.day ?? 1}`;
 
-  // ML pillars: each day has a single `pillar` field, so all items on
-  // that day count toward that pillar.
-  const mlPillarProgress = pillarMeta.map((pillar) => {
-    const days = dailyPlan.filter((day) => day.pillar === pillar.slug);
-    const total = days.reduce((sum, day) => sum + dayItemCount(day), 0);
-    const done = canTrack
-      ? days.reduce((sum, day) => sum + (dayStats.get(day.day)?.done ?? 0), 0)
-      : 0;
-    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
-    return { slug: pillar.slug as string, label: pillar.label, total, done, pct };
-  });
-
   // DSA isn't a per-day pillar — NeetCode problems are interleaved as
   // tracks across every day. Count items whose id starts with "lc-"
   // (LeetCode) to get a separate DSA progress bar.
   const isDsaItem = (id: string) => id.startsWith("lc-");
+
+  // ML pillars: each day has a single `pillar` field, but most days
+  // include both an ML topic track AND a DSA track. A checked DSA item
+  // should count toward the DSA pillar only — not double-count into the
+  // day's ML pillar — so we filter DSA item ids out of the ML totals.
+  const mlPillarProgress = pillarMeta.map((pillar) => {
+    const days = dailyPlan.filter((day) => day.pillar === pillar.slug);
+    const total = days.reduce(
+      (sum, day) =>
+        sum +
+        day.tracks.reduce(
+          (s, t) => s + t.items.filter((it) => !isDsaItem(it.id)).length,
+          0
+        ),
+      0
+    );
+    const done = canTrack
+      ? days.reduce((sum, day) => {
+          const validIds = new Set(
+            day.tracks.flatMap((t) =>
+              t.items.filter((it) => !isDsaItem(it.id)).map((it) => it.id)
+            )
+          );
+          const checked = (progress[day.day] ?? []).filter((id) =>
+            validIds.has(id)
+          );
+          return sum + checked.length;
+        }, 0)
+      : 0;
+    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+    return { slug: pillar.slug as string, label: pillar.label, total, done, pct };
+  });
   const dsaTotal = dailyPlan.reduce(
     (sum, day) =>
       sum +
