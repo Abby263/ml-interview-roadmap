@@ -5,7 +5,7 @@ export async function build({ TOPICS }) {
   // Short, scannable week titles. Detailed coverage is conveyed via the
   // per-week tag chips (pillars + DSA categories) in HomeRoadmap.
   const WEEKS = [
-    { week: 1,  title: "Probability & inference" },
+    { week: 1,  title: "Probability & statistics" },
     { week: 2,  title: "Linear algebra & optimization" },
     { week: 3,  title: "Linear & logistic regression" },
     { week: 4,  title: "Trees, GBDT, classification" },
@@ -14,11 +14,11 @@ export async function build({ TOPICS }) {
     { week: 7,  title: "Computer Vision" },
     { week: 8,  title: "NLP & Transformers" },
     { week: 9,  title: "MLOps foundations" },
-    { week: 10, title: "MLOps at scale" },
+    { week: 10, title: "Production MLOps" },
     { week: 11, title: "LLM foundations" },
     { week: 12, title: "RAG" },
     { week: 13, title: "Agents, fine-tuning, alignment" },
-    { week: 14, title: "Distributed training & inference" },
+    { week: 14, title: "Training & serving perf" },
     { week: 15, title: "Specializations: Speech, RL, RecSys" },
     { week: 16, title: "ML system design — classics" },
     { week: 17, title: "ML system design — GenAI" },
