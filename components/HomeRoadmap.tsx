@@ -443,7 +443,7 @@ export default function HomeRoadmap({
                         {pillar.label}
                       </span>
                       <span className="font-mono font-semibold text-primary">
-                        {pillar.pct}%
+                        {pillar.done}/{pillar.total}
                       </span>
                     </div>
                     <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-line">
