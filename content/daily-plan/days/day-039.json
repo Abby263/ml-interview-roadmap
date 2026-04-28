@@ -42,7 +42,9 @@
           "interviewQuestions": [
             "Why does BN behave differently between train and eval mode?",
             "Why do transformers prefer LayerNorm over BatchNorm?",
-            "What problem does RMSNorm solve in modern LLMs?"
+            "What problem does RMSNorm solve in modern LLMs?",
+            "What is internal covariate shift, and is that the full explanation for why BatchNorm helps?",
+            "Why do normalization layers learn scale and shift parameters after normalizing?"
           ]
         },
         {

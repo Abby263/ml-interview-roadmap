@@ -32,7 +32,9 @@
           "interviewQuestions": [
             "Walk me through self-attention(Q, K, V) end-to-end.",
             "Why divide by √d_k inside softmax?",
-            "What does multi-head attention buy you over a single head?"
+            "What does multi-head attention buy you over a single head?",
+            "Compare additive attention vs dot-product attention: why did transformer implementations standardize on dot products?",
+            "What changes in cross-attention when decoder queries attend over encoder keys and values?"
           ]
         },
         {
@@ -42,7 +44,9 @@
           "meta": "Vaswani et al.",
           "interviewQuestions": [
             "Walk me through the transformer block: attention → add+norm → FFN → add+norm.",
-            "Compare absolute vs relative vs RoPE positional encodings."
+            "Compare absolute vs relative vs RoPE positional encodings.",
+            "Why does the transformer feed-forward block usually expand hidden dimension before projecting back down?",
+            "How do pre-norm and post-norm transformer blocks differ for optimization stability?"
           ]
         },
         {
@@ -52,7 +56,8 @@
           "meta": "FlashAttention",
           "interviewQuestions": [
             "What problem does FlashAttention solve, and how?",
-            "Compare MHA, MQA, and GQA — KV-cache trade-offs."
+            "Compare MHA, MQA, and GQA — KV-cache trade-offs.",
+            "When would you choose sparse or local attention instead of full attention, and what quality risk do you introduce?"
           ]
         },
         {

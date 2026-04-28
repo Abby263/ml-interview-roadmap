@@ -25,7 +25,8 @@
           "meta": "LangSmith",
           "interviewQuestions": [
             "Walk me through designing an internal LLM eval platform.",
-            "What dimensions would you slice eval results by?"
+            "What dimensions would you slice eval results by?",
+            "How would you support pointwise scoring, pairwise comparison, rubric grading, LLM-as-judge, human review, and gold tests in one platform?"
           ]
         },
         {
@@ -35,7 +36,20 @@
           "meta": "Braintrust",
           "interviewQuestions": [
             "How would you continuously evaluate a production LLM agent on real traffic without leaking PII?",
-            "How do you keep eval datasets fresh as user behavior shifts — what's the refresh cadence?"
+            "How do you keep eval datasets fresh as user behavior shifts — what's the refresh cadence?",
+            "How would you collect human evals with rater calibration, gold examples, inter-rater agreement, and quality audits?"
+          ]
+        },
+        {
+          "id": "sd-autorater-design",
+          "label": "Design autoraters and meta-evaluation for LLM quality",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+          "meta": "Autoraters",
+          "interviewQuestions": [
+            "How would you train an autorater from pairwise or pointwise human ratings?",
+            "Why is pairwise preference data often easier to collect reliably than absolute quality scores?",
+            "How would you meta-evaluate an autorater against human judgment using accuracy, Spearman correlation, slices, and drift checks?",
+            "What refresh strategy keeps autoraters useful as product models improve and distribution shifts?"
           ]
         }
       ]

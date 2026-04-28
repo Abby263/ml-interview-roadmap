@@ -35,7 +35,9 @@
           "meta": "Lilian Weng",
           "interviewQuestions": [
             "Walk through the policy gradient theorem.",
-            "Why are baselines used (e.g., advantage estimation)?"
+            "Why are baselines used (e.g., advantage estimation)?",
+            "How does actor-critic reduce variance compared with pure REINFORCE?",
+            "What is generalized advantage estimation, and what bias-variance trade-off does lambda control?"
           ]
         },
         {
@@ -45,7 +47,9 @@
           "meta": "Schulman et al.",
           "interviewQuestions": [
             "Walk me through PPO — what's the clipped surrogate objective and why does it stabilize training?",
-            "How is GRPO (used in DeepSeek-R1) different from PPO?"
+            "How is GRPO (used in DeepSeek-R1) different from PPO?",
+            "Why does PPO use the minimum of clipped and unclipped objectives?",
+            "How is the KL penalty used differently in PPO-style RLHF and GRPO-style objectives?"
           ]
         }
       ]

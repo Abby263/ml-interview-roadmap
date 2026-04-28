@@ -25,7 +25,8 @@
           "meta": "Real Python",
           "interviewQuestions": [
             "Explain the GIL and why threading helps I/O-bound but not CPU-bound work in CPython.",
-            "When does multiprocessing beat threading for ML workloads?"
+            "When does multiprocessing beat threading for ML workloads?",
+            "What does the GIL protect in CPython, and why is reference counting part of the reason it exists?"
           ]
         },
         {
@@ -35,7 +36,9 @@
           "meta": "Real Python",
           "interviewQuestions": [
             "When is asyncio the right choice over threads/processes?",
-            "What are common pitfalls with mixing sync and async code?"
+            "What are common pitfalls with mixing sync and async code?",
+            "Compare coroutines vs OS threads: who controls context switching, and why does that matter?",
+            "What makes a function blocking vs non-blocking, and how would you isolate blocking work inside an async service?"
           ]
         },
         {
@@ -45,7 +48,9 @@
           "meta": "Python docs",
           "interviewQuestions": [
             "How would you parallelize an embarrassingly parallel inference workload?",
-            "Compare ThreadPoolExecutor vs ProcessPoolExecutor — when does each fit, and what does the GIL mean here?"
+            "Compare ThreadPoolExecutor vs ProcessPoolExecutor — when does each fit, and what does the GIL mean here?",
+            "What does as_completed give you that executor.map does not?",
+            "Why might multiprocessing still need locks or a Manager-backed dictionary?"
           ]
         }
       ]

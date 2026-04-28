@@ -26,7 +26,20 @@
           "interviewQuestions": [
             "Walk me through designing a GitHub Copilot-style code assistant.",
             "How do you handle context: open files, repo structure, project conventions?",
-            "How do you measure quality (acceptance rate, retention, latency)?"
+            "How do you measure quality (acceptance rate, retention, latency)?",
+            "How would you combine BM25, symbol graphs, embeddings, and open-editor context to build a repo-aware prompt?"
+          ]
+        },
+        {
+          "id": "sd-code-assistant-eval",
+          "label": "Evaluate code assistants: HumanEval, MBPP, SWE-bench, pass@k, and real IDE metrics",
+          "href": "https://www.swebench.com/",
+          "meta": "Code eval",
+          "interviewQuestions": [
+            "How do HumanEval, MBPP, RepoBench, and SWE-bench measure different code-assistant capabilities?",
+            "Why does pass@k reward diversity, and why can naive pass@k estimation have high variance?",
+            "How would you evaluate repository-level patch generation when the full repo cannot fit in context?",
+            "Which online product metrics would you trust more than benchmark score for a code assistant?"
           ]
         }
       ]

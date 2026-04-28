@@ -25,7 +25,9 @@
           "meta": "PyTorch",
           "interviewQuestions": [
             "Walk me through how DDP synchronizes gradients across GPUs.",
-            "What does NCCL do in this picture?"
+            "What does NCCL do in this picture?",
+            "Compare DataParallel vs DistributedDataParallel: why does one process per GPU usually scale better?",
+            "What is the trade-off between bulk synchronous training and asynchronous training with stale weights?"
           ]
         },
         {
@@ -35,7 +37,9 @@
           "meta": "Meta",
           "interviewQuestions": [
             "How does FSDP shard parameters, gradients, and optimizer state?",
-            "Compare ZeRO-1, ZeRO-2, ZeRO-3 stages."
+            "Compare ZeRO-1, ZeRO-2, ZeRO-3 stages.",
+            "Why can parameter partitioning reduce memory almost linearly while increasing communication volume?",
+            "When would you choose DeepSpeed ZeRO over native PyTorch FSDP?"
           ]
         },
         {
@@ -45,7 +49,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "When do you need tensor parallelism vs pipeline parallelism, and how do they compose with data parallelism (3D parallelism)?",
-            "What is pipeline-parallel bubble overhead, and how do you minimize it?"
+            "What is pipeline-parallel bubble overhead, and how do you minimize it?",
+            "How do GPipe, 1F1B, PipeDream-style weight stashing, and zero-bubble schedules differ?",
+            "What are context parallelism and expert parallelism, and when do they become necessary?"
           ]
         }
       ]

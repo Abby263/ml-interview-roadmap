@@ -41,7 +41,9 @@
           "meta": "Papers with Code",
           "interviewQuestions": [
             "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
-            "Why has benchmark contamination become a serious issue?"
+            "Why has benchmark contamination become a serious issue?",
+            "How would you detect and respond to benchmark contamination using exact match, n-gram overlap, embedding similarity, or loss skew?",
+            "How would you split evals into fast inner-loop checks vs slower outer-loop benchmark suites?"
           ]
         },
         {
@@ -51,7 +53,9 @@
           "meta": "Zheng et al.",
           "interviewQuestions": [
             "When is LLM-as-judge reliable, and what biases does it introduce?",
-            "How would you calibrate an LLM judge to human preferences?"
+            "How would you calibrate an LLM judge to human preferences?",
+            "How do length bias, position bias, and model-family bias affect pairwise LLM judging?",
+            "When would you use Elo-style pairwise rankings instead of absolute rubric scores?"
           ]
         },
         {
@@ -62,7 +66,8 @@
           "interviewQuestions": [
             "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
             "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
-            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?"
+            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?",
+            "How does pass@k evaluate code generation, and why does naive pass@k estimation have high variance?"
           ]
         }
       ]

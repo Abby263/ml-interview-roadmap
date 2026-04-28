@@ -45,7 +45,8 @@
           "meta": "vLLM",
           "interviewQuestions": [
             "What does vLLM's PagedAttention do for throughput?",
-            "Compare vLLM vs TensorRT-LLM vs SGLang."
+            "Compare vLLM vs TensorRT-LLM vs SGLang.",
+            "How do continuous batching and KV-cache memory pressure interact under mixed short and long prompts?"
           ]
         },
         {
@@ -56,7 +57,8 @@
           "interviewQuestions": [
             "How would you diagnose high first-token latency vs high tokens-per-second latency?",
             "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
-            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?",
+            "How would you decide when to use distillation, quantization, speculative decoding, or routing to hit a latency SLO?"
           ]
         }
       ]
