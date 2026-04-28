@@ -129,7 +129,7 @@ export default function HomeRoadmap({
 }: {
   dailyPlan: DayPlan[];
   dailyPlanWeeks: DailyPlanWeek[];
-  variant?: "full" | "dashboard";
+  variant?: "full" | "dashboard" | "plan";
 }) {
   const { canTrack } = useAuthState();
   const progress = useSyncExternalStore(
@@ -351,6 +351,7 @@ export default function HomeRoadmap({
     weeks.find((week) => week.days.some((day) => day.day === activeDay))
       ?.number ?? 1;
   const isDashboardOnly = variant === "dashboard";
+  const isPlanOnly = variant === "plan";
 
   return (
     <div
@@ -360,6 +361,7 @@ export default function HomeRoadmap({
           : "space-y-6 pb-24 md:space-y-10 md:pb-0"
       }
     >
+      {!isPlanOnly ? (
       <section
         id="mobile-tracker"
         className="section-card relative overflow-hidden rounded-[1.5rem] p-4 md:hidden"
@@ -431,6 +433,7 @@ export default function HomeRoadmap({
           </div>
         </div>
       </section>
+      ) : null}
 
       {!isDashboardOnly ? (
         <>
@@ -590,6 +593,7 @@ export default function HomeRoadmap({
         </>
       ) : null}
 
+      {!isPlanOnly ? (
       <section className="space-y-3 md:hidden">
         <details className="section-card rounded-[1.35rem] p-4">
           <summary className="cursor-pointer list-none font-display text-lg font-extrabold text-foreground [&::-webkit-details-marker]:hidden">
@@ -649,7 +653,9 @@ export default function HomeRoadmap({
           </div>
         </details>
       </section>
+      ) : null}
 
+      {!isPlanOnly ? (
       <section className="section-card relative hidden overflow-hidden rounded-[2rem] p-5 md:block md:p-7">
         <div
           aria-hidden="true"
@@ -906,6 +912,7 @@ export default function HomeRoadmap({
           </div>
         </div>
       </section>
+      ) : null}
 
       {!isDashboardOnly ? (
         <nav className="section-card sticky top-[4.25rem] z-30 -mx-4 hidden overflow-x-auto rounded-none border-x-0 px-4 py-3 sm:mx-0 sm:rounded-2xl sm:border-x sm:px-4 md:block">
@@ -1144,10 +1151,10 @@ export default function HomeRoadmap({
             Weeks
           </a>
           <a
-            href="#mobile-tracker"
+            href={isPlanOnly ? "/" : "#mobile-tracker"}
             className="rounded-full border border-line bg-surface-strong px-3 py-2.5 text-center text-xs font-semibold text-foreground"
           >
-            Tracker
+            {isPlanOnly ? "Dashboard" : "Tracker"}
           </a>
         </div>
         </div>

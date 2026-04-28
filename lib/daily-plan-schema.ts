@@ -60,7 +60,6 @@ export interface DayPlan {
   references: DayReference[];
   topicId?: string;
   caseStudySlug?: string;
-  questionIds?: string[];
 }
 
 export interface DailyPlanWeek {

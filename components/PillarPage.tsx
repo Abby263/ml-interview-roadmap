@@ -2,10 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import SectionHeading from "@/components/SectionHeading";
+import { dailyPlan } from "@/lib/daily-plan";
+import { buildDailyPlanQuestionEntries } from "@/lib/daily-plan-questions";
 import {
   getTopicsByPillar,
   pillars,
-  questions,
   type PillarSlug,
 } from "@/lib/site-data";
 
@@ -17,11 +18,10 @@ export default function PillarPage({ slug }: { slug: PillarSlug }) {
   }
 
   const pillarTopics = getTopicsByPillar(slug);
-  const relatedQuestions = questions.filter((question) =>
-    question.relatedTopics.some((topicId) =>
-      pillarTopics.some((topic) => topic.id === topicId)
-    )
-  );
+  const relatedQuestions = buildDailyPlanQuestionEntries(dailyPlan)
+    .filter((entry) => entry.tagId === `pillar:${slug}`)
+    .filter((entry) => entry.interviewQuestions.length > 0)
+    .slice(0, 8);
 
   return (
     <div className="space-y-16">
@@ -111,25 +111,25 @@ export default function PillarPage({ slug }: { slug: PillarSlug }) {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Practice prompts"
-          title="Questions tied directly to this pillar"
-          description="Use these to rehearse concise, signal-rich answers instead of passive reading."
+          title="Daily-plan topics tied directly to this pillar"
+          description="These are pulled from the same 133-day roadmap content used by Browse Questions."
         />
         <div className="grid gap-5 xl:grid-cols-2">
           {relatedQuestions.map((question) => (
             <article key={question.id} className="section-card rounded-[24px] p-6">
               <div className="flex flex-wrap gap-2">
                 <span className="tone-primary rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
-                  {question.category}
+                  Day {question.day}
                 </span>
                 <span className="tone-accent rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
-                  {question.difficulty}
+                  {question.trackLabel}
                 </span>
               </div>
               <h3 className="mt-4 font-display text-xl font-bold text-foreground">
-                {question.question}
+                {question.topicLabel}
               </h3>
               <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
-                {question.expectedSignals.map((signal) => (
+                {question.interviewQuestions.slice(0, 2).map((signal) => (
                   <li key={signal}>• {signal}</li>
                 ))}
               </ul>
