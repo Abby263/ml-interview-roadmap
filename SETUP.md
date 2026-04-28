@@ -94,6 +94,17 @@ Clerk user id, so progress syncs across devices.
      on day_progress (user_id);
    ```
 
+   **Already running an older version?** Run this once to add the
+   `source` column used to mark items studied via the AI coach:
+
+   ```sql
+   alter table day_progress
+     add column if not exists source text not null default 'manual';
+   ```
+
+   The code falls back gracefully if you skip the `alter` — checks
+   still write, they just won't be tagged.
+
 3. From **Project Settings → API** (or **API Keys** in newer dashboards), copy:
 
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
@@ -170,12 +181,31 @@ Add these in Vercel and `.env.local` when testing locally:
 
 ```bash
 OPENAI_API_KEY=sk-...
-AI_TUTOR_MODEL=gpt-4.1-mini       # optional; defaults to gpt-4.1-mini
+AI_TUTOR_MODEL=gpt-4o-mini        # optional; defaults to gpt-4o-mini.
+                                  # gpt-4o-mini and gpt-4.1 both reliably
+                                  # support the function-calling agent
+                                  # loop; older models may not.
 AI_TUTOR_DAILY_LIMIT=80           # optional; per-user/day when Supabase is configured
 AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server behavior
 ```
 
 The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
+
+### Optional: LangSmith tracing
+
+The AI Tutor agent emits structured traces (LLM calls + each tool
+invocation) to LangSmith when these are set. Tracing is fire-and-forget
+— runs are best-effort and never block or break the user request.
+
+```bash
+LANGSMITH_API_KEY=ls__...
+LANGSMITH_PROJECT=ml-roadmap-ai-tutor   # optional; default shown
+LANGSMITH_TRACING=true                  # optional; set "false" to disable
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com   # optional; for self-host
+```
+
+Without these env vars, all tracing calls become no-ops and the agent
+runs identically.
 
 ### Supabase tables for memory
 

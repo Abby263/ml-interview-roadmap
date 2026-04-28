@@ -7,6 +7,13 @@ export type AiTutorMode =
 
 export type AiTutorRole = "user" | "assistant";
 
+// Coach phases — drive tone and whether we score this turn.
+//   warmup       → friendly intro, learn about the user, no grading
+//   calibration  → 2-3 broad questions to find their level, light scoring
+//   practice     → real interview-style quizzing with full evaluations
+//   recap        → end-of-session summary, no grading
+export type AiTutorPhase = "warmup" | "calibration" | "practice" | "recap";
+
 export interface AiTutorProfile {
   targetRole: string;
   currentLevel: AiTutorLevel;
@@ -65,12 +72,23 @@ export interface AiTutorSuggestedAction {
   href: string;
 }
 
+export interface AiTutorToolTrace {
+  name: string;
+  args: Record<string, unknown>;
+  ok: boolean;
+  preview?: string;
+}
+
 export interface AiTutorTurn {
   assistantMessage: string;
-  evaluation: AiTutorEvaluation;
+  // Evaluation is optional — only present when the user gave a real answer
+  // attempt. Don't fabricate a 0/100 for "hi" or "I don't know".
+  evaluation?: AiTutorEvaluation;
   memoryPatch: AiTutorMemoryPatch;
-  nextTopic: AiTutorNextTopic;
-  suggestedAction: AiTutorSuggestedAction;
+  nextTopic?: AiTutorNextTopic;
+  suggestedAction?: AiTutorSuggestedAction;
+  phase: AiTutorPhase;
+  toolTrace?: AiTutorToolTrace[];
 }
 
 export interface AiTutorMessage {
@@ -80,6 +98,7 @@ export interface AiTutorMessage {
   createdAt: string;
   evaluation?: AiTutorEvaluation;
   topicRef?: AiTutorNextTopic;
+  phase?: AiTutorPhase;
 }
 
 export const aiTutorLevels: { value: AiTutorLevel; label: string }[] = [
@@ -178,9 +197,9 @@ export function normalizeAiTutorMemory(input: unknown): AiTutorMemory {
 export function emptyAiTutorEvaluation(): AiTutorEvaluation {
   return {
     score: 0,
-    summary: "No evaluation was returned.",
+    summary: "Let's keep going — no evaluation needed for this turn.",
     strengths: [],
-    gaps: ["Try again with a more specific answer."],
+    gaps: [],
     rubric: [],
   };
 }

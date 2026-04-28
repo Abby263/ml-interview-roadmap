@@ -15,8 +15,11 @@ import {
   type AiTutorMemoryPatch,
   type AiTutorMessage,
   type AiTutorMode,
+  type AiTutorPhase,
   type AiTutorProfile,
 } from "@/lib/ai-tutor-types";
+
+const validPhases: AiTutorPhase[] = ["warmup", "calibration", "practice", "recap"];
 
 interface ProfileRow {
   target_role: string | null;
@@ -98,19 +101,42 @@ function mapMemory(row: MemoryRow | null): AiTutorMemory {
 }
 
 function mapMessage(row: MessageRow): AiTutorMessage {
+  // We tuck `phase` inside topic_ref when persisting so we don't need a
+  // schema migration for the new column.
+  const topicRefRaw =
+    typeof row.topic_ref === "object" && row.topic_ref !== null
+      ? (row.topic_ref as Record<string, unknown>)
+      : null;
+  const phase =
+    typeof topicRefRaw?.phase === "string" &&
+    validPhases.includes(topicRefRaw.phase as AiTutorPhase)
+      ? (topicRefRaw.phase as AiTutorPhase)
+      : undefined;
+
+  // Don't surface "empty" evaluation objects to the UI — those produced the
+  // misleading 0/100 in early sessions when the model didn't actually grade.
+  const evaluationRaw =
+    typeof row.evaluation === "object" && row.evaluation !== null
+      ? (row.evaluation as Record<string, unknown>)
+      : null;
+  const hasRealEvaluation =
+    evaluationRaw &&
+    typeof evaluationRaw.summary === "string" &&
+    evaluationRaw.summary.length > 0 &&
+    typeof evaluationRaw.score === "number";
+
   return {
     id: row.id,
     role: row.role === "assistant" ? "assistant" : "user",
     content: row.content,
     createdAt: row.created_at,
-    evaluation:
-      typeof row.evaluation === "object" && row.evaluation !== null
-        ? (row.evaluation as AiTutorMessage["evaluation"])
-        : undefined,
-    topicRef:
-      typeof row.topic_ref === "object" && row.topic_ref !== null
-        ? (row.topic_ref as AiTutorMessage["topicRef"])
-        : undefined,
+    evaluation: hasRealEvaluation
+      ? (evaluationRaw as unknown as AiTutorMessage["evaluation"])
+      : undefined,
+    topicRef: topicRefRaw
+      ? (topicRefRaw as unknown as AiTutorMessage["topicRef"])
+      : undefined,
+    phase,
   };
 }
 
@@ -230,6 +256,7 @@ export async function createAiTutorSession(
       status: "active",
       mode,
       current_tag: currentTag ?? null,
+      summary: { phase: "warmup" satisfies AiTutorPhase },
     })
     .select("id")
     .single();
@@ -245,6 +272,60 @@ export async function createAiTutorSession(
   return { id: String((data as { id: string }).id), persisted: true };
 }
 
+/** Read the conversational phase for a session. Phase is stored on the
+ *  existing `summary` jsonb so we don't need a schema migration. */
+export async function getAiTutorSessionPhase(
+  sessionId: string
+): Promise<AiTutorPhase> {
+  if (sessionId.startsWith("local-")) return "warmup";
+  const sb = getSupabaseAdmin();
+  if (!sb) return "warmup";
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .select("summary")
+    .eq("id", sessionId)
+    .maybeSingle();
+  if (error || !data) return "warmup";
+
+  const summary = (data as { summary: Record<string, unknown> | null }).summary;
+  const phase = typeof summary?.phase === "string" ? summary.phase : "warmup";
+  return validPhases.includes(phase as AiTutorPhase)
+    ? (phase as AiTutorPhase)
+    : "warmup";
+}
+
+/** Persist the conversational phase. Best-effort — failures don't break
+ *  the user turn since the agent's working copy is what matters in-flight. */
+export async function setAiTutorSessionPhase(
+  sessionId: string,
+  phase: AiTutorPhase,
+  currentTag?: string
+) {
+  if (sessionId.startsWith("local-")) return { ok: false } as const;
+  const sb = getSupabaseAdmin();
+  if (!sb) return { ok: false } as const;
+
+  const { data: existing } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .select("summary")
+    .eq("id", sessionId)
+    .maybeSingle();
+  const existingSummary =
+    (existing as { summary: Record<string, unknown> | null } | null)?.summary ??
+    {};
+
+  const summary = { ...existingSummary, phase };
+  const update: Record<string, unknown> = { summary };
+  if (currentTag) update.current_tag = currentTag;
+
+  const { error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .update(update)
+    .eq("id", sessionId);
+  return error ? ({ ok: false, warning: error.message } as const) : ({ ok: true } as const);
+}
+
 export async function appendAiTutorMessage(
   userId: string,
   sessionId: string,
@@ -255,13 +336,20 @@ export async function appendAiTutorMessage(
     return { ok: false, warning: "Message was not persisted." };
   }
 
+  // Pack phase into topic_ref so we can read it back without migrating the
+  // ai_tutor_messages table.
+  const topicRefPayload: Record<string, unknown> = {
+    ...(message.topicRef ?? {}),
+  };
+  if (message.phase) topicRefPayload.phase = message.phase;
+
   const { error } = await sb.from(AI_TUTOR_MESSAGES_TABLE).insert({
     user_id: userId,
     session_id: sessionId,
     role: message.role,
     content: message.content,
     evaluation: message.evaluation ?? {},
-    topic_ref: message.topicRef ?? {},
+    topic_ref: topicRefPayload,
   });
 
   return error ? { ok: false, warning: error.message } : { ok: true };
