@@ -303,11 +303,18 @@ export default function HomeRoadmap({
   // by it so the user can see how many problems they've cleared in
   // each pattern. Order = first-appearance across days, which matches
   // NeetCode's recommended progression.
-  const dsaByCategory: Array<{ label: string; total: number; done: number; pct: number }> = [];
+  const dsaByCategory: Array<{
+    label: string;
+    total: number;
+    done: number;
+    pct: number;
+  }> = [];
   {
     const byCat = new Map<string, { total: number; done: number }>();
     for (const day of dailyPlan) {
-      const checked = canTrack ? new Set(progress[day.day] ?? []) : new Set<string>();
+      const checked = canTrack
+        ? new Set(progress[day.day] ?? [])
+        : new Set<string>();
       for (const t of day.tracks) {
         for (const it of t.items) {
           if (!isDsaItem(it.id) || !it.meta) continue;
@@ -324,16 +331,19 @@ export default function HomeRoadmap({
     }
   }
 
-  const pillarProgress = [
-    {
-      slug: "dsa",
-      label: "DSA",
-      total: dsaTotal,
-      done: dsaDone,
-      pct: dsaPct,
-    },
-    ...mlPillarProgress,
-  ];
+  // DSA has its own pattern tracker, so keep roadmap pillar coverage focused
+  // on non-DSA interview curriculum instead of duplicating the same signal.
+  const pillarProgress = mlPillarProgress;
+  const roadmapTotal = pillarProgress.reduce(
+    (sum, pillar) => sum + pillar.total,
+    0
+  );
+  const roadmapDone = pillarProgress.reduce(
+    (sum, pillar) => sum + pillar.done,
+    0
+  );
+  const roadmapPct =
+    roadmapTotal === 0 ? 0 : Math.round((roadmapDone / roadmapTotal) * 100);
 
   return (
     <div className="space-y-10">
@@ -349,56 +359,25 @@ export default function HomeRoadmap({
           style={{ background: "var(--accent)" }}
         />
 
-        <div className="relative grid gap-6 xl:grid-cols-[0.95fr_1.35fr]">
-          <div className="space-y-5">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="data-chip">Learner tracker</span>
-              <span className="data-chip">
-                {canTrack ? "Progress active" : "Sign in to track"}
-              </span>
-            </div>
-
+        <div className="relative space-y-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">
-                Overall completion
-              </p>
-              <div className="mt-4 flex items-center gap-5">
-                <div
-                  className="grid h-32 w-32 flex-shrink-0 place-items-center rounded-full"
-                  style={{
-                    background: `conic-gradient(var(--primary) ${clampPct(
-                      totalPct
-                    )}%, color-mix(in srgb, var(--line) 70%, transparent) 0)`,
-                  }}
-                >
-                  <div className="grid h-[6.5rem] w-[6.5rem] place-items-center rounded-full bg-surface-strong">
-                    <div className="text-center">
-                      <p className="font-display text-3xl font-extrabold text-foreground">
-                        {totalPct}%
-                      </p>
-                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted">
-                        complete
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="min-w-0">
-                  <h2 className="font-display text-2xl font-extrabold leading-tight text-foreground md:text-3xl">
-                    {canTrack
-                      ? `${completedTopics} topic sections completed`
-                      : "Track completion as you study"}
-                  </h2>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    {canTrack
-                      ? `${totalDone} of ${totalItems} checklist items done across ${dailyPlan.length} days.`
-                      : "Sign in, open a day, and mark checklist items complete to populate this dashboard."}
-                  </p>
-                </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="data-chip">Learner tracker</span>
+                <span className="data-chip">
+                  {canTrack ? "Progress active" : "Sign in to track"}
+                </span>
               </div>
+              <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-foreground md:text-4xl">
+                Learning dashboard
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-muted md:text-base">
+                Track overall completion, roadmap pillars, and NeetCode DSA
+                patterns from one aligned view.
+              </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[26rem]">
               <div className="rounded-2xl border border-line bg-surface-strong p-4">
                 <p className="panel-label">Topics</p>
                 <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
@@ -420,49 +399,147 @@ export default function HomeRoadmap({
             </div>
           </div>
 
-          <div className="relative grid gap-4 lg:grid-cols-[1fr_0.95fr]">
-            <div className="rounded-[1.5rem] border border-line bg-surface-strong p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="panel-label">Next recommended step</p>
-                  <h3 className="mt-3 font-display text-2xl font-extrabold text-foreground">
-                    Day {nextDay?.day ?? 1}
+          <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+            <div className="flex min-h-full flex-col justify-between rounded-[1.5rem] border border-line bg-surface-strong p-5">
+              <div className="flex items-center gap-5">
+                <div
+                  className="grid h-32 w-32 flex-shrink-0 place-items-center rounded-full"
+                  style={{
+                    background: `conic-gradient(var(--primary) ${clampPct(
+                      totalPct
+                    )}%, color-mix(in srgb, var(--line) 70%, transparent) 0)`,
+                  }}
+                >
+                  <div className="grid h-[6.5rem] w-[6.5rem] place-items-center rounded-full bg-surface-strong">
+                    <div className="text-center">
+                      <p className="font-display text-3xl font-extrabold text-foreground">
+                        {totalPct}%
+                      </p>
+                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted">
+                        complete
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="min-w-0">
+                  <p className="panel-label">Overall completion</p>
+                  <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-foreground md:text-3xl">
+                    {canTrack
+                      ? `${completedTopics} topic sections completed`
+                      : "Track completion as you study"}
                   </h3>
-                  <p className="mt-1 text-sm font-semibold text-foreground">
-                    {nextDay?.title}
-                  </p>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    {nextDay?.focus}
+                    {canTrack
+                      ? `${totalDone} of ${totalItems} checklist items done across ${dailyPlan.length} days.`
+                      : "Sign in, open a day, and mark checklist items complete to populate this dashboard."}
                   </p>
                 </div>
-                <span className="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
-                  {nextDayStats?.done ?? 0}/{nextDayStats?.total ?? 0}
-                </span>
               </div>
-
-              <div className="mt-5 h-2 overflow-hidden rounded-full bg-line">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
-                  style={{ width: `${nextDayStats?.pct ?? 0}%` }}
-                />
-              </div>
-
-              <Link
-                href={`/day/${nextDay?.day ?? 1}`}
-                className="button-primary-accent mt-5 w-full justify-center"
-              >
-                {continueLabel} →
-              </Link>
             </div>
 
-            <div className="rounded-[1.5rem] border border-line bg-surface-strong p-5">
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="rounded-[1.5rem] border border-line bg-surface-strong p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="panel-label">Roadmap curriculum</p>
+                    <p className="mt-3 font-display text-3xl font-extrabold text-foreground">
+                      {roadmapPct}%
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                    {roadmapDone}/{roadmapTotal}
+                  </span>
+                </div>
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full bg-primary"
+                    style={{ width: `${clampPct(roadmapPct)}%` }}
+                  />
+                </div>
+                <p className="mt-3 text-xs leading-5 text-muted">
+                  Statistics, ML, DL, MLOps, GenAI, LLMOps, system design, and
+                  interview storytelling.
+                </p>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-line bg-surface-strong p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="panel-label">DSA practice</p>
+                    <p className="mt-3 font-display text-3xl font-extrabold text-foreground">
+                      {dsaPct}%
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
+                    {dsaDone}/{dsaTotal}
+                  </span>
+                </div>
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${clampPct(dsaPct)}%`,
+                      background: "var(--accent)",
+                    }}
+                  />
+                </div>
+                <p className="mt-3 text-xs leading-5 text-muted">
+                  NeetCode 150 coverage grouped by interview pattern instead
+                  of being mixed into ML pillars.
+                </p>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-line bg-surface-strong p-5 lg:col-span-2">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="panel-label">Next recommended step</p>
+                    <h3 className="mt-3 font-display text-2xl font-extrabold text-foreground">
+                      Day {nextDay?.day ?? 1}
+                    </h3>
+                    <p className="mt-1 text-sm font-semibold text-foreground">
+                      {nextDay?.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                      {nextDay?.focus}
+                    </p>
+                  </div>
+                  <span className="w-fit rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                    {nextDayStats?.done ?? 0}/{nextDayStats?.total ?? 0}
+                  </span>
+                </div>
+
+                <div className="mt-5 h-2 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
+                    style={{ width: `${nextDayStats?.pct ?? 0}%` }}
+                  />
+                </div>
+
+                <Link
+                  href={`/day/${nextDay?.day ?? 1}`}
+                  className="button-primary-accent mt-5 w-full justify-center"
+                >
+                  {continueLabel} →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid items-start gap-4 xl:grid-cols-2">
+            <div className="h-full rounded-[1.5rem] border border-line bg-surface-strong p-5">
               <div className="flex items-center justify-between gap-3">
-                <p className="panel-label">Coverage by pillar</p>
+                <div>
+                  <p className="panel-label">Roadmap pillars</p>
+                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground">
+                    Interview curriculum coverage
+                  </h3>
+                </div>
                 <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
                   {pillarProgress.length} areas
                 </span>
               </div>
-              <div className="mt-4 space-y-3">
+              <div className="mt-5 space-y-3">
                 {pillarProgress.map((pillar) => (
                   <div key={pillar.slug}>
                     <div className="flex items-center justify-between gap-3 text-xs">
@@ -476,7 +553,47 @@ export default function HomeRoadmap({
                     <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-line">
                       <div
                         className="h-full rounded-full bg-primary"
-                        style={{ width: `${pillar.pct}%` }}
+                        style={{ width: `${clampPct(pillar.pct)}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="h-full rounded-[1.5rem] border border-line bg-surface-strong p-5">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="panel-label">DSA · NeetCode 150</p>
+                  <h3 className="mt-2 font-display text-xl font-extrabold text-foreground">
+                    Progress by pattern
+                  </h3>
+                </div>
+                <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
+                  {dsaByCategory.length} patterns
+                </span>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {dsaByCategory.map((cat) => (
+                  <div
+                    key={cat.label}
+                    className="rounded-2xl border border-line bg-surface p-4"
+                  >
+                    <div className="flex items-center justify-between gap-3 text-xs">
+                      <span className="font-semibold text-foreground">
+                        {cat.label}
+                      </span>
+                      <span className="font-mono font-semibold text-accent">
+                        {cat.done}/{cat.total}
+                      </span>
+                    </div>
+                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${clampPct(cat.pct)}%`,
+                          background: "var(--accent)",
+                        }}
                       />
                     </div>
                   </div>
@@ -484,46 +601,6 @@ export default function HomeRoadmap({
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-card rounded-[2rem] p-5 md:p-7">
-        <div className="flex flex-wrap items-baseline justify-between gap-3">
-          <div>
-            <p className="panel-label">DSA · NeetCode 150</p>
-            <h2 className="mt-2 font-display text-xl font-extrabold text-foreground md:text-2xl">
-              Progress by pattern
-            </h2>
-          </div>
-          <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
-            {dsaByCategory.length} patterns · {dsaDone}/{dsaTotal}
-          </span>
-        </div>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {dsaByCategory.map((cat) => (
-            <div
-              key={cat.label}
-              className="rounded-2xl border border-line bg-surface-strong p-4"
-            >
-              <div className="flex items-center justify-between gap-3 text-xs">
-                <span className="font-semibold text-foreground">
-                  {cat.label}
-                </span>
-                <span className="font-mono font-semibold text-accent">
-                  {cat.done}/{cat.total}
-                </span>
-              </div>
-              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
-                <div
-                  className="h-full rounded-full"
-                  style={{
-                    width: `${cat.pct}%`,
-                    background: "var(--accent)",
-                  }}
-                />
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
