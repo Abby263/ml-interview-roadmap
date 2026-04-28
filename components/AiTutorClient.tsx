@@ -11,6 +11,7 @@ import {
   type AiTutorMemory,
   type AiTutorMessage,
   type AiTutorNextTopic,
+  type AiTutorPhase,
   type AiTutorProfile,
   type AiTutorSuggestedAction,
 } from "@/lib/ai-tutor-types";
@@ -33,8 +34,16 @@ interface TutorResponse {
   memory?: AiTutorMemory;
   nextTopic?: AiTutorNextTopic;
   suggestedAction?: AiTutorSuggestedAction;
+  phase?: AiTutorPhase;
   warnings?: string[];
 }
+
+const phaseLabels: Record<AiTutorPhase, string> = {
+  warmup: "Getting to know you",
+  calibration: "Finding your level",
+  practice: "Interview practice",
+  recap: "Wrap-up",
+};
 
 function nowIso() {
   return new Date().toISOString();
@@ -44,7 +53,8 @@ function makeLocalMessage(
   role: AiTutorMessage["role"],
   content: string,
   evaluation?: AiTutorEvaluation,
-  topicRef?: AiTutorNextTopic
+  topicRef?: AiTutorNextTopic,
+  phase?: AiTutorPhase
 ): AiTutorMessage {
   return {
     id: `local-${crypto.randomUUID()}`,
@@ -53,6 +63,7 @@ function makeLocalMessage(
     createdAt: nowIso(),
     evaluation,
     topicRef,
+    phase,
   };
 }
 
@@ -75,6 +86,7 @@ export default function AiTutorClient({
   const [lastAction, setLastAction] = useState<AiTutorSuggestedAction | null>(
     null
   );
+  const [phase, setPhase] = useState<AiTutorPhase>("warmup");
 
   const masteryValues = Object.values(memory.mastery);
   const averageMastery =
@@ -91,7 +103,10 @@ export default function AiTutorClient({
       : [
           makeLocalMessage(
             "assistant",
-            "Set your target role, weak areas, and interview date. Then start the readiness assessment and I will ask one question at a time from the roadmap."
+            "Hi — I'm Maya, your interview coach. Whenever you're ready, tell me a bit about yourself: what role you're targeting, when the interview is, and where you'd like to start. We'll go at your pace.",
+            undefined,
+            undefined,
+            "warmup"
           ),
         ];
 
@@ -129,7 +144,7 @@ export default function AiTutorClient({
       };
       setStatus(
         data.warning ??
-          (data.ok ? "Tutor profile saved." : "Profile was accepted locally.")
+          (data.ok ? "Profile saved." : "Profile was accepted locally.")
       );
     } catch (error) {
       setStatus(
@@ -144,11 +159,15 @@ export default function AiTutorClient({
     const trimmed = message.trim();
     if (!trimmed || busy) return;
     if (!openaiConfigured) {
-      setStatus("AI Tutor needs OPENAI_API_KEY before it can answer.");
+      setStatus("Add OPENAI_API_KEY to enable live coaching responses.");
       return;
     }
 
     const userMessage = makeLocalMessage("user", trimmed);
+    const conversationSnapshot = messages.map((m) => ({
+      role: m.role,
+      content: m.content,
+    }));
     setMessages((current) => [...current, userMessage]);
     setDraft("");
     setBusy(true);
@@ -162,30 +181,44 @@ export default function AiTutorClient({
           message: trimmed,
           profile,
           sessionId: sessionId || undefined,
+          conversation: conversationSnapshot,
         }),
       });
       const data = (await response.json()) as TutorResponse;
       if (!response.ok || data.error) {
-        throw new Error(data.error ?? "AI Tutor request failed.");
+        throw new Error(data.error ?? "Coach is unavailable right now.");
       }
 
       if (data.sessionId) setSessionId(data.sessionId);
       if (data.memory) setMemory(data.memory);
       if (data.suggestedAction) setLastAction(data.suggestedAction);
+      if (data.phase) setPhase(data.phase);
       if (data.warnings?.length) setStatus(data.warnings.join(" "));
 
       setMessages((current) => [
         ...current,
         makeLocalMessage(
           "assistant",
-          data.assistantMessage ?? "No tutor response returned.",
+          data.assistantMessage ?? "Sorry — I missed that. Could you say that again?",
           data.evaluation,
-          data.nextTopic
+          data.nextTopic,
+          data.phase
         ),
       ]);
     } catch (error) {
+      // Soft-fail: just append a chat-style apology, no fake 0/100 score.
+      setMessages((current) => [
+        ...current,
+        makeLocalMessage(
+          "assistant",
+          "Hmm, I couldn't reach the coach service. Let's try that again in a moment.",
+          undefined,
+          undefined,
+          phase
+        ),
+      ]);
       setStatus(
-        error instanceof Error ? error.message : "AI Tutor request failed."
+        error instanceof Error ? error.message : "Coach is unavailable right now."
       );
     } finally {
       setBusy(false);
@@ -207,9 +240,9 @@ export default function AiTutorClient({
         <section className="section-card rounded-[28px] p-5 md:p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="panel-label">Tutor profile</p>
+              <p className="panel-label">Your profile</p>
               <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                Personalization inputs
+                What we&rsquo;re working with
               </h2>
             </div>
             <span
@@ -293,7 +326,7 @@ export default function AiTutorClient({
 
             <label className="block space-y-2">
               <span className="text-sm font-semibold text-foreground">
-                Session mode
+                Session style
               </span>
               <select
                 value={profile.preferredMode}
@@ -315,9 +348,13 @@ export default function AiTutorClient({
 
             <details className="rounded-2xl border border-line bg-surface-strong p-4" open>
               <summary className="cursor-pointer text-sm font-semibold text-foreground">
-                Weak areas{" "}
+                Focus areas{" "}
                 <span className="text-muted">({profile.weakTags.length})</span>
               </summary>
+              <p className="mt-2 text-xs leading-5 text-muted">
+                Pick a few topics you want extra time on — your coach will
+                weight these higher when choosing what to teach next.
+              </p>
               <div className="mt-4 flex max-h-72 flex-wrap gap-2 overflow-auto pr-1">
                 {tags.map((tag) => {
                   const active = profile.weakTags.includes(tag.id);
@@ -351,16 +388,16 @@ export default function AiTutorClient({
         </section>
 
         <section className="section-card rounded-[28px] p-5 md:p-6">
-          <p className="panel-label">Memory layer</p>
+          <p className="panel-label">Progress so far</p>
           <div className="mt-3 grid grid-cols-2 gap-3">
             <div className="metric-slab">
-              <p className="panel-label">Mastery</p>
+              <p className="panel-label">Avg mastery</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
                 {averageMastery || "--"}
               </p>
             </div>
             <div className="metric-slab">
-              <p className="panel-label">Tracked tags</p>
+              <p className="panel-label">Topics tracked</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
                 {masteryValues.length}
               </p>
@@ -369,20 +406,33 @@ export default function AiTutorClient({
 
           <div className="mt-4 space-y-3 text-sm leading-6 text-muted">
             <p>
-              Weak tags:{" "}
+              Focus areas:{" "}
               <span className="font-semibold text-foreground">
                 {selectedTagLabels.length > 0
                   ? selectedTagLabels.join(", ")
-                  : "Not selected yet"}
+                  : "Pick a few when you're ready"}
               </span>
             </p>
+            {memory.strengths.length > 0 ? (
+              <p>
+                Strengths spotted:{" "}
+                <span className="font-semibold text-foreground">
+                  {memory.strengths.slice(0, 4).join(", ")}
+                </span>
+              </p>
+            ) : null}
             {memory.recurringMistakes.length > 0 ? (
-              <p>Recurring mistakes: {memory.recurringMistakes.join("; ")}</p>
-            ) : (
-              <p>No recurring mistakes recorded yet.</p>
-            )}
+              <p>
+                To strengthen next:{" "}
+                <span className="font-semibold text-foreground">
+                  {memory.recurringMistakes.slice(0, 3).join("; ")}
+                </span>
+              </p>
+            ) : null}
             {memory.nextRecommendations.length > 0 ? (
-              <p>Next recommendations: {memory.nextRecommendations.join("; ")}</p>
+              <p>
+                Coach&rsquo;s next picks: {memory.nextRecommendations.slice(0, 3).join("; ")}
+              </p>
             ) : null}
           </div>
         </section>
@@ -391,14 +441,14 @@ export default function AiTutorClient({
       <section className="section-card flex min-h-[42rem] flex-col rounded-[28px] p-5 md:p-6">
         <div className="flex flex-col gap-4 border-b border-line pb-5 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="panel-label">AI Tutor Deep Agent</p>
+            <p className="panel-label">AI Interview Coach</p>
             <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
-              Guided interview coach
+              {phaseLabels[phase]}
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-              The tutor uses your daily plan topics, weak areas, and memory to
-              ask one question, evaluate your answer, teach the fix, then choose
-              the next topic.
+              We&rsquo;ll start friendly, find your level, and ladder into
+              practice questions from the daily plan. No grading until
+              you&rsquo;ve actually attempted an answer.
             </p>
           </div>
           {lastAction ? (
@@ -410,8 +460,8 @@ export default function AiTutorClient({
 
         {!openaiConfigured ? (
           <div className="mt-5 rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
-            Add <code>OPENAI_API_KEY</code> to enable live tutor responses.
-            Profile and UI setup can still be reviewed without the key.
+            Add <code>OPENAI_API_KEY</code> to enable live coaching. Profile
+            and UI setup can still be reviewed without the key.
           </div>
         ) : null}
 
@@ -436,7 +486,12 @@ export default function AiTutorClient({
                   message.role === "assistant" ? "text-primary" : "text-white/80"
                 }`}
               >
-                {message.role === "assistant" ? "Tutor" : "You"}
+                {message.role === "assistant" ? "Coach" : "You"}
+                {message.role === "assistant" && message.phase ? (
+                  <span className="ml-2 text-[10px] font-medium tracking-normal text-muted">
+                    · {phaseLabels[message.phase]}
+                  </span>
+                ) : null}
               </p>
               <p className="mt-2 whitespace-pre-wrap text-sm leading-6">
                 {message.content}
@@ -446,7 +501,7 @@ export default function AiTutorClient({
                 <div className="mt-4 rounded-2xl border border-line bg-background/70 p-4 text-sm leading-6 text-muted">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="font-semibold text-foreground">
-                      Evaluation score: {Math.round(message.evaluation.score)}/100
+                      How that answer went: {Math.round(message.evaluation.score)}/100
                     </p>
                     {message.topicRef?.day ? (
                       <Link
@@ -457,10 +512,17 @@ export default function AiTutorClient({
                       </Link>
                     ) : null}
                   </div>
-                  <p className="mt-2">{message.evaluation.summary}</p>
+                  {message.evaluation.summary ? (
+                    <p className="mt-2">{message.evaluation.summary}</p>
+                  ) : null}
+                  {message.evaluation.strengths.length > 0 ? (
+                    <p className="mt-2">
+                      What worked: {message.evaluation.strengths.join("; ")}
+                    </p>
+                  ) : null}
                   {message.evaluation.gaps.length > 0 ? (
                     <p className="mt-2">
-                      Gaps: {message.evaluation.gaps.join("; ")}
+                      To strengthen: {message.evaluation.gaps.join("; ")}
                     </p>
                   ) : null}
                 </div>
@@ -476,11 +538,11 @@ export default function AiTutorClient({
             disabled={busy}
             onClick={() =>
               void sendMessage(
-                "Start my readiness assessment. Ask one question at a time and adapt to my weak areas."
+                "Hi! Let's start. Could you ask me about my role and what I'd like to focus on?"
               )
             }
           >
-            Start assessment
+            Say hi
           </button>
           <button
             type="button"
@@ -488,11 +550,11 @@ export default function AiTutorClient({
             disabled={busy}
             onClick={() =>
               void sendMessage(
-                "Quiz me on the weakest topic in my profile. Ask one interview question only."
+                "Could you give me a basic warm-up question on one of my focus areas, and start gentle?"
               )
             }
           >
-            Quiz weak area
+            Start with basics
           </button>
           <button
             type="button"
@@ -500,11 +562,23 @@ export default function AiTutorClient({
             disabled={busy}
             onClick={() =>
               void sendMessage(
-                "Teach me the next topic briefly, then ask a follow-up interview question."
+                "Teach me a concept from my focus areas in plain English, then ask one short follow-up to check my understanding."
               )
             }
           >
-            Teach next topic
+            Teach a concept
+          </button>
+          <button
+            type="button"
+            className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
+            disabled={busy}
+            onClick={() =>
+              void sendMessage(
+                "Wrap up the session: summarize what we covered today and what to work on next."
+              )
+            }
+          >
+            Wrap up
           </button>
         </div>
 
@@ -513,7 +587,7 @@ export default function AiTutorClient({
             value={draft}
             onChange={(event) => setDraft(event.target.value)}
             className="field-shell"
-            placeholder="Answer the tutor or ask for the next question..."
+            placeholder="Type a message — say hi, ask a question, or answer the coach..."
             disabled={busy}
           />
           <button
@@ -526,8 +600,9 @@ export default function AiTutorClient({
         </form>
 
         <p className="mt-3 text-xs leading-5 text-muted">
-          Python coding lab is planned as a browser-side Pyodide module so user
-          code is not executed on the server.
+          Coach uses your daily plan, focus areas, and what you&rsquo;ve already
+          checked off — so practice here also updates your tracker on the
+          dashboard.
         </p>
       </section>
     </div>

@@ -46,12 +46,17 @@ export function getSupabaseBrowser() {
  *     user_id text not null,
  *     day int not null,
  *     item_id text not null,
+ *     source text not null default 'manual',
  *     created_at timestamptz default now(),
  *     primary key (user_id, day, item_id)
  *   );
  *
  *   create index if not exists day_progress_user_idx
  *     on day_progress (user_id);
+ *
+ *   -- Existing deployments without the source column: run once.
+ *   alter table day_progress
+ *     add column if not exists source text not null default 'manual';
  *
  * RLS is intentionally OFF here because we always go through the service
  * role from server actions. If you flip RLS on, add policies that scope
