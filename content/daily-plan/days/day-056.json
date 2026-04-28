@@ -11,19 +11,33 @@
           "id": "lc-number-of-connected-components-in-an-undirected-graph",
           "label": "Number OF Connected Components IN AN Undirected Graph",
           "href": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-graph-valid-tree",
           "label": "Graph Valid Tree",
           "href": "https://leetcode.com/problems/graph-valid-tree/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-word-ladder",
           "label": "Word Ladder",
           "href": "https://leetcode.com/problems/word-ladder/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Why BFS over DFS for shortest path?",
+            "What's the trick with the wildcard pattern (e.g., 'h*t') to build neighbours efficiently?"
+          ]
         }
       ]
     },

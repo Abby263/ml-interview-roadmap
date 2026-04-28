@@ -11,13 +11,23 @@
           "id": "lc-reconstruct-itinerary",
           "label": "Reconstruct Itinerary",
           "href": "https://leetcode.com/problems/reconstruct-itinerary/",
-          "meta": "Advanced Graphs"
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
         },
         {
           "id": "lc-min-cost-to-connect-all-points",
           "label": "Min Cost TO Connect All Points",
           "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
-          "meta": "Advanced Graphs"
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
         }
       ]
     },
@@ -55,66 +65,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "Company Loop · What different employers test",
-      "items": [
-        {
-          "id": "company-loop-meta",
-          "label": "Meta-style loop: fast coding, product ML design, production follow-ups, behavioral",
-          "href": "https://www.glassdoor.com/Interview/Facebook-Machine-Learning-Engineer-Interview-Questions-EI_IE40772.0%2C8_KO9%2C34.htm",
-          "meta": "Big Tech",
-          "interviewQuestions": [
-            "What rounds should you expect in a Meta-style MLE loop, and how do coding and ML design differ?",
-            "How would you answer a vague feed-ranking prompt while keeping product metrics, training data, and serving constraints visible?",
-            "What common failure shows up when candidates know ML theory but cannot connect it to a product surface?"
-          ]
-        },
-        {
-          "id": "company-loop-google",
-          "label": "Google-style loop: ML fundamentals, scalable systems, experimentation, responsible AI",
-          "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-          "meta": "Big Tech",
-          "interviewQuestions": [
-            "How do Google-style interviews test metrics interpretation, data pipelines, and responsible AI together?",
-            "What production signals would you discuss for training-serving skew, attribution drift, and fairness readiness?",
-            "How would you prepare a concise story about collaborating with data, infra, and product roles?"
-          ]
-        },
-        {
-          "id": "company-loop-openai-anthropic",
-          "label": "AI-lab loop: technical depth, pair coding, evals, model behavior, safety, fast ramp",
-          "href": "https://openai.com/interview-guide",
-          "meta": "AI labs",
-          "interviewQuestions": [
-            "What does a skills-based assessment test beyond memorized ML facts?",
-            "How would you prepare to discuss a system you built at implementation, evaluation, and failure-mode depth?",
-            "What does strong communication look like when the interviewer stretches you beyond your comfort zone?"
-          ]
-        },
-        {
-          "id": "company-loop-aws-amazon",
-          "label": "Amazon/AWS-style loop: operational ML, security, cloud workflows, ownership stories",
-          "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
-          "meta": "Cloud",
-          "interviewQuestions": [
-            "How would you frame an ML workflow around data preparation, model development, deployment, and monitoring?",
-            "Which security and access-control decisions matter in a cloud-hosted ML platform?",
-            "What leadership story shows you owned a production ML failure end to end?"
-          ]
-        },
-        {
-          "id": "company-loop-startup",
-          "label": "Startup loop: practical take-home, messy notebooks, MVP trade-offs, week-one execution",
-          "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
-          "meta": "Startup",
-          "interviewQuestions": [
-            "How do startup ML interviews compress coding, system design, debugging, and product judgment into one loop?",
-            "What would you build in week one if the company has no eval harness and a customer demo in five days?",
-            "How do you decide between a quick hosted API integration and building a reusable internal platform?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -137,38 +87,6 @@
       "label": "Full Stack Deep Learning",
       "href": "https://fullstackdeeplearning.com/",
       "source": "FSDL"
-    },
-    {
-      "label": "Meta MLE interview reports",
-      "href": "https://www.glassdoor.com/Interview/Facebook-Machine-Learning-Engineer-Interview-Questions-EI_IE40772.0%2C8_KO9%2C34.htm",
-      "source": "Glassdoor"
-    },
-    {
-      "label": "OpenAI interview guide",
-      "href": "https://openai.com/interview-guide",
-      "source": "OpenAI"
-    },
-    {
-      "label": "AWS Certified Machine Learning Engineer exam guide",
-      "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
-      "source": "AWS"
-    },
-    {
-      "label": "Google Cloud Professional ML Engineer exam guide",
-      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-      "source": "Google Cloud"
-    },
-    {
-      "label": "Reddit — practical ML coding questions candidates report",
-      "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
-      "source": "Reddit r/MachineLearning"
     }
-  ],
-  "questionIds": [
-    "company-loop-meta-mle",
-    "company-loop-openai-technical-depth",
-    "company-loop-startup-practical",
-    "company-loop-google-ml-fundamentals",
-    "company-loop-amazon-aws-operational"
   ]
 }

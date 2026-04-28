@@ -11,7 +11,11 @@
           "id": "lc-meeting-rooms-ii",
           "label": "Meeting Rooms II",
           "href": "https://leetcode.com/problems/meeting-rooms-ii/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Compare heap-based (O(n log n)) vs sweep-line (start/end events) approaches.",
+            "What if you need to assign each meeting to a specific room, not just count?"
+          ]
         }
       ]
     },
@@ -45,8 +49,7 @@
           "meta": "vLLM",
           "interviewQuestions": [
             "What does vLLM's PagedAttention do for throughput?",
-            "Compare vLLM vs TensorRT-LLM vs SGLang.",
-            "How do continuous batching and KV-cache memory pressure interact under mixed short and long prompts?"
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
           ]
         },
         {
@@ -57,35 +60,7 @@
           "interviewQuestions": [
             "How would you diagnose high first-token latency vs high tokens-per-second latency?",
             "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
-            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?",
-            "How would you decide when to use distillation, quantization, speculative decoding, or routing to hit a latency SLO?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "ML Coding Lab · LLMOps simulations",
-      "items": [
-        {
-          "id": "ml-lab-semantic-cache",
-          "label": "Implement a semantic cache simulator and measure false-hit risk",
-          "href": "https://platform.openai.com/docs/guides/cost-optimization",
-          "meta": "Cost/latency",
-          "interviewQuestions": [
-            "How would you implement semantic cache lookup with embeddings and a similarity threshold?",
-            "What offline eval catches a dangerous false cache hit?",
-            "When should semantic caching be disabled even if it saves money?"
-          ]
-        },
-        {
-          "id": "ml-lab-router-simulator",
-          "label": "Simulate a cheap-then-expensive model router with quality, latency, and cost gates",
-          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-          "meta": "Routing",
-          "interviewQuestions": [
-            "What confidence or verifier signal decides whether to escalate to a stronger model?",
-            "How do you compute blended cost and latency across a routed model cascade?",
-            "What regression test prevents the router from silently hurting hard queries?"
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
           ]
         }
       ]
@@ -106,15 +81,6 @@
       "label": "Anthropic — Prompt Engineering Guide",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
       "source": "Anthropic"
-    },
-    {
-      "label": "OpenAI — evaluation best practices",
-      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-      "source": "OpenAI"
     }
-  ],
-  "questionIds": [
-    "llm-semantic-cache-risk",
-    "llm-routing-cost-quality-simulator"
   ]
 }

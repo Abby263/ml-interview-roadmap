@@ -11,13 +11,23 @@
           "id": "lc-longest-increasing-path-in-a-matrix",
           "label": "Longest Increasing Path IN A Matrix",
           "href": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         },
         {
           "id": "lc-distinct-subsequences",
           "label": "Distinct Subsequences",
           "href": "https://leetcode.com/problems/distinct-subsequences/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         }
       ]
     },

@@ -11,7 +11,11 @@
           "id": "lc-trapping-rain-water",
           "label": "Trapping Rain Water",
           "href": "https://leetcode.com/problems/trapping-rain-water/",
-          "meta": "Two Pointers"
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "Compare DP (precompute left-max, right-max) vs two-pointer O(1) space — walk through the two-pointer invariant.",
+            "What if rainwater can flow off the sides — how does that change anything?"
+          ]
         }
       ]
     },

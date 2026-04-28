@@ -11,13 +11,23 @@
           "id": "lc-reorder-list",
           "label": "Reorder List",
           "href": "https://leetcode.com/problems/reorder-list/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         },
         {
           "id": "lc-remove-nth-node-from-end-of-list",
           "label": "Remove Nth Node From End OF List",
           "href": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         }
       ]
     },

@@ -11,7 +11,11 @@
           "id": "lc-n-queens",
           "label": "N Queens",
           "href": "https://leetcode.com/problems/n-queens/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you check 'queen attacks me' in O(1) using the diagonal-set trick?",
+            "What's the state-space size, and how much does pruning actually save in practice?"
+          ]
         }
       ]
     },
@@ -26,18 +30,6 @@
           "interviewQuestions": [
             "Do long context windows kill RAG? Defend your view.",
             "What's the cost picture (latency + $) of stuffing 1M tokens vs RAG over the same corpus?"
-          ]
-        },
-        {
-          "id": "llm-long-context-extension",
-          "label": "Long-context extension: position interpolation, NTK, YaRN, and evals",
-          "href": "https://arxiv.org/abs/2306.15595",
-          "meta": "Long context",
-          "interviewQuestions": [
-            "How does position interpolation extend context length without retraining from scratch?",
-            "Compare position interpolation, NTK-aware scaling, YaRN, and sliding-window attention for long-context adaptation.",
-            "How would you evaluate long-context quality with needle-in-a-haystack, RULER, LongBench, and position-wise perplexity?",
-            "What short-context regression risk appears after long-context fine-tuning?"
           ]
         },
         {

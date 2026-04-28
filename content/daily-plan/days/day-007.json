@@ -11,13 +11,23 @@
           "id": "lc-longest-repeating-character-replacement",
           "label": "Longest Repeating Character Replacement",
           "href": "https://leetcode.com/problems/longest-repeating-character-replacement/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
         },
         {
           "id": "lc-permutation-in-string",
           "label": "Permutation IN String",
           "href": "https://leetcode.com/problems/permutation-in-string/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
         }
       ]
     },

@@ -11,7 +11,11 @@
           "id": "lc-binary-tree-level-order-traversal",
           "label": "Binary Tree Level Order Traversal",
           "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Walk through BFS with queue. How do you cleanly separate one level from the next?",
+            "Can you do this DFS-recursively while still grouping by level?"
+          ]
         }
       ]
     },

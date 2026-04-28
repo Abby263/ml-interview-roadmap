@@ -11,13 +11,21 @@
           "id": "lc-maximum-subarray",
           "label": "Maximum Subarray",
           "href": "https://leetcode.com/problems/maximum-subarray/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Walk through Kadane's algorithm. State the loop invariant.",
+            "How does maximum-product-subarray differ — what extra state do you carry?"
+          ]
         },
         {
           "id": "lc-jump-game",
           "label": "Jump Game",
           "href": "https://leetcode.com/problems/jump-game/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Why does greedy (track max-reach) work? Where would DP be unnecessary?",
+            "How does jump-game-ii (min jumps) differ in approach?"
+          ]
         }
       ]
     },
@@ -31,9 +39,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the BPE training algorithm.",
-            "Why does BPE result in different tokenizations for similar words across languages?",
-            "Compare BPE, WordPiece, Unigram, and SentencePiece: what does each store and optimize?",
-            "Why can WordPiece produce an unknown token where BPE would still decompose into smaller pieces?"
+            "Why does BPE result in different tokenizations for similar words across languages?"
           ]
         },
         {
@@ -53,9 +59,7 @@
           "meta": "Read",
           "interviewQuestions": [
             "Why do LLMs struggle with arithmetic, and how does tokenization contribute?",
-            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?",
-            "Why did code models add tokens for whitespace runs, and how can that improve coding throughput?",
-            "What is the difference between byte-level tokenization and character-level tokenization?"
+            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?"
           ]
         }
       ]

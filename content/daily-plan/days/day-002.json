@@ -11,19 +11,32 @@
           "id": "lc-group-anagrams",
           "label": "Group Anagrams",
           "href": "https://leetcode.com/problems/group-anagrams/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's your hash key — sorted string vs character-count tuple? Trade-offs?",
+            "How does this scale to a streaming input where new strings keep arriving?"
+          ]
         },
         {
           "id": "lc-top-k-frequent-elements",
           "label": "Top K Frequent Elements",
           "href": "https://leetcode.com/problems/top-k-frequent-elements/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Walk through bucket sort (O(n)) vs heap of k (O(n log k)) — when does each win?",
+            "What if k is much larger than the unique-element count?"
+          ]
         },
         {
           "id": "lc-encode-and-decode-strings",
           "label": "Encode And Decode Strings",
           "href": "https://leetcode.com/problems/encode-and-decode-strings/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's the time and space complexity? Where can you tighten it?",
+            "Walk through edge cases: empty input, single element, all duplicates, negatives.",
+            "Why is a hash map / hash set the right structure here? When would a sorted structure beat it?"
+          ]
         }
       ]
     },

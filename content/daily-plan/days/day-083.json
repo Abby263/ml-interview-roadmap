@@ -11,7 +11,11 @@
           "id": "lc-binary-tree-maximum-path-sum",
           "label": "Binary Tree Maximum Path Sum",
           "href": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "What does the recursion return vs what it updates globally? Why those two different things?",
+            "What's the time and space complexity, and where does the space go?"
+          ]
         }
       ]
     },

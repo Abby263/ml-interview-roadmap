@@ -11,7 +11,12 @@
           "id": "lc-burst-balloons",
           "label": "Burst Balloons",
           "href": "https://leetcode.com/problems/burst-balloons/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         }
       ]
     },

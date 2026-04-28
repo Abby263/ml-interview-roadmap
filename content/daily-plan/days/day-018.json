@@ -11,19 +11,33 @@
           "id": "lc-binary-search",
           "label": "Binary Search",
           "href": "https://leetcode.com/problems/binary-search/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "What's your binary-search template (left ≤ right, left < right) and which one are you using and why?",
+            "Walk through the bug-prone bits: mid calculation overflow, off-by-one on bounds."
+          ]
         },
         {
           "id": "lc-search-a-2d-matrix",
           "label": "Search A 2d Matrix",
           "href": "https://leetcode.com/problems/search-a-2d-matrix/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
         },
         {
           "id": "lc-koko-eating-bananas",
           "label": "Koko Eating Bananas",
           "href": "https://leetcode.com/problems/koko-eating-bananas/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
         }
       ]
     },

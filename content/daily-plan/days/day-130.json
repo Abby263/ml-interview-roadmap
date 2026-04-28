@@ -11,7 +11,12 @@
           "id": "lc-koko-eating-bananas",
           "label": "Koko Eating Bananas",
           "href": "https://leetcode.com/problems/koko-eating-bananas/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
         }
       ]
     },

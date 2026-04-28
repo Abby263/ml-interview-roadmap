@@ -11,13 +11,23 @@
           "id": "lc-copy-list-with-random-pointer",
           "label": "Copy List With Random Pointer",
           "href": "https://leetcode.com/problems/copy-list-with-random-pointer/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         },
         {
           "id": "lc-add-two-numbers",
           "label": "Add Two Numbers",
           "href": "https://leetcode.com/problems/add-two-numbers/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         }
       ]
     },

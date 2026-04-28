@@ -11,13 +11,22 @@
           "id": "lc-car-fleet",
           "label": "Car Fleet",
           "href": "https://leetcode.com/problems/car-fleet/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
         },
         {
           "id": "lc-largest-rectangle-in-histogram",
           "label": "Largest Rectangle IN Histogram",
           "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Walk through the monotonic stack — what does popping a bar tell you about its rectangle?",
+            "How does this generalize to 'maximal rectangle in a binary matrix'?"
+          ]
         }
       ]
     },

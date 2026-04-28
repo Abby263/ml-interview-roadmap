@@ -19,6 +19,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { dsaQuestions } from "./build-curriculum-dsa-questions.mjs";
+
 const root = path.join(process.cwd(), "content", "daily-plan");
 const daysRoot = path.join(root, "days");
 const weeksPath = path.join(root, "weeks.json");
@@ -56,12 +58,17 @@ function titleizeSlug(slug) {
 function nc(category, start, count) {
   const list = NC[category];
   if (!list) throw new Error(`Unknown NeetCode category: ${category}`);
-  return list.slice(start, start + count).map((slug) => ({
-    id: `lc-${slug}`,
-    label: titleizeSlug(slug),
-    href: `https://leetcode.com/problems/${slug}/`,
-    meta: category,
-  }));
+  return list.slice(start, start + count).map((slug) => {
+    const item = {
+      id: `lc-${slug}`,
+      label: titleizeSlug(slug),
+      href: `https://leetcode.com/problems/${slug}/`,
+      meta: category,
+    };
+    const qs = dsaQuestions(slug, category);
+    if (qs && qs.length >= 2) item.interviewQuestions = qs.slice(0, 5);
+    return item;
+  });
 }
 
 function ncTrack(category, start, count, label) {

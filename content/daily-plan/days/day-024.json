@@ -11,13 +11,22 @@
           "id": "lc-linked-list-cycle",
           "label": "Linked List Cycle",
           "href": "https://leetcode.com/problems/linked-list-cycle/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through Floyd's tortoise & hare — why must they meet inside the cycle?",
+            "How do you find the start of the cycle (LC 142) once you've detected one?"
+          ]
         },
         {
           "id": "lc-find-the-duplicate-number",
           "label": "Find The Duplicate Number",
           "href": "https://leetcode.com/problems/find-the-duplicate-number/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         }
       ]
     },

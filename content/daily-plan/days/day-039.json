@@ -11,13 +11,23 @@
           "id": "lc-binary-tree-right-side-view",
           "label": "Binary Tree Right Side View",
           "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         },
         {
           "id": "lc-count-good-nodes-in-binary-tree",
           "label": "Count Good Nodes IN Binary Tree",
           "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },
@@ -42,9 +52,7 @@
           "interviewQuestions": [
             "Why does BN behave differently between train and eval mode?",
             "Why do transformers prefer LayerNorm over BatchNorm?",
-            "What problem does RMSNorm solve in modern LLMs?",
-            "What is internal covariate shift, and is that the full explanation for why BatchNorm helps?",
-            "Why do normalization layers learn scale and shift parameters after normalizing?"
+            "What problem does RMSNorm solve in modern LLMs?"
           ]
         },
         {

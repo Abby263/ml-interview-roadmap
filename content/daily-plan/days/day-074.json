@@ -11,13 +11,23 @@
           "id": "lc-hand-of-straights",
           "label": "Hand OF Straights",
           "href": "https://leetcode.com/problems/hand-of-straights/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
         },
         {
           "id": "lc-merge-triplets-to-form-target-triplet",
           "label": "Merge Triplets TO Form Target Triplet",
           "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
         }
       ]
     },

@@ -11,13 +11,22 @@
           "id": "lc-k-closest-points-to-origin",
           "label": "K Closest Points TO Origin",
           "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         },
         {
           "id": "lc-kth-largest-element-in-an-array",
           "label": "Kth Largest Element IN AN Array",
           "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Compare heap (O(n log k)), sort (O(n log n)), quickselect (O(n) avg) — when does each fit?",
+            "What's quickselect's worst case, and how do you avoid it (median-of-medians, randomization)?"
+          ]
         }
       ]
     },

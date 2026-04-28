@@ -11,7 +11,12 @@
           "id": "lc-sliding-window-maximum",
           "label": "Sliding Window Maximum",
           "href": "https://leetcode.com/problems/sliding-window-maximum/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
         }
       ]
     },
@@ -25,8 +30,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "When does fine-tuning beat RAG, and vice versa?",
-            "When is prompt engineering enough?",
-            "How would you decide between SFT, LoRA, preference tuning, prompt engineering, and RAG for a domain assistant?"
+            "When is prompt engineering enough?"
           ]
         },
         {
@@ -47,9 +51,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "How would you curate 10k high-quality examples for fine-tuning a domain LLM?",
-            "What's your dedup + contamination check between training and eval sets — and why does it matter?",
-            "What data filters would you apply for unclear prompts, low-quality responses, semantic duplicates, and weak rater agreement?",
-            "How would you build capability-specific SFT data for code, safety, factuality, multilinguality, long-context, and tool use?"
+            "What's your dedup + contamination check between training and eval sets — and why does it matter?"
           ]
         }
       ]

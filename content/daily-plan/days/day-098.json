@@ -11,7 +11,12 @@
           "id": "lc-merge-triplets-to-form-target-triplet",
           "label": "Merge Triplets TO Form Target Triplet",
           "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
         }
       ]
     },
@@ -95,33 +100,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "LLMOps · Release review and cost regression gates",
-      "items": [
-        {
-          "id": "llmops-cost-regression-gate",
-          "label": "Cost, latency, quality, and safety gates for prompt/model/tool changes",
-          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-          "meta": "Release gates",
-          "interviewQuestions": [
-            "What release gates should block a model or prompt update even if average answer quality improves?",
-            "How do you set a cost regression threshold for token growth or model routing changes?",
-            "Which artifacts must exist before a risky LLM change can be rolled back?"
-          ]
-        },
-        {
-          "id": "llmops-incident-runbook",
-          "label": "Incident runbook: hallucination spike, tool misuse, cost runaway, and latency outage",
-          "href": "https://platform.openai.com/docs/guides/cost-optimization",
-          "meta": "Incidents",
-          "interviewQuestions": [
-            "How do you triage whether a hallucination spike came from retrieval, prompt, model, or traffic-mix change?",
-            "What immediate mitigation do you use for a cost runaway without fully disabling the product?",
-            "How do you turn the incident into new eval and monitoring coverage?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -134,16 +112,6 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
-    },
-    {
-      "label": "OpenAI — evaluation best practices",
-      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-      "source": "OpenAI"
     }
-  ],
-  "questionIds": [
-    "llm-release-gates",
-    "llm-observability-debug",
-    "prod-finops-unit-cost"
   ]
 }

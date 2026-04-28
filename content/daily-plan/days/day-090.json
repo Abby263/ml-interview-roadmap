@@ -11,7 +11,12 @@
           "id": "lc-minimum-interval-to-include-each-query",
           "label": "Minimum Interval TO Include Each Query",
           "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
         }
       ]
     },

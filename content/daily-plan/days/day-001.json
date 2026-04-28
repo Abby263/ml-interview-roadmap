@@ -11,19 +11,32 @@
           "id": "lc-contains-duplicate",
           "label": "Contains Duplicate",
           "href": "https://leetcode.com/problems/contains-duplicate/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Compare hash-set O(n)/O(n) vs sort-and-scan O(n log n)/O(1) — when do you pick each?",
+            "What if the array doesn't fit in memory — how would you detect duplicates with limited RAM?"
+          ]
         },
         {
           "id": "lc-valid-anagram",
           "label": "Valid Anagram",
           "href": "https://leetcode.com/problems/valid-anagram/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Compare sorting (O(n log n)) vs counting-array (O(n), 26 buckets) — when do you pick each?",
+            "What if the strings include Unicode — does your counting-array still work?"
+          ]
         },
         {
           "id": "lc-two-sum",
           "label": "Two Sum",
           "href": "https://leetcode.com/problems/two-sum/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Walk through the brute-force O(n²), then explain how the hash map drops it to O(n).",
+            "What if the array is sorted — can you do better in space (two-pointer, O(1))?",
+            "What if duplicates are allowed and you need ALL pairs, not just one?"
+          ]
         }
       ]
     },

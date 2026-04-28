@@ -11,7 +11,12 @@
           "id": "lc-powx-n",
           "label": "Powx N",
           "href": "https://leetcode.com/problems/powx-n/",
-          "meta": "Math & Geometry"
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
         }
       ]
     },
@@ -25,9 +30,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
-            "How do GPTQ and AWQ work, and what quality do you lose?",
-            "Why do outlier activations make simple low-bit quantization fail on large transformers?",
-            "When would mixed-precision quantization be safer than quantizing all weights and activations uniformly?"
+            "How do GPTQ and AWQ work, and what quality do you lose?"
           ]
         },
         {
@@ -68,9 +71,7 @@
           "interviewQuestions": [
             "Why does KV-cache memory become the bottleneck for long-context LLM serving?",
             "How does PagedAttention reduce memory fragmentation compared with a naive KV cache?",
-            "What serving knobs would you tune when long prompts cause out-of-memory errors?",
-            "Compare MQA, GQA, multi-head latent attention, cross-layer KV sharing, and KV-cache quantization as cache-reduction strategies.",
-            "What quality or engineering risk do you introduce when reducing KV-cache precision or sharing KV across layers?"
+            "What serving knobs would you tune when long prompts cause out-of-memory errors?"
           ]
         }
       ]

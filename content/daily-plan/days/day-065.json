@@ -11,13 +11,22 @@
           "id": "lc-longest-increasing-subsequence",
           "label": "Longest Increasing Subsequence",
           "href": "https://leetcode.com/problems/longest-increasing-subsequence/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "Walk through DP O(n²). Then walk through patience-sorting O(n log n) with binary search.",
+            "What's the DIFFERENCE between LIS length and the actual subsequence — how do you reconstruct?"
+          ]
         },
         {
           "id": "lc-partition-equal-subset-sum",
           "label": "Partition Equal Subset Sum",
           "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
         }
       ]
     },

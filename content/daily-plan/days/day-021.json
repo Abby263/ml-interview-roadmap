@@ -11,13 +11,21 @@
           "id": "lc-reverse-linked-list",
           "label": "Reverse Linked List",
           "href": "https://leetcode.com/problems/reverse-linked-list/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Show both iterative (3 pointers) and recursive solutions. Compare stack space.",
+            "What if you only want to reverse a sub-range [m, n]?"
+          ]
         },
         {
           "id": "lc-merge-two-sorted-lists",
           "label": "Merge Two Sorted Lists",
           "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "How would you generalize this to merging k sorted lists efficiently?",
+            "Can you do it in-place without a dummy node? What's gained / lost?"
+          ]
         }
       ]
     },

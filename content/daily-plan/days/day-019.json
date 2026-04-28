@@ -11,13 +11,21 @@
           "id": "lc-find-minimum-in-rotated-sorted-array",
           "label": "Find Minimum IN Rotated Sorted Array",
           "href": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "Why does mid-vs-right comparison work but mid-vs-left can mislead with duplicates?",
+            "How does the algorithm change if duplicates are allowed?"
+          ]
         },
         {
           "id": "lc-search-in-rotated-sorted-array",
           "label": "Search IN Rotated Sorted Array",
           "href": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "How do you decide which half is sorted on each step? Walk through with a small example.",
+            "What changes if duplicates are allowed (LC 81)?"
+          ]
         }
       ]
     },

@@ -11,13 +11,22 @@
           "id": "lc-validate-binary-search-tree",
           "label": "Validate Binary Search Tree",
           "href": "https://leetcode.com/problems/validate-binary-search-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Why is checking 'left.val < node.val < right.val' insufficient — what's the right invariant?",
+            "Compare in-order traversal vs min/max-bound recursion."
+          ]
         },
         {
           "id": "lc-kth-smallest-element-in-a-bst",
           "label": "Kth Smallest Element IN A Bst",
           "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },

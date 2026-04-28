@@ -11,13 +11,22 @@
           "id": "lc-number-of-islands",
           "label": "Number OF Islands",
           "href": "https://leetcode.com/problems/number-of-islands/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Compare DFS, BFS, and Union-Find — pick one and defend it.",
+            "What if the grid is huge and streamed (rows arrive one at a time)?"
+          ]
         },
         {
           "id": "lc-clone-graph",
           "label": "Clone Graph",
           "href": "https://leetcode.com/problems/clone-graph/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         }
       ]
     },

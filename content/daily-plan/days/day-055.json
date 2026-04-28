@@ -11,13 +11,23 @@
           "id": "lc-course-schedule-ii",
           "label": "Course Schedule II",
           "href": "https://leetcode.com/problems/course-schedule-ii/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-redundant-connection",
           "label": "Redundant Connection",
           "href": "https://leetcode.com/problems/redundant-connection/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         }
       ]
     },

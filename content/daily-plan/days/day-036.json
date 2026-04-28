@@ -11,19 +11,33 @@
           "id": "lc-invert-binary-tree",
           "label": "Invert Binary Tree",
           "href": "https://leetcode.com/problems/invert-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Show both iterative (BFS / DFS with stack) and recursive solutions.",
+            "What's the space cost of the recursive version on a skewed tree?"
+          ]
         },
         {
           "id": "lc-maximum-depth-of-binary-tree",
           "label": "Maximum Depth OF Binary Tree",
           "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         },
         {
           "id": "lc-diameter-of-binary-tree",
           "label": "Diameter OF Binary Tree",
           "href": "https://leetcode.com/problems/diameter-of-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },

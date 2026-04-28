@@ -11,13 +11,21 @@
           "id": "lc-best-time-to-buy-and-sell-stock",
           "label": "Best Time TO Buy And Sell Stock",
           "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through the one-pass min-so-far trick. Why is it correct?",
+            "What if you can buy and sell unlimited times? What about with a cooldown or fee?"
+          ]
         },
         {
           "id": "lc-longest-substring-without-repeating-characters",
           "label": "Longest Substring Without Repeating Characters",
           "href": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Why is this a sliding window? What's the invariant inside the window?",
+            "What if the alphabet is huge (Unicode) vs tiny (ASCII)? Does that change your data structure?"
+          ]
         }
       ]
     },

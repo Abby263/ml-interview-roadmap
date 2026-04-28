@@ -11,7 +11,11 @@
           "id": "lc-largest-rectangle-in-histogram",
           "label": "Largest Rectangle IN Histogram",
           "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Walk through the monotonic stack — what does popping a bar tell you about its rectangle?",
+            "How does this generalize to 'maximal rectangle in a binary matrix'?"
+          ]
         }
       ]
     },

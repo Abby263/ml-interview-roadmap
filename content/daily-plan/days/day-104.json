@@ -11,7 +11,12 @@
           "id": "lc-design-add-and-search-words-data-structure",
           "label": "Design Add And Search Words Data Structure",
           "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
-          "meta": "Tries"
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
         }
       ]
     },
@@ -25,9 +30,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the three stages of RLHF end-to-end.",
-            "What goes wrong if your reward model is poorly calibrated?",
-            "Why does PPO-based RLHF commonly add a per-token KL penalty against a reference model?",
-            "What metrics would you log during RLHF training to catch reward hacking, KL explosion, value collapse, or throughput bottlenecks?"
+            "What goes wrong if your reward model is poorly calibrated?"
           ]
         },
         {
@@ -47,9 +50,7 @@
           "meta": "Rafailov et al.",
           "interviewQuestions": [
             "Walk through how reward hacking shows up in practice and how you'd detect it.",
-            "How would you design an eval suite that catches sycophancy and excessive hedging in an RLHF'd model?",
-            "What reward-hacking behaviors appear when a grader overweights formatting, latex boxes, verbosity, or rubric-like tables?",
-            "Why can process reward models help reasoning tasks, and how can they introduce new reward-hacking paths?"
+            "How would you design an eval suite that catches sycophancy and excessive hedging in an RLHF'd model?"
           ]
         }
       ]

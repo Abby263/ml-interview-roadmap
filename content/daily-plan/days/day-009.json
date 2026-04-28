@@ -11,19 +11,34 @@
           "id": "lc-happy-number",
           "label": "Happy Number",
           "href": "https://leetcode.com/problems/happy-number/",
-          "meta": "Math & Geometry"
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
         },
         {
           "id": "lc-plus-one",
           "label": "Plus One",
           "href": "https://leetcode.com/problems/plus-one/",
-          "meta": "Math & Geometry"
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
         },
         {
           "id": "lc-powx-n",
           "label": "Powx N",
           "href": "https://leetcode.com/problems/powx-n/",
-          "meta": "Math & Geometry"
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
         }
       ]
     },

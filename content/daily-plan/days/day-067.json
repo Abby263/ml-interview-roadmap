@@ -11,13 +11,23 @@
           "id": "lc-best-time-to-buy-and-sell-stock-with-cooldown",
           "label": "Best Time TO Buy And Sell Stock With Cooldown",
           "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         },
         {
           "id": "lc-coin-change-ii",
           "label": "Coin Change II",
           "href": "https://leetcode.com/problems/coin-change-ii/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         }
       ]
     },

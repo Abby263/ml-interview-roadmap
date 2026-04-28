@@ -11,13 +11,21 @@
           "id": "lc-lru-cache",
           "label": "Lru Cache",
           "href": "https://leetcode.com/problems/lru-cache/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Why hash map + doubly linked list — what does each give you in O(1)?",
+            "How would you make this thread-safe? What's the simplest correct approach?"
+          ]
         },
         {
           "id": "lc-merge-k-sorted-lists",
           "label": "Merge K Sorted Lists",
           "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Compare divide-and-conquer (pairwise merge, O(N log k)) vs heap-of-k-heads (also O(N log k)) — when does each win in practice?",
+            "What if the lists are streaming — does the heap approach still work?"
+          ]
         }
       ]
     },

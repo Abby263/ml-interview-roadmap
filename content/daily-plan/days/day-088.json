@@ -11,7 +11,12 @@
           "id": "lc-task-scheduler",
           "label": "Task Scheduler",
           "href": "https://leetcode.com/problems/task-scheduler/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         }
       ]
     },
@@ -25,8 +30,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the SFT objective — how is it different from pretraining?",
-            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?",
-            "How would you generate and filter synthetic SFT data using rejection sampling, model-based quality scoring, and semantic deduplication?"
+            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?"
           ]
         },
         {
@@ -36,9 +40,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the three stages of RLHF: SFT → reward model → PPO.",
-            "Why is reward hacking a problem in RLHF?",
-            "What implementation details matter in PPO-based RLHF: per-token KL, reward normalization, adaptive KL, dropout, and response-length handling?",
-            "Compare outcome reward models vs process reward models for reasoning-heavy tasks."
+            "Why is reward hacking a problem in RLHF?"
           ]
         },
         {
@@ -48,9 +50,7 @@
           "meta": "Rafailov et al.",
           "interviewQuestions": [
             "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
-            "Compare DPO, IPO, KTO, and ORPO — when does each fit?",
-            "Walk through the tensors needed to implement DPO: chosen/rejected logprobs from the trainable model and the frozen reference model.",
-            "Why can deterministic preference labels weaken KL-style regularization, and how does IPO try to address that?"
+            "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
           ]
         }
       ]

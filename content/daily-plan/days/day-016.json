@@ -11,13 +11,22 @@
           "id": "lc-generate-parentheses",
           "label": "Generate Parentheses",
           "href": "https://leetcode.com/problems/generate-parentheses/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
         },
         {
           "id": "lc-daily-temperatures",
           "label": "Daily Temperatures",
           "href": "https://leetcode.com/problems/daily-temperatures/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "What's the monotonic-stack invariant, and how does each pop give you the answer?",
+            "Why is the total work O(n) when the inner loop looks O(n²)?"
+          ]
         }
       ]
     },
