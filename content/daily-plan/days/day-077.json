@@ -11,13 +11,23 @@
           "id": "lc-non-overlapping-intervals",
           "label": "Non Overlapping Intervals",
           "href": "https://leetcode.com/problems/non-overlapping-intervals/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
         },
         {
           "id": "lc-meeting-rooms",
           "label": "Meeting Rooms",
           "href": "https://leetcode.com/problems/meeting-rooms/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
         }
       ]
     },
@@ -41,9 +51,7 @@
           "meta": "Papers with Code",
           "interviewQuestions": [
             "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
-            "Why has benchmark contamination become a serious issue?",
-            "How would you detect and respond to benchmark contamination using exact match, n-gram overlap, embedding similarity, or loss skew?",
-            "How would you split evals into fast inner-loop checks vs slower outer-loop benchmark suites?"
+            "Why has benchmark contamination become a serious issue?"
           ]
         },
         {
@@ -53,9 +61,7 @@
           "meta": "Zheng et al.",
           "interviewQuestions": [
             "When is LLM-as-judge reliable, and what biases does it introduce?",
-            "How would you calibrate an LLM judge to human preferences?",
-            "How do length bias, position bias, and model-family bias affect pairwise LLM judging?",
-            "When would you use Elo-style pairwise rankings instead of absolute rubric scores?"
+            "How would you calibrate an LLM judge to human preferences?"
           ]
         },
         {
@@ -66,46 +72,7 @@
           "interviewQuestions": [
             "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
             "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
-            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?",
-            "How does pass@k evaluate code generation, and why does naive pass@k estimation have high variance?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "ML Coding Lab · Evaluation harness implementation",
-      "items": [
-        {
-          "id": "ml-lab-eval-harness",
-          "label": "Build a small eval harness with datasets, scorers, slices, and regression thresholds",
-          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-          "meta": "Evals",
-          "interviewQuestions": [
-            "How would you design an eval harness that runs on every prompt or model change?",
-            "What is the minimum schema for an eval case: input, expected behavior, rubric, metadata, and slice?",
-            "How do you prevent one aggregate score from hiding a regression in a high-risk segment?"
-          ]
-        },
-        {
-          "id": "ml-lab-pairwise-judge",
-          "label": "Implement pairwise LLM-judge scoring with calibration against human labels",
-          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-          "meta": "LLM-as-judge",
-          "interviewQuestions": [
-            "Why are pairwise comparisons often more reliable than open-ended judge scoring?",
-            "How would you estimate agreement between an LLM judge and human reviewers?",
-            "What bias appears if the judge prefers longer or more confident answers?"
-          ]
-        },
-        {
-          "id": "ml-lab-redteam-regressions",
-          "label": "Turn red-team failures into repeatable regression tests",
-          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-          "meta": "Security evals",
-          "interviewQuestions": [
-            "How do you convert a one-off prompt-injection failure into a permanent regression test?",
-            "Which OWASP LLM risks belong in a release-blocking test suite?",
-            "How do you keep red-team tests from becoming stale as the product changes?"
+            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?"
           ]
         }
       ]
@@ -121,21 +88,6 @@
       "label": "Anthropic — Testing & Evaluation",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
       "source": "Anthropic"
-    },
-    {
-      "label": "OpenAI — evaluation best practices",
-      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-      "source": "OpenAI"
-    },
-    {
-      "label": "AWS mapping to OWASP Top 10 for LLM applications",
-      "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-      "source": "AWS / OWASP"
     }
-  ],
-  "questionIds": [
-    "llm-eval-dataset-design",
-    "llm-judge-calibration",
-    "llm-redteam-regression-suite"
   ]
 }

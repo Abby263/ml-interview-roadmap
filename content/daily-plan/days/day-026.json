@@ -11,7 +11,12 @@
           "id": "lc-reverse-nodes-in-k-group",
           "label": "Reverse Nodes IN K Group",
           "href": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
         }
       ]
     },

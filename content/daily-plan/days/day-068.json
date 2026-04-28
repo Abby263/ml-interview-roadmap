@@ -11,13 +11,23 @@
           "id": "lc-target-sum",
           "label": "Target Sum",
           "href": "https://leetcode.com/problems/target-sum/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         },
         {
           "id": "lc-interleaving-string",
           "label": "Interleaving String",
           "href": "https://leetcode.com/problems/interleaving-string/",
-          "meta": "2-D DP"
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
         }
       ]
     },

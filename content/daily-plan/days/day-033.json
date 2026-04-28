@@ -11,7 +11,11 @@
           "id": "lc-daily-temperatures",
           "label": "Daily Temperatures",
           "href": "https://leetcode.com/problems/daily-temperatures/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "What's the monotonic-stack invariant, and how does each pop give you the answer?",
+            "Why is the total work O(n) when the inner loop looks O(n²)?"
+          ]
         }
       ]
     },

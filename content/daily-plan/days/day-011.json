@@ -11,19 +11,33 @@
           "id": "lc-single-number",
           "label": "Single Number",
           "href": "https://leetcode.com/problems/single-number/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Why does XOR-all give the unique element when others appear twice?",
+            "How does this generalize when others appear three times (LC 137)?"
+          ]
         },
         {
           "id": "lc-number-of-1-bits",
           "label": "Number OF 1 Bits",
           "href": "https://leetcode.com/problems/number-of-1-bits/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         },
         {
           "id": "lc-counting-bits",
           "label": "Counting Bits",
           "href": "https://leetcode.com/problems/counting-bits/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         }
       ]
     },

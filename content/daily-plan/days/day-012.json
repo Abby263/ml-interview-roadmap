@@ -11,13 +11,23 @@
           "id": "lc-reverse-bits",
           "label": "Reverse Bits",
           "href": "https://leetcode.com/problems/reverse-bits/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         },
         {
           "id": "lc-missing-number",
           "label": "Missing Number",
           "href": "https://leetcode.com/problems/missing-number/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         }
       ]
     },

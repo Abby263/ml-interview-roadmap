@@ -11,7 +11,11 @@
           "id": "lc-kth-largest-element-in-an-array",
           "label": "Kth Largest Element IN AN Array",
           "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Compare heap (O(n log k)), sort (O(n log n)), quickselect (O(n) avg) — when does each fit?",
+            "What's quickselect's worst case, and how do you avoid it (median-of-medians, randomization)?"
+          ]
         }
       ]
     },

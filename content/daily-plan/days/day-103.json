@@ -11,7 +11,12 @@
           "id": "lc-count-good-nodes-in-binary-tree",
           "label": "Count Good Nodes IN Binary Tree",
           "href": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },
@@ -35,9 +40,7 @@
           "meta": "Lilian Weng",
           "interviewQuestions": [
             "Walk through the policy gradient theorem.",
-            "Why are baselines used (e.g., advantage estimation)?",
-            "How does actor-critic reduce variance compared with pure REINFORCE?",
-            "What is generalized advantage estimation, and what bias-variance trade-off does lambda control?"
+            "Why are baselines used (e.g., advantage estimation)?"
           ]
         },
         {
@@ -47,9 +50,7 @@
           "meta": "Schulman et al.",
           "interviewQuestions": [
             "Walk me through PPO — what's the clipped surrogate objective and why does it stabilize training?",
-            "How is GRPO (used in DeepSeek-R1) different from PPO?",
-            "Why does PPO use the minimum of clipped and unclipped objectives?",
-            "How is the KL penalty used differently in PPO-style RLHF and GRPO-style objectives?"
+            "How is GRPO (used in DeepSeek-R1) different from PPO?"
           ]
         }
       ]

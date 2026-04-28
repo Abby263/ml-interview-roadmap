@@ -11,13 +11,22 @@
           "id": "lc-longest-palindromic-substring",
           "label": "Longest Palindromic Substring",
           "href": "https://leetcode.com/problems/longest-palindromic-substring/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "Compare expand-around-center (O(n²) time, O(1) space) vs Manacher's (O(n)).",
+            "Why is DP O(n²) time AND O(n²) space — and does it actually beat expand-around-center in practice?"
+          ]
         },
         {
           "id": "lc-palindromic-substrings",
           "label": "Palindromic Substrings",
           "href": "https://leetcode.com/problems/palindromic-substrings/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
         }
       ]
     },

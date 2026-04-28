@@ -11,13 +11,22 @@
           "id": "lc-time-based-key-value-store",
           "label": "Time Based Key Value Store",
           "href": "https://leetcode.com/problems/time-based-key-value-store/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
         },
         {
           "id": "lc-median-of-two-sorted-arrays",
           "label": "Median OF Two Sorted Arrays",
           "href": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
-          "meta": "Binary Search"
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "Walk through the partition idea: pick i in A, derive j in B from it.",
+            "Why is the binary search on the smaller array, and what's the worst-case complexity?"
+          ]
         }
       ]
     },

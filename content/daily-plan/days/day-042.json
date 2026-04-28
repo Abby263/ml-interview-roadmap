@@ -11,7 +11,12 @@
           "id": "lc-serialize-and-deserialize-binary-tree",
           "label": "Serialize And Deserialize Binary Tree",
           "href": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },

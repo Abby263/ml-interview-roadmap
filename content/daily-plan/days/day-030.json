@@ -11,13 +11,23 @@
           "id": "lc-task-scheduler",
           "label": "Task Scheduler",
           "href": "https://leetcode.com/problems/task-scheduler/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         },
         {
           "id": "lc-design-twitter",
           "label": "Design Twitter",
           "href": "https://leetcode.com/problems/design-twitter/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         }
       ]
     },

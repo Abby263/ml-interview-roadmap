@@ -11,7 +11,12 @@
           "id": "lc-combination-sum-ii",
           "label": "Combination Sum II",
           "href": "https://leetcode.com/problems/combination-sum-ii/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
         }
       ]
     },

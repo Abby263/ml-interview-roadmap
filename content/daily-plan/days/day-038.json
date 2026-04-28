@@ -11,13 +11,21 @@
           "id": "lc-lowest-common-ancestor-of-a-binary-search-tree",
           "label": "Lowest Common Ancestor OF A Binary Search Tree",
           "href": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "How does the BST property let you avoid traversing the whole tree?",
+            "Generalize to a non-BST binary tree (LC 236) — how does the algorithm change?"
+          ]
         },
         {
           "id": "lc-binary-tree-level-order-traversal",
           "label": "Binary Tree Level Order Traversal",
           "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Walk through BFS with queue. How do you cleanly separate one level from the next?",
+            "Can you do this DFS-recursively while still grouping by level?"
+          ]
         }
       ]
     },
@@ -41,8 +49,7 @@
           "meta": "fast.ai",
           "interviewQuestions": [
             "Why is AdamW preferred over Adam when using weight decay?",
-            "When would you ever pick SGD over Adam in deep learning?",
-            "Why does Adam use bias correction for the first and second moment estimates?"
+            "When would you ever pick SGD over Adam in deep learning?"
           ]
         },
         {
@@ -52,19 +59,7 @@
           "meta": "HF",
           "interviewQuestions": [
             "Why is learning rate warmup important for transformer training?",
-            "Compare cosine vs step decay — when does each work better?",
-            "Why can a large learning rate at the beginning of training destabilize deep nets?"
-          ]
-        },
-        {
-          "id": "dl-second-order-shampoo",
-          "label": "Second-order intuition, preconditioning, and Shampoo",
-          "href": "https://arxiv.org/abs/1802.09568",
-          "meta": "Optimizer depth",
-          "interviewQuestions": [
-            "Why are full second-order methods impractical for billion-parameter neural networks?",
-            "What does a preconditioner try to fix that plain SGD cannot?",
-            "How does Shampoo approximate richer curvature information without storing a full Hessian?"
+            "Compare cosine vs step decay — when does each work better?"
           ]
         }
       ]

@@ -11,13 +11,23 @@
           "id": "lc-permutations",
           "label": "Permutations",
           "href": "https://leetcode.com/problems/permutations/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
         },
         {
           "id": "lc-subsets-ii",
           "label": "Subsets II",
           "href": "https://leetcode.com/problems/subsets-ii/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
         }
       ]
     },
@@ -31,8 +41,7 @@
           "meta": "Google",
           "interviewQuestions": [
             "How does ViT tokenize an image, and what's the role of the [CLS] token?",
-            "When does a ViT beat a CNN, and when does data-hungriness hurt it?",
-            "Why can CNN feature maps still help smaller ViT-style models, and why does that benefit shrink with scale?"
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
           ]
         },
         {
@@ -42,8 +51,7 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "How does CLIP enable zero-shot image classification?",
-            "Walk me through CLIP's contrastive training objective.",
-            "What failure modes appear when image-text pairs are noisy, weakly aligned, or culturally biased?"
+            "Walk me through CLIP's contrastive training objective."
           ]
         },
         {
@@ -53,19 +61,7 @@
           "meta": "LLaVA",
           "interviewQuestions": [
             "How do multimodal LLMs like LLaVA fuse vision encoders with language models?",
-            "Compare early fusion vs late fusion in vision-language models — what does each cost in compute and quality?",
-            "How do contrastive captioners combine image-text contrastive loss with caption-generation loss?"
-          ]
-        },
-        {
-          "id": "cv-visual-tokenizers",
-          "label": "Visual tokenizers: VQ-VAE, VQGAN, ViT-VQGAN",
-          "href": "https://arxiv.org/abs/2110.04627",
-          "meta": "Visual tokens",
-          "interviewQuestions": [
-            "Why do some multimodal pretraining pipelines convert images into discrete visual tokens?",
-            "How does a VQ codebook learn if nearest-neighbor code selection is not directly differentiable?",
-            "Compare VQ-VAE, VQGAN, and ViT-VQGAN as image tokenizers for generative modeling."
+            "Compare early fusion vs late fusion in vision-language models — what does each cost in compute and quality?"
           ]
         }
       ]

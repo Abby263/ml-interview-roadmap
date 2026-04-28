@@ -11,13 +11,23 @@
           "id": "lc-kth-largest-element-in-a-stream",
           "label": "Kth Largest Element IN A Stream",
           "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         },
         {
           "id": "lc-last-stone-weight",
           "label": "Last Stone Weight",
           "href": "https://leetcode.com/problems/last-stone-weight/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
         }
       ]
     },
@@ -65,55 +75,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "ML Coding Lab · NumPy implementation drills",
-      "items": [
-        {
-          "id": "ml-lab-vectorized-logreg",
-          "label": "Implement vectorized logistic regression with stable sigmoid and binary cross entropy",
-          "href": "https://neetcode.io/practice/machine-learning",
-          "meta": "ML coding",
-          "interviewQuestions": [
-            "Implement fit and predict_proba for logistic regression using only NumPy.",
-            "How do you make sigmoid and log-loss numerically stable for large positive or negative logits?",
-            "What tests prove your implementation handles class imbalance, no-signal features, and all-zero rows?"
-          ]
-        },
-        {
-          "id": "ml-lab-gradient-check",
-          "label": "Write a finite-difference gradient checker for a hand-coded model",
-          "href": "https://cs231n.github.io/neural-networks-3/#gradcheck",
-          "meta": "Debugging",
-          "interviewQuestions": [
-            "How would you verify a hand-coded gradient without using autograd?",
-            "What epsilon do you choose for finite differences, and what breaks if it is too small or too large?",
-            "How do you debug when only one parameter group fails the gradient check?"
-          ]
-        },
-        {
-          "id": "ml-lab-kmeans-edgecases",
-          "label": "Harden k-means for empty clusters, duplicate points, and convergence tolerance",
-          "href": "https://neetcode.io/practice/machine-learning",
-          "meta": "ML coding",
-          "interviewQuestions": [
-            "How do you handle an empty cluster after an assignment step?",
-            "What stopping criteria would you implement beyond a fixed number of iterations?",
-            "How would you vectorize the distance computation without blowing memory on a huge dataset?"
-          ]
-        },
-        {
-          "id": "ml-lab-classification-metrics",
-          "label": "Implement confusion matrix, precision, recall, F1, ROC-AUC, and PR-AUC from arrays",
-          "href": "https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall",
-          "meta": "Metrics coding",
-          "interviewQuestions": [
-            "Implement precision, recall, and F1 from labels and scores without sklearn.",
-            "How do you compute ROC-AUC by ranking scores, and why does sorting matter?",
-            "When would your PR-AUC implementation expose a bug that ROC-AUC hides?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -131,16 +92,6 @@
       "label": "Chip Huyen — ML Interviews Book (free)",
       "href": "https://huyenchip.com/ml-interviews-book/",
       "source": "Chip Huyen"
-    },
-    {
-      "label": "Reddit — practical ML coding questions candidates report",
-      "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
-      "source": "Reddit r/MachineLearning"
     }
-  ],
-  "questionIds": [
-    "ml-coding-logreg-numpy",
-    "ml-coding-kmeans-edge-cases",
-    "ml-coding-gradient-checker"
   ]
 }

@@ -11,13 +11,22 @@
           "id": "lc-insert-interval",
           "label": "Insert Interval",
           "href": "https://leetcode.com/problems/insert-interval/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
         },
         {
           "id": "lc-merge-intervals",
           "label": "Merge Intervals",
           "href": "https://leetcode.com/problems/merge-intervals/",
-          "meta": "Intervals"
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Why sort by start (not end) for THIS problem — and contrast with non-overlapping-intervals.",
+            "How does this scale if intervals stream in unsorted?"
+          ]
         }
       ]
     },

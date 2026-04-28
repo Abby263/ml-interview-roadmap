@@ -11,7 +11,12 @@
           "id": "lc-maximum-depth-of-binary-tree",
           "label": "Maximum Depth OF Binary Tree",
           "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-          "meta": "Trees"
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
         }
       ]
     },
@@ -62,71 +67,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "Architect Follow-up Ladder · Senior/Staff probes",
-      "items": [
-        {
-          "id": "arch-ladder-113-requirements",
-          "label": "Clarify requirements, users, constraints, and business metric for: Design enterprise RAG (Glean-style)",
-          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/blob/main/src/MLSD/ml-system-design.md",
-          "meta": "Architect",
-          "interviewQuestions": [
-            "What are the first five clarifying questions before proposing any model?",
-            "What is the business metric, what is the ML proxy metric, and where can they diverge?",
-            "What scale, latency, freshness, privacy, and reliability constraints change the architecture?"
-          ]
-        },
-        {
-          "id": "arch-ladder-113-data-model-serving",
-          "label": "Defend data, labels, baseline, model choice, feature freshness, and serving path for: Design enterprise RAG (Glean-style)",
-          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-          "meta": "Deep dive",
-          "interviewQuestions": [
-            "What baseline would you launch before a complex model, and how would you know it is insufficient?",
-            "Where do labels come from, what bias do they contain, and how delayed are they?",
-            "Which features must be computed online vs offline, and what happens when the feature store is slow?"
-          ]
-        },
-        {
-          "id": "arch-ladder-113-ops-risk",
-          "label": "Cover monitoring, rollback, cost, security, failure modes, and launch plan for: Design enterprise RAG (Glean-style)",
-          "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-          "meta": "Operations",
-          "interviewQuestions": [
-            "What online metrics, guardrails, and cohort slices decide whether this system is safe to ramp?",
-            "What is the rollback trigger, fallback experience, and incident owner if quality or latency regresses?",
-            "What are the top security, privacy, abuse, or cost risks, and what controls would you ship in v1?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "GenAI Architect · Enterprise RAG security and eval probes",
-      "items": [
-        {
-          "id": "rag-architect-acl-enforcement",
-          "label": "Retrieval-time ACL enforcement, metadata filters, and permission freshness",
-          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-          "meta": "Security",
-          "interviewQuestions": [
-            "Why must ACL filtering happen before documents enter the LLM context?",
-            "How do you handle a permission change that occurs after a document was embedded?",
-            "What audit log proves a user only retrieved documents they were allowed to see?"
-          ]
-        },
-        {
-          "id": "rag-architect-eval-datasets",
-          "label": "Golden datasets, adversarial queries, source freshness, and citation accuracy",
-          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-          "meta": "Evals",
-          "interviewQuestions": [
-            "How do you construct a golden set for enterprise RAG when teams use different vocabularies?",
-            "What adversarial queries test prompt injection, missing permissions, and stale documents?",
-            "How do you measure citation correctness separately from answer usefulness?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -144,44 +84,6 @@
       "label": "Ragas metrics catalog",
       "href": "https://docs.ragas.io/",
       "source": "Ragas"
-    },
-    {
-      "label": "alirezadir — Machine Learning Interviews",
-      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
-      "source": "GitHub"
-    },
-    {
-      "label": "Chip Huyen — Machine Learning Systems Design",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
-    },
-    {
-      "label": "Google Cloud Professional ML Engineer exam guide",
-      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-      "source": "Google Cloud"
-    },
-    {
-      "label": "Google ML system design mock interview — YouTube recommendations",
-      "href": "https://www.youtube.com/watch?v=uF1V2MqX2U0",
-      "source": "YouTube"
-    },
-    {
-      "label": "OpenAI — evaluation best practices",
-      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
-      "source": "OpenAI"
-    },
-    {
-      "label": "AWS mapping to OWASP Top 10 for LLM applications",
-      "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-      "source": "AWS / OWASP"
     }
-  ],
-  "questionIds": [
-    "architect-follow-up-ladder",
-    "architect-capacity-planning",
-    "prod-incident-response-model-regression",
-    "rag-acl-permission-freshness",
-    "llm-eval-dataset-design",
-    "prompt-injection-defense"
   ]
 }

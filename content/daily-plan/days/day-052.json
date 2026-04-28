@@ -11,13 +11,23 @@
           "id": "lc-max-area-of-island",
           "label": "Max Area OF Island",
           "href": "https://leetcode.com/problems/max-area-of-island/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-pacific-atlantic-water-flow",
           "label": "Pacific Atlantic Water Flow",
           "href": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         }
       ]
     },
@@ -32,9 +42,7 @@
           "interviewQuestions": [
             "Walk me through self-attention(Q, K, V) end-to-end.",
             "Why divide by √d_k inside softmax?",
-            "What does multi-head attention buy you over a single head?",
-            "Compare additive attention vs dot-product attention: why did transformer implementations standardize on dot products?",
-            "What changes in cross-attention when decoder queries attend over encoder keys and values?"
+            "What does multi-head attention buy you over a single head?"
           ]
         },
         {
@@ -44,9 +52,7 @@
           "meta": "Vaswani et al.",
           "interviewQuestions": [
             "Walk me through the transformer block: attention → add+norm → FFN → add+norm.",
-            "Compare absolute vs relative vs RoPE positional encodings.",
-            "Why does the transformer feed-forward block usually expand hidden dimension before projecting back down?",
-            "How do pre-norm and post-norm transformer blocks differ for optimization stability?"
+            "Compare absolute vs relative vs RoPE positional encodings."
           ]
         },
         {
@@ -56,8 +62,7 @@
           "meta": "FlashAttention",
           "interviewQuestions": [
             "What problem does FlashAttention solve, and how?",
-            "Compare MHA, MQA, and GQA — KV-cache trade-offs.",
-            "When would you choose sparse or local attention instead of full attention, and what quality risk do you introduce?"
+            "Compare MHA, MQA, and GQA — KV-cache trade-offs."
           ]
         },
         {

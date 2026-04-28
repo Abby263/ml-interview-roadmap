@@ -11,13 +11,23 @@
           "id": "lc-sum-of-two-integers",
           "label": "Sum OF Two Integers",
           "href": "https://leetcode.com/problems/sum-of-two-integers/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         },
         {
           "id": "lc-reverse-integer",
           "label": "Reverse Integer",
           "href": "https://leetcode.com/problems/reverse-integer/",
-          "meta": "Bit Manipulation"
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
         }
       ]
     },

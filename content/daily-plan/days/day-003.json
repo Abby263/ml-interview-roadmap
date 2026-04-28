@@ -11,19 +11,32 @@
           "id": "lc-product-of-array-except-self",
           "label": "Product OF Array Except Self",
           "href": "https://leetcode.com/problems/product-of-array-except-self/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Why can't you use division? Walk through the prefix/suffix product trick.",
+            "Can you do it with O(1) extra space (not counting output)?"
+          ]
         },
         {
           "id": "lc-valid-sudoku",
           "label": "Valid Sudoku",
           "href": "https://leetcode.com/problems/valid-sudoku/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's the time and space complexity? Where can you tighten it?",
+            "Walk through edge cases: empty input, single element, all duplicates, negatives.",
+            "Why is a hash map / hash set the right structure here? When would a sorted structure beat it?"
+          ]
         },
         {
           "id": "lc-longest-consecutive-sequence",
           "label": "Longest Consecutive Sequence",
           "href": "https://leetcode.com/problems/longest-consecutive-sequence/",
-          "meta": "Arrays & Hashing"
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Why does the 'only start counting from a number whose predecessor is missing' trick give you O(n)?",
+            "Walk through with all duplicates — does your algorithm still hit O(n)?"
+          ]
         }
       ]
     },

@@ -11,13 +11,22 @@
           "id": "lc-decode-ways",
           "label": "Decode Ways",
           "href": "https://leetcode.com/problems/decode-ways/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
         },
         {
           "id": "lc-coin-change",
           "label": "Coin Change",
           "href": "https://leetcode.com/problems/coin-change/",
-          "meta": "1-D DP"
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP and the order of fills. Why does coin-first-then-amount give you each combination?",
+            "How does coin-change-ii (number of ways) differ from coin-change-i (min coins)?"
+          ]
         }
       ]
     },
@@ -55,33 +64,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "Production ML · Capacity planning and overload behavior",
-      "items": [
-        {
-          "id": "prod-capacity-planning",
-          "label": "Capacity planning: QPS, concurrency, p99, model size, GPU memory, and headroom",
-          "href": "https://sre.google/sre-book/handling-overload/",
-          "meta": "SRE",
-          "interviewQuestions": [
-            "How do you size replicas for 10k QPS with a 100ms p99 budget?",
-            "What headroom do you reserve for traffic spikes, cold starts, and model reloads?",
-            "Which metric tells you whether GPU memory, CPU preprocessing, or network feature fetch is the bottleneck?"
-          ]
-        },
-        {
-          "id": "prod-load-shedding-backpressure",
-          "label": "Load shedding, backpressure, queues, and graceful degradation for inference",
-          "href": "https://sre.google/sre-book/handling-overload/",
-          "meta": "SRE",
-          "interviewQuestions": [
-            "What requests do you drop first when inference overloads?",
-            "How do queues improve throughput but hurt tail latency?",
-            "What fallback do you serve when the model tier is unhealthy?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -94,15 +76,6 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
-    },
-    {
-      "label": "Google Cloud Professional ML Engineer exam guide",
-      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-      "source": "Google Cloud"
     }
-  ],
-  "questionIds": [
-    "architect-capacity-planning",
-    "prod-load-shedding-backpressure"
   ]
 }

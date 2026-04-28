@@ -11,7 +11,11 @@
           "id": "lc-minimum-window-substring",
           "label": "Minimum Window Substring",
           "href": "https://leetcode.com/problems/minimum-window-substring/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through your shrink condition — when do you safely move the left pointer?",
+            "How do you handle duplicate characters in t (e.g., 'aabb')?"
+          ]
         }
       ]
     },

@@ -11,7 +11,12 @@
           "id": "lc-word-search-ii",
           "label": "Word Search II",
           "href": "https://leetcode.com/problems/word-search-ii/",
-          "meta": "Tries"
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
         }
       ]
     },

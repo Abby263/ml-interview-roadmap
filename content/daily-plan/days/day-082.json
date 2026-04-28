@@ -11,7 +11,11 @@
           "id": "lc-find-median-from-data-stream",
           "label": "Find Median From Data Stream",
           "href": "https://leetcode.com/problems/find-median-from-data-stream/",
-          "meta": "Heap / Priority Queue"
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Walk through the two-heaps trick (max-heap left, min-heap right). What invariant ties them?",
+            "What's the space cost over a long-running stream, and how would you bound it (windowed median)?"
+          ]
         }
       ]
     },

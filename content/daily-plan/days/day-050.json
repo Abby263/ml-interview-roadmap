@@ -11,13 +11,22 @@
           "id": "lc-letter-combinations-of-a-phone-number",
           "label": "Letter Combinations OF A Phone Number",
           "href": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
         },
         {
           "id": "lc-n-queens",
           "label": "N Queens",
           "href": "https://leetcode.com/problems/n-queens/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you check 'queen attacks me' in O(1) using the diagonal-set trick?",
+            "What's the state-space size, and how much does pruning actually save in practice?"
+          ]
         }
       ]
     },

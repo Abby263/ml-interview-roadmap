@@ -11,13 +11,23 @@
           "id": "lc-surrounded-regions",
           "label": "Surrounded Regions",
           "href": "https://leetcode.com/problems/surrounded-regions/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-rotting-oranges",
           "label": "Rotting Oranges",
           "href": "https://leetcode.com/problems/rotting-oranges/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         }
       ]
     },

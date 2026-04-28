@@ -11,7 +11,11 @@
           "id": "lc-merge-two-sorted-lists",
           "label": "Merge Two Sorted Lists",
           "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
-          "meta": "Linked List"
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "How would you generalize this to merging k sorted lists efficiently?",
+            "Can you do it in-place without a dummy node? What's gained / lost?"
+          ]
         }
       ]
     },
@@ -25,8 +29,7 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Walk through the Bellman equation for the value function.",
-            "What's the difference between value iteration and policy iteration?",
-            "Compare value-based and policy-based RL: what does each network output and optimize?"
+            "What's the difference between value iteration and policy iteration?"
           ]
         },
         {
@@ -36,9 +39,7 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Compare on-policy vs off-policy RL — examples of each algorithm class.",
-            "When is sample efficiency a deciding factor between on-policy and off-policy methods?",
-            "Compare online RL, offline RL, and off-policy RL; which relationships are strict subsets?",
-            "Why are vanilla policy-gradient methods on-policy, and what bias appears if trajectories come from another policy?"
+            "When is sample efficiency a deciding factor between on-policy and off-policy methods?"
           ]
         },
         {

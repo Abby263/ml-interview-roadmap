@@ -11,7 +11,12 @@
           "id": "lc-cheapest-flights-within-k-stops",
           "label": "Cheapest Flights Within K Stops",
           "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
-          "meta": "Advanced Graphs"
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
         }
       ]
     },

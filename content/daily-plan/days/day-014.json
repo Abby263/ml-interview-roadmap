@@ -11,13 +11,22 @@
           "id": "lc-minimum-window-substring",
           "label": "Minimum Window Substring",
           "href": "https://leetcode.com/problems/minimum-window-substring/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through your shrink condition — when do you safely move the left pointer?",
+            "How do you handle duplicate characters in t (e.g., 'aabb')?"
+          ]
         },
         {
           "id": "lc-sliding-window-maximum",
           "label": "Sliding Window Maximum",
           "href": "https://leetcode.com/problems/sliding-window-maximum/",
-          "meta": "Sliding Window"
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
         }
       ]
     },

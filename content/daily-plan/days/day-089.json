@@ -11,7 +11,12 @@
           "id": "lc-valid-parenthesis-string",
           "label": "Valid Parenthesis String",
           "href": "https://leetcode.com/problems/valid-parenthesis-string/",
-          "meta": "Greedy"
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
         }
       ]
     },
@@ -25,8 +30,7 @@
           "meta": "NeMo Guardrails",
           "interviewQuestions": [
             "Compare input vs output filtering — what does each catch and miss?",
-            "What latency does an output-moderation step add, and how do you keep it under your SLO?",
-            "How would you categorize safety risk into bias, toxic content, dangerous capabilities, privacy, and persuasion/manipulation?"
+            "What latency does an output-moderation step add, and how do you keep it under your SLO?"
           ]
         },
         {
@@ -46,36 +50,7 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "How would you build a red-teaming process for a customer-facing LLM?",
-            "How would you scale red-teaming with automated attackers without missing novel attack vectors?",
-            "Which benchmarks would you use for bias, toxicity, dangerous capabilities, and general safety, and what does each miss?",
-            "How would you design fast inner-loop safety evals and slower outer-loop human plus autorater safety reviews?"
-          ]
-        }
-      ]
-    },
-    {
-      "label": "LLMOps · Security threats interviewers now probe",
-      "items": [
-        {
-          "id": "llmsec-owasp-top10",
-          "label": "OWASP LLM risks: prompt injection, data leakage, supply chain, excessive agency, vector weaknesses",
-          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-          "meta": "Security",
-          "interviewQuestions": [
-            "Pick five OWASP LLM risks and map each to a concrete product control.",
-            "Why is prompt injection not solvable by a stronger system prompt alone?",
-            "How do vector and embedding weaknesses create RAG-specific security failures?"
-          ]
-        },
-        {
-          "id": "llmsec-tool-permissions",
-          "label": "Tool permissions, excessive agency, approval gates, and audit logs",
-          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-          "meta": "Agents",
-          "interviewQuestions": [
-            "How do you scope agent tools so a compromised prompt cannot take irreversible actions?",
-            "What actions require human approval, and how do you make that decision auditable?",
-            "How do you rate-limit or sandbox a tool-using agent to prevent unbounded consumption?"
+            "How would you scale red-teaming with automated attackers without missing novel attack vectors?"
           ]
         }
       ]
@@ -91,16 +66,6 @@
       "label": "Anthropic — Building Effective Agents",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
       "source": "Anthropic"
-    },
-    {
-      "label": "AWS mapping to OWASP Top 10 for LLM applications",
-      "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
-      "source": "AWS / OWASP"
     }
-  ],
-  "questionIds": [
-    "prompt-injection-defense",
-    "llm-agent-excessive-agency",
-    "llm-vector-embedding-security"
   ]
 }

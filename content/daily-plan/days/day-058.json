@@ -11,13 +11,23 @@
           "id": "lc-network-delay-time",
           "label": "Network Delay Time",
           "href": "https://leetcode.com/problems/network-delay-time/",
-          "meta": "Advanced Graphs"
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
         },
         {
           "id": "lc-swim-in-rising-water",
           "label": "Swim IN Rising Water",
           "href": "https://leetcode.com/problems/swim-in-rising-water/",
-          "meta": "Advanced Graphs"
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
         }
       ]
     },
@@ -55,33 +65,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "Production ML · Data contracts and feature governance",
-      "items": [
-        {
-          "id": "prod-data-contracts",
-          "label": "Data contracts for model inputs, labels, and features",
-          "href": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
-          "meta": "Production ML",
-          "interviewQuestions": [
-            "What should be in a data contract between an upstream events team and an ML training pipeline?",
-            "Which schema changes should block retraining immediately, and which should only warn?",
-            "How do you assign ownership when a critical feature silently changes meaning?"
-          ]
-        },
-        {
-          "id": "prod-schema-evolution",
-          "label": "Schema evolution, backfills, and point-in-time feature correctness",
-          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-          "meta": "Feature store",
-          "interviewQuestions": [
-            "How do you evolve a feature schema without breaking old training jobs or online inference?",
-            "What backfill checks catch point-in-time leakage before a feature goes live?",
-            "How would you prove an offline feature calculation matches the online feature service?"
-          ]
-        }
-      ]
     }
   ],
   "references": [
@@ -99,20 +82,6 @@
       "label": "Made with ML — full MLOps course",
       "href": "https://madewithml.com/",
       "source": "Goku Mohandas"
-    },
-    {
-      "label": "Google Cloud Professional ML Engineer exam guide",
-      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
-      "source": "Google Cloud"
-    },
-    {
-      "label": "Chip Huyen — Machine Learning Systems Design",
-      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
-      "source": "Chip Huyen"
     }
-  ],
-  "questionIds": [
-    "prod-data-contracts-schema-evolution",
-    "prod-feature-lineage-audit"
   ]
 }

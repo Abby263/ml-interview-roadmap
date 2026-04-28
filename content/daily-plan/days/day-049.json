@@ -11,7 +11,12 @@
           "id": "lc-palindrome-partitioning",
           "label": "Palindrome Partitioning",
           "href": "https://leetcode.com/problems/palindrome-partitioning/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
         }
       ]
     },

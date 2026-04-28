@@ -11,13 +11,23 @@
           "id": "lc-implement-trie-prefix-tree",
           "label": "Implement Trie Prefix Tree",
           "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
-          "meta": "Tries"
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
         },
         {
           "id": "lc-design-add-and-search-words-data-structure",
           "label": "Design Add And Search Words Data Structure",
           "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
-          "meta": "Tries"
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
         }
       ]
     },

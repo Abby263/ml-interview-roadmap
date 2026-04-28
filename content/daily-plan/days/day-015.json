@@ -11,19 +11,32 @@
           "id": "lc-valid-parentheses",
           "label": "Valid Parentheses",
           "href": "https://leetcode.com/problems/valid-parentheses/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Walk through the stack invariant on a small mixed input.",
+            "What if the input might be malformed mid-stream — how do you fail fast?"
+          ]
         },
         {
           "id": "lc-min-stack",
           "label": "Min Stack",
           "href": "https://leetcode.com/problems/min-stack/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "How do you support getMin in O(1) — what's the auxiliary stack trick?",
+            "Can you do it with a single stack of pairs, and what's the trade-off?"
+          ]
         },
         {
           "id": "lc-evaluate-reverse-polish-notation",
           "label": "Evaluate Reverse Polish Notation",
           "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
-          "meta": "Stack"
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
         }
       ]
     },

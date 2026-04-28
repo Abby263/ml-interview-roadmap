@@ -11,13 +11,21 @@
           "id": "lc-subsets",
           "label": "Subsets",
           "href": "https://leetcode.com/problems/subsets/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Compare backtracking vs iterative bitmask vs recursive include/exclude.",
+            "How does this change for subsets-with-duplicates (LC 90)?"
+          ]
         },
         {
           "id": "lc-combination-sum",
           "label": "Combination Sum",
           "href": "https://leetcode.com/problems/combination-sum/",
-          "meta": "Backtracking"
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you avoid duplicate combinations without a set — what's the index-passing trick?",
+            "Compare with combination-sum-ii where each candidate can only be used once."
+          ]
         }
       ]
     },

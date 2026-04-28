@@ -11,13 +11,22 @@
           "id": "lc-walls-and-gates",
           "label": "Walls And Gates",
           "href": "https://leetcode.com/problems/walls-and-gates/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
         },
         {
           "id": "lc-course-schedule",
           "label": "Course Schedule",
           "href": "https://leetcode.com/problems/course-schedule/",
-          "meta": "Graphs"
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Compare BFS-based topological sort (Kahn's) vs DFS with cycle detection.",
+            "How does this extend to course-schedule-ii where you must output the order?"
+          ]
         }
       ]
     },
