@@ -30,7 +30,9 @@
           "meta": "Pinecone",
           "interviewQuestions": [
             "When does sparse retrieval (BM25) beat dense retrieval?",
-            "How would you combine BM25 and dense scores in hybrid search?"
+            "How would you combine BM25 and dense scores in hybrid search?",
+            "Given 30 failed RAG queries, how would you check whether the gold document appears in top-k before touching the generator?",
+            "When would you add query rewriting, expansion, or hybrid search instead of changing the embedding model?"
           ]
         },
         {
@@ -41,6 +43,17 @@
           "interviewQuestions": [
             "How does HyDE work, and when does it actually help?",
             "When would you decompose a query into multiple sub-queries?"
+          ]
+        },
+        {
+          "id": "rag-dpr",
+          "label": "Dense Passage Retrieval (DPR) and retriever training",
+          "href": "https://arxiv.org/abs/2004.04906",
+          "meta": "DPR",
+          "interviewQuestions": [
+            "How does DPR train a dense retriever, and how is it different from BM25?",
+            "What positives and hard negatives would you use to train or fine-tune a retriever?",
+            "When would DPR-style retrieval fail compared with sparse or hybrid search?"
           ]
         },
         {
@@ -66,6 +79,11 @@
       "label": "LangChain — RAG concepts",
       "href": "https://python.langchain.com/docs/concepts/rag/",
       "source": "LangChain"
+    },
+    {
+      "label": "75Hard GenAI/LLM — DPR for RAG",
+      "href": "https://www.linkedin.com/posts/simranjeet97_day42-75hardgenai-generativeai-activity-7173754439323906049-kk1H",
+      "source": "75Hard GenAI/LLM Challenge"
     }
   ]
 }

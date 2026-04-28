@@ -40,7 +40,9 @@
           "meta": "ViViT",
           "interviewQuestions": [
             "Compare 3D CNNs vs two-stream vs video transformers for action recognition.",
-            "Why is temporal modeling hard, and what does sparse temporal sampling buy you?"
+            "Why is temporal modeling hard, and what does sparse temporal sampling buy you?",
+            "What makes text-to-video generation harder than text-to-image generation?",
+            "How would you evaluate temporal consistency, motion quality, and prompt adherence for generated video?"
           ]
         },
         {

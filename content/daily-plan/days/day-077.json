@@ -72,7 +72,9 @@
           "interviewQuestions": [
             "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
             "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
-            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?"
+            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?",
+            "Where do HELM-style holistic evaluations fit alongside BLEU, ROUGE, MMLU, and task-specific business metrics?",
+            "How would you explain to an interviewer why a high ROUGE score can still produce a bad user-facing answer?"
           ]
         }
       ]
@@ -88,6 +90,11 @@
       "label": "Anthropic — Testing & Evaluation",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
       "source": "Anthropic"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LLM evaluation metrics",
+      "href": "https://youtu.be/v5qUFUxvkGA?si=GUoDRP51DoH77OhF",
+      "source": "75Hard GenAI/LLM Challenge"
     }
   ]
 }

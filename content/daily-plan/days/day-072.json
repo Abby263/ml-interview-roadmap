@@ -59,7 +59,8 @@
           "meta": "Read",
           "interviewQuestions": [
             "Why do LLMs struggle with arithmetic, and how does tokenization contribute?",
-            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?"
+            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?",
+            "Before fine-tuning on domain documents, how would you decide whether domain-specific terms need tokenizer vocabulary changes?"
           ]
         }
       ]

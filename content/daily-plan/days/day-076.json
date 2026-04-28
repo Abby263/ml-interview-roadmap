@@ -50,7 +50,10 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "What does test-time compute scaling buy you over training-time compute?",
-            "When does extended thinking actually hurt — what tasks does it slow down without quality gains?"
+            "When does extended thinking actually hurt — what tasks does it slow down without quality gains?",
+            "Why is longer reasoning output not the same thing as better reasoning?",
+            "How would you compare self-consistency against selecting generations by a reasoning-quality signal such as deep-thinking ratio?",
+            "If you could reject weak reasoning samples after the first 50 tokens, how would that change inference cost and quality?"
           ]
         },
         {

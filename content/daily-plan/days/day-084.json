@@ -29,7 +29,10 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "Do long context windows kill RAG? Defend your view.",
-            "What's the cost picture (latency + $) of stuffing 1M tokens vs RAG over the same corpus?"
+            "What's the cost picture (latency + $) of stuffing 1M tokens vs RAG over the same corpus?",
+            "Does a bigger context window always improve enterprise QA? Explain context dilution, attention cost, and stale-token risk.",
+            "What is context inflation, and how would you detect it in latency, cost, and answer-quality metrics?",
+            "When would hierarchical summaries plus retrieval beat stuffing the full document into the prompt?"
           ]
         },
         {
