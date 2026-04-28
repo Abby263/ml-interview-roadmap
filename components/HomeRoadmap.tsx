@@ -297,6 +297,33 @@ export default function HomeRoadmap({
       }, 0)
     : 0;
   const dsaPct = dsaTotal === 0 ? 0 : Math.round((dsaDone / dsaTotal) * 100);
+
+  // DSA breakdown by NeetCode category. Each DSA item's `meta` field
+  // holds its category ("Arrays & Hashing", "Two Pointers", …) — group
+  // by it so the user can see how many problems they've cleared in
+  // each pattern. Order = first-appearance across days, which matches
+  // NeetCode's recommended progression.
+  const dsaByCategory: Array<{ label: string; total: number; done: number; pct: number }> = [];
+  {
+    const byCat = new Map<string, { total: number; done: number }>();
+    for (const day of dailyPlan) {
+      const checked = canTrack ? new Set(progress[day.day] ?? []) : new Set<string>();
+      for (const t of day.tracks) {
+        for (const it of t.items) {
+          if (!isDsaItem(it.id) || !it.meta) continue;
+          const entry = byCat.get(it.meta) ?? { total: 0, done: 0 };
+          entry.total += 1;
+          if (checked.has(it.id)) entry.done += 1;
+          byCat.set(it.meta, entry);
+        }
+      }
+    }
+    for (const [label, { total, done }] of byCat) {
+      const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+      dsaByCategory.push({ label, total, done, pct });
+    }
+  }
+
   const pillarProgress = [
     {
       slug: "dsa",
@@ -457,6 +484,46 @@ export default function HomeRoadmap({
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section-card rounded-[2rem] p-5 md:p-7">
+        <div className="flex flex-wrap items-baseline justify-between gap-3">
+          <div>
+            <p className="panel-label">DSA · NeetCode 150</p>
+            <h2 className="mt-2 font-display text-xl font-extrabold text-foreground md:text-2xl">
+              Progress by pattern
+            </h2>
+          </div>
+          <span className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
+            {dsaByCategory.length} patterns · {dsaDone}/{dsaTotal}
+          </span>
+        </div>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {dsaByCategory.map((cat) => (
+            <div
+              key={cat.label}
+              className="rounded-2xl border border-line bg-surface-strong p-4"
+            >
+              <div className="flex items-center justify-between gap-3 text-xs">
+                <span className="font-semibold text-foreground">
+                  {cat.label}
+                </span>
+                <span className="font-mono font-semibold text-accent">
+                  {cat.done}/{cat.total}
+                </span>
+              </div>
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${cat.pct}%`,
+                    background: "var(--accent)",
+                  }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
