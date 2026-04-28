@@ -10,12 +10,41 @@ import {
   toggleDayCheck,
 } from "@/lib/progress-store";
 import type { DayPlan } from "@/lib/daily-plan-schema";
+import type { PillarSlug } from "@/lib/site-data";
 
 interface DayChecklistProps {
   plan: DayPlan;
 }
 
 const emptyChecks: string[] = [];
+
+// Short labels matching HomeRoadmap's "Coverage by pillar" panel so users
+// see consistent pillar names across the home page and per-day view.
+const PILLAR_LABEL: Record<PillarSlug, string> = {
+  "math-stats": "Statistics",
+  "traditional-ml": "Traditional ML",
+  "deep-learning": "Deep Learning",
+  mlops: "MLOps",
+  "generative-ai": "Generative AI",
+  llmops: "LLMOps",
+  "ml-system-design": "ML System Design",
+  foundations: "OOPS / SWE",
+  "behavioral-storytelling": "Behavioral",
+};
+
+/**
+ * Resolve which pillar a single track item rolls up to.
+ * NeetCode items (id starts with "lc-") always belong to DSA. Everything
+ * else inherits the day's pillar — matches the rules in HomeRoadmap so
+ * pillar tags here can't disagree with the "Coverage by pillar" bars.
+ */
+function pillarTagForItem(itemId: string, dayPillar: PillarSlug): {
+  label: string;
+  isDsa: boolean;
+} {
+  if (itemId.startsWith("lc-")) return { label: "DSA", isDsa: true };
+  return { label: PILLAR_LABEL[dayPillar] ?? dayPillar, isDsa: false };
+}
 
 /**
  * Wrap useUser so it's safe to call when Clerk isn't configured (it's
@@ -174,6 +203,27 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                           {item.label}
                         </span>
                       )}
+                      {(() => {
+                        const tag = pillarTagForItem(item.id, plan.pillar);
+                        return (
+                          <span
+                            className="rounded-full border px-2 py-0.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]"
+                            style={{
+                              borderColor: tag.isDsa
+                                ? "color-mix(in srgb, var(--accent) 45%, transparent)"
+                                : "color-mix(in srgb, var(--primary) 35%, transparent)",
+                              color: tag.isDsa
+                                ? "var(--accent)"
+                                : "var(--primary)",
+                              background: tag.isDsa
+                                ? "color-mix(in srgb, var(--accent) 8%, transparent)"
+                                : "color-mix(in srgb, var(--primary) 8%, transparent)",
+                            }}
+                          >
+                            {tag.label}
+                          </span>
+                        );
+                      })()}
                       {item.meta ? (
                         <span className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted">
                           {item.meta}
