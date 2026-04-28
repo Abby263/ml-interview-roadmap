@@ -79,6 +79,17 @@
           ]
         },
         {
+          "id": "cv-self-supervised-representation",
+          "label": "Self-supervised representation learning for vision and multimodal models",
+          "href": "https://lilianweng.github.io/posts/2019-11-10-self-supervised/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Compare contrastive learning, masked prediction, and autoencoding as self-supervised objectives.",
+            "How would you evaluate whether a self-supervised embedding transfers to a downstream product task?",
+            "What data leakage or shortcut-learning failure modes appear in self-supervised pretraining?"
+          ]
+        },
+        {
           "id": "cv-multimodal",
           "label": "BLIP, LLaVA, multimodal LLMs",
           "href": "https://arxiv.org/abs/2304.08485",
@@ -101,6 +112,11 @@
       "label": "Papers with Code — SOTA leaderboards",
       "href": "https://paperswithcode.com/sota",
       "source": "Papers with Code"
+    },
+    {
+      "label": "Lilian Weng — Self-supervised representation learning",
+      "href": "https://lilianweng.github.io/posts/2019-11-10-self-supervised/",
+      "source": "Lilian Weng"
     }
   ]
 }

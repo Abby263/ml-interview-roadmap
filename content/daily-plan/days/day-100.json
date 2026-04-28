@@ -30,7 +30,9 @@
           "meta": "Ultralytics",
           "interviewQuestions": [
             "Walk through deploying a YOLO model in production — pre/post-processing, NMS, calibration.",
-            "How would you handle class imbalance and rare categories in a production detection model?"
+            "How would you handle class imbalance and rare categories in a production detection model?",
+            "When are classical image-processing features enough, and when do CNNs or ViTs become necessary?",
+            "How would you debug preprocessing or signal-processing artifacts that quietly break a vision model?"
           ]
         },
         {

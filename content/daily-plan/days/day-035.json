@@ -100,6 +100,22 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML · Semi-supervised and proxy labels",
+      "items": [
+        {
+          "id": "ml-semisupervised-proxy-labels",
+          "label": "Semi-supervised learning: pseudo-labels, weak labels, proxy labels",
+          "href": "https://lilianweng.github.io/posts/2021-12-05-semi-supervised/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "When would you use pseudo-labeling, weak supervision, or proxy labels instead of waiting for fully supervised labels?",
+            "How do proxy labels introduce bias, and how would you validate that they predict the true product target?",
+            "What safeguards prevent a semi-supervised training loop from reinforcing its own mistakes?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -112,6 +128,11 @@
       "label": "Andrew Ng — Machine Learning Specialization",
       "href": "https://www.coursera.org/specializations/machine-learning-introduction",
       "source": "Coursera"
+    },
+    {
+      "label": "Lilian Weng — Semi-supervised learning",
+      "href": "https://lilianweng.github.io/posts/2021-12-05-semi-supervised/",
+      "source": "Lilian Weng"
     }
   ]
 }

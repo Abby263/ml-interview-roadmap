@@ -34,6 +34,17 @@
           ]
         },
         {
+          "id": "recs-rbm-similarity",
+          "label": "RBM-style recommenders and similarity-metric tricks",
+          "href": "https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf",
+          "meta": "Read",
+          "interviewQuestions": [
+            "How did Restricted Boltzmann Machines model user-item interactions in early recommender systems?",
+            "When would matrix factorization or two-tower retrieval beat an RBM-style recommender today?",
+            "How do similarity metrics and bias terms change nearest-neighbor or collaborative-filtering recommendations?"
+          ]
+        },
+        {
           "id": "recs-content",
           "label": "Content-based & hybrid recsys",
           "href": "https://developers.google.com/machine-learning/recommendation/content-based/basics",
@@ -166,6 +177,11 @@
       "label": "YouTube two-tower (sampling-bias-corrected)",
       "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
       "source": "Google"
+    },
+    {
+      "label": "Restricted Boltzmann Machines for Collaborative Filtering",
+      "href": "https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf",
+      "source": "University of Toronto"
     },
     {
       "label": "YouTube multi-task ranking",

@@ -30,7 +30,9 @@
           "interviewQuestions": [
             "Walk me through designing TikTok's For You feed end-to-end.",
             "How would you handle the cold-start problem for a new user?",
-            "What candidate-generation strategies would you use, and how do you combine them?"
+            "What candidate-generation strategies would you use, and how do you combine them?",
+            "How would the architecture change for a Pinterest-style visual discovery or Follow Pins system?",
+            "What feedback-loop or popularity-bias mitigation would you add for a visual discovery feed?"
           ]
         },
         {
