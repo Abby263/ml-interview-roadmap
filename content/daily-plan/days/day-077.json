@@ -66,6 +66,44 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML Coding Lab · Evaluation harness implementation",
+      "items": [
+        {
+          "id": "ml-lab-eval-harness",
+          "label": "Build a small eval harness with datasets, scorers, slices, and regression thresholds",
+          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+          "meta": "Evals",
+          "interviewQuestions": [
+            "How would you design an eval harness that runs on every prompt or model change?",
+            "What is the minimum schema for an eval case: input, expected behavior, rubric, metadata, and slice?",
+            "How do you prevent one aggregate score from hiding a regression in a high-risk segment?"
+          ]
+        },
+        {
+          "id": "ml-lab-pairwise-judge",
+          "label": "Implement pairwise LLM-judge scoring with calibration against human labels",
+          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+          "meta": "LLM-as-judge",
+          "interviewQuestions": [
+            "Why are pairwise comparisons often more reliable than open-ended judge scoring?",
+            "How would you estimate agreement between an LLM judge and human reviewers?",
+            "What bias appears if the judge prefers longer or more confident answers?"
+          ]
+        },
+        {
+          "id": "ml-lab-redteam-regressions",
+          "label": "Turn red-team failures into repeatable regression tests",
+          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+          "meta": "Security evals",
+          "interviewQuestions": [
+            "How do you convert a one-off prompt-injection failure into a permanent regression test?",
+            "Which OWASP LLM risks belong in a release-blocking test suite?",
+            "How do you keep red-team tests from becoming stale as the product changes?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -78,6 +116,21 @@
       "label": "Anthropic — Testing & Evaluation",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
       "source": "Anthropic"
+    },
+    {
+      "label": "OpenAI — evaluation best practices",
+      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "source": "OpenAI"
+    },
+    {
+      "label": "AWS mapping to OWASP Top 10 for LLM applications",
+      "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+      "source": "AWS / OWASP"
     }
+  ],
+  "questionIds": [
+    "llm-eval-dataset-design",
+    "llm-judge-calibration",
+    "llm-redteam-regression-suite"
   ]
 }

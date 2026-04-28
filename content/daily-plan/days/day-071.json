@@ -60,6 +60,44 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML Coding Lab · LLM fundamentals implementation",
+      "items": [
+        {
+          "id": "ml-lab-gpt-dataset-collator",
+          "label": "Implement a GPT-style dataset collator from raw token IDs",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "LLM coding",
+          "interviewQuestions": [
+            "Implement a dataset that returns input tokens and next-token targets from a long token stream.",
+            "How do block size, stride, padding, and masking affect the training examples?",
+            "What test catches a target/input off-by-one bug?"
+          ]
+        },
+        {
+          "id": "ml-lab-topk-topp-sampling",
+          "label": "Implement temperature, top-k, and top-p sampling from logits",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "LLM coding",
+          "interviewQuestions": [
+            "Implement temperature scaling, top-k filtering, and nucleus sampling from a logits vector.",
+            "What numerical-stability issue appears before softmax, and how do you avoid it?",
+            "How do you test that top-p never samples outside the retained probability mass?"
+          ]
+        },
+        {
+          "id": "ml-lab-kv-cache-shapes",
+          "label": "Trace KV-cache tensor shapes through one autoregressive decode step",
+          "href": "https://jalammar.github.io/illustrated-gpt2/",
+          "meta": "Debugging",
+          "interviewQuestions": [
+            "What are the key/value cache shapes for batch, heads, sequence length, and head dimension?",
+            "Why does prefill latency differ from decode latency?",
+            "What bug would cause generated tokens to ignore previous context?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -82,6 +120,15 @@
       "label": "Illustrated Transformer (Jay Alammar)",
       "href": "https://jalammar.github.io/illustrated-transformer/",
       "source": "Jay Alammar"
+    },
+    {
+      "label": "Reddit — practical ML coding questions candidates report",
+      "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
+      "source": "Reddit r/MachineLearning"
     }
+  ],
+  "questionIds": [
+    "ml-coding-topk-topp-sampling",
+    "llm-kv-cache-debugging"
   ]
 }

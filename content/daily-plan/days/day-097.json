@@ -105,6 +105,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML Coding Lab · Infra sizing exercises",
+      "items": [
+        {
+          "id": "ml-lab-gpu-capacity-worksheet",
+          "label": "Build a simple GPU capacity worksheet for a 70B model serving target QPS and p99",
+          "href": "https://docs.vllm.ai/",
+          "meta": "Capacity",
+          "interviewQuestions": [
+            "What variables do you need to estimate GPU replicas for a 70B model: tokens/sec, concurrency, KV cache, and target p99?",
+            "How does average output length change both latency and cost?",
+            "What safety margin do you add for traffic spikes and deploy rollouts?"
+          ]
+        },
+        {
+          "id": "ml-lab-queueing-simulator",
+          "label": "Write a toy queueing simulator for inference requests and load shedding",
+          "href": "https://sre.google/sre-book/handling-overload/",
+          "meta": "SRE",
+          "interviewQuestions": [
+            "How do queue length, service time, and arrival rate affect p99 latency?",
+            "When do you reject, degrade, or defer a request instead of letting the queue grow?",
+            "How would you validate a load-shedding policy before production?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -117,6 +144,15 @@
       "label": "Full Stack Deep Learning",
       "href": "https://fullstackdeeplearning.com/",
       "source": "FSDL"
+    },
+    {
+      "label": "Google Cloud Professional ML Engineer exam guide",
+      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+      "source": "Google Cloud"
     }
+  ],
+  "questionIds": [
+    "architect-capacity-planning",
+    "prod-load-shedding-backpressure"
   ]
 }

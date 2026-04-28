@@ -94,6 +94,55 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML Coding Lab · Production-quality notebook drills",
+      "items": [
+        {
+          "id": "ml-lab-pandas-pipeline",
+          "label": "Build a pandas/NumPy data pipeline with validation, leakage checks, and tests",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "Take-home style",
+          "interviewQuestions": [
+            "Given messy CSV events, how do you build train rows without leaking future information?",
+            "What unit tests would you write for joins, deduplication, missing values, and label construction?",
+            "How do you make the notebook reproducible enough to hand to a production engineer?"
+          ]
+        },
+        {
+          "id": "ml-lab-pytorch-training-loop",
+          "label": "Write a minimal PyTorch training loop with validation, checkpointing, and early stopping",
+          "href": "https://pytorch.org/tutorials/beginner/introyt/trainingyt.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Implement a training loop and explain where you call zero_grad, backward, step, and eval.",
+            "How do you avoid accidentally training with dropout or batch norm enabled during validation?",
+            "What checkpoint state do you save so training can resume exactly after interruption?"
+          ]
+        },
+        {
+          "id": "ml-lab-gradient-accumulation",
+          "label": "Modify a training loop to support gradient accumulation and mixed precision",
+          "href": "https://pytorch.org/docs/stable/notes/amp_examples.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "How does gradient accumulation simulate a larger effective batch size?",
+            "Where do you divide the loss, step the optimizer, and clear gradients?",
+            "What can go wrong when gradient accumulation interacts with batch norm or learning-rate schedules?"
+          ]
+        },
+        {
+          "id": "ml-lab-debug-broken-notebook",
+          "label": "Debug a broken ML notebook: no validation lift, unstable loss, and suspiciously high AUC",
+          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+          "meta": "Debugging",
+          "interviewQuestions": [
+            "What is your debugging order when a model shows 0.99 validation AUC on a messy dataset?",
+            "How do you distinguish data leakage from a metric implementation bug?",
+            "Which plots or checks do you create before changing model architecture?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -106,6 +155,21 @@
       "label": "Refactoring.guru — design patterns",
       "href": "https://refactoring.guru/design-patterns",
       "source": "Refactoring.guru"
+    },
+    {
+      "label": "Reddit — practical ML coding questions candidates report",
+      "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
+      "source": "Reddit r/MachineLearning"
+    },
+    {
+      "label": "OpenAI interview guide",
+      "href": "https://openai.com/interview-guide",
+      "source": "OpenAI"
     }
+  ],
+  "questionIds": [
+    "ml-coding-pytorch-training-loop",
+    "ml-debugging-suspicious-auc",
+    "ml-coding-data-pipeline"
   ]
 }

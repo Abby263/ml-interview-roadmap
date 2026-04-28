@@ -55,6 +55,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Production ML · FinOps and cloud trade-offs",
+      "items": [
+        {
+          "id": "prod-finops-unit-cost",
+          "label": "Unit economics: cost per prediction, training run, eval suite, tenant, and feature",
+          "href": "https://platform.openai.com/docs/guides/cost-optimization",
+          "meta": "FinOps",
+          "interviewQuestions": [
+            "How do you calculate cost per prediction for a model behind online inference?",
+            "How do you attribute GPU, vector DB, LLM API, and storage costs to a product feature?",
+            "What cost regression should fail a release even if quality improves slightly?"
+          ]
+        },
+        {
+          "id": "prod-cloud-service-tradeoffs",
+          "label": "Managed ML services vs custom infra: SageMaker, Vertex AI, Kubernetes, and hosted APIs",
+          "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+          "meta": "Cloud",
+          "interviewQuestions": [
+            "When do you choose SageMaker or Vertex AI over a custom Kubernetes serving stack?",
+            "What operational burden do you accept when you build the platform yourself?",
+            "Which requirements force you away from a hosted API or managed service?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -72,6 +99,20 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
+    },
+    {
+      "label": "AWS Certified Machine Learning Engineer exam guide",
+      "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+      "source": "AWS"
+    },
+    {
+      "label": "Google Cloud Professional ML Engineer exam guide",
+      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+      "source": "Google Cloud"
     }
+  ],
+  "questionIds": [
+    "prod-finops-unit-cost",
+    "architect-cost-optimization"
   ]
 }

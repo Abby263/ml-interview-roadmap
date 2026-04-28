@@ -80,6 +80,22 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Company Loop · Platform architect decision review",
+      "items": [
+        {
+          "id": "company-loop-build-buy-scorecard",
+          "label": "Scorecard: vendor risk, lock-in, migration path, SLAs, compliance, cost curve, and team capacity",
+          "href": "https://www.reddit.com/r/ExperiencedDevs/comments/15iin6y",
+          "meta": "Architect",
+          "interviewQuestions": [
+            "Build a scorecard for choosing a vector database, feature store, or eval platform vendor.",
+            "What threshold would make you revisit a managed-service decision?",
+            "How do you present build-vs-buy to a VP who only wants the cheapest option?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -97,6 +113,15 @@
       "label": "Chip Huyen — ML Systems Design",
       "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
       "source": "Chip Huyen"
+    },
+    {
+      "label": "Reddit — ML system design prep discussion",
+      "href": "https://www.reddit.com/r/ExperiencedDevs/comments/15iin6y",
+      "source": "Reddit r/ExperiencedDevs"
     }
+  ],
+  "questionIds": [
+    "architect-build-vs-buy",
+    "company-loop-startup-practical"
   ]
 }

@@ -60,6 +60,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "ML Coding Lab · LLMOps simulations",
+      "items": [
+        {
+          "id": "ml-lab-semantic-cache",
+          "label": "Implement a semantic cache simulator and measure false-hit risk",
+          "href": "https://platform.openai.com/docs/guides/cost-optimization",
+          "meta": "Cost/latency",
+          "interviewQuestions": [
+            "How would you implement semantic cache lookup with embeddings and a similarity threshold?",
+            "What offline eval catches a dangerous false cache hit?",
+            "When should semantic caching be disabled even if it saves money?"
+          ]
+        },
+        {
+          "id": "ml-lab-router-simulator",
+          "label": "Simulate a cheap-then-expensive model router with quality, latency, and cost gates",
+          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+          "meta": "Routing",
+          "interviewQuestions": [
+            "What confidence or verifier signal decides whether to escalate to a stronger model?",
+            "How do you compute blended cost and latency across a routed model cascade?",
+            "What regression test prevents the router from silently hurting hard queries?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -77,6 +104,15 @@
       "label": "Anthropic — Prompt Engineering Guide",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
       "source": "Anthropic"
+    },
+    {
+      "label": "OpenAI — evaluation best practices",
+      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "source": "OpenAI"
     }
+  ],
+  "questionIds": [
+    "llm-semantic-cache-risk",
+    "llm-routing-cost-quality-simulator"
   ]
 }

@@ -49,6 +49,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "LLMOps · Security threats interviewers now probe",
+      "items": [
+        {
+          "id": "llmsec-owasp-top10",
+          "label": "OWASP LLM risks: prompt injection, data leakage, supply chain, excessive agency, vector weaknesses",
+          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+          "meta": "Security",
+          "interviewQuestions": [
+            "Pick five OWASP LLM risks and map each to a concrete product control.",
+            "Why is prompt injection not solvable by a stronger system prompt alone?",
+            "How do vector and embedding weaknesses create RAG-specific security failures?"
+          ]
+        },
+        {
+          "id": "llmsec-tool-permissions",
+          "label": "Tool permissions, excessive agency, approval gates, and audit logs",
+          "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+          "meta": "Agents",
+          "interviewQuestions": [
+            "How do you scope agent tools so a compromised prompt cannot take irreversible actions?",
+            "What actions require human approval, and how do you make that decision auditable?",
+            "How do you rate-limit or sandbox a tool-using agent to prevent unbounded consumption?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -61,6 +88,16 @@
       "label": "Anthropic — Building Effective Agents",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
       "source": "Anthropic"
+    },
+    {
+      "label": "AWS mapping to OWASP Top 10 for LLM applications",
+      "href": "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+      "source": "AWS / OWASP"
     }
+  ],
+  "questionIds": [
+    "prompt-injection-defense",
+    "llm-agent-excessive-agency",
+    "llm-vector-embedding-security"
   ]
 }

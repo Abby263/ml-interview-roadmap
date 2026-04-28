@@ -39,6 +39,55 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Startup Practical Loop · Build, debug, and ship under ambiguity",
+      "items": [
+        {
+          "id": "startup-loop-rag-api-60",
+          "label": "Ship a working RAG API in 60 minutes: ingestion, retrieval, answer, eval smoke test",
+          "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+          "meta": "Startup",
+          "interviewQuestions": [
+            "What is the smallest working RAG API you can build in 60 minutes?",
+            "Which shortcuts are acceptable for a demo, and which would create production risk?",
+            "What one eval would you add before showing it to a customer?"
+          ]
+        },
+        {
+          "id": "startup-loop-messy-notebook",
+          "label": "Debug a messy notebook with leakage, bad splits, unstable metrics, and unclear product goal",
+          "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
+          "meta": "Debugging",
+          "interviewQuestions": [
+            "What do you inspect first when a take-home notebook reports suspiciously strong performance?",
+            "How do you turn a one-off notebook into code another engineer can review and run?",
+            "What questions do you ask when the product goal does not map cleanly to the provided labels?"
+          ]
+        },
+        {
+          "id": "startup-loop-week-one-plan",
+          "label": "Week-one execution plan: build-vs-buy, evals, customer feedback, and launch risk",
+          "href": "https://openai.com/interview-guide",
+          "meta": "0→1",
+          "interviewQuestions": [
+            "What would you do in week one if hired as the first ML engineer at this startup?",
+            "How do you choose between improving the model, building evals, cleaning data, or shipping a customer-facing workflow?",
+            "What launch risk would you explicitly accept for an MVP, and what risk is non-negotiable?"
+          ]
+        },
+        {
+          "id": "startup-loop-ai-assisted-coding",
+          "label": "AI-assisted coding round: use tools but explain tests, trade-offs, and debugging clearly",
+          "href": "https://openai.com/interview-guide",
+          "meta": "Coding",
+          "interviewQuestions": [
+            "If LLMs are allowed during the coding exercise, what does the interviewer still need to see from you?",
+            "How do you verify generated code for numerical edge cases and performance?",
+            "How do you narrate debugging without outsourcing your reasoning to the tool?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -51,6 +100,26 @@
       "label": "Chip Huyen — ML Interviews Book (free)",
       "href": "https://huyenchip.com/ml-interviews-book/",
       "source": "Chip Huyen"
+    },
+    {
+      "label": "OpenAI interview guide",
+      "href": "https://openai.com/interview-guide",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Reddit — practical ML coding questions candidates report",
+      "href": "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
+      "source": "Reddit r/MachineLearning"
+    },
+    {
+      "label": "OpenAI — evaluation best practices",
+      "href": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "source": "OpenAI"
     }
+  ],
+  "questionIds": [
+    "startup-rag-api-60-min",
+    "startup-messy-notebook-debug",
+    "ml-coding-pytorch-training-loop"
   ]
 }

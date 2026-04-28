@@ -1,0 +1,58 @@
+---
+title: Design a Content Moderation and Trust Safety System
+description: Moderate user-generated text, images, and video with policy versioning, reviewer workflows, adversarial users, and fairness guardrails.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a content moderation system for a large social product that classifies policy violations, routes uncertain cases to human review, supports appeals, and adapts to adversarial behavior.
+concepts:
+  - Policy taxonomy
+  - Multi-modal classification
+  - Human review
+  - Active learning
+  - Adversarial drift
+evaluationLens:
+  - Precision by policy
+  - Recall on severe harm
+  - Reviewer workload
+  - Appeal reversal rate
+  - Latency
+---
+
+## Clarify the policy and action first
+
+Do not start with a classifier. Start with the policy taxonomy and what the system is allowed to do: allow, downrank, blur, age-gate, send to review, remove, suspend, or escalate to a specialist queue.
+
+The architect signal is recognizing that false positives and false negatives have different harm by policy. Missing child-safety content is not comparable to mistakenly downranking a borderline spam post.
+
+## Architecture
+
+A strong design separates fast enforcement from slower learning loops:
+
+1. **Ingestion**: collect text, image, video, account, graph, and report signals.
+2. **Fast classifiers**: run policy-specific models under a strict latency budget for upload or feed-time enforcement.
+3. **Rules and risk tiers**: block obvious severe violations and route uncertain cases to review.
+4. **Human review**: show model rationale, policy version, prior account history, and similar cases.
+5. **Appeals**: feed reversals back into policy calibration and model evaluation.
+6. **Adversarial monitoring**: track evasion patterns, coded language, reuploads, and coordinated abuse.
+
+## Metrics and evaluation
+
+Measure by policy and cohort, not only aggregate accuracy:
+
+- severe-harm recall at fixed false-positive budget
+- precision by policy class and geography/language
+- reviewer queue SLA and reviewer agreement
+- appeal reversal rate
+- user report rate after model action
+- latency for upload-time and feed-time checks
+
+## Failure modes
+
+- **Policy drift**: policies change faster than labels. Version the policy and the label definition.
+- **Adversarial drift**: users adapt spelling, images, and memes. Add active learning from reports and reviewer disagreement.
+- **Reviewer overload**: uncertain cases can flood queues. Use risk-tier thresholds and reviewer capacity as a hard constraint.
+- **Fairness risk**: false positives can concentrate by language, dialect, or community. Slice metrics and audit reviewer outcomes.
+
+## What the architect signal looks like
+
+Close by naming the launch guardrails: severe-harm recall, appeal reversal rate, reviewer queue SLA, and cohort fairness slices. Then state the fallback: when confidence is low and harm is high, route to review rather than making an irreversible automated action.

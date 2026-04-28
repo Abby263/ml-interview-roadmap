@@ -40,6 +40,44 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Architect Follow-up Ladder · Senior/Staff probes",
+      "items": [
+        {
+          "id": "arch-ladder-107-requirements",
+          "label": "Clarify requirements, users, constraints, and business metric for: Design TikTok / YouTube feed recommendations",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/blob/main/src/MLSD/ml-system-design.md",
+          "meta": "Architect",
+          "interviewQuestions": [
+            "What are the first five clarifying questions before proposing any model?",
+            "What is the business metric, what is the ML proxy metric, and where can they diverge?",
+            "What scale, latency, freshness, privacy, and reliability constraints change the architecture?"
+          ]
+        },
+        {
+          "id": "arch-ladder-107-data-model-serving",
+          "label": "Defend data, labels, baseline, model choice, feature freshness, and serving path for: Design TikTok / YouTube feed recommendations",
+          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+          "meta": "Deep dive",
+          "interviewQuestions": [
+            "What baseline would you launch before a complex model, and how would you know it is insufficient?",
+            "Where do labels come from, what bias do they contain, and how delayed are they?",
+            "Which features must be computed online vs offline, and what happens when the feature store is slow?"
+          ]
+        },
+        {
+          "id": "arch-ladder-107-ops-risk",
+          "label": "Cover monitoring, rollback, cost, security, failure modes, and launch plan for: Design TikTok / YouTube feed recommendations",
+          "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+          "meta": "Operations",
+          "interviewQuestions": [
+            "What online metrics, guardrails, and cohort slices decide whether this system is safe to ramp?",
+            "What is the rollback trigger, fallback experience, and incident owner if quality or latency regresses?",
+            "What are the top security, privacy, abuse, or cost risks, and what controls would you ship in v1?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -62,6 +100,26 @@
       "label": "YouTube two-tower (sampling-bias-corrected)",
       "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
       "source": "Google"
+    },
+    {
+      "label": "Chip Huyen — Machine Learning Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Google Cloud Professional ML Engineer exam guide",
+      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+      "source": "Google Cloud"
+    },
+    {
+      "label": "Google ML system design mock interview — YouTube recommendations",
+      "href": "https://www.youtube.com/watch?v=uF1V2MqX2U0",
+      "source": "YouTube"
     }
+  ],
+  "questionIds": [
+    "architect-follow-up-ladder",
+    "architect-capacity-planning",
+    "prod-incident-response-model-regression"
   ]
 }

@@ -14,6 +14,8 @@ export type PillarSlug =
 export type QuestionCategory =
   | "Coding"
   | "SQL"
+  | "ML Coding"
+  | "ML Debugging"
   | "ML Fundamentals"
   | "Statistics"
   | "Deep Learning"
@@ -23,6 +25,9 @@ export type QuestionCategory =
   | "LLMOps"
   | "ML System Design"
   | "MLOps"
+  | "Production ML"
+  | "Architect Trade-offs"
+  | "Company Loop"
   | "Behavioral";
 
 export interface Pillar {
@@ -1742,6 +1747,996 @@ export const questions: Question[] = [
     ],
     relatedTopics: ["search-ads-feed-design", "ranking-retrieval-recsys"],
   },
+  {
+    id: "ml-coding-logreg-numpy",
+    question: "Implement logistic regression with NumPy, mini-batch SGD, L2 regularization, and numerically stable binary cross entropy.",
+    category: "ML Coding",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Vectorize logits, sigmoid, loss, and gradient computation",
+      "Use stable sigmoid/log-loss branches or clipping to avoid overflow",
+      "Add tests against sklearn or a finite-difference gradient checker",
+    ],
+    expectedSignals: [
+      "Writes vectorized code instead of loops over examples",
+      "Mentions numerical stability and reproducibility",
+      "Explains train-time and inference-time complexity",
+    ],
+    commonMistakes: [
+      "Computing log(sigmoid(x)) naively for extreme logits",
+      "Forgetting the intercept term",
+      "No validation that gradients are correct",
+    ],
+    relatedTopics: ["ml-from-scratch", "linear-models-regularization"],
+  },
+  {
+    id: "ml-coding-kmeans-edge-cases",
+    question: "Code k-means from scratch and handle empty clusters, duplicate points, convergence tolerance, and memory pressure.",
+    category: "ML Coding",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Initialize centroids, assign points, update means, and stop on tolerance",
+      "Handle empty clusters by reseeding or keeping the previous centroid",
+      "Discuss vectorized distance computation and memory trade-offs",
+    ],
+    expectedSignals: [
+      "Names empty-cluster and duplicate-point edge cases",
+      "Explains k-means++ and convergence criteria",
+      "Can reason about O(nkd) cost and batching",
+    ],
+    commonMistakes: [
+      "Ignoring empty clusters",
+      "Building an n by k distance matrix when it does not fit memory",
+      "Stopping only after a fixed number of iterations",
+    ],
+    relatedTopics: ["ml-from-scratch", "anomaly-detection"],
+  },
+  {
+    id: "ml-coding-gradient-checker",
+    question: "How would you verify a hand-coded model gradient using finite differences, and what failures would you expect?",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Compare analytical gradients to central finite differences",
+      "Choose epsilon carefully and use relative error",
+      "Isolate failing parameter groups and check broadcasting or regularization terms",
+    ],
+    expectedSignals: [
+      "Uses central difference instead of only forward difference",
+      "Mentions relative error and floating-point limits",
+      "Knows how to narrow a gradient bug",
+    ],
+    commonMistakes: [
+      "Using epsilon values that are too small or too large",
+      "Checking only one parameter",
+      "Forgetting regularization in either analytical or numerical loss",
+    ],
+    relatedTopics: ["ml-from-scratch", "backprop-and-optimization"],
+  },
+  {
+    id: "ml-coding-data-pipeline",
+    question: "Build a pandas/NumPy training dataset from messy event logs while avoiding leakage, duplicate events, and bad joins.",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define the prediction timestamp and label window first",
+      "Deduplicate events and perform point-in-time joins",
+      "Add tests for missingness, row counts, leakage, and label construction",
+    ],
+    expectedSignals: [
+      "Starts with the prediction moment and label definition",
+      "Uses point-in-time thinking for joins",
+      "Treats data tests as part of the deliverable",
+    ],
+    commonMistakes: [
+      "Joining future data into features",
+      "Counting events instead of entities",
+      "Returning a notebook with no reproducibility or tests",
+    ],
+    relatedTopics: ["feature-engineering-leakage", "data-validation-quality"],
+  },
+  {
+    id: "ml-coding-pytorch-training-loop",
+    question: "Write a PyTorch training loop with validation, checkpointing, early stopping, gradient accumulation, and mixed precision.",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Use train/eval modes, zero_grad, backward, optimizer step, scheduler, and no_grad validation",
+      "Save model, optimizer, scheduler, scaler, epoch, and random state",
+      "Handle gradient accumulation and AMP loss scaling carefully",
+    ],
+    expectedSignals: [
+      "Knows where train/eval and no_grad matter",
+      "Saves enough state to resume exactly",
+      "Explains accumulation side effects on batch norm and schedulers",
+    ],
+    commonMistakes: [
+      "Validating with dropout still enabled",
+      "Not dividing loss during gradient accumulation",
+      "Saving only model weights and losing optimizer state",
+    ],
+    relatedTopics: ["backprop-and-optimization", "training-orchestration"],
+  },
+  {
+    id: "ml-debugging-suspicious-auc",
+    question: "A notebook reports 0.99 validation AUC on messy behavioral data. How do you debug whether it is real?",
+    category: "ML Debugging",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Check split strategy, leakage, duplicates, label timing, and entity overlap",
+      "Recompute metrics independently and inspect score distributions",
+      "Run simple baselines and remove suspicious features",
+    ],
+    expectedSignals: [
+      "Suspects leakage before model genius",
+      "Checks time/entity splits and label construction",
+      "Uses baselines and ablations to isolate the signal",
+    ],
+    commonMistakes: [
+      "Trusting a single metric from the notebook",
+      "Changing model architecture before validating data",
+      "Ignoring duplicate users or post-outcome features",
+    ],
+    relatedTopics: ["feature-engineering-leakage", "metrics-and-calibration"],
+  },
+  {
+    id: "ml-coding-topk-topp-sampling",
+    question: "Implement temperature scaling, top-k filtering, and top-p nucleus sampling from model logits.",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Scale logits by temperature and subtract max before softmax",
+      "Filter to top-k or smallest cumulative top-p token set",
+      "Renormalize probabilities and sample with reproducible randomness",
+    ],
+    expectedSignals: [
+      "Understands rescaling versus truncation",
+      "Handles numerical stability and edge cases",
+      "Can test that excluded tokens are never sampled",
+    ],
+    commonMistakes: [
+      "Applying top-p before sorting",
+      "Forgetting to renormalize after filtering",
+      "Confusing lower temperature with top-k",
+    ],
+    relatedTopics: ["llm-basics", "transformers-first-principles"],
+  },
+  {
+    id: "llm-kv-cache-debugging",
+    question: "How do you reason about KV-cache shapes, prefill versus decode latency, and long-context memory pressure?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Track batch, layers, heads, sequence length, and head dimension",
+      "Separate prefill compute from decode token-by-token generation",
+      "Discuss memory pressure, fragmentation, and eviction or paging strategies",
+    ],
+    expectedSignals: [
+      "Can name why KV cache dominates long-context serving memory",
+      "Separates time-to-first-token from tokens-per-second",
+      "Knows how cache bugs can break attention to prior context",
+    ],
+    commonMistakes: [
+      "Treating all latency as model compute",
+      "Ignoring sequence length in memory estimates",
+      "Not distinguishing prefill and decode phases",
+    ],
+    relatedTopics: ["llm-routing-cost-latency", "transformers-first-principles"],
+  },
+  {
+    id: "llm-eval-dataset-design",
+    question: "Design an LLM eval dataset that catches regressions across quality, safety, faithfulness, latency, and cost.",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define task slices, metadata, expected behavior, rubrics, and pass/fail thresholds",
+      "Include golden cases, adversarial cases, and production failure cases",
+      "Track aggregate and slice-level regressions before release",
+    ],
+    expectedSignals: [
+      "Avoids one aggregate score as the only gate",
+      "Includes real incidents and adversarial cases",
+      "Connects eval cases to release decisions",
+    ],
+    commonMistakes: [
+      "Only using generic benchmark questions",
+      "No slice metadata or high-risk workflow coverage",
+      "No owner for maintaining the dataset",
+    ],
+    relatedTopics: ["llm-eval-ops", "llm-evaluation"],
+  },
+  {
+    id: "llm-judge-calibration",
+    question: "How would you calibrate an LLM-as-judge system against human reviewers and reduce judge bias?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Collect human labels on representative and adversarial examples",
+      "Measure agreement, disagreement slices, and rubric sensitivity",
+      "Use pairwise comparisons and periodic human revalidation",
+    ],
+    expectedSignals: [
+      "Treats the judge as a model that needs evaluation",
+      "Mentions verbosity, position, and self-preference biases",
+      "Keeps humans in the loop for critical workflows",
+    ],
+    commonMistakes: [
+      "Assuming LLM judge scores are ground truth",
+      "No calibration set",
+      "Ignoring disagreement by task type or user segment",
+    ],
+    relatedTopics: ["llm-eval-ops", "llm-evaluation"],
+  },
+  {
+    id: "llm-redteam-regression-suite",
+    question: "How do you turn prompt-injection, jailbreak, and data-exfiltration failures into repeatable release-blocking tests?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Capture the failing trace, expected safe behavior, and risk category",
+      "Add adversarial variants and run them on prompt, model, retrieval, and tool changes",
+      "Track pass/fail by severity and ownership",
+    ],
+    expectedSignals: [
+      "Converts incidents into regression tests",
+      "Covers retrieval and tool-call paths, not just final answers",
+      "Uses severity to define release gates",
+    ],
+    commonMistakes: [
+      "Treating red teaming as a one-time exercise",
+      "Only testing exact prompt strings",
+      "No mapping from failures to controls",
+    ],
+    relatedTopics: ["llm-safety-security-privacy", "llm-eval-ops"],
+  },
+  {
+    id: "llm-agent-excessive-agency",
+    question: "How do you prevent a tool-using agent from taking excessive or irreversible actions?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define tool allowlists, scopes, rate limits, and risk tiers",
+      "Require human approval for irreversible or high-value actions",
+      "Log tool plans, arguments, outputs, and policy decisions",
+    ],
+    expectedSignals: [
+      "Separates planning from execution control",
+      "Mentions permissions and auditability",
+      "Uses human approval where risk justifies it",
+    ],
+    commonMistakes: [
+      "Letting the model decide its own permissions",
+      "No action risk tiers",
+      "No audit trail for tool calls",
+    ],
+    relatedTopics: ["agents-and-guardrails", "llm-safety-security-privacy"],
+  },
+  {
+    id: "llm-vector-embedding-security",
+    question: "What security and reliability failures are specific to embeddings, vector search, and RAG indexes?",
+    category: "RAG",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Discuss data poisoning, stale permissions, embedding inversion risk, and retrieval manipulation",
+      "Use ACL-aware indexing, metadata filters, and re-embedding policies",
+      "Monitor retrieval anomalies and high-risk query slices",
+    ],
+    expectedSignals: [
+      "Does not treat the vector DB as a neutral cache",
+      "Connects permissions to index lifecycle",
+      "Mentions poisoned or adversarial documents",
+    ],
+    commonMistakes: [
+      "Filtering retrieved text after it is already in context",
+      "No reindexing after permission changes",
+      "Ignoring adversarial documents",
+    ],
+    relatedTopics: ["rag-architecture", "llm-safety-security-privacy"],
+  },
+  {
+    id: "llm-semantic-cache-risk",
+    question: "When is semantic caching useful for LLM systems, and when is it unsafe?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Use semantic caching for repeatable low-risk queries with stable permissions",
+      "Measure false-hit risk, freshness, tenant boundaries, and personalization sensitivity",
+      "Disable or narrow caching for high-risk, user-specific, or permissioned answers",
+    ],
+    expectedSignals: [
+      "Balances latency/cost gains against correctness risk",
+      "Mentions tenant and permission boundaries",
+      "Defines an eval for false cache hits",
+    ],
+    commonMistakes: [
+      "Caching personalized or permissioned answers globally",
+      "Only measuring hit rate",
+      "No invalidation or freshness policy",
+    ],
+    relatedTopics: ["llm-routing-cost-latency", "llm-safety-security-privacy"],
+  },
+  {
+    id: "llm-routing-cost-quality-simulator",
+    question: "Design a model-routing simulator that estimates blended quality, latency, and cost for a cheap-to-expensive cascade.",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Use traffic slices, router confidence, verifier outcomes, and fallback rate",
+      "Compute expected cost, p95 latency, and quality by slice",
+      "Gate rollout on hard-query performance and safety regressions",
+    ],
+    expectedSignals: [
+      "Measures routing by segment, not only global average",
+      "Includes verifier cost and latency",
+      "Defines fallback and rollback behavior",
+    ],
+    commonMistakes: [
+      "Ignoring the cost of the verifier",
+      "Optimizing easy questions while hurting hard ones",
+      "No online monitoring after rollout",
+    ],
+    relatedTopics: ["llm-routing-cost-latency", "llm-eval-ops"],
+  },
+  {
+    id: "prod-data-contracts-schema-evolution",
+    question: "What belongs in a data contract for production ML, and how do you handle schema evolution without breaking models?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Specify owners, schema, semantics, freshness, nullability, and change process",
+      "Separate backward-compatible changes from breaking changes",
+      "Add validation, alerting, versioning, and migration windows",
+    ],
+    expectedSignals: [
+      "Distinguishes schema from semantic meaning",
+      "Names ownership and compatibility policy",
+      "Connects upstream changes to model release safety",
+    ],
+    commonMistakes: [
+      "Only validating column names",
+      "No semantic ownership",
+      "Breaking online inference with an offline-only migration",
+    ],
+    relatedTopics: ["data-validation-quality", "feature-stores"],
+  },
+  {
+    id: "prod-feature-lineage-audit",
+    question: "How do you trace a production prediction back to the data, features, code, model, prompt, and deployment that produced it?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Capture lineage across raw data, feature views, training job, model registry, and deployment version",
+      "Log prediction context and request metadata without leaking sensitive data",
+      "Use lineage for audits, incident response, and reproducibility",
+    ],
+    expectedSignals: [
+      "Covers both offline training and online serving artifacts",
+      "Mentions privacy-aware logging",
+      "Explains why lineage matters during incidents",
+    ],
+    commonMistakes: [
+      "Tracking only model version",
+      "No feature or data snapshot identifier",
+      "Logging sensitive data without retention controls",
+    ],
+    relatedTopics: ["model-registry-cicd", "training-orchestration"],
+  },
+  {
+    id: "prod-rto-rpo-training-pipeline",
+    question: "What are RTO and RPO for ML training pipelines, and how do they change your retry, checkpoint, and alerting strategy?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define recovery time objective and recovery point objective for training and feature jobs",
+      "Use idempotent jobs, checkpoints, retry policies, and backfills",
+      "Choose paging versus silent retry based on business impact",
+    ],
+    expectedSignals: [
+      "Applies reliability terms to ML workflows correctly",
+      "Understands partial failures and duplicate writes",
+      "Links alerting to user or business impact",
+    ],
+    commonMistakes: [
+      "Treating batch pipelines as non-critical by default",
+      "No checkpointing or idempotency",
+      "Paging on every transient failure",
+    ],
+    relatedTopics: ["training-orchestration", "model-registry-cicd"],
+  },
+  {
+    id: "prod-release-gates-ml-cicd",
+    question: "What checks should block a production ML release before canary traffic?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Run code, data, feature, model quality, security, latency, and rollback checks",
+      "Compare candidate against champion across key slices",
+      "Require artifacts for rollback and owner sign-off for risky changes",
+    ],
+    expectedSignals: [
+      "Separates data tests from model tests and service tests",
+      "Mentions slices and guardrails",
+      "Requires rollback readiness before launch",
+    ],
+    commonMistakes: [
+      "Only checking unit tests",
+      "No latency or cost gate",
+      "No champion/challenger comparison",
+    ],
+    relatedTopics: ["model-registry-cicd", "monitoring-drift"],
+  },
+  {
+    id: "prod-load-shedding-backpressure",
+    question: "How would you design load shedding, backpressure, queues, and graceful degradation for an overloaded ML inference service?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define priorities and deadlines for request classes",
+      "Use bounded queues, timeouts, circuit breakers, and fallback models",
+      "Monitor rejected requests, queue delay, p99 latency, and business impact",
+    ],
+    expectedSignals: [
+      "Prioritizes user-visible deadlines over infinite queues",
+      "Has degraded modes such as cached results or smaller models",
+      "Knows how overload can create retry storms",
+    ],
+    commonMistakes: [
+      "Letting queues grow without bound",
+      "Retrying every failed request immediately",
+      "No differentiated treatment for critical traffic",
+    ],
+    relatedTopics: ["online-serving-tradeoffs", "model-serving-patterns"],
+  },
+  {
+    id: "prod-incident-response-model-regression",
+    question: "A newly deployed model hurts one cohort while aggregate metrics look fine. How do you run the incident?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Freeze ramp, inspect cohort slices, compare champion and candidate traces",
+      "Decide rollback, threshold change, feature disablement, or traffic segmentation",
+      "Write a postmortem and add cohort-specific monitoring/evals",
+    ],
+    expectedSignals: [
+      "Looks past aggregate metrics",
+      "Takes immediate mitigation before root-cause perfection",
+      "Adds a permanent regression guard",
+    ],
+    commonMistakes: [
+      "Waiting for statistical certainty while users are harmed",
+      "Only looking at average quality",
+      "No postmortem or eval update",
+    ],
+    relatedTopics: ["monitoring-drift", "model-registry-cicd"],
+  },
+  {
+    id: "prod-finops-unit-cost",
+    question: "How do you model and control cost per prediction, training run, eval suite, tenant, and feature?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Instrument compute, storage, network, vector DB, and third-party API costs",
+      "Attribute spend by tenant, feature, request class, and model path",
+      "Set cost budgets and regression gates alongside quality gates",
+    ],
+    expectedSignals: [
+      "Measures before optimizing",
+      "Knows unit cost varies by traffic mix and route",
+      "Connects cost controls to release management",
+    ],
+    commonMistakes: [
+      "Only looking at total cloud bill",
+      "Cutting model quality uniformly",
+      "No per-tenant or per-feature attribution",
+    ],
+    relatedTopics: ["llm-routing-cost-latency", "online-serving-tradeoffs"],
+  },
+  {
+    id: "rag-acl-permission-freshness",
+    question: "How do you enforce enterprise RAG permissions when documents and user access change continuously?",
+    category: "RAG",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Filter at retrieval time using user identity, source ACLs, and metadata",
+      "Track permission freshness and reindex or invalidate affected chunks",
+      "Audit retrieved documents and citations per request",
+    ],
+    expectedSignals: [
+      "Enforces ACLs before context construction",
+      "Accounts for permission changes after embedding",
+      "Separates index freshness from document freshness",
+    ],
+    commonMistakes: [
+      "Filtering only after generation",
+      "No strategy for permission revocation",
+      "No audit log for retrieved sources",
+    ],
+    relatedTopics: ["rag-architecture", "llm-safety-security-privacy"],
+  },
+  {
+    id: "architect-follow-up-ladder",
+    question: "Use an architect follow-up ladder for any ML system design case: requirements, metrics, data, model, serving, monitoring, rollback, cost, and risk.",
+    category: "Architect Trade-offs",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Start with product requirements, scale, constraints, and metric hierarchy",
+      "Defend data, labels, baseline, model choice, feature freshness, and serving path",
+      "Close with rollout, monitoring, rollback, cost, security, and failure modes",
+    ],
+    expectedSignals: [
+      "Keeps the answer structured under pressure",
+      "Connects model choices to product and operational constraints",
+      "Anticipates senior-level follow-ups before being asked",
+    ],
+    commonMistakes: [
+      "Jumping straight to model architecture",
+      "No business metric or guardrails",
+      "No launch or rollback plan",
+    ],
+    relatedTopics: ["system-design-framework", "requirements-metrics-scope"],
+  },
+  {
+    id: "company-loop-meta-mle",
+    question: "How would you prepare for a Meta-style MLE loop covering coding, ML fundamentals, product ML design, and behavioral signals?",
+    category: "Company Loop",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Prepare fast coding and ML-from-scratch implementation",
+      "Practice feed, recommendations, ranking, and integrity system design",
+      "Use product metrics, experimentation, and launch trade-offs in every design answer",
+    ],
+    expectedSignals: [
+      "Knows the loop is not only theory",
+      "Can convert product prompts into ML systems",
+      "Uses clear trade-offs and metrics",
+    ],
+    commonMistakes: [
+      "Only studying LeetCode",
+      "Ignoring product metric framing",
+      "No behavioral stories about ambiguity or cross-functional work",
+    ],
+    relatedTopics: ["ranking-retrieval-recsys", "system-design-framework"],
+  },
+  {
+    id: "company-loop-openai-technical-depth",
+    question: "How do you prepare for an AI-lab style technical loop with pair coding, deep project review, evals, and safety trade-offs?",
+    category: "Company Loop",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Prepare to code, test, and explain implementation choices live",
+      "Know one project deeply across data, model, evals, incidents, and trade-offs",
+      "Practice communicating uncertainty and reasoning clearly",
+    ],
+    expectedSignals: [
+      "Can go deep without hand-waving",
+      "Uses tests and performance reasoning",
+      "Connects model behavior to evals and safety",
+    ],
+    commonMistakes: [
+      "Over-indexing on memorized questions",
+      "Not knowing the details of your own project",
+      "No evidence of testing or code quality",
+    ],
+    relatedTopics: ["llm-eval-ops", "project-storytelling"],
+  },
+  {
+    id: "company-loop-startup-practical",
+    question: "What does a startup ML interview loop test that big-tech loops often do not?",
+    category: "Company Loop",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Expect messy notebooks, take-homes, product ambiguity, and rapid build-vs-buy decisions",
+      "Show pragmatic MVP thinking and the ability to ship safely",
+      "Discuss what you would do in week one with limited data and infra",
+    ],
+    expectedSignals: [
+      "Prioritizes useful systems over elegant platforms",
+      "Can debug messy data and unclear requirements",
+      "Knows when a managed API is the right first step",
+    ],
+    commonMistakes: [
+      "Designing a big-company platform too early",
+      "Ignoring customer feedback loops",
+      "No plan for evals or monitoring in the MVP",
+    ],
+    relatedTopics: ["project-storytelling", "llm-eval-ops"],
+  },
+  {
+    id: "startup-rag-api-60-min",
+    question: "Ship a minimal RAG API in 60 minutes. What do you build, what do you skip, and what do you test?",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Build ingestion, chunking, embeddings, retrieval, generation, and one smoke eval",
+      "Use a managed model/vector store if speed matters",
+      "Call out production gaps: ACLs, evals, monitoring, cost, and retries",
+    ],
+    expectedSignals: [
+      "Scopes a credible MVP",
+      "Knows the risks of demo shortcuts",
+      "Adds at least one task-specific eval",
+    ],
+    commonMistakes: [
+      "Building a polished UI before proving retrieval works",
+      "No citations or source visibility",
+      "No distinction between demo and production requirements",
+    ],
+    relatedTopics: ["rag-architecture", "llm-eval-ops"],
+  },
+  {
+    id: "startup-messy-notebook-debug",
+    question: "A startup gives you a messy ML notebook as a take-home. How do you turn it into a reliable result?",
+    category: "ML Debugging",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Clarify the product target and label definition",
+      "Check leakage, splits, missingness, duplicates, and metric code",
+      "Refactor into reproducible steps with tests and a short decision memo",
+    ],
+    expectedSignals: [
+      "Finds data issues before tuning models",
+      "Communicates assumptions and trade-offs",
+      "Produces something another engineer can rerun",
+    ],
+    commonMistakes: [
+      "Only improving notebook accuracy",
+      "No tests or environment notes",
+      "Not stating uncertainty or next steps",
+    ],
+    relatedTopics: ["feature-engineering-leakage", "project-storytelling"],
+  },
+  {
+    id: "behavioral-technical-deep-dive",
+    question: "Walk through your hardest ML system project at senior depth: rejected alternatives, incidents, metrics, and stakeholder trade-offs.",
+    category: "Behavioral",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Explain context, constraints, and why the problem mattered",
+      "Describe alternatives considered and rejected with evidence",
+      "Cover launch, monitoring, incidents, communication, and what changed afterward",
+    ],
+    expectedSignals: [
+      "Shows ownership beyond model training",
+      "Can defend trade-offs with metrics",
+      "Communicates cross-functional impact clearly",
+    ],
+    commonMistakes: [
+      "Only describing model architecture",
+      "No rejected alternatives",
+      "No measurable impact or operational lesson",
+    ],
+    relatedTopics: ["project-storytelling", "behavioral-ownership"],
+  },
+  {
+    id: "company-loop-tiktok-youtube-ranking",
+    question: "What follow-ups should you expect after designing a TikTok or YouTube-style recommendation feed?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Discuss candidate generation, ranking, re-ranking, freshness, diversity, and exploration",
+      "Handle cold start, delayed labels, feedback loops, and creator ecosystem guardrails",
+      "Plan latency budgets, fallbacks, and A/B test guardrails",
+    ],
+    expectedSignals: [
+      "Understands multi-stage ranking systems",
+      "Balances engagement with diversity and safety",
+      "Names online and offline metrics",
+    ],
+    commonMistakes: [
+      "Optimizing watch time only",
+      "Ignoring cold start or filter bubbles",
+      "No p99 latency or fallback plan",
+    ],
+    relatedTopics: ["ranking-retrieval-recsys", "search-ads-feed-design"],
+  },
+  {
+    id: "case-content-moderation-design",
+    question: "Design a content moderation and trust-and-safety ML system for user-generated text, images, or video.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify policy taxonomy, action types, latency, appeals, and reviewer capacity",
+      "Combine classifiers, rules, human review, active learning, and adversarial monitoring",
+      "Track precision/recall by policy, fairness, reviewer load, and false-positive harm",
+    ],
+    expectedSignals: [
+      "Treats policy and product action as first-class requirements",
+      "Includes human review and appeals",
+      "Anticipates adversarial adaptation",
+    ],
+    commonMistakes: [
+      "Only proposing a classifier",
+      "No policy/versioning or appeals path",
+      "Ignoring reviewer capacity and false-positive harm",
+    ],
+    relatedTopics: ["model-serving-patterns", "interpretability-fairness"],
+  },
+  {
+    id: "case-notification-ranking",
+    question: "Design a notification ranking system that maximizes useful engagement without spamming users.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define candidate triggers, frequency caps, send-time optimization, and user value metrics",
+      "Rank notifications with relevance, fatigue, urgency, and channel constraints",
+      "Use experiments with unsubscribe, mute, churn, and long-term retention guardrails",
+    ],
+    expectedSignals: [
+      "Balances short-term clicks with long-term trust",
+      "Includes suppression and frequency controls",
+      "Knows metrics can create spammy behavior",
+    ],
+    commonMistakes: [
+      "Optimizing open rate only",
+      "No fatigue or opt-out guardrail",
+      "Ignoring timezone and send-time constraints",
+    ],
+    relatedTopics: ["search-ads-feed-design", "causal-inference-uplift"],
+  },
+  {
+    id: "case-marketplace-matching",
+    question: "Design a marketplace matching system for buyers and sellers, riders and drivers, or candidates and jobs.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify objective, two-sided constraints, supply/demand balance, and fairness concerns",
+      "Use retrieval, ranking, constraints, and online feedback loops",
+      "Evaluate match quality, conversion, liquidity, latency, and ecosystem health",
+    ],
+    expectedSignals: [
+      "Recognizes two-sided marketplace trade-offs",
+      "Includes constraints and fairness, not only relevance",
+      "Handles cold-start and feedback loops",
+    ],
+    commonMistakes: [
+      "Optimizing one side of the marketplace only",
+      "No exploration for new supply",
+      "Ignoring delayed conversion labels",
+    ],
+    relatedTopics: ["ranking-retrieval-recsys", "causal-inference-uplift"],
+  },
+  {
+    id: "case-demand-forecasting-platform",
+    question: "Design a demand forecasting platform for sparse marketplace items with seasonality and business-critical decisions.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define forecast horizon, granularity, hierarchy, and cost of over/under prediction",
+      "Use time-series backtesting, baselines, covariates, and segment-specific metrics",
+      "Monitor drift, holiday effects, sparse items, and downstream decision quality",
+    ],
+    expectedSignals: [
+      "Avoids random splits",
+      "Connects metric choice to inventory or staffing cost",
+      "Handles hierarchy and sparse segments",
+    ],
+    commonMistakes: [
+      "Reporting aggregate RMSE only",
+      "Ignoring seasonality or intermittent demand",
+      "No backtesting protocol",
+    ],
+    relatedTopics: ["time-series-forecasting", "metrics-and-calibration"],
+  },
+  {
+    id: "case-anomaly-detection-platform",
+    question: "Design an anomaly detection platform for metrics, logs, transactions, or infrastructure events.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify anomaly definition, action, alert budget, and label availability",
+      "Use statistical baselines, unsupervised models, supervised feedback, and suppression logic",
+      "Evaluate precision at alert budget, time to detect, false positives, and incident usefulness",
+    ],
+    expectedSignals: [
+      "Starts with actionability and alert budget",
+      "Handles weak or delayed labels",
+      "Includes feedback from responders",
+    ],
+    commonMistakes: [
+      "Equating rare with important",
+      "No alert suppression or deduplication",
+      "No plan for concept drift",
+    ],
+    relatedTopics: ["anomaly-detection", "monitoring-drift"],
+  },
+  {
+    id: "case-zero-downtime-migration",
+    question: "How would you migrate a legacy model service to a new feature store and serving platform with zero downtime?",
+    category: "Production ML",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Run old and new paths in shadow mode and compare features, predictions, and latency",
+      "Ramp traffic gradually with rollback thresholds",
+      "Keep old artifacts and feature snapshots until parity is proven",
+    ],
+    expectedSignals: [
+      "Does not big-bang cut over",
+      "Defines parity metrics before migration",
+      "Plans rollback and ownership",
+    ],
+    commonMistakes: [
+      "Only comparing offline predictions",
+      "No shadow traffic or dual writes",
+      "No plan for feature parity debugging",
+    ],
+    relatedTopics: ["feature-stores", "model-registry-cicd"],
+  },
+  {
+    id: "case-multitenant-ai-platform",
+    question: "Design a multi-tenant enterprise AI platform with shared models, tenant-specific data, isolation, cost controls, and auditability.",
+    category: "Architect Trade-offs",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Separate tenant identity, data boundaries, compute isolation, key management, and audit trails",
+      "Choose shared base models, adapters, per-tenant indexes, quotas, and policy layers",
+      "Monitor noisy neighbors, cost by tenant, security incidents, and quality by tenant",
+    ],
+    expectedSignals: [
+      "Separates data, compute, and policy isolation",
+      "Balances hard isolation against cost",
+      "Includes audit logs and per-tenant quotas",
+    ],
+    commonMistakes: [
+      "Treating tenancy as just a database column",
+      "No rate limits or cost controls",
+      "No audit trail for cross-tenant access",
+    ],
+    relatedTopics: ["system-design-framework", "llm-safety-security-privacy"],
+  },
+  {
+    id: "case-personalization-cold-start-marketplace",
+    question: "How would you solve cold start in a marketplace personalization system for new users, new items, and new sellers?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Use content features, onboarding signals, popularity priors, exploration, and bandits",
+      "Separate new user, new item, and new seller strategies",
+      "Evaluate early conversion, diversity, long-term retention, and marketplace fairness",
+    ],
+    expectedSignals: [
+      "Does not give one generic cold-start answer",
+      "Balances exploration and exploitation",
+      "Considers marketplace ecosystem health",
+    ],
+    commonMistakes: [
+      "Only recommending popular items",
+      "No exploration budget",
+      "Ignoring seller-side fairness or liquidity",
+    ],
+    relatedTopics: ["ranking-retrieval-recsys", "causal-inference-uplift"],
+  },
+  {
+    id: "ml-coding-transformer-block",
+    question: "Implement a minimal transformer block and explain the tensor shapes through attention, MLP, residuals, and layer norm.",
+    category: "ML Coding",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Implement QKV projections, scaled dot-product attention, masking, output projection, MLP, residuals, and normalization",
+      "Track batch, sequence, hidden, heads, and head dimension shapes",
+      "Discuss numerical stability, masking, and memory complexity",
+    ],
+    expectedSignals: [
+      "Can reason through shapes without guessing",
+      "Knows where causal masking applies",
+      "Mentions O(n squared) attention memory",
+    ],
+    commonMistakes: [
+      "Mixing batch and sequence axes",
+      "Applying softmax over the wrong dimension",
+      "Forgetting residual connections or layer norm placement",
+    ],
+    relatedTopics: ["transformers-first-principles", "backprop-and-optimization"],
+  },
+  {
+    id: "ml-coding-embedding-search",
+    question: "Implement a simple embedding search pipeline with cosine similarity, top-k retrieval, and evaluation for recall.",
+    category: "ML Coding",
+    difficulty: "Intermediate",
+    answerOutline: [
+      "Normalize embeddings and compute cosine similarity",
+      "Return top-k results with metadata and source identifiers",
+      "Evaluate recall@k and inspect false positives by query type",
+    ],
+    expectedSignals: [
+      "Knows normalization changes dot-product behavior",
+      "Returns traceable sources, not only text",
+      "Uses retrieval metrics instead of answer quality only",
+    ],
+    commonMistakes: [
+      "Forgetting to normalize vectors",
+      "No tie-breaking or source metadata",
+      "Evaluating only the final generated answer",
+    ],
+    relatedTopics: ["rag-architecture", "llm-evaluation"],
+  },
+  {
+    id: "llm-tool-call-debugging",
+    question: "An LLM agent is calling the wrong tool with plausible-looking arguments. How do you debug and prevent it?",
+    category: "LLMOps",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Inspect traces for prompt, tool schema, retrieved context, arguments, validation errors, and retries",
+      "Tighten tool descriptions, schemas, argument validation, and policy gates",
+      "Add eval cases for ambiguous tools and high-risk actions",
+    ],
+    expectedSignals: [
+      "Uses trace-level evidence",
+      "Treats schemas and validators as controls",
+      "Adds regression tests for tool behavior",
+    ],
+    commonMistakes: [
+      "Only rewriting the prompt",
+      "No schema validation or dry-run mode",
+      "No separation between planner and executor",
+    ],
+    relatedTopics: ["agents-and-guardrails", "llm-observability-incidents"],
+  },
+  {
+    id: "company-loop-google-ml-fundamentals",
+    question: "How would you prepare for a Google-style ML loop that emphasizes fundamentals, scalable design, experimentation, and responsible AI?",
+    category: "Company Loop",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Prepare rigorous ML/statistics explanations and clean coding",
+      "Practice scalable data, training, serving, and monitoring designs",
+      "Discuss fairness, privacy, data quality, and launch guardrails",
+    ],
+    expectedSignals: [
+      "Shows mathematical rigor and production judgment",
+      "Connects offline metrics to online experiments",
+      "Includes responsible AI and monitoring concerns",
+    ],
+    commonMistakes: [
+      "Only studying algorithm trivia",
+      "No experiment or launch framework",
+      "Ignoring data governance or fairness",
+    ],
+    relatedTopics: ["statistical-inference-experimentation", "system-design-framework"],
+  },
+  {
+    id: "company-loop-amazon-aws-operational",
+    question: "How would you prepare for an Amazon/AWS-style ML loop focused on operational ownership, cloud deployment, monitoring, and security?",
+    category: "Company Loop",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Prepare examples of owning production failures and trade-offs",
+      "Know cloud ML workflows for data preparation, model deployment, monitoring, and governance",
+      "Discuss security, access control, cost, and rollback in every design",
+    ],
+    expectedSignals: [
+      "Uses operational language and ownership stories",
+      "Can map ML lifecycle stages to cloud services or platform components",
+      "Includes security and cost controls",
+    ],
+    commonMistakes: [
+      "Only describing model training",
+      "No incident or rollback ownership",
+      "Ignoring access control and data protection",
+    ],
+    relatedTopics: ["model-registry-cicd", "monitoring-drift"],
+  },
+  {
+    id: "case-code-assistant-design",
+    question: "Design an AI coding assistant that retrieves repository context, suggests edits, evaluates correctness, and controls latency and privacy risk.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Build context construction from repo search, open files, symbols, and user intent",
+      "Use model routing, tool execution, tests, and edit validation",
+      "Monitor acceptance, retention, latency, cost, security, and regression quality",
+    ],
+    expectedSignals: [
+      "Treats context construction as the core system problem",
+      "Includes test execution or validation loops",
+      "Discusses privacy and source-code handling",
+    ],
+    commonMistakes: [
+      "Only describing a chat UI over code",
+      "No eval beyond user thumbs-up",
+      "Ignoring latency and repository scale",
+    ],
+    relatedTopics: ["rag-architecture", "llm-eval-ops"],
+  },
 ];
 
 export const resources: Resource[] = [
@@ -1808,6 +2803,70 @@ export const resources: Resource[] = [
     description:
       "Good field notes on experiment tracking, model evaluation, and production workflows.",
     tags: ["MLOps", "Experiment Tracking"],
+  },
+  {
+    title: "OpenAI Interview Guide",
+    type: "Guide",
+    href: "https://openai.com/interview-guide",
+    description:
+      "Official guidance on skills assessments, pair coding, deep technical discussions, communication, and interview expectations.",
+    tags: ["Company Loop", "ML Coding", "Behavioral"],
+  },
+  {
+    title: "OpenAI Evaluation Best Practices",
+    type: "Docs",
+    href: "https://platform.openai.com/docs/guides/evaluation-best-practices",
+    description:
+      "Practical guidance for creating evals, release gates, regression datasets, and model-quality checks.",
+    tags: ["LLMOps", "Generative AI", "Evaluation"],
+  },
+  {
+    title: "AWS Machine Learning Engineer Associate Exam Guide",
+    type: "Guide",
+    href: "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+    description:
+      "Role-oriented coverage of data preparation, model development, deployment, monitoring, security, and governance.",
+    tags: ["MLOps", "Production ML", "Cloud"],
+  },
+  {
+    title: "Google Cloud Professional ML Engineer Guide",
+    type: "Guide",
+    href: "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+    description:
+      "Coverage guide for production ML workflows, responsible AI, model deployment, monitoring, and operationalization.",
+    tags: ["MLOps", "Production ML", "Responsible AI"],
+  },
+  {
+    title: "OWASP Top 10 for LLM Applications Mapping",
+    type: "Guide",
+    href: "https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-security/owasp-top-ten.html",
+    description:
+      "Security risks and mitigations for LLM applications, including prompt injection, data leakage, excessive agency, and vector weaknesses.",
+    tags: ["LLMOps", "Security", "Generative AI"],
+  },
+  {
+    title: "Machine Learning Interviews by alirezadir",
+    type: "Community",
+    href: "https://github.com/alirezadir/Machine-Learning-Interviews",
+    description:
+      "Community question bank covering ML theory, ML coding, and ML system design prompts.",
+    tags: ["ML Coding", "ML System Design", "Question Bank"],
+  },
+  {
+    title: "Reddit ML Coding Interview Discussion",
+    type: "Community",
+    href: "https://www.reddit.com/r/MachineLearning/comments/1958jbm/d_good_ml_eng_question_banks_for_interviews/",
+    description:
+      "Candidate discussion highlighting practical ML coding prompts such as NumPy, PyTorch, sampling, and model-debugging tasks.",
+    tags: ["ML Coding", "Company Loop", "Community"],
+  },
+  {
+    title: "Google ML System Design Mock Interview",
+    type: "Community",
+    href: "https://www.youtube.com/watch?v=uF1V2MqX2U0",
+    description:
+      "A mock interview useful for practicing recommendation-system structure, metrics, trade-offs, and follow-up handling.",
+    tags: ["ML System Design", "Mock Interview"],
   },
 ];
 
