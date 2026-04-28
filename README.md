@@ -29,6 +29,18 @@ The main roadmap now follows the interview-prep order used across the UI:
 6. LLMOps: prompt/model versioning, eval regression gates, tracing, routing, cost controls, safety, privacy, and red teaming.
 7. ML system design: requirements, metrics, feature stores, serving, monitoring, recommendation, search, ads, fraud, and RAG system cases.
 
+## Interview Loop Mapping
+
+The content is mapped to real interview loops rather than only topic coverage:
+
+- Big Tech MLE: coding, ML fundamentals, product ML system design, experimentation, production follow-ups, and behavioral ownership.
+- AI Engineer / LLM Engineer: RAG, agents, eval harnesses, tool use, prompt/model release gates, LLM security, latency, and cost.
+- Startup MLE: practical take-homes, messy notebook debugging, rapid RAG/API prototypes, build-vs-buy, and week-one execution plans.
+- Applied Scientist: statistics, causal reasoning, modeling depth, deep learning fundamentals, and research-style trade-off discussion.
+- Senior / Architect: capacity planning, migration strategy, multi-tenant isolation, incident response, governance, cost controls, and launch risk.
+
+Daily content uses named tracks such as `ML Coding Lab`, `Company Loop`, `Production ML`, `Architect Follow-up Ladder`, and `Startup Practical Loop` so reviewers can quickly verify whether each interview loop is represented.
+
 ## Stack
 
 - Next.js 16 App Router

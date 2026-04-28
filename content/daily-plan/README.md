@@ -69,6 +69,18 @@ ML-focused pillars are:
 - `llmops`
 - `ml-system-design`
 
+## Interview loop mapping
+
+Use these track names consistently when adding interview-loop content:
+
+- `ML Coding Lab`: NumPy, pandas, PyTorch, metrics, sampling, eval harness, and debugging implementation drills.
+- `Company Loop`: role-specific overlays for Big Tech MLE, AI labs, Amazon/AWS, TikTok/YouTube-style ranking, Reddit-style community reports, and startups.
+- `Production ML`: data contracts, schema evolution, lineage, CI/CD gates, incident response, capacity, RTO/RPO, cost, and cloud trade-offs.
+- `Architect Follow-up Ladder`: senior probes for system design cases: requirements, business metric, ML formulation, labels, features, serving, monitoring, rollback, cost, security, and failure modes.
+- `Startup Practical Loop`: take-homes, messy notebooks, rapid RAG APIs, MVP trade-offs, build-vs-buy, limited data, and week-one execution.
+
+For company-specific content, phrase questions as directional preparation signals, not as guaranteed company interview questions.
+
 ## Week headings
 
 The landing page groups days into weeks. Edit `content/daily-plan/weeks.json` to change those headings:

@@ -55,6 +55,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Production ML · Pipeline reliability",
+      "items": [
+        {
+          "id": "prod-pipeline-rto-rpo",
+          "label": "Pipeline RTO/RPO, retries, idempotency, and recovery checkpoints",
+          "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+          "meta": "Reliability",
+          "interviewQuestions": [
+            "What are RTO and RPO for a training pipeline, and how do they differ from an online serving SLO?",
+            "How do you make feature generation and model training idempotent after a partial failure?",
+            "When should a failed retraining job page someone vs retry silently?"
+          ]
+        },
+        {
+          "id": "prod-lineage-auditability",
+          "label": "Lineage and auditability across data, code, model, prompt, and deployment artifacts",
+          "href": "https://madewithml.com/",
+          "meta": "Governance",
+          "interviewQuestions": [
+            "How would you answer: which exact data, code, features, and hyperparameters produced this prediction?",
+            "What lineage metadata is necessary for compliance vs useful for debugging?",
+            "How do model cards stay accurate after automated retraining?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -72,6 +99,20 @@
       "label": "Full Stack Deep Learning",
       "href": "https://fullstackdeeplearning.com/",
       "source": "FSDL"
+    },
+    {
+      "label": "AWS Certified Machine Learning Engineer exam guide",
+      "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+      "source": "AWS"
+    },
+    {
+      "label": "Google Cloud Professional ML Engineer exam guide",
+      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+      "source": "Google Cloud"
     }
+  ],
+  "questionIds": [
+    "prod-rto-rpo-training-pipeline",
+    "prod-feature-lineage-audit"
   ]
 }

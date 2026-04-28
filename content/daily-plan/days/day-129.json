@@ -49,6 +49,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Behavioral · Technical deep-dive for senior ML roles",
+      "items": [
+        {
+          "id": "behavioral-architect-deep-dive",
+          "label": "Project deep dive: decisions rejected, incidents handled, and architecture trade-offs defended",
+          "href": "https://openai.com/interview-guide",
+          "meta": "Senior loop",
+          "interviewQuestions": [
+            "Walk through the hardest ML system you owned and the alternatives you rejected.",
+            "What did you measure before launch, what surprised you after launch, and what did you change?",
+            "How did you communicate a technical trade-off to product, infra, and leadership stakeholders?"
+          ]
+        },
+        {
+          "id": "behavioral-company-narrative",
+          "label": "Company-specific narrative: why this team, why this product, why now",
+          "href": "https://openai.com/interview-guide",
+          "meta": "Storytelling",
+          "interviewQuestions": [
+            "How do you adapt your project story for Meta, Google, OpenAI, Amazon, and a startup?",
+            "Which parts of your story prove end-to-end ownership instead of narrow model work?",
+            "How do you discuss failures without sounding defensive or vague?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -61,6 +88,15 @@
       "label": "khangich — Machine Learning Interview",
       "href": "https://github.com/khangich/machine-learning-interview",
       "source": "GitHub"
+    },
+    {
+      "label": "OpenAI interview guide",
+      "href": "https://openai.com/interview-guide",
+      "source": "OpenAI"
     }
+  ],
+  "questionIds": [
+    "behavioral-technical-deep-dive",
+    "company-loop-openai-technical-depth"
   ]
 }

@@ -1,0 +1,46 @@
+---
+title: Design an Anomaly Detection Platform
+description: Detect actionable anomalies across metrics, logs, transactions, or infrastructure events without flooding responders.
+track: ML System Design
+difficulty: Advanced
+prompt: Design an anomaly detection platform that monitors many time series or events, alerts responders, learns from feedback, and controls false positives.
+concepts:
+  - Weak labels
+  - Alerting
+  - Time-series baselines
+  - Unsupervised learning
+  - Feedback loops
+evaluationLens:
+  - Precision at alert budget
+  - Time to detect
+  - False positives
+  - Incident usefulness
+  - Drift
+---
+
+## Clarify what counts as an anomaly
+
+An anomaly is not simply a rare point. It must be actionable. Ask who receives the alert, what they can do, and how many alerts per day are acceptable.
+
+## Architecture
+
+1. **Ingestion**: metrics, logs, traces, events, transactions, and metadata.
+2. **Baseline models**: seasonal statistics, robust z-scores, EWMA, isolation forests, or forecasting residuals.
+3. **Contextual rules**: suppress known deployments, holidays, maintenance windows, and duplicate alerts.
+4. **Alert router**: group related anomalies and route by service, product, or owner.
+5. **Feedback loop**: responders mark useful, duplicate, benign, or missed alerts.
+
+## Metrics
+
+Use precision at alert budget, time to detect, time to acknowledge, incident correlation, and responder feedback. If labels are weak, sampled human review is better than pretending all alerts are labeled.
+
+## Failure modes
+
+- **Alert fatigue**: too many low-value alerts destroy trust.
+- **Seasonality miss**: daily or weekly cycles look anomalous.
+- **Concept drift**: normal behavior changes after launches or growth.
+- **Correlation blindness**: hundreds of metrics alert for one root cause.
+
+## What the architect signal looks like
+
+Close with an alert budget and a suppression strategy. A senior answer optimizes responder usefulness, not model novelty.

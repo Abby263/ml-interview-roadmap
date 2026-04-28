@@ -55,6 +55,33 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Production ML · Incident response and model rollback",
+      "items": [
+        {
+          "id": "prod-incident-response",
+          "label": "Incident runbooks for drift, bad labels, broken features, and serving regressions",
+          "href": "https://sre.google/workbook/incident-response/",
+          "meta": "On-call",
+          "interviewQuestions": [
+            "A model starts hurting one cohort but aggregate metrics look flat. What is your incident response?",
+            "How do you decide between rollback, threshold change, feature disablement, and retraining?",
+            "What postmortem action prevents the same model incident from recurring?"
+          ]
+        },
+        {
+          "id": "prod-delayed-label-playbook",
+          "label": "Delayed-label monitoring: proxies, holdouts, and retrospective truth joins",
+          "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+          "meta": "Monitoring",
+          "interviewQuestions": [
+            "How do you monitor fraud, churn, or recommendation quality when labels arrive weeks later?",
+            "Which proxy metrics are safe to use temporarily, and how can they mislead you?",
+            "How do you join delayed labels back to the exact prediction context?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -72,6 +99,15 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
+    },
+    {
+      "label": "Chip Huyen — Machine Learning Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
     }
+  ],
+  "questionIds": [
+    "prod-incident-response-model-regression",
+    "monitoring-production"
   ]
 }

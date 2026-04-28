@@ -1,0 +1,52 @@
+---
+title: Design a Zero-Downtime Model Platform Migration
+description: Move a legacy model service to a new feature store and serving platform without breaking predictions, latency, or rollback.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a migration from a legacy XGBoost prediction service to a new feature store and model-serving platform with zero downtime.
+concepts:
+  - Shadow deployment
+  - Feature parity
+  - Rollback
+  - Model registry
+  - Observability
+evaluationLens:
+  - Prediction parity
+  - Latency parity
+  - Rollback safety
+  - Data lineage
+  - Migration risk
+---
+
+## Clarify migration risk
+
+Ask why the migration is happening: reliability, cost, latency, feature reuse, compliance, or developer velocity. Then identify the non-negotiables: zero downtime, prediction parity, and reversible rollout.
+
+## Migration architecture
+
+1. **Baseline audit**: document legacy features, model artifact, preprocessing, dependencies, and current latency.
+2. **Dual feature path**: compute old and new features for the same requests.
+3. **Shadow serving**: send live traffic to the new stack without affecting user decisions.
+4. **Parity dashboard**: compare features, predictions, confidence, errors, and latency.
+5. **Canary ramp**: move 1%, 5%, 25%, 50%, then 100% only if guardrails pass.
+6. **Rollback**: keep legacy serving and feature paths warm until post-migration confidence is high.
+
+## Checks
+
+- feature value parity by feature and segment
+- prediction score differences and decision differences
+- p50, p95, p99 latency
+- error rates and timeout rates
+- offline replay and online shadow comparison
+- model registry and artifact lineage
+
+## Failure modes
+
+- **Feature skew**: same feature name but different semantics.
+- **Silent preprocessing drift**: missing value handling or categorical encoding changes.
+- **Rollback gap**: old system is decommissioned too early.
+- **Shadow mismatch**: shadow path lacks exact production context.
+
+## What the architect signal looks like
+
+State the rollback trigger before ramping traffic. A good migration answer is more about risk control than new platform enthusiasm.

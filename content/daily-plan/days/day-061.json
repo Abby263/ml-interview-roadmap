@@ -55,6 +55,22 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Production ML · Release gates and CI/CD controls",
+      "items": [
+        {
+          "id": "prod-release-gates",
+          "label": "Blocking gates for code, data, features, model artifacts, and deployment configs",
+          "href": "https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+          "meta": "CI/CD",
+          "interviewQuestions": [
+            "What should block a model release before it reaches canary traffic?",
+            "How do data tests, model tests, and service tests differ in an ML CI/CD pipeline?",
+            "Where do you store rollback artifacts so recovery is deterministic?"
+          ]
+        }
+      ]
     }
   ],
   "references": [
@@ -72,6 +88,19 @@
       "label": "Full Stack Deep Learning",
       "href": "https://fullstackdeeplearning.com/",
       "source": "FSDL"
+    },
+    {
+      "label": "Google Cloud Professional ML Engineer exam guide",
+      "href": "https://cloud.google.com/learn/certification/guides/machine-learning-engineer",
+      "source": "Google Cloud"
+    },
+    {
+      "label": "AWS Certified Machine Learning Engineer exam guide",
+      "href": "https://docs.aws.amazon.com/aws-certification/latest/machine-learning-engineer-associate-01/machine-learning-engineer-associate-01.html",
+      "source": "AWS"
     }
+  ],
+  "questionIds": [
+    "prod-release-gates-ml-cicd"
   ]
 }

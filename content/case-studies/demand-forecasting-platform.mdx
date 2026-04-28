@@ -1,0 +1,52 @@
+---
+title: Design a Demand Forecasting Platform
+description: Forecast demand for sparse, seasonal marketplace items and connect forecast error to real business costs.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a demand forecasting platform that predicts future demand by product, geography, and time window for inventory, staffing, or pricing decisions.
+concepts:
+  - Time-series validation
+  - Hierarchical forecasting
+  - Sparse demand
+  - Seasonality
+  - Business-cost metrics
+evaluationLens:
+  - Forecast accuracy
+  - Backtest discipline
+  - Segment performance
+  - Decision impact
+  - Monitoring
+---
+
+## Clarify the decision
+
+Ask what decision the forecast drives: inventory, staffing, budget allocation, surge pricing, or supply planning. The cost of under-forecasting and over-forecasting determines the metric.
+
+Also clarify horizon and granularity: hourly, daily, weekly; SKU, category, warehouse, city, or region.
+
+## Data and features
+
+Use historical demand, price, promotions, inventory availability, holidays, weather, seasonality, geography, and external events. Handle stockouts carefully because observed sales can understate true demand.
+
+For sparse items, aggregate hierarchically and borrow signal from similar items.
+
+## Modeling approach
+
+Start with simple baselines: seasonal naive, moving average, and regression on calendar features. Then compare tree models, Prophet-style decompositions, DeepAR-style models, or temporal fusion models if scale justifies it.
+
+## Validation
+
+Random splits are wrong. Use rolling backtests and report metrics by horizon, segment, geography, and item volume.
+
+Pick metrics tied to decisions: WAPE, MAPE where safe, pinball loss for quantiles, or weighted cost error when under-forecasting is worse than over-forecasting.
+
+## Failure modes
+
+- **Leakage**: future promotions or inventory status included as features.
+- **Sparse items**: aggregate metrics hide poor tail performance.
+- **Stockout bias**: sales are not demand when inventory is unavailable.
+- **Concept drift**: seasonality and behavior shift after launches, pandemics, or pricing changes.
+
+## What the architect signal looks like
+
+End by connecting model error to dollars: inventory waste, missed sales, staffing cost, or customer wait time.
