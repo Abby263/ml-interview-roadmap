@@ -2,26 +2,28 @@
 
 export async function build({ TOPICS }) {
   // Week titles
+  // Short, scannable week titles. Detailed coverage is conveyed via the
+  // per-week tag chips (pillars + DSA categories) in HomeRoadmap.
   const WEEKS = [
-    { week: 1,  title: "Probability, distributions, hypothesis testing + DSA Arrays/Hashing & Two Pointers" },
-    { week: 2,  title: "Linear algebra, calculus, optimization + DSA Math & Geometry" },
-    { week: 3,  title: "Linear/Logistic regression, regularization + DSA Sliding Window" },
-    { week: 4,  title: "Trees, GBDT, classification + DSA Stack & Binary Search" },
-    { week: 5,  title: "Clustering, features, OOPS, design patterns + DSA Linked List" },
-    { week: 6,  title: "Neural network foundations + DSA Trees" },
-    { week: 7,  title: "Deep Learning - Computer Vision + DSA Heap" },
-    { week: 8,  title: "Deep Learning - NLP, Transformers, BERT + DSA Tries" },
-    { week: 9,  title: "MLOps - lifecycle, feature stores, training pipelines + DSA Backtracking" },
-    { week: 10, title: "MLOps - serving, monitoring, cost, privacy + DSA Graphs & Advanced Graphs" },
-    { week: 11, title: "GenAI - LLM foundations, decoding, prompting + DSA 1-D DP" },
-    { week: 12, title: "GenAI - RAG, embeddings, retrieval, reranking + DSA 2-D DP" },
-    { week: 13, title: "GenAI - agents, fine-tuning, alignment, MCP + DSA Greedy & Intervals" },
-    { week: 14, title: "ML Infra - distributed training, GPUs, inference optimization" },
-    { week: 15, title: "Specializations - Speech, RL, RLHF, RecSys deep dives" },
-    { week: 16, title: "ML System Design - framework + classic cases (recsys, search, ads, fraud)" },
-    { week: 17, title: "ML System Design - GenAI cases (RAG, agent, eval, doc intel, code, voice)" },
-    { week: 18, title: "ML System Design - cross-cutting trade-offs + self-mocks" },
-    { week: 19, title: "Mock interviews + behavioral (DSA, ML, system design, behavioral)" },
+    { week: 1,  title: "Probability & inference" },
+    { week: 2,  title: "Linear algebra & optimization" },
+    { week: 3,  title: "Linear & logistic regression" },
+    { week: 4,  title: "Trees, GBDT, classification" },
+    { week: 5,  title: "Clustering, features, OOPS" },
+    { week: 6,  title: "Neural network foundations" },
+    { week: 7,  title: "Computer Vision" },
+    { week: 8,  title: "NLP & Transformers" },
+    { week: 9,  title: "MLOps foundations" },
+    { week: 10, title: "MLOps at scale" },
+    { week: 11, title: "LLM foundations" },
+    { week: 12, title: "RAG" },
+    { week: 13, title: "Agents, fine-tuning, alignment" },
+    { week: 14, title: "Distributed training & inference" },
+    { week: 15, title: "Specializations: Speech, RL, RecSys" },
+    { week: 16, title: "ML system design — classics" },
+    { week: 17, title: "ML system design — GenAI" },
+    { week: 18, title: "Trade-offs & self-mocks" },
+    { week: 19, title: "Mocks & behavioral" },
   ];
 
   // Curriculum: each entry produces one day JSON
