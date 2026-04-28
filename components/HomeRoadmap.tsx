@@ -47,6 +47,12 @@ const pillarMeta: Array<{
     label: "ML System Design",
     shortLabel: "Design",
   },
+  { slug: "foundations", label: "OOPS / SWE", shortLabel: "OOPS" },
+  {
+    slug: "behavioral-storytelling",
+    label: "Behavioral & Mocks",
+    shortLabel: "Behav",
+  },
 ];
 
 // Module-level flag: hydrate from server once per SPA session. Without
