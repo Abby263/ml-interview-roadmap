@@ -41,7 +41,10 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "When does few-shot help vs hurt?",
-            "How do you design a system prompt for a customer-support agent?"
+            "How do you design a system prompt for a customer-support agent?",
+            "A prompt works in testing but fails randomly in production. How would you debug prompt drift?",
+            "How do prompt templates, delimiters, schemas, and locked sampling settings improve reproducibility?",
+            "What would a prompt regression test suite look like before deploying a new assistant prompt?"
           ]
         },
         {
@@ -51,7 +54,10 @@
           "meta": "Wei et al.",
           "interviewQuestions": [
             "Walk through how chain-of-thought prompting changes performance on reasoning tasks.",
-            "When does CoT hurt accuracy?"
+            "When does CoT hurt accuracy?",
+            "Why can chain-of-thought improve complex reasoning but also amplify early mistakes?",
+            "How would you prevent error compounding with stepwise verification, modular reasoning, or external checks?",
+            "When would you use CoT, ReAct, ToT, self-consistency, or no explicit reasoning at all?"
           ]
         },
         {

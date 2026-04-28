@@ -60,7 +60,10 @@
           "meta": "Lilian Weng",
           "interviewQuestions": [
             "Walk me through the forward and reverse processes in DDPM.",
-            "What does latent diffusion (Stable Diffusion) do differently?"
+            "What does latent diffusion (Stable Diffusion) do differently?",
+            "How does text conditioning enter Stable Diffusion through the text encoder and cross-attention?",
+            "Compare text-to-image and text-to-video diffusion — what new temporal consistency problems appear?",
+            "Where would you optimize a diffusion product first: denoising steps, scheduler, latent resolution, batching, or distillation?"
           ]
         }
       ]
@@ -81,6 +84,11 @@
       "label": "Dive into Deep Learning (d2l.ai)",
       "href": "https://d2l.ai/",
       "source": "d2l.ai"
+    },
+    {
+      "label": "75Hard GenAI/LLM — Text-to-image Stable Diffusion walkthrough",
+      "href": "https://youtu.be/ODNalSihPzg?si=6DpXGyyLc5B25Ty8",
+      "source": "75Hard GenAI/LLM Challenge"
     }
   ]
 }

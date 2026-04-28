@@ -42,7 +42,9 @@
           "interviewQuestions": [
             "Walk through BERT's MLM and NSP objectives.",
             "Why is BERT bidirectional while GPT is left-to-right?",
-            "How would you fine-tune BERT for token classification (NER)?"
+            "How would you fine-tune BERT for token classification (NER)?",
+            "Why is masking used in masked-language-model training, and how is it different from causal masking?",
+            "How would you fine-tune DistilBERT for IMDB sentiment and check whether compression hurt quality?"
           ]
         },
         {

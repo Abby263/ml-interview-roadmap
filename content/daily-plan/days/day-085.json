@@ -39,7 +39,10 @@
           "meta": "Lilian Weng",
           "interviewQuestions": [
             "How would you design memory for a long-running personal-assistant agent?",
-            "What invalidates a memory entry, and how do you forget gracefully without losing important state?"
+            "What invalidates a memory entry, and how do you forget gracefully without losing important state?",
+            "A long chat loses earlier details. How would you combine summarization memory, vector memory, and short-term context?",
+            "Why is saving everything not the same as building useful memory?",
+            "How would you prevent semantic drift where the assistant starts relying on its own stale summaries?"
           ]
         },
         {

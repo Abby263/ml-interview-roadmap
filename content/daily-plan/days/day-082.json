@@ -29,7 +29,9 @@
           "meta": "Ragas",
           "interviewQuestions": [
             "Walk through the four Ragas metrics and what each tells you.",
-            "How would you build a golden eval set for a domain-specific RAG?"
+            "How would you build a golden eval set for a domain-specific RAG?",
+            "Why is hallucination often a grounding or retrieval failure rather than only a model-quality failure?",
+            "How would you separate hallucinations caused by missing context, bad retrieval, ambiguous prompts, and missing guardrails?"
           ]
         },
         {
@@ -60,7 +62,9 @@
           "interviewQuestions": [
             "How would you create a GOLD dataset for RAG from real user questions, documents, and expected citations?",
             "Which business metrics would you track for RAG: deflection, task success, escalation rate, latency, and cost?",
-            "What dashboard slices show whether retrieval or generation is failing in production?"
+            "What dashboard slices show whether retrieval or generation is failing in production?",
+            "How would you teach an assistant to say 'I don't know' when confidence or grounding drops?",
+            "What validation checks would you add before allowing a grounded answer to reach the user?"
           ]
         }
       ]

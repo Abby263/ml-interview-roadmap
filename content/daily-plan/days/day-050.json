@@ -50,7 +50,10 @@
           "meta": "Jay Alammar",
           "interviewQuestions": [
             "Walk through how word2vec (skip-gram) is trained.",
-            "How are contextual embeddings (BERT) different from static ones (word2vec)?"
+            "How are contextual embeddings (BERT) different from static ones (word2vec)?",
+            "What problem does negative sampling solve in skip-gram training?",
+            "Compare CBOW, skip-gram, and GloVe — what objective is each optimizing?",
+            "When would n-grams or TF-IDF outperform dense embeddings in a production baseline?"
           ]
         },
         {
@@ -92,6 +95,11 @@
       "label": "Illustrated Transformer (Jay Alammar)",
       "href": "https://jalammar.github.io/illustrated-transformer/",
       "source": "Jay Alammar"
+    },
+    {
+      "label": "75Hard GenAI/LLM — Text representation techniques",
+      "href": "https://youtu.be/0xnN1kGgaVY?si=pHuz2szysEWDffnj",
+      "source": "75Hard GenAI/LLM Challenge"
     }
   ]
 }

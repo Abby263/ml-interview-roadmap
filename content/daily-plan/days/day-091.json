@@ -43,6 +43,18 @@
           ]
         },
         {
+          "id": "lo-production-harness",
+          "label": "Production LLM harness: evals, traces, guardrails, feedback loops",
+          "href": "https://docs.smith.langchain.com/",
+          "meta": "LangSmith",
+          "interviewQuestions": [
+            "A demo works perfectly but production fails. What does a robust LLM harness include beyond the prompt?",
+            "How would you make LLM behavior reproducible, debuggable, and regression-tested across prompt, tool, and model changes?",
+            "Where do you place structured evals, tracing, guardrails, retries, and human feedback in a production assistant?",
+            "What signals would tell you the issue is orchestration or observability rather than model quality?"
+          ]
+        },
+        {
           "id": "lo-vllm",
           "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
           "href": "https://docs.vllm.ai/",
@@ -53,6 +65,17 @@
           ]
         },
         {
+          "id": "lo-local-llm",
+          "label": "Local LLM serving: Ollama, quantized model files, laptop/server trade-offs",
+          "href": "https://ollama.com/",
+          "meta": "Ollama",
+          "interviewQuestions": [
+            "When would you run an LLM locally instead of calling a hosted API?",
+            "What changes when serving a quantized local model through Ollama compared with a GPU-backed vLLM service?",
+            "How would you evaluate privacy, latency, context length, and update cadence for local LLM deployment?"
+          ]
+        },
+        {
           "id": "lo-latency-limits",
           "label": "Latency debugging, rate limits, and concurrency controls",
           "href": "https://docs.vllm.ai/",
@@ -60,7 +83,9 @@
           "interviewQuestions": [
             "How would you diagnose high first-token latency vs high tokens-per-second latency?",
             "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
-            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?",
+            "Why do GenAI systems become slow even when the base model is fast?",
+            "How would you budget latency across retrieval, filtering, tool calls, validation, retries, and generation?"
           ]
         }
       ]
@@ -81,6 +106,11 @@
       "label": "Anthropic — Prompt Engineering Guide",
       "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
       "source": "Anthropic"
+    },
+    {
+      "label": "Ollama — local LLM runtime",
+      "href": "https://ollama.com/",
+      "source": "Ollama"
     }
   ]
 }

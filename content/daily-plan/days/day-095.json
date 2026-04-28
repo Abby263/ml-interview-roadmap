@@ -30,7 +30,10 @@
           "meta": "HF",
           "interviewQuestions": [
             "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
-            "How do GPTQ and AWQ work, and what quality do you lose?"
+            "How do GPTQ and AWQ work, and what quality do you lose?",
+            "Why can INT8 or INT4 quantization maintain quality while reducing memory and latency?",
+            "Why are INT1 / 1-bit approaches much harder to deploy than standard integer quantization?",
+            "Walk through quantize and dequantize math: scale, zero point, clipping, and calibration."
           ]
         },
         {
@@ -60,7 +63,19 @@
           "meta": "Anyscale",
           "interviewQuestions": [
             "How does continuous batching beat static batching for LLM serving?",
-            "What's the trade-off between max batch size and per-request latency under continuous batching?"
+            "What's the trade-off between max batch size and per-request latency under continuous batching?",
+            "An internal Llama 3 8B assistant suddenly hits thousands of requests per second. What serving changes would you prioritize before buying more GPUs?"
+          ]
+        },
+        {
+          "id": "inf-runtime-openvino",
+          "label": "Optimized runtimes: OpenVINO, ONNX Runtime, TensorRT",
+          "href": "https://docs.openvino.ai/",
+          "meta": "OpenVINO",
+          "interviewQuestions": [
+            "Where do OpenVINO, ONNX Runtime, and TensorRT fit relative to model-level quantization?",
+            "How would you choose an inference runtime for CPU, edge, and NVIDIA GPU deployments?",
+            "What benchmarking would prove that a runtime optimization improved real P95 latency rather than only microbenchmarks?"
           ]
         },
         {
@@ -87,6 +102,16 @@
       "label": "MIT — ML Efficiency playlist",
       "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
       "source": "MIT"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LLM quantization complete guide",
+      "href": "https://youtu.be/8Jh8BSN_yIY?si=Q97lC4ufPlVTGbw8",
+      "source": "75Hard GenAI/LLM Challenge"
+    },
+    {
+      "label": "OpenVINO documentation",
+      "href": "https://docs.openvino.ai/",
+      "source": "Intel"
     }
   ]
 }

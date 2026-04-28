@@ -30,7 +30,10 @@
           "meta": "Stability AI",
           "interviewQuestions": [
             "Walk me through designing an image-generation product end-to-end.",
-            "How would you handle GPU capacity, queueing, and cost?"
+            "How would you handle GPU capacity, queueing, and cost?",
+            "Where do prompt processing, text encoding, denoising, safety filters, and storage fit in the serving path?",
+            "How would Stable Diffusion's latent-space generation change your cost and latency design compared with pixel-space generation?",
+            "What would you cache or precompute for repeated image-generation prompts without creating unsafe reuse?"
           ]
         },
         {

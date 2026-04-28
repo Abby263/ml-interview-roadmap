@@ -30,7 +30,8 @@
           "meta": "Hoffmann et al.",
           "interviewQuestions": [
             "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
-            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?"
+            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?",
+            "How would you turn noisy API or Wikipedia data into a pretraining corpus without contaminating evaluation?"
           ]
         },
         {
@@ -51,7 +52,9 @@
           "meta": "Jay Alammar",
           "interviewQuestions": [
             "Walk me through one forward pass of a decoder-only LLM at inference time.",
-            "What is the KV cache and why is it so important?"
+            "What is the KV cache and why is it so important?",
+            "Why do modern LLMs need billions of parameters — what capacity, memorization, and generalization trade-offs are involved?",
+            "What changes architecturally or operationally when you move from a small language model to a frontier-scale LLM?"
           ]
         },
         {

@@ -30,7 +30,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "When does fine-tuning beat RAG, and vice versa?",
-            "When is prompt engineering enough?"
+            "When is prompt engineering enough?",
+            "When would you train from scratch instead of fine-tuning an existing LLM?",
+            "How do you choose among full fine-tuning, LoRA, QLoRA, adapters, and prompt tuning for a domain product?"
           ]
         },
         {
@@ -51,7 +53,10 @@
           "meta": "HF",
           "interviewQuestions": [
             "How would you curate 10k high-quality examples for fine-tuning a domain LLM?",
-            "What's your dedup + contamination check between training and eval sets — and why does it matter?"
+            "What's your dedup + contamination check between training and eval sets — and why does it matter?",
+            "How would you fine-tune on domain documents while avoiding catastrophic forgetting?",
+            "What validation set would you use to prove the model improved on domain tasks without losing general capabilities?",
+            "How do you handle rare domain terms, tokenizer splits, and counterexamples in the fine-tuning dataset?"
           ]
         }
       ]
@@ -72,6 +77,11 @@
       "label": "Maxime Labonne — LLM Course",
       "href": "https://github.com/mlabonne/llm-course",
       "source": "GitHub"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LoRA and QLoRA fine-tuning",
+      "href": "https://youtu.be/5MeqxrpOc0s?si=zdgH_w1Bd37OlinM",
+      "source": "75Hard GenAI/LLM Challenge"
     }
   ]
 }

@@ -50,7 +50,10 @@
           "meta": "Pinecone",
           "interviewQuestions": [
             "Walk through the four stages of a standard RAG pipeline.",
-            "Where does latency hide in a RAG pipeline?"
+            "Where does latency hide in a RAG pipeline?",
+            "A RAG answer is wrong and you suspect retrieval. How do you prove whether the issue is corpus coverage, extraction, retrieval, reranking, or generation?",
+            "How would you log and compare top-k results before and after a retrieval change?",
+            "What offline benchmark and online A/B signals would tell you the retrieval fix is safe?"
           ]
         },
         {

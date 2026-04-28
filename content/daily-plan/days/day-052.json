@@ -52,7 +52,9 @@
           "meta": "Vaswani et al.",
           "interviewQuestions": [
             "Walk me through the transformer block: attention → add+norm → FFN → add+norm.",
-            "Compare absolute vs relative vs RoPE positional encodings."
+            "Compare absolute vs relative vs RoPE positional encodings.",
+            "Why did transformers replace RNN/LSTM architectures for most GenAI workloads?",
+            "What do residual connections, layer norm, and feed-forward activation choices contribute to transformer stability?"
           ]
         },
         {

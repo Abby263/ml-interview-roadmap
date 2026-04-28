@@ -43,6 +43,18 @@
           ]
         },
         {
+          "id": "eff-mup",
+          "label": "Scale-stable training: muP and learning-rate transfer",
+          "href": "https://arxiv.org/abs/2203.03466",
+          "meta": "muP",
+          "interviewQuestions": [
+            "A 1B model trains well but a 70B version explodes at the same learning rate. What changed?",
+            "Explain standard parameterization vs maximum update parameterization in interview terms.",
+            "How does muP let you tune hyperparameters on a smaller model and transfer them to a larger one?",
+            "When would gradient clipping hide the symptom but not fix the scaling problem?"
+          ]
+        },
+        {
           "id": "eff-checkpoint",
           "label": "Activation checkpointing & offloading",
           "href": "https://pytorch.org/docs/stable/checkpoint.html",
@@ -70,6 +82,11 @@
       "label": "PyTorch DDP tutorial",
       "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
       "source": "PyTorch"
+    },
+    {
+      "label": "Tensor Programs V — zero-shot hyperparameter transfer",
+      "href": "https://arxiv.org/abs/2203.03466",
+      "source": "arXiv"
     }
   ]
 }

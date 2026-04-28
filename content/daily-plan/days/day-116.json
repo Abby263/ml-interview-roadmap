@@ -51,7 +51,9 @@
           "interviewQuestions": [
             "How would you process a document set that mixes PDFs, scanned images, tables, email attachments, and OCR errors?",
             "How do you validate extracted fields when the source document has conflicting values?",
-            "When do you use vision-language models directly vs OCR + layout parsing + LLM extraction?"
+            "When do you use vision-language models directly vs OCR + layout parsing + LLM extraction?",
+            "When would an OCR-free document model beat a hybrid OCR + layout + LLM pipeline?",
+            "How would you compare DocOwl-style OCR-free extraction against a conventional OCR pipeline on accuracy, latency, and cost?"
           ]
         }
       ]
