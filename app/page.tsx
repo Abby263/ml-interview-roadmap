@@ -1,104 +1,117 @@
+import Link from "next/link";
+
 import HomeRoadmap from "@/components/HomeRoadmap";
 import { dailyPlan, dailyPlanWeeks } from "@/lib/daily-plan";
+import { questions } from "@/lib/site-data";
 
 export default function Home() {
   const totalDays = dailyPlan.length;
   const totalWeeks = Math.ceil(totalDays / 7);
 
   return (
-    <div className="space-y-6 md:space-y-10">
-      <header className="hero-panel relative overflow-hidden p-5 md:p-8 lg:p-10">
-        <div
-          aria-hidden="true"
-          className="absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
-          style={{ background: "var(--primary)" }}
-        />
-        <div className="relative grid gap-5 md:gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div className="space-y-4 md:space-y-5">
-            <p className="eyebrow text-[0.68rem] md:text-[0.78rem]">
-              ML Interview Roadmap · {totalDays} days
-            </p>
-            <h1 className="max-w-4xl font-display text-[2.15rem] font-extrabold leading-[1] text-foreground md:text-[4.4rem] md:leading-[0.98]">
-              Know exactly what to study next.
+    <div className="space-y-8 md:space-y-10">
+      <header className="space-y-3">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          Prep dashboard
+        </p>
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h1 className="font-display text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
+              Pick up where you left off.
             </h1>
-            <p className="max-w-3xl text-sm leading-6 text-muted md:text-lg md:leading-8">
-              A focused day-by-day path that pairs NeetCode practice with ML
-              interview prep in the right order: statistics, traditional ML,
-              deep learning, MLOps, GenAI, LLMOps, and ML system design.
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-muted md:text-base md:leading-7">
+              Track roadmap completion, DSA practice, and your next recommended
+              study action before choosing how you want to continue.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#mobile-weeks"
-                className="button-primary-accent w-full justify-center sm:w-auto md:hidden"
-              >
-                Browse weeks
-              </a>
-              <a
-                href="#tracker"
-                className="button-primary-accent hidden md:inline-flex"
-              >
-                View my tracker
-              </a>
-              <a
-                href="#week-1"
-                className="button-secondary hidden md:inline-flex"
-              >
-                Browse all weeks
-              </a>
-            </div>
           </div>
-
-          <div className="hidden gap-3 md:grid md:grid-cols-3 lg:grid-cols-1">
-            <div className="metric-slab">
-              <p className="panel-label">Plan length</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                {totalWeeks} weeks
+          <div className="grid grid-cols-3 gap-2 md:min-w-[24rem]">
+            <div className="metric-slab p-3 md:p-4">
+              <p className="panel-label">Days</p>
+              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                {totalDays}
               </p>
             </div>
-            <div className="metric-slab">
-              <p className="panel-label">Study mode</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                Daily
+            <div className="metric-slab p-3 md:p-4">
+              <p className="panel-label">Weeks</p>
+              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                {totalWeeks}
               </p>
             </div>
-            <div className="metric-slab">
-              <p className="panel-label">Practice style</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                Checkable
+            <div className="metric-slab p-3 md:p-4">
+              <p className="panel-label">Questions</p>
+              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                {questions.length}
               </p>
             </div>
           </div>
         </div>
       </header>
 
-      <div id="tracker" className="scroll-mt-24">
-        <HomeRoadmap dailyPlan={dailyPlan} dailyPlanWeeks={dailyPlanWeeks} />
-      </div>
+      <HomeRoadmap
+        dailyPlan={dailyPlan}
+        dailyPlanWeeks={dailyPlanWeeks}
+        variant="dashboard"
+      />
 
-      <footer className="space-y-3 border-t border-line pt-8 text-sm leading-7 text-muted">
-        <p className="text-xs">
-          Daily plan inspired by{" "}
-          <a
-            href="https://www.yuan-meng.com/posts/mle_interviews_2.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline"
-          >
-            Yuan Meng&apos;s &ldquo;Prepare in a Hurry&rdquo;
-          </a>{" "}
-          guide, expanded across {totalDays} days. NeetCode 150 problems link
-          directly to LeetCode; full roadmap at{" "}
-          <a
-            href="https://neetcode.io/roadmap"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline"
-          >
-            neetcode.io
-          </a>
-          .
-        </p>
-      </footer>
+      <section className="grid gap-4 md:grid-cols-2">
+        <Link
+          href="/study-plan"
+          className="section-card group relative overflow-hidden rounded-[1.75rem] p-5 transition hover:-translate-y-0.5 hover:border-primary md:p-6"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full opacity-25 blur-3xl"
+            style={{ background: "var(--primary)" }}
+          />
+          <div className="relative">
+            <p className="panel-label">Option 1</p>
+            <h2 className="mt-3 font-display text-2xl font-extrabold text-foreground group-hover:text-primary">
+              Study Plan
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              Follow the current day-by-day and week-by-week roadmap in the
+              right interview order.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <span className="data-chip">{totalDays} days</span>
+              <span className="data-chip">{totalWeeks} weeks</span>
+              <span className="data-chip">Checkable</span>
+            </div>
+            <p className="mt-5 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              Open study plan →
+            </p>
+          </div>
+        </Link>
+
+        <Link
+          href="/questions"
+          className="section-card group relative overflow-hidden rounded-[1.75rem] p-5 transition hover:-translate-y-0.5 hover:border-accent md:p-6"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full opacity-25 blur-3xl"
+            style={{ background: "var(--accent)" }}
+          />
+          <div className="relative">
+            <p className="panel-label">Option 2</p>
+            <h2 className="mt-3 font-display text-2xl font-extrabold text-foreground group-hover:text-accent">
+              Question Bank
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              Search and filter questions by topic tag, category, difficulty,
+              and interview signal.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <span className="data-chip">{questions.length} prompts</span>
+              <span className="data-chip">Tags</span>
+              <span className="data-chip">Rubrics</span>
+            </div>
+            <p className="mt-5 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+              Browse questions →
+            </p>
+          </div>
+        </Link>
+      </section>
     </div>
   );
 }

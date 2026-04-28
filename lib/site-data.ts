@@ -79,8 +79,9 @@ export const siteTagline =
   "A structured roadmap to prepare for statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, and ML system design interviews in 30, 60, or 90 days.";
 
 export const navigationLinks = [
-  { href: "/", label: "Daily Plan", group: "Overview" },
-  { href: "/questions", label: "Questions", group: "Reference" },
+  { href: "/", label: "Dashboard", group: "Overview" },
+  { href: "/study-plan", label: "Study Plan", group: "Overview" },
+  { href: "/questions", label: "Question Bank", group: "Reference" },
   { href: "/case-studies", label: "Case Studies", group: "Reference" },
   { href: "/resources", label: "Resources", group: "Reference" },
   { href: "/about", label: "About", group: "Reference" },
