@@ -16,12 +16,17 @@ export default function QuestionBankExplorer({
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [difficulty, setDifficulty] = useState("All");
+  const [topicTag, setTopicTag] = useState("All");
   const deferredSearch = useDeferredValue(search);
 
   const categories = ["All", ...new Set(questions.map((item) => item.category))];
   const difficulties = [
     "All",
     ...new Set(questions.map((item) => item.difficulty)),
+  ];
+  const topicTags = [
+    "All",
+    ...new Set(questions.flatMap((item) => item.relatedTopics)),
   ];
 
   const filteredQuestions = questions.filter((item) => {
@@ -39,14 +44,16 @@ export default function QuestionBankExplorer({
     const matchesCategory = category === "All" || item.category === category;
     const matchesDifficulty =
       difficulty === "All" || item.difficulty === difficulty;
+    const matchesTopicTag =
+      topicTag === "All" || item.relatedTopics.includes(topicTag);
 
-    return matchesSearch && matchesCategory && matchesDifficulty;
+    return matchesSearch && matchesCategory && matchesDifficulty && matchesTopicTag;
   });
 
   return (
     <div className="space-y-8">
       <div className="section-card rounded-[28px] p-6 md:p-8">
-        <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+        <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]">
           <label className="space-y-2">
             <span className="text-sm font-semibold text-foreground">Search</span>
             <input
@@ -88,7 +95,32 @@ export default function QuestionBankExplorer({
               ))}
             </select>
           </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-foreground">
+              Topic tag
+            </span>
+            <select
+              value={topicTag}
+              onChange={(event) => setTopicTag(event.target.value)}
+              className="field-shell"
+            >
+              {topicTags.map((option) => {
+                const topic = option === "All" ? undefined : getTopicById(option);
+
+                return (
+                  <option key={option} value={option}>
+                    {topic?.title ?? option}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
         </div>
+
+        <p className="mt-4 text-xs font-medium text-muted">
+          Showing {filteredQuestions.length} of {questions.length} questions
+        </p>
       </div>
 
       <div className="grid gap-5 xl:grid-cols-2">

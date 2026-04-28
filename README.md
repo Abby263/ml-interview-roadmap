@@ -10,6 +10,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 ## What Is Included
 
 - A 133-day interview roadmap with day-by-day study tasks ordered from statistics through ML system design.
+- A dashboard-first home page for progress, next action, and the two primary paths: Study Plan and Question Bank.
 - Clickable daily pages with checklists, item-level interview prompts, references, linked topics, and case studies.
 - Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day and editable week labels in `content/daily-plan/weeks.json`.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
@@ -101,17 +102,23 @@ lib/        Content loaders, schemas, feature flags, Supabase client, progress s
 proxy.ts    Optional Clerk proxy when auth is configured
 ```
 
+Primary routes:
+
+- `/`: dashboard and progress tracker.
+- `/study-plan`: current daily/weekly roadmap.
+- `/questions`: searchable question bank with category, difficulty, and topic-tag filters.
+
 ## Content Sources
 
 - Daily plan: `content/daily-plan/days/day-###.json`
-- Landing-page week headings: `content/daily-plan/weeks.json`
+- Study-plan week headings: `content/daily-plan/weeks.json`
 - Case studies: `content/case-studies/*.mdx`
 - Pillars, topics, questions, and resources: `lib/site-data.ts`
 
 ## Editing Daily Content
 
 Daily plan content lives in `content/daily-plan/days/day-001.json` through `day-133.json`.
-Each file mirrors the landing-page/day-page structure: title, pillar, focus, checklist tracks,
+Each file mirrors the study-plan/day-page structure: title, pillar, focus, checklist tracks,
 item-level interview questions, references, and optional links to topic or case-study pages. The app loads
 these files from the folder at build time, so adding or removing a day does not require changing a
 TypeScript import manifest as long as day numbers remain consecutive.
@@ -128,7 +135,7 @@ generation stays deterministic:
 node scripts/build-curriculum.mjs
 ```
 
-Week headings on the landing page are editable in `content/daily-plan/weeks.json`. Runtime validation
+Week headings on the study-plan page are editable in `content/daily-plan/weeks.json`. Runtime validation
 for daily content lives in `lib/daily-plan.ts`; client-safe types and helper functions live in
 `lib/daily-plan-schema.ts`.
 

@@ -125,9 +125,11 @@ function clampPct(value: number) {
 export default function HomeRoadmap({
   dailyPlan,
   dailyPlanWeeks,
+  variant = "full",
 }: {
   dailyPlan: DayPlan[];
   dailyPlanWeeks: DailyPlanWeek[];
+  variant?: "full" | "dashboard";
 }) {
   const { canTrack } = useAuthState();
   const progress = useSyncExternalStore(
@@ -348,9 +350,16 @@ export default function HomeRoadmap({
   const activeWeekNumber =
     weeks.find((week) => week.days.some((day) => day.day === activeDay))
       ?.number ?? 1;
+  const isDashboardOnly = variant === "dashboard";
 
   return (
-    <div className="space-y-6 pb-24 md:space-y-10 md:pb-0">
+    <div
+      className={
+        isDashboardOnly
+          ? "space-y-6 md:space-y-10"
+          : "space-y-6 pb-24 md:space-y-10 md:pb-0"
+      }
+    >
       <section
         id="mobile-tracker"
         className="section-card relative overflow-hidden rounded-[1.5rem] p-4 md:hidden"
@@ -423,158 +432,163 @@ export default function HomeRoadmap({
         </div>
       </section>
 
-      <nav
-        id="mobile-weeks"
-        className="section-card sticky top-[4.25rem] z-30 -mx-4 overflow-x-auto rounded-none border-x-0 px-4 py-3 md:hidden"
-      >
-        <div className="flex min-w-max items-center gap-2">
-          <span className="mr-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
-            Weeks
-          </span>
-          {weeks.map((week) => {
-            const isActive = week.number === activeWeekNumber;
-            return (
-              <a
-                key={week.number}
-                href={`#mobile-week-${week.number}`}
-                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
-                  isActive
-                    ? "border-primary bg-primary text-white"
-                    : "border-line bg-surface-strong text-muted hover:border-primary hover:text-foreground"
-                }`}
-              >
-                {week.number}
-              </a>
-            );
-          })}
-        </div>
-      </nav>
+      {!isDashboardOnly ? (
+        <>
+          <nav
+            id="mobile-weeks"
+            className="section-card sticky top-[4.25rem] z-30 -mx-4 overflow-x-auto rounded-none border-x-0 px-4 py-3 md:hidden"
+          >
+            <div className="flex min-w-max items-center gap-2">
+              <span className="mr-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
+                Weeks
+              </span>
+              {weeks.map((week) => {
+                const isActive = week.number === activeWeekNumber;
+                return (
+                  <a
+                    key={week.number}
+                    href={`#mobile-week-${week.number}`}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                      isActive
+                        ? "border-primary bg-primary text-white"
+                        : "border-line bg-surface-strong text-muted hover:border-primary hover:text-foreground"
+                    }`}
+                  >
+                    {week.number}
+                  </a>
+                );
+              })}
+            </div>
+          </nav>
 
-      <div className="space-y-4 md:hidden">
-        {weeks.map((week) => {
-          const weekItems = week.days.reduce(
-            (sum, day) => sum + dayItemCount(day),
-            0
-          );
-          const weekDone = canTrack
-            ? week.days.reduce(
-                (sum, day) => sum + (dayStats.get(day.day)?.done ?? 0),
+          <div className="space-y-4 md:hidden">
+            {weeks.map((week) => {
+              const weekItems = week.days.reduce(
+                (sum, day) => sum + dayItemCount(day),
                 0
-              )
-            : 0;
-          const weekPct =
-            weekItems === 0 ? 0 : Math.round((weekDone / weekItems) * 100);
+              );
+              const weekDone = canTrack
+                ? week.days.reduce(
+                    (sum, day) => sum + (dayStats.get(day.day)?.done ?? 0),
+                    0
+                  )
+                : 0;
+              const weekPct =
+                weekItems === 0 ? 0 : Math.round((weekDone / weekItems) * 100);
 
-          return (
-            <details
-              key={week.number}
-              id={`mobile-week-${week.number}`}
-              open={week.number === activeWeekNumber}
-              className="section-card scroll-mt-32 overflow-hidden rounded-[1.35rem]"
-            >
-              <summary className="cursor-pointer list-none p-4 [&::-webkit-details-marker]:hidden">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="panel-label">Week {week.number}</p>
-                    <h2 className="mt-1 font-display text-lg font-extrabold leading-tight text-foreground">
-                      {week.title}
-                    </h2>
-                    <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted">
-                      Days {week.days[0].day}–
-                      {week.days[week.days.length - 1].day} · {weekItems} items
-                    </p>
-                  </div>
-                  <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-primary">
-                    {weekPct}%
-                  </span>
-                </div>
-                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight"
-                    style={{ width: `${weekPct}%` }}
-                  />
-                </div>
-              </summary>
+              return (
+                <details
+                  key={week.number}
+                  id={`mobile-week-${week.number}`}
+                  open={week.number === activeWeekNumber}
+                  className="section-card scroll-mt-32 overflow-hidden rounded-[1.35rem]"
+                >
+                  <summary className="cursor-pointer list-none p-4 [&::-webkit-details-marker]:hidden">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="panel-label">Week {week.number}</p>
+                        <h2 className="mt-1 font-display text-lg font-extrabold leading-tight text-foreground">
+                          {week.title}
+                        </h2>
+                        <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted">
+                          Days {week.days[0].day}–
+                          {week.days[week.days.length - 1].day} · {weekItems}{" "}
+                          items
+                        </p>
+                      </div>
+                      <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-primary">
+                        {weekPct}%
+                      </span>
+                    </div>
+                    <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight"
+                        style={{ width: `${weekPct}%` }}
+                      />
+                    </div>
+                  </summary>
 
-              <ol className="space-y-2 border-t border-line p-3">
-                {week.days.map((entry) => {
-                  const stats = dayStats.get(entry.day) ?? {
-                    total: dayItemCount(entry),
-                    done: 0,
-                    pct: 0,
-                    isDone: false,
-                    isStarted: false,
-                  };
-                  const status = stats.isDone
-                    ? "Complete"
-                    : stats.isStarted
-                      ? "In progress"
-                      : "Not started";
+                  <ol className="space-y-2 border-t border-line p-3">
+                    {week.days.map((entry) => {
+                      const stats = dayStats.get(entry.day) ?? {
+                        total: dayItemCount(entry),
+                        done: 0,
+                        pct: 0,
+                        isDone: false,
+                        isStarted: false,
+                      };
+                      const status = stats.isDone
+                        ? "Complete"
+                        : stats.isStarted
+                          ? "In progress"
+                          : "Not started";
 
-                  return (
-                    <li key={entry.day}>
-                      <Link
-                        href={`/day/${entry.day}`}
-                        className="group relative block overflow-hidden rounded-2xl border border-line bg-surface px-3.5 py-3 transition hover:border-primary hover:bg-surface-strong"
-                      >
-                        {canTrack ? (
-                          <div
-                            aria-hidden="true"
-                            className="absolute inset-y-0 left-0 transition-all"
-                            style={{
-                              width: `${stats.pct}%`,
-                              background:
-                                "color-mix(in srgb, var(--primary) 10%, transparent)",
-                            }}
-                          />
-                        ) : null}
-                        <div className="relative">
-                          <div className="flex items-center justify-between gap-2">
-                            <span className="font-mono text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-muted">
-                              Day {String(entry.day).padStart(2, "0")}
-                            </span>
-                            <span
-                              className={`rounded-full border px-2 py-0.5 font-mono text-[0.58rem] font-semibold uppercase tracking-[0.12em] ${
-                                stats.isDone
-                                  ? "border-accent text-accent"
-                                  : stats.isStarted
-                                    ? "border-primary text-primary"
-                                    : "border-line text-muted"
-                              }`}
-                            >
-                              {status}
-                            </span>
-                          </div>
-                          <h3
-                            className={`mt-2 text-[0.96rem] font-bold leading-snug group-hover:text-primary ${
-                              stats.isDone
-                                ? "text-muted line-through"
-                                : "text-foreground"
-                            }`}
+                      return (
+                        <li key={entry.day}>
+                          <Link
+                            href={`/day/${entry.day}`}
+                            className="group relative block overflow-hidden rounded-2xl border border-line bg-surface px-3.5 py-3 transition hover:border-primary hover:bg-surface-strong"
                           >
-                            {entry.title}
-                          </h3>
-                          <p className="mt-1 line-clamp-1 text-xs leading-5 text-muted">
-                            {entry.focus}
-                          </p>
-                          <div className="mt-3 flex items-center justify-between gap-3">
-                            <span className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-muted">
-                              {entry.tracks.length} topics
-                            </span>
-                            <span className="font-mono text-[0.62rem] font-semibold text-primary">
-                              {stats.done}/{stats.total} items
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ol>
-            </details>
-          );
-        })}
-      </div>
+                            {canTrack ? (
+                              <div
+                                aria-hidden="true"
+                                className="absolute inset-y-0 left-0 transition-all"
+                                style={{
+                                  width: `${stats.pct}%`,
+                                  background:
+                                    "color-mix(in srgb, var(--primary) 10%, transparent)",
+                                }}
+                              />
+                            ) : null}
+                            <div className="relative">
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="font-mono text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-muted">
+                                  Day {String(entry.day).padStart(2, "0")}
+                                </span>
+                                <span
+                                  className={`rounded-full border px-2 py-0.5 font-mono text-[0.58rem] font-semibold uppercase tracking-[0.12em] ${
+                                    stats.isDone
+                                      ? "border-accent text-accent"
+                                      : stats.isStarted
+                                        ? "border-primary text-primary"
+                                        : "border-line text-muted"
+                                  }`}
+                                >
+                                  {status}
+                                </span>
+                              </div>
+                              <h3
+                                className={`mt-2 text-[0.96rem] font-bold leading-snug group-hover:text-primary ${
+                                  stats.isDone
+                                    ? "text-muted line-through"
+                                    : "text-foreground"
+                                }`}
+                              >
+                                {entry.title}
+                              </h3>
+                              <p className="mt-1 line-clamp-1 text-xs leading-5 text-muted">
+                                {entry.focus}
+                              </p>
+                              <div className="mt-3 flex items-center justify-between gap-3">
+                                <span className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                                  {entry.tracks.length} topics
+                                </span>
+                                <span className="font-mono text-[0.62rem] font-semibold text-primary">
+                                  {stats.done}/{stats.total} items
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </details>
+              );
+            })}
+          </div>
+        </>
+      ) : null}
 
       <section className="space-y-3 md:hidden">
         <details className="section-card rounded-[1.35rem] p-4">
@@ -893,7 +907,8 @@ export default function HomeRoadmap({
         </div>
       </section>
 
-      <nav className="section-card sticky top-[4.25rem] z-30 -mx-4 hidden overflow-x-auto rounded-none border-x-0 px-4 py-3 sm:mx-0 sm:rounded-2xl sm:border-x sm:px-4 md:block">
+      {!isDashboardOnly ? (
+        <nav className="section-card sticky top-[4.25rem] z-30 -mx-4 hidden overflow-x-auto rounded-none border-x-0 px-4 py-3 sm:mx-0 sm:rounded-2xl sm:border-x sm:px-4 md:block">
         <div className="flex min-w-max items-center gap-2">
           <span className="mr-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Jump to
@@ -908,9 +923,11 @@ export default function HomeRoadmap({
             </a>
           ))}
         </div>
-      </nav>
+        </nav>
+      ) : null}
 
-      <div className="hidden space-y-12 md:block">
+      {!isDashboardOnly ? (
+        <div className="hidden space-y-12 md:block">
         {weeks.map((week) => {
           const weekItems = week.days.reduce(
             (sum, day) => sum + dayItemCount(day),
@@ -1108,9 +1125,11 @@ export default function HomeRoadmap({
             </section>
           );
         })}
-      </div>
+        </div>
+      ) : null}
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-background/95 px-3 pt-2 shadow-panel backdrop-blur-xl pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:hidden">
+      {!isDashboardOnly ? (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-background/95 px-3 pt-2 shadow-panel backdrop-blur-xl pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:hidden">
         <div className="mx-auto grid max-w-md grid-cols-3 gap-2">
           <Link
             href={`/day/${activeDay}`}
@@ -1131,7 +1150,8 @@ export default function HomeRoadmap({
             Tracker
           </a>
         </div>
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }
