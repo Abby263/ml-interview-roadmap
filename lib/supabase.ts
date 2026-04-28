@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-import { supabaseEnabled } from "@/lib/feature-flags";
+import { supabaseAdminEnabled, supabaseEnabled } from "@/lib/feature-flags";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 // Supabase renamed `anon` → `publishable`; accept either.
@@ -20,7 +20,7 @@ const serviceKey =
  * configured.
  */
 export function getSupabaseAdmin() {
-  if (!supabaseEnabled) return null;
+  if (!supabaseAdminEnabled) return null;
   if (!serviceKey) return null;
   return createClient(url, serviceKey, {
     auth: { persistSession: false, autoRefreshToken: false },
@@ -58,3 +58,8 @@ export function getSupabaseBrowser() {
  * by `auth.uid()::text = user_id`.
  */
 export const PROGRESS_TABLE = "day_progress";
+export const AI_TUTOR_PROFILES_TABLE = "ai_tutor_profiles";
+export const AI_TUTOR_SESSIONS_TABLE = "ai_tutor_sessions";
+export const AI_TUTOR_MESSAGES_TABLE = "ai_tutor_messages";
+export const AI_TUTOR_MEMORY_TABLE = "ai_tutor_memory";
+export const AI_TUTOR_USAGE_TABLE = "ai_tutor_usage";

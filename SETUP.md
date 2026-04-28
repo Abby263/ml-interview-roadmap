@@ -1,9 +1,10 @@
-# Setup — Auth (Clerk) + Per-user progress (Supabase)
+# Setup — Auth, Progress, and AI Tutor
 
 The site works without any auth or database — progress is tracked in
 `localStorage` per browser. To enable cross-device progress sync with
-real user accounts, follow the two sections below. **You can do them in
-either order, and you can skip Supabase if you only want auth.**
+real user accounts and AI Tutor memory, follow the sections below.
+**You can do them in stages, and you can skip Supabase if you only want
+auth without cross-device progress or tutor memory.**
 
 Once env vars are set in Vercel, redeploy and the features turn on with
 no code changes.
@@ -157,6 +158,106 @@ expose the anon key for direct client writes.)
 
 ---
 
+## 3) AI Tutor — OpenAI + Supabase memory
+
+The AI Tutor is a signed-in feature at `/ai-tutor`. It uses Clerk for
+identity, OpenAI for the tutor response, and Supabase for optional
+persistent memory, session history, and usage counts.
+
+### Environment variables
+
+Add these in Vercel and `.env.local` when testing locally:
+
+```bash
+OPENAI_API_KEY=sk-...
+AI_TUTOR_MODEL=gpt-4.1-mini       # optional; defaults to gpt-4.1-mini
+AI_TUTOR_DAILY_LIMIT=80           # optional; per-user/day when Supabase is configured
+AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server behavior
+```
+
+The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
+
+### Supabase tables for memory
+
+If you want persistent AI Tutor memory, run this SQL after the
+`day_progress` table setup:
+
+```sql
+create table if not exists ai_tutor_profiles (
+  user_id text primary key,
+  target_role text not null default 'ML Engineer',
+  current_level text not null default 'intermediate',
+  interview_date date,
+  daily_hours numeric not null default 2,
+  weak_tags text[] not null default '{}',
+  preferred_mode text not null default 'guided-interview',
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+create table if not exists ai_tutor_sessions (
+  id uuid primary key default gen_random_uuid(),
+  user_id text not null,
+  status text not null default 'active',
+  mode text not null default 'guided-interview',
+  current_tag text,
+  summary jsonb not null default '{}'::jsonb,
+  started_at timestamptz default now(),
+  ended_at timestamptz
+);
+
+create index if not exists ai_tutor_sessions_user_idx
+  on ai_tutor_sessions (user_id, started_at desc);
+
+create table if not exists ai_tutor_messages (
+  id uuid primary key default gen_random_uuid(),
+  session_id uuid references ai_tutor_sessions(id) on delete cascade,
+  user_id text not null,
+  role text not null check (role in ('user', 'assistant')),
+  content text not null,
+  topic_ref jsonb not null default '{}'::jsonb,
+  evaluation jsonb not null default '{}'::jsonb,
+  created_at timestamptz default now()
+);
+
+create index if not exists ai_tutor_messages_user_idx
+  on ai_tutor_messages (user_id, created_at desc);
+
+create index if not exists ai_tutor_messages_session_idx
+  on ai_tutor_messages (session_id, created_at asc);
+
+create table if not exists ai_tutor_memory (
+  user_id text primary key,
+  mastery jsonb not null default '{}'::jsonb,
+  recurring_mistakes text[] not null default '{}',
+  strengths text[] not null default '{}',
+  next_recommendations text[] not null default '{}',
+  updated_at timestamptz default now()
+);
+
+create table if not exists ai_tutor_usage (
+  user_id text not null,
+  usage_date date not null,
+  message_count int not null default 0,
+  token_estimate int not null default 0,
+  updated_at timestamptz default now(),
+  primary key (user_id, usage_date)
+);
+```
+
+The current implementation uses the Supabase service-role key from
+server routes only. Client code never writes to these tables directly.
+
+### What works in the MVP
+
+- `/ai-tutor` is gated behind Clerk sign-in.
+- The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode.
+- The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, and recommends the next day/topic.
+- Memory stores mastery scores, recurring mistakes, strengths, and next recommendations.
+- The Python coding lab is intentionally not server-side. It is planned as a browser-only Pyodide module so user code does not execute on your infrastructure.
+
+---
+
 ## Verifying the integration
 
 After deploying with both sets of env vars:
@@ -170,6 +271,9 @@ After deploying with both sets of env vars:
    your rows are there with your Clerk `user_id`.
 5. Open the site on another device, sign in — the same items are
    already checked.
+6. Open `/ai-tutor`, save a tutor profile, start an assessment, then
+   confirm rows appear in `ai_tutor_profiles`, `ai_tutor_sessions`,
+   `ai_tutor_messages`, `ai_tutor_memory`, and `ai_tutor_usage`.
 
 ---
 
@@ -189,6 +293,8 @@ CLERK_SECRET_KEY=sk_test_xxx
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
+OPENAI_API_KEY=sk-...
+AI_TUTOR_MODEL=gpt-4.1-mini
 ```
 
 Then `npm run dev`.
@@ -207,3 +313,8 @@ Then `npm run dev`.
 - **Build fails locally with Clerk errors** — make sure `CLERK_SECRET_KEY`
   is also set when `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` is set; both
   must be present together.
+- **AI Tutor says OpenAI is not configured** — add `OPENAI_API_KEY` in
+  Vercel for Production and Preview, then redeploy.
+- **AI Tutor works but does not remember answers** — create the
+  `ai_tutor_*` tables and verify `SUPABASE_SECRET_KEY` or
+  `SUPABASE_SERVICE_ROLE_KEY` is set.

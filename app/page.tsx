@@ -120,6 +120,33 @@ export default function Home() {
           </div>
         </Link>
       </section>
+
+      <section className="section-card relative overflow-hidden rounded-[1.75rem] p-5 md:p-6">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-16 -top-20 h-52 w-52 rounded-full opacity-20 blur-3xl"
+          style={{ background: "var(--accent)" }}
+        />
+        <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="panel-label">Personalized mode</p>
+            <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
+              AI Tutor Deep Agent
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
+              Sign in to get a tutor that assesses your readiness, asks
+              roadmap-backed questions one by one, evaluates your answers, and
+              remembers weak areas across sessions.
+            </p>
+          </div>
+          <Link
+            href="/ai-tutor"
+            className="button-primary-accent w-full justify-center md:w-auto"
+          >
+            Open AI Tutor
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

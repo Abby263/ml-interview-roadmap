@@ -52,6 +52,7 @@ export const navigationLinks = [
   { href: "/", label: "Dashboard", group: "Overview" },
   { href: "/study-plan", label: "Study Plan", group: "Overview" },
   { href: "/questions", label: "Browse Questions", group: "Reference" },
+  { href: "/ai-tutor", label: "AI Tutor", group: "Personalized" },
   { href: "/case-studies", label: "Case Studies", group: "Reference" },
   { href: "/resources", label: "Resources", group: "Reference" },
   { href: "/about", label: "About", group: "Reference" },

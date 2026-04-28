@@ -1,20 +1,8 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
-
-import { clerkEnabled, supabaseEnabled } from "@/lib/feature-flags";
+import { getSignedInUserId } from "@/lib/auth";
+import { supabaseEnabled } from "@/lib/feature-flags";
 import { PROGRESS_TABLE, getSupabaseAdmin } from "@/lib/supabase";
-
-/** Returns the signed-in Clerk user id, or null when auth is off / signed out. */
-async function getUserId(): Promise<string | null> {
-  if (!clerkEnabled) return null;
-  try {
-    const { userId } = await auth();
-    return userId ?? null;
-  } catch {
-    return null;
-  }
-}
 
 export interface ServerProgressMap {
   [day: number]: string[];
@@ -22,7 +10,7 @@ export interface ServerProgressMap {
 
 /** Pull all checked items for the signed-in user, grouped by day. */
 export async function getServerProgress(): Promise<ServerProgressMap | null> {
-  const userId = await getUserId();
+  const userId = await getSignedInUserId();
   if (!userId) return null;
   if (!supabaseEnabled) return null;
   const sb = getSupabaseAdmin();
@@ -41,7 +29,7 @@ export async function getServerProgress(): Promise<ServerProgressMap | null> {
 
 /** Add a check on the server. No-op if not signed in or Supabase off. */
 export async function addServerCheck(day: number, itemId: string) {
-  const userId = await getUserId();
+  const userId = await getSignedInUserId();
   if (!userId) return { ok: false, reason: "not-signed-in" } as const;
   if (!supabaseEnabled) return { ok: false, reason: "no-db" } as const;
   const sb = getSupabaseAdmin();
@@ -59,7 +47,7 @@ export async function addServerCheck(day: number, itemId: string) {
 
 /** Remove a check on the server. */
 export async function removeServerCheck(day: number, itemId: string) {
-  const userId = await getUserId();
+  const userId = await getSignedInUserId();
   if (!userId) return { ok: false, reason: "not-signed-in" } as const;
   if (!supabaseEnabled) return { ok: false, reason: "no-db" } as const;
   const sb = getSupabaseAdmin();

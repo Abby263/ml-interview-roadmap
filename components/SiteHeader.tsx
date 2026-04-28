@@ -5,7 +5,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { navigationLinks } from "@/lib/site-data";
 
 export default function SiteHeader() {
-  const primaryLinks = navigationLinks.slice(0, 3);
+  const primaryLinks = navigationLinks.slice(0, 4);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background/90 backdrop-blur-xl">
