@@ -1,23 +1,36 @@
 import QuestionBankExplorer from "@/components/QuestionBankExplorer";
-import { questions } from "@/lib/site-data";
+import { dailyPlan } from "@/lib/daily-plan";
+import {
+  buildDailyPlanQuestionEntries,
+  buildDailyPlanQuestionTags,
+  countDailyPlanInterviewQuestions,
+} from "@/lib/daily-plan-questions";
 
 export default function QuestionsPage() {
+  const entries = buildDailyPlanQuestionEntries(dailyPlan);
+  const tags = buildDailyPlanQuestionTags(entries);
+  const interviewQuestionCount = countDailyPlanInterviewQuestions(entries);
+
   return (
     <div className="space-y-8">
       <header className="space-y-3">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-          Question Bank · {questions.length}
+          Browse Questions · {entries.length} daily topics
         </p>
         <h1 className="font-display text-3xl font-extrabold text-foreground md:text-4xl">
-          Browse questions by tag
+          Study by pillar or DSA pattern
         </h1>
         <p className="max-w-2xl text-base leading-7 text-muted">
-          Select a topic tag or search directly. Each card shows the answer
-          outline, expected interviewer signals, and common traps.
+          Select a tag first. The page then lists the same daily-plan topics
+          and interview prompts that appear across the 133-day study plan.
         </p>
       </header>
 
-      <QuestionBankExplorer questions={questions} />
+      <QuestionBankExplorer
+        entries={entries}
+        tags={tags}
+        interviewQuestionCount={interviewQuestionCount}
+      />
     </div>
   );
 }

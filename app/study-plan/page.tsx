@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import HomeRoadmap from "@/components/HomeRoadmap";
 import { dailyPlan, dailyPlanWeeks } from "@/lib/daily-plan";
 
@@ -33,12 +35,12 @@ export default function StudyPlanPage() {
               >
                 Browse weeks
               </a>
-              <a
-                href="#tracker"
+              <Link
+                href="/"
                 className="button-primary-accent hidden md:inline-flex"
               >
-                View my tracker
-              </a>
+                Open dashboard
+              </Link>
               <a
                 href="#week-1"
                 className="button-secondary hidden md:inline-flex"
@@ -71,9 +73,11 @@ export default function StudyPlanPage() {
         </div>
       </header>
 
-      <div id="tracker" className="scroll-mt-24">
-        <HomeRoadmap dailyPlan={dailyPlan} dailyPlanWeeks={dailyPlanWeeks} />
-      </div>
+      <HomeRoadmap
+        dailyPlan={dailyPlan}
+        dailyPlanWeeks={dailyPlanWeeks}
+        variant="plan"
+      />
 
       <footer className="space-y-3 border-t border-line pt-8 text-sm leading-7 text-muted">
         <p className="text-xs">

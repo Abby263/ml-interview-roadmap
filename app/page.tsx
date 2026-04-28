@@ -2,11 +2,17 @@ import Link from "next/link";
 
 import HomeRoadmap from "@/components/HomeRoadmap";
 import { dailyPlan, dailyPlanWeeks } from "@/lib/daily-plan";
-import { questions } from "@/lib/site-data";
+import {
+  buildDailyPlanQuestionEntries,
+  countDailyPlanInterviewQuestions,
+} from "@/lib/daily-plan-questions";
 
 export default function Home() {
   const totalDays = dailyPlan.length;
   const totalWeeks = Math.ceil(totalDays / 7);
+  const dailyQuestionEntries = buildDailyPlanQuestionEntries(dailyPlan);
+  const dailyQuestionCount =
+    countDailyPlanInterviewQuestions(dailyQuestionEntries);
 
   return (
     <div className="space-y-8 md:space-y-10">
@@ -38,9 +44,9 @@ export default function Home() {
               </p>
             </div>
             <div className="metric-slab p-3 md:p-4">
-              <p className="panel-label">Questions</p>
+              <p className="panel-label">Topics</p>
               <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                {questions.length}
+                {dailyQuestionEntries.length}
               </p>
             </div>
           </div>
@@ -95,16 +101,18 @@ export default function Home() {
           <div className="relative">
             <p className="panel-label">Option 2</p>
             <h2 className="mt-3 font-display text-2xl font-extrabold text-foreground group-hover:text-accent">
-              Question Bank
+              Browse Questions
             </h2>
             <p className="mt-2 text-sm leading-6 text-muted">
-              Search and filter questions by topic tag, category, difficulty,
-              and interview signal.
+              Pick a roadmap pillar or DSA pattern and study the exact topics
+              and interview prompts from the 133-day plan.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              <span className="data-chip">{questions.length} prompts</span>
-              <span className="data-chip">Tags</span>
-              <span className="data-chip">Rubrics</span>
+              <span className="data-chip">
+                {dailyQuestionEntries.length} topics
+              </span>
+              <span className="data-chip">{dailyQuestionCount} prompts</span>
+              <span className="data-chip">Plan-backed</span>
             </div>
             <p className="mt-5 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-accent">
               Browse questions →

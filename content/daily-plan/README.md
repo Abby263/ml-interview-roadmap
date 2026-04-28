@@ -1,7 +1,7 @@
 # Daily Plan Content
 
-This folder contains the generated, reviewable source for the landing-page daily plan and
-`/day/[day]` pages.
+This folder contains the generated, reviewable source for the `/study-plan`,
+`/questions`, and `/day/[day]` pages.
 
 ## What to edit
 
@@ -45,8 +45,7 @@ This folder contains the generated, reviewable source for the landing-page daily
     }
   ],
   "topicId": "optional-linked-topic-id",
-  "caseStudySlug": "optional-linked-case-study-slug",
-  "questionIds": ["optional-question-bank-id"]
+  "caseStudySlug": "optional-linked-case-study-slug"
 }
 ```
 
@@ -58,6 +57,7 @@ For ML-focused days, keep item-level `interviewQuestions` detailed and interview
 - Prefer prompts like `How would you evaluate...?`, `When would you choose...?`, `What breaks if...?`, or `Walk me through...`.
 - Avoid only listing topic names. A non-technical reviewer should be able to read the questions and understand what the candidate needs to explain.
 - Do not add a top-level daily question list. The day page intentionally shows questions only under the relevant topic/checklist item to avoid repetition.
+- `/questions` is derived from these same item-level topics and questions. Do not maintain a separate question-bank dataset.
 
 ML-focused pillars are:
 
@@ -83,7 +83,7 @@ For company-specific content, phrase questions as directional preparation signal
 
 ## Week headings
 
-The landing page groups days into weeks. Edit `content/daily-plan/weeks.json` to change those headings:
+The study-plan page groups days into weeks. Edit `content/daily-plan/weeks.json` to change those headings:
 
 ```json
 [

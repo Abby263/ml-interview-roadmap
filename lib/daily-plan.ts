@@ -103,12 +103,6 @@ function validateDayPlan(day: DayPlan, file: string) {
 
   assertOptionalString(day.topicId, "topicId", file);
   assertOptionalString(day.caseStudySlug, "caseStudySlug", file);
-  if (day.questionIds !== undefined && !Array.isArray(day.questionIds)) {
-    throw new Error(`${file}: questionIds must be an array when present`);
-  }
-  for (const [index, questionId] of (day.questionIds ?? []).entries()) {
-    assertString(questionId, `questionIds[${index}]`, file);
-  }
 }
 
 function readJsonFile<T>(filePath: string): T {
