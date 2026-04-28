@@ -344,10 +344,299 @@ export default function HomeRoadmap({
   );
   const roadmapPct =
     roadmapTotal === 0 ? 0 : Math.round((roadmapDone / roadmapTotal) * 100);
+  const activeDay = nextDay?.day ?? 1;
+  const activeWeekNumber =
+    weeks.find((week) => week.days.some((day) => day.day === activeDay))
+      ?.number ?? 1;
 
   return (
-    <div className="space-y-10">
-      <section className="section-card relative overflow-hidden rounded-[2rem] p-5 md:p-7">
+    <div className="space-y-6 pb-24 md:space-y-10 md:pb-0">
+      <section
+        id="mobile-tracker"
+        className="section-card relative overflow-hidden rounded-[1.5rem] p-4 md:hidden"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-16 -top-20 h-44 w-44 rounded-full opacity-30 blur-3xl"
+          style={{ background: "var(--primary)" }}
+        />
+        <div className="relative space-y-4">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="panel-label">Next step</p>
+              <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                Day {activeDay}
+              </h2>
+              <p className="mt-1 text-sm font-semibold text-foreground">
+                {nextDay?.title}
+              </p>
+            </div>
+            <span className="rounded-full border border-line px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
+              {nextDayStats?.done ?? 0}/{nextDayStats?.total ?? 0}
+            </span>
+          </div>
+
+          <p className="line-clamp-2 text-sm leading-6 text-muted">
+            {nextDay?.focus}
+          </p>
+
+          <div className="h-2 overflow-hidden rounded-full bg-line">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight transition-all duration-300"
+              style={{ width: `${nextDayStats?.pct ?? 0}%` }}
+            />
+          </div>
+
+          <Link
+            href={`/day/${activeDay}`}
+            className="button-primary-accent w-full justify-center"
+          >
+            {continueLabel} →
+          </Link>
+
+          <div className="grid grid-cols-3 gap-2">
+            <div className="rounded-2xl border border-line bg-surface-strong p-3">
+              <p className="font-mono text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                Overall
+              </p>
+              <p className="mt-1 font-display text-xl font-extrabold text-foreground">
+                {totalPct}%
+              </p>
+            </div>
+            <div className="rounded-2xl border border-line bg-surface-strong p-3">
+              <p className="font-mono text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                Roadmap
+              </p>
+              <p className="mt-1 font-display text-xl font-extrabold text-foreground">
+                {roadmapPct}%
+              </p>
+            </div>
+            <div className="rounded-2xl border border-line bg-surface-strong p-3">
+              <p className="font-mono text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                DSA
+              </p>
+              <p className="mt-1 font-display text-xl font-extrabold text-foreground">
+                {dsaPct}%
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav
+        id="mobile-weeks"
+        className="section-card sticky top-[4.25rem] z-30 -mx-4 overflow-x-auto rounded-none border-x-0 px-4 py-3 md:hidden"
+      >
+        <div className="flex min-w-max items-center gap-2">
+          <span className="mr-1 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
+            Weeks
+          </span>
+          {weeks.map((week) => {
+            const isActive = week.number === activeWeekNumber;
+            return (
+              <a
+                key={week.number}
+                href={`#mobile-week-${week.number}`}
+                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                  isActive
+                    ? "border-primary bg-primary text-white"
+                    : "border-line bg-surface-strong text-muted hover:border-primary hover:text-foreground"
+                }`}
+              >
+                {week.number}
+              </a>
+            );
+          })}
+        </div>
+      </nav>
+
+      <div className="space-y-4 md:hidden">
+        {weeks.map((week) => {
+          const weekItems = week.days.reduce(
+            (sum, day) => sum + dayItemCount(day),
+            0
+          );
+          const weekDone = canTrack
+            ? week.days.reduce(
+                (sum, day) => sum + (dayStats.get(day.day)?.done ?? 0),
+                0
+              )
+            : 0;
+          const weekPct =
+            weekItems === 0 ? 0 : Math.round((weekDone / weekItems) * 100);
+
+          return (
+            <details
+              key={week.number}
+              id={`mobile-week-${week.number}`}
+              open={week.number === activeWeekNumber}
+              className="section-card scroll-mt-32 overflow-hidden rounded-[1.35rem]"
+            >
+              <summary className="cursor-pointer list-none p-4 [&::-webkit-details-marker]:hidden">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="panel-label">Week {week.number}</p>
+                    <h2 className="mt-1 font-display text-lg font-extrabold leading-tight text-foreground">
+                      {week.title}
+                    </h2>
+                    <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.16em] text-muted">
+                      Days {week.days[0].day}–
+                      {week.days[week.days.length - 1].day} · {weekItems} items
+                    </p>
+                  </div>
+                  <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-primary">
+                    {weekPct}%
+                  </span>
+                </div>
+                <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-highlight"
+                    style={{ width: `${weekPct}%` }}
+                  />
+                </div>
+              </summary>
+
+              <ol className="space-y-2 border-t border-line p-3">
+                {week.days.map((entry) => {
+                  const stats = dayStats.get(entry.day) ?? {
+                    total: dayItemCount(entry),
+                    done: 0,
+                    pct: 0,
+                    isDone: false,
+                    isStarted: false,
+                  };
+                  const status = stats.isDone
+                    ? "Complete"
+                    : stats.isStarted
+                      ? "In progress"
+                      : "Not started";
+
+                  return (
+                    <li key={entry.day}>
+                      <Link
+                        href={`/day/${entry.day}`}
+                        className="group relative block overflow-hidden rounded-2xl border border-line bg-surface px-3.5 py-3 transition hover:border-primary hover:bg-surface-strong"
+                      >
+                        {canTrack ? (
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-y-0 left-0 transition-all"
+                            style={{
+                              width: `${stats.pct}%`,
+                              background:
+                                "color-mix(in srgb, var(--primary) 10%, transparent)",
+                            }}
+                          />
+                        ) : null}
+                        <div className="relative">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-mono text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-muted">
+                              Day {String(entry.day).padStart(2, "0")}
+                            </span>
+                            <span
+                              className={`rounded-full border px-2 py-0.5 font-mono text-[0.58rem] font-semibold uppercase tracking-[0.12em] ${
+                                stats.isDone
+                                  ? "border-accent text-accent"
+                                  : stats.isStarted
+                                    ? "border-primary text-primary"
+                                    : "border-line text-muted"
+                              }`}
+                            >
+                              {status}
+                            </span>
+                          </div>
+                          <h3
+                            className={`mt-2 text-[0.96rem] font-bold leading-snug group-hover:text-primary ${
+                              stats.isDone
+                                ? "text-muted line-through"
+                                : "text-foreground"
+                            }`}
+                          >
+                            {entry.title}
+                          </h3>
+                          <p className="mt-1 line-clamp-1 text-xs leading-5 text-muted">
+                            {entry.focus}
+                          </p>
+                          <div className="mt-3 flex items-center justify-between gap-3">
+                            <span className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-muted">
+                              {entry.tracks.length} topics
+                            </span>
+                            <span className="font-mono text-[0.62rem] font-semibold text-primary">
+                              {stats.done}/{stats.total} items
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ol>
+            </details>
+          );
+        })}
+      </div>
+
+      <section className="space-y-3 md:hidden">
+        <details className="section-card rounded-[1.35rem] p-4">
+          <summary className="cursor-pointer list-none font-display text-lg font-extrabold text-foreground [&::-webkit-details-marker]:hidden">
+            Roadmap pillar details
+          </summary>
+          <div className="mt-4 space-y-3">
+            {pillarProgress.map((pillar) => (
+              <div key={pillar.slug}>
+                <div className="flex items-center justify-between gap-3 text-xs">
+                  <span className="font-semibold text-foreground">
+                    {pillar.label}
+                  </span>
+                  <span className="font-mono font-semibold text-primary">
+                    {pillar.done}/{pillar.total}
+                  </span>
+                </div>
+                <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full bg-primary"
+                    style={{ width: `${clampPct(pillar.pct)}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </details>
+
+        <details className="section-card rounded-[1.35rem] p-4">
+          <summary className="cursor-pointer list-none font-display text-lg font-extrabold text-foreground [&::-webkit-details-marker]:hidden">
+            DSA pattern details
+          </summary>
+          <div className="mt-4 grid gap-3">
+            {dsaByCategory.map((cat) => (
+              <div
+                key={cat.label}
+                className="rounded-2xl border border-line bg-surface-strong p-3"
+              >
+                <div className="flex items-center justify-between gap-3 text-xs">
+                  <span className="font-semibold text-foreground">
+                    {cat.label}
+                  </span>
+                  <span className="font-mono font-semibold text-accent">
+                    {cat.done}/{cat.total}
+                  </span>
+                </div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${clampPct(cat.pct)}%`,
+                      background: "var(--accent)",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </details>
+      </section>
+
+      <section className="section-card relative hidden overflow-hidden rounded-[2rem] p-5 md:block md:p-7">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-28 h-64 w-64 rounded-full opacity-40 blur-3xl"
@@ -604,7 +893,7 @@ export default function HomeRoadmap({
         </div>
       </section>
 
-      <nav className="section-card sticky top-[4.25rem] z-30 -mx-4 overflow-x-auto rounded-none border-x-0 px-4 py-3 sm:mx-0 sm:rounded-2xl sm:border-x sm:px-4">
+      <nav className="section-card sticky top-[4.25rem] z-30 -mx-4 hidden overflow-x-auto rounded-none border-x-0 px-4 py-3 sm:mx-0 sm:rounded-2xl sm:border-x sm:px-4 md:block">
         <div className="flex min-w-max items-center gap-2">
           <span className="mr-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Jump to
@@ -621,7 +910,7 @@ export default function HomeRoadmap({
         </div>
       </nav>
 
-      <div className="space-y-12">
+      <div className="hidden space-y-12 md:block">
         {weeks.map((week) => {
           const weekItems = week.days.reduce(
             (sum, day) => sum + dayItemCount(day),
@@ -819,6 +1108,29 @@ export default function HomeRoadmap({
             </section>
           );
         })}
+      </div>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-background/95 px-3 pt-2 shadow-panel backdrop-blur-xl pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:hidden">
+        <div className="mx-auto grid max-w-md grid-cols-3 gap-2">
+          <Link
+            href={`/day/${activeDay}`}
+            className="rounded-full bg-primary px-3 py-2.5 text-center text-xs font-semibold text-white"
+          >
+            Continue
+          </Link>
+          <a
+            href="#mobile-weeks"
+            className="rounded-full border border-line bg-surface-strong px-3 py-2.5 text-center text-xs font-semibold text-foreground"
+          >
+            Weeks
+          </a>
+          <a
+            href="#mobile-tracker"
+            className="rounded-full border border-line bg-surface-strong px-3 py-2.5 text-center text-xs font-semibold text-foreground"
+          >
+            Tracker
+          </a>
+        </div>
       </div>
     </div>
   );

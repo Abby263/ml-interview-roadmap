@@ -6,35 +6,49 @@ export default function Home() {
   const totalWeeks = Math.ceil(totalDays / 7);
 
   return (
-    <div className="space-y-10">
-      <header className="hero-panel relative overflow-hidden p-6 md:p-8 lg:p-10">
+    <div className="space-y-6 md:space-y-10">
+      <header className="hero-panel relative overflow-hidden p-5 md:p-8 lg:p-10">
         <div
           aria-hidden="true"
           className="absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
           style={{ background: "var(--primary)" }}
         />
-        <div className="relative grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-          <div className="space-y-5">
-            <p className="eyebrow">ML Interview Roadmap · {totalDays} days</p>
-            <h1 className="max-w-4xl font-display text-[2.55rem] font-extrabold leading-[0.98] text-foreground md:text-[4.4rem]">
+        <div className="relative grid gap-5 md:gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+          <div className="space-y-4 md:space-y-5">
+            <p className="eyebrow text-[0.68rem] md:text-[0.78rem]">
+              ML Interview Roadmap · {totalDays} days
+            </p>
+            <h1 className="max-w-4xl font-display text-[2.15rem] font-extrabold leading-[1] text-foreground md:text-[4.4rem] md:leading-[0.98]">
               Know exactly what to study next.
             </h1>
-            <p className="max-w-3xl text-base leading-8 text-muted md:text-lg">
+            <p className="max-w-3xl text-sm leading-6 text-muted md:text-lg md:leading-8">
               A focused day-by-day path that pairs NeetCode practice with ML
               interview prep in the right order: statistics, traditional ML,
               deep learning, MLOps, GenAI, LLMOps, and ML system design.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="#tracker" className="button-primary-accent">
+              <a
+                href="#mobile-weeks"
+                className="button-primary-accent w-full justify-center sm:w-auto md:hidden"
+              >
+                Browse weeks
+              </a>
+              <a
+                href="#tracker"
+                className="button-primary-accent hidden md:inline-flex"
+              >
                 View my tracker
               </a>
-              <a href="#week-1" className="button-secondary">
+              <a
+                href="#week-1"
+                className="button-secondary hidden md:inline-flex"
+              >
                 Browse all weeks
               </a>
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="hidden gap-3 md:grid md:grid-cols-3 lg:grid-cols-1">
             <div className="metric-slab">
               <p className="panel-label">Plan length</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
