@@ -15,6 +15,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 - Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day and editable week labels in `content/daily-plan/weeks.json`.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
 - A question bank and expanded ML/GenAI/LLMOps system design case-study library.
+- Signed-in AI Tutor page for personalized readiness assessment, one-question-at-a-time interview coaching, feedback, and memory-backed weak-area follow-up.
 - Optional Clerk auth for accounts and optional Supabase sync for cross-device progress.
 - Browser-local progress tracking when auth or Supabase are not configured.
 
@@ -49,7 +50,8 @@ Daily content uses named tracks such as `ML Coding Lab`, `Company Loop`, `Produc
 - TypeScript
 - Tailwind CSS
 - Clerk for optional auth
-- Supabase for optional per-user progress sync
+- Supabase for optional per-user progress sync and AI Tutor memory
+- OpenAI Responses API for the signed-in AI Tutor
 - MDX content via `next-mdx-remote`
 - Vercel for hosting
 
@@ -81,7 +83,16 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_xxx
 SUPABASE_SECRET_KEY=sb_secret_xxx
 ```
 
-See [SETUP.md](./SETUP.md) for Clerk, Google sign-in, Supabase schema, and troubleshooting details.
+AI Tutor:
+
+```bash
+OPENAI_API_KEY=sk-xxx
+AI_TUTOR_MODEL=gpt-4.1-mini
+AI_TUTOR_DAILY_LIMIT=80
+AI_TUTOR_ENABLED=true
+```
+
+See [SETUP.md](./SETUP.md) for Clerk, Google sign-in, Supabase schema, AI Tutor memory tables, and troubleshooting details.
 
 ## Quality Checks
 
@@ -106,7 +117,8 @@ Primary routes:
 
 - `/`: dashboard and progress tracker.
 - `/study-plan`: current daily/weekly roadmap.
-- `/questions`: searchable question bank with category, difficulty, and topic-tag filters.
+- `/questions`: daily-plan-backed topic browser that starts empty until a roadmap pillar or DSA tag is selected.
+- `/ai-tutor`: signed-in AI Tutor for assessment, guided practice, feedback, and memory-backed personalization.
 
 ## Content Sources
 
@@ -114,6 +126,7 @@ Primary routes:
 - Study-plan week headings: `content/daily-plan/weeks.json`
 - Case studies: `content/case-studies/*.mdx`
 - Pillars, topics, questions, and resources: `lib/site-data.ts`
+- AI Tutor state: Supabase tables documented in `SETUP.md`
 
 ## Editing Daily Content
 
@@ -177,3 +190,4 @@ git push origin v0.1.0
 - The repository is public: [github.com/Abby263/ml-interview-roadmap](https://github.com/Abby263/ml-interview-roadmap).
 - `.env`, `.env.*`, `.vercel`, `.next`, and `.claude` are ignored so local credentials and generated worktrees do not leak into commits or local lint runs.
 - The app intentionally degrades gracefully: no auth means local progress only; no Supabase means signed-in users still get local progress.
+- AI Tutor requires Clerk sign-in and `OPENAI_API_KEY`; Supabase is required only for persistent tutor memory and transcript history.
