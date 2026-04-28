@@ -88,7 +88,20 @@ function getDayStats(
   canTrack: boolean
 ): DayStats {
   const total = dayItemCount(day);
-  const done = canTrack ? Math.min(progress[day.day]?.length ?? 0, total) : 0;
+  // Only count checks for item IDs that still exist in the current
+  // curriculum. Without this filter, a stale localStorage / Supabase
+  // row from an older curriculum (e.g., a renamed or removed item)
+  // silently inflates the "done" count, leaving the day stuck at
+  // "In progress" and the pillar % stuck above zero with no way for
+  // the user to uncheck it (because the ghost item doesn't render in
+  // any checklist).
+  const validIds = new Set(
+    day.tracks.flatMap((track) => track.items.map((item) => item.id))
+  );
+  const checked = canTrack
+    ? (progress[day.day] ?? []).filter((id) => validIds.has(id))
+    : [];
+  const done = Math.min(checked.length, total);
   const pct = total === 0 ? 0 : Math.round((done / total) * 100);
   return {
     total,
@@ -130,16 +143,37 @@ export default function HomeRoadmap({
     let cancelled = false;
     (async () => {
       try {
-        const { getServerProgress } = await import(
-          "@/app/actions/progress"
-        );
-        const serverProgress = await getServerProgress();
+        const actions = await import("@/app/actions/progress");
+        const serverProgress = await actions.getServerProgress();
         if (cancelled || !serverProgress) return;
+        // Build a map of valid item ids per day from the current
+        // curriculum. Anything in server state that isn't in this map
+        // is a ghost from an older curriculum (renamed / removed item)
+        // — drop it from local AND request a server-side delete so it
+        // stops resurrecting on future hydrations.
+        const validByDay = new Map<number, Set<string>>();
+        for (const day of dailyPlan) {
+          validByDay.set(
+            day.day,
+            new Set(day.tracks.flatMap((t) => t.items.map((it) => it.id)))
+          );
+        }
         for (const [dayKey, items] of Object.entries(serverProgress)) {
           const day = Number(dayKey);
           if (!Number.isFinite(day)) continue;
+          const valid = validByDay.get(day) ?? new Set<string>();
+          const live: string[] = [];
+          const ghosts: string[] = [];
+          for (const id of items) {
+            if (valid.has(id)) live.push(id);
+            else ghosts.push(id);
+          }
           // Replace, not merge — server is the source of truth here.
-          setDayChecks(day, items);
+          setDayChecks(day, live);
+          // Best-effort cleanup of ghost server rows.
+          for (const ghostId of ghosts) {
+            void actions.removeServerCheck(day, ghostId).catch(() => undefined);
+          }
         }
         serverHydrated = true;
       } catch {
@@ -149,7 +183,7 @@ export default function HomeRoadmap({
     return () => {
       cancelled = true;
     };
-  }, [canTrack]);
+  }, [canTrack, dailyPlan]);
 
   const weeks = chunkWeeks(dailyPlan, dailyPlanWeeks);
   const dayStats = new Map(
