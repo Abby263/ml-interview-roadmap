@@ -274,7 +274,7 @@ export default function HomeRoadmap({
   const pillarProgress = [
     {
       slug: "dsa",
-      label: "DSA · NeetCode 150",
+      label: "DSA",
       total: dsaTotal,
       done: dsaDone,
       pct: dsaPct,
