@@ -509,6 +509,70 @@ export default function HomeRoadmap({
                       Days {week.days[0].day}–
                       {week.days[week.days.length - 1].day} · {weekItems} items
                     </p>
+                    {(() => {
+                      // Build the chip list once per week: unique ML
+                      // pillars across the week's days + each DSA
+                      // category that appears in any DSA item's meta.
+                      // Order: ML pillars first (in pillarMeta order),
+                      // then DSA categories in first-appearance order.
+                      const seenPillars = new Set<string>();
+                      const pillarChips: string[] = [];
+                      for (const day of week.days) {
+                        if (!seenPillars.has(day.pillar)) {
+                          seenPillars.add(day.pillar);
+                          const meta = pillarMeta.find(
+                            (p) => p.slug === day.pillar
+                          );
+                          pillarChips.push(meta?.label ?? day.pillar);
+                        }
+                      }
+                      const seenDsa = new Set<string>();
+                      const dsaChips: string[] = [];
+                      for (const day of week.days) {
+                        for (const t of day.tracks) {
+                          for (const it of t.items) {
+                            if (!isDsaItem(it.id) || !it.meta) continue;
+                            if (seenDsa.has(it.meta)) continue;
+                            seenDsa.add(it.meta);
+                            dsaChips.push(it.meta);
+                          }
+                        }
+                      }
+                      return (
+                        <div className="mt-3 flex flex-wrap gap-1.5">
+                          {pillarChips.map((label) => (
+                            <span
+                              key={`pillar-${label}`}
+                              className="rounded-full border px-2 py-0.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]"
+                              style={{
+                                borderColor:
+                                  "color-mix(in srgb, var(--primary) 35%, transparent)",
+                                color: "var(--primary)",
+                                background:
+                                  "color-mix(in srgb, var(--primary) 8%, transparent)",
+                              }}
+                            >
+                              {label}
+                            </span>
+                          ))}
+                          {dsaChips.map((label) => (
+                            <span
+                              key={`dsa-${label}`}
+                              className="rounded-full border px-2 py-0.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]"
+                              style={{
+                                borderColor:
+                                  "color-mix(in srgb, var(--accent) 45%, transparent)",
+                                color: "var(--accent)",
+                                background:
+                                  "color-mix(in srgb, var(--accent) 8%, transparent)",
+                              }}
+                            >
+                              DSA · {label}
+                            </span>
+                          ))}
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   <div className="min-w-[10rem]">
