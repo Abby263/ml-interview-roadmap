@@ -25,7 +25,8 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Walk through the Bellman equation for the value function.",
-            "What's the difference between value iteration and policy iteration?"
+            "What's the difference between value iteration and policy iteration?",
+            "Compare value-based and policy-based RL: what does each network output and optimize?"
           ]
         },
         {
@@ -35,7 +36,9 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Compare on-policy vs off-policy RL — examples of each algorithm class.",
-            "When is sample efficiency a deciding factor between on-policy and off-policy methods?"
+            "When is sample efficiency a deciding factor between on-policy and off-policy methods?",
+            "Compare online RL, offline RL, and off-policy RL; which relationships are strict subsets?",
+            "Why are vanilla policy-gradient methods on-policy, and what bias appears if trajectories come from another policy?"
           ]
         },
         {

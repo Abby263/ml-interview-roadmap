@@ -31,7 +31,8 @@
           "meta": "OpenAI",
           "interviewQuestions": [
             "Walk through how function calling works under the hood — what does the model actually emit?",
-            "How do you handle a model that hallucinates a tool call with bad arguments?"
+            "How do you handle a model that hallucinates a tool call with bad arguments?",
+            "How would you disable one tool or all tools at decode time without changing the model weights?"
           ]
         },
         {
@@ -41,7 +42,10 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "How would you design a tool catalog for a research agent — what are the trade-offs in granularity?",
-            "Why do agents perform worse when you give them too many tools, and what's a good cutoff?"
+            "Why do agents perform worse when you give them too many tools, and what's a good cutoff?",
+            "How does Toolformer-style data generation decide whether an API call helped future-token prediction?",
+            "Why can some noisy tool-call examples still be useful during tool-use fine-tuning?",
+            "What limitations appear if training data contains single tool calls but no chained or interactive tool use?"
           ]
         },
         {

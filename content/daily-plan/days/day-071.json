@@ -25,7 +25,9 @@
           "meta": "Hoffmann et al.",
           "interviewQuestions": [
             "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
-            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?"
+            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?",
+            "How would you use scaling laws to choose model size and training tokens under a fixed FLOP budget?",
+            "What signals would you use to predict downstream benchmark performance before training the final large model?"
           ]
         },
         {
@@ -36,7 +38,9 @@
           "interviewQuestions": [
             "How do you turn raw text into input-target pairs for GPT next-token prediction?",
             "What are block size, context window, and stride in a language-model dataset?",
-            "How do train/validation splits prevent contamination in LLM pretraining or fine-tuning?"
+            "How do train/validation splits prevent contamination in LLM pretraining or fine-tuning?",
+            "What cleaning, language filtering, deduplication, and quality-filtering steps would you apply before creating the token stream?",
+            "How would you detect exact and near-duplicate documents before pretraining?"
           ]
         },
         {
@@ -46,7 +50,8 @@
           "meta": "Jay Alammar",
           "interviewQuestions": [
             "Walk me through one forward pass of a decoder-only LLM at inference time.",
-            "What is the KV cache and why is it so important?"
+            "What is the KV cache and why is it so important?",
+            "Why does decode-time memory scale with context length even when generating one token at a time?"
           ]
         },
         {

@@ -31,7 +31,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the BPE training algorithm.",
-            "Why does BPE result in different tokenizations for similar words across languages?"
+            "Why does BPE result in different tokenizations for similar words across languages?",
+            "Compare BPE, WordPiece, Unigram, and SentencePiece: what does each store and optimize?",
+            "Why can WordPiece produce an unknown token where BPE would still decompose into smaller pieces?"
           ]
         },
         {
@@ -51,7 +53,9 @@
           "meta": "Read",
           "interviewQuestions": [
             "Why do LLMs struggle with arithmetic, and how does tokenization contribute?",
-            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?"
+            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?",
+            "Why did code models add tokens for whitespace runs, and how can that improve coding throughput?",
+            "What is the difference between byte-level tokenization and character-level tokenization?"
           ]
         }
       ]

@@ -25,7 +25,8 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the SFT objective — how is it different from pretraining?",
-            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?"
+            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?",
+            "How would you generate and filter synthetic SFT data using rejection sampling, model-based quality scoring, and semantic deduplication?"
           ]
         },
         {
@@ -35,7 +36,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "Walk through the three stages of RLHF: SFT → reward model → PPO.",
-            "Why is reward hacking a problem in RLHF?"
+            "Why is reward hacking a problem in RLHF?",
+            "What implementation details matter in PPO-based RLHF: per-token KL, reward normalization, adaptive KL, dropout, and response-length handling?",
+            "Compare outcome reward models vs process reward models for reasoning-heavy tasks."
           ]
         },
         {
@@ -45,7 +48,9 @@
           "meta": "Rafailov et al.",
           "interviewQuestions": [
             "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
-            "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
+            "Compare DPO, IPO, KTO, and ORPO — when does each fit?",
+            "Walk through the tensors needed to implement DPO: chosen/rejected logprobs from the trainable model and the frozen reference model.",
+            "Why can deterministic preference labels weaken KL-style regularization, and how does IPO try to address that?"
           ]
         }
       ]

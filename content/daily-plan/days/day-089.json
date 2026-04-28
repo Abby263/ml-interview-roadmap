@@ -25,7 +25,8 @@
           "meta": "NeMo Guardrails",
           "interviewQuestions": [
             "Compare input vs output filtering — what does each catch and miss?",
-            "What latency does an output-moderation step add, and how do you keep it under your SLO?"
+            "What latency does an output-moderation step add, and how do you keep it under your SLO?",
+            "How would you categorize safety risk into bias, toxic content, dangerous capabilities, privacy, and persuasion/manipulation?"
           ]
         },
         {
@@ -45,7 +46,9 @@
           "meta": "Anthropic",
           "interviewQuestions": [
             "How would you build a red-teaming process for a customer-facing LLM?",
-            "How would you scale red-teaming with automated attackers without missing novel attack vectors?"
+            "How would you scale red-teaming with automated attackers without missing novel attack vectors?",
+            "Which benchmarks would you use for bias, toxicity, dangerous capabilities, and general safety, and what does each miss?",
+            "How would you design fast inner-loop safety evals and slower outer-loop human plus autorater safety reviews?"
           ]
         }
       ]

@@ -32,7 +32,9 @@
           "interviewQuestions": [
             "Compare greedy, beam, top-k, and nucleus (top-p) decoding.",
             "Why is beam search usually a bad choice for open-ended generation?",
-            "What does temperature actually do to the softmax distribution?"
+            "What does temperature actually do to the softmax distribution?",
+            "How would a factual-nucleus strategy change top-p during a sentence to reduce hallucination risk?",
+            "What quality trade-off do you make when you lower sampling diversity to improve factuality?"
           ]
         },
         {
@@ -42,7 +44,8 @@
           "meta": "Leviathan et al.",
           "interviewQuestions": [
             "How does speculative decoding speed up inference without hurting quality?",
-            "Why doesn't speculative decoding always help — what's the relationship between draft acceptance rate and speedup?"
+            "Why doesn't speculative decoding always help — what's the relationship between draft acceptance rate and speedup?",
+            "What makes a draft model a poor fit for speculative decoding even if it is very fast?"
           ]
         },
         {
@@ -63,7 +66,8 @@
           "interviewQuestions": [
             "Implement top-k and nucleus sampling inside an autoregressive generate() loop.",
             "How do temperature, top-k, and top-p interact when a model becomes repetitive or incoherent?",
-            "What stopping conditions do you need for a chat model beyond max_new_tokens?"
+            "What stopping conditions do you need for a chat model beyond max_new_tokens?",
+            "What bug appears if generation ignores EOS and always samples a fixed response length?"
           ]
         }
       ]

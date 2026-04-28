@@ -41,7 +41,8 @@
           "meta": "fast.ai",
           "interviewQuestions": [
             "Why is AdamW preferred over Adam when using weight decay?",
-            "When would you ever pick SGD over Adam in deep learning?"
+            "When would you ever pick SGD over Adam in deep learning?",
+            "Why does Adam use bias correction for the first and second moment estimates?"
           ]
         },
         {
@@ -51,7 +52,19 @@
           "meta": "HF",
           "interviewQuestions": [
             "Why is learning rate warmup important for transformer training?",
-            "Compare cosine vs step decay — when does each work better?"
+            "Compare cosine vs step decay — when does each work better?",
+            "Why can a large learning rate at the beginning of training destabilize deep nets?"
+          ]
+        },
+        {
+          "id": "dl-second-order-shampoo",
+          "label": "Second-order intuition, preconditioning, and Shampoo",
+          "href": "https://arxiv.org/abs/1802.09568",
+          "meta": "Optimizer depth",
+          "interviewQuestions": [
+            "Why are full second-order methods impractical for billion-parameter neural networks?",
+            "What does a preconditioner try to fix that plain SGD cannot?",
+            "How does Shampoo approximate richer curvature information without storing a full Hessian?"
           ]
         }
       ]

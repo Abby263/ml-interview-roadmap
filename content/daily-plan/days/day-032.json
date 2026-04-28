@@ -141,6 +141,18 @@
             "How do you distinguish data leakage from a metric implementation bug?",
             "Which plots or checks do you create before changing model architecture?"
           ]
+        },
+        {
+          "id": "ml-lab-code-review-checklist",
+          "label": "Review ML/Python code for readability, correctness, tests, and reproducibility",
+          "href": "https://docs.python-guide.org/writing/style/",
+          "meta": "Code review",
+          "interviewQuestions": [
+            "Walk through your review checklist for a messy ML PR: readability, type hints, hidden state, leakage, tests, and reproducibility.",
+            "Which Python mistakes do you look for first in interview code: mutable defaults, bare except, shadowing builtins, global mutation, or modifying lists while iterating?",
+            "How would you refactor a notebook cell that does parsing, feature engineering, training, logging, and plotting in one function?",
+            "What tests would you require before approving a vectorized NumPy or pandas rewrite of a loop?"
+          ]
         }
       ]
     }

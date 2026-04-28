@@ -29,6 +29,18 @@
           ]
         },
         {
+          "id": "llm-long-context-extension",
+          "label": "Long-context extension: position interpolation, NTK, YaRN, and evals",
+          "href": "https://arxiv.org/abs/2306.15595",
+          "meta": "Long context",
+          "interviewQuestions": [
+            "How does position interpolation extend context length without retraining from scratch?",
+            "Compare position interpolation, NTK-aware scaling, YaRN, and sliding-window attention for long-context adaptation.",
+            "How would you evaluate long-context quality with needle-in-a-haystack, RULER, LongBench, and position-wise perplexity?",
+            "What short-context regression risk appears after long-context fine-tuning?"
+          ]
+        },
+        {
           "id": "rag-agentic",
           "label": "Agentic RAG: planning + tool-use over retrieval",
           "href": "https://www.llamaindex.ai/blog/agentic-rag-with-llamaindex-2721b8a49ff6",

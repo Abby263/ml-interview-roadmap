@@ -25,7 +25,8 @@
           "meta": "HF",
           "interviewQuestions": [
             "When does fine-tuning beat RAG, and vice versa?",
-            "When is prompt engineering enough?"
+            "When is prompt engineering enough?",
+            "How would you decide between SFT, LoRA, preference tuning, prompt engineering, and RAG for a domain assistant?"
           ]
         },
         {
@@ -46,7 +47,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "How would you curate 10k high-quality examples for fine-tuning a domain LLM?",
-            "What's your dedup + contamination check between training and eval sets — and why does it matter?"
+            "What's your dedup + contamination check between training and eval sets — and why does it matter?",
+            "What data filters would you apply for unclear prompts, low-quality responses, semantic duplicates, and weak rater agreement?",
+            "How would you build capability-specific SFT data for code, safety, factuality, multilinguality, long-context, and tool use?"
           ]
         }
       ]

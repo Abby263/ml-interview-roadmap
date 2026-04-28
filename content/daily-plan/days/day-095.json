@@ -25,7 +25,9 @@
           "meta": "HF",
           "interviewQuestions": [
             "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
-            "How do GPTQ and AWQ work, and what quality do you lose?"
+            "How do GPTQ and AWQ work, and what quality do you lose?",
+            "Why do outlier activations make simple low-bit quantization fail on large transformers?",
+            "When would mixed-precision quantization be safer than quantizing all weights and activations uniformly?"
           ]
         },
         {
@@ -66,7 +68,9 @@
           "interviewQuestions": [
             "Why does KV-cache memory become the bottleneck for long-context LLM serving?",
             "How does PagedAttention reduce memory fragmentation compared with a naive KV cache?",
-            "What serving knobs would you tune when long prompts cause out-of-memory errors?"
+            "What serving knobs would you tune when long prompts cause out-of-memory errors?",
+            "Compare MQA, GQA, multi-head latent attention, cross-layer KV sharing, and KV-cache quantization as cache-reduction strategies.",
+            "What quality or engineering risk do you introduce when reducing KV-cache precision or sharing KV across layers?"
           ]
         }
       ]
