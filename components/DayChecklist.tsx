@@ -34,15 +34,25 @@ const PILLAR_LABEL: Record<PillarSlug, string> = {
 
 /**
  * Resolve which pillar a single track item rolls up to.
- * NeetCode items (id starts with "lc-") always belong to DSA. Everything
- * else inherits the day's pillar — matches the rules in HomeRoadmap so
- * pillar tags here can't disagree with the "Coverage by pillar" bars.
+ * NeetCode items (id starts with "lc-") belong to DSA — and we surface
+ * the specific category (e.g., "DSA · Arrays & Hashing") since DSA has
+ * many distinct subtopics. The category lives in the item's `meta`
+ * field, set when the curriculum generator emits the NeetCode track.
+ * Everything else inherits the day's pillar — matches the rules in
+ * HomeRoadmap so pillar tags here can't disagree with the "Coverage by
+ * pillar" bars.
  */
-function pillarTagForItem(itemId: string, dayPillar: PillarSlug): {
+function pillarTagForItem(
+  itemId: string,
+  dayPillar: PillarSlug,
+  itemMeta: string | undefined
+): {
   label: string;
   isDsa: boolean;
 } {
-  if (itemId.startsWith("lc-")) return { label: "DSA", isDsa: true };
+  if (itemId.startsWith("lc-")) {
+    return { label: itemMeta ? `DSA · ${itemMeta}` : "DSA", isDsa: true };
+  }
   return { label: PILLAR_LABEL[dayPillar] ?? dayPillar, isDsa: false };
 }
 
@@ -204,7 +214,11 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                         </span>
                       )}
                       {(() => {
-                        const tag = pillarTagForItem(item.id, plan.pillar);
+                        const tag = pillarTagForItem(
+                          item.id,
+                          plan.pillar,
+                          item.meta
+                        );
                         return (
                           <span
                             className="rounded-full border px-2 py-0.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]"
@@ -224,7 +238,9 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                           </span>
                         );
                       })()}
-                      {item.meta ? (
+                      {/* For DSA items the category already lives on the
+                          chip, so don't repeat it as a meta tag. */}
+                      {item.meta && !item.id.startsWith("lc-") ? (
                         <span className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted">
                           {item.meta}
                         </span>
