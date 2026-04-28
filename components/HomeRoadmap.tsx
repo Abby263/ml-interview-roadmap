@@ -49,6 +49,12 @@ const pillarMeta: Array<{
   },
 ];
 
+// Module-level flag: hydrate from server once per SPA session. Without
+// this guard, every HomeRoadmap remount re-pulls server state and
+// merges it into local — which resurrects items the user just unchecked
+// while the server delete was still in flight.
+let serverHydrated = false;
+
 const emptyProgressItems: Record<number, string[]> = {};
 
 function chunkWeeks(plan: DayPlan[], weekConfig: DailyPlanWeek[]): Week[] {
@@ -112,10 +118,15 @@ export default function HomeRoadmap({
   );
 
   // One-shot hydration from server: when the user is signed in and
-  // Supabase is configured, pull their saved progress and merge it into
-  // localStorage so the UI reflects cross-device state.
+  // Supabase is configured, pull their saved progress and replace local
+  // state. We treat the server as the source of truth on first load and
+  // only run this once per SPA session — otherwise re-mounting this
+  // component (e.g., after navigating to /day/N and back) would race
+  // with in-flight per-toggle syncs and resurrect items the user just
+  // unchecked.
   useEffect(() => {
     if (!canTrack) return;
+    if (serverHydrated) return;
     let cancelled = false;
     (async () => {
       try {
@@ -127,13 +138,10 @@ export default function HomeRoadmap({
         for (const [dayKey, items] of Object.entries(serverProgress)) {
           const day = Number(dayKey);
           if (!Number.isFinite(day)) continue;
-          const local = JSON.parse(
-            window.localStorage.getItem(`ml-roadmap-progress:day:${day}`) ??
-              "[]"
-          );
-          const merged = Array.from(new Set([...(local as string[]), ...items]));
-          setDayChecks(day, merged);
+          // Replace, not merge — server is the source of truth here.
+          setDayChecks(day, items);
         }
+        serverHydrated = true;
       } catch {
         // Local state already works.
       }
@@ -188,15 +196,57 @@ export default function HomeRoadmap({
         ? "Review final day"
         : `Continue Day ${nextDay?.day ?? 1}`;
 
-  const pillarProgress = pillarMeta.map((pillar) => {
+  // ML pillars: each day has a single `pillar` field, so all items on
+  // that day count toward that pillar.
+  const mlPillarProgress = pillarMeta.map((pillar) => {
     const days = dailyPlan.filter((day) => day.pillar === pillar.slug);
     const total = days.reduce((sum, day) => sum + dayItemCount(day), 0);
     const done = canTrack
       ? days.reduce((sum, day) => sum + (dayStats.get(day.day)?.done ?? 0), 0)
       : 0;
     const pct = total === 0 ? 0 : Math.round((done / total) * 100);
-    return { ...pillar, total, done, pct };
+    return { slug: pillar.slug as string, label: pillar.label, total, done, pct };
   });
+
+  // DSA isn't a per-day pillar — NeetCode problems are interleaved as
+  // tracks across every day. Count items whose id starts with "lc-"
+  // (LeetCode) to get a separate DSA progress bar.
+  const isDsaItem = (id: string) => id.startsWith("lc-");
+  const dsaTotal = dailyPlan.reduce(
+    (sum, day) =>
+      sum +
+      day.tracks.reduce(
+        (s, t) => s + t.items.filter((it) => isDsaItem(it.id)).length,
+        0
+      ),
+    0
+  );
+  const dsaDone = canTrack
+    ? dailyPlan.reduce((sum, day) => {
+        const checked = new Set(progress[day.day] ?? []);
+        return (
+          sum +
+          day.tracks.reduce(
+            (s, t) =>
+              s +
+              t.items.filter((it) => isDsaItem(it.id) && checked.has(it.id))
+                .length,
+            0
+          )
+        );
+      }, 0)
+    : 0;
+  const dsaPct = dsaTotal === 0 ? 0 : Math.round((dsaDone / dsaTotal) * 100);
+  const pillarProgress = [
+    {
+      slug: "dsa",
+      label: "DSA · NeetCode 150",
+      total: dsaTotal,
+      done: dsaDone,
+      pct: dsaPct,
+    },
+    ...mlPillarProgress,
+  ];
 
   return (
     <div className="space-y-10">
