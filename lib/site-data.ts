@@ -2738,6 +2738,182 @@ export const questions: Question[] = [
     ],
     relatedTopics: ["rag-architecture", "llm-eval-ops"],
   },
+  {
+    id: "semi-supervised-proxy-labels",
+    question: "When would you use pseudo-labeling, weak supervision, or proxy labels, and how do you prevent them from biasing the true target?",
+    category: "ML Fundamentals",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Use proxy labels when true labels are expensive, delayed, or sparse",
+      "Validate proxy-label correlation against a trusted holdout or human-labeled sample",
+      "Monitor bias amplification and avoid self-training loops without independent checks",
+    ],
+    expectedSignals: [
+      "Distinguishes pseudo labels, weak labels, and business proxy labels",
+      "Discusses validation against true target labels",
+      "Mentions feedback-loop and confirmation-bias risks",
+    ],
+    commonMistakes: [
+      "Treating proxy labels as ground truth",
+      "No plan for human-labeled validation",
+      "Ignoring segment-level bias introduced by the proxy",
+    ],
+    relatedTopics: ["feature-engineering-leakage", "anomaly-detection"],
+  },
+  {
+    id: "self-supervised-transfer-eval",
+    question: "How would you evaluate whether a self-supervised representation learned from unlabeled data transfers to a downstream ML product?",
+    category: "Deep Learning",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Compare linear probe, fine-tuning, nearest-neighbor, and retrieval evaluations",
+      "Measure downstream quality, robustness, calibration, and segment performance",
+      "Check shortcut learning, data leakage, and distribution mismatch between pretraining and product traffic",
+    ],
+    expectedSignals: [
+      "Knows transfer is validated on downstream tasks, not only pretraining loss",
+      "Mentions leakage and shortcut-learning failure modes",
+      "Discusses frozen versus fine-tuned representation trade-offs",
+    ],
+    commonMistakes: [
+      "Assuming better pretraining loss means better product quality",
+      "No baseline against supervised or heuristic embeddings",
+      "Ignoring distribution shift between unlabeled data and served traffic",
+    ],
+    relatedTopics: ["cnn-design-patterns", "transformers-first-principles"],
+  },
+  {
+    id: "recsys-rbm-similarity",
+    question: "Explain RBM-style recommenders and when you would prefer matrix factorization, nearest-neighbor similarity, or two-tower retrieval instead.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Describe RBMs as latent-variable models over user-item interactions",
+      "Compare with matrix factorization and similarity methods for simplicity, scale, and interpretability",
+      "Use two-tower retrieval when item scale and online candidate generation dominate",
+    ],
+    expectedSignals: [
+      "Can explain older collaborative-filtering approaches without overusing them",
+      "Connects model choice to serving scale and cold start",
+      "Mentions similarity metrics, bias terms, and sparse implicit feedback",
+    ],
+    commonMistakes: [
+      "Treating RBMs as a default modern recommender choice",
+      "Ignoring online serving and retrieval latency",
+      "Not discussing cold start or sparse interactions",
+    ],
+    relatedTopics: ["ranking-retrieval-recsys", "online-serving-tradeoffs"],
+  },
+  {
+    id: "product-ml-first-principles-technical-debt",
+    question: "A product team asks for ML. How do you decide whether to use ML, a heuristic baseline, or no model at all?",
+    category: "Architect Trade-offs",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify user problem, decision point, labels, metric, and cost of mistakes",
+      "Ship a baseline first when data, latency, or explainability constraints make ML premature",
+      "Consider ML technical debt: feedback loops, hidden dependencies, stale features, and correction cascades",
+    ],
+    expectedSignals: [
+      "Starts from product and decision framing",
+      "Knows ML is not automatically the right answer",
+      "Surfaces long-term maintenance and feedback-loop risk",
+    ],
+    commonMistakes: [
+      "Jumping directly to model architecture",
+      "No baseline or launch criteria",
+      "Ignoring operational cost and hidden dependencies",
+    ],
+    relatedTopics: ["system-design-framework", "monitoring-drift"],
+  },
+  {
+    id: "maps-contributed-content-abuse",
+    question: "Design a system to detect fake or fraudulent contributed content in maps, reviews, photos, or place edits.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Clarify abuse taxonomy, action types, latency, review queues, and contributor impact",
+      "Combine user reputation, content signals, graph features, velocity features, rules, and human review",
+      "Track trust, false positives, time to removal, appeal outcomes, and adversarial drift",
+    ],
+    expectedSignals: [
+      "Recognizes abuse is adversarial and multi-modal",
+      "Uses human review and appeals for high-impact actions",
+      "Balances user trust against false-positive harm",
+    ],
+    commonMistakes: [
+      "Only proposing a text classifier",
+      "No contributor reputation or graph signal",
+      "Ignoring appeals and false positives on legitimate contributors",
+    ],
+    relatedTopics: ["real-time-fraud-risk", "interpretability-fairness"],
+  },
+  {
+    id: "recruiter-search-ranking",
+    question: "How would you design LinkedIn-style recruiter search where query intent, candidate freshness, and recruiter feedback all matter?",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Parse recruiter intent and retrieve candidates with lexical, embedding, and structured filters",
+      "Rank on relevance, freshness, availability, diversity, and recruiter feedback",
+      "Evaluate with offline relevance labels, recruiter actions, long-term hire quality, fairness, and latency",
+    ],
+    expectedSignals: [
+      "Treats search as query understanding plus ranking, not only recommendations",
+      "Mentions structured constraints and freshness",
+      "Includes fairness and marketplace health concerns",
+    ],
+    commonMistakes: [
+      "Optimizing clicks without downstream quality",
+      "Ignoring hard filters and compliance constraints",
+      "No plan for sparse queries or cold-start candidates",
+    ],
+    relatedTopics: ["search-ads-feed-design", "ranking-retrieval-recsys"],
+  },
+  {
+    id: "airbnb-home-value-pricing",
+    question: "Design an Airbnb-style home-value or nightly-price prediction model and explain how you would avoid leakage and geographic cold-start failures.",
+    category: "ML System Design",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Define whether the goal is valuation, price recommendation, booking conversion, or marketplace balance",
+      "Use listing attributes, location, seasonality, demand, comparable listings, and host behavior carefully",
+      "Prevent leakage from future bookings and segment evaluation by geography, property type, and cold-start listings",
+    ],
+    expectedSignals: [
+      "Separates prediction from optimization",
+      "Mentions temporal leakage and geographic segmentation",
+      "Connects model output to host-facing explainability and marketplace outcomes",
+    ],
+    commonMistakes: [
+      "Using future booking outcomes as current features",
+      "Only optimizing revenue without booking or trust guardrails",
+      "No cold-start strategy for new listings or neighborhoods",
+    ],
+    relatedTopics: ["time-series-forecasting", "feature-engineering-leakage"],
+  },
+  {
+    id: "vision-signal-processing-debug",
+    question: "A production vision model regresses after an image preprocessing change. How do you debug whether the issue is signal processing, data, or model behavior?",
+    category: "Deep Learning",
+    difficulty: "Advanced",
+    answerOutline: [
+      "Compare raw inputs, transforms, normalization, resizing, color space, compression, and augmentations",
+      "Run golden-image tests and inspect embedding or prediction deltas before and after the change",
+      "Separate preprocessing regressions from model drift and traffic-mix shifts",
+    ],
+    expectedSignals: [
+      "Looks at the input pipeline before changing architecture",
+      "Uses deterministic golden examples",
+      "Understands classical signal-processing steps still matter in deep vision systems",
+    ],
+    commonMistakes: [
+      "Retraining the model before checking preprocessing parity",
+      "Ignoring color space and normalization mismatches",
+      "No regression tests for image transforms",
+    ],
+    relatedTopics: ["cnn-design-patterns", "data-validation-quality"],
+  },
 ];
 
 export const resources: Resource[] = [

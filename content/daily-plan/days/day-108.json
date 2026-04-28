@@ -31,7 +31,9 @@
           "interviewQuestions": [
             "Walk me through designing Amazon's product search.",
             "How do you balance relevance, freshness, and diversity in search ranking?",
-            "How would you handle long-tail queries with no historical data?"
+            "How would you handle long-tail queries with no historical data?",
+            "How would you adapt this design to LinkedIn Recruiter search where query intent, candidate freshness, and recruiter feedback matter?",
+            "What changes when ranking marketplace/search results for language-understanding-heavy queries with sparse historical clicks?"
           ]
         },
         {

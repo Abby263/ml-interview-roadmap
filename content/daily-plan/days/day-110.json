@@ -43,6 +43,17 @@
           ]
         },
         {
+          "id": "sd-maps-contributed-content-abuse",
+          "label": "Design contributed-content anti-abuse for maps, reviews, and edits",
+          "href": "https://blog.google/products/maps/",
+          "meta": "Case prompt",
+          "interviewQuestions": [
+            "Design a system that detects fake or fraudulent contributed content in maps reviews, photos, or edits.",
+            "How would you combine user reputation, content features, graph signals, velocity features, and human review?",
+            "What metrics balance user trust, false positives on legitimate contributors, and time-to-removal for abuse?"
+          ]
+        },
+        {
           "id": "sd-fraud-feedback",
           "label": "Delayed labels & feedback loops",
           "href": "https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html",
@@ -70,6 +81,11 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
+    },
+    {
+      "label": "Google Maps — Product blog",
+      "href": "https://blog.google/products/maps/",
+      "source": "Google"
     }
   ]
 }

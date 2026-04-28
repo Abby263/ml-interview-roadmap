@@ -39,7 +39,9 @@
           "meta": "Uber",
           "interviewQuestions": [
             "How would you design surge pricing — what's the optimization objective and constraints?",
-            "How do you avoid the price-spiral feedback loop where surge causes drivers to game positions?"
+            "How do you avoid the price-spiral feedback loop where surge causes drivers to game positions?",
+            "How would you design an Airbnb-style home-value or nightly-price prediction model and separate explainability from optimization?",
+            "What features, leakage risks, and geographic cold-start issues matter for home-value prediction?"
           ]
         }
       ]
@@ -55,6 +57,11 @@
       "label": "alirezadir — Machine Learning Interviews",
       "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
       "source": "GitHub"
+    },
+    {
+      "label": "Airbnb Engineering — Using machine learning to predict value of homes",
+      "href": "https://medium.com/airbnb-engineering/using-machine-learning-to-predict-value-of-homes-on-airbnb-9272d3d473d1",
+      "source": "Airbnb Engineering"
     }
   ]
 }

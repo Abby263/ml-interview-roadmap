@@ -52,6 +52,18 @@
             "How do you map a business metric to an offline ML metric?",
             "Walk through three real cases where offline gains didn't translate online."
           ]
+        },
+        {
+          "id": "sd-product-ml-rules-technical-debt",
+          "label": "Product ML judgment: first principles, Rules of ML, technical debt",
+          "href": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you map a vague product opportunity into data, labels, baseline, metrics, and launch criteria?",
+            "When should you avoid ML and ship a heuristic or rules-based product first?",
+            "What sources of ML technical debt matter most: hidden feedback loops, undeclared consumers, stale data, or correction cascades?",
+            "How do you identify product surfaces where ML can add value without creating brittle dependencies?"
+          ]
         }
       ]
     }
@@ -81,6 +93,16 @@
       "label": "Eugene Yan — applied ML writing",
       "href": "https://eugeneyan.com/",
       "source": "Eugene Yan"
+    },
+    {
+      "label": "Google — Rules of Machine Learning",
+      "href": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+      "source": "Google"
+    },
+    {
+      "label": "Machine Learning: The High Interest Credit Card of Technical Debt",
+      "href": "https://research.google/pubs/machine-learning-the-high-interest-credit-card-of-technical-debt/",
+      "source": "Google Research"
     }
   ]
 }
