@@ -28,6 +28,10 @@ import {
 } from "@/lib/ai-tutor-context";
 import { recordAiTutorCheck, getServerProgressDetailed } from "@/app/actions/progress";
 import {
+  conceptTeacherPrompt,
+  mockInterviewerPrompt,
+} from "@/lib/ai-tutor-prompts";
+import {
   mergeAndSaveAiTutorMemory,
   setAiTutorSessionPhase,
   setAiTutorSessionPlan,
@@ -41,14 +45,14 @@ import type {
   AiTutorPlan,
   AiTutorPlanStatus,
   AiTutorProfile,
+  AiTutorReadiness,
   AiTutorSuggestedAction,
 } from "@/lib/ai-tutor-types";
 
 // Shared tool list — same shape as the chat agent's `tools` array. Both
-// modes hand this directly to OpenAI (Responses API for chat, Realtime API
-// for voice). Subagent tools (`delegate_to_*`) are intentionally omitted
-// in v1 so the realtime model teaches inline with its own voice rather
-// than splicing in a synchronous LLM round-trip.
+// modes can retrieve roadmap topics/questions, read mastery/progress, write
+// lesson plans, delegate focused teaching/interview prompts, and record
+// evaluated practice back to memory + tracker.
 export const aiTutorRealtimeTools = [
   {
     type: "function" as const,
@@ -147,6 +151,42 @@ export const aiTutorRealtimeTools = [
   },
   {
     type: "function" as const,
+    name: "delegate_to_concept_teacher",
+    description:
+      "Delegate a focused teaching task to a concept-teacher subagent. Use when the learner needs a crisp explanation before the next spoken check.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        concept: { type: "string" as const },
+        level: {
+          type: "string" as const,
+          enum: ["beginner", "intermediate", "advanced", "architect"],
+        },
+      },
+      required: ["concept", "level"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
+    name: "delegate_to_mock_interviewer",
+    description:
+      "Delegate to a mock-interviewer subagent that returns one interview-grade question for the role and difficulty.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        role: { type: "string" as const },
+        difficulty: {
+          type: "string" as const,
+          enum: ["basic", "intermediate", "advanced", "system-design"],
+        },
+      },
+      required: ["role", "difficulty"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
     name: "write_lesson_plan",
     description:
       "Write or replace the structured lesson plan for this session — 2-6 concrete steps the learner can see. Call ONCE after warmup.",
@@ -193,17 +233,32 @@ export const aiTutorRealtimeTools = [
     type: "function" as const,
     name: "record_practice",
     description:
-      "Record a substantive answer attempt. Updates mastery and writes a tracker check tagged ai_tutor when score >= 70. NEVER call for 'I don't know' or warmup/recap-phase chatter.",
+      "Record a substantive answer attempt. Updates mastery and writes a tracker check tagged ai_tutor only when the learner is interview-ready. NEVER call for 'I don't know' or warmup/recap-phase chatter.",
     parameters: {
       type: "object" as const,
       properties: {
         tag_id: { type: "string" as const },
         tag_label: { type: "string" as const },
         day: { type: "integer" as const },
-        item_id: { type: "string" as const },
+        item_id: {
+          type: "string" as const,
+          description:
+            "The canonical roadmap item id returned by get_roadmap_topic or retrieve_daily_plan_content.",
+        },
         topic_label: { type: "string" as const },
         score: { type: "number" as const },
         score_delta: { type: "number" as const },
+        readiness: {
+          type: "string" as const,
+          enum: ["needs_practice", "interview_ready"],
+          description:
+            "Use interview_ready only when the learner can pass follow-ups for this topic.",
+        },
+        readiness_reason: {
+          type: "string" as const,
+          description:
+            "One concise reason explaining whether the learner is ready to move on.",
+        },
         summary: { type: "string" as const },
         strengths: { type: "array" as const, items: { type: "string" as const } },
         gaps: { type: "array" as const, items: { type: "string" as const } },
@@ -216,6 +271,8 @@ export const aiTutorRealtimeTools = [
         "topic_label",
         "score",
         "score_delta",
+        "readiness",
+        "readiness_reason",
         "summary",
       ],
       additionalProperties: false,
@@ -247,6 +304,65 @@ function topicsToBrief(topics: AiTutorTopicContext[], limit = 4) {
 
 function clampScore(value: number) {
   return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+interface ResponsesApiShape {
+  output?: unknown;
+  output_text?: unknown;
+  error?: { message?: string };
+}
+
+function extractResponseText(output: unknown): string {
+  if (!Array.isArray(output)) return "";
+  const parts: string[] = [];
+  for (const item of output) {
+    const record = asRecord(item);
+    if (record.type !== "message" || !Array.isArray(record.content)) continue;
+    for (const contentItem of record.content) {
+      const contentRecord = asRecord(contentItem);
+      if (typeof contentRecord.text === "string" && contentRecord.text.trim()) {
+        parts.push(contentRecord.text.trim());
+      }
+    }
+  }
+  return parts.join("\n").trim();
+}
+
+async function callRealtimeSubagentText(
+  instructions: string,
+  userText: string
+): Promise<string> {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) return "The OpenAI key is not configured for this subagent.";
+
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: process.env.AI_TUTOR_MODEL || "gpt-4o-mini",
+      instructions,
+      input: [
+        {
+          role: "user",
+          content: [{ type: "input_text", text: userText }],
+        },
+      ],
+      temperature: 0.5,
+    }),
+  });
+
+  const data = (await response.json().catch(() => ({}))) as ResponsesApiShape;
+  if (!response.ok) {
+    return data.error?.message ?? `Subagent request failed (${response.status}).`;
+  }
+  return (
+    extractResponseText(data.output) ||
+    (typeof data.output_text === "string" ? data.output_text : "") ||
+    "No subagent response was returned."
+  );
 }
 
 // ── Tool execution ──────────────────────────────────────────────────────
@@ -424,6 +540,34 @@ export async function executeRealtimeTool(
       };
     }
 
+    case "delegate_to_concept_teacher": {
+      const concept = String(args.concept ?? "");
+      const level = String(args.level ?? ctx.profile.currentLevel);
+      const teachingReply = await callRealtimeSubagentText(
+        conceptTeacherPrompt(concept, level),
+        `Teach: ${concept}`
+      );
+      return {
+        output: { teaching_reply: teachingReply },
+        preview: `Concept teacher: "${concept}"`,
+        changes,
+      };
+    }
+
+    case "delegate_to_mock_interviewer": {
+      const role = String(args.role ?? ctx.profile.targetRole);
+      const difficulty = String(args.difficulty ?? "intermediate");
+      const question = await callRealtimeSubagentText(
+        mockInterviewerPrompt(role, difficulty),
+        "Ask one question."
+      );
+      return {
+        output: { question },
+        preview: `Mock interviewer: ${difficulty} ${role}`,
+        changes,
+      };
+    }
+
     case "write_lesson_plan": {
       const goal = String(args.goal ?? "Session plan");
       const stepsRaw = Array.isArray(args.steps) ? args.steps : [];
@@ -526,13 +670,23 @@ export async function executeRealtimeTool(
       const tagId = String(args.tag_id ?? "");
       const tagLabel = String(args.tag_label ?? tagId);
       const day = Math.max(0, Math.round(Number(args.day ?? 0)));
-      const itemId = typeof args.item_id === "string" ? args.item_id : undefined;
+      const rawItemId =
+        typeof args.item_id === "string" ? args.item_id.trim() : undefined;
+      const itemId =
+        rawItemId && day
+          ? rawItemId.replace(new RegExp(`^day-${day}-`), "")
+          : rawItemId;
       const topicLabel = String(args.topic_label ?? "");
       const score = clampScore(Number(args.score ?? 0));
       const scoreDelta = Math.max(
         -30,
         Math.min(30, Number(args.score_delta ?? 0))
       );
+      const readiness: AiTutorReadiness =
+        args.readiness === "interview_ready"
+          ? "interview_ready"
+          : "needs_practice";
+      const readinessReason = String(args.readiness_reason ?? "").slice(0, 240);
       const summary = String(args.summary ?? "");
       const strengths = Array.isArray(args.strengths)
         ? (args.strengths as unknown[]).filter(
@@ -550,14 +704,44 @@ export async function executeRealtimeTool(
           )
         : [];
 
+      const known = day && itemId ? getTopicByItemId(day, itemId) : undefined;
+      const previousScore = ctx.memory.mastery[tagId]?.score ?? 45;
+      const projectedScore = clampScore(previousScore + scoreDelta);
+      const hasBlockingGaps = gaps.length > 1;
+      const trackerReady =
+        readiness === "interview_ready" &&
+        scoreDelta > 0 &&
+        ((score >= 80 && !hasBlockingGaps) ||
+          (score >= 75 && projectedScore >= 70 && !hasBlockingGaps));
+      let trackerUpdated = false;
+      let trackerReason =
+        readinessReason || "Needs another strong answer before marking complete.";
+
+      if (known && itemId && trackerReady) {
+        await recordAiTutorCheck(ctx.userId, day, itemId);
+        trackerUpdated = true;
+        trackerReason =
+          readinessReason ||
+          "Marked complete because the answer met the interview-ready threshold.";
+      } else if (!known && trackerReady) {
+        trackerReason =
+          "Strong answer, but no exact roadmap item was resolved, so the tracker was not changed.";
+      } else if (readiness === "interview_ready" && !trackerReady) {
+        trackerReason =
+          readinessReason ||
+          "Close, but the score/mastery threshold was not high enough for auto-complete.";
+      }
+
       changes.evaluation = {
         score,
         summary,
         strengths,
         gaps,
         rubric,
-        readiness: score >= 75 ? "interview_ready" : "needs_practice",
-        trackerUpdated: false,
+        readiness,
+        trackerUpdated,
+        trackerReason,
+        referenceLinks: known?.referenceLinks ?? [],
       };
 
       changes.memoryPatch = {
@@ -583,36 +767,38 @@ export async function executeRealtimeTool(
       if (persisted.memory) changes.memory = persisted.memory;
 
       if (day && itemId) {
-        const known = getTopicByItemId(day, itemId);
+        changes.nextTopic = {
+          tagId,
+          tagLabel,
+          day,
+          topicLabel: known?.topicLabel ?? topicLabel,
+          reason: trackerUpdated
+            ? "You proved this topic at interview-ready level"
+            : "You just practiced this topic",
+          itemId,
+          readiness,
+          referenceLinks: known?.referenceLinks ?? [],
+        };
         if (known) {
-          changes.nextTopic = {
-            tagId,
-            tagLabel,
-            day,
-            topicLabel,
-            reason: "You just practiced this topic",
-            itemId,
-          };
-          if (score >= 70) {
-            await recordAiTutorCheck(ctx.userId, day, itemId);
-            changes.trackerWrote = true;
-            changes.evaluation.trackerUpdated = true;
-          }
           changes.suggestedAction = {
             label: `Open Day ${day}`,
             href: `/day/${day}`,
           };
         }
       }
+      if (trackerUpdated) changes.trackerWrote = true;
 
       return {
         output: {
           ok: true,
           score,
           score_delta: scoreDelta,
-          tracker_updated: changes.trackerWrote ?? false,
+          projected_score: projectedScore,
+          readiness,
+          tracker_updated: trackerUpdated,
+          tracker_reason: trackerReason,
         },
-        preview: `Recorded ${tagLabel} (${score}/100, Δ${scoreDelta})${changes.trackerWrote ? " — tracker updated" : ""}`,
+        preview: `Recorded ${tagLabel} (${score}/100, Δ${scoreDelta}, ${readiness}${trackerUpdated ? ", tracker updated" : ""})`,
         changes,
       };
     }
