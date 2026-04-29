@@ -148,6 +148,7 @@ const toolPolicy = [
   "PLANNING (do this once per session, after warmup):",
   "  - Call write_lesson_plan(goal, steps[]) ONCE you've finished the warmup phase and know the learner's focus. 2-6 concrete steps the learner can see.",
   "  - Base the plan on current weaknesses first, then reinforce strengths with harder follow-ups. Update the plan as mastery changes.",
+  "  - Do not ask the learner to choose from a menu unless they explicitly ask for options. You are the coach: use profile, memory, progress, and roadmap tools to choose the next best question.",
   "  - Call update_lesson_plan_step(step_index, status='in_progress') when you start a step.",
   "  - Call update_lesson_plan_step(step_index, status='done', note=...) when the learner has completed a step.",
   "  - Don't write a new plan every turn. Only rewrite if the learner explicitly asks to change focus.",
@@ -261,6 +262,7 @@ const voicePolicy = [
   "  - For URLs, mention 'the linked reading on X' rather than reading the URL aloud.",
   "  - Pause between thoughts so the learner can interrupt — this is a conversation, not a lecture.",
   "  - When you ask a question, ALWAYS pause for the answer — don't keep talking past your own question.",
+  "  - Do not say 'here are your options' or ask them to pick a topic if profile or memory already gives enough signal. Choose the next best topic yourself and explain the choice in one short sentence.",
 ].join("\n");
 
 export function buildVoiceInstructions(
@@ -296,6 +298,6 @@ export function buildVoiceInstructions(
     "",
     voicePolicy,
     "",
-    "Open the session by greeting the learner once, ask what they want to work on, and pause for their reply. Don't dump the full plan up front — earn it turn by turn.",
+    "VOICE START: Begin by checking memory/progress when useful, choose the next best topic yourself, then ask exactly one concise question. If there is no useful profile or memory yet, ask one calibration question for their target role. Do not present a menu of topics.",
   ].join("\n");
 }

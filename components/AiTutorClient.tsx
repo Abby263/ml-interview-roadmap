@@ -79,6 +79,33 @@ const toolPrettyNames: Record<string, string> = {
   record_practice: "Record practice",
 };
 
+type CoachDeliveryMode = "chat" | "voice";
+
+const deliveryModeDetails: Record<
+  CoachDeliveryMode,
+  {
+    label: string;
+    title: string;
+    description: string;
+    signal: string;
+  }
+> = {
+  chat: {
+    label: "Chat mode",
+    title: "Chat agent",
+    description:
+      "Type answers, review markdown/code feedback, and keep a searchable transcript.",
+    signal: "Best for coding, detailed rubrics, and reference links.",
+  },
+  voice: {
+    label: "Voice mode",
+    title: "Voice agent",
+    description:
+      "Talk live with Maya while the same roadmap, mastery, tracker, and questions run behind the scenes.",
+    signal: "Best for spoken interview practice and quick calibration.",
+  },
+};
+
 function nowIso() {
   return new Date().toISOString();
 }
@@ -455,7 +482,7 @@ export default function AiTutorClient({
   const [deletingSessionId, setDeletingSessionId] = useState<string | null>(
     null
   );
-  const [voiceOpen, setVoiceOpen] = useState(false);
+  const [coachMode, setCoachMode] = useState<CoachDeliveryMode>("chat");
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -1083,19 +1110,9 @@ export default function AiTutorClient({
               {activeSession ? (
                 <span className="data-chip">Session active</span>
               ) : null}
-              <button
-                type="button"
-                onClick={() => setVoiceOpen((v) => !v)}
-                disabled={!openaiConfigured}
-                className="rounded-full border border-line bg-surface-strong px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
-                title={
-                  openaiConfigured
-                    ? "Talk to the coach with your voice"
-                    : "Voice mode needs OPENAI_API_KEY"
-                }
-              >
-                {voiceOpen ? "Hide voice" : "🎙 Voice mode"}
-              </button>
+              <span className="data-chip">
+                {deliveryModeDetails[coachMode].label}
+              </span>
               {lastAction ? (
                 <Link
                   href={lastAction.href || "/study-plan"}
@@ -1107,6 +1124,59 @@ export default function AiTutorClient({
             </div>
           </div>
           <PhaseProgress phase={phase} />
+
+          <div className="grid gap-3 md:grid-cols-2">
+            {(Object.keys(deliveryModeDetails) as CoachDeliveryMode[]).map(
+              (mode) => {
+                const selected = coachMode === mode;
+                const disabled = mode === "voice" && !openaiConfigured;
+                const details = deliveryModeDetails[mode];
+                return (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => {
+                      if (!disabled) setCoachMode(mode);
+                    }}
+                    disabled={disabled}
+                    className={`rounded-3xl border p-4 text-left transition disabled:cursor-not-allowed disabled:opacity-55 ${
+                      selected
+                        ? "border-primary bg-primary text-white shadow-[0_18px_45px_rgba(20,184,166,0.20)]"
+                        : "border-line bg-surface-strong text-foreground hover:border-primary"
+                    }`}
+                    aria-pressed={selected}
+                  >
+                    <span
+                      className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${
+                        selected ? "text-white/80" : "text-primary"
+                      }`}
+                    >
+                      {details.label}
+                    </span>
+                    <span className="mt-2 block text-lg font-extrabold">
+                      {details.title}
+                    </span>
+                    <span
+                      className={`mt-2 block text-sm leading-6 ${
+                        selected ? "text-white/85" : "text-muted"
+                      }`}
+                    >
+                      {disabled
+                        ? "Add OPENAI_API_KEY to enable live voice practice."
+                        : details.description}
+                    </span>
+                    <span
+                      className={`mt-3 block text-xs font-semibold ${
+                        selected ? "text-white/85" : "text-foreground"
+                      }`}
+                    >
+                      {details.signal}
+                    </span>
+                  </button>
+                );
+              }
+            )}
+          </div>
         </div>
 
         {!openaiConfigured ? (
@@ -1116,7 +1186,7 @@ export default function AiTutorClient({
           </div>
         ) : null}
 
-        {voiceOpen && openaiConfigured ? (
+        {coachMode === "voice" && openaiConfigured ? (
           <div className="mt-5">
             <AiTutorVoicePanel
               profile={profile}
@@ -1125,7 +1195,10 @@ export default function AiTutorClient({
               onMemory={(m) => setMemory(m)}
               onPlan={(p) => setPlan(p)}
               onPhase={(p) => setPhase(p)}
-              onClose={() => setVoiceOpen(false)}
+              onSuggestedAction={(action) => setLastAction(action)}
+              onTrackerUpdate={(day, itemId) => markDayCheckLocal(day, itemId)}
+              onSessionRefresh={() => void refreshSessions()}
+              onClose={() => setCoachMode("chat")}
             />
           </div>
         ) : null}
@@ -1136,6 +1209,8 @@ export default function AiTutorClient({
           </div>
         ) : null}
 
+        {coachMode === "chat" ? (
+        <>
         <div ref={scrollerRef} className="mt-5 flex-1 space-y-4 overflow-y-auto pr-1">
           {hiddenMessageCount > 0 ? (
             <button
@@ -1356,6 +1431,14 @@ export default function AiTutorClient({
           updated only when the coach records an interview-ready answer for a
           specific roadmap item. Press Cmd/Ctrl + Enter to send.
         </p>
+        </>
+        ) : (
+          <p className="mt-5 text-xs leading-5 text-muted">
+            Voice mode uses the same daily plan, question tools, coach insights,
+            and tracker rules as chat. Switch back to chat any time if you want
+            typed answers, code snippets, or clickable references.
+          </p>
+        )}
       </section>
     </div>
   );

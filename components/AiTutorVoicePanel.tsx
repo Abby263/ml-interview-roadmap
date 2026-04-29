@@ -5,9 +5,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   AiTutorEvaluation,
   AiTutorMemory,
+  AiTutorNextTopic,
   AiTutorPhase,
   AiTutorPlan,
   AiTutorProfile,
+  AiTutorSuggestedAction,
   AiTutorToolTrace,
 } from "@/lib/ai-tutor-types";
 
@@ -36,6 +38,9 @@ interface AiTutorVoicePanelProps {
   onMemory: (memory: AiTutorMemory) => void;
   onPlan: (plan: AiTutorPlan | null) => void;
   onPhase: (phase: AiTutorPhase) => void;
+  onSuggestedAction: (action: AiTutorSuggestedAction | null) => void;
+  onTrackerUpdate: (day: number, itemId: string) => void;
+  onSessionRefresh: () => void;
   onClose: () => void;
 }
 
@@ -52,6 +57,7 @@ interface VoiceTurn {
   role: "assistant" | "user";
   content: string;
   evaluation?: AiTutorEvaluation;
+  topicRef?: AiTutorNextTopic;
   phase?: AiTutorPhase;
   done: boolean;
 }
@@ -74,6 +80,9 @@ export default function AiTutorVoicePanel({
   onMemory,
   onPlan,
   onPhase,
+  onSuggestedAction,
+  onTrackerUpdate,
+  onSessionRefresh,
   onClose,
 }: AiTutorVoicePanelProps) {
   const [status, setStatus] = useState<ConnectionStatus>("idle");
@@ -95,6 +104,8 @@ export default function AiTutorVoicePanel({
   // flight, keyed by response_id so concurrent responses don't collide.
   const partialTranscriptsRef = useRef<Map<string, string>>(new Map());
   const turnsRef = useRef<VoiceTurn[]>([]);
+  const pendingEvaluationRef = useRef<AiTutorEvaluation | null>(null);
+  const pendingTopicRef = useRef<AiTutorNextTopic | null>(null);
 
   const profileRef = useRef(profile);
   useEffect(() => {
@@ -169,6 +180,9 @@ export default function AiTutorVoicePanel({
             evaluation?: AiTutorEvaluation;
             phase?: AiTutorPhase;
             plan?: AiTutorPlan;
+            nextTopic?: AiTutorNextTopic;
+            suggestedAction?: AiTutorSuggestedAction;
+            trackerWrote?: boolean;
           };
           error?: string;
         };
@@ -207,7 +221,23 @@ export default function AiTutorVoicePanel({
         }
         if (data.state?.plan !== undefined) onPlan(data.state.plan ?? null);
         if (data.state?.memory) onMemory(data.state.memory);
-        if (data.changes?.evaluation) setActiveEvaluation(data.changes.evaluation);
+        if (data.changes?.evaluation) {
+          pendingEvaluationRef.current = data.changes.evaluation;
+          setActiveEvaluation(data.changes.evaluation);
+        }
+        if (data.changes?.nextTopic) {
+          pendingTopicRef.current = data.changes.nextTopic;
+        }
+        if (data.changes?.suggestedAction) {
+          onSuggestedAction(data.changes.suggestedAction);
+        }
+        if (
+          data.changes?.trackerWrote &&
+          data.changes.nextTopic?.day &&
+          data.changes.nextTopic.itemId
+        ) {
+          onTrackerUpdate(data.changes.nextTopic.day, data.changes.nextTopic.itemId);
+        }
 
         sendOnDataChannel({
           type: "conversation.item.create",
@@ -237,7 +267,15 @@ export default function AiTutorVoicePanel({
         sendOnDataChannel({ type: "response.create" });
       }
     },
-    [appendTool, onMemory, onPhase, onPlan, sendOnDataChannel]
+    [
+      appendTool,
+      onMemory,
+      onPhase,
+      onPlan,
+      onSuggestedAction,
+      onTrackerUpdate,
+      sendOnDataChannel,
+    ]
   );
 
   const handleEvent = useCallback(
@@ -276,13 +314,19 @@ export default function AiTutorVoicePanel({
             partialTranscriptsRef.current.get(responseId) ??
             "";
           if (transcript.trim()) {
+            const evaluation = pendingEvaluationRef.current ?? undefined;
+            const topicRef = pendingTopicRef.current ?? undefined;
             upsertTurn({
               id: `assistant-${responseId}`,
               role: "assistant",
               content: transcript,
               phase,
+              evaluation,
+              topicRef,
               done: true,
             });
+            pendingEvaluationRef.current = null;
+            pendingTopicRef.current = null;
           }
           partialTranscriptsRef.current.delete(responseId);
           break;
@@ -370,16 +414,18 @@ export default function AiTutorVoicePanel({
                   role: t.role,
                   content: t.content,
                   evaluation: t.evaluation,
+                  topicRef: t.topicRef,
                   phase: t.phase,
                 })),
             }),
           });
+          onSessionRefresh();
         } catch {
           /* persistence best-effort */
         }
       }
     },
-    []
+    [onSessionRefresh]
   );
 
   const start = useCallback(async () => {
@@ -389,6 +435,8 @@ export default function AiTutorVoicePanel({
     setTools([]);
     setActiveEvaluation(null);
     partialTranscriptsRef.current = new Map();
+    pendingEvaluationRef.current = null;
+    pendingTopicRef.current = null;
 
     let mintData: {
       sessionId?: string;
@@ -424,6 +472,7 @@ export default function AiTutorVoicePanel({
     if (mintData.sessionId && mintData.sessionId !== sessionIdRef.current) {
       sessionIdRef.current = mintData.sessionId;
       onSessionId(mintData.sessionId);
+      onSessionRefresh();
     }
     if (mintData.phase) {
       setPhase(mintData.phase);
@@ -485,7 +534,10 @@ export default function AiTutorVoicePanel({
     dcRef.current = dc;
     dc.onopen = () => {
       // No session.update needed — /session route already configured the
-      // model with our tools/instructions/voice.
+      // model with our tools/instructions/voice. We do create the first
+      // response so the voice coach proactively chooses the next question
+      // instead of waiting for the user to say "hi".
+      sendOnDataChannel({ type: "response.create" });
     };
     dc.onmessage = (event) => {
       try {
@@ -549,7 +601,7 @@ export default function AiTutorVoicePanel({
           : "WebRTC answer failed."
       );
     }
-  }, [handleEvent, onPhase, onPlan, onSessionId]);
+  }, [handleEvent, onPhase, onPlan, onSessionId, onSessionRefresh, sendOnDataChannel]);
 
   // Cleanup on unmount — never leave a peer connection or mic open.
   useEffect(() => {
@@ -579,8 +631,12 @@ export default function AiTutorVoicePanel({
             Voice mode · {phaseLabels[phase]}
           </p>
           <h2 className="mt-1 font-display text-xl font-extrabold text-foreground">
-            Talk through your prep
+            Voice agent
           </h2>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+            Same roadmap, questions, lesson plan, tracker, and coach insights
+            as chat — delivered as a live spoken session.
+          </p>
         </div>
         <div className="flex items-center gap-2">
           {!isLive ? (
@@ -591,10 +647,10 @@ export default function AiTutorVoicePanel({
               className="button-primary-accent !px-4 !py-2 text-sm disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "ended"
-                ? "Start again"
+                ? "Start voice agent again"
                 : status === "requesting"
                   ? "Connecting…"
-                  : "Start voice"}
+                  : "Start voice agent"}
             </button>
           ) : (
             <>
@@ -622,7 +678,7 @@ export default function AiTutorVoicePanel({
             }}
             className="rounded-full border border-line bg-background px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground"
           >
-            Back to chat
+            Switch to chat
           </button>
         </div>
       </div>
@@ -635,10 +691,10 @@ export default function AiTutorVoicePanel({
 
       {status === "idle" ? (
         <div className="mt-4 rounded-2xl border border-line bg-background/60 p-4 text-sm leading-6 text-muted">
-          Click <strong>Start voice</strong> to talk with the coach. It uses
-          your mic via WebRTC. Tools you saw in chat (mastery, lesson plan,
-          tracker, references) all work — they just run silently while
-          the coach talks.
+          Click <strong>Start voice agent</strong>. Maya will use your profile,
+          coach insights, roadmap topics, and progress to choose the next best
+          question. You should not need to pick from a menu unless you want to
+          redirect the session.
         </div>
       ) : null}
 
@@ -650,7 +706,7 @@ export default function AiTutorVoicePanel({
           {turns.length === 0 && status !== "idle" ? (
             <p className="text-muted">
               {status === "connected"
-                ? "Listening — say hi to get started."
+                ? "Maya is choosing the first question. You can interrupt or redirect any time."
                 : "Connecting to the coach…"}
             </p>
           ) : null}
@@ -696,6 +752,31 @@ export default function AiTutorVoicePanel({
           </p>
           {activeEvaluation.summary ? (
             <p className="mt-1">{activeEvaluation.summary}</p>
+          ) : null}
+          {activeEvaluation.trackerReason ? (
+            <p className="mt-1 text-[11px] font-semibold text-foreground">
+              {activeEvaluation.trackerUpdated
+                ? "Tracker updated: "
+                : "Not marked complete yet: "}
+              <span className="font-normal text-muted">
+                {activeEvaluation.trackerReason}
+              </span>
+            </p>
+          ) : null}
+          {activeEvaluation.referenceLinks?.length ? (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {activeEvaluation.referenceLinks.slice(0, 3).map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-line bg-background/80 px-2.5 py-1 text-[11px] font-semibold text-muted transition hover:border-primary hover:text-foreground"
+                >
+                  {link.label || link.source || "Reference"} ↗
+                </a>
+              ))}
+            </div>
           ) : null}
         </div>
       ) : null}

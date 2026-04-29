@@ -2,7 +2,12 @@ import { NextResponse } from "next/server";
 
 import { getSignedInUserId } from "@/lib/auth";
 import { appendAiTutorMessage } from "@/lib/ai-tutor-store";
-import type { AiTutorEvaluation, AiTutorPhase } from "@/lib/ai-tutor-types";
+import type {
+  AiTutorEvaluation,
+  AiTutorNextTopic,
+  AiTutorPhase,
+  AiTutorReferenceLink,
+} from "@/lib/ai-tutor-types";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +15,7 @@ interface TurnPayload {
   role?: unknown;
   content?: unknown;
   evaluation?: unknown;
+  topicRef?: unknown;
   phase?: unknown;
 }
 
@@ -27,6 +33,23 @@ const validPhases: AiTutorPhase[] = [
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
+}
+
+function asReferenceLinks(value: unknown): AiTutorReferenceLink[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const links: AiTutorReferenceLink[] = [];
+  for (const item of value) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    const link = item as Record<string, unknown>;
+    const href = asString(link.href);
+    if (!href) continue;
+    links.push({
+      label: asString(link.label, "Reference"),
+      href,
+      source: asString(link.source) || undefined,
+    });
+  }
+  return links.length > 0 ? links : undefined;
 }
 
 function asEvaluation(value: unknown): AiTutorEvaluation | undefined {
@@ -54,6 +77,34 @@ function asEvaluation(value: unknown): AiTutorEvaluation | undefined {
         ? r.readiness
         : "not_assessed",
     trackerUpdated: r.trackerUpdated === true,
+    trackerReason: asString(r.trackerReason),
+    referenceLinks: asReferenceLinks(r.referenceLinks),
+  };
+}
+
+function asTopicRef(value: unknown): AiTutorNextTopic | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return undefined;
+  }
+  const r = value as Record<string, unknown>;
+  const tagId = asString(r.tagId);
+  const tagLabel = asString(r.tagLabel, tagId);
+  const topicLabel = asString(r.topicLabel);
+  const day = typeof r.day === "number" ? Math.round(r.day) : 0;
+  if (!tagId || !tagLabel || !topicLabel || !day) return undefined;
+
+  return {
+    tagId,
+    tagLabel,
+    day,
+    topicLabel,
+    reason: asString(r.reason, "Practiced in voice mode"),
+    itemId: asString(r.itemId) || undefined,
+    readiness:
+      r.readiness === "interview_ready" || r.readiness === "needs_practice"
+        ? r.readiness
+        : undefined,
+    referenceLinks: asReferenceLinks(r.referenceLinks),
   };
 }
 
@@ -89,11 +140,13 @@ export async function POST(request: Request) {
       ? (phaseRaw as AiTutorPhase)
       : undefined;
     const evaluation = role === "assistant" ? asEvaluation(turn.evaluation) : undefined;
+    const topicRef = role === "assistant" ? asTopicRef(turn.topicRef) : undefined;
 
     const result = await appendAiTutorMessage(userId, sessionId, {
       role,
       content: content.slice(0, 4000),
       evaluation,
+      topicRef,
       phase,
     });
     if (result.ok) written += 1;
