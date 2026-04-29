@@ -126,8 +126,6 @@ export default async function AiTutorPage() {
         initialProfile={state.profile}
         initialMemory={state.memory}
         initialMessages={state.recentMessages}
-        initialSessions={state.sessions}
-        initialActiveSessionId={state.activeSessionId}
         tags={tags}
         openaiConfigured={aiTutorOpenAIEnabled}
         memoryConfigured={aiTutorMemoryEnabled && state.persistenceReady}
