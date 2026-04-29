@@ -67,6 +67,8 @@ export const skills = {
     "  - trade-offs (0-20)   — discussed alternatives, edge cases, complexity",
     "  - clarity (0-15)      — structured, easy to follow",
     "Set score_delta to roughly (score - 50) / 2, clamped to [-20, +20].",
+    "Set readiness='interview_ready' only when score >= 75, the core answer is correct, there are no blocking conceptual gaps, and you would be comfortable moving to follow-ups in a real interview.",
+    "Set readiness='needs_practice' when the answer is incorrect, shallow, missing trade-offs, or needs another round before the learner can pass interview follow-ups.",
     "Always include 1-2 strengths and 1-2 specific gaps in the record_practice payload.",
   ].join("\n"),
   scaffolding: [
@@ -153,6 +155,7 @@ const toolPolicy = [
   "  - get_roadmap_topic(day) — single-day topics + interview questions.",
   "  - search_questions(query) — keyword search across the full question bank.",
   "  - retrieve_daily_plan_content(day) — full day content (focus, every track item, references). Use when planning a teaching arc.",
+  "  - When asking a roadmap-grounded question, prefer topics returned by tools and mention that reference links are available if they get stuck.",
   "",
   "MEMORY:",
   "  - get_user_mastery — current mastery, strengths, recurring mistakes.",
@@ -169,6 +172,10 @@ const toolPolicy = [
   "",
   "GRADING:",
   "  - record_practice ONLY after a substantive answer attempt. Never grade hellos, 'I don't know', or clarifying questions. Never grade in warmup or recap phase.",
+  "  - Before record_practice, ground the topic with get_roadmap_topic, pick_next_topic, search_questions, or retrieve_daily_plan_content so you have the canonical day + item_id.",
+  "  - record_practice requires readiness and readiness_reason. Be strict: interview_ready means the learner can explain the topic aloud, handle at least one follow-up, and avoid the common traps.",
+  "  - The progress tracker is updated only if record_practice returns tracker_updated=true. Never tell the learner a topic is complete unless the tool output confirms it.",
+  "  - If tracker_updated=false, explain the smallest missing piece and ask one focused follow-up or suggest the linked reference.",
 ].join("\n");
 
 // ── Compose the system instructions per turn ──────────────────────────────
@@ -205,7 +212,7 @@ export function buildSystemInstructions(
     "",
     toolPolicy,
     "",
-    "RESPONSE FORMAT: After your tool calls, write a single conversational reply to the learner. Use markdown for code (```python ... ```) and lists when teaching. No JSON, no preamble like 'Sure, here is…' — just respond like a person.",
+    "RESPONSE FORMAT: After your tool calls, write a single conversational reply to the learner. Use markdown for code (```python ... ```) and lists when teaching. If references were retrieved, add a short 'If you want to review this' line rather than dumping many URLs. No JSON, no preamble like 'Sure, here is…' — just respond like a person.",
   ].join("\n");
 }
 

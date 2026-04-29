@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import type { DailyPlanQuestionTag } from "@/lib/daily-plan-questions";
+import { markDayCheckLocal } from "@/lib/progress-store";
 import {
   aiTutorLevels,
   aiTutorModes,
@@ -16,6 +17,8 @@ import {
   type AiTutorPhase,
   type AiTutorPlan,
   type AiTutorProfile,
+  type AiTutorReferenceLink,
+  type AiTutorSessionSummary,
   type AiTutorSuggestedAction,
   type AiTutorToolTrace,
 } from "@/lib/ai-tutor-types";
@@ -24,6 +27,8 @@ interface AiTutorClientProps {
   initialProfile: AiTutorProfile;
   initialMemory: AiTutorMemory;
   initialMessages: AiTutorMessage[];
+  initialSessions: AiTutorSessionSummary[];
+  initialSessionId?: string;
   tags: DailyPlanQuestionTag[];
   openaiConfigured: boolean;
   memoryConfigured: boolean;
@@ -41,6 +46,7 @@ interface TutorResponse {
   phase?: AiTutorPhase;
   plan?: AiTutorPlan;
   toolTrace?: AiTutorToolTrace[];
+  sessions?: AiTutorSessionSummary[];
   warnings?: string[];
 }
 
@@ -218,6 +224,72 @@ function ToolTracePanel({ trace }: { trace: AiTutorToolTrace[] }) {
   );
 }
 
+function ReadinessBadge({ evaluation }: { evaluation: AiTutorEvaluation }) {
+  const readiness = evaluation.readiness ?? "not_assessed";
+  const ready = readiness === "interview_ready" && evaluation.trackerUpdated;
+  const needsPractice = readiness === "needs_practice" || !evaluation.trackerUpdated;
+  return (
+    <div
+      className={`rounded-2xl border px-3 py-2 text-xs leading-5 ${
+        ready
+          ? "border-emerald-400/40 bg-emerald-50/70 text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300"
+          : needsPractice
+            ? "border-amber-400/40 bg-amber-50/70 text-amber-900 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
+            : "border-line bg-background/70 text-muted"
+      }`}
+    >
+      <span className="font-semibold">
+        {ready
+          ? "Tracker updated"
+          : readiness === "interview_ready"
+            ? "Interview-ready, not auto-checked"
+            : "Keep practicing"}
+      </span>
+      {evaluation.trackerReason ? (
+        <span className="ml-1">{evaluation.trackerReason}</span>
+      ) : null}
+    </div>
+  );
+}
+
+function ReferenceLinks({
+  links,
+  compact = false,
+}: {
+  links?: AiTutorReferenceLink[];
+  compact?: boolean;
+}) {
+  const uniqueLinks = [...(links ?? [])]
+    .filter((link) => link.href)
+    .filter(
+      (link, index, arr) =>
+        arr.findIndex((candidate) => candidate.href === link.href) === index
+    )
+    .slice(0, 4);
+  if (uniqueLinks.length === 0) return null;
+
+  return (
+    <div className={compact ? "mt-2" : "mt-4"}>
+      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+        Use if stuck
+      </p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {uniqueLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-line bg-background/70 px-3 py-1 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground"
+          >
+            {link.label || link.source || "Reference"} ↗
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CoachMarkdown({ children }: { children: string }) {
   return (
     <div className="tutor-prose">
@@ -291,6 +363,8 @@ export default function AiTutorClient({
   initialProfile,
   initialMemory,
   initialMessages,
+  initialSessions,
+  initialSessionId,
   tags,
   openaiConfigured,
   memoryConfigured,
@@ -301,15 +375,20 @@ export default function AiTutorClient({
   const [messages, setMessages] = useState<
     (AiTutorMessage & { toolTrace?: AiTutorToolTrace[] })[]
   >(initialMessages);
+  const [sessions, setSessions] = useState(initialSessions);
   const [draft, setDraft] = useState("");
-  const [sessionId, setSessionId] = useState("");
+  const [sessionId, setSessionId] = useState(initialSessionId ?? "");
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<string | null>(persistenceWarning ?? null);
   const [lastAction, setLastAction] = useState<AiTutorSuggestedAction | null>(
     null
   );
   const [phase, setPhase] = useState<AiTutorPhase>("warmup");
-  const [plan, setPlan] = useState<AiTutorPlan | null>(null);
+  const [plan, setPlan] = useState<AiTutorPlan | null>(
+    initialSessions.find((session) => session.id === initialSessionId)?.plan ??
+      null
+  );
+  const [showOlder, setShowOlder] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -340,6 +419,12 @@ export default function AiTutorClient({
             "warmup"
           ),
         ];
+
+  const displayMessages =
+    showOlder || visibleMessages.length <= 14
+      ? visibleMessages
+      : visibleMessages.slice(-14);
+  const hiddenMessageCount = Math.max(0, visibleMessages.length - displayMessages.length);
 
   function updateProfile<K extends keyof AiTutorProfile>(
     key: K,
@@ -386,6 +471,82 @@ export default function AiTutorClient({
     }
   }
 
+  async function refreshSessions() {
+    try {
+      const response = await fetch("/api/ai-tutor/sessions");
+      const data = (await response.json()) as {
+        sessions?: AiTutorSessionSummary[];
+      };
+      if (Array.isArray(data.sessions)) setSessions(data.sessions);
+    } catch {
+      // Non-critical; chat still works with the active session id.
+    }
+  }
+
+  async function loadSession(nextSessionId: string) {
+    if (!nextSessionId || nextSessionId === sessionId || busy) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const response = await fetch(
+        `/api/ai-tutor/sessions?sessionId=${encodeURIComponent(nextSessionId)}`
+      );
+      const data = (await response.json()) as {
+        messages?: AiTutorMessage[];
+        error?: string;
+      };
+      if (!response.ok || data.error) {
+        throw new Error(data.error ?? "Could not load session.");
+      }
+      setSessionId(nextSessionId);
+      setMessages(data.messages ?? []);
+      setShowOlder(false);
+      const session = sessions.find((item) => item.id === nextSessionId);
+      if (session?.phase) setPhase(session.phase);
+      setPlan(session?.plan ?? null);
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Could not load session.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function startNewSession() {
+    if (busy) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const response = await fetch("/api/ai-tutor/sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ profile }),
+      });
+      const data = (await response.json()) as {
+        sessionId?: string;
+        sessions?: AiTutorSessionSummary[];
+        warning?: string;
+        error?: string;
+      };
+      if (!response.ok || data.error || !data.sessionId) {
+        throw new Error(data.error ?? "Could not start a new session.");
+      }
+      setSessionId(data.sessionId);
+      setSessions(data.sessions ?? []);
+      setMessages([]);
+      setPhase("warmup");
+      setPlan(null);
+      setLastAction(null);
+      setShowOlder(false);
+      setStatus(data.warning ?? "Started a new coaching session. Memory is shared.");
+    } catch (error) {
+      setStatus(
+        error instanceof Error ? error.message : "Could not start a new session."
+      );
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function sendMessage(message: string) {
     const trimmed = message.trim();
     if (!trimmed || busy) return;
@@ -395,7 +556,7 @@ export default function AiTutorClient({
     }
 
     const userMessage = makeLocalMessage("user", trimmed);
-    const conversationSnapshot = messages.map((m) => ({
+    const conversationSnapshot = messages.slice(-10).map((m) => ({
       role: m.role,
       content: m.content,
     }));
@@ -426,6 +587,10 @@ export default function AiTutorClient({
       if (data.phase) setPhase(data.phase);
       if (data.plan) setPlan(data.plan);
       if (data.warnings?.length) setStatus(data.warnings.join(" "));
+      if (data.evaluation?.trackerUpdated && data.nextTopic?.day && data.nextTopic.itemId) {
+        markDayCheckLocal(data.nextTopic.day, data.nextTopic.itemId);
+      }
+      void refreshSessions();
 
       setMessages((current) => [
         ...current,
@@ -465,218 +630,278 @@ export default function AiTutorClient({
   const selectedTagLabels = tags
     .filter((tag) => profile.weakTags.includes(tag.id))
     .map((tag) => tag.label);
+  const activeSession = sessions.find((item) => item.id === sessionId);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.88fr_1.12fr]">
-      <aside className="space-y-4">
-        <section className="section-card rounded-[28px] p-5 md:p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="panel-label">Your profile</p>
-              <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                What we&rsquo;re working with
-              </h2>
-            </div>
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                memoryConfigured ? "tone-accent" : "tone-highlight"
-              }`}
-            >
-              {memoryConfigured ? "Memory on" : "Memory setup needed"}
-            </span>
-          </div>
-
-          <div className="mt-5 space-y-4">
-            <label className="block space-y-2">
-              <span className="text-sm font-semibold text-foreground">
-                Target role
-              </span>
-              <input
-                value={profile.targetRole}
-                onChange={(event) =>
-                  updateProfile("targetRole", event.target.value)
-                }
-                className="field-shell"
-                placeholder="AI Engineer, Senior MLE, ML Architect"
-              />
-            </label>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <label className="block space-y-2">
-                <span className="text-sm font-semibold text-foreground">
-                  Current level
-                </span>
-                <select
-                  value={profile.currentLevel}
-                  onChange={(event) =>
-                    updateProfile(
-                      "currentLevel",
-                      event.target.value as AiTutorProfile["currentLevel"]
-                    )
-                  }
-                  className="field-shell"
-                >
-                  {aiTutorLevels.map((level) => (
-                    <option key={level.value} value={level.value}>
-                      {level.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block space-y-2">
-                <span className="text-sm font-semibold text-foreground">
-                  Daily hours
-                </span>
-                <input
-                  type="number"
-                  min="0.5"
-                  max="12"
-                  step="0.5"
-                  value={profile.dailyHours}
-                  onChange={(event) =>
-                    updateProfile("dailyHours", Number(event.target.value))
-                  }
-                  className="field-shell"
-                />
-              </label>
-            </div>
-
-            <label className="block space-y-2">
-              <span className="text-sm font-semibold text-foreground">
-                Interview date
-              </span>
-              <input
-                type="date"
-                value={profile.interviewDate}
-                onChange={(event) =>
-                  updateProfile("interviewDate", event.target.value)
-                }
-                className="field-shell"
-              />
-            </label>
-
-            <label className="block space-y-2">
-              <span className="text-sm font-semibold text-foreground">
-                Session style
-              </span>
-              <select
-                value={profile.preferredMode}
-                onChange={(event) =>
-                  updateProfile(
-                    "preferredMode",
-                    event.target.value as AiTutorProfile["preferredMode"]
-                  )
-                }
-                className="field-shell"
+    <div className="space-y-5">
+      <section className="section-card rounded-[28px] p-5 md:p-6">
+        <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr] xl:items-start">
+          <div>
+            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+              <div>
+                <p className="panel-label">Coach cockpit</p>
+                <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
+                  Session, profile, and memory stay out of the chat&apos;s way.
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
+                  The chat now gets the full page width. Profile controls are
+                  compact, sessions are switchable, and memory remains shared
+                  across every session.
+                </p>
+              </div>
+              <span
+                className={`w-fit rounded-full px-3 py-1 text-xs font-semibold ${
+                  memoryConfigured ? "tone-accent" : "tone-highlight"
+                }`}
               >
-                {aiTutorModes.map((mode) => (
-                  <option key={mode.value} value={mode.value}>
-                    {mode.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+                {memoryConfigured ? "Shared memory on" : "Memory setup needed"}
+              </span>
+            </div>
 
-            <details className="rounded-2xl border border-line bg-surface-strong p-4" open>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="metric-slab">
+                <p className="panel-label">Avg mastery</p>
+                <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
+                  {averageMastery || "--"}
+                </p>
+              </div>
+              <div className="metric-slab">
+                <p className="panel-label">Topics tracked</p>
+                <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
+                  {masteryValues.length}
+                </p>
+              </div>
+              <div className="metric-slab">
+                <p className="panel-label">Active phase</p>
+                <p className="mt-2 font-display text-xl font-extrabold text-foreground">
+                  {phaseLabels[phase]}
+                </p>
+              </div>
+              <div className="metric-slab">
+                <p className="panel-label">Tracker rule</p>
+                <p className="mt-2 text-sm font-semibold leading-5 text-foreground">
+                  Only interview-ready answers are checked off
+                </p>
+              </div>
+            </div>
+
+            <details className="mt-5 rounded-2xl border border-line bg-surface-strong p-4">
               <summary className="cursor-pointer text-sm font-semibold text-foreground">
-                Focus areas{" "}
-                <span className="text-muted">({profile.weakTags.length})</span>
+                Profile and focus areas
+                <span className="ml-2 text-muted">
+                  {profile.targetRole} · {selectedTagLabels.length || 0} focus
+                  areas
+                </span>
               </summary>
-              <p className="mt-2 text-xs leading-5 text-muted">
-                Pick a few topics you want extra time on — your coach will
-                weight these higher when choosing what to teach next.
-              </p>
-              <div className="mt-4 flex max-h-72 flex-wrap gap-2 overflow-auto pr-1">
-                {tags.map((tag) => {
-                  const active = profile.weakTags.includes(tag.id);
-                  return (
-                    <button
-                      key={tag.id}
-                      type="button"
-                      onClick={() => toggleWeakTag(tag.id)}
-                      className={`rounded-full border px-3 py-1.5 text-left text-xs font-semibold transition ${
-                        active
-                          ? "border-primary bg-primary text-white"
-                          : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
-                      }`}
-                    >
-                      {tag.label}
-                    </button>
-                  );
-                })}
+              <div className="mt-4 grid gap-4 lg:grid-cols-3">
+                <label className="block space-y-2">
+                  <span className="text-sm font-semibold text-foreground">
+                    Target role
+                  </span>
+                  <input
+                    value={profile.targetRole}
+                    onChange={(event) =>
+                      updateProfile("targetRole", event.target.value)
+                    }
+                    className="field-shell"
+                    placeholder="AI Engineer, Senior MLE, ML Architect"
+                  />
+                </label>
+
+                <label className="block space-y-2">
+                  <span className="text-sm font-semibold text-foreground">
+                    Current level
+                  </span>
+                  <select
+                    value={profile.currentLevel}
+                    onChange={(event) =>
+                      updateProfile(
+                        "currentLevel",
+                        event.target.value as AiTutorProfile["currentLevel"]
+                      )
+                    }
+                    className="field-shell"
+                  >
+                    {aiTutorLevels.map((level) => (
+                      <option key={level.value} value={level.value}>
+                        {level.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="block space-y-2">
+                  <span className="text-sm font-semibold text-foreground">
+                    Session style
+                  </span>
+                  <select
+                    value={profile.preferredMode}
+                    onChange={(event) =>
+                      updateProfile(
+                        "preferredMode",
+                        event.target.value as AiTutorProfile["preferredMode"]
+                      )
+                    }
+                    className="field-shell"
+                  >
+                    {aiTutorModes.map((mode) => (
+                      <option key={mode.value} value={mode.value}>
+                        {mode.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="block space-y-2">
+                  <span className="text-sm font-semibold text-foreground">
+                    Daily hours
+                  </span>
+                  <input
+                    type="number"
+                    min="0.5"
+                    max="12"
+                    step="0.5"
+                    value={profile.dailyHours}
+                    onChange={(event) =>
+                      updateProfile("dailyHours", Number(event.target.value))
+                    }
+                    className="field-shell"
+                  />
+                </label>
+
+                <label className="block space-y-2">
+                  <span className="text-sm font-semibold text-foreground">
+                    Interview date
+                  </span>
+                  <input
+                    type="date"
+                    value={profile.interviewDate}
+                    onChange={(event) =>
+                      updateProfile("interviewDate", event.target.value)
+                    }
+                    className="field-shell"
+                  />
+                </label>
+
+                <div className="flex items-end">
+                  <button
+                    type="button"
+                    onClick={() => void saveProfile()}
+                    disabled={busy}
+                    className="button-secondary w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Save profile
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-xs leading-5 text-muted">
+                  Pick a few topics you want extra time on. The coach uses
+                  these plus mastery memory to choose what to teach next.
+                </p>
+                <div className="mt-3 flex max-h-44 flex-wrap gap-2 overflow-auto pr-1">
+                  {tags.map((tag) => {
+                    const active = profile.weakTags.includes(tag.id);
+                    return (
+                      <button
+                        key={tag.id}
+                        type="button"
+                        onClick={() => toggleWeakTag(tag.id)}
+                        className={`rounded-full border px-3 py-1.5 text-left text-xs font-semibold transition ${
+                          active
+                            ? "border-primary bg-primary text-white"
+                            : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
+                        }`}
+                      >
+                        {tag.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </details>
-
-            <button
-              type="button"
-              onClick={() => void saveProfile()}
-              disabled={busy}
-              className="button-secondary w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              Save profile
-            </button>
-          </div>
-        </section>
-
-        {plan ? (
-          <section className="section-card rounded-[28px] p-5 md:p-6">
-            <PlanPanel plan={plan} />
-          </section>
-        ) : null}
-
-        <section className="section-card rounded-[28px] p-5 md:p-6">
-          <p className="panel-label">Progress so far</p>
-          <div className="mt-3 grid grid-cols-2 gap-3">
-            <div className="metric-slab">
-              <p className="panel-label">Avg mastery</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                {averageMastery || "--"}
-              </p>
-            </div>
-            <div className="metric-slab">
-              <p className="panel-label">Topics tracked</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                {masteryValues.length}
-              </p>
-            </div>
           </div>
 
-          <div className="mt-4 space-y-3 text-sm leading-6 text-muted">
-            <p>
-              Focus areas:{" "}
-              <span className="font-semibold text-foreground">
-                {selectedTagLabels.length > 0
-                  ? selectedTagLabels.join(", ")
-                  : "Pick a few when you're ready"}
-              </span>
-            </p>
-            {memory.strengths.length > 0 ? (
-              <p>
-                Strengths spotted:{" "}
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-line bg-surface-strong p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="panel-label">Sessions</p>
+                  <p className="mt-1 text-sm font-semibold text-foreground">
+                    Shared memory, separate chats
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => void startNewSession()}
+                  disabled={busy}
+                  className="rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition hover:-translate-y-0.5 disabled:opacity-60"
+                >
+                  New session
+                </button>
+              </div>
+
+              {sessions.length > 0 ? (
+                <div className="mt-3 space-y-2">
+                  {sessions.slice(0, 5).map((session) => {
+                    const active = session.id === sessionId;
+                    return (
+                      <button
+                        key={session.id}
+                        type="button"
+                        onClick={() => void loadSession(session.id)}
+                        disabled={busy || active}
+                        className={`w-full rounded-2xl border px-3 py-2 text-left transition ${
+                          active
+                            ? "border-primary bg-primary text-white"
+                            : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
+                        }`}
+                      >
+                        <span className="block truncate text-xs font-semibold">
+                          {session.title}
+                        </span>
+                        <span className="mt-1 block text-[10px] uppercase tracking-[0.16em] opacity-75">
+                          {phaseLabels[session.phase]} ·{" "}
+                          {new Date(session.startedAt).toLocaleDateString()}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="mt-3 text-sm leading-6 text-muted">
+                  Your first message will create a session automatically.
+                </p>
+              )}
+            </div>
+
+            {plan ? <PlanPanel plan={plan} /> : null}
+
+            <div className="rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
+              <p className="font-semibold text-foreground">Memory summary</p>
+              <p className="mt-2">
+                Focus areas:{" "}
                 <span className="font-semibold text-foreground">
-                  {memory.strengths.slice(0, 4).join(", ")}
+                  {selectedTagLabels.length > 0
+                    ? selectedTagLabels.join(", ")
+                    : "Pick a few when ready"}
                 </span>
               </p>
-            ) : null}
-            {memory.recurringMistakes.length > 0 ? (
-              <p>
-                To strengthen next:{" "}
-                <span className="font-semibold text-foreground">
-                  {memory.recurringMistakes.slice(0, 3).join("; ")}
-                </span>
-              </p>
-            ) : null}
-            {memory.nextRecommendations.length > 0 ? (
-              <p>
-                Coach&rsquo;s next picks: {memory.nextRecommendations.slice(0, 3).join("; ")}
-              </p>
-            ) : null}
+              {memory.strengths.length > 0 ? (
+                <p>Strengths: {memory.strengths.slice(0, 3).join(", ")}</p>
+              ) : null}
+              {memory.recurringMistakes.length > 0 ? (
+                <p>
+                  Next fixes: {memory.recurringMistakes.slice(0, 2).join("; ")}
+                </p>
+              ) : null}
+            </div>
           </div>
-        </section>
-      </aside>
+        </div>
+      </section>
 
-      <section className="section-card flex min-h-[42rem] flex-col rounded-[28px] p-5 md:p-6">
+      <section className="section-card flex min-h-[70vh] flex-col rounded-[28px] p-4 md:p-6">
         <div className="flex flex-col gap-4 border-b border-line pb-5">
           <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
             <div>
@@ -684,17 +909,25 @@ export default function AiTutorClient({
               <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
                 {phaseLabels[phase]}
               </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-                A deepagent-style coach: writes a lesson plan, retrieves topics,
-                delegates teaching to subagents, and grades only after a real
-                attempt.
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
+                Full-width coaching space. The coach asks one question at a
+                time, provides references when useful, and marks roadmap
+                progress only when your evaluated answer is interview-ready.
               </p>
             </div>
-            {lastAction ? (
-              <Link href={lastAction.href || "/study-plan"} className="button-primary-accent">
-                {lastAction.label}
-              </Link>
-            ) : null}
+            <div className="flex flex-wrap gap-2">
+              {activeSession ? (
+                <span className="data-chip">Session active</span>
+              ) : null}
+              {lastAction ? (
+                <Link
+                  href={lastAction.href || "/study-plan"}
+                  className="button-primary-accent"
+                >
+                  {lastAction.label}
+                </Link>
+              ) : null}
+            </div>
           </div>
           <PhaseProgress phase={phase} />
         </div>
@@ -712,17 +945,29 @@ export default function AiTutorClient({
           </div>
         ) : null}
 
-        <div
-          ref={scrollerRef}
-          className="mt-5 flex-1 space-y-4 overflow-y-auto pr-1"
-        >
-          {visibleMessages.map((message) => (
+        <div ref={scrollerRef} className="mt-5 flex-1 space-y-4 overflow-y-auto pr-1">
+          {hiddenMessageCount > 0 ? (
+            <button
+              type="button"
+              onClick={() => setShowOlder(true)}
+              className="mx-auto block rounded-full border border-line bg-surface-strong px-4 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground"
+            >
+              Show {hiddenMessageCount} earlier message
+              {hiddenMessageCount === 1 ? "" : "s"}
+            </button>
+          ) : null}
+
+          {displayMessages.map((message) => {
+            const references =
+              message.evaluation?.referenceLinks ??
+              message.topicRef?.referenceLinks;
+            return (
             <article
               key={message.id}
-              className={`rounded-3xl border p-4 ${
+              className={`rounded-3xl border p-4 md:p-5 ${
                 message.role === "assistant"
-                  ? "border-line bg-surface-strong"
-                  : "ml-auto max-w-[88%] border-primary bg-primary text-white"
+                  ? "max-w-[76rem] border-line bg-surface-strong"
+                  : "ml-auto max-w-[min(48rem,88%)] border-primary bg-primary text-white"
               }`}
             >
               <div className="flex items-center justify-between gap-2">
@@ -751,6 +996,9 @@ export default function AiTutorClient({
                   message.content
                 )}
               </div>
+              {message.role === "assistant" ? (
+                <ReferenceLinks links={references} compact />
+              ) : null}
 
               {message.evaluation ? (
                 <div className="mt-4 rounded-2xl border border-line bg-background/70 p-4 text-sm leading-6 text-muted">
@@ -773,6 +1021,9 @@ export default function AiTutorClient({
                   {message.evaluation.summary ? (
                     <p className="mt-2">{message.evaluation.summary}</p>
                   ) : null}
+                  <div className="mt-3">
+                    <ReadinessBadge evaluation={message.evaluation} />
+                  </div>
                   {message.evaluation.strengths.length > 0 ? (
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {message.evaluation.strengths.map((strength, idx) => (
@@ -797,6 +1048,7 @@ export default function AiTutorClient({
                       ))}
                     </div>
                   ) : null}
+                  <ReferenceLinks links={message.evaluation.referenceLinks} />
                 </div>
               ) : null}
 
@@ -804,7 +1056,8 @@ export default function AiTutorClient({
                 <ToolTracePanel trace={message.toolTrace} />
               ) : null}
             </article>
-          ))}
+          );
+          })}
 
           {busy ? (
             <article className="rounded-3xl border border-line bg-surface-strong p-4">
@@ -884,13 +1137,19 @@ export default function AiTutorClient({
           </button>
         </div>
 
-        <form onSubmit={submitMessage} className="mt-4 flex gap-3">
-          <input
+        <form onSubmit={submitMessage} className="mt-4 flex flex-col gap-3 md:flex-row">
+          <textarea
             value={draft}
             onChange={(event) => setDraft(event.target.value)}
-            className="field-shell"
+            className="field-shell min-h-24 resize-y md:min-h-14"
             placeholder="Type a message — say hi, ask a question, or answer the coach..."
             disabled={busy}
+            onKeyDown={(event) => {
+              if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+                event.preventDefault();
+                void sendMessage(draft);
+              }
+            }}
           />
           <button
             type="submit"
@@ -902,8 +1161,9 @@ export default function AiTutorClient({
         </form>
 
         <p className="mt-3 text-xs leading-5 text-muted">
-          Coach uses your daily plan, focus areas, and what you&rsquo;ve already
-          checked off — practice here also updates the dashboard tracker.
+          Coach uses your daily plan, focus areas, and memory. The dashboard is
+          updated only when the coach records an interview-ready answer for a
+          specific roadmap item. Press Cmd/Ctrl + Enter to send.
         </p>
       </section>
     </div>

@@ -19,6 +19,7 @@ import {
   type AiTutorPlan,
   type AiTutorPlanStatus,
   type AiTutorProfile,
+  type AiTutorSessionSummary,
 } from "@/lib/ai-tutor-types";
 
 const validPhases: AiTutorPhase[] = ["warmup", "calibration", "practice", "recap"];
@@ -47,11 +48,22 @@ interface MemoryRow {
 
 interface MessageRow {
   id: string;
+  session_id?: string | null;
   role: string;
   content: string;
   created_at: string;
   evaluation: unknown;
   topic_ref: unknown;
+}
+
+interface SessionRow {
+  id: string;
+  status: string | null;
+  mode: string | null;
+  current_tag: string | null;
+  summary: Record<string, unknown> | null;
+  started_at: string | null;
+  ended_at: string | null;
 }
 
 interface UsageRow {
@@ -63,6 +75,8 @@ export interface AiTutorState {
   profile: AiTutorProfile;
   memory: AiTutorMemory;
   recentMessages: AiTutorMessage[];
+  sessions: AiTutorSessionSummary[];
+  activeSessionId?: string;
   persistenceReady: boolean;
   persistenceWarning?: string;
 }
@@ -147,6 +161,33 @@ function mapMessage(row: MessageRow): AiTutorMessage {
   };
 }
 
+function mapSession(row: SessionRow): AiTutorSessionSummary {
+  const summary = row.summary ?? {};
+  const plan = normalizePlan(summary.plan);
+  const phaseRaw = typeof summary.phase === "string" ? summary.phase : "warmup";
+  const phase = validPhases.includes(phaseRaw as AiTutorPhase)
+    ? (phaseRaw as AiTutorPhase)
+    : "warmup";
+  const title =
+    plan?.goal ||
+    (row.current_tag ? `Practice: ${row.current_tag}` : "Coaching session");
+
+  return {
+    id: row.id,
+    title: title.slice(0, 90),
+    status: row.status ?? "active",
+    mode:
+      row.mode === "teach-and-quiz" || row.mode === "coding-lab"
+        ? row.mode
+        : "guided-interview",
+    currentTag: row.current_tag ?? undefined,
+    phase,
+    plan,
+    startedAt: row.started_at ?? new Date().toISOString(),
+    endedAt: row.ended_at ?? undefined,
+  };
+}
+
 export async function getAiTutorState(
   userId: string
 ): Promise<AiTutorState> {
@@ -156,13 +197,14 @@ export async function getAiTutorState(
       profile: defaultAiTutorProfile,
       memory: defaultAiTutorMemory,
       recentMessages: [],
+      sessions: [],
       persistenceReady: false,
       persistenceWarning:
         "Supabase service-role access is not configured, so tutor memory will not persist.",
     };
   }
 
-  const [profileResult, memoryResult, messagesResult] = await Promise.all([
+  const [profileResult, memoryResult, sessionsResult] = await Promise.all([
     sb
       .from(AI_TUTOR_PROFILES_TABLE)
       .select(
@@ -178,33 +220,38 @@ export async function getAiTutorState(
       .eq("user_id", userId)
       .maybeSingle(),
     sb
-      .from(AI_TUTOR_MESSAGES_TABLE)
-      .select("id,role,content,created_at,evaluation,topic_ref")
+      .from(AI_TUTOR_SESSIONS_TABLE)
+      .select("id,status,mode,current_tag,summary,started_at,ended_at")
       .eq("user_id", userId)
-      .order("created_at", { ascending: false })
+      .order("started_at", { ascending: false })
       .limit(8),
   ]);
 
   const firstError =
-    profileResult.error ?? memoryResult.error ?? messagesResult.error;
+    profileResult.error ?? memoryResult.error ?? sessionsResult.error;
   if (firstError) {
     return {
       profile: defaultAiTutorProfile,
       memory: defaultAiTutorMemory,
       recentMessages: [],
+      sessions: [],
       persistenceReady: false,
       persistenceWarning: firstError.message,
     };
   }
 
-  const recentMessages = ((messagesResult.data ?? []) as MessageRow[])
-    .map(mapMessage)
-    .reverse();
+  const sessions = ((sessionsResult.data ?? []) as SessionRow[]).map(mapSession);
+  const activeSessionId = sessions[0]?.id;
+  const recentMessages = activeSessionId
+    ? await getAiTutorSessionMessages(userId, activeSessionId, 30)
+    : [];
 
   return {
     profile: mapProfile(profileResult.data as ProfileRow | null),
     memory: mapMemory(memoryResult.data as MemoryRow | null),
     recentMessages,
+    sessions,
+    activeSessionId,
     persistenceReady: true,
   };
 }
@@ -277,6 +324,44 @@ export async function createAiTutorSession(
   }
 
   return { id: String((data as { id: string }).id), persisted: true };
+}
+
+export async function getAiTutorSessions(
+  userId: string,
+  limit = 12
+): Promise<AiTutorSessionSummary[]> {
+  const sb = getSupabaseAdmin();
+  if (!sb) return [];
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .select("id,status,mode,current_tag,summary,started_at,ended_at")
+    .eq("user_id", userId)
+    .order("started_at", { ascending: false })
+    .limit(limit);
+
+  if (error || !data) return [];
+  return (data as SessionRow[]).map(mapSession);
+}
+
+export async function getAiTutorSessionMessages(
+  userId: string,
+  sessionId: string,
+  limit = 40
+): Promise<AiTutorMessage[]> {
+  const sb = getSupabaseAdmin();
+  if (!sb || sessionId.startsWith("local-")) return [];
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_MESSAGES_TABLE)
+    .select("id,session_id,role,content,created_at,evaluation,topic_ref")
+    .eq("user_id", userId)
+    .eq("session_id", sessionId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  if (error || !data) return [];
+  return (data as MessageRow[]).map(mapMessage).reverse();
 }
 
 /** Read the conversational phase for a session. Phase is stored on the

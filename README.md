@@ -15,7 +15,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 - Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day and editable week labels in `content/daily-plan/weeks.json`.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
 - A question bank and expanded ML/GenAI/LLMOps system design case-study library.
-- Signed-in AI Tutor page for personalized readiness assessment, one-question-at-a-time interview coaching, feedback, and memory-backed weak-area follow-up.
+- Signed-in AI Tutor page for personalized readiness assessment, full-width coaching chat, multiple sessions, feedback, and memory-backed weak-area follow-up.
 - Optional Clerk auth for accounts and optional Supabase sync for cross-device progress.
 - Browser-local progress tracking when auth or Supabase are not configured.
 
@@ -118,7 +118,7 @@ Primary routes:
 - `/`: dashboard and progress tracker.
 - `/study-plan`: current daily/weekly roadmap.
 - `/questions`: daily-plan-backed topic browser that starts empty until a roadmap pillar or DSA tag is selected.
-- `/ai-tutor`: signed-in AI Tutor for assessment, guided practice, feedback, and memory-backed personalization.
+- `/ai-tutor`: signed-in AI Tutor for assessment, guided practice, session history, feedback, readiness-gated tracker updates, and memory-backed personalization.
 
 ## Content Sources
 
@@ -127,6 +127,7 @@ Primary routes:
 - Case studies: `content/case-studies/*.mdx`
 - Pillars, topics, questions, and resources: `lib/site-data.ts`
 - AI Tutor state: Supabase tables documented in `SETUP.md`
+- AI Tutor progress sync: the coach writes `day_progress.source = 'ai_tutor'` only after a roadmap-grounded answer is marked interview-ready.
 
 ## Editing Daily Content
 

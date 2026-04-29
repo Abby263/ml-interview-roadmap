@@ -7,7 +7,11 @@ import type {
   DailyPlanQuestionEntry,
   DailyPlanQuestionTag,
 } from "@/lib/daily-plan-questions";
-import type { AiTutorMemory, AiTutorProfile } from "@/lib/ai-tutor-types";
+import type {
+  AiTutorMemory,
+  AiTutorProfile,
+  AiTutorReferenceLink,
+} from "@/lib/ai-tutor-types";
 
 export interface AiTutorTopicContext {
   day: number;
@@ -20,6 +24,7 @@ export interface AiTutorTopicContext {
   interviewQuestions: string[];
   href?: string;
   itemId?: string;
+  referenceLinks: AiTutorReferenceLink[];
 }
 
 const allQuestionEntries: DailyPlanQuestionEntry[] =
@@ -38,6 +43,31 @@ for (const entry of allQuestionEntries) {
   entriesByDay.set(entry.day, list);
 }
 
+function referenceLinksForEntry(
+  entry: DailyPlanQuestionEntry
+): AiTutorReferenceLink[] {
+  const links: AiTutorReferenceLink[] = [];
+  if (entry.href) {
+    links.push({
+      label: `${entry.topicLabel} reference`,
+      href: entry.href,
+      source: "topic",
+    });
+  }
+  const plan = getDayPlan(entry.day);
+  for (const ref of plan?.references ?? []) {
+    if (!ref.href) continue;
+    if (links.some((link) => link.href === ref.href)) continue;
+    links.push({
+      label: ref.label,
+      href: ref.href,
+      source: ref.source,
+    });
+    if (links.length >= 4) break;
+  }
+  return links;
+}
+
 function entryToTopic(entry: DailyPlanQuestionEntry): AiTutorTopicContext {
   return {
     day: entry.day,
@@ -50,6 +80,7 @@ function entryToTopic(entry: DailyPlanQuestionEntry): AiTutorTopicContext {
     interviewQuestions: entry.interviewQuestions,
     href: entry.href,
     itemId: entry.id.replace(/^day-\d+-/, ""),
+    referenceLinks: referenceLinksForEntry(entry),
   };
 }
 

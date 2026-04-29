@@ -305,9 +305,11 @@ server routes only. Client code never writes to these tables directly.
 ### What works in the MVP
 
 - `/ai-tutor` is gated behind Clerk sign-in.
-- The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode.
-- The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, and recommends the next day/topic.
+- The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode without taking over the chat layout.
+- The tutor supports multiple sessions. Each session has its own transcript and lesson plan, while the memory layer is shared across sessions.
+- The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, includes reference links when the learner needs review material, and recommends the next day/topic.
 - Memory stores mastery scores, recurring mistakes, strengths, and next recommendations.
+- Dashboard progress is updated from AI Tutor only when `record_practice` marks a canonical roadmap item as `interview_ready`; weak or partial answers update memory but do not check off the study tracker.
 - The Python coding lab is intentionally not server-side. It is planned as a browser-only Pyodide module so user code does not execute on your infrastructure.
 
 ---
@@ -328,6 +330,10 @@ After deploying with both sets of env vars:
 6. Open `/ai-tutor`, save a tutor profile, start an assessment, then
    confirm rows appear in `ai_tutor_profiles`, `ai_tutor_sessions`,
    `ai_tutor_messages`, `ai_tutor_memory`, and `ai_tutor_usage`.
+7. Answer a roadmap-grounded question strongly enough for the coach to
+   mark it interview-ready, then verify `day_progress.source = 'ai_tutor'`
+   for the related day/item. Partial answers should only update
+   `ai_tutor_memory`.
 
 ---
 

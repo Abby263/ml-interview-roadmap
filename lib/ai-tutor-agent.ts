@@ -51,6 +51,7 @@ import {
   type AiTutorPlan,
   type AiTutorPlanStatus,
   type AiTutorProfile,
+  type AiTutorReadiness,
   type AiTutorSuggestedAction,
   type AiTutorToolTrace,
   type AiTutorTurn,
@@ -145,7 +146,12 @@ function topicsToBrief(topics: AiTutorTopicContext[], limit = 4) {
     interviewQuestions: topic.interviewQuestions.slice(0, 5),
     href: topic.href,
     itemId: topic.itemId,
+    referenceLinks: topic.referenceLinks.slice(0, 4),
   }));
+}
+
+function clampScore(value: number) {
+  return Math.max(0, Math.min(100, Math.round(value)));
 }
 
 function fallbackTurn(
@@ -371,7 +377,7 @@ const tools = [
     type: "function" as const,
     name: "record_practice",
     description:
-      "Record that the user attempted a question. Updates mastery (+ delta if strong, - if weak), writes a tracker check tagged ai_tutor, and stores evidence. ONLY call after a substantive answer attempt — NEVER for hellos, 'I don't know', or clarifying questions, and NEVER in warmup or recap phase.",
+      "Record that the user attempted a question. Updates mastery and stores evidence. The tracker is checked only when the answer is interview-ready and mapped to a canonical roadmap item. ONLY call after a substantive answer attempt — NEVER for hellos, 'I don't know', or clarifying questions, and NEVER in warmup or recap phase.",
     parameters: {
       type: "object" as const,
       properties: {
@@ -393,6 +399,17 @@ const tools = [
           description:
             "How much to move the running mastery score, -30 to +30. Negative for weak attempts.",
         },
+        readiness: {
+          type: "string" as const,
+          enum: ["needs_practice", "interview_ready"],
+          description:
+            "Use interview_ready only when this answer would pass an interview for this topic. Otherwise use needs_practice.",
+        },
+        readiness_reason: {
+          type: "string" as const,
+          description:
+            "One concise reason explaining whether the learner is ready to move on.",
+        },
         summary: { type: "string" as const },
         strengths: { type: "array" as const, items: { type: "string" as const } },
         gaps: { type: "array" as const, items: { type: "string" as const } },
@@ -405,6 +422,8 @@ const tools = [
         "topic_label",
         "score",
         "score_delta",
+        "readiness",
+        "readiness_reason",
         "summary",
       ],
       additionalProperties: false,
@@ -776,10 +795,20 @@ async function executeTool(
       const tagId = String(args.tag_id ?? "");
       const tagLabel = String(args.tag_label ?? tagId);
       const day = Math.max(0, Math.round(Number(args.day ?? 0)));
-      const itemId = typeof args.item_id === "string" ? args.item_id : undefined;
+      const rawItemId =
+        typeof args.item_id === "string" ? args.item_id.trim() : undefined;
+      const itemId =
+        rawItemId && day
+          ? rawItemId.replace(new RegExp(`^day-${day}-`), "")
+          : rawItemId;
       const topicLabel = String(args.topic_label ?? "");
-      const score = Math.max(0, Math.min(100, Number(args.score ?? 0)));
+      const score = clampScore(Number(args.score ?? 0));
       const scoreDelta = Math.max(-30, Math.min(30, Number(args.score_delta ?? 0)));
+      const readiness: AiTutorReadiness =
+        args.readiness === "interview_ready"
+          ? "interview_ready"
+          : "needs_practice";
+      const readinessReason = String(args.readiness_reason ?? "").slice(0, 240);
       const summary = String(args.summary ?? "");
       const strengths = Array.isArray(args.strengths)
         ? (args.strengths as unknown[]).filter(
@@ -810,12 +839,44 @@ async function executeTool(
         };
       }
 
+      const known = day && itemId ? getTopicByItemId(day, itemId) : undefined;
+      const previousScore = input.memory.mastery[tagId]?.score ?? 45;
+      const projectedScore = clampScore(previousScore + scoreDelta);
+      const hasBlockingGaps = gaps.length > 1;
+      const trackerReady =
+        readiness === "interview_ready" &&
+        scoreDelta > 0 &&
+        ((score >= 80 && !hasBlockingGaps) ||
+          (score >= 75 && projectedScore >= 70 && !hasBlockingGaps));
+      let trackerUpdated = false;
+      let trackerReason =
+        readinessReason || "Needs another strong answer before marking complete.";
+
+      if (known && itemId && trackerReady) {
+        await recordAiTutorCheck(input.userId, day, itemId);
+        trackerUpdated = true;
+        trackerReason =
+          readinessReason ||
+          "Marked complete because the answer met the interview-ready threshold.";
+      } else if (!known && trackerReady) {
+        trackerReason =
+          "Strong answer, but no exact roadmap item was resolved, so the tracker was not changed.";
+      } else if (readiness === "interview_ready" && !trackerReady) {
+        trackerReason =
+          readinessReason ||
+          "Close, but the score/mastery threshold was not high enough for auto-complete.";
+      }
+
       scratch.evaluation = {
         score,
         summary,
         strengths,
         gaps,
         rubric,
+        readiness,
+        trackerUpdated,
+        trackerReason,
+        referenceLinks: known?.referenceLinks ?? [],
       };
       scratch.memoryPatch.masteryUpdates.push({
         tagId,
@@ -839,14 +900,15 @@ async function executeTool(
           tagId,
           tagLabel,
           day,
-          topicLabel,
-          reason: "You just practiced this topic",
+          topicLabel: known?.topicLabel ?? topicLabel,
+          reason: trackerUpdated
+            ? "You proved this topic at interview-ready level"
+            : "You just practiced this topic",
+          itemId,
+          readiness,
+          referenceLinks: known?.referenceLinks ?? [],
         };
-        // Resolve canonical item id via roadmap so we don't write rows that
-        // don't match anything on the dashboard.
-        const known = getTopicByItemId(day, itemId);
         if (known) {
-          await recordAiTutorCheck(input.userId, day, itemId);
           scratch.suggestedAction = {
             label: `Open Day ${day}`,
             href: `/day/${day}`,
@@ -855,8 +917,16 @@ async function executeTool(
       }
 
       return {
-        output: { ok: true, score, score_delta: scoreDelta },
-        preview: `Recorded ${tagLabel} (${score}/100, Δ${scoreDelta})`,
+        output: {
+          ok: true,
+          score,
+          score_delta: scoreDelta,
+          projected_score: projectedScore,
+          readiness,
+          tracker_updated: trackerUpdated,
+          tracker_reason: trackerReason,
+        },
+        preview: `Recorded ${tagLabel} (${score}/100, Δ${scoreDelta}, ${readiness}${trackerUpdated ? ", tracker updated" : ""})`,
       };
     }
     default:

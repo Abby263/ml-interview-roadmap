@@ -45,6 +45,10 @@ export interface AiTutorEvaluation {
   strengths: string[];
   gaps: string[];
   rubric: string[];
+  readiness?: AiTutorReadiness;
+  trackerUpdated?: boolean;
+  trackerReason?: string;
+  referenceLinks?: AiTutorReferenceLink[];
 }
 
 export interface AiTutorMemoryPatch {
@@ -65,11 +69,25 @@ export interface AiTutorNextTopic {
   day: number;
   topicLabel: string;
   reason: string;
+  itemId?: string;
+  readiness?: AiTutorReadiness;
+  referenceLinks?: AiTutorReferenceLink[];
 }
 
 export interface AiTutorSuggestedAction {
   label: string;
   href: string;
+}
+
+export type AiTutorReadiness =
+  | "not_assessed"
+  | "needs_practice"
+  | "interview_ready";
+
+export interface AiTutorReferenceLink {
+  label: string;
+  href: string;
+  source?: string;
 }
 
 export interface AiTutorToolTrace {
@@ -118,6 +136,19 @@ export interface AiTutorMessage {
   evaluation?: AiTutorEvaluation;
   topicRef?: AiTutorNextTopic;
   phase?: AiTutorPhase;
+}
+
+export interface AiTutorSessionSummary {
+  id: string;
+  title: string;
+  status: string;
+  mode: AiTutorMode;
+  currentTag?: string;
+  phase: AiTutorPhase;
+  plan?: AiTutorPlan;
+  startedAt: string;
+  endedAt?: string;
+  messageCount?: number;
 }
 
 export const aiTutorLevels: { value: AiTutorLevel; label: string }[] = [
