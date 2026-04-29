@@ -5,6 +5,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import AiTutorVoicePanel from "@/components/AiTutorVoicePanel";
 import type { DailyPlanQuestionTag } from "@/lib/daily-plan-questions";
 import { markDayCheckLocal } from "@/lib/progress-store";
 import {
@@ -454,6 +455,7 @@ export default function AiTutorClient({
   const [deletingSessionId, setDeletingSessionId] = useState<string | null>(
     null
   );
+  const [voiceOpen, setVoiceOpen] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -1081,6 +1083,19 @@ export default function AiTutorClient({
               {activeSession ? (
                 <span className="data-chip">Session active</span>
               ) : null}
+              <button
+                type="button"
+                onClick={() => setVoiceOpen((v) => !v)}
+                disabled={!openaiConfigured || !sessionId || sessionId.startsWith("local-")}
+                className="rounded-full border border-line bg-surface-strong px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
+                title={
+                  !sessionId || sessionId.startsWith("local-")
+                    ? "Start a persisted session first to use voice mode."
+                    : "Talk to the coach with your voice"
+                }
+              >
+                {voiceOpen ? "Hide voice" : "🎙 Voice mode"}
+              </button>
               {lastAction ? (
                 <Link
                   href={lastAction.href || "/study-plan"}
@@ -1098,6 +1113,20 @@ export default function AiTutorClient({
           <div className="mt-5 rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
             Add <code>OPENAI_API_KEY</code> to enable live coaching. Profile
             and UI setup can still be reviewed without the key.
+          </div>
+        ) : null}
+
+        {voiceOpen && sessionId && !sessionId.startsWith("local-") ? (
+          <div className="mt-5">
+            <AiTutorVoicePanel
+              profile={profile}
+              sessionId={sessionId}
+              onSessionId={(id) => setSessionId(id)}
+              onMemory={(m) => setMemory(m)}
+              onPlan={(p) => setPlan(p)}
+              onPhase={(p) => setPhase(p)}
+              onClose={() => setVoiceOpen(false)}
+            />
           </div>
         ) : null}
 
