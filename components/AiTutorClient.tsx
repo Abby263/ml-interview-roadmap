@@ -1086,12 +1086,12 @@ export default function AiTutorClient({
               <button
                 type="button"
                 onClick={() => setVoiceOpen((v) => !v)}
-                disabled={!openaiConfigured || !sessionId || sessionId.startsWith("local-")}
+                disabled={!openaiConfigured}
                 className="rounded-full border border-line bg-surface-strong px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
                 title={
-                  !sessionId || sessionId.startsWith("local-")
-                    ? "Start a persisted session first to use voice mode."
-                    : "Talk to the coach with your voice"
+                  openaiConfigured
+                    ? "Talk to the coach with your voice"
+                    : "Voice mode needs OPENAI_API_KEY"
                 }
               >
                 {voiceOpen ? "Hide voice" : "🎙 Voice mode"}
@@ -1116,7 +1116,7 @@ export default function AiTutorClient({
           </div>
         ) : null}
 
-        {voiceOpen && sessionId && !sessionId.startsWith("local-") ? (
+        {voiceOpen && openaiConfigured ? (
           <div className="mt-5">
             <AiTutorVoicePanel
               profile={profile}

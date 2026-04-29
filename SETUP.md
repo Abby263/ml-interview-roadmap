@@ -197,19 +197,89 @@ The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
 
 ### Voice mode (WebRTC + Realtime API)
 
-Click **🎙 Voice mode** on `/ai-tutor` to talk with the coach. The
-browser opens a WebRTC connection straight to OpenAI; we just mint the
-short-lived ephemeral key and route tool calls (mastery, lesson plan,
-tracker, references) through the server so memory updates persist.
+Click **🎙 Voice mode** on `/ai-tutor` to talk through your prep with the
+coach. The browser opens a WebRTC connection straight to OpenAI; we just
+mint a short-lived ephemeral key on the server and route tool calls
+(mastery, lesson plan, tracker, references) through `/api/ai-tutor/realtime/tool`
+so memory updates persist.
 
-- Same persona, phases, lesson plan, mastery, and tracker rules as chat
-  mode. Tool calls flow through `/api/ai-tutor/realtime/tool`.
-- Transcript is captured turn-by-turn and persisted to the same session
-  (`ai_tutor_messages`) when the call ends, so memory updates carry
-  forward.
-- The mic permission prompt appears the first time you start a call.
-- A persisted session is required (Supabase configured) — voice can't
-  attach to a `local-…` session id.
+#### What you need
+
+- `OPENAI_API_KEY` (already required for chat mode — voice reuses it).
+- `AI_TUTOR_REALTIME_MODEL` (optional; defaults to `gpt-realtime-mini`).
+- `AI_TUTOR_REALTIME_VOICE` (optional; defaults to `alloy`).
+- A signed-in Clerk user (voice mode is gated the same way chat is).
+- Supabase service-role configured — voice persists transcripts and
+  state to the same `ai_tutor_*` tables as chat. Without Supabase, the
+  call still runs but nothing is saved across reloads.
+
+#### Picking a voice
+
+Set `AI_TUTOR_REALTIME_VOICE` to any of OpenAI's Realtime voices:
+
+| Voice | Style |
+| --- | --- |
+| `alloy` | Default — neutral, clear |
+| `echo` | Calm, measured |
+| `shimmer` | Bright, friendly |
+| `sage` | Soft, thoughtful |
+| `verse` | Expressive, energetic |
+| `coral` | Warm, conversational |
+| `ballad` | Storyteller, slower pace |
+| `ash` | Crisp, low-pitched |
+
+The default `alloy` is a safe pick for a coach. You can override per
+session later if we expose a UI selector.
+
+#### How it works
+
+- Click **🎙 Voice mode** → browser POSTs `/api/ai-tutor/realtime/session`.
+- The server **auto-creates a persisted session row** if you don't have
+  one yet (or if your active session is a local fallback). You don't need
+  to type a chat message first.
+- The server returns an OpenAI Realtime `client_secret` (60-second TTL).
+  The browser uses it to establish a WebRTC peer connection directly to
+  OpenAI's Realtime endpoint.
+- Browser mic + remote speaker stream over the peer connection.
+  Streaming events (transcript chunks, tool calls) arrive on a data
+  channel.
+- When the model emits a tool call, the browser POSTs
+  `{name, args}` to `/api/ai-tutor/realtime/tool`. The server runs the
+  tool against the same persistence layer chat mode uses (mastery,
+  plan, phase, tracker), then returns the function-call output for the
+  browser to send back to OpenAI on the data channel.
+- On end, the browser POSTs the transcript to
+  `/api/ai-tutor/realtime/transcript`, which appends each turn to
+  `ai_tutor_messages` for the same session id.
+
+#### Tool parity with chat
+
+Voice supports all chat tools except the two `delegate_*` subagents (the
+realtime model teaches inline naturally instead). Specifically:
+
+- `get_roadmap_topic`, `search_questions`, `retrieve_daily_plan_content`
+- `get_user_mastery`, `get_user_progress`
+- `pick_next_topic`, `set_phase`
+- `write_lesson_plan`, `update_lesson_plan_step`
+- `record_practice` — same gating: only writes a `day_progress` row
+  tagged `source='ai_tutor'` when score ≥ 70.
+
+#### Browser requirements
+
+- Microphone permission (prompted on first **Start voice** click).
+- A modern browser with `RTCPeerConnection` + `getUserMedia` — Chrome,
+  Edge, Safari 14.1+, Firefox 88+ all work.
+- The voice panel falls back to a friendly error if the mic is blocked.
+
+#### Costs to watch
+
+OpenAI's Realtime API bills audio minutes on top of token usage. For a
+20-minute coaching session on `gpt-realtime-mini`, expect a few cents.
+Tool-call tokens (the structured args + outputs) are billed as text and
+also flow through `consumeAiTutorUsage`, so the daily limit set by
+`AI_TUTOR_DAILY_LIMIT` still applies indirectly via the chat API but
+**does not** currently rate-limit voice minutes — set a Vercel-side
+budget alert if you're worried.
 
 ### LangSmith tracing
 
