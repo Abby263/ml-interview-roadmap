@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { getSignedInUserId } from "@/lib/auth";
 import {
   createAiTutorSession,
+  deleteAiTutorSession,
   getAiTutorSessionMessages,
   getAiTutorSessions,
 } from "@/lib/ai-tutor-store";
@@ -46,5 +47,38 @@ export async function POST(request: Request) {
     persisted: session.persisted,
     warning: "warning" in session ? session.warning : undefined,
     sessions,
+  });
+}
+
+export async function DELETE(request: Request) {
+  const userId = await getSignedInUserId();
+  if (!userId) {
+    return NextResponse.json({ error: "Sign in required." }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(request.url);
+  const sessionId = searchParams.get("sessionId")?.trim();
+  if (!sessionId) {
+    return NextResponse.json(
+      { error: "sessionId is required." },
+      { status: 400 }
+    );
+  }
+
+  const result = await deleteAiTutorSession(userId, sessionId);
+  if (!result.ok) {
+    return NextResponse.json(
+      { error: result.warning ?? "Could not delete session." },
+      { status: result.status ?? 500 }
+    );
+  }
+
+  return NextResponse.json({
+    ok: true,
+    sessions: result.sessions,
+    activeSessionId: result.activeSessionId,
+    messages: result.messages,
+    memory: result.memory,
+    warning: result.warning,
   });
 }

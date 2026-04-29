@@ -307,6 +307,7 @@ server routes only. Client code never writes to these tables directly.
 - `/ai-tutor` is gated behind Clerk sign-in.
 - The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode without taking over the chat layout.
 - The tutor supports multiple sessions. Each session has its own transcript and lesson plan, while the memory layer is shared across sessions.
+- Deleting a tutor session removes that session and transcript from Supabase, then rebuilds shared memory from the remaining sessions so deleted-session evidence is not retained.
 - The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, includes reference links when the learner needs review material, and recommends the next day/topic.
 - Memory stores mastery scores, recurring mistakes, strengths, and next recommendations.
 - Dashboard progress is updated from AI Tutor only when `record_practice` marks a canonical roadmap item as `interview_ready`; weak or partial answers update memory but do not check off the study tracker.
