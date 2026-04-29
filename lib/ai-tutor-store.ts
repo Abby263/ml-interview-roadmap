@@ -11,6 +11,7 @@ import {
   defaultAiTutorProfile,
   normalizeAiTutorMemory,
   normalizeAiTutorProfile,
+  type AiTutorMastery,
   type AiTutorMemory,
   type AiTutorMemoryPatch,
   type AiTutorMessage,
@@ -71,6 +72,12 @@ interface UsageRow {
   token_estimate: number | null;
 }
 
+interface MemorySourceMessageRow {
+  evaluation: unknown;
+  topic_ref: unknown;
+  created_at: string | null;
+}
+
 export interface AiTutorState {
   profile: AiTutorProfile;
   memory: AiTutorMemory;
@@ -96,6 +103,12 @@ function confidenceFor(score: number): "low" | "medium" | "high" {
 
 function clampScore(value: number) {
   return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
 }
 
 function mapProfile(row: ProfileRow | null): AiTutorProfile {
@@ -362,6 +375,175 @@ export async function getAiTutorSessionMessages(
 
   if (error || !data) return [];
   return (data as MessageRow[]).map(mapMessage).reverse();
+}
+
+async function rebuildAiTutorMemoryFromMessages(userId: string) {
+  const sb = getSupabaseAdmin();
+  if (!sb) {
+    return {
+      ok: false,
+      memory: defaultAiTutorMemory,
+      warning: "Supabase is not configured, so tutor memory was not rebuilt.",
+    };
+  }
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_MESSAGES_TABLE)
+    .select("evaluation,topic_ref,created_at")
+    .eq("user_id", userId)
+    .eq("role", "assistant")
+    .order("created_at", { ascending: true })
+    .limit(1000);
+
+  if (error) {
+    return { ok: false, memory: defaultAiTutorMemory, warning: error.message };
+  }
+
+  const now = new Date().toISOString();
+  const byTag = new Map<
+    string,
+    {
+      tagLabel: string;
+      scores: number[];
+      evidence: string[];
+      updatedAt: string;
+    }
+  >();
+  const strengths: string[] = [];
+  const recurringMistakes: string[] = [];
+
+  for (const row of (data ?? []) as MemorySourceMessageRow[]) {
+    const evaluation = asRecord(row.evaluation);
+    const topicRef = asRecord(row.topic_ref);
+    const score =
+      typeof evaluation.score === "number" && Number.isFinite(evaluation.score)
+        ? clampScore(evaluation.score)
+        : undefined;
+    const summary =
+      typeof evaluation.summary === "string" ? evaluation.summary.trim() : "";
+    const tagId = typeof topicRef.tagId === "string" ? topicRef.tagId : "";
+    const tagLabel =
+      typeof topicRef.tagLabel === "string" ? topicRef.tagLabel : tagId;
+    if (tagId && score !== undefined) {
+      const current = byTag.get(tagId) ?? {
+        tagLabel,
+        scores: [],
+        evidence: [],
+        updatedAt: row.created_at ?? now,
+      };
+      current.scores.push(score);
+      if (summary) current.evidence.push(summary.slice(0, 240));
+      current.updatedAt = row.created_at ?? current.updatedAt;
+      byTag.set(tagId, current);
+    }
+
+    if (Array.isArray(evaluation.strengths)) {
+      strengths.push(
+        ...evaluation.strengths.filter(
+          (item): item is string => typeof item === "string"
+        )
+      );
+    }
+    if (Array.isArray(evaluation.gaps)) {
+      recurringMistakes.push(
+        ...evaluation.gaps.filter(
+          (item): item is string => typeof item === "string"
+        )
+      );
+    }
+  }
+
+  const mastery: Record<string, AiTutorMastery> = {};
+  for (const [tagId, item] of byTag) {
+    const recentScores = item.scores.slice(-5);
+    const score = clampScore(
+      recentScores.reduce((sum, value) => sum + value, 0) /
+        Math.max(1, recentScores.length)
+    );
+    mastery[tagId] = {
+      tagLabel: item.tagLabel || tagId,
+      score,
+      confidence: confidenceFor(score),
+      evidence: uniqueLimited(item.evidence.slice(-6), 6),
+      updatedAt: item.updatedAt,
+    };
+  }
+
+  const memory: AiTutorMemory = {
+    mastery,
+    recurringMistakes: uniqueLimited(recurringMistakes.slice(-30), 20),
+    strengths: uniqueLimited(strengths.slice(-30), 20),
+    nextRecommendations: uniqueLimited(
+      recurringMistakes.slice(-6).map((gap) => `Review: ${gap}`),
+      12
+    ),
+    updatedAt: now,
+  };
+
+  const { error: upsertError } = await sb.from(AI_TUTOR_MEMORY_TABLE).upsert(
+    {
+      user_id: userId,
+      mastery: memory.mastery,
+      recurring_mistakes: memory.recurringMistakes,
+      strengths: memory.strengths,
+      next_recommendations: memory.nextRecommendations,
+      updated_at: now,
+    },
+    { onConflict: "user_id" }
+  );
+
+  return upsertError
+    ? { ok: false, memory, warning: upsertError.message }
+    : { ok: true, memory };
+}
+
+export async function deleteAiTutorSession(userId: string, sessionId: string) {
+  const sb = getSupabaseAdmin();
+  if (!sb || sessionId.startsWith("local-")) {
+    return {
+      ok: false,
+      status: 400,
+      warning: "Persistent tutor storage is not configured for this session.",
+    };
+  }
+
+  const { error: messageError } = await sb
+    .from(AI_TUTOR_MESSAGES_TABLE)
+    .delete()
+    .eq("user_id", userId)
+    .eq("session_id", sessionId);
+  if (messageError) {
+    return { ok: false, status: 500, warning: messageError.message };
+  }
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .delete()
+    .eq("user_id", userId)
+    .eq("id", sessionId)
+    .select("id");
+  if (error) {
+    return { ok: false, status: 500, warning: error.message };
+  }
+  if (!data || data.length === 0) {
+    return { ok: false, status: 404, warning: "Tutor session was not found." };
+  }
+
+  const memoryResult = await rebuildAiTutorMemoryFromMessages(userId);
+  const sessions = await getAiTutorSessions(userId);
+  const activeSessionId = sessions[0]?.id;
+  const messages = activeSessionId
+    ? await getAiTutorSessionMessages(userId, activeSessionId, 60)
+    : [];
+
+  return {
+    ok: true,
+    sessions,
+    activeSessionId,
+    messages,
+    memory: memoryResult.memory,
+    warning: memoryResult.warning,
+  };
 }
 
 /** Read the conversational phase for a session. Phase is stored on the

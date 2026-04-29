@@ -389,6 +389,9 @@ export default function AiTutorClient({
       null
   );
   const [showOlder, setShowOlder] = useState(false);
+  const [deletingSessionId, setDeletingSessionId] = useState<string | null>(
+    null
+  );
   const scrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -544,6 +547,54 @@ export default function AiTutorClient({
       );
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function deleteSession(targetSession: AiTutorSessionSummary) {
+    if (busy || deletingSessionId) return;
+    const confirmed = window.confirm(
+      "Delete this AI Tutor session? This removes the transcript from the database and rebuilds shared memory from your remaining sessions."
+    );
+    if (!confirmed) return;
+
+    setDeletingSessionId(targetSession.id);
+    setStatus(null);
+    try {
+      const response = await fetch(
+        `/api/ai-tutor/sessions?sessionId=${encodeURIComponent(targetSession.id)}`,
+        { method: "DELETE" }
+      );
+      const data = (await response.json()) as {
+        sessions?: AiTutorSessionSummary[];
+        activeSessionId?: string;
+        messages?: AiTutorMessage[];
+        memory?: AiTutorMemory;
+        warning?: string;
+        error?: string;
+      };
+      if (!response.ok || data.error) {
+        throw new Error(data.error ?? "Could not delete session.");
+      }
+
+      const nextSessions = data.sessions ?? [];
+      const nextActiveSession = data.activeSessionId
+        ? nextSessions.find((item) => item.id === data.activeSessionId)
+        : undefined;
+      setSessions(nextSessions);
+      if (data.memory) setMemory(data.memory);
+      if (targetSession.id === sessionId) {
+        setSessionId(data.activeSessionId ?? "");
+        setMessages(data.messages ?? []);
+        setPhase(nextActiveSession?.phase ?? "warmup");
+        setPlan(nextActiveSession?.plan ?? null);
+        setLastAction(null);
+        setShowOlder(false);
+      }
+      setStatus(data.warning ?? "Session deleted and tutor memory rebuilt.");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Could not delete session.");
+    } finally {
+      setDeletingSessionId(null);
     }
   }
 
@@ -831,6 +882,10 @@ export default function AiTutorClient({
                   <p className="mt-1 text-sm font-semibold text-foreground">
                     Shared memory, separate chats
                   </p>
+                  <p className="mt-1 text-xs leading-5 text-muted">
+                    Delete removes the transcript and rebuilds memory from the
+                    remaining sessions.
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -846,26 +901,48 @@ export default function AiTutorClient({
                 <div className="mt-3 space-y-2">
                   {sessions.slice(0, 5).map((session) => {
                     const active = session.id === sessionId;
+                    const deleting = deletingSessionId === session.id;
                     return (
-                      <button
+                      <div
                         key={session.id}
-                        type="button"
-                        onClick={() => void loadSession(session.id)}
-                        disabled={busy || active}
-                        className={`w-full rounded-2xl border px-3 py-2 text-left transition ${
+                        className={`flex items-center gap-2 rounded-2xl border p-2 transition ${
                           active
                             ? "border-primary bg-primary text-white"
-                            : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
+                            : "border-line bg-background text-muted"
                         }`}
                       >
-                        <span className="block truncate text-xs font-semibold">
-                          {session.title}
-                        </span>
-                        <span className="mt-1 block text-[10px] uppercase tracking-[0.16em] opacity-75">
-                          {phaseLabels[session.phase]} ·{" "}
-                          {new Date(session.startedAt).toLocaleDateString()}
-                        </span>
-                      </button>
+                        <button
+                          type="button"
+                          onClick={() => void loadSession(session.id)}
+                          disabled={busy || active || Boolean(deletingSessionId)}
+                          className={`min-w-0 flex-1 rounded-xl px-2 py-1 text-left transition ${
+                            active
+                              ? "text-white"
+                              : "hover:bg-surface-strong hover:text-foreground"
+                          } disabled:cursor-not-allowed`}
+                        >
+                          <span className="block truncate text-xs font-semibold">
+                            {session.title}
+                          </span>
+                          <span className="mt-1 block text-[10px] uppercase tracking-[0.16em] opacity-75">
+                            {phaseLabels[session.phase]} ·{" "}
+                            {new Date(session.startedAt).toLocaleDateString()}
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void deleteSession(session)}
+                          disabled={busy || Boolean(deletingSessionId)}
+                          aria-label={`Delete session ${session.title}`}
+                          className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-semibold transition disabled:cursor-not-allowed disabled:opacity-50 ${
+                            active
+                              ? "border-white/30 text-white/85 hover:bg-white/15"
+                              : "border-rose-300/50 text-rose-600 hover:border-rose-400 hover:bg-rose-50 dark:border-rose-500/30 dark:text-rose-300 dark:hover:bg-rose-500/10"
+                          }`}
+                        >
+                          {deleting ? "Deleting" : "Delete"}
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
