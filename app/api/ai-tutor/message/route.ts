@@ -8,6 +8,7 @@ import {
   createAiTutorSession,
   getAiTutorMemory,
   getAiTutorSessionPhase,
+  getAiTutorSessionPlan,
   saveAiTutorProfile,
 } from "@/lib/ai-tutor-store";
 import {
@@ -85,7 +86,10 @@ export async function POST(request: Request) {
       }
     : await createAiTutorSession(userId, profile.preferredMode);
 
-  const phase: AiTutorPhase = await getAiTutorSessionPhase(session.id);
+  const [phase, plan] = await Promise.all([
+    getAiTutorSessionPhase(session.id) as Promise<AiTutorPhase>,
+    getAiTutorSessionPlan(session.id),
+  ]);
 
   await appendAiTutorMessage(userId, session.id, {
     role: "user",
@@ -108,6 +112,7 @@ export async function POST(request: Request) {
     profile,
     memory,
     phase,
+    plan,
     conversation,
   });
 
@@ -128,6 +133,7 @@ export async function POST(request: Request) {
     nextTopic: turn.nextTopic,
     suggestedAction: turn.suggestedAction,
     phase: turn.phase,
+    plan: turn.plan,
     toolTrace: turn.toolTrace,
     warnings,
   });

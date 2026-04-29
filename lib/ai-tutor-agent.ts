@@ -1,37 +1,41 @@
-// AI Tutor agent loop — OpenAI Responses API with function-calling tools.
+// AI Tutor "deep agent" — OpenAI Responses API tool-using loop with
+// subagents, retrieval, persisted memory, and reusable skills.
 //
-// Why a real loop instead of one structured-output call:
-//   - Lets the agent fetch only the topics it actually needs, on-demand.
-//   - Lets the agent record practice (mastery + tracker check) when, and
-//     only when, the user gave a real attempt — not on every "hi".
-//   - Cleans up the conversational tone, since we no longer force a JSON
-//     schema with a mandatory "evaluation" field on every reply.
+// The agent is wired around three idea slots that make a coach feel deep:
+//   1. MEMORY  — prior mastery + recurring mistakes are injected into the
+//      system prompt every turn (see ai-tutor-prompts.buildSystemInstructions).
+//   2. SKILLS  — reusable instruction blocks (interview rubric, scaffolding,
+//      socratic followup) live in ai-tutor-prompts and are baked into the
+//      system message so the model can lean on them by name.
+//   3. SUBAGENTS — focused single-shot model calls with tighter prompts:
+//        - delegate_to_concept_teacher
+//        - delegate_to_mock_interviewer
+//      Surfaced to the main agent as tools so it can decide when to delegate.
 //
-// The tools are the agent's "deep agent" surface:
-//   - get_roadmap_topic(day)
-//   - search_questions(query)
-//   - get_user_mastery()
-//   - get_user_progress()
-//   - record_practice(...)
-//   - set_phase(phase)
-//   - pick_next_topic(prefer_focus_areas)
-//
-// State changes (mastery, progress, phase) happen as side effects in the
-// tool implementations so we don't have to re-derive them from a
-// post-hoc JSON blob.
+// Everything related to *what to say* lives in ai-tutor-prompts.ts; this
+// file is the orchestration only.
 
 import {
   getAiTutorTopicContext,
   getTopicByItemId,
   getTopicsForDay,
+  retrieveDailyPlanContent,
   searchAiTutorQuestions,
   type AiTutorTopicContext,
 } from "@/lib/ai-tutor-context";
-import { recordAiTutorCheck } from "@/app/actions/progress";
-import { getServerProgressDetailed } from "@/app/actions/progress";
+import {
+  getServerProgressDetailed,
+  recordAiTutorCheck,
+} from "@/app/actions/progress";
+import {
+  buildSystemInstructions,
+  conceptTeacherPrompt,
+  mockInterviewerPrompt,
+} from "@/lib/ai-tutor-prompts";
 import {
   mergeAndSaveAiTutorMemory,
   setAiTutorSessionPhase,
+  setAiTutorSessionPlan,
 } from "@/lib/ai-tutor-store";
 import {
   endRun,
@@ -44,6 +48,8 @@ import {
   type AiTutorMemoryPatch,
   type AiTutorNextTopic,
   type AiTutorPhase,
+  type AiTutorPlan,
+  type AiTutorPlanStatus,
   type AiTutorProfile,
   type AiTutorSuggestedAction,
   type AiTutorToolTrace,
@@ -53,6 +59,12 @@ import {
 const MAX_TOOL_ITERATIONS = 8;
 const REQUEST_TIMEOUT_MS = 45_000;
 
+// Models we trust for the function-calling loop. If AI_TUTOR_MODEL is set
+// to something OpenAI rejects (e.g. a model that doesn't exist yet), we
+// fall back to the first entry below so the user still gets a coherent reply
+// instead of a generic "I couldn't complete the AI Tutor turn" message.
+const FALLBACK_MODELS = ["gpt-4o-mini", "gpt-4.1-mini", "gpt-4o"];
+
 interface AgentRunInput {
   userId: string;
   sessionId: string;
@@ -60,6 +72,7 @@ interface AgentRunInput {
   profile: AiTutorProfile;
   memory: AiTutorMemory;
   phase: AiTutorPhase;
+  plan?: AiTutorPlan;
   conversation: { role: "user" | "assistant"; content: string }[];
 }
 
@@ -72,6 +85,8 @@ interface AgentScratch {
   nextTopic?: AiTutorNextTopic;
   suggestedAction?: AiTutorSuggestedAction;
   phase: AiTutorPhase;
+  plan?: AiTutorPlan;
+  planDirty: boolean;
   memoryPatch: AiTutorMemoryPatch;
   toolTrace: AiTutorToolTrace[];
 }
@@ -80,7 +95,7 @@ interface OpenAIResponseShape {
   id?: string;
   output?: unknown;
   output_text?: unknown;
-  error?: { message?: string };
+  error?: { message?: string; code?: string; type?: string };
   usage?: {
     input_tokens?: number;
     output_tokens?: number;
@@ -133,39 +148,6 @@ function topicsToBrief(topics: AiTutorTopicContext[], limit = 4) {
   }));
 }
 
-function buildSystemInstructions(profile: AiTutorProfile, phase: AiTutorPhase) {
-  const interviewBlock = profile.interviewDate
-    ? `Interview date: ${profile.interviewDate}. Pace and topic choice should reflect how close it is.`
-    : `Interview date: not set. Encourage the learner to set one when natural.`;
-
-  return [
-    "You are Maya, an experienced ML engineer who is now this learner's interview coach.",
-    "Your voice is warm, sharp, and concrete — like a senior teammate who has prepped many candidates.",
-    "Always acknowledge what the learner just said before redirecting. Never drop them into a hard question cold.",
-    "Match difficulty to where they are. If they say 'I don't know' or sound uncertain, scaffold — back up to the closest concept they DO know and build forward from there. Never grade them for not knowing.",
-    "Ladder difficulty: basic → applied → trade-offs → system-design. Don't jump levels in one turn.",
-    "Stay conversational. Replies under 6 sentences unless you're teaching a concept; then up to ~10. Plain English.",
-    "",
-    `Learner profile — target role: ${profile.targetRole}, self-rated level: ${profile.currentLevel}, daily hours: ${profile.dailyHours}, mode: ${profile.preferredMode}.`,
-    interviewBlock,
-    "",
-    "PHASE GUIDANCE:",
-    "- warmup: just chat. Learn their target role, comfort level, what they want to focus on. NO grading. Two or three turns max.",
-    "- calibration: ask a couple of broad questions across pillars to find their level. Light scoring only when they actually attempt.",
-    "- practice: real interview-style quizzing on a chosen topic, with full evaluations after substantive attempts.",
-    "- recap: summarize what we covered today, what's next, congratulate. NO grading.",
-    `Current phase: ${phase}.`,
-    "",
-    "TOOL USAGE:",
-    "- Call get_roadmap_topic(day) or search_questions(query) to ground questions in the daily plan.",
-    "- Only call record_practice AFTER the user gave a substantive attempt at a question. Don't grade hellos, 'I don't know', or follow-up questions.",
-    "- Call set_phase when transitioning (warmup → calibration → practice → recap). Don't stay in warmup forever; once you have role + comfort + a focus area, advance.",
-    "- Call pick_next_topic when you need to choose what to teach or quiz next.",
-    "",
-    "RESPONSE: After your tool calls, write a single conversational reply to the learner. No JSON, no headers, no bullet lists unless teaching. Talk like a person.",
-  ].join("\n");
-}
-
 function fallbackTurn(
   phase: AiTutorPhase,
   errorMessage: string,
@@ -184,6 +166,7 @@ function fallbackTurn(
     nextTopic: scratch?.nextTopic,
     suggestedAction: scratch?.suggestedAction,
     phase,
+    plan: scratch?.plan,
     toolTrace: scratch?.toolTrace ?? [],
     warning: errorMessage,
   };
@@ -223,9 +206,23 @@ const tools = [
   },
   {
     type: "function" as const,
+    name: "retrieve_daily_plan_content",
+    description:
+      "Retrieve the FULL daily plan content for a specific day — focus, every track, every item with its interview questions, and external references. Use when planning a teaching arc or when you need richer context than search_questions provides.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        day: { type: "integer" as const },
+      },
+      required: ["day"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
     name: "get_user_mastery",
     description:
-      "Read the learner's current mastery scores per tag (e.g. pillar:deep-learning). Useful before deciding what to quiz.",
+      "Read the learner's current mastery scores per tag (e.g. pillar:deep-learning), strengths, and recurring mistakes from memory.",
     parameters: {
       type: "object" as const,
       properties: {},
@@ -237,7 +234,7 @@ const tools = [
     type: "function" as const,
     name: "get_user_progress",
     description:
-      "List which roadmap items the learner has already checked off (manual study or AI tutor practice).",
+      "List which roadmap items the learner has already checked off, separated by source (manual study vs AI tutor practice).",
     parameters: {
       type: "object" as const,
       properties: {},
@@ -281,9 +278,100 @@ const tools = [
   },
   {
     type: "function" as const,
+    name: "delegate_to_concept_teacher",
+    description:
+      "Delegate a focused teaching task to a specialized concept-teacher subagent. Returns a tight teaching reply you can pass through to the learner. Use when the learner needs an explanation rather than a quiz.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        concept: {
+          type: "string" as const,
+          description: "The concept to teach, in plain English.",
+        },
+        level: {
+          type: "string" as const,
+          description: "Learner's level: beginner, intermediate, advanced, or architect.",
+        },
+      },
+      required: ["concept", "level"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
+    name: "delegate_to_mock_interviewer",
+    description:
+      "Delegate to a mock-interviewer subagent that returns one interview-grade question for the role + difficulty. Use sparingly — only in practice phase, when the learner asks for a 'real' interview question.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        role: { type: "string" as const },
+        difficulty: {
+          type: "string" as const,
+          enum: ["basic", "intermediate", "advanced", "system-design"],
+        },
+      },
+      required: ["role", "difficulty"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
+    name: "write_lesson_plan",
+    description:
+      "Write or replace the structured lesson plan for this session — a deepagents-style todo list of 2-6 steps. Use after warmup to commit to a concrete arc the learner can see. Each step gets a status of 'planned'.",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        goal: {
+          type: "string" as const,
+          description: "One-sentence goal for the session.",
+        },
+        steps: {
+          type: "array" as const,
+          items: {
+            type: "object" as const,
+            properties: {
+              title: { type: "string" as const },
+            },
+            required: ["title"],
+            additionalProperties: false,
+          },
+          minItems: 2,
+          maxItems: 6,
+        },
+      },
+      required: ["goal", "steps"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
+    name: "update_lesson_plan_step",
+    description:
+      "Update the status of a single step in the lesson plan. Use 'in_progress' when starting a step, 'done' when the learner has completed it. Add an optional note (e.g. score or summary).",
+    parameters: {
+      type: "object" as const,
+      properties: {
+        step_index: {
+          type: "integer" as const,
+          description: "Zero-based index of the step in the current plan.",
+        },
+        status: {
+          type: "string" as const,
+          enum: ["planned", "in_progress", "done"],
+        },
+        note: { type: "string" as const },
+      },
+      required: ["step_index", "status"],
+      additionalProperties: false,
+    },
+  },
+  {
+    type: "function" as const,
     name: "record_practice",
     description:
-      "Record that the user attempted a question. Updates mastery (+ delta if strong, - if weak), writes a tracker check tagged ai_tutor, and stores evidence. ONLY call after a substantive answer attempt — NEVER for hellos, 'I don't know', or clarifying questions.",
+      "Record that the user attempted a question. Updates mastery (+ delta if strong, - if weak), writes a tracker check tagged ai_tutor, and stores evidence. ONLY call after a substantive answer attempt — NEVER for hellos, 'I don't know', or clarifying questions, and NEVER in warmup or recap phase.",
     parameters: {
       type: "object" as const,
       properties: {
@@ -324,11 +412,151 @@ const tools = [
   },
 ] as const;
 
+async function callOpenAI(
+  body: Record<string, unknown>,
+  apiKey: string,
+  parentRunId?: string,
+  label = "openai.responses"
+): Promise<{ data: OpenAIResponseShape; modelUsed: string }> {
+  const requestedModel = String(body.model ?? "gpt-4o-mini");
+  // Try requested model first, then fall back through FALLBACK_MODELS on
+  // 4xx errors that look like "model not found" / "invalid model".
+  const candidates = [
+    requestedModel,
+    ...FALLBACK_MODELS.filter((m) => m !== requestedModel),
+  ];
+
+  let lastError: string | undefined;
+
+  for (const model of candidates) {
+    const attemptBody = { ...body, model };
+    // Two attempts on transient 5xx / network for each candidate.
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const llmRun = startRun({
+        name: `${label}.${model}.attempt${attempt}`,
+        runType: "llm",
+        inputs: { model, attempt },
+        parentRunId,
+      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(
+        () => controller.abort(),
+        REQUEST_TIMEOUT_MS
+      );
+      try {
+        const response = await fetch("https://api.openai.com/v1/responses", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(attemptBody),
+          signal: controller.signal,
+        });
+        const data = (await response.json().catch(() => ({}))) as OpenAIResponseShape;
+        if (response.ok) {
+          await endRun(llmRun, {
+            usage: data.usage ?? {},
+            model,
+          });
+          return { data, modelUsed: model };
+        }
+        lastError = data.error?.message || `OpenAI ${response.status}`;
+        await endRun(llmRun, { status: response.status }, lastError);
+        // 4xx with model-related code → don't retry this model, try the next.
+        if (response.status < 500) {
+          const errorMsg = (data.error?.message || "").toLowerCase();
+          const errorCode = (data.error?.code || "").toLowerCase();
+          const isModelError =
+            errorCode === "model_not_found" ||
+            errorCode === "invalid_model" ||
+            errorMsg.includes("model") ||
+            errorMsg.includes("does not exist");
+          if (isModelError) break; // try next candidate
+          // Other 4xx — don't retry, throw.
+          throw new Error(lastError);
+        }
+      } catch (error) {
+        const msg = error instanceof Error ? error.message : String(error);
+        lastError = msg;
+        await endRun(llmRun, {}, msg);
+      } finally {
+        clearTimeout(timeoutId);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 400 * (attempt + 1)));
+    }
+  }
+  throw new Error(lastError ?? "OpenAI request failed.");
+}
+
+// ── Subagents ─────────────────────────────────────────────────────────────
+
+async function runConceptTeacher(
+  concept: string,
+  level: string,
+  apiKey: string,
+  model: string,
+  parentRunId?: string
+): Promise<string> {
+  const { data } = await callOpenAI(
+    {
+      model,
+      instructions: conceptTeacherPrompt(concept, level),
+      input: [
+        {
+          role: "user",
+          content: [{ type: "input_text", text: `Teach: ${concept}` }],
+        },
+      ],
+      temperature: 0.5,
+    },
+    apiKey,
+    parentRunId,
+    "subagent.concept_teacher"
+  );
+  return extractAssistantText(
+    Array.isArray(data.output) ? (data.output as OutputItem[]) : []
+  ) || (typeof data.output_text === "string" ? data.output_text : "");
+}
+
+async function runMockInterviewer(
+  role: string,
+  difficulty: string,
+  apiKey: string,
+  model: string,
+  parentRunId?: string
+): Promise<string> {
+  const { data } = await callOpenAI(
+    {
+      model,
+      instructions: mockInterviewerPrompt(role, difficulty),
+      input: [
+        {
+          role: "user",
+          content: [{ type: "input_text", text: "Ask one question." }],
+        },
+      ],
+      temperature: 0.7,
+    },
+    apiKey,
+    parentRunId,
+    "subagent.mock_interviewer"
+  );
+  return extractAssistantText(
+    Array.isArray(data.output) ? (data.output as OutputItem[]) : []
+  ) || (typeof data.output_text === "string" ? data.output_text : "");
+}
+
+// ── Tool execution ────────────────────────────────────────────────────────
+
 async function executeTool(
   name: string,
   args: Record<string, unknown>,
   input: AgentRunInput,
-  scratch: AgentScratch
+  scratch: AgentScratch,
+  apiKey: string,
+  model: string,
+  parentRunId?: string
 ): Promise<{ output: unknown; preview: string }> {
   switch (name) {
     case "get_roadmap_topic": {
@@ -347,6 +575,18 @@ async function executeTool(
       return {
         output: { query, matches: topicsToBrief(matches, 6) },
         preview,
+      };
+    }
+    case "retrieve_daily_plan_content": {
+      const day = Number(args.day ?? 0);
+      const content = retrieveDailyPlanContent(day);
+      return {
+        output: content
+          ? content
+          : { day, error: `No daily plan content for day ${day}.` },
+        preview: content
+          ? `Retrieved Day ${day}: ${content.title}`
+          : `No content for Day ${day}`,
       };
     }
     case "get_user_mastery": {
@@ -430,6 +670,108 @@ async function executeTool(
       void setAiTutorSessionPhase(input.sessionId, scratch.phase);
       return { output: { ok: true, phase: scratch.phase }, preview: `Phase → ${scratch.phase}` };
     }
+    case "delegate_to_concept_teacher": {
+      const concept = String(args.concept ?? "");
+      const level = String(args.level ?? input.profile.currentLevel);
+      const reply = await runConceptTeacher(
+        concept,
+        level,
+        apiKey,
+        model,
+        parentRunId
+      );
+      return {
+        output: { teaching_reply: reply },
+        preview: `Concept teacher: "${concept}"`,
+      };
+    }
+    case "delegate_to_mock_interviewer": {
+      const role = String(args.role ?? input.profile.targetRole);
+      const difficulty = String(args.difficulty ?? "intermediate");
+      const reply = await runMockInterviewer(
+        role,
+        difficulty,
+        apiKey,
+        model,
+        parentRunId
+      );
+      return {
+        output: { question: reply },
+        preview: `Mock interviewer: ${difficulty} ${role}`,
+      };
+    }
+    case "write_lesson_plan": {
+      const goal = String(args.goal ?? "Session plan");
+      const stepsRaw = Array.isArray(args.steps) ? args.steps : [];
+      const steps = stepsRaw
+        .map((step) => {
+          const stepRecord = asRecord(step);
+          const title =
+            typeof stepRecord.title === "string" ? stepRecord.title.trim() : "";
+          if (!title) return null;
+          return {
+            id:
+              globalThis.crypto?.randomUUID?.() ??
+              `step-${Math.random().toString(36).slice(2)}`,
+            title: title.slice(0, 200),
+            status: "planned" as AiTutorPlanStatus,
+          };
+        })
+        .filter(
+          (step): step is { id: string; title: string; status: AiTutorPlanStatus } =>
+            Boolean(step)
+        );
+
+      if (steps.length === 0) {
+        return {
+          output: { ok: false, reason: "No valid steps." },
+          preview: "Plan rejected (empty)",
+        };
+      }
+
+      scratch.plan = {
+        goal: goal.slice(0, 240),
+        steps,
+        updatedAt: new Date().toISOString(),
+      };
+      scratch.planDirty = true;
+      return {
+        output: { ok: true, stepCount: steps.length },
+        preview: `Wrote plan: ${steps.length} step(s)`,
+      };
+    }
+    case "update_lesson_plan_step": {
+      if (!scratch.plan) {
+        return {
+          output: { ok: false, reason: "No plan exists. Call write_lesson_plan first." },
+          preview: "Plan update rejected (no plan)",
+        };
+      }
+      const stepIndex = Math.round(Number(args.step_index ?? -1));
+      if (stepIndex < 0 || stepIndex >= scratch.plan.steps.length) {
+        return {
+          output: { ok: false, reason: "step_index out of range." },
+          preview: `Plan update rejected (index ${stepIndex})`,
+        };
+      }
+      const status = String(args.status ?? "planned") as AiTutorPlanStatus;
+      const note = typeof args.note === "string" ? args.note : undefined;
+      const updatedSteps = scratch.plan.steps.map((step, idx) =>
+        idx === stepIndex
+          ? { ...step, status, note: note ?? step.note }
+          : step
+      );
+      scratch.plan = {
+        ...scratch.plan,
+        steps: updatedSteps,
+        updatedAt: new Date().toISOString(),
+      };
+      scratch.planDirty = true;
+      return {
+        output: { ok: true, step_index: stepIndex, status },
+        preview: `Step ${stepIndex + 1} → ${status}`,
+      };
+    }
     case "record_practice": {
       const tagId = String(args.tag_id ?? "");
       const tagLabel = String(args.tag_label ?? tagId);
@@ -454,6 +796,19 @@ async function executeTool(
             (s): s is string => typeof s === "string"
           )
         : [];
+
+      // Don't record practice in warmup or recap — phases where grading is
+      // policy-disallowed. Catches model mistakes that the system prompt
+      // tries to prevent.
+      if (scratch.phase === "warmup" || scratch.phase === "recap") {
+        return {
+          output: {
+            ok: false,
+            reason: `Cannot record_practice in phase '${scratch.phase}'.`,
+          },
+          preview: `Skipped record_practice (phase: ${scratch.phase})`,
+        };
+      }
 
       scratch.evaluation = {
         score,
@@ -512,46 +867,6 @@ async function executeTool(
   }
 }
 
-async function callOpenAI(
-  body: Record<string, unknown>,
-  apiKey: string
-): Promise<OpenAIResponseShape> {
-  // Two attempts on transient 5xx — OpenAI Responses occasionally returns
-  // 502/503 even on healthy projects.
-  let lastError: string | undefined;
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(
-      () => controller.abort(),
-      REQUEST_TIMEOUT_MS
-    );
-    try {
-      const response = await fetch("https://api.openai.com/v1/responses", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-        signal: controller.signal,
-      });
-      const data = (await response.json().catch(() => ({}))) as OpenAIResponseShape;
-      if (response.ok) return data;
-      lastError = data.error?.message || `OpenAI ${response.status}`;
-      // Don't retry 4xx — those are our fault, won't get better.
-      if (response.status < 500) {
-        throw new Error(lastError);
-      }
-    } catch (error) {
-      lastError = error instanceof Error ? error.message : String(error);
-    } finally {
-      clearTimeout(timeoutId);
-    }
-    await new Promise((resolve) => setTimeout(resolve, 500 * (attempt + 1)));
-  }
-  throw new Error(lastError ?? "OpenAI request failed.");
-}
-
 function extractAssistantText(output: OutputItem[]): string {
   const messages: string[] = [];
   for (const item of output) {
@@ -583,10 +898,12 @@ export async function runAiTutorAgent(
   if (!apiKey) {
     return fallbackTurn(input.phase, "OPENAI_API_KEY is not configured.");
   }
-  const model = process.env.AI_TUTOR_MODEL || "gpt-4o-mini";
+  const requestedModel = process.env.AI_TUTOR_MODEL || "gpt-4o-mini";
 
   const scratch: AgentScratch = {
     phase: input.phase,
+    plan: input.plan,
+    planDirty: false,
     memoryPatch: {
       masteryUpdates: [],
       recurringMistakesAdd: [],
@@ -596,17 +913,26 @@ export async function runAiTutorAgent(
     toolTrace: [],
   };
 
-  const instructions = buildSystemInstructions(input.profile, input.phase);
+  const instructions = buildSystemInstructions(
+    input.profile,
+    input.memory,
+    input.phase
+  );
 
   // Build the running input list ourselves (don't rely on previous_response_id)
   // so a single failed iteration doesn't poison the whole session.
   const inputItems: Record<string, unknown>[] = [];
 
-  // Prior conversation context (last few messages so the model has continuity).
+  // Prior conversation context — last 8 messages so the model has continuity.
   for (const turn of input.conversation.slice(-8)) {
     inputItems.push({
       role: turn.role,
-      content: [{ type: "input_text", text: turn.content }],
+      content: [
+        {
+          type: turn.role === "assistant" ? "output_text" : "input_text",
+          text: turn.content,
+        },
+      ],
     });
   }
   inputItems.push({
@@ -628,51 +954,49 @@ export async function runAiTutorAgent(
       },
       langsmithEnabled,
     },
-    metadata: { userId: input.userId, sessionId: input.sessionId, model },
+    metadata: {
+      userId: input.userId,
+      sessionId: input.sessionId,
+      requestedModel,
+    },
   });
 
   let assistantText = "";
   let lastError: string | undefined;
+  let modelUsed = requestedModel;
 
   try {
     for (let iteration = 0; iteration < MAX_TOOL_ITERATIONS; iteration++) {
-      const llmRun = startRun({
-        name: `openai.responses.${iteration}`,
-        runType: "llm",
-        inputs: { iteration, items: inputItems.length },
-        metadata: { model, phase: scratch.phase },
-        parentRunId: parentRun.id ?? undefined,
-      });
-
       let data: OpenAIResponseShape;
       try {
-        data = await callOpenAI(
+        const result = await callOpenAI(
           {
-            model,
+            model: requestedModel,
             instructions,
             input: inputItems,
             tools,
             tool_choice: "auto",
             temperature: 0.6,
           },
-          apiKey
+          apiKey,
+          parentRun.id ?? undefined,
+          `agent.iter${iteration}`
         );
+        data = result.data;
+        modelUsed = result.modelUsed;
       } catch (error) {
         const msg = error instanceof Error ? error.message : String(error);
-        await endRun(llmRun, {}, msg);
         lastError = msg;
         break;
       }
-      await endRun(llmRun, {
-        usage: data.usage ?? {},
-        outputCount: Array.isArray(data.output) ? data.output.length : 0,
-      });
 
       const output = (Array.isArray(data.output) ? data.output : []) as OutputItem[];
       const calls = extractFunctionCalls(output);
 
       if (calls.length === 0) {
-        assistantText = extractAssistantText(output) || (typeof data.output_text === "string" ? data.output_text : "");
+        assistantText =
+          extractAssistantText(output) ||
+          (typeof data.output_text === "string" ? data.output_text : "");
         break;
       }
 
@@ -697,7 +1021,15 @@ export async function runAiTutorAgent(
         const args = safeJsonParse(call.arguments);
         let result: { output: unknown; preview: string };
         try {
-          result = await executeTool(call.name, args, input, scratch);
+          result = await executeTool(
+            call.name,
+            args,
+            input,
+            scratch,
+            apiKey,
+            modelUsed,
+            parentRun.id ?? undefined
+          );
           scratch.toolTrace.push({
             name: call.name,
             args,
@@ -729,6 +1061,7 @@ export async function runAiTutorAgent(
       toolCalls: scratch.toolTrace.length,
       phase: scratch.phase,
       hasEvaluation: Boolean(scratch.evaluation),
+      modelUsed,
     });
   }
 
@@ -753,6 +1086,18 @@ export async function runAiTutorAgent(
     );
   }
 
+  // Persist the lesson plan if the agent wrote or modified it.
+  if (scratch.planDirty && scratch.plan) {
+    await setAiTutorSessionPlan(input.sessionId, scratch.plan);
+  }
+
+  // Surface the actual model used so we can flag it in the UI when fallback
+  // kicked in (helps with debugging unfamiliar AI_TUTOR_MODEL values).
+  const modelWarning =
+    modelUsed !== requestedModel
+      ? `Requested model "${requestedModel}" was not available — fell back to ${modelUsed}.`
+      : undefined;
+
   return {
     assistantMessage: assistantText.slice(0, 6000),
     evaluation: scratch.evaluation,
@@ -760,7 +1105,8 @@ export async function runAiTutorAgent(
     nextTopic: scratch.nextTopic,
     suggestedAction: scratch.suggestedAction,
     phase: scratch.phase,
+    plan: scratch.plan,
     toolTrace: scratch.toolTrace,
-    warning: lastError,
+    warning: modelWarning ?? lastError,
   };
 }

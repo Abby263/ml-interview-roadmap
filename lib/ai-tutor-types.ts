@@ -79,6 +79,24 @@ export interface AiTutorToolTrace {
   preview?: string;
 }
 
+// Deepagents-style structured plan the coach maintains across the session.
+// Step status: planned → in_progress → done. Persisted on the session
+// `summary` jsonb so it survives across requests.
+export type AiTutorPlanStatus = "planned" | "in_progress" | "done";
+
+export interface AiTutorPlanStep {
+  id: string;
+  title: string;
+  status: AiTutorPlanStatus;
+  note?: string;
+}
+
+export interface AiTutorPlan {
+  goal: string;
+  steps: AiTutorPlanStep[];
+  updatedAt?: string;
+}
+
 export interface AiTutorTurn {
   assistantMessage: string;
   // Evaluation is optional — only present when the user gave a real answer
@@ -88,6 +106,7 @@ export interface AiTutorTurn {
   nextTopic?: AiTutorNextTopic;
   suggestedAction?: AiTutorSuggestedAction;
   phase: AiTutorPhase;
+  plan?: AiTutorPlan;
   toolTrace?: AiTutorToolTrace[];
 }
 
