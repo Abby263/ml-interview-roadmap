@@ -359,6 +359,70 @@ function CoachMarkdown({ children }: { children: string }) {
   );
 }
 
+interface CoachInsightTopic {
+  id: string;
+  label: string;
+  score: number;
+  confidence: string;
+}
+
+function InsightTopicChips({
+  topics,
+  tone,
+  empty,
+}: {
+  topics: CoachInsightTopic[];
+  tone: "strength" | "weakness";
+  empty: string;
+}) {
+  if (topics.length === 0) {
+    return <p className="mt-2 text-xs leading-5 text-muted">{empty}</p>;
+  }
+
+  return (
+    <div className="mt-2 flex flex-wrap gap-2">
+      {topics.slice(0, 6).map((topic) => (
+        <span
+          key={topic.id}
+          title={`${topic.confidence} confidence`}
+          className={`rounded-full border px-3 py-1 text-xs font-semibold ${
+            tone === "strength"
+              ? "border-emerald-400/40 bg-emerald-50/70 text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-300"
+              : "border-amber-400/40 bg-amber-50/70 text-amber-900 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
+          }`}
+        >
+          {topic.label} · {topic.score}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function TextInsightChips({
+  items,
+  empty,
+}: {
+  items: string[];
+  empty: string;
+}) {
+  if (items.length === 0) {
+    return <p className="mt-2 text-xs leading-5 text-muted">{empty}</p>;
+  }
+
+  return (
+    <div className="mt-2 flex flex-wrap gap-2">
+      {items.slice(0, 5).map((item) => (
+        <span
+          key={item}
+          className="rounded-full border border-line bg-background/70 px-3 py-1 text-xs font-semibold text-muted"
+        >
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function AiTutorClient({
   initialProfile,
   initialMemory,
@@ -409,6 +473,31 @@ export default function AiTutorClient({
             masteryValues.length
         )
       : 0;
+  const masteryInsights: CoachInsightTopic[] = Object.entries(memory.mastery).map(
+    ([tagId, item]) => ({
+      id: tagId,
+      label: item.tagLabel || tagId,
+      score: item.score,
+      confidence: item.confidence,
+    })
+  );
+  const strengthTopicInsights = masteryInsights
+    .filter((item) => item.score >= 75)
+    .sort((a, b) => b.score - a.score);
+  const weaknessTopicInsights = masteryInsights
+    .filter((item) => item.score < 75)
+    .sort((a, b) => a.score - b.score);
+  const insightCount =
+    masteryInsights.length +
+    memory.strengths.length +
+    memory.recurringMistakes.length;
+  const nextLearningMove =
+    memory.nextRecommendations[0] ??
+    (weaknessTopicInsights[0]
+      ? `Practice ${weaknessTopicInsights[0].label} next`
+      : strengthTopicInsights[0]
+        ? `Move to harder follow-ups for ${strengthTopicInsights[0].label}`
+        : "Start a coaching session so the tutor can assess your current level.");
 
   const visibleMessages =
     messages.length > 0
@@ -692,12 +781,12 @@ export default function AiTutorClient({
               <div>
                 <p className="panel-label">Coach cockpit</p>
                 <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                  Session, profile, and memory stay out of the chat&apos;s way.
+                  Session, profile, and insights stay out of the chat&apos;s way.
                 </h2>
                 <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
                   The chat now gets the full page width. Profile controls are
-                  compact, sessions are switchable, and memory remains shared
-                  across every session.
+                  compact, sessions are switchable, and learning insights evolve
+                  as the coach evaluates more answers.
                 </p>
               </div>
               <span
@@ -705,7 +794,7 @@ export default function AiTutorClient({
                   memoryConfigured ? "tone-accent" : "tone-highlight"
                 }`}
               >
-                {memoryConfigured ? "Shared memory on" : "Memory setup needed"}
+                {memoryConfigured ? "Insights active" : "Insights need setup"}
               </span>
             </div>
 
@@ -846,10 +935,42 @@ export default function AiTutorClient({
                 </div>
               </div>
 
-              <div className="mt-4">
-                <p className="text-xs leading-5 text-muted">
-                  Pick a few topics you want extra time on. The coach uses
-                  these plus mastery memory to choose what to teach next.
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                <div className="rounded-2xl border border-line bg-background/70 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-300">
+                    Strength topics
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-muted">
+                    Topics move here when evaluated mastery reaches 75+.
+                  </p>
+                  <InsightTopicChips
+                    topics={strengthTopicInsights}
+                    tone="strength"
+                    empty="No proven strengths yet. Answer a few coach questions to build the signal."
+                  />
+                </div>
+                <div className="rounded-2xl border border-line bg-background/70 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 dark:text-amber-300">
+                    Weakness topics
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-muted">
+                    These are current focus areas until the score improves.
+                  </p>
+                  <InsightTopicChips
+                    topics={weaknessTopicInsights}
+                    tone="weakness"
+                    empty="No weaknesses identified yet. The coach needs evaluated answers first."
+                  />
+                </div>
+              </div>
+
+              <details className="mt-4 rounded-2xl border border-line bg-background/70 p-3">
+                <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Adjust starting focus manually
+                </summary>
+                <p className="mt-3 text-xs leading-5 text-muted">
+                  Use this only to seed the first sessions. Once the coach has
+                  conversation data, strengths and weaknesses above take over.
                 </p>
                 <div className="mt-3 flex max-h-44 flex-wrap gap-2 overflow-auto pr-1">
                   {tags.map((tag) => {
@@ -870,7 +991,7 @@ export default function AiTutorClient({
                     );
                   })}
                 </div>
-              </div>
+              </details>
             </details>
           </div>
 
@@ -956,23 +1077,58 @@ export default function AiTutorClient({
             {plan ? <PlanPanel plan={plan} /> : null}
 
             <div className="rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
-              <p className="font-semibold text-foreground">Memory summary</p>
-              <p className="mt-2">
-                Focus areas:{" "}
-                <span className="font-semibold text-foreground">
-                  {selectedTagLabels.length > 0
-                    ? selectedTagLabels.join(", ")
-                    : "Pick a few when ready"}
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-semibold text-foreground">Coach insights</p>
+                  <p className="mt-1 text-xs leading-5 text-muted">
+                    Generated from evaluated answers across your sessions.
+                  </p>
+                </div>
+                <span className="rounded-full border border-line bg-background/70 px-2.5 py-1 text-[11px] font-semibold text-muted">
+                  {insightCount} signal{insightCount === 1 ? "" : "s"}
                 </span>
-              </p>
-              {memory.strengths.length > 0 ? (
-                <p>Strengths: {memory.strengths.slice(0, 3).join(", ")}</p>
-              ) : null}
-              {memory.recurringMistakes.length > 0 ? (
-                <p>
-                  Next fixes: {memory.recurringMistakes.slice(0, 2).join("; ")}
+              </div>
+
+              <div className="mt-4 rounded-2xl border border-line bg-background/70 p-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Next learning move
                 </p>
-              ) : null}
+                <p className="mt-2 text-sm font-semibold leading-6 text-foreground">
+                  {nextLearningMove}
+                </p>
+              </div>
+
+              <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-300">
+                    Strengths
+                  </p>
+                  <InsightTopicChips
+                    topics={strengthTopicInsights}
+                    tone="strength"
+                    empty="No strength topics yet."
+                  />
+                  <TextInsightChips
+                    items={memory.strengths}
+                    empty="No qualitative strengths recorded yet."
+                  />
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 dark:text-amber-300">
+                    Weaknesses
+                  </p>
+                  <InsightTopicChips
+                    topics={weaknessTopicInsights}
+                    tone="weakness"
+                    empty="No weakness topics yet."
+                  />
+                  <TextInsightChips
+                    items={memory.recurringMistakes}
+                    empty="No recurring mistakes recorded yet."
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

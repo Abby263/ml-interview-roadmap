@@ -135,7 +135,7 @@ function buildMemoryBlock(memory: AiTutorMemory): string {
     );
   }
   lines.push(
-    "Use this memory to personalize. Don't quote scores at the user — just let them shape what you ask next."
+    "Use this memory to personalize. Treat scores >=75 as strengths and lower scores as active weaknesses. As scores improve, move the learner toward harder follow-ups instead of repeating basics. Don't quote scores at the user — just let them shape what you ask next."
   );
   return lines.join("\n");
 }
@@ -147,6 +147,7 @@ const toolPolicy = [
   "",
   "PLANNING (do this once per session, after warmup):",
   "  - Call write_lesson_plan(goal, steps[]) ONCE you've finished the warmup phase and know the learner's focus. 2-6 concrete steps the learner can see.",
+  "  - Base the plan on current weaknesses first, then reinforce strengths with harder follow-ups. Update the plan as mastery changes.",
   "  - Call update_lesson_plan_step(step_index, status='in_progress') when you start a step.",
   "  - Call update_lesson_plan_step(step_index, status='done', note=...) when the learner has completed a step.",
   "  - Don't write a new plan every turn. Only rewrite if the learner explicitly asks to change focus.",
