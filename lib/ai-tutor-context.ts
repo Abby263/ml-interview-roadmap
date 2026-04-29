@@ -20,7 +20,6 @@ export interface AiTutorTopicContext {
   interviewQuestions: string[];
   href?: string;
   itemId?: string;
-  references?: { label: string; href: string }[];
 }
 
 const allQuestionEntries: DailyPlanQuestionEntry[] =
@@ -39,18 +38,6 @@ for (const entry of allQuestionEntries) {
   entriesByDay.set(entry.day, list);
 }
 
-// Pull the day-level references (cached) so we can surface them with each
-// topic context. The agent uses these to give the learner a "↗ reference"
-// link beside the question — so if they're stuck they have somewhere to go
-// look it up before answering.
-const referencesByDay = new Map<number, { label: string; href: string }[]>();
-for (const day of dailyPlan) {
-  referencesByDay.set(
-    day.day,
-    day.references.map((ref) => ({ label: ref.label, href: ref.href }))
-  );
-}
-
 function entryToTopic(entry: DailyPlanQuestionEntry): AiTutorTopicContext {
   return {
     day: entry.day,
@@ -63,7 +50,6 @@ function entryToTopic(entry: DailyPlanQuestionEntry): AiTutorTopicContext {
     interviewQuestions: entry.interviewQuestions,
     href: entry.href,
     itemId: entry.id.replace(/^day-\d+-/, ""),
-    references: referencesByDay.get(entry.day) ?? [],
   };
 }
 

@@ -28,14 +28,6 @@ export interface AiTutorMastery {
   score: number;
   confidence: "low" | "medium" | "high";
   evidence: string[];
-  // Number of practice attempts the learner has logged on this tag.
-  // Used together with `score` to decide when a topic is mastered enough
-  // to advance ("score >= 75 AND attempts >= 2").
-  attempts?: number;
-  // Highest score the learner has hit on this tag, ever — useful for the
-  // UI to show whether they've crossed the mastery threshold even if a
-  // recent retry was a regression.
-  bestScore?: number;
   updatedAt: string;
 }
 

@@ -59,23 +59,10 @@ interface UsageRow {
   token_estimate: number | null;
 }
 
-export interface AiTutorSessionSummary {
-  id: string;
-  startedAt: string;
-  status: string;
-  mode: string;
-  messageCount: number;
-  phase: AiTutorPhase;
-  title?: string;
-  preview?: string;
-}
-
 export interface AiTutorState {
   profile: AiTutorProfile;
   memory: AiTutorMemory;
   recentMessages: AiTutorMessage[];
-  sessions: AiTutorSessionSummary[];
-  activeSessionId?: string;
   persistenceReady: boolean;
   persistenceWarning?: string;
 }
@@ -169,14 +156,13 @@ export async function getAiTutorState(
       profile: defaultAiTutorProfile,
       memory: defaultAiTutorMemory,
       recentMessages: [],
-      sessions: [],
       persistenceReady: false,
       persistenceWarning:
         "Supabase service-role access is not configured, so tutor memory will not persist.",
     };
   }
 
-  const [profileResult, memoryResult, sessionsResult] = await Promise.all([
+  const [profileResult, memoryResult, messagesResult] = await Promise.all([
     sb
       .from(AI_TUTOR_PROFILES_TABLE)
       .select(
@@ -192,134 +178,35 @@ export async function getAiTutorState(
       .eq("user_id", userId)
       .maybeSingle(),
     sb
-      .from(AI_TUTOR_SESSIONS_TABLE)
-      .select("id,status,mode,summary,started_at")
+      .from(AI_TUTOR_MESSAGES_TABLE)
+      .select("id,role,content,created_at,evaluation,topic_ref")
       .eq("user_id", userId)
-      .order("started_at", { ascending: false })
-      .limit(20),
+      .order("created_at", { ascending: false })
+      .limit(8),
   ]);
 
   const firstError =
-    profileResult.error ?? memoryResult.error ?? sessionsResult.error;
+    profileResult.error ?? memoryResult.error ?? messagesResult.error;
   if (firstError) {
     return {
       profile: defaultAiTutorProfile,
       memory: defaultAiTutorMemory,
       recentMessages: [],
-      sessions: [],
       persistenceReady: false,
       persistenceWarning: firstError.message,
     };
   }
 
-  const sessionRows = (sessionsResult.data ??
-    []) as {
-    id: string;
-    status: string;
-    mode: string;
-    summary: Record<string, unknown> | null;
-    started_at: string;
-  }[];
-
-  const sessionIds = sessionRows.map((row) => row.id);
-  const messageCounts: Record<string, number> = {};
-  const lastMessageContent: Record<string, string> = {};
-  if (sessionIds.length > 0) {
-    const { data: msgs } = await sb
-      .from(AI_TUTOR_MESSAGES_TABLE)
-      .select("session_id,role,content,created_at")
-      .in("session_id", sessionIds)
-      .order("created_at", { ascending: true });
-    if (Array.isArray(msgs)) {
-      for (const row of msgs as {
-        session_id: string;
-        role: string;
-        content: string;
-      }[]) {
-        messageCounts[row.session_id] = (messageCounts[row.session_id] ?? 0) + 1;
-        if (row.role === "user") {
-          // Last user message becomes the preview / pseudo-title.
-          lastMessageContent[row.session_id] = row.content;
-        }
-      }
-    }
-  }
-
-  const sessions: AiTutorSessionSummary[] = sessionRows.map((row) => {
-    const summary = row.summary ?? {};
-    const phaseRaw = typeof summary?.phase === "string" ? summary.phase : "warmup";
-    const phase = validPhases.includes(phaseRaw as AiTutorPhase)
-      ? (phaseRaw as AiTutorPhase)
-      : "warmup";
-    const titleRaw = typeof summary?.title === "string" ? summary.title : undefined;
-    const preview = lastMessageContent[row.id]?.slice(0, 80);
-    return {
-      id: row.id,
-      startedAt: row.started_at,
-      status: row.status,
-      mode: row.mode,
-      messageCount: messageCounts[row.id] ?? 0,
-      phase,
-      title: titleRaw,
-      preview,
-    };
-  });
-
-  // The "active" session is the most recent one with at least one message.
-  // If none exist, the agent will create a fresh one on the next turn.
-  const activeSession = sessions.find((s) => s.messageCount > 0) ?? sessions[0];
-  const activeSessionId = activeSession?.id;
-
-  // Pull the recent messages for the active session only.
-  let recentMessages: AiTutorMessage[] = [];
-  if (activeSessionId) {
-    const { data: recent } = await sb
-      .from(AI_TUTOR_MESSAGES_TABLE)
-      .select("id,role,content,created_at,evaluation,topic_ref")
-      .eq("user_id", userId)
-      .eq("session_id", activeSessionId)
-      .order("created_at", { ascending: true })
-      .limit(80);
-    if (Array.isArray(recent)) {
-      recentMessages = (recent as MessageRow[]).map(mapMessage);
-    }
-  }
+  const recentMessages = ((messagesResult.data ?? []) as MessageRow[])
+    .map(mapMessage)
+    .reverse();
 
   return {
     profile: mapProfile(profileResult.data as ProfileRow | null),
     memory: mapMemory(memoryResult.data as MemoryRow | null),
     recentMessages,
-    sessions,
-    activeSessionId,
     persistenceReady: true,
   };
-}
-
-export async function listAiTutorSessions(
-  userId: string
-): Promise<AiTutorSessionSummary[]> {
-  const sb = getSupabaseAdmin();
-  if (!sb) return [];
-  const state = await getAiTutorState(userId);
-  return state.sessions;
-}
-
-export async function getAiTutorSessionMessages(
-  userId: string,
-  sessionId: string,
-  limit = 80
-): Promise<AiTutorMessage[]> {
-  const sb = getSupabaseAdmin();
-  if (!sb) return [];
-  const { data, error } = await sb
-    .from(AI_TUTOR_MESSAGES_TABLE)
-    .select("id,role,content,created_at,evaluation,topic_ref")
-    .eq("user_id", userId)
-    .eq("session_id", sessionId)
-    .order("created_at", { ascending: true })
-    .limit(limit);
-  if (error || !Array.isArray(data)) return [];
-  return (data as MessageRow[]).map(mapMessage);
 }
 
 export async function saveAiTutorProfile(
@@ -590,8 +477,6 @@ export async function mergeAndSaveAiTutorMemory(
     if (!update.tagId) continue;
     const current = mastery[update.tagId];
     const score = clampScore((current?.score ?? 45) + update.scoreDelta);
-    const attempts = (current?.attempts ?? 0) + 1;
-    const bestScore = Math.max(current?.bestScore ?? 0, score);
     mastery[update.tagId] = {
       tagLabel: update.tagLabel || current?.tagLabel || update.tagId,
       score,
@@ -600,8 +485,6 @@ export async function mergeAndSaveAiTutorMemory(
         [...(current?.evidence ?? []), update.evidence].filter(Boolean),
         6
       ),
-      attempts,
-      bestScore,
       updatedAt: now,
     };
   }
