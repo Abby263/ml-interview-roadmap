@@ -188,6 +188,25 @@ export function toggleDayCheck(day: number, itemId: string): string[] {
 }
 
 /**
+ * Mark an item complete in browser-local progress without firing a server
+ * mutation. Used after server-side AI Tutor practice has already written the
+ * check, so the dashboard updates instantly in the current browser.
+ */
+export function markDayCheckLocal(day: number, itemId: string): string[] {
+  if (typeof window === "undefined") return emptySet;
+  const current = readDayRaw(day);
+  if (current.includes(itemId)) return current;
+  const next = [...current, itemId];
+  window.localStorage.setItem(KEY_PREFIX + day, JSON.stringify(next));
+  dayCache.delete(day);
+  allCacheFingerprint = "__dirty__";
+  allItemsCacheFingerprint = "__dirty__";
+  bumpActivityToday();
+  window.dispatchEvent(new Event(EVENT_NAME));
+  return next;
+}
+
+/**
  * Replace local state for a day with the given set of checked item IDs.
  * Used when hydrating from the server on initial load.
  */

@@ -125,11 +125,13 @@ export async function POST(request: Request) {
     topicRef: turn.nextTopic,
     phase: turn.phase,
   });
+  const updatedMemory = await getAiTutorMemory(userId);
 
   return NextResponse.json({
     sessionId: session.id,
     assistantMessage: turn.assistantMessage,
     evaluation: turn.evaluation,
+    memory: updatedMemory,
     nextTopic: turn.nextTopic,
     suggestedAction: turn.suggestedAction,
     phase: turn.phase,
