@@ -15,7 +15,7 @@ Live production: [ml-interview-roadmap.vercel.app](https://ml-interview-roadmap.
 - Editable daily-plan content in `content/daily-plan/days`, with one JSON file per day and editable week labels in `content/daily-plan/weeks.json`.
 - Topic libraries for math and statistics, traditional ML, deep learning, MLOps, GenAI, LLMOps, ML system design, foundations, and behavioral prep.
 - A question bank and expanded ML/GenAI/LLMOps system design case-study library.
-- Signed-in AI Tutor page for personalized readiness assessment, full-width coaching chat, multiple sessions, session deletion, feedback, and memory-backed weak-area follow-up.
+- Signed-in AI Tutor page for personalized readiness assessment, profile-aware coaching, evolving strength/weakness insights, multiple sessions, session deletion, feedback, and memory-backed weak-area follow-up.
 - Optional Clerk auth for accounts and optional Supabase sync for cross-device progress.
 - Browser-local progress tracking when auth or Supabase are not configured.
 

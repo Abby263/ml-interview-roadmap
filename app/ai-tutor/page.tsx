@@ -11,6 +11,7 @@ import {
   clerkClientEnabled,
   clerkEnabled,
 } from "@/lib/feature-flags";
+import { aiTutorLevels } from "@/lib/ai-tutor-types";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,10 @@ function SignedOutPanel() {
   );
 }
 
+const levelLabels = Object.fromEntries(
+  aiTutorLevels.map((level) => [level.value, level.label])
+);
+
 export default async function AiTutorPage() {
   if (!clerkClientEnabled || !clerkEnabled) {
     return <AuthSetupPanel />;
@@ -99,25 +104,41 @@ export default async function AiTutorPage() {
               just a score.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            <div className="metric-slab">
-              <p className="panel-label">Model</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                {aiTutorOpenAIEnabled ? "OpenAI" : "Setup needed"}
-              </p>
+          <div className="rounded-[26px] border border-line bg-surface-strong/85 p-5 shadow-soft">
+            <p className="panel-label">Profile</p>
+            <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
+              {state.profile.targetRole}
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-line bg-background/70 p-3">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                  Level
+                </p>
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  {levelLabels[state.profile.currentLevel] ?? "Not set"}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-background/70 p-3">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                  Study time
+                </p>
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  {state.profile.dailyHours}h/day
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-background/70 p-3 sm:col-span-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">
+                  Interview date
+                </p>
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  {state.profile.interviewDate || "Not set"}
+                </p>
+              </div>
             </div>
-            <div className="metric-slab">
-              <p className="panel-label">Memory</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                {aiTutorMemoryEnabled ? "Supabase" : "Optional"}
-              </p>
-            </div>
-            <div className="metric-slab">
-              <p className="panel-label">Style</p>
-              <p className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                Coaching
-              </p>
-            </div>
+            <p className="mt-4 text-xs leading-5 text-muted">
+              The coach uses this profile plus your evaluated answers to keep
+              the plan personalized.
+            </p>
           </div>
         </div>
       </header>
