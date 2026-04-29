@@ -31,7 +31,6 @@ interface AiTutorClientProps {
   initialSessionId?: string;
   tags: DailyPlanQuestionTag[];
   openaiConfigured: boolean;
-  memoryConfigured: boolean;
   persistenceWarning?: string;
 }
 
@@ -431,7 +430,6 @@ export default function AiTutorClient({
   initialSessionId,
   tags,
   openaiConfigured,
-  memoryConfigured,
   persistenceWarning,
 }: AiTutorClientProps) {
   const [profile, setProfile] = useState(initialProfile);
@@ -465,14 +463,6 @@ export default function AiTutorClient({
     });
   }, [messages, busy]);
 
-  const masteryValues = Object.values(memory.mastery);
-  const averageMastery =
-    masteryValues.length > 0
-      ? Math.round(
-          masteryValues.reduce((sum, item) => sum + item.score, 0) /
-            masteryValues.length
-        )
-      : 0;
   const masteryInsights: CoachInsightTopic[] = Object.entries(memory.mastery).map(
     ([tagId, item]) => ({
       id: tagId,
@@ -629,7 +619,7 @@ export default function AiTutorClient({
       setPlan(null);
       setLastAction(null);
       setShowOlder(false);
-      setStatus(data.warning ?? "Started a new coaching session. Memory is shared.");
+      setStatus(data.warning ?? "Started a new coaching session. Insights are shared.");
     } catch (error) {
       setStatus(
         error instanceof Error ? error.message : "Could not start a new session."
@@ -642,7 +632,7 @@ export default function AiTutorClient({
   async function deleteSession(targetSession: AiTutorSessionSummary) {
     if (busy || deletingSessionId) return;
     const confirmed = window.confirm(
-      "Delete this AI Tutor session? This removes the transcript from the database and rebuilds shared memory from your remaining sessions."
+      "Delete this AI Tutor session? This removes the transcript and rebuilds coach insights from your remaining sessions."
     );
     if (!confirmed) return;
 
@@ -679,7 +669,7 @@ export default function AiTutorClient({
         setLastAction(null);
         setShowOlder(false);
       }
-      setStatus(data.warning ?? "Session deleted and tutor memory rebuilt.");
+      setStatus(data.warning ?? "Session deleted and coach insights rebuilt.");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Could not delete session.");
     } finally {
@@ -779,220 +769,159 @@ export default function AiTutorClient({
           <div>
             <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
               <div>
-                <p className="panel-label">Coach cockpit</p>
+                <p className="panel-label">Profile & focus</p>
                 <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
-                  Session, profile, and insights stay out of the chat&apos;s way.
+                  Configure what the coach should optimize for.
                 </h2>
                 <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
-                  The chat now gets the full page width. Profile controls are
-                  compact, sessions are switchable, and learning insights evolve
-                  as the coach evaluates more answers.
+                  This is the single profile source for the tutor. Updates here
+                  are used by new sessions, lesson plans, and follow-up
+                  questions.
                 </p>
               </div>
-              <span
-                className={`w-fit rounded-full px-3 py-1 text-xs font-semibold ${
-                  memoryConfigured ? "tone-accent" : "tone-highlight"
-                }`}
-              >
-                {memoryConfigured ? "Insights active" : "Insights need setup"}
+              <span className="tone-accent w-fit rounded-full px-3 py-1 text-xs font-semibold">
+                {selectedTagLabels.length || 0} focus area
+                {selectedTagLabels.length === 1 ? "" : "s"}
               </span>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="metric-slab">
-                <p className="panel-label">Avg mastery</p>
-                <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                  {averageMastery || "--"}
-                </p>
-              </div>
-              <div className="metric-slab">
-                <p className="panel-label">Topics tracked</p>
-                <p className="mt-2 font-display text-3xl font-extrabold text-foreground">
-                  {masteryValues.length}
-                </p>
-              </div>
-              <div className="metric-slab">
-                <p className="panel-label">Active phase</p>
-                <p className="mt-2 font-display text-xl font-extrabold text-foreground">
-                  {phaseLabels[phase]}
-                </p>
-              </div>
-              <div className="metric-slab">
-                <p className="panel-label">Tracker rule</p>
-                <p className="mt-2 text-sm font-semibold leading-5 text-foreground">
-                  Only interview-ready answers are checked off
-                </p>
+            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-foreground">
+                  Target role
+                </span>
+                <input
+                  value={profile.targetRole}
+                  onChange={(event) =>
+                    updateProfile("targetRole", event.target.value)
+                  }
+                  className="field-shell"
+                  placeholder="AI Engineer, Senior MLE, ML Architect"
+                />
+              </label>
+
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-foreground">
+                  Current level
+                </span>
+                <select
+                  value={profile.currentLevel}
+                  onChange={(event) =>
+                    updateProfile(
+                      "currentLevel",
+                      event.target.value as AiTutorProfile["currentLevel"]
+                    )
+                  }
+                  className="field-shell"
+                >
+                  {aiTutorLevels.map((level) => (
+                    <option key={level.value} value={level.value}>
+                      {level.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-foreground">
+                  Session style
+                </span>
+                <select
+                  value={profile.preferredMode}
+                  onChange={(event) =>
+                    updateProfile(
+                      "preferredMode",
+                      event.target.value as AiTutorProfile["preferredMode"]
+                    )
+                  }
+                  className="field-shell"
+                >
+                  {aiTutorModes.map((mode) => (
+                    <option key={mode.value} value={mode.value}>
+                      {mode.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-foreground">
+                  Daily hours
+                </span>
+                <input
+                  type="number"
+                  min="0.5"
+                  max="12"
+                  step="0.5"
+                  value={profile.dailyHours}
+                  onChange={(event) =>
+                    updateProfile("dailyHours", Number(event.target.value))
+                  }
+                  className="field-shell"
+                />
+              </label>
+
+              <label className="block space-y-2">
+                <span className="text-sm font-semibold text-foreground">
+                  Interview date
+                </span>
+                <input
+                  type="date"
+                  value={profile.interviewDate}
+                  onChange={(event) =>
+                    updateProfile("interviewDate", event.target.value)
+                  }
+                  className="field-shell"
+                />
+              </label>
+
+              <div className="flex items-end">
+                <button
+                  type="button"
+                  onClick={() => void saveProfile()}
+                  disabled={busy}
+                  className="button-secondary w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Save profile
+                </button>
               </div>
             </div>
 
-            <details className="mt-5 rounded-2xl border border-line bg-surface-strong p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-foreground">
-                Profile and focus areas
-                <span className="ml-2 text-muted">
-                  {profile.targetRole} · {selectedTagLabels.length || 0} focus
-                  areas
+            <div className="mt-5 rounded-2xl border border-line bg-surface-strong p-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    Starting focus areas
+                  </p>
+                  <p className="text-xs leading-5 text-muted">
+                    Use these to seed early sessions. Coach insights take over
+                    once enough answers are evaluated.
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-muted">
+                  {selectedTagLabels.length}/12 selected
                 </span>
-              </summary>
-              <div className="mt-4 grid gap-4 lg:grid-cols-3">
-                <label className="block space-y-2">
-                  <span className="text-sm font-semibold text-foreground">
-                    Target role
-                  </span>
-                  <input
-                    value={profile.targetRole}
-                    onChange={(event) =>
-                      updateProfile("targetRole", event.target.value)
-                    }
-                    className="field-shell"
-                    placeholder="AI Engineer, Senior MLE, ML Architect"
-                  />
-                </label>
-
-                <label className="block space-y-2">
-                  <span className="text-sm font-semibold text-foreground">
-                    Current level
-                  </span>
-                  <select
-                    value={profile.currentLevel}
-                    onChange={(event) =>
-                      updateProfile(
-                        "currentLevel",
-                        event.target.value as AiTutorProfile["currentLevel"]
-                      )
-                    }
-                    className="field-shell"
-                  >
-                    {aiTutorLevels.map((level) => (
-                      <option key={level.value} value={level.value}>
-                        {level.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="block space-y-2">
-                  <span className="text-sm font-semibold text-foreground">
-                    Session style
-                  </span>
-                  <select
-                    value={profile.preferredMode}
-                    onChange={(event) =>
-                      updateProfile(
-                        "preferredMode",
-                        event.target.value as AiTutorProfile["preferredMode"]
-                      )
-                    }
-                    className="field-shell"
-                  >
-                    {aiTutorModes.map((mode) => (
-                      <option key={mode.value} value={mode.value}>
-                        {mode.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="block space-y-2">
-                  <span className="text-sm font-semibold text-foreground">
-                    Daily hours
-                  </span>
-                  <input
-                    type="number"
-                    min="0.5"
-                    max="12"
-                    step="0.5"
-                    value={profile.dailyHours}
-                    onChange={(event) =>
-                      updateProfile("dailyHours", Number(event.target.value))
-                    }
-                    className="field-shell"
-                  />
-                </label>
-
-                <label className="block space-y-2">
-                  <span className="text-sm font-semibold text-foreground">
-                    Interview date
-                  </span>
-                  <input
-                    type="date"
-                    value={profile.interviewDate}
-                    onChange={(event) =>
-                      updateProfile("interviewDate", event.target.value)
-                    }
-                    className="field-shell"
-                  />
-                </label>
-
-                <div className="flex items-end">
-                  <button
-                    type="button"
-                    onClick={() => void saveProfile()}
-                    disabled={busy}
-                    className="button-secondary w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    Save profile
-                  </button>
-                </div>
               </div>
-
-              <div className="mt-5 grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-line bg-background/70 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-300">
-                    Strength topics
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-muted">
-                    Topics move here when evaluated mastery reaches 75+.
-                  </p>
-                  <InsightTopicChips
-                    topics={strengthTopicInsights}
-                    tone="strength"
-                    empty="No proven strengths yet. Answer a few coach questions to build the signal."
-                  />
-                </div>
-                <div className="rounded-2xl border border-line bg-background/70 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 dark:text-amber-300">
-                    Weakness topics
-                  </p>
-                  <p className="mt-1 text-xs leading-5 text-muted">
-                    These are current focus areas until the score improves.
-                  </p>
-                  <InsightTopicChips
-                    topics={weaknessTopicInsights}
-                    tone="weakness"
-                    empty="No weaknesses identified yet. The coach needs evaluated answers first."
-                  />
-                </div>
+              <div className="mt-3 flex max-h-44 flex-wrap gap-2 overflow-auto pr-1">
+                {tags.map((tag) => {
+                  const active = profile.weakTags.includes(tag.id);
+                  return (
+                    <button
+                      key={tag.id}
+                      type="button"
+                      onClick={() => toggleWeakTag(tag.id)}
+                      className={`rounded-full border px-3 py-1.5 text-left text-xs font-semibold transition ${
+                        active
+                          ? "border-primary bg-primary text-white"
+                          : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
+                      }`}
+                    >
+                      {tag.label}
+                    </button>
+                  );
+                })}
               </div>
-
-              <details className="mt-4 rounded-2xl border border-line bg-background/70 p-3">
-                <summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                  Adjust starting focus manually
-                </summary>
-                <p className="mt-3 text-xs leading-5 text-muted">
-                  Use this only to seed the first sessions. Once the coach has
-                  conversation data, strengths and weaknesses above take over.
-                </p>
-                <div className="mt-3 flex max-h-44 flex-wrap gap-2 overflow-auto pr-1">
-                  {tags.map((tag) => {
-                    const active = profile.weakTags.includes(tag.id);
-                    return (
-                      <button
-                        key={tag.id}
-                        type="button"
-                        onClick={() => toggleWeakTag(tag.id)}
-                        className={`rounded-full border px-3 py-1.5 text-left text-xs font-semibold transition ${
-                          active
-                            ? "border-primary bg-primary text-white"
-                            : "border-line bg-background text-muted hover:border-primary hover:text-foreground"
-                        }`}
-                      >
-                        {tag.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </details>
-            </details>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -1001,11 +930,11 @@ export default function AiTutorClient({
                 <div>
                   <p className="panel-label">Sessions</p>
                   <p className="mt-1 text-sm font-semibold text-foreground">
-                    Shared memory, separate chats
+                    Shared insights, separate chats
                   </p>
                   <p className="mt-1 text-xs leading-5 text-muted">
-                    Delete removes the transcript and rebuilds memory from the
-                    remaining sessions.
+                    Delete removes the transcript and rebuilds insights from
+                    the remaining sessions.
                   </p>
                 </div>
                 <button
