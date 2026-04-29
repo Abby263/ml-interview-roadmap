@@ -1,4 +1,4 @@
-import { dailyPlan } from "@/lib/daily-plan";
+import { dailyPlan, getDayPlan } from "@/lib/daily-plan";
 import {
   buildDailyPlanQuestionEntries,
   buildDailyPlanQuestionTags,
@@ -104,6 +104,36 @@ export function getTopicsForTag(
     .filter((entry) => entry.tagId === tagId)
     .slice(0, limit)
     .map(entryToTopic);
+}
+
+/** Returns the full day-plan content for a specific day — focus statement,
+ *  every track + item, references, all interview questions across items.
+ *  Used by the retrieval tool when the agent needs to plan a teaching arc
+ *  rather than just look up a single question. */
+export function retrieveDailyPlanContent(day: number) {
+  const plan = getDayPlan(day);
+  if (!plan) return null;
+  return {
+    day: plan.day,
+    title: plan.title,
+    pillar: plan.pillar,
+    focus: plan.focus,
+    tracks: plan.tracks.map((track) => ({
+      label: track.label,
+      items: track.items.map((item) => ({
+        id: item.id,
+        label: item.label,
+        meta: item.meta,
+        href: item.href,
+        interviewQuestions: item.interviewQuestions ?? [],
+      })),
+    })),
+    references: plan.references.map((ref) => ({
+      label: ref.label,
+      href: ref.href,
+      source: ref.source,
+    })),
+  };
 }
 
 /** Lightweight in-memory keyword search across the question bank. Used as

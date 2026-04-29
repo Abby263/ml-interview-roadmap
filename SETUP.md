@@ -191,21 +191,45 @@ AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server b
 
 The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
 
-### Optional: LangSmith tracing
+### LangSmith tracing
 
-The AI Tutor agent emits structured traces (LLM calls + each tool
-invocation) to LangSmith when these are set. Tracing is fire-and-forget
-— runs are best-effort and never block or break the user request.
+The AI Tutor agent emits structured traces (parent run + every LLM call
++ every tool call + every subagent delegation) to LangSmith. Runs are
+fire-and-forget — best-effort, never block or break the user request.
 
-```bash
-LANGSMITH_API_KEY=ls__...
-LANGSMITH_PROJECT=ml-roadmap-ai-tutor   # optional; default shown
-LANGSMITH_TRACING=true                  # optional; set "false" to disable
-LANGSMITH_ENDPOINT=https://api.smith.langchain.com   # optional; for self-host
-```
+#### Steps
+
+1. Sign up at <https://smith.langchain.com>, create a project (default
+   name we look for: `ml-roadmap-ai-tutor`).
+2. Open **Settings → API Keys** and create a key.
+3. In Vercel → Environment Variables, add:
+
+   ```bash
+   LANGSMITH_TRACING=true
+   LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+   LANGSMITH_API_KEY=lsv2_...
+   LANGSMITH_PROJECT="ml-roadmap-ai-tutor"
+   ```
+
+4. Redeploy. Hit `/ai-tutor` and confirm a parent run named
+   `ai-tutor.turn` appears in the LangSmith project, with child runs for
+   each `openai.responses.*` call, each `tool.*` call, and each
+   `subagent.*` delegation.
 
 Without these env vars, all tracing calls become no-ops and the agent
 runs identically.
+
+#### What you'll see in LangSmith
+
+- `ai-tutor.turn` (chain) — top-level per-message turn
+  - `agent.iterN.<model>.attemptM` (llm) — each model call in the
+    function-calling loop, tagged with the model that succeeded
+  - `tool.<name>` (tool) — each tool invocation with its preview
+  - `subagent.concept_teacher` / `subagent.mock_interviewer` (llm) — the
+    delegated single-shot subagent calls
+
+This makes it easy to debug "why did the coach skip grading?" or "which
+tool blew up the latency?" without trawling through Vercel logs.
 
 ### Supabase tables for memory
 

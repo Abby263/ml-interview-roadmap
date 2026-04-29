@@ -16,10 +16,17 @@ import {
   type AiTutorMessage,
   type AiTutorMode,
   type AiTutorPhase,
+  type AiTutorPlan,
+  type AiTutorPlanStatus,
   type AiTutorProfile,
 } from "@/lib/ai-tutor-types";
 
 const validPhases: AiTutorPhase[] = ["warmup", "calibration", "practice", "recap"];
+const validPlanStatuses: AiTutorPlanStatus[] = [
+  "planned",
+  "in_progress",
+  "done",
+];
 
 interface ProfileRow {
   target_role: string | null;
@@ -293,6 +300,95 @@ export async function getAiTutorSessionPhase(
   return validPhases.includes(phase as AiTutorPhase)
     ? (phase as AiTutorPhase)
     : "warmup";
+}
+
+function normalizePlan(value: unknown): AiTutorPlan | undefined {
+  if (typeof value !== "object" || value === null) return undefined;
+  const record = value as Record<string, unknown>;
+  if (!Array.isArray(record.steps)) return undefined;
+  const steps: AiTutorPlan["steps"] = [];
+  for (const step of record.steps as unknown[]) {
+    if (typeof step !== "object" || step === null) continue;
+    const stepRecord = step as Record<string, unknown>;
+    const title =
+      typeof stepRecord.title === "string" ? stepRecord.title.trim() : "";
+    if (!title) continue;
+    const id =
+      typeof stepRecord.id === "string" && stepRecord.id
+        ? stepRecord.id
+        : (globalThis.crypto?.randomUUID?.() ?? `step-${Math.random()}`);
+    const status =
+      typeof stepRecord.status === "string" &&
+      validPlanStatuses.includes(stepRecord.status as AiTutorPlanStatus)
+        ? (stepRecord.status as AiTutorPlanStatus)
+        : "planned";
+    const entry: AiTutorPlan["steps"][number] = {
+      id,
+      title: title.slice(0, 200),
+      status,
+    };
+    if (typeof stepRecord.note === "string") entry.note = stepRecord.note;
+    steps.push(entry);
+    if (steps.length >= 12) break;
+  }
+  if (steps.length === 0) return undefined;
+  return {
+    goal:
+      typeof record.goal === "string" ? record.goal.slice(0, 240) : "Session plan",
+    steps,
+    updatedAt:
+      typeof record.updatedAt === "string" ? record.updatedAt : undefined,
+  };
+}
+
+/** Read the lesson plan attached to a session, if any. */
+export async function getAiTutorSessionPlan(
+  sessionId: string
+): Promise<AiTutorPlan | undefined> {
+  if (sessionId.startsWith("local-")) return undefined;
+  const sb = getSupabaseAdmin();
+  if (!sb) return undefined;
+
+  const { data, error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .select("summary")
+    .eq("id", sessionId)
+    .maybeSingle();
+  if (error || !data) return undefined;
+  const summary =
+    (data as { summary: Record<string, unknown> | null }).summary ?? {};
+  return normalizePlan(summary.plan);
+}
+
+/** Write or replace the lesson plan on a session. */
+export async function setAiTutorSessionPlan(
+  sessionId: string,
+  plan: AiTutorPlan
+) {
+  if (sessionId.startsWith("local-")) return { ok: false } as const;
+  const sb = getSupabaseAdmin();
+  if (!sb) return { ok: false } as const;
+
+  const { data: existing } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .select("summary")
+    .eq("id", sessionId)
+    .maybeSingle();
+  const existingSummary =
+    (existing as { summary: Record<string, unknown> | null } | null)?.summary ??
+    {};
+  const summary = {
+    ...existingSummary,
+    plan: { ...plan, updatedAt: new Date().toISOString() },
+  };
+
+  const { error } = await sb
+    .from(AI_TUTOR_SESSIONS_TABLE)
+    .update({ summary })
+    .eq("id", sessionId);
+  return error
+    ? ({ ok: false, warning: error.message } as const)
+    : ({ ok: true } as const);
 }
 
 /** Persist the conversational phase. Best-effort — failures don't break

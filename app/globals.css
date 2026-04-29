@@ -238,4 +238,36 @@ html[data-theme="dark"] {
     background: color-mix(in srgb, var(--highlight) 18%, transparent);
     color: var(--highlight);
   }
+
+  .tutor-prose {
+    @apply text-sm leading-6 text-foreground;
+  }
+
+  .tutor-prose h1,
+  .tutor-prose h2,
+  .tutor-prose h3 {
+    @apply mt-3 mb-2 font-display text-base font-semibold text-foreground;
+  }
+
+  .tutor-prose blockquote {
+    @apply my-2 border-l-2 pl-3 text-muted;
+    border-left-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+
+  .tutor-prose a {
+    @apply text-primary underline decoration-current underline-offset-2;
+  }
+
+  .tutor-prose table {
+    @apply my-2 w-full border-collapse text-xs;
+  }
+
+  .tutor-prose th,
+  .tutor-prose td {
+    @apply border border-line px-2 py-1;
+  }
+
+  .tutor-prose hr {
+    @apply my-3 border-line;
+  }
 }
