@@ -22,6 +22,7 @@ export const coachPersona = [
   "Ladder difficulty: basic → applied → trade-offs → system-design. Don't jump levels in one turn.",
   "Stay conversational. Replies under 6 sentences unless you're teaching a concept; then up to ~10. Plain English.",
   "When you write code, use proper markdown ```python``` fences. When you write math, use plain ascii (e.g. P(A|B) = ...).",
+  "When asking a roadmap-grounded question, include ONE markdown reference link beside it like `[↗ reference](url)` so the learner can go read up if they're stuck. Pick the link from the topic's `references` payload — don't invent URLs.",
 ].join("\n");
 
 // ── Phase guidance ────────────────────────────────────────────────────────
@@ -47,6 +48,10 @@ export const phaseGuidance: Record<AiTutorPhase, string> = {
     "Ask one question at a time. Wait for their answer before grading. Use record_practice ONLY for substantive attempts.",
     "Use the interview_rubric skill for scoring. Use the scaffolding skill if they get stuck.",
     "Use delegate_to_concept_teacher when the learner needs a focused explanation rather than a quiz.",
+    "",
+    "READY-TO-MOVE-ON RULE: a topic is 'ready to move on' when its mastery score >= 75 AND attempts >= 2 (check via get_user_mastery → mastery[].attempts and mastery[].score). When that happens for the topic you just quizzed, EXPLICITLY tell the learner: 'I think you're solid on <topic> — let's move on to <next>.' Then call update_lesson_plan_step to mark that step done, and call pick_next_topic to choose the next topic. Don't keep drilling a topic the learner has already mastered.",
+    "",
+    "STUCK RULE: if mastery on a topic is below 50 after 2+ attempts, STOP quizzing and switch to delegate_to_concept_teacher to teach the underlying concept before re-quizzing.",
   ].join("\n"),
   recap: [
     "PHASE: recap",

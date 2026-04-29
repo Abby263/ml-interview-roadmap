@@ -145,6 +145,9 @@ function topicsToBrief(topics: AiTutorTopicContext[], limit = 4) {
     interviewQuestions: topic.interviewQuestions.slice(0, 5),
     href: topic.href,
     itemId: topic.itemId,
+    // First 2 references for the day — the model picks the most relevant
+    // one and embeds it as `[↗ reference](url)` next to the question.
+    references: (topic.references ?? []).slice(0, 2),
   }));
 }
 
@@ -595,7 +598,14 @@ async function executeTool(
           tagId,
           tagLabel: value.tagLabel,
           score: value.score,
+          bestScore: value.bestScore ?? value.score,
+          attempts: value.attempts ?? 0,
           confidence: value.confidence,
+          // The agent uses this flag to decide when to advance — see the
+          // READY-TO-MOVE-ON rule in the system prompt.
+          readyToAdvance:
+            (value.bestScore ?? value.score) >= 75 &&
+            (value.attempts ?? 0) >= 2,
         })
       );
       return {
@@ -846,7 +856,14 @@ async function executeTool(
         // don't match anything on the dashboard.
         const known = getTopicByItemId(day, itemId);
         if (known) {
-          await recordAiTutorCheck(input.userId, day, itemId);
+          // Only write a tracker row when the attempt cleared a passing
+          // bar (score >= 70). The mastery score still updates on every
+          // attempt, but the tracker check is the binary "AI tutor
+          // confirmed they know this" signal — we don't want to mark a
+          // topic done after a 30/100 attempt.
+          if (score >= 70) {
+            await recordAiTutorCheck(input.userId, day, itemId);
+          }
           scratch.suggestedAction = {
             label: `Open Day ${day}`,
             href: `/day/${day}`,
