@@ -187,9 +187,29 @@ AI_TUTOR_MODEL=gpt-4o-mini        # optional; defaults to gpt-4o-mini.
                                   # loop; older models may not.
 AI_TUTOR_DAILY_LIMIT=80           # optional; per-user/day when Supabase is configured
 AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server behavior
+
+# Voice mode (Realtime API) — optional, but required to use 🎙 Voice mode
+AI_TUTOR_REALTIME_MODEL=gpt-realtime-mini   # OpenAI Realtime model
+AI_TUTOR_REALTIME_VOICE=alloy               # alloy / echo / shimmer / sage / verse / coral / ballad / ash
 ```
 
 The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
+
+### Voice mode (WebRTC + Realtime API)
+
+Click **🎙 Voice mode** on `/ai-tutor` to talk with the coach. The
+browser opens a WebRTC connection straight to OpenAI; we just mint the
+short-lived ephemeral key and route tool calls (mastery, lesson plan,
+tracker, references) through the server so memory updates persist.
+
+- Same persona, phases, lesson plan, mastery, and tracker rules as chat
+  mode. Tool calls flow through `/api/ai-tutor/realtime/tool`.
+- Transcript is captured turn-by-turn and persisted to the same session
+  (`ai_tutor_messages`) when the call ends, so memory updates carry
+  forward.
+- The mic permission prompt appears the first time you start a call.
+- A persisted session is required (Supabase configured) — voice can't
+  attach to a `local-…` session id.
 
 ### LangSmith tracing
 

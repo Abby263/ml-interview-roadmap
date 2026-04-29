@@ -245,3 +245,57 @@ export const mockInterviewerPrompt = (role: string, difficulty: string) =>
     "After the question, add a one-line hint of what a strong answer would touch on, prefixed with 'Strong answers usually cover: '.",
     "Keep it under 8 lines total. No preamble, no greeting.",
   ].join("\n");
+
+// ── Voice (Realtime) mode ────────────────────────────────────────────────
+//
+// Same coach, different surface: replies are spoken, so we drop markdown
+// fences/lists, keep turns short, and lean on tools instead of long
+// explanations. URLs are mentioned briefly ("the day six reading") rather
+// than dumped — the user can't click them mid-conversation.
+
+const voicePolicy = [
+  "VOICE MODE — you are speaking, not typing:",
+  "  - Replies must read naturally aloud. NO markdown headers, bullets, or code fences.",
+  "  - Keep each turn short: 1-3 sentences for chit-chat, up to 6 for teaching.",
+  "  - For code snippets, narrate them ('the function takes x and returns x squared') instead of speaking syntax.",
+  "  - For URLs, mention 'the linked reading on X' rather than reading the URL aloud.",
+  "  - Pause between thoughts so the learner can interrupt — this is a conversation, not a lecture.",
+  "  - When you ask a question, ALWAYS pause for the answer — don't keep talking past your own question.",
+].join("\n");
+
+export function buildVoiceInstructions(
+  profile: AiTutorProfile,
+  memory: AiTutorMemory,
+  phase: AiTutorPhase
+): string {
+  const profileBlock = [
+    `LEARNER PROFILE:`,
+    `  target role: ${profile.targetRole}`,
+    `  self-rated level: ${profile.currentLevel}`,
+    `  daily hours: ${profile.dailyHours}`,
+    `  interview date: ${profile.interviewDate || "not set"}`,
+    `  focus areas: ${profile.weakTags.length > 0 ? profile.weakTags.join(", ") : "none picked yet"}`,
+  ].join("\n");
+
+  return [
+    coachPersona,
+    "",
+    profileBlock,
+    "",
+    buildMemoryBlock(memory),
+    "",
+    phaseGuidance[phase],
+    "",
+    skills.interview_rubric,
+    "",
+    skills.scaffolding,
+    "",
+    skills.socratic_followup,
+    "",
+    toolPolicy,
+    "",
+    voicePolicy,
+    "",
+    "Open the session by greeting the learner once, ask what they want to work on, and pause for their reply. Don't dump the full plan up front — earn it turn by turn.",
+  ].join("\n");
+}
