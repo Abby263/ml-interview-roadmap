@@ -1,0 +1,71 @@
+{
+  "day": 130,
+  "title": "Mock interview: DSA round (45 min, 2 problems)",
+  "pillar": "behavioral-storytelling",
+  "focus": "Time-boxed mock — write code, talk through complexity, debrief.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Binary Search",
+      "items": [
+        {
+          "id": "lc-koko-eating-bananas",
+          "label": "Koko Eating Bananas",
+          "href": "https://leetcode.com/problems/koko-eating-bananas/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Mock · DSA round (45 min, 2 problems)",
+      "items": [
+        {
+          "id": "mock-dsa-1",
+          "label": "Mock 1: medium array/hashing problem (20 min)",
+          "href": "https://neetcode.io/practice",
+          "meta": "NeetCode",
+          "interviewQuestions": [
+            "Solve and explain time/space complexity in under 25 minutes.",
+            "Verbalize one optimization you skipped — and explain why it didn't make the cut for interview pacing."
+          ]
+        },
+        {
+          "id": "mock-dsa-2",
+          "label": "Mock 2: medium tree/graph problem (20 min)",
+          "href": "https://neetcode.io/practice",
+          "meta": "NeetCode",
+          "interviewQuestions": [
+            "Solve and explain time/space complexity in under 25 minutes.",
+            "What edge cases (empty input, cycle, single node) did you cover before coding?"
+          ]
+        },
+        {
+          "id": "mock-dsa-debrief",
+          "label": "Self-debrief: communication, edge cases, complexity",
+          "href": "https://www.pramp.com/",
+          "meta": "Pramp",
+          "interviewQuestions": [
+            "What did you skip explaining that the interviewer would have asked?",
+            "Identify one moment where you went silent — what could you have said instead?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    }
+  ]
+}

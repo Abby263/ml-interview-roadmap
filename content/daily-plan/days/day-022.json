@@ -1,0 +1,87 @@
+{
+  "day": 22,
+  "title": "Gradient boosting (XGBoost, LightGBM, CatBoost) + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Why GBDT beats RF on tabular. XGBoost tricks. Pick one and tune.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-reorder-list",
+          "label": "Reorder List",
+          "href": "https://leetcode.com/problems/reorder-list/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        },
+        {
+          "id": "lc-remove-nth-node-from-end-of-list",
+          "label": "Remove Nth Node From End OF List",
+          "href": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Gradient boosting (XGBoost, LightGBM, CatBoost)",
+      "items": [
+        {
+          "id": "ml-gbm-math",
+          "label": "GBM: gradient boosting on residuals",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Walk me through how GBM fits each new tree on the negative gradient of the loss.",
+            "Why is GBM more sensitive to learning rate than Random Forest?"
+          ]
+        },
+        {
+          "id": "ml-xgb",
+          "label": "XGBoost: histogram splits, regularization, missing values",
+          "href": "https://xgboost.readthedocs.io/en/stable/",
+          "meta": "XGBoost",
+          "interviewQuestions": [
+            "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle?",
+            "How does XGBoost handle missing values automatically?"
+          ]
+        },
+        {
+          "id": "ml-lgbm",
+          "label": "LightGBM & CatBoost: leaf-wise growth, GOSS, ordered boosting",
+          "href": "https://lightgbm.readthedocs.io/",
+          "meta": "LightGBM",
+          "interviewQuestions": [
+            "When would you pick LightGBM over XGBoost?",
+            "What problem does CatBoost's ordered boosting solve?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "XGBoost docs (parameters + tuning)",
+      "href": "https://xgboost.readthedocs.io/en/stable/",
+      "source": "XGBoost"
+    },
+    {
+      "label": "LightGBM docs",
+      "href": "https://lightgbm.readthedocs.io/",
+      "source": "Microsoft"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    }
+  ]
+}

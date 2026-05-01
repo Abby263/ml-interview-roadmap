@@ -1,0 +1,87 @@
+{
+  "day": 47,
+  "title": "ViT, CLIP, multimodal LLMs",
+  "pillar": "deep-learning",
+  "focus": "Patch tokenization, [CLS] token, contrastive image-text training.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-permutations",
+          "label": "Permutations",
+          "href": "https://leetcode.com/problems/permutations/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        },
+        {
+          "id": "lc-subsets-ii",
+          "label": "Subsets II",
+          "href": "https://leetcode.com/problems/subsets-ii/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · ViT, CLIP, multimodal",
+      "items": [
+        {
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT)",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
+          ]
+        },
+        {
+          "id": "cv-clip",
+          "label": "CLIP: contrastive image-text pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective."
+          ]
+        },
+        {
+          "id": "cv-multimodal",
+          "label": "BLIP, LLaVA, multimodal LLMs",
+          "href": "https://arxiv.org/abs/2304.08485",
+          "meta": "LLaVA",
+          "interviewQuestions": [
+            "How do multimodal LLMs like LLaVA fuse vision encoders with language models?",
+            "Compare early fusion vs late fusion in vision-language models — what does each cost in compute and quality?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Vision Transformer (ViT) paper",
+      "href": "https://arxiv.org/abs/2010.11929",
+      "source": "Google"
+    },
+    {
+      "label": "CLIP paper",
+      "href": "https://arxiv.org/abs/2103.00020",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}

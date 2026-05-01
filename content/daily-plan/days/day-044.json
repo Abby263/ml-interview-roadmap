@@ -1,0 +1,87 @@
+{
+  "day": 44,
+  "title": "CNN architectures (AlexNet → ResNet → EfficientNet) + DSA Tries",
+  "pillar": "deep-learning",
+  "focus": "What problem each generation solved. Residuals, 1×1 convs, depthwise separable.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Tries",
+      "items": [
+        {
+          "id": "lc-implement-trie-prefix-tree",
+          "label": "Implement Trie Prefix Tree",
+          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        },
+        {
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · CNN architectures",
+      "items": [
+        {
+          "id": "cnn-arch-list",
+          "label": "AlexNet → VGG → Inception → ResNet → DenseNet → EfficientNet",
+          "href": "https://cs231n.github.io/convolutional-networks/#case",
+          "meta": "CS231n",
+          "interviewQuestions": [
+            "What problem did ResNet's residual connections actually solve?",
+            "Why did 1×1 convs become so important (Inception, bottleneck blocks)?"
+          ]
+        },
+        {
+          "id": "cnn-resnet",
+          "label": "Why ResNet works: identity mappings",
+          "href": "https://arxiv.org/abs/1512.03385",
+          "meta": "He et al.",
+          "interviewQuestions": [
+            "Explain why training error went UP with depth before ResNet.",
+            "Walk me through a residual block."
+          ]
+        },
+        {
+          "id": "cnn-eff",
+          "label": "Depthwise separable convs (MobileNet, EfficientNet)",
+          "href": "https://arxiv.org/abs/1905.11946",
+          "meta": "EfficientNet",
+          "interviewQuestions": [
+            "How do depthwise separable convolutions reduce compute?",
+            "What does EfficientNet's compound scaling do that one-axis scaling doesn't?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
+    },
+    {
+      "label": "ResNet paper",
+      "href": "https://arxiv.org/abs/1512.03385",
+      "source": "He et al."
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    }
+  ]
+}

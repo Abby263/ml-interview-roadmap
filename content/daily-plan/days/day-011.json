@@ -1,0 +1,98 @@
+{
+  "day": 11,
+  "title": "Calculus & gradients + DSA Bit Manipulation kickoff",
+  "pillar": "math-stats",
+  "focus": "Chain rule, partial derivatives, Jacobians, Hessians — what backprop will use.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Bit Manipulation",
+      "items": [
+        {
+          "id": "lc-single-number",
+          "label": "Single Number",
+          "href": "https://leetcode.com/problems/single-number/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Why does XOR-all give the unique element when others appear twice?",
+            "How does this generalize when others appear three times (LC 137)?"
+          ]
+        },
+        {
+          "id": "lc-number-of-1-bits",
+          "label": "Number OF 1 Bits",
+          "href": "https://leetcode.com/problems/number-of-1-bits/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        },
+        {
+          "id": "lc-counting-bits",
+          "label": "Counting Bits",
+          "href": "https://leetcode.com/problems/counting-bits/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Calculus & gradients",
+      "items": [
+        {
+          "id": "calc-derivatives",
+          "label": "Derivatives, partial derivatives, chain rule",
+          "href": "https://www.3blue1brown.com/topics/calculus",
+          "meta": "3Blue1Brown",
+          "interviewQuestions": [
+            "Derive the chain rule for f(g(x)) and apply it to a 2-layer neural network.",
+            "What's the difference between a partial derivative and a directional derivative?"
+          ]
+        },
+        {
+          "id": "calc-gradients",
+          "label": "Gradients, Jacobians, Hessians",
+          "href": "https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives",
+          "meta": "Khan Academy",
+          "interviewQuestions": [
+            "What does the gradient vector represent geometrically?",
+            "When would you need the full Jacobian or Hessian in ML?",
+            "Why do second-order methods (Newton) rarely scale to deep nets?"
+          ]
+        },
+        {
+          "id": "calc-backprop",
+          "label": "Backprop as the chain rule on a computation graph",
+          "href": "https://colah.github.io/posts/2015-08-Backprop/",
+          "meta": "colah",
+          "interviewQuestions": [
+            "Explain backpropagation as the chain rule applied to a computation graph.",
+            "Why do vanishing gradients happen, and how do ReLU / residual connections help?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "3Blue1Brown — Essence of Calculus",
+      "href": "https://www.3blue1brown.com/topics/calculus",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "Khan Academy — Linear Algebra",
+      "href": "https://www.khanacademy.org/math/linear-algebra",
+      "source": "Khan Academy"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

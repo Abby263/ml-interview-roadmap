@@ -1,0 +1,70 @@
+{
+  "day": 83,
+  "title": "Advanced RAG: parent-child, GraphRAG, fine-tuned embeddings",
+  "pillar": "generative-ai",
+  "focus": "Auto-merging retrievers; GraphRAG for multi-hop; when to fine-tune embeddings.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-binary-tree-maximum-path-sum",
+          "label": "Binary Tree Maximum Path Sum",
+          "href": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "What does the recursion return vs what it updates globally? Why those two different things?",
+            "What's the time and space complexity, and where does the space go?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Advanced RAG",
+      "items": [
+        {
+          "id": "rag-parent-child",
+          "label": "Parent-child / sentence-window / auto-merging",
+          "href": "https://docs.llamaindex.ai/en/stable/examples/retrievers/auto_merging_retriever/",
+          "meta": "LlamaIndex",
+          "interviewQuestions": [
+            "When does parent-child retrieval beat naive chunked retrieval?",
+            "What's the failure mode of auto-merging, and when does it return a chunk that's too large?"
+          ]
+        },
+        {
+          "id": "rag-graph",
+          "label": "GraphRAG & knowledge-graph augmented retrieval",
+          "href": "https://microsoft.github.io/graphrag/",
+          "meta": "Microsoft",
+          "interviewQuestions": [
+            "How does GraphRAG help with multi-hop reasoning?",
+            "What's the cost of building and maintaining the knowledge graph in GraphRAG — and when is it not worth it?"
+          ]
+        },
+        {
+          "id": "rag-finetune-emb",
+          "label": "Fine-tuning embeddings on domain data",
+          "href": "https://www.sbert.net/docs/training/overview.html",
+          "meta": "SBERT",
+          "interviewQuestions": [
+            "When is it worth fine-tuning the embedding model on your domain?",
+            "How would you build training pairs for embedding fine-tuning when you don't have labeled relevance data?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    }
+  ]
+}

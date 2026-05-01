@@ -1,0 +1,51 @@
+{
+  "day": 119,
+  "title": "Design real-time voice agent (ASR → LLM → TTS) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Turn-taking; barge-in; first-audio-out latency budget.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Walk through the two-heaps trick (max-heap left, min-heap right). What invariant ties them?",
+            "What's the space cost over a long-running stream, and how would you bound it (windowed median)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Voice agent",
+      "items": [
+        {
+          "id": "sd-voice-design",
+          "label": "Design a real-time voice agent (Sesame/ChatGPT voice)",
+          "href": "https://www.sesame.com/research",
+          "meta": "Sesame",
+          "interviewQuestions": [
+            "Walk me through designing a real-time voice agent (ASR → LLM → TTS).",
+            "How do you handle interruption, turn-taking, and barge-in?",
+            "What's your latency budget end-to-end (first audio out)?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Whisper paper (ASR)",
+      "href": "https://arxiv.org/abs/2212.04356",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

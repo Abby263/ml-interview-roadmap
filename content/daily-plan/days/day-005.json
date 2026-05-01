@@ -1,0 +1,86 @@
+{
+  "day": 5,
+  "title": "A/B testing in production + DSA Two Pointers finish",
+  "pillar": "math-stats",
+  "focus": "MDE, sample size, SRM, peeking, CUPED — the four things that ruin tests.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Two Pointers",
+      "items": [
+        {
+          "id": "lc-container-with-most-water",
+          "label": "Container With Most Water",
+          "href": "https://leetcode.com/problems/container-with-most-water/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "Prove that moving the shorter pointer can never lose the optimal answer.",
+            "How is this different from trapping rain water, even though both look similar?"
+          ]
+        },
+        {
+          "id": "lc-trapping-rain-water",
+          "label": "Trapping Rain Water",
+          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "Compare DP (precompute left-max, right-max) vs two-pointer O(1) space — walk through the two-pointer invariant.",
+            "What if rainwater can flow off the sides — how does that change anything?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · A/B testing in production",
+      "items": [
+        {
+          "id": "stats-ab-design",
+          "label": "Experiment design: power, MDE, randomization, SRM",
+          "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+          "meta": "Evan Miller",
+          "interviewQuestions": [
+            "How do you choose sample size for an A/B test? What's MDE?",
+            "What is sample-ratio mismatch (SRM) and why is it a red flag?",
+            "Walk through how to design an experiment to detect a 1% lift in conversion."
+          ]
+        },
+        {
+          "id": "stats-peeking",
+          "label": "Sequential / peeking problems & remedies",
+          "href": "https://www.evanmiller.org/sequential-ab-testing.html",
+          "meta": "Evan Miller",
+          "interviewQuestions": [
+            "Why does 'checking the test daily and stopping when significant' inflate Type I error?",
+            "What are sequential testing methods (e.g., always-valid p-values) and when would you use them?"
+          ]
+        },
+        {
+          "id": "stats-cuped",
+          "label": "Variance reduction: stratification & CUPED",
+          "href": "https://exp-platform.com/Documents/2013-02-CUPED-ImprovingSensitivityOfControlledExperiments.pdf",
+          "meta": "Microsoft",
+          "interviewQuestions": [
+            "Explain CUPED in plain English. Why does it shrink confidence intervals?",
+            "What's the difference between stratification and CUPED for variance reduction?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Evan Miller — A/B testing pitfalls",
+      "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+      "source": "Evan Miller"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

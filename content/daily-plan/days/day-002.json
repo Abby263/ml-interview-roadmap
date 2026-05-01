@@ -1,0 +1,109 @@
+{
+  "day": 2,
+  "title": "Distributions you'll see in interviews + DSA Arrays/Hashing",
+  "pillar": "math-stats",
+  "focus": "Bernoulli/Binomial/Poisson/Normal/Exponential. CLT intuition. More NeetCode arrays/hashing.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Arrays & Hashing",
+      "items": [
+        {
+          "id": "lc-group-anagrams",
+          "label": "Group Anagrams",
+          "href": "https://leetcode.com/problems/group-anagrams/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's your hash key — sorted string vs character-count tuple? Trade-offs?",
+            "How does this scale to a streaming input where new strings keep arriving?"
+          ]
+        },
+        {
+          "id": "lc-top-k-frequent-elements",
+          "label": "Top K Frequent Elements",
+          "href": "https://leetcode.com/problems/top-k-frequent-elements/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Walk through bucket sort (O(n)) vs heap of k (O(n log k)) — when does each win?",
+            "What if k is much larger than the unique-element count?"
+          ]
+        },
+        {
+          "id": "lc-encode-and-decode-strings",
+          "label": "Encode And Decode Strings",
+          "href": "https://leetcode.com/problems/encode-and-decode-strings/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's the time and space complexity? Where can you tighten it?",
+            "Walk through edge cases: empty input, single element, all duplicates, negatives.",
+            "Why is a hash map / hash set the right structure here? When would a sorted structure beat it?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Distributions you'll see in interviews",
+      "items": [
+        {
+          "id": "stats-discrete-dists",
+          "label": "Bernoulli, Binomial, Poisson, Geometric — when to use which",
+          "href": "https://seeing-theory.brown.edu/probability-distributions/index.html",
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "When should you model click events as Bernoulli vs Poisson?",
+            "Derive the mean and variance of a Binomial(n, p).",
+            "Why does the Poisson approximate the Binomial when n is large and p small?"
+          ]
+        },
+        {
+          "id": "stats-continuous-dists",
+          "label": "Normal, Exponential, Uniform, Beta, Gamma — properties & use cases",
+          "href": "https://en.wikipedia.org/wiki/List_of_probability_distributions",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why is the Normal so common — what's the Central Limit Theorem intuition?",
+            "When would you pick a Beta distribution over a Normal?",
+            "How is the Exponential distribution memoryless, and why does that matter for modeling time-to-event?"
+          ]
+        },
+        {
+          "id": "stats-clt",
+          "label": "Central Limit Theorem & Law of Large Numbers",
+          "href": "https://www.youtube.com/watch?v=YAlJCEDH2uY",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "State the Central Limit Theorem precisely and explain what it does NOT say.",
+            "How does the CLT justify using normal-based confidence intervals on means?",
+            "When does the CLT fail or converge slowly?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    }
+  ]
+}

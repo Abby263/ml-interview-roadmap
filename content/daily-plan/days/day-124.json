@@ -1,0 +1,102 @@
+{
+  "day": 124,
+  "title": "Self-mock 1: pick a Week-16 case and rework + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Run a 60-min self-mock on a classic case (recsys/search/ads/fraud/ETA/feed).",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-copy-list-with-random-pointer",
+          "label": "Copy List With Random Pointer",
+          "href": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
+        },
+        {
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
+        },
+        {
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Recommendations",
+      "items": [
+        {
+          "id": "sd-feed",
+          "label": "Design YouTube/TikTok feed recommendations",
+          "href": "https://research.google/pubs/pub45530/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk me through designing TikTok's For You feed end-to-end.",
+            "How would you handle the cold-start problem for a new user?",
+            "What candidate-generation strategies would you use, and how do you combine them?"
+          ]
+        },
+        {
+          "id": "sd-recall-rank",
+          "label": "Two-stage candidate generation + ranking",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Why do industrial recsys use a two-stage (recall + rank) architecture?",
+            "How do you avoid training/serving skew between recall and ranking?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    }
+  ]
+}

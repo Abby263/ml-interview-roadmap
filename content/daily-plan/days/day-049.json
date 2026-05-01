@@ -1,0 +1,122 @@
+{
+  "day": 49,
+  "title": "CV consolidation + DSA Backtracking",
+  "pillar": "deep-learning",
+  "focus": "Run 60-min CV breadth quiz; rehearse mAP, IoU, U-Net, DETR.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-palindrome-partitioning",
+          "label": "Palindrome Partitioning",
+          "href": "https://leetcode.com/problems/palindrome-partitioning/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · CNN architectures",
+      "items": [
+        {
+          "id": "cnn-arch-list",
+          "label": "AlexNet → VGG → Inception → ResNet → DenseNet → EfficientNet",
+          "href": "https://cs231n.github.io/convolutional-networks/#case",
+          "meta": "CS231n",
+          "interviewQuestions": [
+            "What problem did ResNet's residual connections actually solve?",
+            "Why did 1×1 convs become so important (Inception, bottleneck blocks)?"
+          ]
+        },
+        {
+          "id": "cnn-resnet",
+          "label": "Why ResNet works: identity mappings",
+          "href": "https://arxiv.org/abs/1512.03385",
+          "meta": "He et al.",
+          "interviewQuestions": [
+            "Explain why training error went UP with depth before ResNet.",
+            "Walk me through a residual block."
+          ]
+        },
+        {
+          "id": "cnn-eff",
+          "label": "Depthwise separable convs (MobileNet, EfficientNet)",
+          "href": "https://arxiv.org/abs/1905.11946",
+          "meta": "EfficientNet",
+          "interviewQuestions": [
+            "How do depthwise separable convolutions reduce compute?",
+            "What does EfficientNet's compound scaling do that one-axis scaling doesn't?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · ViT, CLIP, multimodal",
+      "items": [
+        {
+          "id": "cv-vit",
+          "label": "Vision Transformer (ViT)",
+          "href": "https://arxiv.org/abs/2010.11929",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How does ViT tokenize an image, and what's the role of the [CLS] token?",
+            "When does a ViT beat a CNN, and when does data-hungriness hurt it?"
+          ]
+        },
+        {
+          "id": "cv-clip",
+          "label": "CLIP: contrastive image-text pretraining",
+          "href": "https://arxiv.org/abs/2103.00020",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How does CLIP enable zero-shot image classification?",
+            "Walk me through CLIP's contrastive training objective."
+          ]
+        },
+        {
+          "id": "cv-self-supervised-representation",
+          "label": "Self-supervised representation learning for vision and multimodal models",
+          "href": "https://lilianweng.github.io/posts/2019-11-10-self-supervised/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Compare contrastive learning, masked prediction, and autoencoding as self-supervised objectives.",
+            "How would you evaluate whether a self-supervised embedding transfers to a downstream product task?",
+            "What data leakage or shortcut-learning failure modes appear in self-supervised pretraining?"
+          ]
+        },
+        {
+          "id": "cv-multimodal",
+          "label": "BLIP, LLaVA, multimodal LLMs",
+          "href": "https://arxiv.org/abs/2304.08485",
+          "meta": "LLaVA",
+          "interviewQuestions": [
+            "How do multimodal LLMs like LLaVA fuse vision encoders with language models?",
+            "Compare early fusion vs late fusion in vision-language models — what does each cost in compute and quality?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Lilian Weng — Self-supervised representation learning",
+      "href": "https://lilianweng.github.io/posts/2019-11-10-self-supervised/",
+      "source": "Lilian Weng"
+    }
+  ]
+}

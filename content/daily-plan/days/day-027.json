@@ -1,0 +1,93 @@
+{
+  "day": 27,
+  "title": "Feature selection (filter / wrapper / embedded / SHAP)",
+  "pillar": "traditional-ml",
+  "focus": "Mutual information, L1, permutation, SHAP — fair attributions.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Tries",
+      "items": [
+        {
+          "id": "lc-implement-trie-prefix-tree",
+          "label": "Implement Trie Prefix Tree",
+          "href": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        },
+        {
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        },
+        {
+          "id": "lc-word-search-ii",
+          "label": "Word Search II",
+          "href": "https://leetcode.com/problems/word-search-ii/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Feature selection",
+      "items": [
+        {
+          "id": "ml-fs-filter",
+          "label": "Filter methods: chi-squared, mutual information",
+          "href": "https://scikit-learn.org/stable/modules/feature_selection.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Compare filter, wrapper, and embedded feature selection.",
+            "When would mutual information beat chi-squared as a filter, and vice versa?"
+          ]
+        },
+        {
+          "id": "ml-fs-embedded",
+          "label": "Embedded: L1, tree-based importance",
+          "href": "https://scikit-learn.org/stable/modules/feature_selection.html#l1-based-feature-selection",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Why is L1 effectively a feature selector?",
+            "When would you trust tree-based importance over L1 selection?"
+          ]
+        },
+        {
+          "id": "ml-fs-shap",
+          "label": "SHAP for feature attribution",
+          "href": "https://shap.readthedocs.io/",
+          "meta": "SHAP",
+          "interviewQuestions": [
+            "How does SHAP compute fair attributions, and how does it relate to game theory?",
+            "Where does SHAP mislead — what's a worked example of correlated features confusing SHAP?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

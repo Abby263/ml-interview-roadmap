@@ -1,0 +1,117 @@
+{
+  "day": 95,
+  "title": "Inference optimization: quantization, distillation, pruning, batching",
+  "pillar": "mlops",
+  "focus": "PTQ vs QAT, GPTQ/AWQ, continuous batching.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Math & Geometry",
+      "items": [
+        {
+          "id": "lc-powx-n",
+          "label": "Powx N",
+          "href": "https://leetcode.com/problems/powx-n/",
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Infra · Inference optimization",
+      "items": [
+        {
+          "id": "inf-quant",
+          "label": "Quantization: INT8, INT4, FP8, GPTQ, AWQ",
+          "href": "https://huggingface.co/docs/transformers/main_classes/quantization",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare post-training quantization (PTQ) vs quantization-aware training (QAT).",
+            "How do GPTQ and AWQ work, and what quality do you lose?",
+            "Why can INT8 or INT4 quantization maintain quality while reducing memory and latency?",
+            "Why are INT1 / 1-bit approaches much harder to deploy than standard integer quantization?",
+            "Walk through quantize and dequantize math: scale, zero point, clipping, and calibration."
+          ]
+        },
+        {
+          "id": "inf-distill",
+          "label": "Knowledge distillation (teacher → student)",
+          "href": "https://arxiv.org/abs/1503.02531",
+          "meta": "Hinton et al.",
+          "interviewQuestions": [
+            "Walk me through knowledge distillation — what is the soft-target loss?",
+            "Why does temperature in the soft target matter, and how do you pick it?"
+          ]
+        },
+        {
+          "id": "inf-prune",
+          "label": "Pruning: structured vs unstructured",
+          "href": "https://pytorch.org/tutorials/intermediate/pruning_tutorial.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Compare structured vs unstructured pruning — which actually speeds up inference?",
+            "Why does unstructured pruning rarely move latency on GPU, even when sparsity is high?"
+          ]
+        },
+        {
+          "id": "inf-batch",
+          "label": "Continuous batching & dynamic batching",
+          "href": "https://www.anyscale.com/blog/continuous-batching-llm-inference",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How does continuous batching beat static batching for LLM serving?",
+            "What's the trade-off between max batch size and per-request latency under continuous batching?",
+            "An internal Llama 3 8B assistant suddenly hits thousands of requests per second. What serving changes would you prioritize before buying more GPUs?"
+          ]
+        },
+        {
+          "id": "inf-runtime-openvino",
+          "label": "Optimized runtimes: OpenVINO, ONNX Runtime, TensorRT",
+          "href": "https://docs.openvino.ai/",
+          "meta": "OpenVINO",
+          "interviewQuestions": [
+            "Where do OpenVINO, ONNX Runtime, and TensorRT fit relative to model-level quantization?",
+            "How would you choose an inference runtime for CPU, edge, and NVIDIA GPU deployments?",
+            "What benchmarking would prove that a runtime optimization improved real P95 latency rather than only microbenchmarks?"
+          ]
+        },
+        {
+          "id": "inf-kv-paged",
+          "label": "KV cache, PagedAttention, and memory-aware serving",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "Why does KV-cache memory become the bottleneck for long-context LLM serving?",
+            "How does PagedAttention reduce memory fragmentation compared with a naive KV cache?",
+            "What serving knobs would you tune when long prompts cause out-of-memory errors?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LLM quantization complete guide",
+      "href": "https://youtu.be/8Jh8BSN_yIY?si=Q97lC4ufPlVTGbw8",
+      "source": "75Hard GenAI/LLM Challenge"
+    },
+    {
+      "label": "OpenVINO documentation",
+      "href": "https://docs.openvino.ai/",
+      "source": "Intel"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "day": 51,
+  "title": "RNN, LSTM, GRU — and why we left them",
+  "pillar": "deep-learning",
+  "focus": "Vanishing gradients, LSTM gates, why transformers won.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Graphs",
+      "items": [
+        {
+          "id": "lc-number-of-islands",
+          "label": "Number OF Islands",
+          "href": "https://leetcode.com/problems/number-of-islands/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Compare DFS, BFS, and Union-Find — pick one and defend it.",
+            "What if the grid is huge and streamed (rows arrive one at a time)?"
+          ]
+        },
+        {
+          "id": "lc-clone-graph",
+          "label": "Clone Graph",
+          "href": "https://leetcode.com/problems/clone-graph/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · RNN, LSTM, GRU",
+      "items": [
+        {
+          "id": "dl-rnn",
+          "label": "RNN forward + truncated BPTT",
+          "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "meta": "DLS C5",
+          "interviewQuestions": [
+            "Why do vanilla RNNs struggle with long-term dependencies?",
+            "Walk through truncated backprop-through-time — why is it the practical default?",
+            "What causes exploding gradients in BPTT, and where do clipping or normalization help?",
+            "How would you set up next-word prediction with an RNN, and what is the target at each time step?"
+          ]
+        },
+        {
+          "id": "dl-lstm",
+          "label": "LSTM cell: gates and cell state",
+          "href": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
+          "meta": "colah",
+          "interviewQuestions": [
+            "Walk through an LSTM cell: forget, input, output gates and cell state.",
+            "How does the cell state help with vanishing gradients?",
+            "Why is a BiLSTM useful for sequence labeling but not valid for causal next-token generation?"
+          ]
+        },
+        {
+          "id": "dl-gru",
+          "label": "GRU vs LSTM",
+          "href": "https://arxiv.org/abs/1412.3555",
+          "meta": "Chung et al.",
+          "interviewQuestions": [
+            "When would you pick GRU over LSTM?",
+            "What does GRU's update gate do that LSTM splits across forget + input gates?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    }
+  ]
+}

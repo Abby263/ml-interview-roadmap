@@ -1,0 +1,73 @@
+{
+  "day": 107,
+  "title": "Design TikTok / YouTube feed recommendations",
+  "pillar": "ml-system-design",
+  "focus": "Two-stage architecture; cold start; candidate-generation strategies.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-min-stack",
+          "label": "Min Stack",
+          "href": "https://leetcode.com/problems/min-stack/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "How do you support getMin in O(1) — what's the auxiliary stack trick?",
+            "Can you do it with a single stack of pairs, and what's the trade-off?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Recommendations",
+      "items": [
+        {
+          "id": "sd-feed",
+          "label": "Design YouTube/TikTok feed recommendations",
+          "href": "https://research.google/pubs/pub45530/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk me through designing TikTok's For You feed end-to-end.",
+            "How would you handle the cold-start problem for a new user?",
+            "What candidate-generation strategies would you use, and how do you combine them?",
+            "How would the architecture change for a Pinterest-style visual discovery or Follow Pins system?",
+            "What feedback-loop or popularity-bias mitigation would you add for a visual discovery feed?"
+          ]
+        },
+        {
+          "id": "sd-recall-rank",
+          "label": "Two-stage candidate generation + ranking",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Why do industrial recsys use a two-stage (recall + rank) architecture?",
+            "How do you avoid training/serving skew between recall and ranking?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "YouTube two-tower (sampling-bias-corrected)",
+      "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+      "source": "Google"
+    }
+  ]
+}

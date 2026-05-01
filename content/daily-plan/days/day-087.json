@@ -1,0 +1,87 @@
+{
+  "day": 87,
+  "title": "Fine-tuning: full vs LoRA vs QLoRA + DSA review",
+  "pillar": "generative-ai",
+  "focus": "When FT beats RAG; LoRA decomposition; data curation for FT.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Sliding Window",
+      "items": [
+        {
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Fine-tuning (full vs LoRA vs QLoRA)",
+      "items": [
+        {
+          "id": "ft-decide",
+          "label": "When to fine-tune vs prompt vs RAG",
+          "href": "https://huggingface.co/blog/dpo-trl",
+          "meta": "HF",
+          "interviewQuestions": [
+            "When does fine-tuning beat RAG, and vice versa?",
+            "When is prompt engineering enough?",
+            "When would you train from scratch instead of fine-tuning an existing LLM?",
+            "How do you choose among full fine-tuning, LoRA, QLoRA, adapters, and prompt tuning for a domain product?"
+          ]
+        },
+        {
+          "id": "ft-lora",
+          "label": "LoRA, QLoRA: math and trade-offs",
+          "href": "https://arxiv.org/abs/2106.09685",
+          "meta": "Hu et al.",
+          "interviewQuestions": [
+            "Walk through how LoRA decomposes weight updates into low-rank matrices.",
+            "What does QLoRA add on top of LoRA, and what does it cost?",
+            "How do you pick rank r and alpha for LoRA?"
+          ]
+        },
+        {
+          "id": "ft-data",
+          "label": "Fine-tuning data: curation, dedup, contamination",
+          "href": "https://huggingface.co/learn/llm-course/chapter11/1",
+          "meta": "HF",
+          "interviewQuestions": [
+            "How would you curate 10k high-quality examples for fine-tuning a domain LLM?",
+            "What's your dedup + contamination check between training and eval sets — and why does it matter?",
+            "How would you fine-tune on domain documents while avoiding catastrophic forgetting?",
+            "What validation set would you use to prove the model improved on domain tasks without losing general capabilities?",
+            "How do you handle rare domain terms, tokenizer splits, and counterexamples in the fine-tuning dataset?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LoRA paper",
+      "href": "https://arxiv.org/abs/2106.09685",
+      "source": "Microsoft"
+    },
+    {
+      "label": "Hugging Face — LoRA & PEFT",
+      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LoRA and QLoRA fine-tuning",
+      "href": "https://youtu.be/5MeqxrpOc0s?si=zdgH_w1Bd37OlinM",
+      "source": "75Hard GenAI/LLM Challenge"
+    }
+  ]
+}

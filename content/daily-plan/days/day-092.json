@@ -1,0 +1,76 @@
+{
+  "day": 92,
+  "title": "Distributed training: DDP, FSDP, ZeRO + DSA review",
+  "pillar": "mlops",
+  "focus": "Gradient sync; sharding strategies; NCCL.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-kth-smallest-element-in-a-bst",
+          "label": "Kth Smallest Element IN A Bst",
+          "href": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Infra · Distributed training",
+      "items": [
+        {
+          "id": "dist-ddp",
+          "label": "Data parallelism: DDP",
+          "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Walk me through how DDP synchronizes gradients across GPUs.",
+            "What does NCCL do in this picture?"
+          ]
+        },
+        {
+          "id": "dist-fsdp",
+          "label": "FSDP, ZeRO, DeepSpeed",
+          "href": "https://engineering.fb.com/2021/07/15/open-source/fsdp/",
+          "meta": "Meta",
+          "interviewQuestions": [
+            "How does FSDP shard parameters, gradients, and optimizer state?",
+            "Compare ZeRO-1, ZeRO-2, ZeRO-3 stages."
+          ]
+        },
+        {
+          "id": "dist-tp-pp",
+          "label": "Tensor & pipeline parallelism",
+          "href": "https://huggingface.co/docs/transformers/perf_train_gpu_many",
+          "meta": "HF",
+          "interviewQuestions": [
+            "When do you need tensor parallelism vs pipeline parallelism, and how do they compose with data parallelism (3D parallelism)?",
+            "What is pipeline-parallel bubble overhead, and how do you minimize it?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "PyTorch DDP tutorial",
+      "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "source": "PyTorch"
+    },
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    }
+  ]
+}

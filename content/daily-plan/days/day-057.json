@@ -1,0 +1,92 @@
+{
+  "day": 57,
+  "title": "ML lifecycle, roles, team topology + DSA Adv Graphs",
+  "pillar": "mlops",
+  "focus": "End-to-end map of failure modes; researcher vs MLE vs MLOps.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-reconstruct-itinerary",
+          "label": "Reconstruct Itinerary",
+          "href": "https://leetcode.com/problems/reconstruct-itinerary/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        },
+        {
+          "id": "lc-min-cost-to-connect-all-points",
+          "label": "Min Cost TO Connect All Points",
+          "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · ML lifecycle",
+      "items": [
+        {
+          "id": "mlops-lifecycle",
+          "label": "Lifecycle: data → train → eval → deploy → monitor → retrain",
+          "href": "https://madewithml.com/",
+          "meta": "Made with ML",
+          "interviewQuestions": [
+            "Walk through the end-to-end ML lifecycle and the failure modes at each stage.",
+            "Where do most ML projects actually fail in the lifecycle, and what catches it earlier?"
+          ]
+        },
+        {
+          "id": "mlops-roles",
+          "label": "ML roles: research, applied, MLE, MLOps, platform",
+          "href": "https://huyenchip.com/2022/06/30/mlops-platform.html",
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "Compare the responsibilities of an ML researcher vs an MLE vs an MLOps engineer.",
+            "When does a company actually need a dedicated ML platform team — and what's the smallest valid platform?"
+          ]
+        },
+        {
+          "id": "mlops-team",
+          "label": "Team topology & ownership boundaries",
+          "href": "https://eugeneyan.com/writing/mlops-team-structure/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How would you structure an ML team at a 50-person startup vs a 5,000-person company?",
+            "Where do ownership disputes typically erupt between data, ML, and platform teams — and how do you preempt them?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    },
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    }
+  ]
+}

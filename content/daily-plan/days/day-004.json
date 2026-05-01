@@ -1,0 +1,103 @@
+{
+  "day": 4,
+  "title": "Confidence intervals + bootstrapping + DSA Two Pointers",
+  "pillar": "math-stats",
+  "focus": "CIs, bootstrap, frequentist vs Bayesian; start the Two Pointers pattern.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Two Pointers",
+      "items": [
+        {
+          "id": "lc-valid-palindrome",
+          "label": "Valid Palindrome",
+          "href": "https://leetcode.com/problems/valid-palindrome/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "How do you handle non-alphanumerics and case — what's your filter logic?",
+            "What if the string is huge and streamed — can you process it without loading it all?"
+          ]
+        },
+        {
+          "id": "lc-two-sum-ii-input-array-is-sorted",
+          "label": "Two Sum II Input Array IS Sorted",
+          "href": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "What invariant do the two pointers preserve, and why does that prove correctness?",
+            "Why is this O(n) and not O(n²) — what guarantees each element is visited a bounded number of times?",
+            "Walk through edge cases: empty input, all duplicates, sorted vs unsorted."
+          ]
+        },
+        {
+          "id": "lc-3sum",
+          "label": "3sum",
+          "href": "https://leetcode.com/problems/3sum/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "How do you avoid duplicate triples without a set — what's the skip-duplicates pattern?",
+            "Generalize to k-sum: what's the recursion, and what's the complexity?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Confidence intervals & bootstrapping",
+      "items": [
+        {
+          "id": "stats-ci",
+          "label": "Confidence intervals: meaning, construction, common misreadings",
+          "href": "https://en.wikipedia.org/wiki/Confidence_interval#Common_misunderstandings",
+          "meta": "Read",
+          "interviewQuestions": [
+            "What does a 95% confidence interval actually mean?",
+            "Why is a 95% CI NOT 'a 95% probability the true value is in this range' under frequentist statistics?",
+            "How would you build a CI for a click-through rate with N=1,000?"
+          ]
+        },
+        {
+          "id": "stats-bootstrap",
+          "label": "Bootstrap & permutation tests",
+          "href": "https://www.youtube.com/watch?v=Xz0x-8-cgaQ",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "When is bootstrapping more useful than a parametric CI?",
+            "Walk through bootstrapping a CI for the median.",
+            "How does a permutation test compare to a t-test when assumptions are violated?"
+          ]
+        },
+        {
+          "id": "stats-frequentist-bayes",
+          "label": "Frequentist vs Bayesian intervals",
+          "href": "https://en.wikipedia.org/wiki/Credible_interval",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare frequentist confidence intervals vs Bayesian credible intervals.",
+            "When does a Bayesian credible interval communicate uncertainty more naturally?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    }
+  ]
+}

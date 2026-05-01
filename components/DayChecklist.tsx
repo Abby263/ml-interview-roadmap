@@ -9,13 +9,52 @@ import {
   subscribeProgress,
   toggleDayCheck,
 } from "@/lib/progress-store";
-import type { DayPlan } from "@/lib/site-data";
+import type { DayPlan } from "@/lib/daily-plan-schema";
+import type { PillarSlug } from "@/lib/site-data";
 
 interface DayChecklistProps {
   plan: DayPlan;
 }
 
 const emptyChecks: string[] = [];
+
+// Short labels matching HomeRoadmap's "Coverage by pillar" panel so users
+// see consistent pillar names across the home page and per-day view.
+const PILLAR_LABEL: Record<PillarSlug, string> = {
+  "math-stats": "Statistics",
+  "traditional-ml": "Traditional ML",
+  "deep-learning": "Deep Learning",
+  mlops: "MLOps",
+  "generative-ai": "Generative AI",
+  llmops: "LLMOps",
+  "ml-system-design": "ML System Design",
+  foundations: "OOPS / SWE",
+  "behavioral-storytelling": "Behavioral",
+};
+
+/**
+ * Resolve which pillar a single track item rolls up to.
+ * NeetCode items (id starts with "lc-") belong to DSA — and we surface
+ * the specific category (e.g., "DSA · Arrays & Hashing") since DSA has
+ * many distinct subtopics. The category lives in the item's `meta`
+ * field, set when the curriculum generator emits the NeetCode track.
+ * Everything else inherits the day's pillar — matches the rules in
+ * HomeRoadmap so pillar tags here can't disagree with the "Coverage by
+ * pillar" bars.
+ */
+function pillarTagForItem(
+  itemId: string,
+  dayPillar: PillarSlug,
+  itemMeta: string | undefined
+): {
+  label: string;
+  isDsa: boolean;
+} {
+  if (itemId.startsWith("lc-")) {
+    return { label: itemMeta ? `DSA · ${itemMeta}` : "DSA", isDsa: true };
+  }
+  return { label: PILLAR_LABEL[dayPillar] ?? dayPillar, isDsa: false };
+}
 
 /**
  * Wrap useUser so it's safe to call when Clerk isn't configured (it's
@@ -139,13 +178,29 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className={`text-[0.98rem] font-semibold leading-snug hover:underline ${
+                          className={`group/link inline-flex items-baseline gap-1 text-[0.98rem] font-semibold leading-snug underline decoration-dotted underline-offset-4 transition hover:decoration-solid ${
                             isChecked
-                              ? "text-muted line-through"
-                              : "text-foreground"
+                              ? "text-muted line-through decoration-muted/40"
+                              : "text-primary decoration-primary/50"
                           }`}
                         >
-                          {item.label}
+                          <span>{item.label}</span>
+                          {item.href.startsWith("http") ? (
+                            <svg
+                              viewBox="0 0 12 12"
+                              aria-hidden="true"
+                              className="h-2.5 w-2.5 flex-shrink-0 self-center opacity-70 transition group-hover/link:opacity-100"
+                            >
+                              <path
+                                d="M3 3h6v6M3 9l6-6"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          ) : null}
                         </a>
                       ) : (
                         <span
@@ -158,12 +213,59 @@ export default function DayChecklist({ plan }: DayChecklistProps) {
                           {item.label}
                         </span>
                       )}
-                      {item.meta ? (
+                      {(() => {
+                        const tag = pillarTagForItem(
+                          item.id,
+                          plan.pillar,
+                          item.meta
+                        );
+                        return (
+                          <span
+                            className="rounded-full border px-2 py-0.5 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.16em]"
+                            style={{
+                              borderColor: tag.isDsa
+                                ? "color-mix(in srgb, var(--accent) 45%, transparent)"
+                                : "color-mix(in srgb, var(--primary) 35%, transparent)",
+                              color: tag.isDsa
+                                ? "var(--accent)"
+                                : "var(--primary)",
+                              background: tag.isDsa
+                                ? "color-mix(in srgb, var(--accent) 8%, transparent)"
+                                : "color-mix(in srgb, var(--primary) 8%, transparent)",
+                            }}
+                          >
+                            {tag.label}
+                          </span>
+                        );
+                      })()}
+                      {/* For DSA items the category already lives on the
+                          chip, so don't repeat it as a meta tag. */}
+                      {item.meta && !item.id.startsWith("lc-") ? (
                         <span className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted">
                           {item.meta}
                         </span>
                       ) : null}
                     </div>
+
+                    {item.interviewQuestions &&
+                    item.interviewQuestions.length > 0 ? (
+                      <div
+                        className="mt-3 border-l-2 pl-3"
+                        style={{
+                          borderColor:
+                            "color-mix(in srgb, var(--accent) 45%, transparent)",
+                        }}
+                      >
+                        <p className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-accent">
+                          Interview questions to prep
+                        </p>
+                        <ol className="mt-2 list-decimal space-y-1.5 pl-4 text-[0.85rem] leading-6 text-muted">
+                          {item.interviewQuestions.map((q) => (
+                            <li key={q}>{q}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    ) : null}
                   </div>
                 </li>
               );

@@ -1,0 +1,71 @@
+{
+  "day": 89,
+  "title": "Guardrails & safety: input/output filters, jailbreaks, red-teaming",
+  "pillar": "generative-ai",
+  "focus": "Defense-in-depth; classify the major jailbreak categories.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-valid-parenthesis-string",
+          "label": "Valid Parenthesis String",
+          "href": "https://leetcode.com/problems/valid-parenthesis-string/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Guardrails & safety",
+      "items": [
+        {
+          "id": "safety-input-output",
+          "label": "Input filtering & output moderation",
+          "href": "https://github.com/NVIDIA/NeMo-Guardrails",
+          "meta": "NeMo Guardrails",
+          "interviewQuestions": [
+            "Compare input vs output filtering — what does each catch and miss?",
+            "What latency does an output-moderation step add, and how do you keep it under your SLO?"
+          ]
+        },
+        {
+          "id": "safety-jailbreak",
+          "label": "Jailbreaks: DAN, role-play, payload smuggling",
+          "href": "https://www.anthropic.com/research/many-shot-jailbreaking",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Walk through three categories of jailbreak attacks, and how you'd defend against each.",
+            "Why is many-shot jailbreaking so effective on long-context models, and what mitigates it?"
+          ]
+        },
+        {
+          "id": "safety-redteam",
+          "label": "Red-teaming & evals for safety",
+          "href": "https://www.anthropic.com/news/frontier-model-security",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you build a red-teaming process for a customer-facing LLM?",
+            "How would you scale red-teaming with automated attackers without missing novel attack vectors?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

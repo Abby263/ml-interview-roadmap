@@ -1,0 +1,71 @@
+{
+  "day": 94,
+  "title": "Hardware: GPUs, TPUs, NVLink, IB + DSA review",
+  "pillar": "mlops",
+  "focus": "A100 vs H100 vs B200; HBM bandwidth; interconnect bottlenecks.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-combination-sum-ii",
+          "label": "Combination Sum II",
+          "href": "https://leetcode.com/problems/combination-sum-ii/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Infra · GPUs, TPUs, accelerators",
+      "items": [
+        {
+          "id": "hw-gpu",
+          "label": "NVIDIA GPUs: A100, H100, B200 — memory, FLOPs, tensor cores",
+          "href": "https://developer.nvidia.com/h100",
+          "meta": "NVIDIA",
+          "interviewQuestions": [
+            "Compare A100, H100, and B200 — what changed each generation?",
+            "Why does HBM matter more than FLOPs for many ML workloads?"
+          ]
+        },
+        {
+          "id": "hw-tpu",
+          "label": "TPUs: pods, slices, XLA",
+          "href": "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare GPUs vs TPUs for training — when does each win?",
+            "What's the cost of porting a PyTorch model to TPU via XLA, and where does it break?"
+          ]
+        },
+        {
+          "id": "hw-net",
+          "label": "NVLink, InfiniBand, network bottlenecks",
+          "href": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/overview.html",
+          "meta": "NCCL",
+          "interviewQuestions": [
+            "Why does interconnect (NVLink, IB) often bottleneck distributed training before compute does?",
+            "How would you diagnose whether your distributed training is bottlenecked by compute, memory, or network?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    }
+  ]
+}

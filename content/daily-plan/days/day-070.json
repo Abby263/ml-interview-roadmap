@@ -1,0 +1,111 @@
+{
+  "day": 70,
+  "title": "Build vs buy + MLOps consolidation + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "Decision framework + vendor evaluation; finish a 60-min MLOps quiz.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-edit-distance",
+          "label": "Edit Distance",
+          "href": "https://leetcode.com/problems/edit-distance/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the DP recurrence on (i, j) and the three cases (insert, delete, replace).",
+            "Can you space-optimize to O(min(m, n))?"
+          ]
+        },
+        {
+          "id": "lc-burst-balloons",
+          "label": "Burst Balloons",
+          "href": "https://leetcode.com/problems/burst-balloons/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Build vs buy",
+      "items": [
+        {
+          "id": "mlops-bvb",
+          "label": "Framework: build vs buy for ML platform components",
+          "href": "https://eugeneyan.com/writing/applied-mlops-resources/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through your decision framework for build vs buy on an ML platform component.",
+            "What recurring failure modes have you seen when teams 'build' something that should have been 'bought'?"
+          ]
+        },
+        {
+          "id": "mlops-vendor-eval",
+          "label": "Evaluating ML/AI vendors",
+          "href": "https://www.latent.space/",
+          "meta": "Latent Space",
+          "interviewQuestions": [
+            "What axes would you use to evaluate an LLM API vendor?",
+            "How do you de-risk vendor lock-in when you adopt a hosted ML service?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Monitoring & drift",
+      "items": [
+        {
+          "id": "mlops-drift",
+          "label": "Data drift, concept drift, label drift",
+          "href": "https://docs.evidentlyai.com/",
+          "meta": "Evidently",
+          "interviewQuestions": [
+            "Compare data drift vs concept drift vs label drift — give an example of each.",
+            "Walk through three statistical tests you'd use to detect drift (PSI, KS, JS)."
+          ]
+        },
+        {
+          "id": "mlops-monitor",
+          "label": "Monitoring stack: predictions, latency, errors",
+          "href": "https://docs.arize.com/",
+          "meta": "Arize",
+          "interviewQuestions": [
+            "What metrics do you monitor for a deployed model beyond accuracy?",
+            "How would you slice your model monitoring dashboard so a regression in one cohort doesn't get masked?"
+          ]
+        },
+        {
+          "id": "mlops-feedback",
+          "label": "Closed-loop monitoring & retraining triggers",
+          "href": "https://eugeneyan.com/writing/monitoring-ml-systems/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How would you decide when to retrain — schedule vs trigger-based?",
+            "How do you monitor when ground-truth labels arrive with delay?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    }
+  ]
+}

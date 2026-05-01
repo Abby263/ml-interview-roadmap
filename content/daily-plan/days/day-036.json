@@ -1,0 +1,108 @@
+{
+  "day": 36,
+  "title": "NN basics: perceptron, MLP, activations + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Forward pass, why XOR needs hidden layers, ReLU vs sigmoid vs GELU.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-invert-binary-tree",
+          "label": "Invert Binary Tree",
+          "href": "https://leetcode.com/problems/invert-binary-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Show both iterative (BFS / DFS with stack) and recursive solutions.",
+            "What's the space cost of the recursive version on a skewed tree?"
+          ]
+        },
+        {
+          "id": "lc-maximum-depth-of-binary-tree",
+          "label": "Maximum Depth OF Binary Tree",
+          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        },
+        {
+          "id": "lc-diameter-of-binary-tree",
+          "label": "Diameter OF Binary Tree",
+          "href": "https://leetcode.com/problems/diameter-of-binary-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Neural network foundations",
+      "items": [
+        {
+          "id": "dl-perceptron",
+          "label": "Perceptron, MLP, forward pass",
+          "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "meta": "DLS C1",
+          "interviewQuestions": [
+            "Walk me through forward pass through a 2-layer MLP for binary classification.",
+            "Why can't a single perceptron solve XOR — and how does adding a hidden layer fix it?"
+          ]
+        },
+        {
+          "id": "dl-activations",
+          "label": "Activations: sigmoid, tanh, ReLU, GELU, SwiGLU",
+          "href": "https://en.wikipedia.org/wiki/Activation_function",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare ReLU, Leaky ReLU, GELU, and SwiGLU — when does each shine?",
+            "Why did ReLU largely replace sigmoid/tanh in deep networks?",
+            "What is the dying ReLU problem and how do you mitigate it?"
+          ]
+        },
+        {
+          "id": "dl-init",
+          "label": "Weight initialization (Xavier, He)",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does poor initialization cause vanishing or exploding gradients?",
+            "Compare Xavier vs He initialization — which goes with which activation and why?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Understanding Deep Learning (free PDF)",
+      "href": "https://udlbook.github.io/udlbook/",
+      "source": "UDL Book"
+    },
+    {
+      "label": "Karpathy — Neural Networks: Zero to Hero",
+      "href": "https://karpathy.ai/zero-to-hero.html",
+      "source": "Karpathy"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

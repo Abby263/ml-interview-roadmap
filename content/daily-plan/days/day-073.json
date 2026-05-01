@@ -1,0 +1,99 @@
+{
+  "day": 73,
+  "title": "Decoding strategies + speculative decoding + JSON mode + DSA Greedy",
+  "pillar": "generative-ai",
+  "focus": "Greedy/beam/top-k/top-p/temperature; constrained generation.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-jump-game-ii",
+          "label": "Jump Game II",
+          "href": "https://leetcode.com/problems/jump-game-ii/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        },
+        {
+          "id": "lc-gas-station",
+          "label": "Gas Station",
+          "href": "https://leetcode.com/problems/gas-station/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Decoding strategies",
+      "items": [
+        {
+          "id": "llm-decoding-strats",
+          "label": "Greedy, beam, top-k, top-p, temperature",
+          "href": "https://huggingface.co/blog/how-to-generate",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare greedy, beam, top-k, and nucleus (top-p) decoding.",
+            "Why is beam search usually a bad choice for open-ended generation?",
+            "What does temperature actually do to the softmax distribution?"
+          ]
+        },
+        {
+          "id": "llm-speculative",
+          "label": "Speculative decoding & draft models",
+          "href": "https://arxiv.org/abs/2211.17192",
+          "meta": "Leviathan et al.",
+          "interviewQuestions": [
+            "How does speculative decoding speed up inference without hurting quality?",
+            "Why doesn't speculative decoding always help — what's the relationship between draft acceptance rate and speedup?"
+          ]
+        },
+        {
+          "id": "llm-constrained",
+          "label": "Constrained / structured decoding (JSON mode, grammars)",
+          "href": "https://github.com/outlines-dev/outlines",
+          "meta": "Outlines",
+          "interviewQuestions": [
+            "How would you force an LLM to emit valid JSON — and what are the failure modes?",
+            "Compare grammar-constrained decoding vs prompt-+-retry-+-validate — when does each fit?"
+          ]
+        },
+        {
+          "id": "llm-generate-loop",
+          "label": "Implement a generate() loop for a tiny GPT",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement top-k and nucleus sampling inside an autoregressive generate() loop.",
+            "How do temperature, top-k, and top-p interact when a model becomes repetitive or incoherent?",
+            "What stopping conditions do you need for a chat model beyond max_new_tokens?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    }
+  ]
+}

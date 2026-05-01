@@ -1,0 +1,86 @@
+{
+  "day": 120,
+  "title": "Latency vs accuracy: caching, distillation, cascades + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "What you actually do when accuracy is great but P99 is too high.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-same-tree",
+          "label": "Same Tree",
+          "href": "https://leetcode.com/problems/same-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What levers do you pull when accuracy is great but latency misses the budget?",
+            "Walk through where you'd add caching in a RAG + LLM pipeline to halve P99."
+          ]
+        },
+        {
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you design a cascade: cheap model first, expensive only when needed?",
+            "What's the right verifier for the cheap model's output — and when does it dominate cost?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through cold-start strategies for new users vs new items.",
+            "Compare bandit-based exploration vs content-based bridges for cold start — when does each fit?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "When would you reach for federated learning vs differential privacy vs on-device inference?",
+            "What's the accuracy cost of DP-SGD at typical ε values, and how do you decide if it's acceptable?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    }
+  ]
+}

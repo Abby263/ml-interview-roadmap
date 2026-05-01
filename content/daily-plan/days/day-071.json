@@ -1,0 +1,95 @@
+{
+  "day": 71,
+  "title": "LLM foundations: pretraining, scaling laws, KV cache + DSA 2-D DP",
+  "pillar": "generative-ai",
+  "focus": "Chinchilla scaling, decoder-only at inference, emergent abilities debate.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-regular-expression-matching",
+          "label": "Regular Expression Matching",
+          "href": "https://leetcode.com/problems/regular-expression-matching/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM foundations",
+      "items": [
+        {
+          "id": "llm-pretraining",
+          "label": "Pretraining: data, scaling laws (Chinchilla)",
+          "href": "https://arxiv.org/abs/2203.15556",
+          "meta": "Hoffmann et al.",
+          "interviewQuestions": [
+            "Walk me through Chinchilla scaling laws — what's the data:parameters ratio?",
+            "Why has 'compute-optimal' training overtaken 'parameter-optimal' as the design target?",
+            "How would you turn noisy API or Wikipedia data into a pretraining corpus without contaminating evaluation?"
+          ]
+        },
+        {
+          "id": "llm-gpt-dataset",
+          "label": "Build a GPT dataset for next-token prediction",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "How do you turn raw text into input-target pairs for GPT next-token prediction?",
+            "What are block size, context window, and stride in a language-model dataset?",
+            "How do train/validation splits prevent contamination in LLM pretraining or fine-tuning?"
+          ]
+        },
+        {
+          "id": "llm-arch",
+          "label": "Decoder-only transformer for LLMs",
+          "href": "https://jalammar.github.io/illustrated-gpt2/",
+          "meta": "Jay Alammar",
+          "interviewQuestions": [
+            "Walk me through one forward pass of a decoder-only LLM at inference time.",
+            "What is the KV cache and why is it so important?",
+            "Why do modern LLMs need billions of parameters — what capacity, memorization, and generalization trade-offs are involved?",
+            "What changes architecturally or operationally when you move from a small language model to a frontier-scale LLM?"
+          ]
+        },
+        {
+          "id": "llm-emergent",
+          "label": "Emergent abilities & in-context learning",
+          "href": "https://arxiv.org/abs/2206.07682",
+          "meta": "Wei et al.",
+          "interviewQuestions": [
+            "Define 'emergent abilities' in LLMs — and why some researchers say they're a measurement artifact.",
+            "What does the 'mirage' paper claim, and how does the choice of metric drive apparent emergence?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Karpathy — Intro to LLMs",
+      "href": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+      "source": "YouTube"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
+    }
+  ]
+}

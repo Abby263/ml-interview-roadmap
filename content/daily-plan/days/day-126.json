@@ -1,0 +1,121 @@
+{
+  "day": 126,
+  "title": "Self-mock 3: 60-min full ML system design (your hardest case)",
+  "pillar": "ml-system-design",
+  "focus": "Pick the case you're least comfortable with. Record. Self-debrief.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-car-fleet",
+          "label": "Car Fleet",
+          "href": "https://leetcode.com/problems/car-fleet/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
+        },
+        {
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
+        },
+        {
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What levers do you pull when accuracy is great but latency misses the budget?",
+            "Walk through where you'd add caching in a RAG + LLM pipeline to halve P99."
+          ]
+        },
+        {
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you design a cascade: cheap model first, expensive only when needed?",
+            "What's the right verifier for the cheap model's output — and when does it dominate cost?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through cold-start strategies for new users vs new items.",
+            "Compare bandit-based exploration vs content-based bridges for cold start — when does each fit?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "When would you reach for federated learning vs differential privacy vs on-device inference?",
+            "What's the accuracy cost of DP-SGD at typical ε values, and how do you decide if it's acceptable?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
+}

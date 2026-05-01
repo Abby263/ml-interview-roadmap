@@ -1,0 +1,71 @@
+{
+  "day": 104,
+  "title": "RLHF & RLAIF deep dive",
+  "pillar": "generative-ai",
+  "focus": "Reward modeling pipeline; Constitutional AI; reward hacking detection.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Tries",
+      "items": [
+        {
+          "id": "lc-design-add-and-search-words-data-structure",
+          "label": "Design Add And Search Words Data Structure",
+          "href": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+          "meta": "Tries",
+          "interviewQuestions": [
+            "Why a trie over a hash map — what queries does the trie make cheaper?",
+            "What's the time/space trade-off vs storing all suffixes?",
+            "How would you support deletion or wildcard matching efficiently?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · RLHF & RLAIF deep dive",
+      "items": [
+        {
+          "id": "rlhf-pipeline",
+          "label": "RLHF pipeline: SFT → RM → PPO",
+          "href": "https://huggingface.co/blog/rlhf",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the three stages of RLHF end-to-end.",
+            "What goes wrong if your reward model is poorly calibrated?"
+          ]
+        },
+        {
+          "id": "rlhf-rlaif",
+          "label": "RLAIF, Constitutional AI, RLEF",
+          "href": "https://arxiv.org/abs/2212.08073",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "What is Constitutional AI, and how does it reduce reliance on human labels?",
+            "Where does RLAIF struggle — what kinds of judgments still need humans?"
+          ]
+        },
+        {
+          "id": "rlhf-eval",
+          "label": "Reward hacking & alignment evals",
+          "href": "https://arxiv.org/abs/2305.18290",
+          "meta": "Rafailov et al.",
+          "interviewQuestions": [
+            "Walk through how reward hacking shows up in practice and how you'd detect it.",
+            "How would you design an eval suite that catches sycophancy and excessive hedging in an RLHF'd model?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}

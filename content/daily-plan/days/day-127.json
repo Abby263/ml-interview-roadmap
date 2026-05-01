@@ -1,0 +1,70 @@
+{
+  "day": 127,
+  "title": "Behavioral framework + TMABY + 'why us' stories",
+  "pillar": "behavioral-storytelling",
+  "focus": "STAR / CAR; 90-second TMABY; tailored 'why this company'.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Two Pointers",
+      "items": [
+        {
+          "id": "lc-trapping-rain-water",
+          "label": "Trapping Rain Water",
+          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "Compare DP (precompute left-max, right-max) vs two-pointer O(1) space — walk through the two-pointer invariant.",
+            "What if rainwater can flow off the sides — how does that change anything?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Behavioral · STAR framework & key stories",
+      "items": [
+        {
+          "id": "beh-star",
+          "label": "STAR / CAR framework with worked examples",
+          "href": "https://www.themuse.com/advice/star-interview-method",
+          "meta": "The Muse",
+          "interviewQuestions": [
+            "Walk through STAR with one of your real stories.",
+            "How do you keep a STAR answer under 3 minutes without losing impact?"
+          ]
+        },
+        {
+          "id": "beh-tmaby",
+          "label": "Tell-me-about-yourself: 90-second version",
+          "href": "https://hbr.org/2022/05/a-simple-way-to-introduce-yourself",
+          "meta": "HBR",
+          "interviewQuestions": [
+            "Tell me about yourself in 90 seconds.",
+            "What three threads should every TMABY hit?"
+          ]
+        },
+        {
+          "id": "beh-why-co",
+          "label": "Why this company / why this role",
+          "href": "https://www.lennysnewsletter.com/",
+          "meta": "Lenny's Newsletter",
+          "interviewQuestions": [
+            "Why this company? Tailor in 60 seconds.",
+            "Why this role over similar roles you've applied for?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
+}

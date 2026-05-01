@@ -1,0 +1,101 @@
+{
+  "day": 52,
+  "title": "Attention & Transformer (Q,K,V) + Graphs",
+  "pillar": "deep-learning",
+  "focus": "Self-attention end-to-end; multi-head, RoPE, FlashAttention, MQA/GQA.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Graphs",
+      "items": [
+        {
+          "id": "lc-max-area-of-island",
+          "label": "Max Area OF Island",
+          "href": "https://leetcode.com/problems/max-area-of-island/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
+        },
+        {
+          "id": "lc-pacific-atlantic-water-flow",
+          "label": "Pacific Atlantic Water Flow",
+          "href": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Attention & Transformer",
+      "items": [
+        {
+          "id": "dl-attention",
+          "label": "Self-attention(Q, K, V) end-to-end",
+          "href": "https://jalammar.github.io/illustrated-transformer/",
+          "meta": "Jay Alammar",
+          "interviewQuestions": [
+            "Walk me through self-attention(Q, K, V) end-to-end.",
+            "Why divide by √d_k inside softmax?",
+            "What does multi-head attention buy you over a single head?"
+          ]
+        },
+        {
+          "id": "dl-transformer",
+          "label": "Encoder-decoder, positional encoding, residuals",
+          "href": "https://arxiv.org/abs/1706.03762",
+          "meta": "Vaswani et al.",
+          "interviewQuestions": [
+            "Walk me through the transformer block: attention → add+norm → FFN → add+norm.",
+            "Compare absolute vs relative vs RoPE positional encodings.",
+            "Why did transformers replace RNN/LSTM architectures for most GenAI workloads?",
+            "What do residual connections, layer norm, and feed-forward activation choices contribute to transformer stability?"
+          ]
+        },
+        {
+          "id": "dl-attn-variants",
+          "label": "Sparse, linear, FlashAttention, MQA, GQA",
+          "href": "https://arxiv.org/abs/2205.14135",
+          "meta": "FlashAttention",
+          "interviewQuestions": [
+            "What problem does FlashAttention solve, and how?",
+            "Compare MHA, MQA, and GQA — KV-cache trade-offs."
+          ]
+        },
+        {
+          "id": "dl-nc-attention",
+          "label": "Code self-attention, multi-head attention, and a tiny transformer",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement scaled dot-product self-attention and track the shapes of Q, K, V, scores, and output.",
+            "How do masks change self-attention for causal language modeling?",
+            "What changes when you split attention into multiple heads and then concatenate them?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Attention Is All You Need",
+      "href": "https://arxiv.org/abs/1706.03762",
+      "source": "Vaswani et al."
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
+    },
+    {
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
+    }
+  ]
+}

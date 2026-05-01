@@ -1,0 +1,115 @@
+{
+  "day": 32,
+  "title": "ML coding consolidation + design pattern review",
+  "pillar": "traditional-ml",
+  "focus": "Re-implement one classifier with a clean OO API. Reflect on SOLID violations.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Two Pointers",
+      "items": [
+        {
+          "id": "lc-trapping-rain-water",
+          "label": "Trapping Rain Water",
+          "href": "https://leetcode.com/problems/trapping-rain-water/",
+          "meta": "Two Pointers",
+          "interviewQuestions": [
+            "Compare DP (precompute left-max, right-max) vs two-pointer O(1) space — walk through the two-pointer invariant.",
+            "What if rainwater can flow off the sides — how does that change anything?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Coding from scratch",
+      "items": [
+        {
+          "id": "ml-code-knn",
+          "label": "Code k-NN classifier from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-NN from scratch and explain its time/space complexity.",
+            "How would you speed up k-NN inference on millions of points without changing the prediction?"
+          ]
+        },
+        {
+          "id": "ml-code-kmeans",
+          "label": "Code k-means from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-means with k-means++ initialization.",
+            "Why does k-means++ initialization matter, and what does it cost vs random init?"
+          ]
+        },
+        {
+          "id": "ml-code-logreg",
+          "label": "Code logistic regression with SGD",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement logistic regression with mini-batch SGD and L2 regularization.",
+            "What numerical-stability pitfalls do you watch out for when implementing the sigmoid + log-loss?"
+          ]
+        },
+        {
+          "id": "ml-code-lr-neetcode",
+          "label": "Code linear regression training from scratch",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement linear regression training with vectorized gradients and a learning-rate parameter.",
+            "How do you verify your from-scratch implementation against sklearn or a closed-form OLS solution?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "SWE · Design patterns",
+      "items": [
+        {
+          "id": "dp-creational",
+          "label": "Creational: factory, builder, singleton",
+          "href": "https://refactoring.guru/design-patterns/creational-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "When is a singleton an anti-pattern in tests?",
+            "Compare factory vs abstract factory vs builder."
+          ]
+        },
+        {
+          "id": "dp-structural",
+          "label": "Structural: adapter, decorator, facade",
+          "href": "https://refactoring.guru/design-patterns/structural-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "When would you reach for an adapter vs a facade?",
+            "Where does the decorator pattern show up cleanly in an ML inference pipeline?"
+          ]
+        },
+        {
+          "id": "dp-behavioral",
+          "label": "Behavioral: strategy, observer, command",
+          "href": "https://refactoring.guru/design-patterns/behavioral-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "Show how the strategy pattern lets you swap ML models without touching call sites.",
+            "When does observer cause subtle bugs in a high-throughput system?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Refactoring.guru — design patterns",
+      "href": "https://refactoring.guru/design-patterns",
+      "source": "Refactoring.guru"
+    }
+  ]
+}

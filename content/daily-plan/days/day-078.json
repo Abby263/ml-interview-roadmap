@@ -1,0 +1,89 @@
+{
+  "day": 78,
+  "title": "RAG foundations: pipeline + chunking + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "When RAG vs FT; latency in retrieve→rerank→generate; chunk strategies.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Intervals",
+      "items": [
+        {
+          "id": "lc-meeting-rooms-ii",
+          "label": "Meeting Rooms II",
+          "href": "https://leetcode.com/problems/meeting-rooms-ii/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Compare heap-based (O(n log n)) vs sweep-line (start/end events) approaches.",
+            "What if you need to assign each meeting to a specific room, not just count?"
+          ]
+        },
+        {
+          "id": "lc-minimum-interval-to-include-each-query",
+          "label": "Minimum Interval TO Include Each Query",
+          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · RAG foundations",
+      "items": [
+        {
+          "id": "rag-why",
+          "label": "Why RAG: closed-book vs open-book LLMs",
+          "href": "https://python.langchain.com/docs/concepts/rag/",
+          "meta": "LangChain",
+          "interviewQuestions": [
+            "When would you reach for RAG over fine-tuning, and vice versa?",
+            "What problems does RAG solve that long context windows don't?"
+          ]
+        },
+        {
+          "id": "rag-pipeline",
+          "label": "Standard RAG pipeline: index → retrieve → rerank → generate",
+          "href": "https://www.pinecone.io/learn/retrieval-augmented-generation/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Walk through the four stages of a standard RAG pipeline.",
+            "Where does latency hide in a RAG pipeline?",
+            "A RAG answer is wrong and you suspect retrieval. How do you prove whether the issue is corpus coverage, extraction, retrieval, reranking, or generation?",
+            "How would you log and compare top-k results before and after a retrieval change?",
+            "What offline benchmark and online A/B signals would tell you the retrieval fix is safe?"
+          ]
+        },
+        {
+          "id": "rag-chunking",
+          "label": "Chunking strategies: fixed, semantic, hierarchical",
+          "href": "https://www.pinecone.io/learn/chunking-strategies/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Compare fixed-size, semantic, and hierarchical chunking — when does each fit?",
+            "How does chunk size affect retrieval quality vs answer quality?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    }
+  ]
+}

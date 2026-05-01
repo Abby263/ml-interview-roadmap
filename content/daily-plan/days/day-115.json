@@ -1,0 +1,66 @@
+{
+  "day": 115,
+  "title": "Design LLM eval platform (Braintrust/LangSmith) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Slicing dimensions; PII redaction; continuous online eval.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-min-cost-to-connect-all-points",
+          "label": "Min Cost TO Connect All Points",
+          "href": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · LLM eval platform",
+      "items": [
+        {
+          "id": "sd-eval-platform",
+          "label": "Design an LLM eval platform (Braintrust/LangSmith style)",
+          "href": "https://docs.smith.langchain.com/",
+          "meta": "LangSmith",
+          "interviewQuestions": [
+            "Walk me through designing an internal LLM eval platform.",
+            "What dimensions would you slice eval results by?"
+          ]
+        },
+        {
+          "id": "sd-eval-pipeline",
+          "label": "Online + offline eval pipelines",
+          "href": "https://www.braintrust.dev/docs",
+          "meta": "Braintrust",
+          "interviewQuestions": [
+            "How would you continuously evaluate a production LLM agent on real traffic without leaking PII?",
+            "How do you keep eval datasets fresh as user behavior shifts — what's the refresh cadence?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LangSmith — LLM tracing & eval",
+      "href": "https://docs.smith.langchain.com/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "day": 90,
+  "title": "Agent protocols: MCP & A2A deep dive",
+  "pillar": "generative-ai",
+  "focus": "MCP host/client/server; A2A; shared tool registries.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Intervals",
+      "items": [
+        {
+          "id": "lc-minimum-interval-to-include-each-query",
+          "label": "Minimum Interval TO Include Each Query",
+          "href": "https://leetcode.com/problems/minimum-interval-to-include-each-query/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · MCP, A2A, agent protocols",
+      "items": [
+        {
+          "id": "ap-mcp",
+          "label": "Model Context Protocol (MCP) deep dive",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "What's the MCP architecture (host, client, server)?",
+            "When would you build an MCP server vs use function calling directly?"
+          ]
+        },
+        {
+          "id": "ap-a2a",
+          "label": "Agent-to-agent (A2A) protocols",
+          "href": "https://google.github.io/A2A/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "What problem does A2A solve over ad-hoc agent integration?",
+            "Compare MCP and A2A — when do you reach for each, and can they coexist?"
+          ]
+        },
+        {
+          "id": "ap-tools",
+          "label": "Standardizing tool catalogs across agents",
+          "href": "https://modelcontextprotocol.io/clients",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "How would you design a shared tool registry for multiple agents in your company?",
+            "How do you handle versioning and breaking changes in tool definitions consumed by many agents?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Model Context Protocol",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

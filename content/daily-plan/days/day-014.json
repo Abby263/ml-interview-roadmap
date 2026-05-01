@@ -1,0 +1,132 @@
+{
+  "day": 14,
+  "title": "Math/stats consolidation + DSA Sliding Window finish",
+  "pillar": "math-stats",
+  "focus": "Recap weeks 1-2 with rehearsed answers. Wrap Sliding Window pattern.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Sliding Window",
+      "items": [
+        {
+          "id": "lc-minimum-window-substring",
+          "label": "Minimum Window Substring",
+          "href": "https://leetcode.com/problems/minimum-window-substring/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through your shrink condition — when do you safely move the left pointer?",
+            "How do you handle duplicate characters in t (e.g., 'aabb')?"
+          ]
+        },
+        {
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Bias-variance trade-off",
+      "items": [
+        {
+          "id": "ml-bias-var",
+          "label": "Bias-variance decomposition with worked example",
+          "href": "https://www.youtube.com/watch?v=EuBBz3bI-aA",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Decompose expected squared error into bias², variance, and irreducible noise.",
+            "Why does adding more training data reduce variance but not bias?"
+          ]
+        },
+        {
+          "id": "ml-double-descent",
+          "label": "Double descent: when more parameters help",
+          "href": "https://openai.com/index/deep-double-descent/",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Explain the double-descent phenomenon. How does it overturn classical bias-variance intuition?",
+            "Why do over-parameterized models often generalize well in deep learning?"
+          ]
+        },
+        {
+          "id": "ml-learning-curves",
+          "label": "Learning curves: diagnose underfit vs overfit",
+          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "How do you read a learning curve to decide between more data, regularization, or a bigger model?",
+            "What does a large gap between training and validation curves usually mean — and what shrinks it?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Optimization for ML",
+      "items": [
+        {
+          "id": "opt-convex",
+          "label": "Convex vs non-convex optimization",
+          "href": "https://web.stanford.edu/~boyd/cvxbook/",
+          "meta": "Boyd",
+          "interviewQuestions": [
+            "What does convexity guarantee for optimization?",
+            "Are deep neural network losses convex? Why does SGD still work?"
+          ]
+        },
+        {
+          "id": "opt-gd",
+          "label": "Gradient descent, SGD, mini-batch SGD",
+          "href": "https://ruder.io/optimizing-gradient-descent/",
+          "meta": "Sebastian Ruder",
+          "interviewQuestions": [
+            "Compare batch GD, SGD, and mini-batch SGD — trade-offs in compute, noise, and convergence.",
+            "Why does SGD with momentum converge faster than vanilla SGD?"
+          ]
+        },
+        {
+          "id": "opt-nc-gradient-descent",
+          "label": "Code gradient descent for a scalar loss",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement gradient descent for a simple squared-error objective and explain the update rule line by line.",
+            "How would you debug a training run where gradient descent diverges after a few steps?"
+          ]
+        },
+        {
+          "id": "opt-momentum",
+          "label": "Momentum, Nesterov, Adam, AdamW, schedulers",
+          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
+          "meta": "fast.ai",
+          "interviewQuestions": [
+            "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
+            "Why is the AdamW correction important when using weight decay with adaptive optimizers?",
+            "What's the role of learning-rate warmup and cosine schedules?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

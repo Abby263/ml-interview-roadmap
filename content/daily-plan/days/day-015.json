@@ -1,0 +1,112 @@
+{
+  "day": 15,
+  "title": "Linear regression deep dive + DSA Stack kickoff",
+  "pillar": "traditional-ml",
+  "focus": "OLS derivation, MLE under Gaussian noise, assumptions, loss choice.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-valid-parentheses",
+          "label": "Valid Parentheses",
+          "href": "https://leetcode.com/problems/valid-parentheses/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Walk through the stack invariant on a small mixed input.",
+            "What if the input might be malformed mid-stream — how do you fail fast?"
+          ]
+        },
+        {
+          "id": "lc-min-stack",
+          "label": "Min Stack",
+          "href": "https://leetcode.com/problems/min-stack/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "How do you support getMin in O(1) — what's the auxiliary stack trick?",
+            "Can you do it with a single stack of pairs, and what's the trade-off?"
+          ]
+        },
+        {
+          "id": "lc-evaluate-reverse-polish-notation",
+          "label": "Evaluate Reverse Polish Notation",
+          "href": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Linear regression",
+      "items": [
+        {
+          "id": "ml-ols",
+          "label": "OLS, normal equations, MLE interpretation",
+          "href": "https://www.statlearning.com/",
+          "meta": "ISLR ch. 3",
+          "interviewQuestions": [
+            "Derive the OLS solution θ = (XᵀX)⁻¹Xᵀy. When is XᵀX not invertible?",
+            "Show that OLS = MLE under Gaussian noise."
+          ]
+        },
+        {
+          "id": "ml-lr-assumptions",
+          "label": "Assumptions: linearity, independence, homoscedasticity, normality",
+          "href": "https://en.wikipedia.org/wiki/Linear_regression#Assumptions",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through the four classical assumptions of linear regression and how to diagnose violations.",
+            "What's heteroscedasticity and how do you fix it?"
+          ]
+        },
+        {
+          "id": "ml-loss-fns",
+          "label": "Loss functions: MSE, MAE, Huber — when to use each",
+          "href": "https://heartbeat.comet.ml/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
+            "Why is Huber loss differentiable and robust at the same time?"
+          ]
+        },
+        {
+          "id": "ml-lr-nc-forward-train",
+          "label": "Code linear regression forward pass and training loop",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement a vectorized linear regression forward pass for X @ w + b and state the expected tensor shapes.",
+            "Implement one gradient-descent training step for linear regression and explain loss vs cost vs prediction error.",
+            "Does sklearn's LinearRegression use gradient descent or ordinary least squares? Why does that matter in an interview?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

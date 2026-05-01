@@ -1,0 +1,87 @@
+{
+  "day": 23,
+  "title": "Imbalanced classification + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "SMOTE / class weights / focal loss. PR-AUC, F-beta, MCC.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-copy-list-with-random-pointer",
+          "label": "Copy List With Random Pointer",
+          "href": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        },
+        {
+          "id": "lc-add-two-numbers",
+          "label": "Add Two Numbers",
+          "href": "https://leetcode.com/problems/add-two-numbers/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Imbalanced classification",
+      "items": [
+        {
+          "id": "ml-imbalance-fix",
+          "label": "Resampling, class weights, SMOTE",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "Compare random oversampling, undersampling, SMOTE, and class weighting — when does each help?",
+            "Why can SMOTE leak when applied before cross-validation?"
+          ]
+        },
+        {
+          "id": "ml-imbalance-loss",
+          "label": "Focal loss & cost-sensitive learning",
+          "href": "https://arxiv.org/abs/1708.02002",
+          "meta": "Lin et al.",
+          "interviewQuestions": [
+            "Why does focal loss help with extreme imbalance in object detection?",
+            "Compare focal loss vs class-weighted cross-entropy — when does focal actually win?"
+          ]
+        },
+        {
+          "id": "ml-imbalance-eval",
+          "label": "Metric choice for imbalance: PR-AUC, F-beta, MCC",
+          "href": "https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Why is accuracy a terrible metric for imbalanced classification?",
+            "When do you reach for F1, F-beta, MCC, or PR-AUC?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "imbalanced-learn user guide",
+      "href": "https://imbalanced-learn.org/stable/user_guide.html",
+      "source": "scikit-learn-contrib"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

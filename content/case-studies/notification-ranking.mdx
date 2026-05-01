@@ -1,0 +1,56 @@
+---
+title: Design a Notification Ranking System
+description: Rank and throttle notifications so users receive useful alerts without spam, fatigue, or churn.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a notification ranking system that chooses which notifications to send, when to send them, and which channel to use while protecting long-term user trust.
+concepts:
+  - Ranking
+  - Send-time optimization
+  - Frequency capping
+  - Causal measurement
+  - Guardrail metrics
+evaluationLens:
+  - Useful engagement
+  - Opt-out rate
+  - Long-term retention
+  - Fatigue
+  - Delivery latency
+---
+
+## Clarify the product objective
+
+Open rate is not enough. A notification system should optimize useful engagement while protecting trust. Ask what counts as value: reply, purchase, session start, safety alert viewed, or task completed.
+
+Also clarify channel constraints: push, email, SMS, in-app, and digest notifications have different cost, urgency, and annoyance profiles.
+
+## Architecture
+
+1. **Candidate generation**: product events create candidate notifications.
+2. **Eligibility and policy**: apply quiet hours, frequency caps, legal rules, and user preferences.
+3. **Ranking**: score candidates by relevance, urgency, freshness, user context, and fatigue.
+4. **Send-time optimization**: decide now, later, digest, or suppress.
+5. **Delivery and logging**: log candidate set, rank, suppression reason, send time, channel, and outcome.
+
+## Model and features
+
+Useful features include event type, sender relationship, user activity recency, timezone, historical opens, past mutes, notification category, and urgency.
+
+Use a simple baseline first: rule-based urgency plus category caps. Move to learning-to-rank only once logging and guardrails are stable.
+
+## Metrics
+
+- Primary: useful downstream action or task completion.
+- Guardrails: opt-out, mute, uninstall, complaint, churn, notification volume.
+- Diagnostics: open rate by category, send delay, suppression reason, per-user frequency.
+
+## Failure modes
+
+- **Spammy optimization**: open rate rises while retention falls.
+- **Feedback loops**: users who engage get more notifications and burn out.
+- **Interference**: multiple notifications compete for the same user attention.
+- **Cold start**: new users have no preference history. Use onboarding and category priors.
+
+## What the architect signal looks like
+
+End with the trade-off you would defend: long-term trust beats short-term opens. A good answer includes suppression, not only ranking.

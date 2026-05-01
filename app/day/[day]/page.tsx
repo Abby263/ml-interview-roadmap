@@ -3,14 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import DayChecklist from "@/components/DayChecklist";
+import { listCaseStudyEntries } from "@/lib/content";
+import { dailyPlan, getDayPlan } from "@/lib/daily-plan";
 import {
-  caseStudies,
-  dailyPlan,
-  getDayPlan,
   getPillarBySlug,
   getPillarHref,
   getTopicById,
-  questions,
 } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -43,20 +41,18 @@ export default async function DayPage({
   const pillar = getPillarBySlug(plan.pillar);
   const topic = plan.topicId ? getTopicById(plan.topicId) : undefined;
   const caseStudy = plan.caseStudySlug
-    ? caseStudies.find((c) => c.slug === plan.caseStudySlug)
+    ? (await listCaseStudyEntries()).find(
+        (study) => study.slug === plan.caseStudySlug
+      )
     : undefined;
-  const linkedQuestions = (plan.questionIds ?? [])
-    .map((id) => questions.find((q) => q.id === id))
-    .filter((q): q is (typeof questions)[number] => Boolean(q));
-
   const prev = plan.day > 1 ? plan.day - 1 : null;
   const next = plan.day < dailyPlan.length ? plan.day + 1 : null;
 
   return (
     <div className="space-y-12">
       <div className="flex flex-wrap items-center gap-3 text-sm">
-        <Link href="/" className="text-muted hover:text-foreground">
-          ← All days
+        <Link href="/study-plan" className="text-muted hover:text-foreground">
+          ← Study plan
         </Link>
         <span className="text-muted">·</span>
         {pillar ? (
@@ -82,47 +78,6 @@ export default async function DayPage({
       </header>
 
       <DayChecklist plan={plan} />
-
-      {plan.interviewQuestions.length > 0 ? (
-        <section className="section-card rounded-[28px] p-6 md:p-8">
-          <p className="panel-label">Interview questions to be ready for</p>
-          <ul className="mt-5 space-y-3">
-            {plan.interviewQuestions.map((q) => (
-              <li
-                key={q}
-                className="flex gap-3 text-[0.98rem] leading-7 text-foreground"
-              >
-                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                <span>{q}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-
-      {linkedQuestions.length > 0 ? (
-        <section className="section-card rounded-[28px] p-6 md:p-8">
-          <p className="panel-label">Related question-bank prompts</p>
-          <ul className="mt-4 space-y-4">
-            {linkedQuestions.map((q) => (
-              <li key={q.id}>
-                <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  {q.category}
-                </span>
-                <p className="mt-1 text-[0.98rem] leading-7 text-foreground">
-                  {q.question}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/questions"
-            className="mt-5 inline-flex text-sm font-semibold text-primary hover:underline"
-          >
-            Open the full question bank →
-          </Link>
-        </section>
-      ) : null}
 
       {plan.references.length > 0 ? (
         <section className="section-card rounded-[28px] p-6 md:p-8">

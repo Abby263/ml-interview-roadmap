@@ -1,0 +1,84 @@
+{
+  "day": 84,
+  "title": "Long-context vs RAG; agentic RAG; prompt caching",
+  "pillar": "generative-ai",
+  "focus": "1M+ contexts; agent loops over retrieval; cost via caching.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-n-queens",
+          "label": "N Queens",
+          "href": "https://leetcode.com/problems/n-queens/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you check 'queen attacks me' in O(1) using the diagonal-set trick?",
+            "What's the state-space size, and how much does pruning actually save in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Long context & agentic RAG",
+      "items": [
+        {
+          "id": "rag-long-ctx",
+          "label": "1M+ context windows: when do they replace RAG?",
+          "href": "https://www.anthropic.com/news/100k-context-windows",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Do long context windows kill RAG? Defend your view.",
+            "What's the cost picture (latency + $) of stuffing 1M tokens vs RAG over the same corpus?",
+            "Does a bigger context window always improve enterprise QA? Explain context dilution, attention cost, and stale-token risk.",
+            "What is context inflation, and how would you detect it in latency, cost, and answer-quality metrics?",
+            "When would hierarchical summaries plus retrieval beat stuffing the full document into the prompt?"
+          ]
+        },
+        {
+          "id": "rag-agentic",
+          "label": "Agentic RAG: planning + tool-use over retrieval",
+          "href": "https://www.llamaindex.ai/blog/agentic-rag-with-llamaindex-2721b8a49ff6",
+          "meta": "LlamaIndex",
+          "interviewQuestions": [
+            "What does agentic RAG add over a static RAG pipeline?",
+            "When does agentic RAG perform WORSE than static RAG — what are the failure modes?"
+          ]
+        },
+        {
+          "id": "rag-cache",
+          "label": "Prompt caching & retrieval caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How does prompt caching change the cost picture for repeated context?",
+            "Compare exact-match retrieval caching vs semantic caching — when does each fit?"
+          ]
+        },
+        {
+          "id": "rag-long-docs",
+          "label": "Long documents: chunk, summarize, route, or stuff context",
+          "href": "https://www.pinecone.io/learn/chunking-strategies/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "How would you answer questions over a 500-page PDF without exceeding the context window?",
+            "When do you choose hierarchical summaries, parent-child chunks, or long-context stuffing?",
+            "How do you avoid losing section-level citations when chunking long documents?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
+}

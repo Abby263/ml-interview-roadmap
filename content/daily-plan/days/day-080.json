@@ -1,0 +1,89 @@
+{
+  "day": 80,
+  "title": "Retrieval strategies: dense / sparse / hybrid / HyDE",
+  "pillar": "generative-ai",
+  "focus": "BM25 + dense fusion; HyDE; multi-query; multi-hop.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-burst-balloons",
+          "label": "Burst Balloons",
+          "href": "https://leetcode.com/problems/burst-balloons/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Retrieval strategies",
+      "items": [
+        {
+          "id": "rag-dense-sparse",
+          "label": "Dense vs sparse vs hybrid (BM25 + dense)",
+          "href": "https://www.pinecone.io/learn/hybrid-search-intro/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "When does sparse retrieval (BM25) beat dense retrieval?",
+            "How would you combine BM25 and dense scores in hybrid search?",
+            "Given 30 failed RAG queries, how would you check whether the gold document appears in top-k before touching the generator?",
+            "When would you add query rewriting, expansion, or hybrid search instead of changing the embedding model?"
+          ]
+        },
+        {
+          "id": "rag-query-expansion",
+          "label": "Query expansion: HyDE, multi-query, query rewriting",
+          "href": "https://arxiv.org/abs/2212.10496",
+          "meta": "HyDE",
+          "interviewQuestions": [
+            "How does HyDE work, and when does it actually help?",
+            "When would you decompose a query into multiple sub-queries?"
+          ]
+        },
+        {
+          "id": "rag-dpr",
+          "label": "Dense Passage Retrieval (DPR) and retriever training",
+          "href": "https://arxiv.org/abs/2004.04906",
+          "meta": "DPR",
+          "interviewQuestions": [
+            "How does DPR train a dense retriever, and how is it different from BM25?",
+            "What positives and hard negatives would you use to train or fine-tune a retriever?",
+            "When would DPR-style retrieval fail compared with sparse or hybrid search?"
+          ]
+        },
+        {
+          "id": "rag-multi-hop",
+          "label": "Multi-hop & iterative retrieval",
+          "href": "https://arxiv.org/abs/2305.14283",
+          "meta": "FLARE",
+          "interviewQuestions": [
+            "How would you handle a multi-hop question that requires chaining retrieval calls?",
+            "What stopping criterion do you use for iterative retrieval — and how do you avoid runaway loops?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "75Hard GenAI/LLM — DPR for RAG",
+      "href": "https://www.linkedin.com/posts/simranjeet97_day42-75hardgenai-generativeai-activity-7173754439323906049-kk1H",
+      "source": "75Hard GenAI/LLM Challenge"
+    }
+  ]
+}

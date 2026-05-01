@@ -1,0 +1,98 @@
+{
+  "day": 12,
+  "title": "Optimization for ML: SGD → Adam → AdamW",
+  "pillar": "math-stats",
+  "focus": "Convexity, momentum, adaptive optimizers, schedulers. The interview classic.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Bit Manipulation",
+      "items": [
+        {
+          "id": "lc-reverse-bits",
+          "label": "Reverse Bits",
+          "href": "https://leetcode.com/problems/reverse-bits/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        },
+        {
+          "id": "lc-missing-number",
+          "label": "Missing Number",
+          "href": "https://leetcode.com/problems/missing-number/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Optimization for ML",
+      "items": [
+        {
+          "id": "opt-convex",
+          "label": "Convex vs non-convex optimization",
+          "href": "https://web.stanford.edu/~boyd/cvxbook/",
+          "meta": "Boyd",
+          "interviewQuestions": [
+            "What does convexity guarantee for optimization?",
+            "Are deep neural network losses convex? Why does SGD still work?"
+          ]
+        },
+        {
+          "id": "opt-gd",
+          "label": "Gradient descent, SGD, mini-batch SGD",
+          "href": "https://ruder.io/optimizing-gradient-descent/",
+          "meta": "Sebastian Ruder",
+          "interviewQuestions": [
+            "Compare batch GD, SGD, and mini-batch SGD — trade-offs in compute, noise, and convergence.",
+            "Why does SGD with momentum converge faster than vanilla SGD?"
+          ]
+        },
+        {
+          "id": "opt-nc-gradient-descent",
+          "label": "Code gradient descent for a scalar loss",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement gradient descent for a simple squared-error objective and explain the update rule line by line.",
+            "How would you debug a training run where gradient descent diverges after a few steps?"
+          ]
+        },
+        {
+          "id": "opt-momentum",
+          "label": "Momentum, Nesterov, Adam, AdamW, schedulers",
+          "href": "https://www.fast.ai/posts/2018-07-02-adam-weight-decay.html",
+          "meta": "fast.ai",
+          "interviewQuestions": [
+            "Compare Adam, AdamW, and SGD with momentum — which would you reach for first and why?",
+            "Why is the AdamW correction important when using weight decay with adaptive optimizers?",
+            "What's the role of learning-rate warmup and cosine schedules?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "3Blue1Brown — Essence of Calculus",
+      "href": "https://www.3blue1brown.com/topics/calculus",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "Google ML Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

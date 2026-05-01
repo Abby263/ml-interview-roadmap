@@ -1,0 +1,81 @@
+{
+  "day": 72,
+  "title": "Tokenization deep dive (BPE step-by-step) + DSA Greedy",
+  "pillar": "generative-ai",
+  "focus": "Why tokenization breaks math; vocab size trade-offs.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-maximum-subarray",
+          "label": "Maximum Subarray",
+          "href": "https://leetcode.com/problems/maximum-subarray/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Walk through Kadane's algorithm. State the loop invariant.",
+            "How does maximum-product-subarray differ — what extra state do you carry?"
+          ]
+        },
+        {
+          "id": "lc-jump-game",
+          "label": "Jump Game",
+          "href": "https://leetcode.com/problems/jump-game/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Why does greedy (track max-reach) work? Where would DP be unnecessary?",
+            "How does jump-game-ii (min jumps) differ in approach?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Tokenization deep-dive",
+      "items": [
+        {
+          "id": "llm-bpe",
+          "label": "BPE algorithm step-by-step",
+          "href": "https://huggingface.co/learn/nlp-course/chapter6/5",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the BPE training algorithm.",
+            "Why does BPE result in different tokenizations for similar words across languages?"
+          ]
+        },
+        {
+          "id": "llm-vocab",
+          "label": "Vocabulary size trade-offs",
+          "href": "https://huggingface.co/docs/transformers/tokenizer_summary",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why is vocabulary size a critical design choice — what does increasing it cost?",
+            "How does vocab size affect throughput and memory of the embedding + LM-head layers?"
+          ]
+        },
+        {
+          "id": "llm-tokenization-issues",
+          "label": "Tokenization quirks: numbers, code, multilingual",
+          "href": "https://www.beren.io/2023-07-05-Tokenization-and-its-discontents/",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why do LLMs struggle with arithmetic, and how does tokenization contribute?",
+            "Why are non-Latin-script languages disproportionately expensive to serve, and how do you fix it?",
+            "Before fine-tuning on domain documents, how would you decide whether domain-specific terms need tokenizer vocabulary changes?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    }
+  ]
+}

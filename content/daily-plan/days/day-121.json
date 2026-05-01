@@ -1,0 +1,126 @@
+{
+  "day": 121,
+  "title": "Multi-model routing & cascades + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Cheap-then-expensive; verifier models; budget-aware routing.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-word-search",
+          "label": "Word Search",
+          "href": "https://leetcode.com/problems/word-search/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through DFS with a 'visited' marker on the board (in-place vs aux). Trade-offs?",
+            "How does this scale to 'word search ii' with a trie of many target words?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Cross-cutting trade-offs",
+      "items": [
+        {
+          "id": "sd-tradeoff-lat-acc",
+          "label": "Latency vs accuracy: caching, distillation, cascades",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "What levers do you pull when accuracy is great but latency misses the budget?",
+            "Walk through where you'd add caching in a RAG + LLM pipeline to halve P99."
+          ]
+        },
+        {
+          "id": "sd-tradeoff-routing",
+          "label": "Multi-model routing & cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you design a cascade: cheap model first, expensive only when needed?",
+            "What's the right verifier for the cheap model's output — and when does it dominate cost?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-coldstart",
+          "label": "Cold-start strategies (recsys, search, ads)",
+          "href": "https://eugeneyan.com/writing/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through cold-start strategies for new users vs new items.",
+            "Compare bandit-based exploration vs content-based bridges for cold start — when does each fit?"
+          ]
+        },
+        {
+          "id": "sd-tradeoff-privacy",
+          "label": "Privacy-preserving ML: federated, DP, on-device",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "When would you reach for federated learning vs differential privacy vs on-device inference?",
+            "What's the accuracy cost of DP-SGD at typical ε values, and how do you decide if it's acceptable?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LLMOps · Caching, routing, cost",
+      "items": [
+        {
+          "id": "lo-cache",
+          "label": "Prompt caching & semantic caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Compare exact-match prompt caching vs semantic caching — when does each fit?",
+            "How would you measure semantic-cache safety — what's the false-hit failure mode?"
+          ]
+        },
+        {
+          "id": "lo-routing",
+          "label": "Model routing: cheap-then-expensive cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you route requests across GPT-5, Claude 4.5, and a small open-source model?",
+            "Walk through how a verifier model gates the cheap-model output before falling back to the expensive one."
+          ]
+        },
+        {
+          "id": "lo-vllm",
+          "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "What does vLLM's PagedAttention do for throughput?",
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
+          ]
+        },
+        {
+          "id": "lo-latency-limits",
+          "label": "Latency debugging, rate limits, and concurrency controls",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "How would you diagnose high first-token latency vs high tokens-per-second latency?",
+            "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

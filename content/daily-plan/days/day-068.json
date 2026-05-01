@@ -1,0 +1,82 @@
+{
+  "day": 68,
+  "title": "Multi-tenant & multi-region serving + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "Per-tenant LoRA vs base+adapter; data residency; noisy neighbors.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-target-sum",
+          "label": "Target Sum",
+          "href": "https://leetcode.com/problems/target-sum/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        },
+        {
+          "id": "lc-interleaving-string",
+          "label": "Interleaving String",
+          "href": "https://leetcode.com/problems/interleaving-string/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Multi-tenant & multi-region",
+      "items": [
+        {
+          "id": "mlops-mt",
+          "label": "Multi-tenant model serving (per-tenant fine-tuning, isolation)",
+          "href": "https://www.anyscale.com/blog/turbo-charging-llm-fine-tuning-with-anyscale",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "Compare per-tenant fine-tuned models vs a shared base model with adapters (LoRA).",
+            "How would you isolate a noisy or abusive tenant from degrading other tenants' latency?"
+          ]
+        },
+        {
+          "id": "mlops-region",
+          "label": "Multi-region serving & data residency",
+          "href": "https://cloud.google.com/architecture/best-practices-vpc-design",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How do data-residency requirements (e.g., EU data stays in EU) shape your serving topology?",
+            "What's the failover playbook when a region serving model traffic goes down?"
+          ]
+        },
+        {
+          "id": "mlops-noisy",
+          "label": "Noisy neighbor & QoS",
+          "href": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "meta": "k8s",
+          "interviewQuestions": [
+            "How would you protect a critical model from noisy-neighbor latency on shared infra?",
+            "Compare priority classes, resource quotas, and dedicated node pools for QoS — when does each fit?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    }
+  ]
+}

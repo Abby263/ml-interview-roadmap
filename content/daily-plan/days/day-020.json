@@ -1,0 +1,82 @@
+{
+  "day": 20,
+  "title": "Bagging, Random Forest, boosting intuition + DSA Binary Search finish",
+  "pillar": "traditional-ml",
+  "focus": "Variance reduction vs bias reduction; bagging vs boosting.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Binary Search",
+      "items": [
+        {
+          "id": "lc-time-based-key-value-store",
+          "label": "Time Based Key Value Store",
+          "href": "https://leetcode.com/problems/time-based-key-value-store/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
+        },
+        {
+          "id": "lc-median-of-two-sorted-arrays",
+          "label": "Median OF Two Sorted Arrays",
+          "href": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "Walk through the partition idea: pick i in A, derive j in B from it.",
+            "Why is the binary search on the smaller array, and what's the worst-case complexity?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Ensembles: bagging, RF, boosting",
+      "items": [
+        {
+          "id": "ml-bagging-rf",
+          "label": "Bagging & Random Forest",
+          "href": "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "How does bagging reduce variance? Why doesn't it reduce bias?",
+            "What two extra ingredients does Random Forest add on top of bagging?",
+            "Which Random Forest hyperparameters control tree diversity, and how does out-of-bag validation work?"
+          ]
+        },
+        {
+          "id": "ml-boosting",
+          "label": "Boosting intuition: AdaBoost, GBM",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Compare bagging vs boosting — what's reduced and how?",
+            "Walk me through how AdaBoost reweights samples after each weak learner."
+          ]
+        },
+        {
+          "id": "ml-stacking",
+          "label": "Stacking & blending",
+          "href": "https://mlwave.com/kaggle-ensembling-guide/",
+          "meta": "MLWave",
+          "interviewQuestions": [
+            "When does stacking actually help vs just adding overhead?",
+            "Walk me through how you'd avoid leakage when training a stacked model with k-fold meta-features."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
+}

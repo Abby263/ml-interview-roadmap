@@ -1,0 +1,84 @@
+{
+  "day": 76,
+  "title": "Reasoning models (o1/o3, Claude thinking) + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "Test-time compute; CoT vs ToT vs self-consistency.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Intervals",
+      "items": [
+        {
+          "id": "lc-insert-interval",
+          "label": "Insert Interval",
+          "href": "https://leetcode.com/problems/insert-interval/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
+        },
+        {
+          "id": "lc-merge-intervals",
+          "label": "Merge Intervals",
+          "href": "https://leetcode.com/problems/merge-intervals/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Why sort by start (not end) for THIS problem — and contrast with non-overlapping-intervals.",
+            "How does this scale if intervals stream in unsorted?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Reasoning models (o1, o3, thinking)",
+      "items": [
+        {
+          "id": "llm-o1",
+          "label": "o1 / o3: long reasoning, RL on reasoning traces",
+          "href": "https://openai.com/index/learning-to-reason-with-llms/",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "How do reasoning models like o1 differ from standard chat LLMs?",
+            "When are reasoning models worth their cost, and when are they overkill?"
+          ]
+        },
+        {
+          "id": "llm-thinking",
+          "label": "Claude extended thinking & test-time compute",
+          "href": "https://www.anthropic.com/news/visible-extended-thinking",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "What does test-time compute scaling buy you over training-time compute?",
+            "When does extended thinking actually hurt — what tasks does it slow down without quality gains?",
+            "Why is longer reasoning output not the same thing as better reasoning?",
+            "How would you compare self-consistency against selecting generations by a reasoning-quality signal such as deep-thinking ratio?",
+            "If you could reject weak reasoning samples after the first 50 tokens, how would that change inference cost and quality?"
+          ]
+        },
+        {
+          "id": "llm-tot",
+          "label": "Tree of Thoughts, self-consistency",
+          "href": "https://arxiv.org/abs/2305.10601",
+          "meta": "Yao et al.",
+          "interviewQuestions": [
+            "Compare CoT vs ToT vs self-consistency — when does each help?",
+            "Why does self-consistency improve reasoning, and when does it fail?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "OpenAI — Learning to reason with LLMs",
+      "href": "https://openai.com/index/learning-to-reason-with-llms/",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

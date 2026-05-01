@@ -1,0 +1,89 @@
+{
+  "day": 10,
+  "title": "SVD, PCA, t-SNE, UMAP + DSA Math & Geometry finish",
+  "pillar": "math-stats",
+  "focus": "Workhorse decomposition, dimensionality reduction, when to read which plot.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Math & Geometry",
+      "items": [
+        {
+          "id": "lc-multiply-strings",
+          "label": "Multiply Strings",
+          "href": "https://leetcode.com/problems/multiply-strings/",
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
+        },
+        {
+          "id": "lc-detect-squares",
+          "label": "Detect Squares",
+          "href": "https://leetcode.com/problems/detect-squares/",
+          "meta": "Math & Geometry",
+          "interviewQuestions": [
+            "Where does integer overflow / negative input / zero hide here, and how do you guard against it?",
+            "Can you derive a closed-form solution, and how does it compare to the iterative one?",
+            "Walk through edge cases: 0, 1, max int, min int, negative input."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · SVD & PCA",
+      "items": [
+        {
+          "id": "linalg-svd",
+          "label": "Singular Value Decomposition (SVD)",
+          "href": "https://www.youtube.com/watch?v=mBcLRGuAFUk",
+          "meta": "Strang",
+          "interviewQuestions": [
+            "Explain SVD geometrically: X = UΣVᵀ.",
+            "Why does SVD always exist while eigendecomposition does not?",
+            "Where is SVD used in recommender systems and embeddings?"
+          ]
+        },
+        {
+          "id": "ml-pca",
+          "label": "PCA: derivation, variance retention, when it fails",
+          "href": "https://www.youtube.com/watch?v=FgakZw6K1QQ",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Derive PCA as maximizing variance OR minimizing reconstruction error — they give the same answer. Why?",
+            "When does PCA fail (non-Gaussian, non-linear, scale-sensitive)?",
+            "Compare PCA vs t-SNE vs UMAP — when do you pick each?"
+          ]
+        },
+        {
+          "id": "ml-tsne",
+          "label": "t-SNE, UMAP — strengths and how to read the plots",
+          "href": "https://distill.pub/2016/misread-tsne/",
+          "meta": "Distill",
+          "interviewQuestions": [
+            "Why are distances in a t-SNE plot misleading?",
+            "When would you choose UMAP over t-SNE?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "3Blue1Brown — Essence of Linear Algebra",
+      "href": "https://www.3blue1brown.com/topics/linear-algebra",
+      "source": "3Blue1Brown"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Gilbert Strang — Linear Algebra (MIT 18.06)",
+      "href": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "source": "MIT OCW"
+    }
+  ]
+}

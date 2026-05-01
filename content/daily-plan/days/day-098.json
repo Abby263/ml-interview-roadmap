@@ -1,0 +1,117 @@
+{
+  "day": 98,
+  "title": "Infra wrap + LLMOps consolidation",
+  "pillar": "llmops",
+  "focus": "Cross-link distributed training + serving + cost questions.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-merge-triplets-to-form-target-triplet",
+          "label": "Merge Triplets TO Form Target Triplet",
+          "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "LLMOps · Caching, routing, cost",
+      "items": [
+        {
+          "id": "lo-cache",
+          "label": "Prompt caching & semantic caching",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Compare exact-match prompt caching vs semantic caching — when does each fit?",
+            "How would you measure semantic-cache safety — what's the false-hit failure mode?"
+          ]
+        },
+        {
+          "id": "lo-routing",
+          "label": "Model routing: cheap-then-expensive cascades",
+          "href": "https://www.anyscale.com/blog/announcing-anyscale-llm-router-foundational-model-router",
+          "meta": "Anyscale",
+          "interviewQuestions": [
+            "How would you route requests across GPT-5, Claude 4.5, and a small open-source model?",
+            "Walk through how a verifier model gates the cheap-model output before falling back to the expensive one."
+          ]
+        },
+        {
+          "id": "lo-vllm",
+          "label": "Inference servers: vLLM, TensorRT-LLM, SGLang",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "What does vLLM's PagedAttention do for throughput?",
+            "Compare vLLM vs TensorRT-LLM vs SGLang."
+          ]
+        },
+        {
+          "id": "lo-latency-limits",
+          "label": "Latency debugging, rate limits, and concurrency controls",
+          "href": "https://docs.vllm.ai/",
+          "meta": "vLLM",
+          "interviewQuestions": [
+            "How would you diagnose high first-token latency vs high tokens-per-second latency?",
+            "How do rate limits, concurrency limits, queues, and retries interact in an LLM API gateway?",
+            "What metrics tell you whether the bottleneck is prompt length, model compute, KV cache pressure, or downstream tools?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Cost & scaling",
+      "items": [
+        {
+          "id": "mlops-cost",
+          "label": "Cost modeling: training vs inference, batching, autoscaling",
+          "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "How would you model the unit cost of a prediction in production?",
+            "What levers reduce inference cost (batching, quantization, caching, distillation)?"
+          ]
+        },
+        {
+          "id": "mlops-autoscale",
+          "label": "Autoscaling: HPA, KEDA, queue-based",
+          "href": "https://keda.sh/",
+          "meta": "KEDA",
+          "interviewQuestions": [
+            "Compare CPU-based HPA vs queue-based KEDA scaling for ML inference.",
+            "Why does GPU-pinned inference often defeat HPA, and how do you actually scale GPU pods?"
+          ]
+        },
+        {
+          "id": "mlops-spot",
+          "label": "Spot/preemptible instances for training",
+          "href": "https://cloud.google.com/architecture/run-cost-effective-deep-learning-workloads",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you train safely on spot instances (checkpointing, retries)?",
+            "When does spot training become NET more expensive than on-demand — what's the breakeven?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

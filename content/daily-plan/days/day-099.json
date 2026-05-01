@@ -1,0 +1,70 @@
+{
+  "day": 99,
+  "title": "Speech: ASR (Whisper) + TTS + streaming",
+  "pillar": "deep-learning",
+  "focus": "Encoder-decoder vs CTC; Tacotron / FastSpeech; streaming latency.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-binary-tree-level-order-traversal",
+          "label": "Binary Tree Level Order Traversal",
+          "href": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Walk through BFS with queue. How do you cleanly separate one level from the next?",
+            "Can you do this DFS-recursively while still grouping by level?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Speech (ASR, TTS)",
+      "items": [
+        {
+          "id": "speech-asr",
+          "label": "ASR: from HMMs to Whisper",
+          "href": "https://arxiv.org/abs/2212.04356",
+          "meta": "OpenAI Whisper",
+          "interviewQuestions": [
+            "Walk through Whisper's encoder-decoder design and weakly-supervised training data.",
+            "Compare CTC vs attention-based seq2seq for ASR."
+          ]
+        },
+        {
+          "id": "speech-tts",
+          "label": "TTS: Tacotron, FastSpeech, neural vocoders",
+          "href": "https://google.github.io/tacotron/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare two-stage (text → mel → wav) vs end-to-end TTS.",
+            "Why does prosody / expressive control remain hard in TTS, and how do modern systems handle it?"
+          ]
+        },
+        {
+          "id": "speech-streaming",
+          "label": "Streaming ASR: latency vs accuracy",
+          "href": "https://arxiv.org/abs/2102.01547",
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the trade-off between latency and accuracy in streaming ASR?",
+            "How would you design a chunked / look-ahead streaming ASR to keep latency under 300ms?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Whisper paper (ASR)",
+      "href": "https://arxiv.org/abs/2212.04356",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}

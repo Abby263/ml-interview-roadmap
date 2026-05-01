@@ -1,0 +1,100 @@
+{
+  "day": 77,
+  "title": "LLM evaluation + benchmarks + LLM-as-judge + DSA Intervals",
+  "pillar": "generative-ai",
+  "focus": "Perplexity vs MMLU vs GPQA vs SWE-bench; judge calibration.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Intervals",
+      "items": [
+        {
+          "id": "lc-non-overlapping-intervals",
+          "label": "Non Overlapping Intervals",
+          "href": "https://leetcode.com/problems/non-overlapping-intervals/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
+        },
+        {
+          "id": "lc-meeting-rooms",
+          "label": "Meeting Rooms",
+          "href": "https://leetcode.com/problems/meeting-rooms/",
+          "meta": "Intervals",
+          "interviewQuestions": [
+            "Do you sort by start or by end? Defend the choice based on the invariant you need.",
+            "Walk through merge / overlap detection: what's your condition for 'overlapping'?",
+            "How does complexity break down: O(n log n) sort + O(n) sweep — can you do better in any case?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM evaluation",
+      "items": [
+        {
+          "id": "llm-perplexity",
+          "label": "Perplexity: what it is and isn't",
+          "href": "https://huggingface.co/docs/transformers/perplexity",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Define perplexity precisely — and explain why it's a poor proxy for downstream task quality.",
+            "Two models with the same perplexity perform very differently on a benchmark. What's going on?"
+          ]
+        },
+        {
+          "id": "llm-bench",
+          "label": "Benchmarks: MMLU, HumanEval, GPQA, SWE-bench",
+          "href": "https://paperswithcode.com/sota",
+          "meta": "Papers with Code",
+          "interviewQuestions": [
+            "Compare MMLU vs GPQA vs SWE-bench — what does each measure?",
+            "Why has benchmark contamination become a serious issue?"
+          ]
+        },
+        {
+          "id": "llm-eval-judge",
+          "label": "LLM-as-judge: design, biases, calibration",
+          "href": "https://arxiv.org/abs/2306.05685",
+          "meta": "Zheng et al.",
+          "interviewQuestions": [
+            "When is LLM-as-judge reliable, and what biases does it introduce?",
+            "How would you calibrate an LLM judge to human preferences?"
+          ]
+        },
+        {
+          "id": "llm-eval-metrics",
+          "label": "Generation metrics: BLEU, ROUGE, BERTScore, exact match",
+          "href": "https://huggingface.co/evaluate-metric",
+          "meta": "Hugging Face",
+          "interviewQuestions": [
+            "Compare BLEU, ROUGE, BERTScore, exact match, and perplexity — what does each miss?",
+            "Why are BLEU and ROUGE weak signals for open-ended assistant answers?",
+            "How would you combine automatic metrics, human review, and LLM-as-judge in one eval harness?",
+            "Where do HELM-style holistic evaluations fit alongside BLEU, ROUGE, MMLU, and task-specific business metrics?",
+            "How would you explain to an interviewer why a high ROUGE score can still produce a bad user-facing answer?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    },
+    {
+      "label": "75Hard GenAI/LLM — LLM evaluation metrics",
+      "href": "https://youtu.be/v5qUFUxvkGA?si=GUoDRP51DoH77OhF",
+      "source": "75Hard GenAI/LLM Challenge"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "day": 79,
+  "title": "Embeddings + vector DBs + ANN indexes",
+  "pillar": "generative-ai",
+  "focus": "MTEB; pgvector vs Pinecone vs Weaviate vs Qdrant; HNSW vs IVF.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 1-D DP",
+      "items": [
+        {
+          "id": "lc-partition-equal-subset-sum",
+          "label": "Partition Equal Subset Sum",
+          "href": "https://leetcode.com/problems/partition-equal-subset-sum/",
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Embeddings & vector DBs",
+      "items": [
+        {
+          "id": "rag-emb-models",
+          "label": "Embedding models: ada, e5, bge, voyage, jina",
+          "href": "https://huggingface.co/spaces/mteb/leaderboard",
+          "meta": "MTEB",
+          "interviewQuestions": [
+            "How do you pick an embedding model — what does the MTEB leaderboard tell you and not tell you?",
+            "Why does dimension count matter for cost and recall?"
+          ]
+        },
+        {
+          "id": "rag-vdb",
+          "label": "Vector DBs: Pinecone, Weaviate, Qdrant, pgvector",
+          "href": "https://www.pinecone.io/learn/vector-database/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "Compare Pinecone, Weaviate, Qdrant, and pgvector — when does each fit?",
+            "When is pgvector enough vs when do you need a dedicated vector DB?"
+          ]
+        },
+        {
+          "id": "rag-ann",
+          "label": "ANN indexes: HNSW, IVF, ScaNN",
+          "href": "https://github.com/facebookresearch/faiss/wiki",
+          "meta": "FAISS",
+          "interviewQuestions": [
+            "Compare HNSW vs IVF for ANN — accuracy/speed/memory trade-offs.",
+            "When would you switch from in-memory FAISS to a hosted vector DB — what's the breakpoint?"
+          ]
+        },
+        {
+          "id": "rag-sbert",
+          "label": "Sentence-BERT vs vanilla BERT embeddings",
+          "href": "https://www.sbert.net/",
+          "meta": "Sentence-BERT",
+          "interviewQuestions": [
+            "Why does mean-pooled vanilla BERT often underperform Sentence-BERT for semantic search?",
+            "When is cosine similarity insufficient for retrieval quality, and what diagnostics would you add?",
+            "How do you evaluate embedding quality beyond a single nearest-neighbor demo?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Hugging Face LLM course",
+      "href": "https://huggingface.co/learn/llm-course",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    }
+  ]
+}

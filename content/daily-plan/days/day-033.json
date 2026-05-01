@@ -1,0 +1,116 @@
+{
+  "day": 33,
+  "title": "Trad-ML breadth review (regression, trees, ensembles, clustering)",
+  "pillar": "traditional-ml",
+  "focus": "60-min self-quiz on weeks 3-4. Note the questions you fumble.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-daily-temperatures",
+          "label": "Daily Temperatures",
+          "href": "https://leetcode.com/problems/daily-temperatures/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "What's the monotonic-stack invariant, and how does each pop give you the answer?",
+            "Why is the total work O(n) when the inner loop looks O(n²)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Linear regression",
+      "items": [
+        {
+          "id": "ml-ols",
+          "label": "OLS, normal equations, MLE interpretation",
+          "href": "https://www.statlearning.com/",
+          "meta": "ISLR ch. 3",
+          "interviewQuestions": [
+            "Derive the OLS solution θ = (XᵀX)⁻¹Xᵀy. When is XᵀX not invertible?",
+            "Show that OLS = MLE under Gaussian noise."
+          ]
+        },
+        {
+          "id": "ml-lr-assumptions",
+          "label": "Assumptions: linearity, independence, homoscedasticity, normality",
+          "href": "https://en.wikipedia.org/wiki/Linear_regression#Assumptions",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through the four classical assumptions of linear regression and how to diagnose violations.",
+            "What's heteroscedasticity and how do you fix it?"
+          ]
+        },
+        {
+          "id": "ml-loss-fns",
+          "label": "Loss functions: MSE, MAE, Huber — when to use each",
+          "href": "https://heartbeat.comet.ml/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare MSE, MAE, and Huber loss — what do you use when outliers matter?",
+            "Why is Huber loss differentiable and robust at the same time?"
+          ]
+        },
+        {
+          "id": "ml-lr-nc-forward-train",
+          "label": "Code linear regression forward pass and training loop",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement a vectorized linear regression forward pass for X @ w + b and state the expected tensor shapes.",
+            "Implement one gradient-descent training step for linear regression and explain loss vs cost vs prediction error.",
+            "Does sklearn's LinearRegression use gradient descent or ordinary least squares? Why does that matter in an interview?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Gradient boosting (XGBoost, LightGBM, CatBoost)",
+      "items": [
+        {
+          "id": "ml-gbm-math",
+          "label": "GBM: gradient boosting on residuals",
+          "href": "https://www.youtube.com/watch?v=3CC4N4z3GJc",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Walk me through how GBM fits each new tree on the negative gradient of the loss.",
+            "Why is GBM more sensitive to learning rate than Random Forest?"
+          ]
+        },
+        {
+          "id": "ml-xgb",
+          "label": "XGBoost: histogram splits, regularization, missing values",
+          "href": "https://xgboost.readthedocs.io/en/stable/",
+          "meta": "XGBoost",
+          "interviewQuestions": [
+            "What does XGBoost do differently from vanilla GBM that made it dominate Kaggle?",
+            "How does XGBoost handle missing values automatically?"
+          ]
+        },
+        {
+          "id": "ml-lgbm",
+          "label": "LightGBM & CatBoost: leaf-wise growth, GOSS, ordered boosting",
+          "href": "https://lightgbm.readthedocs.io/",
+          "meta": "LightGBM",
+          "interviewQuestions": [
+            "When would you pick LightGBM over XGBoost?",
+            "What problem does CatBoost's ordered boosting solve?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
+}

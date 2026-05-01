@@ -1,0 +1,85 @@
+{
+  "day": 66,
+  "title": "Cost & scaling (autoscaling, spot, distillation) + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "Unit-cost-per-prediction; KEDA scaling; spot training without losing work.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-unique-paths",
+          "label": "Unique Paths",
+          "href": "https://leetcode.com/problems/unique-paths/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "Closed-form via combinatorics: C(m+n-2, m-1). Why is it equivalent to the DP answer?",
+            "How do obstacles change the recurrence (unique-paths-ii)?"
+          ]
+        },
+        {
+          "id": "lc-longest-common-subsequence",
+          "label": "Longest Common Subsequence",
+          "href": "https://leetcode.com/problems/longest-common-subsequence/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the DP. How does it relate to edit distance and to longest-common-substring?",
+            "Space-optimize from O(m·n) to O(min(m, n))."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Cost & scaling",
+      "items": [
+        {
+          "id": "mlops-cost",
+          "label": "Cost modeling: training vs inference, batching, autoscaling",
+          "href": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "meta": "Chip Huyen",
+          "interviewQuestions": [
+            "How would you model the unit cost of a prediction in production?",
+            "What levers reduce inference cost (batching, quantization, caching, distillation)?"
+          ]
+        },
+        {
+          "id": "mlops-autoscale",
+          "label": "Autoscaling: HPA, KEDA, queue-based",
+          "href": "https://keda.sh/",
+          "meta": "KEDA",
+          "interviewQuestions": [
+            "Compare CPU-based HPA vs queue-based KEDA scaling for ML inference.",
+            "Why does GPU-pinned inference often defeat HPA, and how do you actually scale GPU pods?"
+          ]
+        },
+        {
+          "id": "mlops-spot",
+          "label": "Spot/preemptible instances for training",
+          "href": "https://cloud.google.com/architecture/run-cost-effective-deep-learning-workloads",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you train safely on spot instances (checkpointing, retries)?",
+            "When does spot training become NET more expensive than on-demand — what's the breakeven?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

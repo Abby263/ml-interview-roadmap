@@ -1,0 +1,94 @@
+{
+  "day": 48,
+  "title": "Generative vision (VAE, GAN, Diffusion / Stable Diffusion)",
+  "pillar": "deep-learning",
+  "focus": "ELBO, mode collapse, DDPM forward/reverse, latent diffusion.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-combination-sum-ii",
+          "label": "Combination Sum II",
+          "href": "https://leetcode.com/problems/combination-sum-ii/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        },
+        {
+          "id": "lc-word-search",
+          "label": "Word Search",
+          "href": "https://leetcode.com/problems/word-search/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through DFS with a 'visited' marker on the board (in-place vs aux). Trade-offs?",
+            "How does this scale to 'word search ii' with a trie of many target words?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Generative vision (VAE, GAN, Diffusion)",
+      "items": [
+        {
+          "id": "dl-vae",
+          "label": "Variational Autoencoders",
+          "href": "https://lilianweng.github.io/posts/2018-08-12-vae/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Walk through VAE's evidence lower bound (ELBO).",
+            "Why is the reparameterization trick necessary?"
+          ]
+        },
+        {
+          "id": "dl-gan",
+          "label": "GANs: generator/discriminator, mode collapse",
+          "href": "https://lilianweng.github.io/posts/2017-08-20-gan/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "What is mode collapse in GANs and what fixes it?",
+            "Walk me through Wasserstein GAN — why does the new loss stabilize training?"
+          ]
+        },
+        {
+          "id": "dl-diffusion",
+          "label": "Diffusion models (DDPM, latent diffusion)",
+          "href": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Walk me through the forward and reverse processes in DDPM.",
+            "What does latent diffusion (Stable Diffusion) do differently?",
+            "How does text conditioning enter Stable Diffusion through the text encoder and cross-attention?",
+            "Compare text-to-image and text-to-video diffusion — what new temporal consistency problems appear?",
+            "Where would you optimize a diffusion product first: denoising steps, scheduler, latent resolution, batching, or distillation?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Dive into Deep Learning (d2l.ai)",
+      "href": "https://d2l.ai/",
+      "source": "d2l.ai"
+    },
+    {
+      "label": "75Hard GenAI/LLM — Text-to-image Stable Diffusion walkthrough",
+      "href": "https://youtu.be/ODNalSihPzg?si=6DpXGyyLc5B25Ty8",
+      "source": "75Hard GenAI/LLM Challenge"
+    }
+  ]
+}

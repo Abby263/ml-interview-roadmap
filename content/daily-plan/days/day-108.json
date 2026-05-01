@@ -1,0 +1,69 @@
+{
+  "day": 108,
+  "title": "Design search ranking (Amazon/Google) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Relevance vs freshness vs diversity; LTR; long-tail queries.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Binary Search",
+      "items": [
+        {
+          "id": "lc-search-a-2d-matrix",
+          "label": "Search A 2d Matrix",
+          "href": "https://leetcode.com/problems/search-a-2d-matrix/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Search ranking",
+      "items": [
+        {
+          "id": "sd-search-design",
+          "label": "Design Google/Amazon search ranking",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk me through designing Amazon's product search.",
+            "How do you balance relevance, freshness, and diversity in search ranking?",
+            "How would you handle long-tail queries with no historical data?",
+            "How would you adapt this design to LinkedIn Recruiter search where query intent, candidate freshness, and recruiter feedback matter?",
+            "What changes when ranking marketplace/search results for language-understanding-heavy queries with sparse historical clicks?"
+          ]
+        },
+        {
+          "id": "sd-search-ltr",
+          "label": "Learning-to-rank: pointwise, pairwise, listwise",
+          "href": "https://eugeneyan.com/writing/system-design-for-discovery/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Compare pointwise, pairwise, and listwise LTR — when does each fit?",
+            "Why does pairwise LTR usually beat pointwise on click-data, even though pointwise is simpler?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ const ACTIVITY_KEY = "ml-roadmap-activity";
 const EVENT_NAME = "ml-roadmap-progress-change";
 
 // ── Activity tracking (per calendar date) ─────────────────────────────────
-// Used by the Calendar widget to highlight active days + compute streaks.
+// Used by progress-aware UI to highlight active days + compute streaks.
 // Format: { "YYYY-MM-DD": numberOfChecksThatDay }
 
 function todayLocalISO(): string {
@@ -162,6 +162,7 @@ export function toggleDayCheck(day: number, itemId: string): string[] {
   // Invalidate caches so the next read sees the new value.
   dayCache.delete(day);
   allCacheFingerprint = "__dirty__";
+  allItemsCacheFingerprint = "__dirty__";
   // Only count as activity when the user CHECKS something (not on uncheck).
   if (!wasChecked) {
     bumpActivityToday();
@@ -187,6 +188,25 @@ export function toggleDayCheck(day: number, itemId: string): string[] {
 }
 
 /**
+ * Mark an item complete in browser-local progress without firing a server
+ * mutation. Used after server-side AI Tutor practice has already written the
+ * check, so the dashboard updates instantly in the current browser.
+ */
+export function markDayCheckLocal(day: number, itemId: string): string[] {
+  if (typeof window === "undefined") return emptySet;
+  const current = readDayRaw(day);
+  if (current.includes(itemId)) return current;
+  const next = [...current, itemId];
+  window.localStorage.setItem(KEY_PREFIX + day, JSON.stringify(next));
+  dayCache.delete(day);
+  allCacheFingerprint = "__dirty__";
+  allItemsCacheFingerprint = "__dirty__";
+  bumpActivityToday();
+  window.dispatchEvent(new Event(EVENT_NAME));
+  return next;
+}
+
+/**
  * Replace local state for a day with the given set of checked item IDs.
  * Used when hydrating from the server on initial load.
  */
@@ -195,6 +215,7 @@ export function setDayChecks(day: number, itemIds: string[]) {
   window.localStorage.setItem(KEY_PREFIX + day, JSON.stringify(itemIds));
   dayCache.delete(day);
   allCacheFingerprint = "__dirty__";
+  allItemsCacheFingerprint = "__dirty__";
   window.dispatchEvent(new Event(EVENT_NAME));
 }
 
@@ -215,6 +236,10 @@ const emptyProgress: Record<number, number> = {};
 let allCache: Record<number, number> = emptyProgress;
 let allCacheFingerprint = "__empty__";
 
+const emptyProgressItems: Record<number, string[]> = {};
+let allItemsCache: Record<number, string[]> = emptyProgressItems;
+let allItemsCacheFingerprint = "__empty__";
+
 /** Read total checked counts across all days, used for site-wide progress. */
 export function readAllProgress(): Record<number, number> {
   if (typeof window === "undefined") return emptyProgress;
@@ -232,5 +257,25 @@ export function readAllProgress(): Record<number, number> {
   }
   allCacheFingerprint = fingerprint;
   allCache = out;
+  return out;
+}
+
+/** Read checked item IDs across all days, used for topic-level completion. */
+export function readAllProgressItems(): Record<number, string[]> {
+  if (typeof window === "undefined") return emptyProgressItems;
+  const out: Record<number, string[]> = {};
+  for (let i = 0; i < window.localStorage.length; i++) {
+    const key = window.localStorage.key(i);
+    if (!key || !key.startsWith(KEY_PREFIX)) continue;
+    const day = Number(key.slice(KEY_PREFIX.length));
+    if (!Number.isFinite(day)) continue;
+    out[day] = safeParse(window.localStorage.getItem(key));
+  }
+  const fingerprint = JSON.stringify(out);
+  if (fingerprint === allItemsCacheFingerprint) {
+    return allItemsCache;
+  }
+  allItemsCacheFingerprint = fingerprint;
+  allItemsCache = out;
   return out;
 }

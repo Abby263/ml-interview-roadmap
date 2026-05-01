@@ -1,0 +1,81 @@
+{
+  "day": 59,
+  "title": "Model registry, versioning, lineage + DSA Adv Graphs finish",
+  "pillar": "mlops",
+  "focus": "MLflow stages; data + code + model versioning; model cards.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-alien-dictionary",
+          "label": "Alien Dictionary",
+          "href": "https://leetcode.com/problems/alien-dictionary/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Walk through how you derive edges from adjacent words. What's the failure case (prefix mismatch)?",
+            "How do you detect that the ordering is impossible / inconsistent?"
+          ]
+        },
+        {
+          "id": "lc-cheapest-flights-within-k-stops",
+          "label": "Cheapest Flights Within K Stops",
+          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Model registry & versioning",
+      "items": [
+        {
+          "id": "mlops-mlflow",
+          "label": "MLflow registry: stages, lineage, model cards",
+          "href": "https://mlflow.org/docs/latest/model-registry.html",
+          "meta": "MLflow",
+          "interviewQuestions": [
+            "Walk through promoting a model from staging → production in MLflow.",
+            "Why is lineage (data → model → deployment) important for compliance?"
+          ]
+        },
+        {
+          "id": "mlops-versioning",
+          "label": "Versioning: code + data + model + features",
+          "href": "https://dvc.org/doc",
+          "meta": "DVC",
+          "interviewQuestions": [
+            "Why is versioning data as important as versioning code in ML?",
+            "What does DVC give you that git-LFS doesn't?"
+          ]
+        },
+        {
+          "id": "mlops-model-cards",
+          "label": "Model cards & documentation",
+          "href": "https://modelcards.withgoogle.com/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "What goes into a useful model card for a production model?",
+            "How would you keep a model card honest and up-to-date as the model retrains?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "MLflow docs",
+      "href": "https://mlflow.org/docs/latest/index.html",
+      "source": "MLflow"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    }
+  ]
+}

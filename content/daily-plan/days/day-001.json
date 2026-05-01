@@ -1,0 +1,129 @@
+{
+  "day": 1,
+  "title": "Probability fundamentals + DSA Arrays/Hashing kickoff",
+  "pillar": "math-stats",
+  "focus": "Open the loop: probability axioms, conditional probability, Bayes' theorem; ease into the easiest NeetCode pattern.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Arrays & Hashing",
+      "items": [
+        {
+          "id": "lc-contains-duplicate",
+          "label": "Contains Duplicate",
+          "href": "https://leetcode.com/problems/contains-duplicate/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Compare hash-set O(n)/O(n) vs sort-and-scan O(n log n)/O(1) — when do you pick each?",
+            "What if the array doesn't fit in memory — how would you detect duplicates with limited RAM?"
+          ]
+        },
+        {
+          "id": "lc-valid-anagram",
+          "label": "Valid Anagram",
+          "href": "https://leetcode.com/problems/valid-anagram/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Compare sorting (O(n log n)) vs counting-array (O(n), 26 buckets) — when do you pick each?",
+            "What if the strings include Unicode — does your counting-array still work?"
+          ]
+        },
+        {
+          "id": "lc-two-sum",
+          "label": "Two Sum",
+          "href": "https://leetcode.com/problems/two-sum/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Walk through the brute-force O(n²), then explain how the hash map drops it to O(n).",
+            "What if the array is sorted — can you do better in space (two-pointer, O(1))?",
+            "What if duplicates are allowed and you need ALL pairs, not just one?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Probability fundamentals",
+      "items": [
+        {
+          "id": "stats-prob-axioms",
+          "label": "Probability axioms, sample spaces, joint / marginal / conditional",
+          "href": "https://seeing-theory.brown.edu/basic-probability/index.html",
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "What's the difference between joint, marginal and conditional probability — give a worked example?",
+            "When is independence the same as conditional independence? Why does the distinction matter for Naive Bayes?",
+            "Explain the law of total probability with a churn-prediction example."
+          ]
+        },
+        {
+          "id": "stats-bayes",
+          "label": "Bayes' theorem: priors, likelihood, posterior",
+          "href": "https://seeing-theory.brown.edu/bayesian-inference/index.html",
+          "meta": "Interactive",
+          "interviewQuestions": [
+            "Walk through Bayes on a screening test (1% prevalence, 95% sensitivity, 90% specificity) — why is positive predictive value still low?",
+            "How would you use Bayes to update belief during an A/B test as data arrives?",
+            "When does using a strong prior hurt vs help in production ML?"
+          ]
+        },
+        {
+          "id": "stats-cond-prob",
+          "label": "Conditional probability traps & base-rate fallacy",
+          "href": "https://en.wikipedia.org/wiki/Conditional_probability#Common_fallacies",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Two children: at least one is a girl. What's the probability the other is also a girl? Defend your answer.",
+            "Why is P(disease|positive) ≠ sensitivity in general?",
+            "Explain the base-rate fallacy with a hiring or fraud example."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Logan Thorneloe — ML Road Map",
+      "href": "https://github.com/loganthorneloe/ml-road-map",
+      "source": "GitHub"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    },
+    {
+      "label": "NeetCode YouTube playlists",
+      "href": "https://www.youtube.com/c/NeetCode/playlists",
+      "source": "NeetCode"
+    },
+    {
+      "label": "14 patterns to ace any coding interview",
+      "href": "https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed",
+      "source": "HackerNoon"
+    },
+    {
+      "label": "Prepare in a Hurry (Yuan Meng)",
+      "href": "https://www.yuan-meng.com/posts/mle_interviews_2.0/",
+      "source": "Yuan Meng"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "CS50 AI — Probability week",
+      "href": "https://cs50.harvard.edu/ai/2024/weeks/2/",
+      "source": "Harvard"
+    },
+    {
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
+    }
+  ]
+}

@@ -7,14 +7,14 @@ export default function SiteFooter() {
     <footer className="mt-20 border-t border-line">
       <div className="page-shell grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]">
         <div className="space-y-4">
-          <p className="eyebrow">Open-source direction</p>
+          <p className="eyebrow">Project direction</p>
           <h3 className="font-display text-2xl font-extrabold text-foreground">
             Content-first now. Progress tracking and mock interviews next.
           </h3>
           <p className="max-w-xl text-sm leading-7 text-muted">
-            This MVP is intentionally public and content-heavy: roadmaps, topic
-            cards, questions, case studies, and curated resources. The logged-in
-            dashboard layer can sit on top of this foundation later.
+            The platform is intentionally public and content-heavy: the daily plan,
+            topic cards, questions, case studies, and curated resources. The
+            logged-in dashboard layer can sit on top of this foundation later.
           </p>
         </div>
 
@@ -36,13 +36,32 @@ export default function SiteFooter() {
         </div>
 
         <div className="space-y-3">
-          <p className="panel-label">
-            Build path
-          </p>
+          <p className="panel-label">Project</p>
           <div className="space-y-2 text-sm text-muted">
-            <p>MVP: public roadmap and learning library</p>
-            <p>V2: saved progress and readiness score</p>
-            <p>V3: mock interviews, JD analysis, and AI coaching</p>
+            <a
+              href="https://github.com/Abby263/ml-interview-roadmap"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition hover:text-foreground"
+            >
+              Source repository
+            </a>
+            <a
+              href="https://github.com/Abby263/ml-interview-roadmap/blob/main/CONTRIBUTING.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition hover:text-foreground"
+            >
+              Contribution guide
+            </a>
+            <a
+              href="https://github.com/Abby263/ml-interview-roadmap/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block transition hover:text-foreground"
+            >
+              Non-commercial license
+            </a>
           </div>
         </div>
       </div>

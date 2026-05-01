@@ -1,0 +1,82 @@
+{
+  "day": 26,
+  "title": "Feature engineering deep dive + DSA Linked List finish",
+  "pillar": "traditional-ml",
+  "focus": "Scaling, encoding, missing values, feature interactions.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-reverse-nodes-in-k-group",
+          "label": "Reverse Nodes IN K Group",
+          "href": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Feature engineering",
+      "items": [
+        {
+          "id": "ml-fe-numerical",
+          "label": "Scaling, log/Box-Cox, binning",
+          "href": "https://scikit-learn.org/stable/modules/preprocessing.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When do tree models NOT need feature scaling, and when do they (gradient boosting libraries with regularization)?",
+            "When would you apply a log transform vs Box-Cox?"
+          ]
+        },
+        {
+          "id": "ml-fe-categorical",
+          "label": "One-hot, target, frequency, hashing encoders",
+          "href": "https://contrib.scikit-learn.org/category_encoders/",
+          "meta": "category-encoders",
+          "interviewQuestions": [
+            "Compare one-hot, target, frequency, and hashing encoders — trade-offs in cardinality and leakage.",
+            "Why is target encoding leak-prone and how does k-fold target encoding fix it?"
+          ]
+        },
+        {
+          "id": "ml-fe-missing",
+          "label": "Missing data: deletion, imputation, indicators",
+          "href": "https://scikit-learn.org/stable/modules/impute.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When is mean/median imputation harmful?",
+            "Why do tree models often handle missing values natively while linear models cannot?"
+          ]
+        },
+        {
+          "id": "ml-fe-outliers-collinearity",
+          "label": "Outliers, multicollinearity, and distribution shifts",
+          "href": "https://scikit-learn.org/stable/modules/preprocessing.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "How do you detect and handle outliers using box plots, robust scaling, winsorization, or model choice?",
+            "Why does multicollinearity destabilize linear models, and why are tree models less sensitive?",
+            "How would you distinguish true data drift from a one-off outlier spike in production?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

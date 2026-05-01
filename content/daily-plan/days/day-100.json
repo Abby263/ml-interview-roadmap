@@ -1,0 +1,80 @@
+{
+  "day": 100,
+  "title": "CV deep dive: production detection, video, multimodal",
+  "pillar": "deep-learning",
+  "focus": "YOLO production pipeline; video transformers; CLIP fusion.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Graphs",
+      "items": [
+        {
+          "id": "lc-redundant-connection",
+          "label": "Redundant Connection",
+          "href": "https://leetcode.com/problems/redundant-connection/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · CV deep dive",
+      "items": [
+        {
+          "id": "cv-deep-detection",
+          "label": "Production object detection pipelines",
+          "href": "https://github.com/ultralytics/ultralytics",
+          "meta": "Ultralytics",
+          "interviewQuestions": [
+            "Walk through deploying a YOLO model in production — pre/post-processing, NMS, calibration.",
+            "How would you handle class imbalance and rare categories in a production detection model?",
+            "When are classical image-processing features enough, and when do CNNs or ViTs become necessary?",
+            "How would you debug preprocessing or signal-processing artifacts that quietly break a vision model?"
+          ]
+        },
+        {
+          "id": "cv-deep-video",
+          "label": "Video understanding (3D CNN, video transformers)",
+          "href": "https://arxiv.org/abs/2103.15691",
+          "meta": "ViViT",
+          "interviewQuestions": [
+            "Compare 3D CNNs vs two-stream vs video transformers for action recognition.",
+            "Why is temporal modeling hard, and what does sparse temporal sampling buy you?",
+            "What makes text-to-video generation harder than text-to-image generation?",
+            "How would you evaluate temporal consistency, motion quality, and prompt adherence for generated video?"
+          ]
+        },
+        {
+          "id": "cv-deep-multi",
+          "label": "Multimodal CV: image-text, video-text",
+          "href": "https://openai.com/index/clip/",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Walk me through how a multimodal model fuses vision and text — case study CLIP.",
+            "Where does CLIP fail, and how do later models (SigLIP, EVA-CLIP) improve it?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Vision Transformer (ViT) paper",
+      "href": "https://arxiv.org/abs/2010.11929",
+      "source": "Google"
+    },
+    {
+      "label": "CLIP paper",
+      "href": "https://arxiv.org/abs/2103.00020",
+      "source": "OpenAI"
+    }
+  ]
+}

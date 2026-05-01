@@ -1,0 +1,76 @@
+{
+  "day": 88,
+  "title": "Alignment: SFT, RLHF, DPO/IPO/KTO/ORPO + DSA review",
+  "pillar": "generative-ai",
+  "focus": "RLHF three stages; reward hacking; why DPO is simpler.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-task-scheduler",
+          "label": "Task Scheduler",
+          "href": "https://leetcode.com/problems/task-scheduler/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · SFT, DPO, RLHF",
+      "items": [
+        {
+          "id": "ft-sft",
+          "label": "Supervised fine-tuning (SFT)",
+          "href": "https://huggingface.co/blog/peft",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the SFT objective — how is it different from pretraining?",
+            "How do you choose the SFT learning rate and number of epochs without overfitting on a small dataset?"
+          ]
+        },
+        {
+          "id": "ft-rlhf",
+          "label": "RLHF: reward model + PPO",
+          "href": "https://huggingface.co/blog/rlhf",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Walk through the three stages of RLHF: SFT → reward model → PPO.",
+            "Why is reward hacking a problem in RLHF?"
+          ]
+        },
+        {
+          "id": "ft-dpo",
+          "label": "DPO and friends (IPO, KTO, ORPO)",
+          "href": "https://arxiv.org/abs/2305.18290",
+          "meta": "Rafailov et al.",
+          "interviewQuestions": [
+            "Why is DPO simpler than PPO-based RLHF, and what does it sacrifice?",
+            "Compare DPO, IPO, KTO, and ORPO — when does each fit?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face — LoRA & PEFT",
+      "href": "https://huggingface.co/learn/smol-course/en/unit1/3a",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

@@ -26,10 +26,29 @@ export const supabaseEnabled = Boolean(
   process.env.NEXT_PUBLIC_SUPABASE_URL && supabasePublicKey
 );
 
+const supabaseServiceKey =
+  process.env.SUPABASE_SECRET_KEY ||
+  process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+export const supabaseAdminEnabled = Boolean(
+  supabaseEnabled && supabaseServiceKey
+);
+
+export const aiTutorFeatureEnabled = process.env.AI_TUTOR_ENABLED !== "false";
+
+export const aiTutorOpenAIEnabled = Boolean(
+  aiTutorFeatureEnabled && process.env.OPENAI_API_KEY
+);
+
+export const aiTutorMemoryEnabled = Boolean(
+  aiTutorFeatureEnabled && supabaseAdminEnabled
+);
+
 /** Public/runtime-safe view (used in client components). */
 export const publicFlags = {
   clerkEnabled: clerkClientEnabled,
   supabaseEnabled: Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL && supabasePublicKey
   ),
+  aiTutorEnabled: aiTutorFeatureEnabled,
 };

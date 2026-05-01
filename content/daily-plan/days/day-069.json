@@ -1,0 +1,87 @@
+{
+  "day": 69,
+  "title": "Observability for ML systems + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "Logs / metrics / traces; LLM-specific dimensions; SLOs and alerts.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-longest-increasing-path-in-a-matrix",
+          "label": "Longest Increasing Path IN A Matrix",
+          "href": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        },
+        {
+          "id": "lc-distinct-subsequences",
+          "label": "Distinct Subsequences",
+          "href": "https://leetcode.com/problems/distinct-subsequences/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Observability for ML",
+      "items": [
+        {
+          "id": "mlops-obs",
+          "label": "Logs, metrics, traces for ML systems",
+          "href": "https://opentelemetry.io/",
+          "meta": "OpenTelemetry",
+          "interviewQuestions": [
+            "What's the difference between logs, metrics, and traces, and what does each tell you?",
+            "How would you trace a single user request through retrieval → LLM → tool calls and back?"
+          ]
+        },
+        {
+          "id": "mlops-llm-obs",
+          "label": "LLM-specific observability: tokens, latency, cost",
+          "href": "https://docs.smith.langchain.com/",
+          "meta": "LangSmith",
+          "interviewQuestions": [
+            "What dimensions do you slice LLM observability by (model, prompt, user, tool)?",
+            "How would you detect prompt regressions on production traffic without leaking PII to humans?"
+          ]
+        },
+        {
+          "id": "mlops-alerts",
+          "label": "Alerts & on-call for ML systems",
+          "href": "https://sre.google/workbook/practical-alerting/",
+          "meta": "Google SRE",
+          "interviewQuestions": [
+            "What's a meaningful SLO for an ML inference service?",
+            "How do you avoid alert fatigue from noisy ML metrics — what's a sane page-worthy threshold?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LangSmith — LLM tracing & eval",
+      "href": "https://docs.smith.langchain.com/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Arize AI — ML observability",
+      "href": "https://docs.arize.com/",
+      "source": "Arize"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

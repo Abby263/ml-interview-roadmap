@@ -1,0 +1,61 @@
+{
+  "day": 131,
+  "title": "Mock interview: ML breadth + ML coding round",
+  "pillar": "behavioral-storytelling",
+  "focus": "6 ML concept questions in 45 min + implement k-means or logreg in 30 min.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-k-closest-points-to-origin",
+          "label": "K Closest Points TO Origin",
+          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Mock · ML breadth + ML coding round",
+      "items": [
+        {
+          "id": "mock-mlc-breadth",
+          "label": "Breadth round: 6 ML concepts in 45 min",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Pick 6 ML concept questions and time yourself for 7 min each.",
+            "Which concept did you fumble — and what's the cleaner 90-second answer you'd give next time?"
+          ]
+        },
+        {
+          "id": "mock-mlc-coding",
+          "label": "ML coding: implement k-means or logistic regression in 30 min",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-means with k-means++ in 30 minutes — and discuss complexity.",
+            "What edge cases (empty cluster, all points identical) did you handle, and how?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Chip Huyen — ML Interviews Book (free)",
+      "href": "https://huyenchip.com/ml-interviews-book/",
+      "source": "Chip Huyen"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "day": 86,
+  "title": "Multi-agent systems: orchestration patterns + DSA review",
+  "pillar": "generative-ai",
+  "focus": "Supervisor / swarm / hierarchical; AutoGen / CrewAI / LangGraph.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-largest-rectangle-in-histogram",
+          "label": "Largest Rectangle IN Histogram",
+          "href": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Walk through the monotonic stack — what does popping a bar tell you about its rectangle?",
+            "How does this generalize to 'maximal rectangle in a binary matrix'?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Multi-agent systems",
+      "items": [
+        {
+          "id": "ma-orchestration",
+          "label": "Orchestration patterns: supervisor, swarm, hierarchical",
+          "href": "https://github.com/langchain-ai/langgraph",
+          "meta": "LangGraph",
+          "interviewQuestions": [
+            "Compare supervisor vs swarm vs hierarchical multi-agent topologies.",
+            "Why do swarm agents often degrade into chaos in practice — what stabilizes them?"
+          ]
+        },
+        {
+          "id": "ma-coord",
+          "label": "Coordination, conflict resolution, voting",
+          "href": "https://arxiv.org/abs/2308.10848",
+          "meta": "AutoGen",
+          "interviewQuestions": [
+            "How do you handle two agents that disagree on the next action?",
+            "When does majority voting between agents help, and when does it just amplify a shared bias?"
+          ]
+        },
+        {
+          "id": "ma-frameworks",
+          "label": "AutoGen, CrewAI, LangGraph",
+          "href": "https://microsoft.github.io/autogen/",
+          "meta": "AutoGen",
+          "interviewQuestions": [
+            "Compare AutoGen, CrewAI, and LangGraph — when do you reach for each?",
+            "Why might you prefer LangGraph's explicit state machine over AutoGen's free-form conversation?"
+          ]
+        },
+        {
+          "id": "ma-versioning-tools",
+          "label": "Versioning agents and shared tools",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "How would you version prompts, tools, memories, and policies across a multi-agent system?",
+            "What breaks when multiple agents share a tool catalog but one tool changes its schema?",
+            "How do you test a multi-agent workflow deterministically enough for CI?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    }
+  ]
+}

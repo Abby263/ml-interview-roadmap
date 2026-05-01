@@ -1,0 +1,99 @@
+{
+  "day": 37,
+  "title": "Backpropagation & autograd + DSA Trees",
+  "pillar": "deep-learning",
+  "focus": "Backprop as the chain rule on a computation graph. PyTorch autograd basics.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-balanced-binary-tree",
+          "label": "Balanced Binary Tree",
+          "href": "https://leetcode.com/problems/balanced-binary-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        },
+        {
+          "id": "lc-same-tree",
+          "label": "Same Tree",
+          "href": "https://leetcode.com/problems/same-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        },
+        {
+          "id": "lc-subtree-of-another-tree",
+          "label": "Subtree OF Another Tree",
+          "href": "https://leetcode.com/problems/subtree-of-another-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Backpropagation & autograd",
+      "items": [
+        {
+          "id": "dl-backprop",
+          "label": "Backprop on a computation graph",
+          "href": "https://karpathy.ai/zero-to-hero.html",
+          "meta": "Karpathy",
+          "interviewQuestions": [
+            "Derive backprop for a 2-layer MLP with cross-entropy loss.",
+            "Explain why automatic differentiation is reverse-mode for ML."
+          ]
+        },
+        {
+          "id": "dl-vanishing",
+          "label": "Vanishing & exploding gradients",
+          "href": "https://www.deeplearning.ai/ai-notes/initialization/",
+          "meta": "DLAI",
+          "interviewQuestions": [
+            "Why does a deep sigmoid network suffer vanishing gradients?",
+            "How do residual connections, ReLU, and BN/LN help?"
+          ]
+        },
+        {
+          "id": "dl-autograd",
+          "label": "PyTorch autograd in 30 minutes",
+          "href": "https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "When would you use torch.no_grad() and detach()?",
+            "What does requires_grad=True actually do under the hood?",
+            "Explain the order loss.backward(), optimizer.step(), optimizer.zero_grad() in a PyTorch training loop."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Karpathy — Neural Networks: Zero to Hero",
+      "href": "https://karpathy.ai/zero-to-hero.html",
+      "source": "Karpathy"
+    },
+    {
+      "label": "DeepLearning.AI Deep Learning Specialization",
+      "href": "https://www.deeplearning.ai/courses/deep-learning-specialization/",
+      "source": "DeepLearning.AI"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    }
+  ]
+}

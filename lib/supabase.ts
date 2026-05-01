@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-import { supabaseEnabled } from "@/lib/feature-flags";
+import { supabaseAdminEnabled, supabaseEnabled } from "@/lib/feature-flags";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 // Supabase renamed `anon` → `publishable`; accept either.
@@ -20,7 +20,7 @@ const serviceKey =
  * configured.
  */
 export function getSupabaseAdmin() {
-  if (!supabaseEnabled) return null;
+  if (!supabaseAdminEnabled) return null;
   if (!serviceKey) return null;
   return createClient(url, serviceKey, {
     auth: { persistSession: false, autoRefreshToken: false },
@@ -46,6 +46,7 @@ export function getSupabaseBrowser() {
  *     user_id text not null,
  *     day int not null,
  *     item_id text not null,
+ *     source text not null default 'manual',
  *     created_at timestamptz default now(),
  *     primary key (user_id, day, item_id)
  *   );
@@ -53,8 +54,17 @@ export function getSupabaseBrowser() {
  *   create index if not exists day_progress_user_idx
  *     on day_progress (user_id);
  *
+ *   -- Existing deployments without the source column: run once.
+ *   alter table day_progress
+ *     add column if not exists source text not null default 'manual';
+ *
  * RLS is intentionally OFF here because we always go through the service
  * role from server actions. If you flip RLS on, add policies that scope
  * by `auth.uid()::text = user_id`.
  */
 export const PROGRESS_TABLE = "day_progress";
+export const AI_TUTOR_PROFILES_TABLE = "ai_tutor_profiles";
+export const AI_TUTOR_SESSIONS_TABLE = "ai_tutor_sessions";
+export const AI_TUTOR_MESSAGES_TABLE = "ai_tutor_messages";
+export const AI_TUTOR_MEMORY_TABLE = "ai_tutor_memory";
+export const AI_TUTOR_USAGE_TABLE = "ai_tutor_usage";

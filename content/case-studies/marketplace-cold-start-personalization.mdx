@@ -1,0 +1,53 @@
+---
+title: Design Cold-Start Personalization for a Marketplace
+description: Personalize recommendations when users, items, sellers, or regions have little historical data.
+track: ML System Design
+difficulty: Advanced
+prompt: Design cold-start personalization for a marketplace where new users, new items, and new sellers need useful exposure before collaborative signals exist.
+concepts:
+  - Cold start
+  - Exploration
+  - Content-based retrieval
+  - Bandits
+  - Marketplace fairness
+evaluationLens:
+  - New-user activation
+  - New-item exposure
+  - Conversion
+  - Diversity
+  - Long-term retention
+---
+
+## Split cold start into three problems
+
+New users, new items, and new sellers need different strategies. A generic "use popularity" answer is weak because it can lock the marketplace into incumbents.
+
+## Candidate generation
+
+Use content-based retrieval from item text, images, category, price, geography, seller metadata, and onboarding signals. Add popularity priors, but cap them so they do not dominate every request.
+
+For new users, ask lightweight onboarding preferences or infer from acquisition source, locale, and first-session behavior.
+
+## Exploration strategy
+
+Use an exploration budget for new supply and uncertain user preferences. Contextual bandits can help, but start with controlled randomization if the team lacks reliable logging.
+
+## Metrics
+
+- new-user activation and retention
+- new-item first meaningful exposure
+- seller liquidity
+- conversion by cohort
+- diversity and concentration metrics
+- regret or opportunity cost from exploration
+
+## Failure modes
+
+- **Popularity trap**: popular items get all exposure and new supply never learns.
+- **Low-quality exploration**: users see irrelevant items and churn.
+- **Delayed labels**: conversion can take time, so early proxies must be validated.
+- **Fairness tension**: exposure fairness can conflict with immediate relevance.
+
+## What the architect signal looks like
+
+End with a ramp plan: start with interpretable content-based priors, add exploration, measure new-cohort health, then introduce learned bandits once logging is trustworthy.

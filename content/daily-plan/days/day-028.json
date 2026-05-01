@@ -1,0 +1,97 @@
+{
+  "day": 28,
+  "title": "ML coding from scratch — k-means, kNN, logistic regression",
+  "pillar": "traditional-ml",
+  "focus": "Implement, time, debug. The most-skipped form of practice.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-kth-largest-element-in-a-stream",
+          "label": "Kth Largest Element IN A Stream",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        },
+        {
+          "id": "lc-last-stone-weight",
+          "label": "Last Stone Weight",
+          "href": "https://leetcode.com/problems/last-stone-weight/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Coding from scratch",
+      "items": [
+        {
+          "id": "ml-code-knn",
+          "label": "Code k-NN classifier from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-NN from scratch and explain its time/space complexity.",
+            "How would you speed up k-NN inference on millions of points without changing the prediction?"
+          ]
+        },
+        {
+          "id": "ml-code-kmeans",
+          "label": "Code k-means from scratch",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement k-means with k-means++ initialization.",
+            "Why does k-means++ initialization matter, and what does it cost vs random init?"
+          ]
+        },
+        {
+          "id": "ml-code-logreg",
+          "label": "Code logistic regression with SGD",
+          "href": "https://github.com/alirezadir/Machine-Learning-Interviews/tree/main/src/MLC",
+          "meta": "alirezadir",
+          "interviewQuestions": [
+            "Implement logistic regression with mini-batch SGD and L2 regularization.",
+            "What numerical-stability pitfalls do you watch out for when implementing the sigmoid + log-loss?"
+          ]
+        },
+        {
+          "id": "ml-code-lr-neetcode",
+          "label": "Code linear regression training from scratch",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Implement linear regression training with vectorized gradients and a learning-rate parameter.",
+            "How do you verify your from-scratch implementation against sklearn or a closed-form OLS solution?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "Chip Huyen — ML Interviews Book (free)",
+      "href": "https://huyenchip.com/ml-interviews-book/",
+      "source": "Chip Huyen"
+    }
+  ]
+}

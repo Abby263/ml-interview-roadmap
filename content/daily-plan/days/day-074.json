@@ -1,0 +1,88 @@
+{
+  "day": 74,
+  "title": "Prompt engineering + CoT + ReAct + DSA Greedy",
+  "pillar": "generative-ai",
+  "focus": "Few-shot vs zero-shot; CoT; jailbreak defense.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-hand-of-straights",
+          "label": "Hand OF Straights",
+          "href": "https://leetcode.com/problems/hand-of-straights/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        },
+        {
+          "id": "lc-merge-triplets-to-form-target-triplet",
+          "label": "Merge Triplets TO Form Target Triplet",
+          "href": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Prompt engineering",
+      "items": [
+        {
+          "id": "llm-prompt-basics",
+          "label": "Zero-shot, few-shot, system vs user",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "When does few-shot help vs hurt?",
+            "How do you design a system prompt for a customer-support agent?",
+            "A prompt works in testing but fails randomly in production. How would you debug prompt drift?",
+            "How do prompt templates, delimiters, schemas, and locked sampling settings improve reproducibility?",
+            "What would a prompt regression test suite look like before deploying a new assistant prompt?"
+          ]
+        },
+        {
+          "id": "llm-cot",
+          "label": "Chain-of-thought, ReAct, ToT",
+          "href": "https://arxiv.org/abs/2201.11903",
+          "meta": "Wei et al.",
+          "interviewQuestions": [
+            "Walk through how chain-of-thought prompting changes performance on reasoning tasks.",
+            "When does CoT hurt accuracy?",
+            "Why can chain-of-thought improve complex reasoning but also amplify early mistakes?",
+            "How would you prevent error compounding with stepwise verification, modular reasoning, or external checks?",
+            "When would you use CoT, ReAct, ToT, self-consistency, or no explicit reasoning at all?"
+          ]
+        },
+        {
+          "id": "llm-prompt-attacks",
+          "label": "Prompt injection & jailbreaks",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you defend a customer-facing LLM against prompt injection from user-supplied content?",
+            "Why is 'just tell the model to ignore injection' insufficient — what's the actual defense-in-depth?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Prompt Engineering Guide",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "source": "Anthropic"
+    },
+    {
+      "label": "DeepLearning.AI — short courses on GenAI / LLMs",
+      "href": "https://www.deeplearning.ai/short-courses/",
+      "source": "DeepLearning.AI"
+    }
+  ]
+}

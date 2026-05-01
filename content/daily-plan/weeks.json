@@ -1,0 +1,78 @@
+[
+  {
+    "week": 1,
+    "title": "Probability & statistics"
+  },
+  {
+    "week": 2,
+    "title": "Linear algebra & optimization"
+  },
+  {
+    "week": 3,
+    "title": "Linear & logistic regression"
+  },
+  {
+    "week": 4,
+    "title": "Trees, GBDT, classification"
+  },
+  {
+    "week": 5,
+    "title": "Clustering, features, OOPS"
+  },
+  {
+    "week": 6,
+    "title": "Neural network foundations"
+  },
+  {
+    "week": 7,
+    "title": "Computer Vision"
+  },
+  {
+    "week": 8,
+    "title": "NLP & Transformers"
+  },
+  {
+    "week": 9,
+    "title": "MLOps foundations"
+  },
+  {
+    "week": 10,
+    "title": "Production MLOps"
+  },
+  {
+    "week": 11,
+    "title": "LLM foundations"
+  },
+  {
+    "week": 12,
+    "title": "RAG"
+  },
+  {
+    "week": 13,
+    "title": "Agents, fine-tuning, alignment"
+  },
+  {
+    "week": 14,
+    "title": "Training & serving perf"
+  },
+  {
+    "week": 15,
+    "title": "Specializations: Speech, RL, RecSys"
+  },
+  {
+    "week": 16,
+    "title": "ML system design — classics"
+  },
+  {
+    "week": 17,
+    "title": "ML system design — GenAI"
+  },
+  {
+    "week": 18,
+    "title": "Trade-offs & self-mocks"
+  },
+  {
+    "week": 19,
+    "title": "Mocks & behavioral"
+  }
+]

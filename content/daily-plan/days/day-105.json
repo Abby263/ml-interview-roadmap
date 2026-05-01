@@ -1,0 +1,197 @@
+{
+  "day": 105,
+  "title": "RecSys foundations + two-tower + ranking + sequential",
+  "pillar": "deep-learning",
+  "focus": "MF, two-tower, MMoE/PLE, position bias (PAL), SASRec / BERT4Rec.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-last-stone-weight",
+          "label": "Last Stone Weight",
+          "href": "https://leetcode.com/problems/last-stone-weight/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · RecSys foundations",
+      "items": [
+        {
+          "id": "recs-cf",
+          "label": "Collaborative filtering & matrix factorization",
+          "href": "https://developers.google.com/machine-learning/recommendation",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through matrix factorization for recommendations and how SGD trains it.",
+            "What's the cold-start problem in CF and how do hybrid models fix it?"
+          ]
+        },
+        {
+          "id": "recs-rbm-similarity",
+          "label": "RBM-style recommenders and similarity-metric tricks",
+          "href": "https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf",
+          "meta": "Read",
+          "interviewQuestions": [
+            "How did Restricted Boltzmann Machines model user-item interactions in early recommender systems?",
+            "When would matrix factorization or two-tower retrieval beat an RBM-style recommender today?",
+            "How do similarity metrics and bias terms change nearest-neighbor or collaborative-filtering recommendations?"
+          ]
+        },
+        {
+          "id": "recs-content",
+          "label": "Content-based & hybrid recsys",
+          "href": "https://developers.google.com/machine-learning/recommendation/content-based/basics",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Compare content-based vs collaborative filtering — when does each fail?",
+            "How would you blend content and CF signals — what's the failure mode of naive averaging?"
+          ]
+        },
+        {
+          "id": "recs-eval",
+          "label": "RecSys metrics: nDCG, MAP, Hit Rate, MRR",
+          "href": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare nDCG, MAP, MRR, and Recall@k — when do you use each?",
+            "Why do offline metrics often disagree with online A/B test results in recsys?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Two-tower retrieval",
+      "items": [
+        {
+          "id": "recs-2t",
+          "label": "Two-tower architecture (YouTube, retrieval)",
+          "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through the YouTube two-tower paper — what does sampling-bias correction fix?",
+            "Why is in-batch negative sampling biased, and how do you correct for it?"
+          ]
+        },
+        {
+          "id": "recs-emb",
+          "label": "Embedding tables & ANN serving",
+          "href": "https://www.pinecone.io/learn/series/recs/",
+          "meta": "Pinecone",
+          "interviewQuestions": [
+            "How would you serve a billion-item two-tower retrieval system at sub-50ms?",
+            "How do you keep the item embedding index fresh as new items are added every minute?"
+          ]
+        },
+        {
+          "id": "recs-temporal",
+          "label": "Temporal & freshness signals",
+          "href": "https://research.google/pubs/recurrent-recommender-networks/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you incorporate item freshness without hurting long-term relevance?",
+            "What's the right way to encode time-of-day and day-of-week signals in a recsys?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Ranking & multi-task",
+      "items": [
+        {
+          "id": "rank-mtl",
+          "label": "Multi-task learning: MMoE, PLE",
+          "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Walk through MMoE — how does it handle conflicting tasks?",
+            "Compare MMoE vs PLE — what does PLE fix?"
+          ]
+        },
+        {
+          "id": "rank-pos-bias",
+          "label": "Position bias correction (PAL)",
+          "href": "https://dl.acm.org/doi/10.1145/3298689.3347033",
+          "meta": "Huawei",
+          "interviewQuestions": [
+            "What is position bias in CTR ranking, and how does PAL correct for it?",
+            "How would you measure how much position bias is contaminating your training labels?"
+          ]
+        },
+        {
+          "id": "rank-calibrate",
+          "label": "Calibration in ranking models",
+          "href": "https://eugeneyan.com/writing/calibration-eval/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Why is calibration important even when only ranking matters?",
+            "Compare Platt scaling, isotonic regression, and temperature scaling — when does each fit?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Sequential & LLM-based recsys",
+      "items": [
+        {
+          "id": "recs-seq",
+          "label": "Sequential recsys: SASRec, BERT4Rec",
+          "href": "https://arxiv.org/abs/1808.09781",
+          "meta": "SASRec",
+          "interviewQuestions": [
+            "Compare SASRec and BERT4Rec — when does each win?",
+            "What is causal masking in sequential recsys and why does it matter for next-item prediction?"
+          ]
+        },
+        {
+          "id": "recs-llm",
+          "label": "LLM-based recsys: P5, GenRec",
+          "href": "https://arxiv.org/abs/2305.06474",
+          "meta": "Read",
+          "interviewQuestions": [
+            "What's the case for and against using LLMs directly for recommendation?",
+            "How would you serve an LLM-based recsys at billion-user scale without exploding cost?"
+          ]
+        },
+        {
+          "id": "recs-causal",
+          "label": "Causal & off-policy recsys",
+          "href": "https://eugeneyan.com/writing/counterfactual-evaluation/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "Walk through off-policy evaluation for a recsys without rolling out a new model.",
+            "How would you account for selection bias when training on logged user clicks?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "YouTube two-tower (sampling-bias-corrected)",
+      "href": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+      "source": "Google"
+    },
+    {
+      "label": "Restricted Boltzmann Machines for Collaborative Filtering",
+      "href": "https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf",
+      "source": "University of Toronto"
+    },
+    {
+      "label": "YouTube multi-task ranking",
+      "href": "https://daiwk.github.io/assets/youtube-multitask.pdf",
+      "source": "Google"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

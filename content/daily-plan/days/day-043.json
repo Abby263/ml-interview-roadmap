@@ -1,0 +1,88 @@
+{
+  "day": 43,
+  "title": "CNN basics: conv, pool, receptive field + DSA Heap",
+  "pillar": "deep-learning",
+  "focus": "Compute output shapes. Receptive field of stacked 3×3 vs one 7×7.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-design-twitter",
+          "label": "Design Twitter",
+          "href": "https://leetcode.com/problems/design-twitter/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        },
+        {
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Walk through the two-heaps trick (max-heap left, min-heap right). What invariant ties them?",
+            "What's the space cost over a long-running stream, and how would you bound it (windowed median)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · CNN basics",
+      "items": [
+        {
+          "id": "cnn-conv",
+          "label": "Conv, padding, stride, dilation",
+          "href": "https://cs231n.github.io/convolutional-networks/",
+          "meta": "CS231n",
+          "interviewQuestions": [
+            "Walk me through how a conv layer works step by step.",
+            "Compute the output shape of a 3×3 conv with stride 2 and padding 1 on a 32×32 input.",
+            "What is dilation and where would you use it?"
+          ]
+        },
+        {
+          "id": "cnn-pool",
+          "label": "Pooling, receptive field",
+          "href": "https://distill.pub/2019/computing-receptive-fields/",
+          "meta": "Distill",
+          "interviewQuestions": [
+            "What is the receptive field of a stack of 3 3×3 convs vs one 7×7 conv?",
+            "Compare max pooling vs average pooling vs strided convolution — when does each fit?",
+            "How would you implement a function that computes receptive field, jump, and start offset across conv/pool layers?"
+          ]
+        },
+        {
+          "id": "cnn-translation",
+          "label": "Translation invariance & equivariance",
+          "href": "https://arxiv.org/abs/1907.00657",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why are CNNs called translation-equivariant rather than translation-invariant?",
+            "Where does global pooling at the end of a CNN buy you (approximate) translation invariance?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
+    },
+    {
+      "label": "fast.ai — Practical Deep Learning",
+      "href": "https://course.fast.ai/",
+      "source": "fast.ai"
+    },
+    {
+      "label": "Kaggle — Computer Vision",
+      "href": "https://www.kaggle.com/learn/computer-vision",
+      "source": "Kaggle"
+    }
+  ]
+}

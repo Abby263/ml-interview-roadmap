@@ -1,0 +1,90 @@
+{
+  "day": 82,
+  "title": "RAG evaluation: Ragas + LLM-as-judge + DSA Heap review",
+  "pillar": "generative-ai",
+  "focus": "Faithfulness, context precision/recall, answer relevance.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-find-median-from-data-stream",
+          "label": "Find Median From Data Stream",
+          "href": "https://leetcode.com/problems/find-median-from-data-stream/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Walk through the two-heaps trick (max-heap left, min-heap right). What invariant ties them?",
+            "What's the space cost over a long-running stream, and how would you bound it (windowed median)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · RAG evaluation",
+      "items": [
+        {
+          "id": "rag-ragas",
+          "label": "Ragas: faithfulness, context recall, context precision, answer relevance",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "Walk through the four Ragas metrics and what each tells you.",
+            "How would you build a golden eval set for a domain-specific RAG?",
+            "Why is hallucination often a grounding or retrieval failure rather than only a model-quality failure?",
+            "How would you separate hallucinations caused by missing context, bad retrieval, ambiguous prompts, and missing guardrails?"
+          ]
+        },
+        {
+          "id": "rag-eval-llm-judge",
+          "label": "LLM-as-judge for RAG",
+          "href": "https://www.evidentlyai.com/llm-guide/llm-as-a-judge",
+          "meta": "Evidently",
+          "interviewQuestions": [
+            "Compare LLM-as-judge vs human eval for RAG — when does LLM-as-judge fail?",
+            "What biases would an LLM judge introduce, and how do you control for them?"
+          ]
+        },
+        {
+          "id": "rag-needle",
+          "label": "Needle-in-haystack & long-context evals",
+          "href": "https://github.com/gkamradt/LLMTest_NeedleInAHaystack",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why are needle-in-haystack tests easy to game, and what are stronger evals?",
+            "What does 'lost in the middle' mean for long-context LLMs, and how do you mitigate it?"
+          ]
+        },
+        {
+          "id": "rag-golden-business",
+          "label": "Golden datasets, business metrics, and RAG dashboards",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you create a GOLD dataset for RAG from real user questions, documents, and expected citations?",
+            "Which business metrics would you track for RAG: deflection, task success, escalation rate, latency, and cost?",
+            "What dashboard slices show whether retrieval or generation is failing in production?",
+            "How would you teach an assistant to say 'I don't know' when confidence or grounding drops?",
+            "What validation checks would you add before allowing a grounded answer to reach the user?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    },
+    {
+      "label": "Evidently AI — monitoring metrics catalog",
+      "href": "https://docs.evidentlyai.com/reference/all-metrics",
+      "source": "Evidently"
+    },
+    {
+      "label": "Anthropic — Testing & Evaluation",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/develop-tests",
+      "source": "Anthropic"
+    }
+  ]
+}

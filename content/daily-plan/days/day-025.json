@@ -1,0 +1,81 @@
+{
+  "day": 25,
+  "title": "Clustering: k-means, DBSCAN, hierarchical + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Lloyd's algorithm, cluster count selection, when DBSCAN beats k-means.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-lru-cache",
+          "label": "Lru Cache",
+          "href": "https://leetcode.com/problems/lru-cache/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Why hash map + doubly linked list — what does each give you in O(1)?",
+            "How would you make this thread-safe? What's the simplest correct approach?"
+          ]
+        },
+        {
+          "id": "lc-merge-k-sorted-lists",
+          "label": "Merge K Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Compare divide-and-conquer (pairwise merge, O(N log k)) vs heap-of-k-heads (also O(N log k)) — when does each win in practice?",
+            "What if the lists are streaming — does the heap approach still work?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Clustering",
+      "items": [
+        {
+          "id": "ml-kmeans",
+          "label": "k-means: algorithm, initialization, evaluation",
+          "href": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Walk through Lloyd's algorithm for k-means.",
+            "Why does k-means initialization (k-means++) matter?",
+            "How would you choose k? Elbow vs silhouette vs gap statistic."
+          ]
+        },
+        {
+          "id": "ml-dbscan",
+          "label": "DBSCAN & HDBSCAN",
+          "href": "https://scikit-learn.org/stable/modules/clustering.html#dbscan",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When does DBSCAN beat k-means?",
+            "What two hyperparameters does DBSCAN have and how do you pick them?"
+          ]
+        },
+        {
+          "id": "ml-hier",
+          "label": "Hierarchical clustering & dendrograms",
+          "href": "https://www.youtube.com/watch?v=7xHsRkOdVwo",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "When is hierarchical clustering more useful than k-means?",
+            "Compare linkage methods (single, complete, average, Ward)."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
+}

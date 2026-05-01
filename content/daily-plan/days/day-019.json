@@ -1,0 +1,85 @@
+{
+  "day": 19,
+  "title": "Decision trees + DSA Binary Search",
+  "pillar": "traditional-ml",
+  "focus": "Splits (Gini/entropy), pruning, why trees are high-variance.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Binary Search",
+      "items": [
+        {
+          "id": "lc-find-minimum-in-rotated-sorted-array",
+          "label": "Find Minimum IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "Why does mid-vs-right comparison work but mid-vs-left can mislead with duplicates?",
+            "How does the algorithm change if duplicates are allowed?"
+          ]
+        },
+        {
+          "id": "lc-search-in-rotated-sorted-array",
+          "label": "Search IN Rotated Sorted Array",
+          "href": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "How do you decide which half is sorted on each step? Walk through with a small example.",
+            "What changes if duplicates are allowed (LC 81)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Decision trees",
+      "items": [
+        {
+          "id": "ml-dt",
+          "label": "How a decision tree splits: Gini, entropy, information gain",
+          "href": "https://www.youtube.com/watch?v=_L39rN6gz7Y",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "How does a decision tree decide where to split? Compare Gini vs entropy.",
+            "Why are decision trees high-variance, and how does pruning help?"
+          ]
+        },
+        {
+          "id": "ml-dt-vs-linear",
+          "label": "Trees vs linear models: when each wins",
+          "href": "https://stats.stackexchange.com/questions/520622",
+          "meta": "Read",
+          "interviewQuestions": [
+            "When does a tree-based model crush a linear model and vice versa?",
+            "Why don't decision trees need feature scaling?"
+          ]
+        },
+        {
+          "id": "ml-feature-importance",
+          "label": "Feature importance: gain, permutation, SHAP",
+          "href": "https://christophm.github.io/interpretable-ml-book/",
+          "meta": "Molnar",
+          "interviewQuestions": [
+            "Compare gain-based feature importance, permutation importance, and SHAP — pros and cons.",
+            "Why can gain-based importance be misleading when features are correlated?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    }
+  ]
+}

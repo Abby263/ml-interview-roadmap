@@ -1,0 +1,89 @@
+{
+  "day": 113,
+  "title": "Design enterprise RAG (Glean-style) + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Multi-source ingestion; permission-aware retrieval; offline+online eval.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-maximum-depth-of-binary-tree",
+          "label": "Maximum Depth OF Binary Tree",
+          "href": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Enterprise RAG",
+      "items": [
+        {
+          "id": "sd-rag-design",
+          "label": "Design enterprise RAG over docs (Glean-style)",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "Walk me through designing an enterprise RAG over Confluence + Slack + Drive.",
+            "How do you handle access control / permissions in retrieval?",
+            "How would you handle 50M docs and 10k QPS?"
+          ]
+        },
+        {
+          "id": "sd-rag-eval",
+          "label": "Eval & monitoring for enterprise RAG",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you build an offline + online eval pipeline for an enterprise RAG?",
+            "What synthetic golden set would you generate for a domain where humans can't easily score answers?"
+          ]
+        },
+        {
+          "id": "sd-rag-connectors",
+          "label": "Mixed enterprise docs: SharePoint, Jira, Slack, Drive",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
+            "What metadata schema would you attach to chunks so retrieval can enforce ACLs and route by source?",
+            "How do you backfill 50M documents without breaking freshness for newly edited docs?"
+          ]
+        },
+        {
+          "id": "sd-rag-markdown-retrieval",
+          "label": "Implement heading-aware markdown chunk retrieval",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "Interview coding",
+          "interviewQuestions": [
+            "Implement retrieve_relevant_chunks(markdown, query) that preserves H1/H2/H3 hierarchy in returned chunks.",
+            "How would you score headings plus body text so a section title can match even when the paragraph uses different wording?",
+            "What edge cases break naive markdown chunking: tables, code blocks, duplicate headings, or very long sections?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "LangChain — RAG concepts",
+      "href": "https://python.langchain.com/docs/concepts/rag/",
+      "source": "LangChain"
+    },
+    {
+      "label": "Pinecone — Vector Databases Explained",
+      "href": "https://www.pinecone.io/learn/vector-database/",
+      "source": "Pinecone"
+    },
+    {
+      "label": "Ragas metrics catalog",
+      "href": "https://docs.ragas.io/",
+      "source": "Ragas"
+    }
+  ]
+}

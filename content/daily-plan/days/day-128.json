@@ -1,0 +1,70 @@
+{
+  "day": 128,
+  "title": "Behavioral: conflict, failure, leadership stories",
+  "pillar": "behavioral-storytelling",
+  "focus": "Five rehearsed STAR stories — record them, listen back, cut filler.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Sliding Window",
+      "items": [
+        {
+          "id": "lc-minimum-window-substring",
+          "label": "Minimum Window Substring",
+          "href": "https://leetcode.com/problems/minimum-window-substring/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through your shrink condition — when do you safely move the left pointer?",
+            "How do you handle duplicate characters in t (e.g., 'aabb')?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Behavioral · Conflict, failure, leadership",
+      "items": [
+        {
+          "id": "beh-conflict",
+          "label": "Conflict with a teammate / stakeholder",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Tell me about a conflict with a teammate — how did you resolve it?",
+            "When did you disagree with a senior leader's call? What did you do?"
+          ]
+        },
+        {
+          "id": "beh-failure",
+          "label": "Failure and what you learned",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Tell me about a project that failed — what would you do differently?",
+            "Describe a time you missed a deadline — root cause and learning."
+          ]
+        },
+        {
+          "id": "beh-leadership",
+          "label": "Leadership / influence without authority",
+          "href": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+          "meta": "Amazon LPs",
+          "interviewQuestions": [
+            "Tell me about a time you led without formal authority.",
+            "Describe a time you mentored someone through a hard problem."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    }
+  ]
+}

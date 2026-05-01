@@ -1,0 +1,70 @@
+{
+  "day": 102,
+  "title": "RL basics: MDP, value, policy, exploration",
+  "pillar": "deep-learning",
+  "focus": "Bellman; on-policy vs off-policy; Thompson sampling for bandits.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-merge-two-sorted-lists",
+          "label": "Merge Two Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-two-sorted-lists/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "How would you generalize this to merging k sorted lists efficiently?",
+            "Can you do it in-place without a dummy node? What's gained / lost?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · Reinforcement learning basics",
+      "items": [
+        {
+          "id": "rl-mdp",
+          "label": "MDPs, value, policy, Bellman equation",
+          "href": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Walk through the Bellman equation for the value function.",
+            "What's the difference between value iteration and policy iteration?"
+          ]
+        },
+        {
+          "id": "rl-onoff",
+          "label": "On-policy vs off-policy",
+          "href": "https://spinningup.openai.com/en/latest/spinningup/rl_intro2.html",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Compare on-policy vs off-policy RL — examples of each algorithm class.",
+            "When is sample efficiency a deciding factor between on-policy and off-policy methods?"
+          ]
+        },
+        {
+          "id": "rl-explore",
+          "label": "Exploration: epsilon-greedy, UCB, Thompson sampling",
+          "href": "https://lilianweng.github.io/posts/2018-01-23-multi-armed-bandit/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Compare epsilon-greedy, UCB, and Thompson sampling in a contextual bandit.",
+            "Why does Thompson sampling adapt better to non-stationary rewards than epsilon-greedy?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "OpenAI — Spinning Up in RL",
+      "href": "https://spinningup.openai.com/en/latest/",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}

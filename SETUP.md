@@ -1,9 +1,10 @@
-# Setup — Auth (Clerk) + Per-user progress (Supabase)
+# Setup — Auth, Progress, and AI Tutor
 
 The site works without any auth or database — progress is tracked in
 `localStorage` per browser. To enable cross-device progress sync with
-real user accounts, follow the two sections below. **You can do them in
-either order, and you can skip Supabase if you only want auth.**
+real user accounts and AI Tutor memory, follow the sections below.
+**You can do them in stages, and you can skip Supabase if you only want
+auth without cross-device progress or tutor memory.**
 
 Once env vars are set in Vercel, redeploy and the features turn on with
 no code changes.
@@ -93,6 +94,17 @@ Clerk user id, so progress syncs across devices.
      on day_progress (user_id);
    ```
 
+   **Already running an older version?** Run this once to add the
+   `source` column used to mark items studied via the AI coach:
+
+   ```sql
+   alter table day_progress
+     add column if not exists source text not null default 'manual';
+   ```
+
+   The code falls back gracefully if you skip the `alter` — checks
+   still write, they just won't be tagged.
+
 3. From **Project Settings → API** (or **API Keys** in newer dashboards), copy:
 
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
@@ -157,6 +169,244 @@ expose the anon key for direct client writes.)
 
 ---
 
+## 3) AI Tutor — OpenAI + Supabase memory
+
+The AI Tutor page at `/ai-tutor` is publicly previewable. Visitors can inspect
+the profile, focus areas, session, insights, chat, and voice UI before login.
+Starting chat or voice requires Clerk sign-in because transcripts, mastery,
+strengths, weaknesses, roadmap progress, and usage counts are stored per user.
+
+### Environment variables
+
+Add these in Vercel and `.env.local` when testing locally:
+
+```bash
+OPENAI_API_KEY=sk-...
+AI_TUTOR_MODEL=gpt-4o-mini        # optional; defaults to gpt-4o-mini.
+                                  # gpt-4o-mini and gpt-4.1 both reliably
+                                  # support the function-calling agent
+                                  # loop; older models may not.
+AI_TUTOR_DAILY_LIMIT=80           # optional; per-user/day when Supabase is configured
+AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server behavior
+
+# Voice mode (Realtime API) — optional, but required to use Voice agent mode
+AI_TUTOR_REALTIME_MODEL=gpt-realtime-mini   # OpenAI Realtime model
+AI_TUTOR_REALTIME_VOICE=alloy               # alloy / echo / shimmer / sage / verse / coral / ballad / ash
+```
+
+The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
+
+### Voice mode (WebRTC + Realtime API)
+
+Select **Voice agent** on `/ai-tutor` to talk through your prep with the coach.
+The browser opens a WebRTC connection straight to OpenAI; we mint a short-lived
+ephemeral key on the server and route tool calls (roadmap retrieval, question
+search, mastery, lesson plan, tracker, references) through
+`/api/ai-tutor/realtime/tool` so memory updates persist.
+
+#### What you need
+
+- `OPENAI_API_KEY` (already required for chat mode — voice reuses it).
+- `AI_TUTOR_REALTIME_MODEL` (optional; defaults to `gpt-realtime-mini`).
+- `AI_TUTOR_REALTIME_VOICE` (optional; defaults to `alloy`).
+- A signed-in Clerk user (voice mode is gated the same way chat is).
+- Supabase service-role configured — voice persists transcripts and
+  state to the same `ai_tutor_*` tables as chat. Without Supabase, the
+  call still runs but nothing is saved across reloads.
+
+#### Picking a voice
+
+Set `AI_TUTOR_REALTIME_VOICE` to any of OpenAI's Realtime voices:
+
+| Voice | Style |
+| --- | --- |
+| `alloy` | Default — neutral, clear |
+| `echo` | Calm, measured |
+| `shimmer` | Bright, friendly |
+| `sage` | Soft, thoughtful |
+| `verse` | Expressive, energetic |
+| `coral` | Warm, conversational |
+| `ballad` | Storyteller, slower pace |
+| `ash` | Crisp, low-pitched |
+
+The default `alloy` is a safe pick for a coach. You can override per
+session later if we expose a UI selector.
+
+#### How it works
+
+- Select **Voice agent** → browser POSTs `/api/ai-tutor/realtime/session`.
+- The server **auto-creates a persisted session row** if you don't have
+  one yet (or if your active session is a local fallback). You don't need
+  to type a chat message first.
+- The server returns an OpenAI Realtime `client_secret` (60-second TTL).
+  The browser uses it to establish a WebRTC peer connection directly to
+  OpenAI's Realtime endpoint.
+- Browser mic + remote speaker stream over the peer connection.
+  Streaming events (transcript chunks, tool calls) arrive on a data
+  channel.
+- When the model emits a tool call, the browser POSTs
+  `{name, args}` to `/api/ai-tutor/realtime/tool`. The server runs the
+  tool against the same persistence layer chat mode uses (mastery,
+  plan, phase, tracker), then returns the function-call output for the
+  browser to send back to OpenAI on the data channel.
+- On end, the browser POSTs the transcript to
+  `/api/ai-tutor/realtime/transcript`, which appends each turn to
+  `ai_tutor_messages` for the same session id.
+
+#### Tool parity with chat
+
+Voice supports all chat tools except the two `delegate_*` subagents (the
+realtime model teaches inline naturally instead). Specifically:
+
+- `get_roadmap_topic`, `search_questions`, `retrieve_daily_plan_content`
+- `get_user_mastery`, `get_user_progress`
+- `pick_next_topic`, `set_phase`
+- `write_lesson_plan`, `update_lesson_plan_step`
+- `record_practice` — same gating: only writes a `day_progress` row
+  tagged `source='ai_tutor'` when score ≥ 70.
+
+#### Browser requirements
+
+- Microphone permission (prompted on first **Start voice** click).
+- A modern browser with `RTCPeerConnection` + `getUserMedia` — Chrome,
+  Edge, Safari 14.1+, Firefox 88+ all work.
+- The voice panel falls back to a friendly error if the mic is blocked.
+
+#### Costs to watch
+
+OpenAI's Realtime API bills audio minutes on top of token usage. For a
+20-minute coaching session on `gpt-realtime-mini`, expect a few cents.
+Tool-call tokens (the structured args + outputs) are billed as text and
+also flow through `consumeAiTutorUsage`, so the daily limit set by
+`AI_TUTOR_DAILY_LIMIT` still applies indirectly via the chat API but
+**does not** currently rate-limit voice minutes — set a Vercel-side
+budget alert if you're worried.
+
+### LangSmith tracing
+
+The AI Tutor agent emits structured traces (parent run + every LLM call
++ every tool call + every subagent delegation) to LangSmith. Runs are
+fire-and-forget — best-effort, never block or break the user request.
+
+#### Steps
+
+1. Sign up at <https://smith.langchain.com>, create a project (default
+   name we look for: `ml-roadmap-ai-tutor`).
+2. Open **Settings → API Keys** and create a key.
+3. In Vercel → Environment Variables, add:
+
+   ```bash
+   LANGSMITH_TRACING=true
+   LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+   LANGSMITH_API_KEY=lsv2_...
+   LANGSMITH_PROJECT="ml-roadmap-ai-tutor"
+   ```
+
+4. Redeploy. Hit `/ai-tutor` and confirm a parent run named
+   `ai-tutor.turn` appears in the LangSmith project, with child runs for
+   each `openai.responses.*` call, each `tool.*` call, and each
+   `subagent.*` delegation.
+
+Without these env vars, all tracing calls become no-ops and the agent
+runs identically.
+
+#### What you'll see in LangSmith
+
+- `ai-tutor.turn` (chain) — top-level per-message turn
+  - `agent.iterN.<model>.attemptM` (llm) — each model call in the
+    function-calling loop, tagged with the model that succeeded
+  - `tool.<name>` (tool) — each tool invocation with its preview
+  - `subagent.concept_teacher` / `subagent.mock_interviewer` (llm) — the
+    delegated single-shot subagent calls
+
+This makes it easy to debug "why did the coach skip grading?" or "which
+tool blew up the latency?" without trawling through Vercel logs.
+
+### Supabase tables for memory
+
+If you want persistent AI Tutor memory, run this SQL after the
+`day_progress` table setup:
+
+```sql
+create table if not exists ai_tutor_profiles (
+  user_id text primary key,
+  target_role text not null default 'ML Engineer',
+  current_level text not null default 'intermediate',
+  interview_date date,
+  daily_hours numeric not null default 2,
+  weak_tags text[] not null default '{}',
+  preferred_mode text not null default 'guided-interview',
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+create table if not exists ai_tutor_sessions (
+  id uuid primary key default gen_random_uuid(),
+  user_id text not null,
+  status text not null default 'active',
+  mode text not null default 'guided-interview',
+  current_tag text,
+  summary jsonb not null default '{}'::jsonb,
+  started_at timestamptz default now(),
+  ended_at timestamptz
+);
+
+create index if not exists ai_tutor_sessions_user_idx
+  on ai_tutor_sessions (user_id, started_at desc);
+
+create table if not exists ai_tutor_messages (
+  id uuid primary key default gen_random_uuid(),
+  session_id uuid references ai_tutor_sessions(id) on delete cascade,
+  user_id text not null,
+  role text not null check (role in ('user', 'assistant')),
+  content text not null,
+  topic_ref jsonb not null default '{}'::jsonb,
+  evaluation jsonb not null default '{}'::jsonb,
+  created_at timestamptz default now()
+);
+
+create index if not exists ai_tutor_messages_user_idx
+  on ai_tutor_messages (user_id, created_at desc);
+
+create index if not exists ai_tutor_messages_session_idx
+  on ai_tutor_messages (session_id, created_at asc);
+
+create table if not exists ai_tutor_memory (
+  user_id text primary key,
+  mastery jsonb not null default '{}'::jsonb,
+  recurring_mistakes text[] not null default '{}',
+  strengths text[] not null default '{}',
+  next_recommendations text[] not null default '{}',
+  updated_at timestamptz default now()
+);
+
+create table if not exists ai_tutor_usage (
+  user_id text not null,
+  usage_date date not null,
+  message_count int not null default 0,
+  token_estimate int not null default 0,
+  updated_at timestamptz default now(),
+  primary key (user_id, usage_date)
+);
+```
+
+The current implementation uses the Supabase service-role key from
+server routes only. Client code never writes to these tables directly.
+
+### What works now
+
+- `/ai-tutor` is publicly visible in preview mode; chat and voice usage require Clerk sign-in.
+- The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode without taking over the chat layout.
+- The tutor supports chat and realtime voice agents. Both use the same roadmap/question tools, lesson-plan tools, memory layer, and readiness-gated tracker semantics.
+- The tutor supports multiple sessions. Each session has its own transcript and lesson plan, while the memory layer is shared across sessions.
+- Deleting a tutor session removes that session and transcript from Supabase, then rebuilds shared memory from the remaining sessions so deleted-session evidence is not retained.
+- The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, includes reference links when the learner needs review material, and recommends the next day/topic.
+- Memory stores mastery scores, recurring mistakes, strengths, and next recommendations.
+- Dashboard progress is updated from AI Tutor only when `record_practice` marks a canonical roadmap item as `interview_ready`; weak or partial answers update memory but do not check off the study tracker.
+- The Python coding lab is intentionally not server-side. It is planned as a browser-only Pyodide module so user code does not execute on your infrastructure.
+
+---
+
 ## Verifying the integration
 
 After deploying with both sets of env vars:
@@ -170,6 +420,13 @@ After deploying with both sets of env vars:
    your rows are there with your Clerk `user_id`.
 5. Open the site on another device, sign in — the same items are
    already checked.
+6. Open `/ai-tutor`, save a tutor profile, start an assessment, then
+   confirm rows appear in `ai_tutor_profiles`, `ai_tutor_sessions`,
+   `ai_tutor_messages`, `ai_tutor_memory`, and `ai_tutor_usage`.
+7. Answer a roadmap-grounded question strongly enough for the coach to
+   mark it interview-ready, then verify `day_progress.source = 'ai_tutor'`
+   for the related day/item. Partial answers should only update
+   `ai_tutor_memory`.
 
 ---
 
@@ -189,6 +446,8 @@ CLERK_SECRET_KEY=sk_test_xxx
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
+OPENAI_API_KEY=sk-...
+AI_TUTOR_MODEL=gpt-4.1-mini
 ```
 
 Then `npm run dev`.
@@ -207,3 +466,8 @@ Then `npm run dev`.
 - **Build fails locally with Clerk errors** — make sure `CLERK_SECRET_KEY`
   is also set when `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` is set; both
   must be present together.
+- **AI Tutor says OpenAI is not configured** — add `OPENAI_API_KEY` in
+  Vercel for Production and Preview, then redeploy.
+- **AI Tutor works but does not remember answers** — create the
+  `ai_tutor_*` tables and verify `SUPABASE_SECRET_KEY` or
+  `SUPABASE_SERVICE_ROLE_KEY` is set.

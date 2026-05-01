@@ -1,0 +1,56 @@
+---
+title: Design a Multi-Tenant Enterprise AI Platform
+description: Serve multiple teams or customers on shared AI infrastructure while preserving data boundaries, quotas, auditability, and cost controls.
+track: Generative AI
+difficulty: Advanced
+prompt: Design a multi-tenant AI platform that supports RAG, tools, evals, and model routing for multiple internal product teams or enterprise customers.
+concepts:
+  - Multi-tenancy
+  - Data isolation
+  - Model routing
+  - Quotas
+  - Auditability
+evaluationLens:
+  - Tenant isolation
+  - Cost attribution
+  - Security
+  - Reliability
+  - Developer experience
+---
+
+## Clarify tenant boundaries
+
+Separate compute isolation, data isolation, policy isolation, and billing isolation. Some tenants need hard separation; others can share models and infrastructure with strict metadata, key, and permission controls.
+
+## Architecture
+
+1. **Tenant identity**: every request carries tenant, user, role, policy, and budget context.
+2. **Data layer**: per-tenant indexes or ACL-aware shared indexes with strict metadata filters.
+3. **Model gateway**: route by tenant policy, cost budget, latency SLO, and quality target.
+4. **Tool gateway**: enforce per-tenant tool permissions and approval gates.
+5. **Observability**: trace model, prompt, retrieval, tools, cost, latency, and policy decisions by tenant.
+6. **Admin controls**: quotas, audit logs, model allowlists, eval dashboards, and incident controls.
+
+## Build-vs-buy decisions
+
+Use managed models and vector stores early if differentiation is in the product workflow. Build custom routing, evals, and policy layers only when tenant requirements demand it.
+
+## Metrics
+
+- cost per tenant and feature
+- latency by tenant and route
+- isolation violations, ideally zero
+- retrieval permission failures
+- model quality by tenant
+- quota exhaustion and noisy-neighbor incidents
+
+## Failure modes
+
+- **Cross-tenant data leak**: the highest-severity failure. Prevent at retrieval and tool access time.
+- **Noisy neighbor**: one tenant exhausts GPU, vector DB, or rate-limit capacity.
+- **Cost runaway**: one feature or tenant silently dominates spend.
+- **Policy drift**: tenant-specific rules change but prompts/tools/indexes are not updated.
+
+## What the architect signal looks like
+
+Close with the isolation decision: hard isolation for regulated or high-risk tenants, shared infrastructure with strict policy and audit controls for lower-risk tenants.

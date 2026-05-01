@@ -1,0 +1,92 @@
+{
+  "day": 67,
+  "title": "Privacy & security: PII, DP, federated, attacks + DSA 2-D DP",
+  "pillar": "mlops",
+  "focus": "K-anonymity, ε in DP, model-extraction defenses.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 2-D DP",
+      "items": [
+        {
+          "id": "lc-best-time-to-buy-and-sell-stock-with-cooldown",
+          "label": "Best Time TO Buy And Sell Stock With Cooldown",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        },
+        {
+          "id": "lc-coin-change-ii",
+          "label": "Coin Change II",
+          "href": "https://leetcode.com/problems/coin-change-ii/",
+          "meta": "2-D DP",
+          "interviewQuestions": [
+            "State the 2-D DP: indices, recurrence, base case. What's the order of fill?",
+            "Can you reduce 2-D to 1-D by reusing rows or columns? Walk through the dependency direction.",
+            "Top-down with memoization vs bottom-up — which is easier to reason about, and which is faster in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Privacy & security",
+      "items": [
+        {
+          "id": "mlops-pii",
+          "label": "PII handling, anonymization, k-anonymity",
+          "href": "https://en.wikipedia.org/wiki/K-anonymity",
+          "meta": "Read",
+          "interviewQuestions": [
+            "How would you remove PII from training data without destroying signal?",
+            "Compare hashing vs tokenization vs full redaction for PII fields — when does each fit?"
+          ]
+        },
+        {
+          "id": "mlops-dp",
+          "label": "Differential privacy basics",
+          "href": "https://github.com/google/differential-privacy",
+          "meta": "Google",
+          "interviewQuestions": [
+            "Explain differential privacy in one minute — what does ε mean?",
+            "How does DP-SGD differ from regular SGD, and what does it cost in accuracy?"
+          ]
+        },
+        {
+          "id": "mlops-fed",
+          "label": "Federated learning",
+          "href": "https://federated.withgoogle.com/",
+          "meta": "Google",
+          "interviewQuestions": [
+            "When is federated learning the right choice over centralized training?",
+            "What are the systems-side challenges in federated learning beyond the algorithm?"
+          ]
+        },
+        {
+          "id": "mlops-attacks",
+          "label": "Adversarial & model-extraction attacks",
+          "href": "https://ai.googleblog.com/2018/02/adversarial-examples-on-real.html",
+          "meta": "Google",
+          "interviewQuestions": [
+            "What is a model-extraction attack, and how do you mitigate it?",
+            "How would you defend a public ML API from membership-inference attacks?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

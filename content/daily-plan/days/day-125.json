@@ -1,0 +1,119 @@
+{
+  "day": 125,
+  "title": "Self-mock 2: pick a Week-17 GenAI case and rework + DSA review",
+  "pillar": "ml-system-design",
+  "focus": "Run a 60-min self-mock on a GenAI case (RAG/agent/eval/doc/code/img/voice).",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Trees",
+      "items": [
+        {
+          "id": "lc-binary-tree-right-side-view",
+          "label": "Binary Tree Right Side View",
+          "href": "https://leetcode.com/problems/binary-tree-right-side-view/",
+          "meta": "Trees",
+          "interviewQuestions": [
+            "Compare BFS vs DFS for this problem — which fits, and what's the iterative version?",
+            "What's the recursion's space cost on the stack, and how would you go iterative if you needed O(log n)?",
+            "What's the relationship between this problem's invariant and the BST property (if any)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
+        },
+        {
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
+        },
+        {
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Enterprise RAG",
+      "items": [
+        {
+          "id": "sd-rag-design",
+          "label": "Design enterprise RAG over docs (Glean-style)",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "Walk me through designing an enterprise RAG over Confluence + Slack + Drive.",
+            "How do you handle access control / permissions in retrieval?",
+            "How would you handle 50M docs and 10k QPS?"
+          ]
+        },
+        {
+          "id": "sd-rag-eval",
+          "label": "Eval & monitoring for enterprise RAG",
+          "href": "https://docs.ragas.io/",
+          "meta": "Ragas",
+          "interviewQuestions": [
+            "How would you build an offline + online eval pipeline for an enterprise RAG?",
+            "What synthetic golden set would you generate for a domain where humans can't easily score answers?"
+          ]
+        },
+        {
+          "id": "sd-rag-connectors",
+          "label": "Mixed enterprise docs: SharePoint, Jira, Slack, Drive",
+          "href": "https://www.glean.com/blog/",
+          "meta": "Glean",
+          "interviewQuestions": [
+            "How would you ingest SharePoint, Jira, Slack, and Drive while preserving permissions and freshness?",
+            "What metadata schema would you attach to chunks so retrieval can enforce ACLs and route by source?",
+            "How do you backfill 50M documents without breaking freshness for newly edited docs?"
+          ]
+        },
+        {
+          "id": "sd-rag-markdown-retrieval",
+          "label": "Implement heading-aware markdown chunk retrieval",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "Interview coding",
+          "interviewQuestions": [
+            "Implement retrieve_relevant_chunks(markdown, query) that preserves H1/H2/H3 hierarchy in returned chunks.",
+            "How would you score headings plus body text so a section title can match even when the paragraph uses different wording?",
+            "What edge cases break naive markdown chunking: tables, code blocks, duplicate headings, or very long sections?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "day": 34,
+  "title": "Trad-ML pitfall drills (leakage, imbalance, calibration)",
+  "pillar": "traditional-ml",
+  "focus": "The three failure modes that show up in nearly every ML interview.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Binary Search",
+      "items": [
+        {
+          "id": "lc-time-based-key-value-store",
+          "label": "Time Based Key Value Store",
+          "href": "https://leetcode.com/problems/time-based-key-value-store/",
+          "meta": "Binary Search",
+          "interviewQuestions": [
+            "State your loop invariant precisely — what must be true on every iteration?",
+            "Why does the loop terminate, and how do you avoid infinite loops on the search-space update?",
+            "Walk through edge cases: empty array, target smaller than min, target larger than max, duplicates."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Cross-validation & evaluation",
+      "items": [
+        {
+          "id": "ml-cv",
+          "label": "k-fold, stratified, leave-one-out, time-series CV",
+          "href": "https://scikit-learn.org/stable/modules/cross_validation.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When does k-fold leak data, and what does TimeSeriesSplit do differently?",
+            "Why is stratified k-fold important for imbalanced classification?"
+          ]
+        },
+        {
+          "id": "ml-train-val-test",
+          "label": "Train/val/test split & nested CV",
+          "href": "https://www.youtube.com/watch?v=fSytzGwwBVw",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why do you need both a validation and a test set for hyperparameter tuning?",
+            "What is nested cross-validation and when is it worth the cost?",
+            "How would your split strategy change for time-series forecasting vs random tabular rows?"
+          ]
+        },
+        {
+          "id": "ml-leakage",
+          "label": "Common forms of data leakage",
+          "href": "https://machinelearningmastery.com/data-leakage-machine-learning/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Walk through three common ways data leakage sneaks into an ML pipeline.",
+            "How would you build a pipeline that prevents leakage when scaling features?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Imbalanced classification",
+      "items": [
+        {
+          "id": "ml-imbalance-fix",
+          "label": "Resampling, class weights, SMOTE",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "Compare random oversampling, undersampling, SMOTE, and class weighting — when does each help?",
+            "Why can SMOTE leak when applied before cross-validation?"
+          ]
+        },
+        {
+          "id": "ml-imbalance-loss",
+          "label": "Focal loss & cost-sensitive learning",
+          "href": "https://arxiv.org/abs/1708.02002",
+          "meta": "Lin et al.",
+          "interviewQuestions": [
+            "Why does focal loss help with extreme imbalance in object detection?",
+            "Compare focal loss vs class-weighted cross-entropy — when does focal actually win?"
+          ]
+        },
+        {
+          "id": "ml-imbalance-eval",
+          "label": "Metric choice for imbalance: PR-AUC, F-beta, MCC",
+          "href": "https://machinelearningmastery.com/tour-of-evaluation-metrics-for-imbalanced-classification/",
+          "meta": "MLM",
+          "interviewQuestions": [
+            "Why is accuracy a terrible metric for imbalanced classification?",
+            "When do you reach for F1, F-beta, MCC, or PR-AUC?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

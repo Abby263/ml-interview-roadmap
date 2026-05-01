@@ -1,0 +1,87 @@
+{
+  "day": 75,
+  "title": "Function calling, tool use, MCP + DSA Greedy finish",
+  "pillar": "generative-ai",
+  "focus": "Schemas, retries, hallucinated args; MCP architecture.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Greedy",
+      "items": [
+        {
+          "id": "lc-partition-labels",
+          "label": "Partition Labels",
+          "href": "https://leetcode.com/problems/partition-labels/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        },
+        {
+          "id": "lc-valid-parenthesis-string",
+          "label": "Valid Parenthesis String",
+          "href": "https://leetcode.com/problems/valid-parenthesis-string/",
+          "meta": "Greedy",
+          "interviewQuestions": [
+            "Prove the greedy choice — why is the locally-optimal pick safe globally? (Exchange argument or staying-ahead.)",
+            "When does greedy fail on a similar-looking problem, and what would you reach for instead (DP, BFS)?",
+            "Walk through edge cases that often break naive greedy: ties, negatives, single element."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · Tool use & function calling",
+      "items": [
+        {
+          "id": "llm-fc",
+          "label": "Function calling: schemas, parsing, retries",
+          "href": "https://platform.openai.com/docs/guides/function-calling",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Walk through how function calling works under the hood — what does the model actually emit?",
+            "How do you handle a model that hallucinates a tool call with bad arguments?"
+          ]
+        },
+        {
+          "id": "llm-tools-design",
+          "label": "Designing tool catalogs for agents",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How would you design a tool catalog for a research agent — what are the trade-offs in granularity?",
+            "Why do agents perform worse when you give them too many tools, and what's a good cutoff?"
+          ]
+        },
+        {
+          "id": "llm-mcp",
+          "label": "Model Context Protocol (MCP)",
+          "href": "https://modelcontextprotocol.io/",
+          "meta": "MCP",
+          "interviewQuestions": [
+            "What problem does MCP solve compared to ad-hoc function calling?",
+            "Walk me through how an MCP server is built and what guarantees the protocol gives you."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "OpenAI platform docs",
+      "href": "https://platform.openai.com/docs",
+      "source": "OpenAI"
+    },
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Model Context Protocol",
+      "href": "https://modelcontextprotocol.io/",
+      "source": "MCP"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "day": 13,
+  "title": "Bias-variance, double descent, learning curves",
+  "pillar": "math-stats",
+  "focus": "The framing every model debugging conversation falls back on.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Bit Manipulation",
+      "items": [
+        {
+          "id": "lc-sum-of-two-integers",
+          "label": "Sum OF Two Integers",
+          "href": "https://leetcode.com/problems/sum-of-two-integers/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        },
+        {
+          "id": "lc-reverse-integer",
+          "label": "Reverse Integer",
+          "href": "https://leetcode.com/problems/reverse-integer/",
+          "meta": "Bit Manipulation",
+          "interviewQuestions": [
+            "Walk me through the bit trick used here, bit by bit on a small input.",
+            "Why XOR / AND / shift specifically — what property of that operation does the problem exploit?",
+            "What's the complexity in terms of bits (often O(32) → O(1)), and where could that break for big-int?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Bias-variance trade-off",
+      "items": [
+        {
+          "id": "ml-bias-var",
+          "label": "Bias-variance decomposition with worked example",
+          "href": "https://www.youtube.com/watch?v=EuBBz3bI-aA",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Decompose expected squared error into bias², variance, and irreducible noise.",
+            "Why does adding more training data reduce variance but not bias?"
+          ]
+        },
+        {
+          "id": "ml-double-descent",
+          "label": "Double descent: when more parameters help",
+          "href": "https://openai.com/index/deep-double-descent/",
+          "meta": "OpenAI",
+          "interviewQuestions": [
+            "Explain the double-descent phenomenon. How does it overturn classical bias-variance intuition?",
+            "Why do over-parameterized models often generalize well in deep learning?"
+          ]
+        },
+        {
+          "id": "ml-learning-curves",
+          "label": "Learning curves: diagnose underfit vs overfit",
+          "href": "https://scikit-learn.org/stable/modules/learning_curve.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "How do you read a learning curve to decide between more data, regularization, or a bigger model?",
+            "What does a large gap between training and validation curves usually mean — and what shrinks it?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "Google ML Crash Course",
+      "href": "https://developers.google.com/machine-learning/crash-course",
+      "source": "Google"
+    }
+  ]
+}

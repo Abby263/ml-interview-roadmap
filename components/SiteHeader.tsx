@@ -2,13 +2,11 @@ import Link from "next/link";
 
 import AuthButtons from "@/components/AuthButtons";
 import ThemeToggle from "@/components/ThemeToggle";
-
-const NAV = [
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/blog", label: "Blog" },
-] as const;
+import { navigationLinks } from "@/lib/site-data";
 
 export default function SiteHeader() {
+  const primaryLinks = navigationLinks.slice(0, 4);
+
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-background/90 backdrop-blur-xl">
       <div className="page-shell flex flex-wrap items-center justify-between gap-4 py-3">
@@ -21,41 +19,23 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-1">
-          <nav
-            aria-label="Primary navigation"
-            className="hidden flex-wrap items-center gap-0.5 md:flex"
-          >
-            {NAV.map((link) => (
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-1 md:flex">
+            {primaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-3 py-1.5 text-sm font-medium text-muted transition hover:bg-surface-strong hover:text-foreground"
+                className="rounded-full px-3 py-2 text-xs font-semibold text-muted transition hover:bg-surface-strong hover:text-foreground"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <ThemeToggle />
-          <AuthButtons />
-        </div>
-
-        <nav
-          aria-label="Mobile navigation"
-          className="-mx-2 w-full overflow-x-auto md:hidden"
-        >
-          <div className="flex items-center gap-0.5 whitespace-nowrap px-2">
-            {NAV.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-3 py-1.5 text-sm font-medium text-muted transition hover:bg-surface-strong hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <AuthButtons />
           </div>
-        </nav>
+        </div>
       </div>
     </header>
   );

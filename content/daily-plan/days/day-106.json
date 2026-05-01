@@ -1,0 +1,108 @@
+{
+  "day": 106,
+  "title": "ML System Design framework (7 steps)",
+  "pillar": "ml-system-design",
+  "focus": "The reusable scaffold for every design round: clarify → metrics → data → model → infra → eval → edges.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Sliding Window",
+      "items": [
+        {
+          "id": "lc-sliding-window-maximum",
+          "label": "Sliding Window Maximum",
+          "href": "https://leetcode.com/problems/sliding-window-maximum/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Is this a fixed-size or variable-size window? Why does that fit this problem?",
+            "What's the invariant inside the window, and how do you maintain it on shrink/expand?",
+            "Why is the overall pass O(n) even though the inner loop looks like it could be O(n²)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML System Design · Framework",
+      "items": [
+        {
+          "id": "sd-framework-step",
+          "label": "7-step framework: clarify → metrics → data → model → infra → eval → edge cases",
+          "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+          "meta": "Patrick Halina",
+          "interviewQuestions": [
+            "Walk me through your 7-step framework for any ML system design interview.",
+            "How do you avoid running out of time on the model section?"
+          ]
+        },
+        {
+          "id": "sd-clarify",
+          "label": "Clarifying questions: scope, scale, latency, constraints",
+          "href": "https://github.com/khangich/machine-learning-interview",
+          "meta": "khangich",
+          "interviewQuestions": [
+            "What are the first five clarifying questions you ask in any ML system design interview?",
+            "How do you confirm the business metric vs the ML metric without burning 10 minutes on it?"
+          ]
+        },
+        {
+          "id": "sd-metrics",
+          "label": "Online vs offline metrics, business metrics",
+          "href": "https://eugeneyan.com/writing/improving-ml-system-design/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How do you map a business metric to an offline ML metric?",
+            "Walk through three real cases where offline gains didn't translate online."
+          ]
+        },
+        {
+          "id": "sd-product-ml-rules-technical-debt",
+          "label": "Product ML judgment: first principles, Rules of ML, technical debt",
+          "href": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+          "meta": "Google",
+          "interviewQuestions": [
+            "How would you map a vague product opportunity into data, labels, baseline, metrics, and launch criteria?",
+            "When should you avoid ML and ship a heuristic or rules-based product first?",
+            "What sources of ML technical debt matter most: hidden feedback loops, undeclared consumers, stale data, or correction cascades?",
+            "How do you identify product surfaces where ML can add value without creating brittle dependencies?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Patrick Halina — ML Systems Design Interview Guide",
+      "href": "http://patrickhalina.com/posts/ml-systems-design-interview-guide/",
+      "source": "Patrick Halina"
+    },
+    {
+      "label": "khangich — Machine Learning Interview",
+      "href": "https://github.com/khangich/machine-learning-interview",
+      "source": "GitHub"
+    },
+    {
+      "label": "alirezadir — Machine Learning Interviews",
+      "href": "https://github.com/alirezadir/Machine-Learning-Interviews",
+      "source": "GitHub"
+    },
+    {
+      "label": "Chip Huyen — ML Systems Design",
+      "href": "https://huyenchip.com/machine-learning-systems-design/toc.html",
+      "source": "Chip Huyen"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Google — Rules of Machine Learning",
+      "href": "https://developers.google.com/machine-learning/guides/rules-of-ml",
+      "source": "Google"
+    },
+    {
+      "label": "Machine Learning: The High Interest Credit Card of Technical Debt",
+      "href": "https://research.google/pubs/machine-learning-the-high-interest-credit-card-of-technical-debt/",
+      "source": "Google Research"
+    }
+  ]
+}

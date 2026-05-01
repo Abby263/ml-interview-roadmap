@@ -1,0 +1,82 @@
+{
+  "day": 24,
+  "title": "SVM, kNN, Naive Bayes + DSA Linked List",
+  "pillar": "traditional-ml",
+  "focus": "Kernel trick, curse of dimensionality, generative vs discriminative.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-linked-list-cycle",
+          "label": "Linked List Cycle",
+          "href": "https://leetcode.com/problems/linked-list-cycle/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through Floyd's tortoise & hare — why must they meet inside the cycle?",
+            "How do you find the start of the cycle (LC 142) once you've detected one?"
+          ]
+        },
+        {
+          "id": "lc-find-the-duplicate-number",
+          "label": "Find The Duplicate Number",
+          "href": "https://leetcode.com/problems/find-the-duplicate-number/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Walk through your pointer hazards — what breaks if you lose track of the head or a prev pointer?",
+            "Can you do this in-place (O(1) extra space)? What's the trick?",
+            "How would you detect / handle a cycle, and prove your method's correctness?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · SVM, kNN, Naive Bayes",
+      "items": [
+        {
+          "id": "ml-svm",
+          "label": "SVM: max-margin, kernel trick, soft margin",
+          "href": "https://www.youtube.com/watch?v=efR1C6CvhmE",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "What's the geometric intuition behind the max-margin SVM?",
+            "Explain the kernel trick — why it lets us work in infinite-dimensional spaces without computing them.",
+            "When would you NOT use an SVM today?"
+          ]
+        },
+        {
+          "id": "ml-knn",
+          "label": "kNN: distance metrics, curse of dimensionality",
+          "href": "https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Why does kNN degrade in high dimensions (curse of dimensionality)?",
+            "How would you choose k and the distance metric for kNN?"
+          ]
+        },
+        {
+          "id": "ml-nb",
+          "label": "Naive Bayes: when 'naive' actually works",
+          "href": "https://www.youtube.com/watch?v=O2L2Uv9pdDA",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why does Naive Bayes still work despite the unrealistic independence assumption?",
+            "Compare generative vs discriminative classifiers using NB and Logistic Regression."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
+}

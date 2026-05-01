@@ -1,0 +1,104 @@
+{
+  "day": 3,
+  "title": "Hypothesis testing + DSA Arrays/Hashing finish",
+  "pillar": "math-stats",
+  "focus": "p-values, t/z/chi-squared/ANOVA, type I/II error, multiple testing.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Arrays & Hashing",
+      "items": [
+        {
+          "id": "lc-product-of-array-except-self",
+          "label": "Product OF Array Except Self",
+          "href": "https://leetcode.com/problems/product-of-array-except-self/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Why can't you use division? Walk through the prefix/suffix product trick.",
+            "Can you do it with O(1) extra space (not counting output)?"
+          ]
+        },
+        {
+          "id": "lc-valid-sudoku",
+          "label": "Valid Sudoku",
+          "href": "https://leetcode.com/problems/valid-sudoku/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "What's the time and space complexity? Where can you tighten it?",
+            "Walk through edge cases: empty input, single element, all duplicates, negatives.",
+            "Why is a hash map / hash set the right structure here? When would a sorted structure beat it?"
+          ]
+        },
+        {
+          "id": "lc-longest-consecutive-sequence",
+          "label": "Longest Consecutive Sequence",
+          "href": "https://leetcode.com/problems/longest-consecutive-sequence/",
+          "meta": "Arrays & Hashing",
+          "interviewQuestions": [
+            "Why does the 'only start counting from a number whose predecessor is missing' trick give you O(n)?",
+            "Walk through with all duplicates — does your algorithm still hit O(n)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Hypothesis testing & p-values",
+      "items": [
+        {
+          "id": "stats-null-alt",
+          "label": "Null vs alternative, type I / II errors, power",
+          "href": "https://www.statlearning.com/",
+          "meta": "ISLR ch. 13",
+          "interviewQuestions": [
+            "Define Type I and Type II error and give an example where each is much more costly.",
+            "What does statistical power depend on, and how would you increase it?",
+            "Why is multiple testing dangerous and how do Bonferroni / FDR fix it?"
+          ]
+        },
+        {
+          "id": "stats-pvalue",
+          "label": "P-values: what they mean and don't",
+          "href": "https://www.nature.com/articles/d41586-019-00857-9",
+          "meta": "Nature",
+          "interviewQuestions": [
+            "What does a p-value of 0.03 actually mean? What does it NOT mean?",
+            "Walk me through the steps of a two-sample t-test on conversion rates.",
+            "Why is 'statistically significant but practically meaningless' a real concern in product A/B tests?"
+          ]
+        },
+        {
+          "id": "stats-tests",
+          "label": "z, t, chi-squared, ANOVA — choosing the right test",
+          "href": "https://www.youtube.com/watch?v=0oc49DyA3hU",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "When do you use a z-test vs a t-test?",
+            "When does a chi-squared test apply?",
+            "Why does ANOVA generalize the t-test, and when do you reach for it?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "Seeing Theory — visual probability + stats",
+      "href": "https://seeing-theory.brown.edu/",
+      "source": "Brown"
+    },
+    {
+      "label": "Evan Miller — A/B testing pitfalls",
+      "href": "https://www.evanmiller.org/how-not-to-run-an-ab-test.html",
+      "source": "Evan Miller"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

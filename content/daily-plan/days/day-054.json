@@ -1,0 +1,92 @@
+{
+  "day": 54,
+  "title": "NLP practical tasks: NER, summarization, MT + DSA Graphs",
+  "pillar": "deep-learning",
+  "focus": "BIO tagging vs span-based; ROUGE / BERTScore / LLM-as-judge; beam search.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Graphs",
+      "items": [
+        {
+          "id": "lc-walls-and-gates",
+          "label": "Walls And Gates",
+          "href": "https://leetcode.com/problems/walls-and-gates/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Is this BFS, DFS, or Union-Find? Defend the choice over the other two.",
+            "Walk through complexity in terms of V and E. Where do those costs come from?",
+            "How would you handle disconnected components, self-loops, or duplicate edges?"
+          ]
+        },
+        {
+          "id": "lc-course-schedule",
+          "label": "Course Schedule",
+          "href": "https://leetcode.com/problems/course-schedule/",
+          "meta": "Graphs",
+          "interviewQuestions": [
+            "Compare BFS-based topological sort (Kahn's) vs DFS with cycle detection.",
+            "How does this extend to course-schedule-ii where you must output the order?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "NLP · Practical tasks",
+      "items": [
+        {
+          "id": "nlp-ner",
+          "label": "Named-entity recognition: BIO tagging, span-based",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/2",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare BIO tagging vs span-based NER models.",
+            "How would you evaluate a NER model — token-level F1 vs entity-level F1, and which actually matters?"
+          ]
+        },
+        {
+          "id": "nlp-summarization",
+          "label": "Extractive vs abstractive summarization",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/5",
+          "meta": "HF",
+          "interviewQuestions": [
+            "How would you evaluate a summarization model — ROUGE vs BERTScore vs LLM-as-judge?",
+            "Compare extractive vs abstractive summarization — when is each the right tool?"
+          ]
+        },
+        {
+          "id": "nlp-translation",
+          "label": "Machine translation: BLEU, beam search",
+          "href": "https://huggingface.co/learn/nlp-course/chapter7/4",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why is beam search standard for translation but not for open-ended generation?",
+            "What is BLEU actually measuring, and where does it mislead?"
+          ]
+        },
+        {
+          "id": "nlp-sentiment",
+          "label": "Sentiment analysis: baselines, transformers, and failure modes",
+          "href": "https://neetcode.io/practice/machine-learning",
+          "meta": "NeetCode ML",
+          "interviewQuestions": [
+            "Design a sentiment classifier starting from TF-IDF + logistic regression and then a transformer baseline.",
+            "How would you handle negation, sarcasm, domain shift, and class imbalance in sentiment analysis?",
+            "Which metric would you report for an imbalanced sentiment dataset and why?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "day": 63,
+  "title": "Serving infrastructure: Triton / TorchServe / BentoML / k8s + DSA 1-D DP",
+  "pillar": "mlops",
+  "focus": "Dynamic batching, KServe, autoscaling, safe rollback.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 1-D DP",
+      "items": [
+        {
+          "id": "lc-decode-ways",
+          "label": "Decode Ways",
+          "href": "https://leetcode.com/problems/decode-ways/",
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
+        },
+        {
+          "id": "lc-coin-change",
+          "label": "Coin Change",
+          "href": "https://leetcode.com/problems/coin-change/",
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP and the order of fills. Why does coin-first-then-amount give you each combination?",
+            "How does coin-change-ii (number of ways) differ from coin-change-i (min coins)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Serving infrastructure",
+      "items": [
+        {
+          "id": "mlops-serving",
+          "label": "Model servers: TorchServe, Triton, BentoML, Seldon",
+          "href": "https://github.com/triton-inference-server/server",
+          "meta": "Triton",
+          "interviewQuestions": [
+            "Compare TorchServe, Triton, and BentoML — when does each fit?",
+            "What is dynamic batching and why does it matter for GPU utilization?"
+          ]
+        },
+        {
+          "id": "mlops-k8s",
+          "label": "Containerization & Kubernetes for ML",
+          "href": "https://www.kubeflow.org/docs/",
+          "meta": "Kubeflow",
+          "interviewQuestions": [
+            "Walk through deploying a model on Kubernetes with autoscaling.",
+            "When do you reach for KServe vs custom Deployment + HPA?"
+          ]
+        },
+        {
+          "id": "mlops-routing",
+          "label": "Traffic routing, model rollback, A/B serving",
+          "href": "https://kserve.github.io/website/",
+          "meta": "KServe",
+          "interviewQuestions": [
+            "How would you do a safe rollback when a new model regresses online metrics?",
+            "What guardrail metrics would automatically trigger a rollback without a human in the loop?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Full Stack Deep Learning",
+      "href": "https://fullstackdeeplearning.com/",
+      "source": "FSDL"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

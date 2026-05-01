@@ -1,0 +1,98 @@
+{
+  "day": 16,
+  "title": "Logistic regression + classification metrics + DSA Stack",
+  "pillar": "traditional-ml",
+  "focus": "Cross-entropy, ROC vs PR, calibration, threshold selection.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Stack",
+      "items": [
+        {
+          "id": "lc-generate-parentheses",
+          "label": "Generate Parentheses",
+          "href": "https://leetcode.com/problems/generate-parentheses/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "Why a stack here — what LIFO property does the problem exploit?",
+            "If this uses a monotonic stack, state the monotonic invariant and how it's restored on each push.",
+            "Walk through complexity: each element is pushed and popped at most once, so the total work is O(n)."
+          ]
+        },
+        {
+          "id": "lc-daily-temperatures",
+          "label": "Daily Temperatures",
+          "href": "https://leetcode.com/problems/daily-temperatures/",
+          "meta": "Stack",
+          "interviewQuestions": [
+            "What's the monotonic-stack invariant, and how does each pop give you the answer?",
+            "Why is the total work O(n) when the inner loop looks O(n²)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML · Logistic regression & classification",
+      "items": [
+        {
+          "id": "ml-logreg",
+          "label": "Sigmoid, log-odds, and the LR loss",
+          "href": "https://www.youtube.com/watch?v=yIYKR4sgzI8",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why do we use the log-loss (cross-entropy) instead of MSE for logistic regression?",
+            "Derive the gradient of binary cross-entropy w.r.t. the weights."
+          ]
+        },
+        {
+          "id": "ml-classification-metrics",
+          "label": "Precision, recall, F1, ROC-AUC, PR-AUC, calibration",
+          "href": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "When is ROC-AUC misleading? When should you use PR-AUC instead?",
+            "What is a calibration plot and why does it matter for downstream decisions?",
+            "How do you choose a classification threshold for a fraud-detection system?"
+          ]
+        },
+        {
+          "id": "ml-multiclass",
+          "label": "Multi-class: one-vs-rest, softmax, multi-label vs multi-class",
+          "href": "https://en.wikipedia.org/wiki/Multiclass_classification",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare one-vs-rest vs softmax for multi-class classification.",
+            "What's the difference between multi-class and multi-label, and how does the loss change?"
+          ]
+        },
+        {
+          "id": "ml-logreg-traps",
+          "label": "Logistic regression interview traps: odds, thresholds, sigmoid vs softmax",
+          "href": "https://www.youtube.com/watch?v=yIYKR4sgzI8",
+          "meta": "StatQuest",
+          "interviewQuestions": [
+            "Why is logistic regression called regression if it solves classification?",
+            "How do you interpret a logistic-regression coefficient as an odds ratio?",
+            "When do you use sigmoid outputs vs softmax outputs, and how does that change for multi-label problems?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Andrew Ng — Machine Learning Specialization",
+      "href": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "source": "Coursera"
+    },
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "scikit-learn user guide",
+      "href": "https://scikit-learn.org/stable/user_guide.html",
+      "source": "scikit-learn"
+    }
+  ]
+}

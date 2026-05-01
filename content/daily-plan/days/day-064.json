@@ -1,0 +1,87 @@
+{
+  "day": 64,
+  "title": "Monitoring & drift (data / concept / label) + DSA 1-D DP",
+  "pillar": "mlops",
+  "focus": "PSI / KS / JS for drift; closed-loop retraining; delayed labels.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode 1-D DP",
+      "items": [
+        {
+          "id": "lc-maximum-product-subarray",
+          "label": "Maximum Product Subarray",
+          "href": "https://leetcode.com/problems/maximum-product-subarray/",
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
+        },
+        {
+          "id": "lc-word-break",
+          "label": "Word Break",
+          "href": "https://leetcode.com/problems/word-break/",
+          "meta": "1-D DP",
+          "interviewQuestions": [
+            "State the DP: define the state, the transition, and the base case explicitly.",
+            "Top-down (memoized recursion) vs bottom-up (tabulation) — which is more natural here, and why?",
+            "Can you space-optimize from O(n) to O(1)? Show the rolling-window trick."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Monitoring & drift",
+      "items": [
+        {
+          "id": "mlops-drift",
+          "label": "Data drift, concept drift, label drift",
+          "href": "https://docs.evidentlyai.com/",
+          "meta": "Evidently",
+          "interviewQuestions": [
+            "Compare data drift vs concept drift vs label drift — give an example of each.",
+            "Walk through three statistical tests you'd use to detect drift (PSI, KS, JS)."
+          ]
+        },
+        {
+          "id": "mlops-monitor",
+          "label": "Monitoring stack: predictions, latency, errors",
+          "href": "https://docs.arize.com/",
+          "meta": "Arize",
+          "interviewQuestions": [
+            "What metrics do you monitor for a deployed model beyond accuracy?",
+            "How would you slice your model monitoring dashboard so a regression in one cohort doesn't get masked?"
+          ]
+        },
+        {
+          "id": "mlops-feedback",
+          "label": "Closed-loop monitoring & retraining triggers",
+          "href": "https://eugeneyan.com/writing/monitoring-ml-systems/",
+          "meta": "Eugene Yan",
+          "interviewQuestions": [
+            "How would you decide when to retrain — schedule vs trigger-based?",
+            "How do you monitor when ground-truth labels arrive with delay?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Evidently AI — monitoring metrics catalog",
+      "href": "https://docs.evidentlyai.com/reference/all-metrics",
+      "source": "Evidently"
+    },
+    {
+      "label": "Arize AI — ML observability",
+      "href": "https://docs.arize.com/",
+      "source": "Arize"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "day": 101,
+  "title": "NLP deep dive: IE, multilingual, code generation",
+  "pillar": "deep-learning",
+  "focus": "Span-based IE; XLM-R; StarCoder / Code Llama.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-cheapest-flights-within-k-stops",
+          "label": "Cheapest Flights Within K Stops",
+          "href": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Specialization · NLP deep dive",
+      "items": [
+        {
+          "id": "nlp-ie",
+          "label": "Information extraction (NER, RE, OpenIE)",
+          "href": "https://web.stanford.edu/class/cs224n/",
+          "meta": "CS224n",
+          "interviewQuestions": [
+            "Compare span-based vs sequence-tagging IE — when does each win?",
+            "How would you design a relation-extraction system that handles entities not seen in training?"
+          ]
+        },
+        {
+          "id": "nlp-multilingual",
+          "label": "Multilingual & low-resource NLP",
+          "href": "https://arxiv.org/abs/1911.02116",
+          "meta": "XLM-R",
+          "interviewQuestions": [
+            "How does mBERT/XLM-R enable cross-lingual transfer, and where does it break?",
+            "What's the curse of multilinguality, and how do you mitigate it for low-resource languages?"
+          ]
+        },
+        {
+          "id": "nlp-code",
+          "label": "Code generation: Codex, StarCoder, Code Llama",
+          "href": "https://huggingface.co/blog/starcoder",
+          "meta": "HF",
+          "interviewQuestions": [
+            "How is training a code model different from training a natural-language model?",
+            "How would you evaluate a code generation model — pass@k, HumanEval, SWE-bench?"
+          ]
+        },
+        {
+          "id": "nlp-model-choice",
+          "label": "Encoder-only vs decoder-only vs encoder-decoder for NLP products",
+          "href": "https://huggingface.co/learn/nlp-course/chapter1/4",
+          "meta": "HF",
+          "interviewQuestions": [
+            "When would you choose BERT-style encoder-only models over GPT-style decoder-only models?",
+            "When is encoder-decoder still the cleanest choice for summarization, translation, or extraction?",
+            "How would latency and serving cost affect that architecture choice?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    }
+  ]
+}

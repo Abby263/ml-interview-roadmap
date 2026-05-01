@@ -1,0 +1,97 @@
+{
+  "day": 46,
+  "title": "Object detection (R-CNN family, YOLO, DETR)",
+  "pillar": "deep-learning",
+  "focus": "Two-stage vs one-stage; how DETR removes anchors and NMS.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-subsets",
+          "label": "Subsets",
+          "href": "https://leetcode.com/problems/subsets/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Compare backtracking vs iterative bitmask vs recursive include/exclude.",
+            "How does this change for subsets-with-duplicates (LC 90)?"
+          ]
+        },
+        {
+          "id": "lc-combination-sum",
+          "label": "Combination Sum",
+          "href": "https://leetcode.com/problems/combination-sum/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you avoid duplicate combinations without a set — what's the index-passing trick?",
+            "Compare with combination-sum-ii where each candidate can only be used once."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "DL · Detection & segmentation",
+      "items": [
+        {
+          "id": "cv-detection",
+          "label": "R-CNN family, YOLO, DETR",
+          "href": "https://lilianweng.github.io/posts/2017-12-31-object-recognition-part-3/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "Compare two-stage (Faster R-CNN) vs one-stage (YOLO) detectors.",
+            "How does DETR remove the need for NMS and anchor boxes?"
+          ]
+        },
+        {
+          "id": "cv-segmentation",
+          "label": "Semantic vs instance segmentation; U-Net & Mask R-CNN",
+          "href": "https://arxiv.org/abs/1505.04597",
+          "meta": "U-Net",
+          "interviewQuestions": [
+            "How does U-Net's skip connection design help with segmentation?",
+            "Compare semantic vs instance vs panoptic segmentation — when do you reach for each?"
+          ]
+        },
+        {
+          "id": "cv-eval",
+          "label": "mAP, IoU, panoptic quality",
+          "href": "https://cocodataset.org/#detection-eval",
+          "meta": "COCO",
+          "interviewQuestions": [
+            "Define mAP at IoU=0.5:0.95 — what does each piece mean?",
+            "Why does NMS need careful tuning, and what does it break when set wrong?",
+            "How would you implement mAP from predicted boxes, confidences, and class labels?"
+          ]
+        },
+        {
+          "id": "cv-yolo-traps",
+          "label": "YOLO anchors, losses, and limitations",
+          "href": "https://pjreddie.com/darknet/yolo/",
+          "meta": "YOLO",
+          "interviewQuestions": [
+            "What are anchor boxes in YOLO, and why did anchor-free detectors become popular?",
+            "What terms usually appear in a YOLO loss, and how do localization, objectness, and class losses interact?",
+            "Where does YOLO struggle compared with two-stage detectors or DETR?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "CS231n — CNNs for visual recognition",
+      "href": "https://cs231n.github.io/",
+      "source": "Stanford"
+    },
+    {
+      "label": "Papers with Code — SOTA leaderboards",
+      "href": "https://paperswithcode.com/sota",
+      "source": "Papers with Code"
+    },
+    {
+      "label": "Kaggle — Computer Vision",
+      "href": "https://www.kaggle.com/learn/computer-vision",
+      "source": "Kaggle"
+    }
+  ]
+}

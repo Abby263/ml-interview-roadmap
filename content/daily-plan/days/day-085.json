@@ -1,0 +1,84 @@
+{
+  "day": 85,
+  "title": "LLM agents: ReAct, Plan-and-Execute, memory + DSA review",
+  "pillar": "generative-ai",
+  "focus": "When to use an agent; designing memory for long-running agents.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Linked List",
+      "items": [
+        {
+          "id": "lc-merge-k-sorted-lists",
+          "label": "Merge K Sorted Lists",
+          "href": "https://leetcode.com/problems/merge-k-sorted-lists/",
+          "meta": "Linked List",
+          "interviewQuestions": [
+            "Compare divide-and-conquer (pairwise merge, O(N log k)) vs heap-of-k-heads (also O(N log k)) — when does each win in practice?",
+            "What if the lists are streaming — does the heap approach still work?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GenAI · LLM agents",
+      "items": [
+        {
+          "id": "agent-react",
+          "label": "ReAct, Plan-and-Execute",
+          "href": "https://arxiv.org/abs/2210.03629",
+          "meta": "Yao et al.",
+          "interviewQuestions": [
+            "Walk through ReAct: how does interleaving thought and action change behavior?",
+            "When does Plan-and-Execute beat pure ReAct?"
+          ]
+        },
+        {
+          "id": "agent-mem",
+          "label": "Agent memory: short, long, episodic, semantic",
+          "href": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+          "meta": "Lilian Weng",
+          "interviewQuestions": [
+            "How would you design memory for a long-running personal-assistant agent?",
+            "What invalidates a memory entry, and how do you forget gracefully without losing important state?",
+            "A long chat loses earlier details. How would you combine summarization memory, vector memory, and short-term context?",
+            "Why is saving everything not the same as building useful memory?",
+            "How would you prevent semantic drift where the assistant starts relying on its own stale summaries?"
+          ]
+        },
+        {
+          "id": "agent-anthropic",
+          "label": "Building effective agents (Anthropic)",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "Compare workflow vs agent — when do you NOT need an agent?",
+            "Walk through the building-blocks: prompt chaining, routing, parallelization, orchestrator-workers — when does each apply?"
+          ]
+        },
+        {
+          "id": "agent-validation-hitl",
+          "label": "Agent validation, security, and human-in-the-loop",
+          "href": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+          "meta": "Anthropic",
+          "interviewQuestions": [
+            "How do you validate intermediate agent steps before allowing a high-risk tool call?",
+            "Where do you add human approval in a support, finance, or compliance agent?",
+            "How do you prevent prompt injection from tool outputs from hijacking the agent?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Anthropic — Building Effective Agents",
+      "href": "https://docs.anthropic.com/en/docs/build-with-claude/agentic-systems",
+      "source": "Anthropic"
+    },
+    {
+      "label": "Maxime Labonne — LLM Course",
+      "href": "https://github.com/mlabonne/llm-course",
+      "source": "GitHub"
+    }
+  ]
+}

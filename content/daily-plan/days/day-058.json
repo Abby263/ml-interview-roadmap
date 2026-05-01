@@ -1,0 +1,87 @@
+{
+  "day": 58,
+  "title": "Feature stores (Feast, Tecton) + point-in-time correctness + DSA Adv Graphs",
+  "pillar": "mlops",
+  "focus": "Training/serving skew, offline/online stores, PIT joins.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Advanced Graphs",
+      "items": [
+        {
+          "id": "lc-network-delay-time",
+          "label": "Network Delay Time",
+          "href": "https://leetcode.com/problems/network-delay-time/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        },
+        {
+          "id": "lc-swim-in-rising-water",
+          "label": "Swim IN Rising Water",
+          "href": "https://leetcode.com/problems/swim-in-rising-water/",
+          "meta": "Advanced Graphs",
+          "interviewQuestions": [
+            "Pick between Dijkstra, Bellman-Ford, Floyd-Warshall, MST (Prim/Kruskal), or topo sort — defend the choice.",
+            "What does this problem assume about edge weights (non-negative? integer? bounded?) — and what breaks if those don't hold?",
+            "Walk me through complexity in V and E, and the data-structure choice (heap vs Fibonacci heap vs array)."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "MLOps · Feature stores",
+      "items": [
+        {
+          "id": "mlops-fs-why",
+          "label": "Why feature stores: training/serving skew, reuse",
+          "href": "https://www.tecton.ai/blog/what-is-a-feature-store/",
+          "meta": "Tecton",
+          "interviewQuestions": [
+            "What is training/serving skew and how does a feature store eliminate it?",
+            "When is a feature store overkill?"
+          ]
+        },
+        {
+          "id": "mlops-fs-tools",
+          "label": "Feast, Tecton, Vertex Feature Store",
+          "href": "https://docs.feast.dev/",
+          "meta": "Feast",
+          "interviewQuestions": [
+            "Walk through how Feast separates the offline and online stores.",
+            "Compare Feast vs Tecton vs Vertex Feature Store — when does each fit?"
+          ]
+        },
+        {
+          "id": "mlops-fs-pit",
+          "label": "Point-in-time correctness",
+          "href": "https://www.tecton.ai/blog/time-travel-in-ml/",
+          "meta": "Tecton",
+          "interviewQuestions": [
+            "Why is point-in-time correctness critical for training data, and how does feature store handle it?",
+            "Walk me through how a leak from forward-looking features actually breaks model rollout."
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Feast feature store docs",
+      "href": "https://docs.feast.dev/",
+      "source": "Feast"
+    },
+    {
+      "label": "Eugene Yan — applied ML writing",
+      "href": "https://eugeneyan.com/",
+      "source": "Eugene Yan"
+    },
+    {
+      "label": "Made with ML — full MLOps course",
+      "href": "https://madewithml.com/",
+      "source": "Goku Mohandas"
+    }
+  ]
+}

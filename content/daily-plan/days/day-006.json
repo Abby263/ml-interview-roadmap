@@ -1,0 +1,85 @@
+{
+  "day": 6,
+  "title": "Sampling, bias, resampling — and pattern review",
+  "pillar": "math-stats",
+  "focus": "Random/stratified/cluster/importance sampling. Selection/survivorship bias.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Sliding Window",
+      "items": [
+        {
+          "id": "lc-best-time-to-buy-and-sell-stock",
+          "label": "Best Time TO Buy And Sell Stock",
+          "href": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Walk through the one-pass min-so-far trick. Why is it correct?",
+            "What if you can buy and sell unlimited times? What about with a cooldown or fee?"
+          ]
+        },
+        {
+          "id": "lc-longest-substring-without-repeating-characters",
+          "label": "Longest Substring Without Repeating Characters",
+          "href": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+          "meta": "Sliding Window",
+          "interviewQuestions": [
+            "Why is this a sliding window? What's the invariant inside the window?",
+            "What if the alphabet is huge (Unicode) vs tiny (ASCII)? Does that change your data structure?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Math · Sampling & survey design",
+      "items": [
+        {
+          "id": "stats-sampling-methods",
+          "label": "Random, stratified, cluster, importance sampling",
+          "href": "https://en.wikipedia.org/wiki/Sampling_(statistics)",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Compare simple random sampling vs stratified sampling — when does stratification reduce variance?",
+            "What is importance sampling and where does it show up in ML?"
+          ]
+        },
+        {
+          "id": "stats-bias",
+          "label": "Selection bias, survivorship bias, response bias",
+          "href": "https://towardsdatascience.com/types-of-bias-in-data-science-2d3c4d4f8c2c",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Give an example where selection bias silently broke a model deployment.",
+            "What is survivorship bias and where does it hurt model evaluation?"
+          ]
+        },
+        {
+          "id": "stats-resampling",
+          "label": "Resampling for class imbalance & uncertainty",
+          "href": "https://imbalanced-learn.org/stable/user_guide.html",
+          "meta": "imbalanced-learn",
+          "interviewQuestions": [
+            "What's the difference between bootstrapping for uncertainty vs resampling for imbalance?",
+            "When does oversampling the minority class help and when does it leak?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "StatQuest — Statistics & ML playlists",
+      "href": "https://www.youtube.com/@statquest/playlists",
+      "source": "YouTube"
+    },
+    {
+      "label": "imbalanced-learn user guide",
+      "href": "https://imbalanced-learn.org/stable/user_guide.html",
+      "source": "scikit-learn-contrib"
+    },
+    {
+      "label": "NeetCode roadmap (full 250)",
+      "href": "https://neetcode.io/roadmap",
+      "source": "NeetCode"
+    }
+  ]
+}

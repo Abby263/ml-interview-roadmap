@@ -1,0 +1,92 @@
+{
+  "day": 93,
+  "title": "Training efficiency: mixed precision, accumulation, checkpointing",
+  "pillar": "mlops",
+  "focus": "fp16 vs bf16 vs fp8; activation checkpointing math.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-kth-largest-element-in-an-array",
+          "label": "Kth Largest Element IN AN Array",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Compare heap (O(n log k)), sort (O(n log n)), quickselect (O(n) avg) — when does each fit?",
+            "What's quickselect's worst case, and how do you avoid it (median-of-medians, randomization)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Infra · Training efficiency",
+      "items": [
+        {
+          "id": "eff-mp",
+          "label": "Mixed precision training (fp16, bf16, fp8)",
+          "href": "https://pytorch.org/docs/stable/amp.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "Compare fp16 vs bf16 vs fp8 training — when does each fail or shine?",
+            "What does dynamic loss scaling do, and on which hardware do you still need it?"
+          ]
+        },
+        {
+          "id": "eff-grad-accum",
+          "label": "Gradient accumulation & micro-batching",
+          "href": "https://huggingface.co/docs/transformers/perf_train_gpu_one",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Why does gradient accumulation let you simulate a larger batch size?",
+            "When does gradient accumulation NOT match true large-batch training (e.g., BatchNorm)?"
+          ]
+        },
+        {
+          "id": "eff-mup",
+          "label": "Scale-stable training: muP and learning-rate transfer",
+          "href": "https://arxiv.org/abs/2203.03466",
+          "meta": "muP",
+          "interviewQuestions": [
+            "A 1B model trains well but a 70B version explodes at the same learning rate. What changed?",
+            "Explain standard parameterization vs maximum update parameterization in interview terms.",
+            "How does muP let you tune hyperparameters on a smaller model and transfer them to a larger one?",
+            "When would gradient clipping hide the symptom but not fix the scaling problem?"
+          ]
+        },
+        {
+          "id": "eff-checkpoint",
+          "label": "Activation checkpointing & offloading",
+          "href": "https://pytorch.org/docs/stable/checkpoint.html",
+          "meta": "PyTorch",
+          "interviewQuestions": [
+            "How does activation checkpointing trade compute for memory?",
+            "When would you offload optimizer state to CPU/NVMe?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "MIT — ML Efficiency playlist",
+      "href": "https://www.youtube.com/playlist?list=PL80kAHvQbh-pT4lCkDT53zT8DKmhE0idB",
+      "source": "MIT"
+    },
+    {
+      "label": "vLLM docs",
+      "href": "https://docs.vllm.ai/",
+      "source": "vLLM"
+    },
+    {
+      "label": "PyTorch DDP tutorial",
+      "href": "https://pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "source": "PyTorch"
+    },
+    {
+      "label": "Tensor Programs V — zero-shot hyperparameter transfer",
+      "href": "https://arxiv.org/abs/2203.03466",
+      "source": "arXiv"
+    }
+  ]
+}

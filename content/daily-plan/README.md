@@ -1,0 +1,99 @@
+# Daily Plan Content
+
+This folder contains the generated, reviewable source for the `/study-plan`,
+`/questions`, and `/day/[day]` pages.
+
+## What to edit
+
+- Edit one file per day in `content/daily-plan/days/`.
+- File names must stay in this format: `day-001.json`, `day-002.json`, etc.
+- Keep `day` aligned with the file name.
+- Keep every `id` inside `tracks[].items[]` stable after launch, because progress tracking stores completed items by id.
+- Edit `content/daily-plan/weeks.json` when a week heading on the landing page needs to change.
+- Adding or removing a `day-###.json` file is picked up automatically at build time, as long as day numbers stay consecutive.
+- Broad curriculum changes should be made in `scripts/build-curriculum*.mjs`, then regenerated with `node scripts/build-curriculum.mjs`.
+
+## Day schema
+
+```json
+{
+  "day": 1,
+  "title": "Short title shown on the landing page",
+  "pillar": "math-stats",
+  "focus": "One-sentence explanation shown on the day page",
+  "tracks": [
+    {
+      "label": "Track label shown as a section",
+      "items": [
+        {
+          "id": "stable-item-id",
+          "label": "Task or topic text",
+          "href": "https://optional-reference-link.com",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Question specific to this checklist item"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Reference title",
+      "href": "https://reference-link.com",
+      "source": "Source name"
+    }
+  ],
+  "topicId": "optional-linked-topic-id",
+  "caseStudySlug": "optional-linked-case-study-slug"
+}
+```
+
+## Interview question rule
+
+For ML-focused days, keep item-level `interviewQuestions` detailed and interview-shaped:
+
+- Use 2-5 item-level questions when `tracks[].items[].interviewQuestions` is present.
+- Prefer prompts like `How would you evaluate...?`, `When would you choose...?`, `What breaks if...?`, or `Walk me through...`.
+- Avoid only listing topic names. A non-technical reviewer should be able to read the questions and understand what the candidate needs to explain.
+- Do not add a top-level daily question list. The day page intentionally shows questions only under the relevant topic/checklist item to avoid repetition.
+- `/questions` is derived from these same item-level topics and questions. Do not maintain a separate question-bank dataset.
+
+ML-focused pillars are:
+
+- `math-stats`
+- `traditional-ml`
+- `deep-learning`
+- `mlops`
+- `generative-ai`
+- `llmops`
+- `ml-system-design`
+
+## Interview loop mapping
+
+Use these track names consistently when adding interview-loop content:
+
+- `ML Coding Lab`: NumPy, pandas, PyTorch, metrics, sampling, eval harness, and debugging implementation drills.
+- `Company Loop`: role-specific overlays for Big Tech MLE, AI labs, Amazon/AWS, TikTok/YouTube-style ranking, Reddit-style community reports, and startups.
+- `Production ML`: data contracts, schema evolution, lineage, CI/CD gates, incident response, capacity, RTO/RPO, cost, and cloud trade-offs.
+- `Architect Follow-up Ladder`: senior probes for system design cases: requirements, business metric, ML formulation, labels, features, serving, monitoring, rollback, cost, security, and failure modes.
+- `Startup Practical Loop`: take-homes, messy notebooks, rapid RAG APIs, MVP trade-offs, build-vs-buy, limited data, and week-one execution.
+
+For company-specific content, phrase questions as directional preparation signals, not as guaranteed company interview questions.
+
+## Week headings
+
+The study-plan page groups days into weeks. Edit `content/daily-plan/weeks.json` to change those headings:
+
+```json
+[
+  {
+    "week": 1,
+    "title": "Statistics, probability, linear algebra, and optimization"
+  }
+]
+```
+
+Keep week numbers consecutive. If you add enough days to create a new week, add a matching entry here.
+
+Valid pillars are defined in `lib/daily-plan-schema.ts`.

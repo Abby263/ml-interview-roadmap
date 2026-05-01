@@ -1,0 +1,77 @@
+{
+  "day": 30,
+  "title": "Design patterns — creational / structural / behavioral + DSA Heap",
+  "pillar": "foundations",
+  "focus": "Factory, builder, adapter, strategy, observer — and when each is wrong.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-task-scheduler",
+          "label": "Task Scheduler",
+          "href": "https://leetcode.com/problems/task-scheduler/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        },
+        {
+          "id": "lc-design-twitter",
+          "label": "Design Twitter",
+          "href": "https://leetcode.com/problems/design-twitter/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "SWE · Design patterns",
+      "items": [
+        {
+          "id": "dp-creational",
+          "label": "Creational: factory, builder, singleton",
+          "href": "https://refactoring.guru/design-patterns/creational-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "When is a singleton an anti-pattern in tests?",
+            "Compare factory vs abstract factory vs builder."
+          ]
+        },
+        {
+          "id": "dp-structural",
+          "label": "Structural: adapter, decorator, facade",
+          "href": "https://refactoring.guru/design-patterns/structural-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "When would you reach for an adapter vs a facade?",
+            "Where does the decorator pattern show up cleanly in an ML inference pipeline?"
+          ]
+        },
+        {
+          "id": "dp-behavioral",
+          "label": "Behavioral: strategy, observer, command",
+          "href": "https://refactoring.guru/design-patterns/behavioral-patterns",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "Show how the strategy pattern lets you swap ML models without touching call sites.",
+            "When does observer cause subtle bugs in a high-throughput system?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Refactoring.guru — design patterns",
+      "href": "https://refactoring.guru/design-patterns",
+      "source": "Refactoring.guru"
+    }
+  ]
+}

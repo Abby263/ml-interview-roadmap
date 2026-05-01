@@ -1,0 +1,81 @@
+{
+  "day": 29,
+  "title": "OOPS pillars & SOLID principles + DSA Heap",
+  "pillar": "foundations",
+  "focus": "SRP, OCP, LSP, ISP, DIP — pick the one you violate most and refactor.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Heap / Priority Queue",
+      "items": [
+        {
+          "id": "lc-k-closest-points-to-origin",
+          "label": "K Closest Points TO Origin",
+          "href": "https://leetcode.com/problems/k-closest-points-to-origin/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Why is a heap the right structure? Could a balanced BST or sorted list work — why is heap better?",
+            "Explain the heap-of-k pattern: keep size k, push new, pop if over k. What's the resulting complexity?",
+            "What does the comparator look like, and how would you tweak it to flip min/max behaviour?"
+          ]
+        },
+        {
+          "id": "lc-kth-largest-element-in-an-array",
+          "label": "Kth Largest Element IN AN Array",
+          "href": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "meta": "Heap / Priority Queue",
+          "interviewQuestions": [
+            "Compare heap (O(n log k)), sort (O(n log n)), quickselect (O(n) avg) — when does each fit?",
+            "What's quickselect's worst case, and how do you avoid it (median-of-medians, randomization)?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "SWE · OOPS & SOLID",
+      "items": [
+        {
+          "id": "oops-pillars",
+          "label": "Encapsulation, inheritance, polymorphism, abstraction",
+          "href": "https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/",
+          "meta": "Read",
+          "interviewQuestions": [
+            "Walk through the four pillars of OOP with code examples.",
+            "When does composition beat inheritance?"
+          ]
+        },
+        {
+          "id": "oops-solid-principles",
+          "label": "SOLID: SRP, OCP, LSP, ISP, DIP",
+          "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
+          "meta": "DigitalOcean",
+          "interviewQuestions": [
+            "Walk through each SOLID principle with a real example.",
+            "Which SOLID principle do you violate most often, and why?"
+          ]
+        },
+        {
+          "id": "oops-design-mistakes",
+          "label": "Common OO design mistakes (god class, anemic models, deep inheritance)",
+          "href": "https://refactoring.guru/refactoring/smells",
+          "meta": "Refactoring.guru",
+          "interviewQuestions": [
+            "Spot a god class — what would you refactor it into?",
+            "Why are deep inheritance hierarchies usually a smell, and what do you reach for instead?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "SOLID principles",
+      "href": "https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design",
+      "source": "DigitalOcean"
+    },
+    {
+      "label": "Refactoring.guru — design patterns",
+      "href": "https://refactoring.guru/design-patterns",
+      "source": "Refactoring.guru"
+    }
+  ]
+}

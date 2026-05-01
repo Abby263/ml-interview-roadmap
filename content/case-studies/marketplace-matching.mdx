@@ -1,0 +1,59 @@
+---
+title: Design a Marketplace Matching System
+description: Match two sides of a marketplace while balancing relevance, liquidity, fairness, cold start, and delayed conversion labels.
+track: ML System Design
+difficulty: Advanced
+prompt: Design a marketplace matching system for buyers and sellers, riders and drivers, freelancers and jobs, or candidates and recruiters.
+concepts:
+  - Two-sided ranking
+  - Marketplace liquidity
+  - Constraint optimization
+  - Cold start
+  - Delayed labels
+evaluationLens:
+  - Match quality
+  - Conversion
+  - Supply fairness
+  - Liquidity
+  - Latency
+---
+
+## Clarify both sides of the market
+
+A marketplace is not a one-sided recommender. Ask which side is scarce, what actions are reversible, and whether the system optimizes buyer success, seller exposure, platform revenue, or ecosystem health.
+
+The strongest answers explicitly name the tension between one user's relevance and the marketplace's long-term liquidity.
+
+## Architecture
+
+1. **Candidate generation**: retrieve candidates from search, embeddings, geography, availability, and business constraints.
+2. **Eligibility filters**: remove unavailable, policy-violating, overbooked, or incompatible matches.
+3. **Ranking**: predict utility for both sides, not only click probability.
+4. **Constraint layer**: apply capacity, fairness, price, location, and diversity constraints.
+5. **Feedback loop**: log impressions, contact, acceptance, fulfillment, cancellation, and satisfaction.
+
+## Labels and model choices
+
+Labels are delayed and multi-stage. A click may not mean a successful match. Model a funnel: impression to click, click to contact, contact to acceptance, acceptance to fulfillment.
+
+Start with gradient boosted trees or wide-and-deep ranking models. Add embeddings for sparse users/items and two-tower retrieval when the candidate pool becomes large.
+
+## Metrics
+
+- conversion and fulfillment rate
+- time to match
+- buyer and seller retention
+- exposure fairness and supply concentration
+- cancellation or complaint rate
+- latency and candidate coverage
+
+## Failure modes
+
+- **One-sided optimization**: improves buyer clicks while starving new sellers.
+- **Cold start**: new supply gets no exposure. Add exploration budget and content-based priors.
+- **Strategic behavior**: sellers game ranking features. Monitor feature manipulation.
+- **Delayed truth**: successful fulfillment arrives late. Use funnel proxies carefully.
+
+## What the architect signal looks like
+
+Close with a two-sided metric dashboard and a launch plan that protects the scarce side of the market.

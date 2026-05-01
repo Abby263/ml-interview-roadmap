@@ -1,0 +1,105 @@
+{
+  "day": 50,
+  "title": "NLP foundations: tokenization & embeddings",
+  "pillar": "deep-learning",
+  "focus": "BPE/WordPiece/SentencePiece. word2vec → BERT contextual embeddings.",
+  "tracks": [
+    {
+      "label": "DSA · NeetCode Backtracking",
+      "items": [
+        {
+          "id": "lc-letter-combinations-of-a-phone-number",
+          "label": "Letter Combinations OF A Phone Number",
+          "href": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "Walk through your pruning strategy — what subtrees do you skip and why is it safe?",
+            "Where does memoization apply? Could this be a DP problem in disguise?",
+            "What's the worst-case time complexity, and what's the depth of the recursion stack?"
+          ]
+        },
+        {
+          "id": "lc-n-queens",
+          "label": "N Queens",
+          "href": "https://leetcode.com/problems/n-queens/",
+          "meta": "Backtracking",
+          "interviewQuestions": [
+            "How do you check 'queen attacks me' in O(1) using the diagonal-set trick?",
+            "What's the state-space size, and how much does pruning actually save in practice?"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "NLP · Foundations",
+      "items": [
+        {
+          "id": "nlp-tokenization",
+          "label": "Tokenization: BPE, WordPiece, SentencePiece, Unigram",
+          "href": "https://huggingface.co/docs/transformers/tokenizer_summary",
+          "meta": "HF",
+          "interviewQuestions": [
+            "Compare BPE, WordPiece, and SentencePiece tokenizers.",
+            "Why does tokenizer choice affect cross-lingual performance?"
+          ]
+        },
+        {
+          "id": "nlp-embeddings",
+          "label": "Word2Vec, GloVe, FastText, contextual embeddings",
+          "href": "https://jalammar.github.io/illustrated-word2vec/",
+          "meta": "Jay Alammar",
+          "interviewQuestions": [
+            "Walk through how word2vec (skip-gram) is trained.",
+            "How are contextual embeddings (BERT) different from static ones (word2vec)?",
+            "What problem does negative sampling solve in skip-gram training?",
+            "Compare CBOW, skip-gram, and GloVe — what objective is each optimizing?",
+            "When would n-grams or TF-IDF outperform dense embeddings in a production baseline?"
+          ]
+        },
+        {
+          "id": "nlp-tasks",
+          "label": "Classic NLP tasks (NER, POS, SRL, parsing)",
+          "href": "https://web.stanford.edu/class/cs224n/",
+          "meta": "CS224n",
+          "interviewQuestions": [
+            "Compare token-level (NER) vs sequence-level (classification) tasks.",
+            "Why is dependency parsing harder than POS tagging, and where does it still matter today?"
+          ]
+        },
+        {
+          "id": "nlp-classic-features",
+          "label": "Classic text features: BoW, TF-IDF, stemming, lemmatization",
+          "href": "https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction",
+          "meta": "scikit-learn",
+          "interviewQuestions": [
+            "Compare bag-of-words and TF-IDF for sentiment analysis — what signal does TF-IDF add?",
+            "When would stemming hurt compared with lemmatization?",
+            "How would you build a strong non-LLM NLP baseline before using transformers?"
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Hugging Face NLP course",
+      "href": "https://huggingface.co/learn/nlp-course/chapter1/1",
+      "source": "Hugging Face"
+    },
+    {
+      "label": "CS224n — NLP with deep learning",
+      "href": "https://web.stanford.edu/class/cs224n/",
+      "source": "Stanford"
+    },
+    {
+      "label": "Illustrated Transformer (Jay Alammar)",
+      "href": "https://jalammar.github.io/illustrated-transformer/",
+      "source": "Jay Alammar"
+    },
+    {
+      "label": "75Hard GenAI/LLM — Text representation techniques",
+      "href": "https://youtu.be/0xnN1kGgaVY?si=pHuz2szysEWDffnj",
+      "source": "75Hard GenAI/LLM Challenge"
+    }
+  ]
+}
