@@ -90,7 +90,7 @@ export default function StudyPlanPage() {
           >
             Yuan Meng&apos;s &ldquo;Prepare in a Hurry&rdquo;
           </a>{" "}
-          guide, expanded across {totalDays} days. NeetCode 150 problems link
+          guide, expanded across {totalDays} days. NeetCode 250 problems link
           directly to LeetCode; full roadmap at{" "}
           <a
             href="https://neetcode.io/roadmap"

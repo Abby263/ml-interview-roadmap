@@ -32,6 +32,7 @@ interface AiTutorClientProps {
   initialSessionId?: string;
   tags: DailyPlanQuestionTag[];
   openaiConfigured: boolean;
+  signedIn: boolean;
   persistenceWarning?: string;
 }
 
@@ -458,6 +459,7 @@ export default function AiTutorClient({
   initialSessionId,
   tags,
   openaiConfigured,
+  signedIn,
   persistenceWarning,
 }: AiTutorClientProps) {
   const [profile, setProfile] = useState(initialProfile);
@@ -469,7 +471,9 @@ export default function AiTutorClient({
   const [draft, setDraft] = useState("");
   const [sessionId, setSessionId] = useState(initialSessionId ?? "");
   const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState<string | null>(persistenceWarning ?? null);
+  const [status, setStatus] = useState<string | null>(
+    signedIn ? (persistenceWarning ?? null) : null
+  );
   const [lastAction, setLastAction] = useState<AiTutorSuggestedAction | null>(
     null
   );
@@ -484,6 +488,9 @@ export default function AiTutorClient({
   );
   const [coachMode, setCoachMode] = useState<CoachDeliveryMode>("chat");
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const coachAvailable = signedIn && openaiConfigured;
+  const authRequiredMessage =
+    "Sign in or create an account to use AI Tutor chat or voice mode, save sessions, and persist coach insights.";
 
   useEffect(() => {
     scrollerRef.current?.scrollTo({
@@ -557,6 +564,10 @@ export default function AiTutorClient({
   }
 
   async function saveProfile() {
+    if (!signedIn) {
+      setStatus("Sign in to save this profile and use it in coaching sessions.");
+      return;
+    }
     setBusy(true);
     setStatus(null);
     try {
@@ -583,6 +594,7 @@ export default function AiTutorClient({
   }
 
   async function refreshSessions() {
+    if (!signedIn) return;
     try {
       const response = await fetch("/api/ai-tutor/sessions");
       const data = (await response.json()) as {
@@ -595,6 +607,10 @@ export default function AiTutorClient({
   }
 
   async function loadSession(nextSessionId: string) {
+    if (!signedIn) {
+      setStatus(authRequiredMessage);
+      return;
+    }
     if (!nextSessionId || nextSessionId === sessionId || busy) return;
     setBusy(true);
     setStatus(null);
@@ -623,6 +639,10 @@ export default function AiTutorClient({
   }
 
   async function startNewSession() {
+    if (!signedIn) {
+      setStatus(authRequiredMessage);
+      return;
+    }
     if (busy) return;
     setBusy(true);
     setStatus(null);
@@ -659,6 +679,10 @@ export default function AiTutorClient({
   }
 
   async function deleteSession(targetSession: AiTutorSessionSummary) {
+    if (!signedIn) {
+      setStatus(authRequiredMessage);
+      return;
+    }
     if (busy || deletingSessionId) return;
     const confirmed = window.confirm(
       "Delete this AI Tutor session? This removes the transcript and rebuilds coach insights from your remaining sessions."
@@ -709,6 +733,10 @@ export default function AiTutorClient({
   async function sendMessage(message: string) {
     const trimmed = message.trim();
     if (!trimmed || busy) return;
+    if (!signedIn) {
+      setStatus(authRequiredMessage);
+      return;
+    }
     if (!openaiConfigured) {
       setStatus("Add OPENAI_API_KEY to enable live coaching responses.");
       return;
@@ -962,14 +990,15 @@ export default function AiTutorClient({
                     Shared insights, separate chats
                   </p>
                   <p className="mt-1 text-xs leading-5 text-muted">
-                    Delete removes the transcript and rebuilds insights from
-                    the remaining sessions.
+                    {signedIn
+                      ? "Delete removes the transcript and rebuilds insights from the remaining sessions."
+                      : "Preview the session system here. Sign in to create saved sessions."}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => void startNewSession()}
-                  disabled={busy}
+                  disabled={busy || !signedIn}
                   className="rounded-full bg-foreground px-3 py-2 text-xs font-semibold text-background transition hover:-translate-y-0.5 disabled:opacity-60"
                 >
                   New session
@@ -1027,7 +1056,9 @@ export default function AiTutorClient({
                 </div>
               ) : (
                 <p className="mt-3 text-sm leading-6 text-muted">
-                  Your first message will create a session automatically.
+                  {signedIn
+                    ? "Your first message will create a session automatically."
+                    : "Session history appears here after sign in."}
                 </p>
               )}
             </div>
@@ -1129,7 +1160,7 @@ export default function AiTutorClient({
             {(Object.keys(deliveryModeDetails) as CoachDeliveryMode[]).map(
               (mode) => {
                 const selected = coachMode === mode;
-                const disabled = mode === "voice" && !openaiConfigured;
+                const disabled = mode === "voice" && !coachAvailable;
                 const details = deliveryModeDetails[mode];
                 return (
                   <button
@@ -1162,7 +1193,9 @@ export default function AiTutorClient({
                       }`}
                     >
                       {disabled
-                        ? "Add OPENAI_API_KEY to enable live voice practice."
+                        ? signedIn
+                          ? "Add OPENAI_API_KEY to enable live voice practice."
+                          : "Sign in to start live voice practice."
                         : details.description}
                     </span>
                     <span
@@ -1179,14 +1212,34 @@ export default function AiTutorClient({
           </div>
         </div>
 
-        {!openaiConfigured ? (
+        {!signedIn ? (
+          <div className="mt-5 rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
+            <p className="font-semibold text-foreground">
+              Sign in to start the coach.
+            </p>
+            <p className="mt-1">
+              You can preview the profile, session, insights, and chat/voice
+              surfaces here. Chat and voice require an account because they
+              store your transcript, mastery, strengths, weaknesses, and
+              roadmap progress.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link href="/sign-in" className="button-primary-accent">
+                Sign in
+              </Link>
+              <Link href="/sign-up" className="button-secondary">
+                Create account
+              </Link>
+            </div>
+          </div>
+        ) : !openaiConfigured ? (
           <div className="mt-5 rounded-2xl border border-line bg-surface-strong p-4 text-sm leading-6 text-muted">
             Add <code>OPENAI_API_KEY</code> to enable live coaching. Profile
             and UI setup can still be reviewed without the key.
           </div>
         ) : null}
 
-        {coachMode === "voice" && openaiConfigured ? (
+        {coachMode === "voice" && coachAvailable ? (
           <div className="mt-5">
             <AiTutorVoicePanel
               profile={profile}
@@ -1344,7 +1397,7 @@ export default function AiTutorClient({
           <button
             type="button"
             className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onClick={() =>
               void sendMessage(
                 "Hi! Let's start. Could you ask me about my role and what I'd like to focus on?"
@@ -1356,7 +1409,7 @@ export default function AiTutorClient({
           <button
             type="button"
             className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onClick={() =>
               void sendMessage(
                 "Could you give me a basic warm-up question on one of my focus areas, and start gentle?"
@@ -1368,7 +1421,7 @@ export default function AiTutorClient({
           <button
             type="button"
             className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onClick={() =>
               void sendMessage(
                 "Teach me a concept from my focus areas in plain English, then ask one short follow-up to check my understanding."
@@ -1380,7 +1433,7 @@ export default function AiTutorClient({
           <button
             type="button"
             className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onClick={() =>
               void sendMessage(
                 "Give me a real interview-grade question for my target role at intermediate difficulty."
@@ -1392,7 +1445,7 @@ export default function AiTutorClient({
           <button
             type="button"
             className="rounded-full border border-line bg-surface-strong px-3 py-2 text-xs font-semibold text-muted transition hover:border-primary hover:text-foreground disabled:opacity-60"
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onClick={() =>
               void sendMessage(
                 "Wrap up the session: summarize what we covered today and what to work on next."
@@ -1409,7 +1462,7 @@ export default function AiTutorClient({
             onChange={(event) => setDraft(event.target.value)}
             className="field-shell min-h-24 resize-y md:min-h-14"
             placeholder="Type a message — say hi, ask a question, or answer the coach..."
-            disabled={busy}
+            disabled={busy || !coachAvailable}
             onKeyDown={(event) => {
               if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
                 event.preventDefault();
@@ -1419,7 +1472,7 @@ export default function AiTutorClient({
           />
           <button
             type="submit"
-            disabled={busy || !draft.trim()}
+            disabled={busy || !draft.trim() || !coachAvailable}
             className="button-primary-accent shrink-0 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {busy ? "Thinking" : "Send"}
