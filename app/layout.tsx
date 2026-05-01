@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description: siteTagline,
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
 };
 
 function Shell({ children }: { children: React.ReactNode }) {

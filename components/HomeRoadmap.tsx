@@ -794,7 +794,7 @@ export default function HomeRoadmap({
                   />
                 </div>
                 <p className="mt-3 text-xs leading-5 text-muted">
-                  NeetCode 150 coverage grouped by interview pattern instead
+                  NeetCode 250 coverage grouped by interview pattern instead
                   of being mixed into ML pillars.
                 </p>
               </div>
@@ -873,7 +873,7 @@ export default function HomeRoadmap({
             <div className="h-full rounded-[1.5rem] border border-line bg-surface-strong p-5">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <p className="panel-label">DSA · NeetCode 150</p>
+                  <p className="panel-label">DSA · NeetCode 250</p>
                   <h3 className="mt-2 font-display text-xl font-extrabold text-foreground">
                     Progress by pattern
                   </h3>

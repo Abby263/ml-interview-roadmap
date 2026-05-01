@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Interactive roadmap and learning platform for ML, GenAI, and ML system design interview preparation.",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://ml-interview-roadmap.vercel.app",
   "repository": {
     "type": "git",

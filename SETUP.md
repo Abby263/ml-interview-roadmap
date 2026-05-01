@@ -171,9 +171,10 @@ expose the anon key for direct client writes.)
 
 ## 3) AI Tutor — OpenAI + Supabase memory
 
-The AI Tutor is a signed-in feature at `/ai-tutor`. It uses Clerk for
-identity, OpenAI for the tutor response, and Supabase for optional
-persistent memory, session history, and usage counts.
+The AI Tutor page at `/ai-tutor` is publicly previewable. Visitors can inspect
+the profile, focus areas, session, insights, chat, and voice UI before login.
+Starting chat or voice requires Clerk sign-in because transcripts, mastery,
+strengths, weaknesses, roadmap progress, and usage counts are stored per user.
 
 ### Environment variables
 
@@ -188,7 +189,7 @@ AI_TUTOR_MODEL=gpt-4o-mini        # optional; defaults to gpt-4o-mini.
 AI_TUTOR_DAILY_LIMIT=80           # optional; per-user/day when Supabase is configured
 AI_TUTOR_ENABLED=true             # optional; set false to hide/disable server behavior
 
-# Voice mode (Realtime API) — optional, but required to use 🎙 Voice mode
+# Voice mode (Realtime API) — optional, but required to use Voice agent mode
 AI_TUTOR_REALTIME_MODEL=gpt-realtime-mini   # OpenAI Realtime model
 AI_TUTOR_REALTIME_VOICE=alloy               # alloy / echo / shimmer / sage / verse / coral / ballad / ash
 ```
@@ -197,11 +198,11 @@ The OpenAI key is server-only. Never prefix it with `NEXT_PUBLIC_`.
 
 ### Voice mode (WebRTC + Realtime API)
 
-Click **🎙 Voice mode** on `/ai-tutor` to talk through your prep with the
-coach. The browser opens a WebRTC connection straight to OpenAI; we just
-mint a short-lived ephemeral key on the server and route tool calls
-(mastery, lesson plan, tracker, references) through `/api/ai-tutor/realtime/tool`
-so memory updates persist.
+Select **Voice agent** on `/ai-tutor` to talk through your prep with the coach.
+The browser opens a WebRTC connection straight to OpenAI; we mint a short-lived
+ephemeral key on the server and route tool calls (roadmap retrieval, question
+search, mastery, lesson plan, tracker, references) through
+`/api/ai-tutor/realtime/tool` so memory updates persist.
 
 #### What you need
 
@@ -233,7 +234,7 @@ session later if we expose a UI selector.
 
 #### How it works
 
-- Click **🎙 Voice mode** → browser POSTs `/api/ai-tutor/realtime/session`.
+- Select **Voice agent** → browser POSTs `/api/ai-tutor/realtime/session`.
 - The server **auto-creates a persisted session row** if you don't have
   one yet (or if your active session is a local fallback). You don't need
   to type a chat message first.
@@ -392,10 +393,11 @@ create table if not exists ai_tutor_usage (
 The current implementation uses the Supabase service-role key from
 server routes only. Client code never writes to these tables directly.
 
-### What works in the MVP
+### What works now
 
-- `/ai-tutor` is gated behind Clerk sign-in.
+- `/ai-tutor` is publicly visible in preview mode; chat and voice usage require Clerk sign-in.
 - The profile captures target role, current level, interview date, daily hours, weak roadmap tags, and tutor mode without taking over the chat layout.
+- The tutor supports chat and realtime voice agents. Both use the same roadmap/question tools, lesson-plan tools, memory layer, and readiness-gated tracker semantics.
 - The tutor supports multiple sessions. Each session has its own transcript and lesson plan, while the memory layer is shared across sessions.
 - Deleting a tutor session removes that session and transcript from Supabase, then rebuilds shared memory from the remaining sessions so deleted-session evidence is not retained.
 - The tutor asks one roadmap-backed question at a time, evaluates answers, teaches gaps, includes reference links when the learner needs review material, and recommends the next day/topic.

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Abby263/ml-interview-roadmap/security/advisories
+    about: Report vulnerabilities privately.
+  - name: Setup guide
+    url: https://github.com/Abby263/ml-interview-roadmap/blob/main/SETUP.md
+    about: Configure Clerk, Supabase, OpenAI, and Vercel.

@@ -6,6 +6,12 @@ import { getSignedInUserId } from "@/lib/auth";
 import { getAiTutorTagOptions } from "@/lib/ai-tutor-context";
 import { getAiTutorState } from "@/lib/ai-tutor-store";
 import {
+  defaultAiTutorMemory,
+  defaultAiTutorProfile,
+  type AiTutorSessionSummary,
+  type AiTutorMessage,
+} from "@/lib/ai-tutor-types";
+import {
   aiTutorOpenAIEnabled,
   clerkClientEnabled,
   clerkEnabled,
@@ -21,15 +27,15 @@ export const metadata: Metadata = {
 
 function AuthSetupPanel() {
   return (
-    <section className="hero-panel p-6 md:p-8">
+    <section className="section-card rounded-[28px] p-5 md:p-6">
       <p className="panel-label">AI Tutor setup</p>
-      <h1 className="mt-3 font-display text-3xl font-extrabold text-foreground md:text-5xl">
-        Configure Clerk to use the AI Tutor.
-      </h1>
-      <p className="mt-4 max-w-3xl text-sm leading-6 text-muted md:text-base md:leading-7">
-        The tutor is intentionally signed-in-only because it stores interview
-        preparedness, memory, and session history per learner. Add Clerk keys in
-        Vercel or local env, then redeploy.
+      <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
+        Auth is not configured yet.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
+        You can still preview the AI Tutor interface below. Configure Clerk to
+        let learners start chat or voice sessions and persist their coach
+        memory.
       </p>
       <Link href="/study-plan" className="button-secondary mt-6">
         Continue with study plan
@@ -38,21 +44,25 @@ function AuthSetupPanel() {
   );
 }
 
-function SignedOutPanel() {
+function SignedOutPreviewPanel() {
   return (
-    <section className="hero-panel p-6 md:p-8">
-      <p className="panel-label">Signed-in mode</p>
-      <h1 className="mt-3 font-display text-3xl font-extrabold text-foreground md:text-5xl">
-        Sign in to meet your AI interview coach.
-      </h1>
-      <p className="mt-4 max-w-3xl text-sm leading-6 text-muted md:text-base md:leading-7">
-        Your coach learns your target role, where you&rsquo;re strong, and what
-        to grow next — then builds a daily plan from the 133-day roadmap that
-        fits your interview date.
+    <section className="section-card rounded-[28px] p-5 md:p-6">
+      <p className="panel-label">Preview mode</p>
+      <h2 className="mt-2 font-display text-2xl font-extrabold text-foreground">
+        Explore the AI Tutor before signing in.
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
+        The profile, focus areas, session list, insights, chat surface, and
+        voice mode selector are visible publicly. Starting chat or voice
+        requires an account because the coach stores transcripts, mastery,
+        strengths, weaknesses, and roadmap progress per learner.
       </p>
       <div className="mt-6 flex flex-wrap gap-3">
         <Link href="/sign-in" className="button-primary-accent">
           Sign in
+        </Link>
+        <Link href="/sign-up" className="button-secondary">
+          Create account
         </Link>
         <Link href="/study-plan" className="button-secondary">
           Preview study plan
@@ -63,19 +73,20 @@ function SignedOutPanel() {
 }
 
 export default async function AiTutorPage() {
-  if (!clerkClientEnabled || !clerkEnabled) {
-    return <AuthSetupPanel />;
-  }
-
-  const userId = await getSignedInUserId();
-  if (!userId) {
-    return <SignedOutPanel />;
-  }
-
-  const [state, tags] = await Promise.all([
-    getAiTutorState(userId),
-    Promise.resolve(getAiTutorTagOptions()),
-  ]);
+  const authReady = clerkClientEnabled && clerkEnabled;
+  const userId = authReady ? await getSignedInUserId() : null;
+  const tags = getAiTutorTagOptions();
+  const state = userId
+    ? await getAiTutorState(userId)
+    : {
+        profile: defaultAiTutorProfile,
+        memory: defaultAiTutorMemory,
+        recentMessages: [] as AiTutorMessage[],
+        sessions: [] as AiTutorSessionSummary[],
+        activeSessionId: undefined,
+        persistenceReady: false,
+        persistenceWarning: undefined,
+      };
 
   return (
     <div className="space-y-8">
@@ -99,6 +110,12 @@ export default async function AiTutorPage() {
         </div>
       </header>
 
+      {!authReady ? (
+        <AuthSetupPanel />
+      ) : !userId ? (
+        <SignedOutPreviewPanel />
+      ) : null}
+
       <AiTutorClient
         initialProfile={state.profile}
         initialMemory={state.memory}
@@ -107,6 +124,7 @@ export default async function AiTutorPage() {
         initialSessionId={state.activeSessionId}
         tags={tags}
         openaiConfigured={aiTutorOpenAIEnabled}
+        signedIn={Boolean(userId)}
         persistenceWarning={state.persistenceWarning}
       />
     </div>
