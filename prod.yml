@@ -1,0 +1,81 @@
+project:
+  name: ML Interview Roadmap
+  production_url: https://ml-interview-roadmap.vercel.app
+  repository: https://github.com/Abby263/ml-interview-roadmap
+  purpose: >
+    Public learning platform for ML, AI engineering, GenAI, LLMOps, ML system
+    design, MLOps, DSA, and behavioral interview preparation.
+
+architecture:
+  framework: Next.js App Router
+  language: TypeScript
+  styling: Tailwind CSS
+  auth: Clerk
+  database: Supabase
+  ai:
+    chat: OpenAI Responses API
+    voice: OpenAI Realtime API
+    pattern: Deepagents-style coach with tool use, memory, lesson planning, and tracker updates
+  hosting: Vercel
+
+core_routes:
+  "/": Dashboard-first progress tracker and next-action entry point
+  "/study-plan": Daily and weekly 133-day roadmap
+  "/questions": Tag-based browser backed by daily-plan questions
+  "/ai-tutor": Public AI Tutor preview plus signed-in chat and voice agents
+  "/day/[day]": Daily checklist, topic questions, and references
+  "/case-studies": ML and GenAI system design cases
+
+data_sources:
+  daily_plan: content/daily-plan/days/day-###.json
+  weeks: content/daily-plan/weeks.json
+  case_studies: content/case-studies/*.mdx
+  topic_metadata: lib/site-data.ts
+  question_index: lib/daily-plan-questions.ts
+  ai_tutor_memory: Supabase tables documented in SETUP.md
+
+hard_rules:
+  - Do not commit secrets, .env files, Supabase service keys, Clerk secret keys, or OpenAI API keys.
+  - Do not run destructive Supabase production commands without a reviewed migration plan.
+  - Do not deploy production from a non-main branch.
+  - Do not merge failing dependency PRs unless the migration work is included and verified.
+  - Do not mark AI Tutor progress complete unless a roadmap-grounded answer is interview_ready.
+  - Keep daily content editable by non-technical reviewers.
+
+quality_gates:
+  local:
+    - npm run lint
+    - npm run build
+  smoke_tests:
+    - https://ml-interview-roadmap.vercel.app/
+    - https://ml-interview-roadmap.vercel.app/study-plan
+    - https://ml-interview-roadmap.vercel.app/questions
+    - https://ml-interview-roadmap.vercel.app/ai-tutor
+  pr_requirements:
+    - CI build passes
+    - Vercel preview is ready
+    - No unresolved security or data-loss concerns
+    - UI changes are checked on mobile and desktop
+
+decision_log:
+  - date: 2026-05-01
+    decision: Keep public content accessible without login.
+    reason: The platform should be useful before account creation; login gates saved progress and AI Tutor usage.
+  - date: 2026-05-01
+    decision: Use Supabase for AI Tutor memory and progress.
+    reason: It provides relational history, profile data, session persistence, and tracker sync.
+  - date: 2026-05-01
+    decision: Keep question browser backed by daily-plan content.
+    reason: Avoids duplicate question banks and keeps roadmap and browse mode consistent.
+  - date: 2026-05-01
+    decision: Treat Tailwind and ESLint major dependency bumps as planned migrations.
+    reason: They can affect styling/build behavior and should not be auto-merged as routine bumps.
+
+release_policy:
+  branch_strategy: Work on codex/* branches, open PRs, verify checks, then merge to main.
+  deployment: Vercel GitHub App deploys main to production.
+  rollback: Revert the merge commit or promote the last known-good Vercel deployment.
+  dependency_policy:
+    safe_patch_minor: Merge one at a time after green CI and Vercel checks.
+    major_runtime_or_tooling: Refresh branch, verify fresh checks, then merge separately.
+    migration_required: Keep open until migration branch includes code changes and tests.

@@ -156,6 +156,28 @@ npm run build
 
 CI runs lint and production build on pushes and pull requests.
 
+## AI Development Operating System
+
+The repo includes a modular AI-assisted development workflow inspired by
+production agent setups:
+
+- `prod.yml`: project brain with architecture, decisions, hard rules, quality
+  gates, and release policy.
+- `.claude/settings.json`: shared project wiring for hooks, rules, agents, and
+  slash-command workflows.
+- `.claude/hooks/`: pre-command safety hooks that block obvious destructive or
+  secret-leaking commands before they run.
+- `.claude/rules/`: context-friendly rules loaded only when relevant, such as
+  frontend, database, AI Tutor, security, content, release, and future billing.
+- `.claude/agents/`: specialist reviewer briefs for bug, security, performance,
+  and frontend design reviews.
+- `.claude/commands/`: repeatable slash-command workflows including `/ship`,
+  `/review-all-agents`, `/dependency-triage`, `/content-update`, and a reserved
+  `/video-editor` workflow.
+
+Local-only Claude files such as `.claude/settings.local.json` and
+`.claude/launch.json` stay ignored.
+
 ## Project Structure
 
 ```text
@@ -164,6 +186,8 @@ components/ Shared UI, dashboard, roadmap, question, and AI Tutor components
 content/    Editable daily plan JSON, week labels, and MDX case studies
 lib/        Loaders, schemas, AI Tutor agents, Supabase, auth, progress store
 .github/    CI, release, dependabot, issue templates, PR template, CODEOWNERS
+.claude/    Shared AI workflow hooks, rules, agents, and commands
+prod.yml    Project architecture, hard rules, decisions, and release policy
 proxy.ts    Optional Clerk proxy when auth is configured
 ```
 
