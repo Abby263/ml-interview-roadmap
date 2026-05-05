@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-bash-safety.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "project": {
+    "brain": "prod.yml",
+    "rules": [
+      ".claude/rules/frontend.md",
+      ".claude/rules/database.md",
+      ".claude/rules/ai-tutor.md",
+      ".claude/rules/security.md",
+      ".claude/rules/content.md",
+      ".claude/rules/release.md"
+    ],
+    "agents": [
+      ".claude/agents/bug-reviewer.md",
+      ".claude/agents/security-reviewer.md",
+      ".claude/agents/performance-reviewer.md",
+      ".claude/agents/frontend-design-reviewer.md"
+    ],
+    "commands": [
+      ".claude/commands/ship.md",
+      ".claude/commands/review-all-agents.md",
+      ".claude/commands/dependency-triage.md",
+      ".claude/commands/content-update.md",
+      ".claude/commands/video-editor.md"
+    ]
+  }
+}

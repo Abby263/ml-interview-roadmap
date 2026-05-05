@@ -23,6 +23,14 @@ roadmap, question browser, and local progress work without external services.
 3. Run `npm run lint` and `npm run build`.
 4. Open a pull request using the PR template.
 
+For AI-assisted work, load the relevant workflow files:
+
+- `prod.yml` for architecture, decisions, hard rules, and release policy.
+- `.claude/rules/*.md` for task-specific project rules.
+- `.claude/agents/*.md` before merging medium or high-risk changes.
+- `.claude/commands/*.md` for repeatable workflows such as `/ship`,
+  `/review-all-agents`, `/dependency-triage`, and `/content-update`.
+
 ## Content Contributions
 
 Daily plan content lives in `content/daily-plan/days/day-###.json`.
