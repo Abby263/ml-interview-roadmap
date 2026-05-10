@@ -460,7 +460,17 @@ Every PR should include:
 
 ## License
 
-This repository is source-available for non-commercial use only. Commercial use
-requires prior written permission from the maintainers.
+This repository uses the `ML Interview Roadmap Non-Commercial Source License v1.1`
+(`LicenseRef-MLIR-NC-1.1`). It is source-available for personal, educational,
+research, portfolio, and non-commercial community use only.
 
-See [`LICENSE`](./LICENSE).
+Commercial use is prohibited in any form unless prior written permission is
+granted by the maintainers. This includes paid courses, bootcamps, SaaS
+products, recruiting products, enterprise training, commercial deployments,
+consulting, managed services, internal for-profit company training, resale,
+bundling, lead generation, sponsorship packages, and derivative commercial
+products.
+
+This project intentionally does not use AGPL as the primary license because
+AGPL permits commercial use. The non-commercial restriction is defined in
+[`LICENSE`](./LICENSE).
