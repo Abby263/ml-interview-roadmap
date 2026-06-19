@@ -28,7 +28,7 @@ jobs:
 
       - name: Checkout
         if: steps.vercel-secrets.outputs.configured == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Node
         if: steps.vercel-secrets.outputs.configured == 'true'
